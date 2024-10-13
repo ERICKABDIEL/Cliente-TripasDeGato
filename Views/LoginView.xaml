@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:TripasDeGatoCliente.Views"
+      xmlns:p="clr-namespace:TripasDeGatoCliente.Properties"
       mc:Ignorable="d" 
       d:DesignHeight="720" d:DesignWidth="1280">
 
@@ -26,11 +27,12 @@
                 </Grid.RowDefinitions>
 
                 <!-- Etiqueta de Usuario -->
-                <TextBlock Grid.Row="0" Text="Usuario:" FontSize="18" Foreground="White" Margin="0,10,0,5" HorizontalAlignment="Left"/>
+
+                <Label x:Name="lblUsername" Content="{x:Static p:Resources.globalLbUser}"  Grid.Row="0"  FontSize="18" Foreground="White" Margin="0,10,0,5" HorizontalAlignment="Left"/>
                 <TextBox Grid.Row="1" x:Name="txtUsuario" FontSize="16" Background="#333" Foreground="White" Margin="0,0,0,10" Height="35" TextChanged="txtUsuario_TextChanged" HorizontalAlignment="Stretch"/>
 
                 <!-- Etiqueta de Contraseña -->
-                <TextBlock Grid.Row="2" Text="Contraseña:" FontSize="18" Foreground="White" Margin="0,10,0,5" HorizontalAlignment="Left"/>
+                <Label x:Name="lblPassword" Content="{x:Static p:Resources.lbPassword}" Grid.Row="2" FontSize="18" Foreground="White" Margin="0,10,0,5" HorizontalAlignment="Left"/>
                 <PasswordBox Grid.Row="3" x:Name="txtPassword" FontSize="16" Background="#333" Foreground="White" Margin="0,0,0,10" Height="35" HorizontalAlignment="Stretch"/>
 
                 <!-- Botones de Iniciar sesión y Registrarse -->

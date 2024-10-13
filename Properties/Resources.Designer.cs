@@ -59,5 +59,284 @@ namespace TripasDeGatoCliente.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Add.
+        /// </summary>
+        public static string btnAddFriend {
+            get {
+                return ResourceManager.GetString("btnAddFriend", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Invite Friend.
+        /// </summary>
+        public static string btnInviteFriend {
+            get {
+                return ResourceManager.GetString("btnInviteFriend", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Join game.
+        /// </summary>
+        public static string btnJoinGame {
+            get {
+                return ResourceManager.GetString("btnJoinGame", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Leaderboard.
+        /// </summary>
+        public static string btnLeaderboard {
+            get {
+                return ResourceManager.GetString("btnLeaderboard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Leave.
+        /// </summary>
+        public static string btnLeaveRoom {
+            get {
+                return ResourceManager.GetString("btnLeaveRoom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Profile.
+        /// </summary>
+        public static string btnProfile {
+            get {
+                return ResourceManager.GetString("btnProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Remove.
+        /// </summary>
+        public static string btnRemoveFriend {
+            get {
+                return ResourceManager.GetString("btnRemoveFriend", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Save.
+        /// </summary>
+        public static string btnSave {
+            get {
+                return ResourceManager.GetString("btnSave", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Start game.
+        /// </summary>
+        public static string btnStartGame {
+            get {
+                return ResourceManager.GetString("btnStartGame", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Player.
+        /// </summary>
+        public static string columnPlayer {
+            get {
+                return ResourceManager.GetString("columnPlayer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Points.
+        /// </summary>
+        public static string columnPoints {
+            get {
+                return ResourceManager.GetString("columnPoints", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Back.
+        /// </summary>
+        public static string globalBtnBack {
+            get {
+                return ResourceManager.GetString("globalBtnBack", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Ok.
+        /// </summary>
+        public static string globalBtnOk {
+            get {
+                return ResourceManager.GetString("globalBtnOk", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Kick player.
+        /// </summary>
+        public static string globalKick {
+            get {
+                return ResourceManager.GetString("globalKick", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a User.
+        /// </summary>
+        public static string globalLbUser {
+            get {
+                return ResourceManager.GetString("globalLbUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Do you wish to remove {0} from your friends list?.
+        /// </summary>
+        public static string lbDeleteFriend {
+            get {
+                return ResourceManager.GetString("lbDeleteFriend", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Duration:.
+        /// </summary>
+        public static string lbDuration {
+            get {
+                return ResourceManager.GetString("lbDuration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Please choose a compatible file type.
+        /// </summary>
+        public static string lbFileFormat {
+            get {
+                return ResourceManager.GetString("lbFileFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Game Name:.
+        /// </summary>
+        public static string lbGameName {
+            get {
+                return ResourceManager.GetString("lbGameName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Remove player?.
+        /// </summary>
+        public static string lbKick {
+            get {
+                return ResourceManager.GetString("lbKick", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Language.
+        /// </summary>
+        public static string lbLanguage {
+            get {
+                return ResourceManager.GetString("lbLanguage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Map:.
+        /// </summary>
+        public static string lbMap {
+            get {
+                return ResourceManager.GetString("lbMap", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Message.
+        /// </summary>
+        public static string lbMessage {
+            get {
+                return ResourceManager.GetString("lbMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Nodes:.
+        /// </summary>
+        public static string lbNodes {
+            get {
+                return ResourceManager.GetString("lbNodes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Tehere&apos;s no one else in the room.
+        /// </summary>
+        public static string lbNoOneKick {
+            get {
+                return ResourceManager.GetString("lbNoOneKick", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Password.
+        /// </summary>
+        public static string lbPassword {
+            get {
+                return ResourceManager.GetString("lbPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Action failed.
+        /// </summary>
+        public static string titleActionFailed {
+            get {
+                return ResourceManager.GetString("titleActionFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Delete friend.
+        /// </summary>
+        public static string titleDeleteFriend {
+            get {
+                return ResourceManager.GetString("titleDeleteFriend", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Format not supported.
+        /// </summary>
+        public static string titleFileFormat {
+            get {
+                return ResourceManager.GetString("titleFileFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Leave room.
+        /// </summary>
+        public static string titleLeaveRoom {
+            get {
+                return ResourceManager.GetString("titleLeaveRoom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a No one to kick.
+        /// </summary>
+        public static string titleNoOneKick {
+            get {
+                return ResourceManager.GetString("titleNoOneKick", resourceCulture);
+            }
+        }
     }
 }

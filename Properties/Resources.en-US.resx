@@ -46,7 +46,7 @@
     
     mimetype: application/x-microsoft.net.object.binary.base64
     value   : The object must be serialized with 
-            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
             : and then encoded with base64 encoding.
     
     mimetype: application/x-microsoft.net.object.soap.base64
@@ -60,6 +60,7 @@
             : and then encoded with base64 encoding.
     -->
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
@@ -68,9 +69,10 @@
               <xsd:sequence>
                 <xsd:element name="value" type="xsd:string" minOccurs="0" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="name" use="required" type="xsd:string" />
               <xsd:attribute name="type" type="xsd:string" />
               <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
@@ -85,9 +87,10 @@
                 <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
                 <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
               <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
               <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
@@ -109,9 +112,102 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="btnAddFriend" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="btnInviteFriend" xml:space="preserve">
+    <value>Invite Friend</value>
+  </data>
+  <data name="btnJoinGame" xml:space="preserve">
+    <value>Join game</value>
+  </data>
+  <data name="btnLeaderboard" xml:space="preserve">
+    <value>Leaderboard</value>
+  </data>
+  <data name="btnLeaveRoom" xml:space="preserve">
+    <value>Leave</value>
+  </data>
+  <data name="btnProfile" xml:space="preserve">
+    <value>Profile</value>
+  </data>
+  <data name="btnRemoveFriend" xml:space="preserve">
+    <value>Remove</value>
+  </data>
+  <data name="btnSave" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="btnStartGame" xml:space="preserve">
+    <value>Start game</value>
+  </data>
+  <data name="columnPlayer" xml:space="preserve">
+    <value>Player</value>
+  </data>
+  <data name="columnPoint" xml:space="preserve">
+    <value>Points</value>
+  </data>
+  <data name="globalBtnBack" xml:space="preserve">
+    <value>Back</value>
+  </data>
+  <data name="globalBtnOk" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+  <data name="globalKick" xml:space="preserve">
+    <value>Kick player</value>
+  </data>
+  <data name="globalLbUser" xml:space="preserve">
+    <value>User</value>
+  </data>
+  <data name="lbDeleteFriend" xml:space="preserve">
+    <value>Do you wish to remove {0} from your friends list?</value>
+  </data>
+  <data name="lbDuration" xml:space="preserve">
+    <value>Duration:</value>
+  </data>
+  <data name="lbFileFormat" xml:space="preserve">
+    <value>Please choose a compatible file type</value>
+  </data>
+  <data name="lbGameName" xml:space="preserve">
+    <value>Game Name:</value>
+  </data>
+  <data name="lbKick" xml:space="preserve">
+    <value>Remove player?</value>
+  </data>
+  <data name="lbLanguage" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="lbMap" xml:space="preserve">
+    <value>Map:</value>
+  </data>
+  <data name="lbMessage" xml:space="preserve">
+    <value>Message</value>
+  </data>
+  <data name="lbNodes" xml:space="preserve">
+    <value>Nodes:</value>
+  </data>
+  <data name="lbNoOneKick" xml:space="preserve">
+    <value>Tehere's no one else in the room</value>
+  </data>
+  <data name="lbPassword" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="titleActionFailed" xml:space="preserve">
+    <value>Action failed</value>
+  </data>
+  <data name="titleDeleteFriend" xml:space="preserve">
+    <value>Delete friend</value>
+  </data>
+  <data name="titleFileFormat" xml:space="preserve">
+    <value>Format not supported</value>
+  </data>
+  <data name="titleLeaveRoom" xml:space="preserve">
+    <value>Leave room</value>
+  </data>
+  <data name="titleNoOneKick" xml:space="preserve">
+    <value>No one to kick</value>
+  </data>
 </root>
