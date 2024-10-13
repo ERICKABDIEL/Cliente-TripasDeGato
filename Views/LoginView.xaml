@@ -16,7 +16,6 @@
                     <ImageBrush ImageSource="/Images/Login.png" Stretch="UniformToFill"/>
                 </Border.Background>
             </Border>
-            <!-- Contenedor principal centrado -->
             <Grid HorizontalAlignment="Left" VerticalAlignment="Center" Width="Auto" Height="Auto" Background="#FF13011B" Margin="788,0,0,0" >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
