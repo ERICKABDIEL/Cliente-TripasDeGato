@@ -13,7 +13,7 @@
         <Grid>
             <Border>
                 <Border.Background>
-                    <ImageBrush ImageSource="/Images/Login.png" Stretch="UniformToFill"/>
+                    <ImageBrush ImageSource="/Images/BackgroundLeft.png" Stretch="UniformToFill"/>
                 </Border.Background>
             </Border>
             <Grid HorizontalAlignment="Left" VerticalAlignment="Center" Width="Auto" Height="Auto" Background="#FF13011B" Margin="788,0,0,0" >

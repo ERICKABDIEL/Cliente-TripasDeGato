@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\TripasDeGatoCliente\App.xaml
-2-1943055891
-
-91648842491
+41951031580
+1-1432316079
+11-552905096
 13-1310406943
-MainWindow.xaml;Views\LoginView.xaml;
+MainWindow.xaml;Views\LobbyView.xaml;Views\RegisterView.xaml;Views\LoginView.xaml;
 
-False
+True
 
