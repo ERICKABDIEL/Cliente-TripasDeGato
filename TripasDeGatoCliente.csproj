@@ -143,15 +143,6 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="Connected Services\TripasDeGatoServicio\item.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\TripasDeGatoServicio\item1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\TripasDeGatoServicio\item2.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Connected Services\TripasDeGatoServicio\TripasDeGatoCliente.TripasDeGatoServicio.Profile.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -183,14 +174,13 @@
     <Resource Include="Images\LogoWhitoutBackground.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\TripasDeGatoServicio\item.disco" />
+    <Resource Include="Images\ImageDefaultProfile.png" />
     <None Include="Connected Services\TripasDeGatoServicio\configuration91.svcinfo" />
     <None Include="Connected Services\TripasDeGatoServicio\configuration.svcinfo" />
     <None Include="Connected Services\TripasDeGatoServicio\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <Resource Include="Images\ImageDefaultProfile.png" />
     <Content Include="Images\ViewWait.mp4">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -192,6 +192,9 @@
   <data name="globalLbUser" xml:space="preserve">
     <value>Usuario</value>
   </data>
+  <data name="lbConfirmPasswordSignIn" xml:space="preserve">
+    <value>Confirmar contraseña</value>
+  </data>
   <data name="lbDeleteFriend" xml:space="preserve">
     <value>¿Desea eliminar a {0} como amigo?</value>
   </data>
