@@ -286,6 +286,15 @@ namespace TripasDeGatoCliente.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Confirm password.
+        /// </summary>
+        public static string lbConfirmPasswordSignIn {
+            get {
+                return ResourceManager.GetString("lbConfirmPasswordSignIn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Do you wish to remove {0} from your friends list?.
         /// </summary>
         public static string lbDeleteFriend {

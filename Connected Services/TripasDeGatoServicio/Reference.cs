@@ -200,10 +200,10 @@ namespace TripasDeGatoCliente.TripasDeGatoServicio {
         System.Threading.Tasks.Task<int> updateProfileAsync(TripasDeGatoCliente.TripasDeGatoServicio.Profile profile);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/getProfile", ReplyAction="http://tempuri.org/IUserManager/getProfileResponse")]
-        TripasDeGatoCliente.TripasDeGatoServicio.Profile getProfile(string email);
+        TripasDeGatoCliente.TripasDeGatoServicio.Profile getProfile(string email, string password);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/getProfile", ReplyAction="http://tempuri.org/IUserManager/getProfileResponse")]
-        System.Threading.Tasks.Task<TripasDeGatoCliente.TripasDeGatoServicio.Profile> getProfileAsync(string email);
+        System.Threading.Tasks.Task<TripasDeGatoCliente.TripasDeGatoServicio.Profile> getProfileAsync(string email, string password);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/verifyLogin", ReplyAction="http://tempuri.org/IUserManager/verifyLoginResponse")]
         int verifyLogin(TripasDeGatoCliente.TripasDeGatoServicio.LoginUser user);
@@ -255,12 +255,12 @@ namespace TripasDeGatoCliente.TripasDeGatoServicio {
             return base.Channel.updateProfileAsync(profile);
         }
         
-        public TripasDeGatoCliente.TripasDeGatoServicio.Profile getProfile(string email) {
-            return base.Channel.getProfile(email);
+        public TripasDeGatoCliente.TripasDeGatoServicio.Profile getProfile(string email, string password) {
+            return base.Channel.getProfile(email, password);
         }
         
-        public System.Threading.Tasks.Task<TripasDeGatoCliente.TripasDeGatoServicio.Profile> getProfileAsync(string email) {
-            return base.Channel.getProfileAsync(email);
+        public System.Threading.Tasks.Task<TripasDeGatoCliente.TripasDeGatoServicio.Profile> getProfileAsync(string email, string password) {
+            return base.Channel.getProfileAsync(email, password);
         }
         
         public int verifyLogin(TripasDeGatoCliente.TripasDeGatoServicio.LoginUser user) {
@@ -269,6 +269,81 @@ namespace TripasDeGatoCliente.TripasDeGatoServicio {
         
         public System.Threading.Tasks.Task<int> verifyLoginAsync(TripasDeGatoCliente.TripasDeGatoServicio.LoginUser user) {
             return base.Channel.verifyLoginAsync(user);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="TripasDeGatoServicio.IFriendsManager")]
+    public interface IFriendsManager {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFriendsManager/addFriend", ReplyAction="http://tempuri.org/IFriendsManager/addFriendResponse")]
+        int addFriend(int idProfile1, int idProfile2);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFriendsManager/addFriend", ReplyAction="http://tempuri.org/IFriendsManager/addFriendResponse")]
+        System.Threading.Tasks.Task<int> addFriendAsync(int idProfile1, int idProfile2);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFriendsManager/deleteFriend", ReplyAction="http://tempuri.org/IFriendsManager/deleteFriendResponse")]
+        int deleteFriend(int idProfile1, int idProfile2);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFriendsManager/deleteFriend", ReplyAction="http://tempuri.org/IFriendsManager/deleteFriendResponse")]
+        System.Threading.Tasks.Task<int> deleteFriendAsync(int idProfile1, int idProfile2);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFriendsManager/getFriends", ReplyAction="http://tempuri.org/IFriendsManager/getFriendsResponse")]
+        TripasDeGatoCliente.TripasDeGatoServicio.Profile[] getFriends(int idProfile);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFriendsManager/getFriends", ReplyAction="http://tempuri.org/IFriendsManager/getFriendsResponse")]
+        System.Threading.Tasks.Task<TripasDeGatoCliente.TripasDeGatoServicio.Profile[]> getFriendsAsync(int idProfile);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IFriendsManagerChannel : TripasDeGatoCliente.TripasDeGatoServicio.IFriendsManager, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class FriendsManagerClient : System.ServiceModel.ClientBase<TripasDeGatoCliente.TripasDeGatoServicio.IFriendsManager>, TripasDeGatoCliente.TripasDeGatoServicio.IFriendsManager {
+        
+        public FriendsManagerClient() {
+        }
+        
+        public FriendsManagerClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public FriendsManagerClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public FriendsManagerClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public FriendsManagerClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        public int addFriend(int idProfile1, int idProfile2) {
+            return base.Channel.addFriend(idProfile1, idProfile2);
+        }
+        
+        public System.Threading.Tasks.Task<int> addFriendAsync(int idProfile1, int idProfile2) {
+            return base.Channel.addFriendAsync(idProfile1, idProfile2);
+        }
+        
+        public int deleteFriend(int idProfile1, int idProfile2) {
+            return base.Channel.deleteFriend(idProfile1, idProfile2);
+        }
+        
+        public System.Threading.Tasks.Task<int> deleteFriendAsync(int idProfile1, int idProfile2) {
+            return base.Channel.deleteFriendAsync(idProfile1, idProfile2);
+        }
+        
+        public TripasDeGatoCliente.TripasDeGatoServicio.Profile[] getFriends(int idProfile) {
+            return base.Channel.getFriends(idProfile);
+        }
+        
+        public System.Threading.Tasks.Task<TripasDeGatoCliente.TripasDeGatoServicio.Profile[]> getFriendsAsync(int idProfile) {
+            return base.Channel.getFriendsAsync(idProfile);
         }
     }
 }

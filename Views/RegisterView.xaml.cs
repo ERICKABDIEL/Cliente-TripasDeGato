@@ -16,22 +16,22 @@ namespace TripasDeGatoCliente.Views
 
         private void BtnSignIn_Click(object sender, RoutedEventArgs e)
         {
-            // Recoger datos del formulario
             string email = txtCorreo.Text;
             string username = txtNombre.Text;
-            string password = txtPassword.Password; // Solo se recoge del PasswordBox ahora
+            string password = txtPassword.Password;
+            string confirmPassword = ConfirmPassword.Password; // Campo de confirmación de contraseña
 
-            // Validar los campos
-            if (!ValidateFields(email, username, password))
+            // Validar todos los campos, incluyendo que las contraseñas coincidan
+            if (!ValidateFields(email, username, password, confirmPassword))
             {
-                return; // Si hay errores, no continuar
+                return;
             }
 
             // Crear el usuario y perfil
             LoginUser newUser = new LoginUser
             {
                 mail = email,
-                password = Hasher.HashToSHA256(password) // Hashear la contraseña
+                password = Hasher.HashToSHA256(password)
             };
 
             Profile newProfile = new Profile
@@ -41,79 +41,96 @@ namespace TripasDeGatoCliente.Views
                 picturePath = "/Images/ImageDefaultProfile"
             };
 
-            // Llamar al servicio para crear la cuenta
-            TripasDeGatoServicio.UserManagerClient proxy = new TripasDeGatoServicio.UserManagerClient();
-            TripasDeGatoServicio.LoginUser loginUser = new TripasDeGatoServicio.LoginUser
+            // Comunicación con el proxy del servidor
+            try
             {
-                mail = email,
-                password = password
-            };
+                TripasDeGatoServicio.UserManagerClient proxy = new TripasDeGatoServicio.UserManagerClient();
+                TripasDeGatoServicio.LoginUser loginUser = new TripasDeGatoServicio.LoginUser
+                {
+                    mail = email,
+                    password = password
+                };
 
-            TripasDeGatoServicio.Profile profile = new TripasDeGatoServicio.Profile
-            {
-                userName = username
-            };
+                TripasDeGatoServicio.Profile profile = new TripasDeGatoServicio.Profile
+                {
+                    userName = username
+                };
 
-            int result = proxy.createAccount(loginUser, profile);
+                int result = proxy.createAccount(loginUser, profile);
 
-            if (result == Constants.SUCCES_OPERATION)
-            {
-                MessageBox.Show("Account created successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-                // Navegar a la vista de inicio de sesión
-                GoToLoginView();
+                if (result == Constants.SUCCES_OPERATION)
+                {
+                    MessageBox.Show("Account created successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                    GoToLoginView();
+                }
+                else
+                {
+                    MessageBox.Show("Error creating account. Please try again.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
-            else
+            catch (System.ServiceModel.CommunicationException ex)
             {
-                MessageBox.Show("Error creating account. Please try again.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show($"Server communication error: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
-        private bool ValidateFields(string email, string username, string password)
+        private bool ValidateFields(string email, string username, string password, string confirmPassword)
         {
             bool isValid = true;
 
-            // Validar el correo
+            // Validar correo
             if (!Validador.ValidateEmail(email))
             {
-                txtCorreo.BorderBrush = Brushes.Red; // Marcar el campo en rojo
-                MessageBox.Show("Por favor complete este campo", "Error de Validación", MessageBoxButton.OK, MessageBoxImage.Error);
+                txtCorreo.BorderBrush = Brushes.Red;
+                MessageBox.Show("Por favor, introduzca un correo electrónico válido", "Error de Validación", MessageBoxButton.OK, MessageBoxImage.Error);
                 isValid = false;
             }
             else
             {
-                txtCorreo.BorderBrush = Brushes.White; // Reiniciar a normal
+                txtCorreo.BorderBrush = Brushes.White;
             }
 
-            // Validar el nombre de usuario
+            // Validar nombre de usuario
             if (!Validador.ValidateUsername(username))
             {
-                txtNombre.BorderBrush = Brushes.Red; // Marcar el campo en rojo
-                MessageBox.Show("Por favor complete este campo", "Error de Validación", MessageBoxButton.OK, MessageBoxImage.Error);
+                txtNombre.BorderBrush = Brushes.Red;
+                MessageBox.Show("Por favor, introduzca un nombre de usuario válido", "Error de Validación", MessageBoxButton.OK, MessageBoxImage.Error);
                 isValid = false;
             }
             else
             {
-                txtNombre.BorderBrush = Brushes.White; // Reiniciar a normal
+                txtNombre.BorderBrush = Brushes.White;
             }
 
             // Validar la contraseña
             if (!Validador.ValidatePassword(password))
             {
-                txtPassword.BorderBrush = Brushes.Red; // Marcar el campo en rojo
-                MessageBox.Show("Por favor complete este campo", "Error de Validación", MessageBoxButton.OK, MessageBoxImage.Error);
-                isValid = true;
+                txtPassword.BorderBrush = Brushes.Red;
+                MessageBox.Show("Por favor, introduzca una contraseña válida", "Error de Validación", MessageBoxButton.OK, MessageBoxImage.Error);
+                isValid = false;
             }
             else
             {
-                txtPassword.BorderBrush = Brushes.White; // Reiniciar a normal
+                txtPassword.BorderBrush = Brushes.White;
             }
 
-            return isValid; // Retornar el estado de validación
+            // Validar que las contraseñas coincidan
+            if (password != confirmPassword)
+            {
+                ConfirmPassword.BorderBrush = Brushes.Red;
+                MessageBox.Show("Las contraseñas no coinciden", "Error de Validación", MessageBoxButton.OK, MessageBoxImage.Error);
+                isValid = false;
+            }
+            else
+            {
+                ConfirmPassword.BorderBrush = Brushes.White;
+            }
+
+            return isValid;
         }
 
         private void GoToLoginView()
         {
-            // Regresar a la vista de inicio de sesión
             if (this.NavigationService.CanGoBack)
             {
                 this.NavigationService.GoBack();
@@ -122,7 +139,6 @@ namespace TripasDeGatoCliente.Views
 
         private void BtnBack_Click(object sender, RoutedEventArgs e)
         {
-            // Volver a la vista de inicio de sesión
             GoToLoginView();
         }
     }
