@@ -29,7 +29,7 @@
 
                 <!-- Etiqueta de Correo -->
                 <Label x:Name="lblEmail" Content="{x:Static p:Resources.lbEmail}" Grid.Row="0" FontSize="18" Foreground="White" Margin="0,10,0,5" HorizontalAlignment="Left"/>
-                <TextBox Grid.Row="1" x:Name="txtEmail" FontSize="16" Background="#333" Foreground="White" Margin="0,0,0,10" Height="35" TextChanged="BxtUsuario_TextChanged" HorizontalAlignment="Stretch" BorderBrush="#FF7F588D"/>
+                <TextBox Grid.Row="1" x:Name="txtEmail" FontSize="16" Background="#333" Foreground="White" Margin="0,0,0,10" Height="35" HorizontalAlignment="Stretch" BorderBrush="#FF7F588D"/>
 
                 <!-- Etiqueta de Contraseña -->
                 <Label x:Name="lblPassword" Content="{x:Static p:Resources.lbPassword}" Grid.Row="2" FontSize="18" Foreground="White" Margin="0,10,0,5" HorizontalAlignment="Left"/>
@@ -81,7 +81,7 @@
                     </Button>
                 </StackPanel>
 
-                <Button x:Name="btnGuest" Content="{x:Static p:Resources.btnGuest}" FontSize="16" Margin="35,10,193,-50" Grid.Row="5" Click="BtnGuest_Click">
+                <Button x:Name="btnGuest" Content="{x:Static p:Resources.btnGuest}" FontSize="16" Margin="35,10,193,-50" Grid.Row="5" >
                     <Button.Style>
                         <Style TargetType="{x:Type Button}">
                             <Setter Property="Background" Value="#FF4081"/>

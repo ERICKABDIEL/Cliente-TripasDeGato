@@ -17,11 +17,17 @@ namespace TripasDeGatoCliente.Views
         {
             InitializeComponent();
             UpdatePasswordVisibilityIcon();
+            txtEmail.TextChanged += TxtEmail_TextChanged;
+            txtPassword.PasswordChanged += TxtPassword_PasswordChanged;
+        }
+        private void TxtEmail_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            txtEmail.BorderBrush = new SolidColorBrush(Colors.White);
         }
 
-        private void BxtUsuario_TextChanged(object sender, TextChangedEventArgs e)
+        private void TxtPassword_PasswordChanged(object sender, RoutedEventArgs e)
         {
-            // Implementar cualquier funcionalidad necesaria aquí si se requiere
+            txtPassword.BorderBrush = new SolidColorBrush(Colors.White);
         }
 
         private void BtnLogin_Click(object sender, RoutedEventArgs e)
@@ -95,7 +101,7 @@ namespace TripasDeGatoCliente.Views
                 if (validationResult == Constants.DATA_MATCHES)
                 {
                     // Si las credenciales son válidas, obtener el perfil del usuario
-                    Profile profile = userManager.getProfile(user.mail, user.password);
+                    Profile profile = userManager.getProfile(user.mail);
                     if (profile != null)
                     {
                         ObtainSingletonData(profile); // Guardar los datos del perfil en el singleton
@@ -132,6 +138,11 @@ namespace TripasDeGatoCliente.Views
         {
             LobbyView lobbyView = new LobbyView();
             this.NavigationService.Navigate(lobbyView);
+        }
+        private void BtnSignIn_Click(object sender, RoutedEventArgs e)
+        {
+            RegisterView registerView = new RegisterView();
+            this.NavigationService.Navigate(registerView);
         }
 
         // Método para mostrar la contraseña

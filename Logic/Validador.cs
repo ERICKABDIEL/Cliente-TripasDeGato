@@ -49,21 +49,23 @@ namespace TripasDeGatoCliente.Logic
 
         public static bool ValidateEmail(string email)
         {
-            bool isValid = false;
-            string cleanedEmail = Regex.Replace(email.Trim(), @"\s+", "");
-            if (!string.IsNullOrWhiteSpace(cleanedEmail) && cleanedEmail.Length < 254)
+            string cleanedEmail = email?.Trim();
+
+            if (!string.IsNullOrWhiteSpace(cleanedEmail) && cleanedEmail.Length <= 254)
             {
                 try
                 {
                     var mailAddress = new MailAddress(cleanedEmail);
+                    return true; 
                 }
                 catch (FormatException)
                 {
-                    isValid = false;
+                    return false;
                 }
             }
-            return isValid;
+            return false;
         }
+
         public static bool validateCode(string codeLobby)
         {
             bool isValid = false;
