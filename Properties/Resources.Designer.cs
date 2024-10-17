@@ -63,9 +63,27 @@ namespace TripasDeGatoCliente.Properties {
         /// <summary>
         ///   Busca una cadena traducida similar a Add.
         /// </summary>
+        public static string btnAdd {
+            get {
+                return ResourceManager.GetString("btnAdd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Add Friend.
+        /// </summary>
         public static string btnAddFriend {
             get {
                 return ResourceManager.GetString("btnAddFriend", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Guest.
+        /// </summary>
+        public static string btnGuest {
+            get {
+                return ResourceManager.GetString("btnGuest", resourceCulture);
             }
         }
         
@@ -106,6 +124,15 @@ namespace TripasDeGatoCliente.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Login.
+        /// </summary>
+        public static string btnLogin {
+            get {
+                return ResourceManager.GetString("btnLogin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Profile.
         /// </summary>
         public static string btnProfile {
@@ -133,6 +160,15 @@ namespace TripasDeGatoCliente.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Sign In.
+        /// </summary>
+        public static string btnSignIn {
+            get {
+                return ResourceManager.GetString("btnSignIn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Start game.
         /// </summary>
         public static string btnStartGame {
@@ -156,6 +192,60 @@ namespace TripasDeGatoCliente.Properties {
         public static string columnPoints {
             get {
                 return ResourceManager.GetString("columnPoints", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Credentials do not match.
+        /// </summary>
+        public static string dialogMissmatchesCredentials {
+            get {
+                return ResourceManager.GetString("dialogMissmatchesCredentials", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Confirmation.
+        /// </summary>
+        public static string dialogTitleConfirmation {
+            get {
+                return ResourceManager.GetString("dialogTitleConfirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Error.
+        /// </summary>
+        public static string dialogTitleError {
+            get {
+                return ResourceManager.GetString("dialogTitleError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Succes.
+        /// </summary>
+        public static string dialogTitleSucces {
+            get {
+                return ResourceManager.GetString("dialogTitleSucces", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Warning.
+        /// </summary>
+        public static string dialogTitleWarning {
+            get {
+                return ResourceManager.GetString("dialogTitleWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Wrong Data.
+        /// </summary>
+        public static string dialogWrongData {
+            get {
+                return ResourceManager.GetString("dialogWrongData", resourceCulture);
             }
         }
         
@@ -210,6 +300,15 @@ namespace TripasDeGatoCliente.Properties {
         public static string lbDuration {
             get {
                 return ResourceManager.GetString("lbDuration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Email.
+        /// </summary>
+        public static string lbEmail {
+            get {
+                return ResourceManager.GetString("lbEmail", resourceCulture);
             }
         }
         
@@ -291,6 +390,15 @@ namespace TripasDeGatoCliente.Properties {
         public static string lbPassword {
             get {
                 return ResourceManager.GetString("lbPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Password.
+        /// </summary>
+        public static string lbPasswordSignIn {
+            get {
+                return ResourceManager.GetString("lbPasswordSignIn", resourceCulture);
             }
         }
         

@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\Trabajos de Erick\LIS UV\5 QUINTO PERIODO\Tecnologias\Proyecto\TripasDeGatoCliente\obj\Release\
+C:\TripasDeGatoCliente\obj\Release\
 TripasDeGatoCliente
 none
 false
 TRACE
-D:\Trabajos de Erick\LIS UV\5 QUINTO PERIODO\Tecnologias\Proyecto\TripasDeGatoCliente\App.xaml
-2-1943055891
-
-8582391132
-13-1310406943
-MainWindow.xaml;Views\LoginView.xaml;
+C:\TripasDeGatoCliente\App.xaml
+41951031580
+1-1432316079
+101529183522
+16-2051817770
+MainWindow.xaml;Views\LobbyView.xaml;Views\RegisterView.xaml;Views\LoginView.xaml;
 
 True
 

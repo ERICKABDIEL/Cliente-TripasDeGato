@@ -117,8 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="btnAddFriend" xml:space="preserve">
+  <data name="btnAdd" xml:space="preserve">
     <value>Add</value>
+  </data>
+  <data name="btnAddFriend" xml:space="preserve">
+    <value>Add Friend</value>
+  </data>
+  <data name="btnGuest" xml:space="preserve">
+    <value>Guest</value>
   </data>
   <data name="btnInviteFriend" xml:space="preserve">
     <value>Invite Friend</value>
@@ -132,6 +138,9 @@
   <data name="btnLeaveRoom" xml:space="preserve">
     <value>Leave</value>
   </data>
+  <data name="btnLogin" xml:space="preserve">
+    <value>Login</value>
+  </data>
   <data name="btnProfile" xml:space="preserve">
     <value>Profile</value>
   </data>
@@ -141,6 +150,9 @@
   <data name="btnSave" xml:space="preserve">
     <value>Save</value>
   </data>
+  <data name="btnSignIn" xml:space="preserve">
+    <value>Sign In</value>
+  </data>
   <data name="btnStartGame" xml:space="preserve">
     <value>Start game</value>
   </data>
@@ -149,6 +161,24 @@
   </data>
   <data name="columnPoints" xml:space="preserve">
     <value>Points</value>
+  </data>
+  <data name="dialogMissmatchesCredentials" xml:space="preserve">
+    <value>Credentials do not match</value>
+  </data>
+  <data name="dialogTitleConfirmation" xml:space="preserve">
+    <value>Confirmation</value>
+  </data>
+  <data name="dialogTitleError" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="dialogTitleSucces" xml:space="preserve">
+    <value>Succes</value>
+  </data>
+  <data name="dialogTitleWarning" xml:space="preserve">
+    <value>Warning</value>
+  </data>
+  <data name="dialogWrongData" xml:space="preserve">
+    <value>Wrong Data</value>
   </data>
   <data name="globalBtnBack" xml:space="preserve">
     <value>Back</value>
@@ -167,6 +197,9 @@
   </data>
   <data name="lbDuration" xml:space="preserve">
     <value>Duration:</value>
+  </data>
+  <data name="lbEmail" xml:space="preserve">
+    <value>Email</value>
   </data>
   <data name="lbFileFormat" xml:space="preserve">
     <value>Please choose a compatible file type</value>
@@ -193,6 +226,9 @@
     <value>Tehere's no one else in the room</value>
   </data>
   <data name="lbPassword" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="lbPasswordSignIn" xml:space="preserve">
     <value>Password</value>
   </data>
   <data name="titleActionFailed" xml:space="preserve">

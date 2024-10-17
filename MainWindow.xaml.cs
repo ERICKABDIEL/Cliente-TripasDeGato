@@ -23,7 +23,8 @@ namespace TripasDeGatoCliente
         public MainWindow()
         {
             InitializeComponent();
-            System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en-US");
+            NavigationFrame.Navigate(new Views.LoginView());
         }
+
     }
 }

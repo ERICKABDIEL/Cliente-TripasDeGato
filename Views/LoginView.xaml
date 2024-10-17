@@ -8,36 +8,41 @@
       mc:Ignorable="d" 
       d:DesignHeight="720" d:DesignWidth="1280">
 
-
     <DockPanel>
         <Grid>
             <Border>
                 <Border.Background>
                     <ImageBrush ImageSource="/Images/BackgroundLeft.png" Stretch="UniformToFill"/>
                 </Border.Background>
+                <ToggleButton x:Name="btnTogglePassword" Width="30" Content="👁" HorizontalAlignment="Left" VerticalAlignment="Top" Checked="BtnTogglePassword_Checked" Unchecked="BtnTogglePassword_Unchecked" Background="#FF13011B" BorderBrush="#FF13011B" Foreground="#FFFDEBEB" Margin="1128,363,0,0"/>
             </Border>
-            <Grid HorizontalAlignment="Left" VerticalAlignment="Center" Width="Auto" Height="Auto" Background="#FF13011B" Margin="788,0,0,0" >
+            <Grid HorizontalAlignment="Left" VerticalAlignment="Center" Width="371" Height="300" Background="#FF13011B" Margin="749,0,0,0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="80"/>
+                    <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
-                <!-- Etiqueta de Usuario -->
-
-                <Label x:Name="lblUsername" Content="{x:Static p:Resources.globalLbUser}"  Grid.Row="0"  FontSize="18" Foreground="White" Margin="0,10,0,5" HorizontalAlignment="Left"/>
-                <TextBox Grid.Row="1" x:Name="txtUsuario" FontSize="16" Background="#333" Foreground="White" Margin="0,0,0,10" Height="35" TextChanged="txtUsuario_TextChanged" HorizontalAlignment="Stretch"/>
+                <!-- Etiqueta de Correo -->
+                <Label x:Name="lblEmail" Content="{x:Static p:Resources.lbEmail}" Grid.Row="0" FontSize="18" Foreground="White" Margin="0,10,0,5" HorizontalAlignment="Left"/>
+                <TextBox Grid.Row="1" x:Name="txtEmail" FontSize="16" Background="#333" Foreground="White" Margin="0,0,0,10" Height="35" TextChanged="BxtUsuario_TextChanged" HorizontalAlignment="Stretch" BorderBrush="#FF7F588D"/>
 
                 <!-- Etiqueta de Contraseña -->
                 <Label x:Name="lblPassword" Content="{x:Static p:Resources.lbPassword}" Grid.Row="2" FontSize="18" Foreground="White" Margin="0,10,0,5" HorizontalAlignment="Left"/>
-                <PasswordBox Grid.Row="3" x:Name="txtPassword" FontSize="16" Background="#333" Foreground="White" Margin="0,0,0,10" Height="35" HorizontalAlignment="Stretch"/>
+
+                <!-- Caja de Contraseña con ToggleButton para mostrar/ocultar contraseña -->
+                <Grid Grid.Row="3" HorizontalAlignment="Stretch">
+                    <PasswordBox x:Name="txtPassword" FontSize="16" Background="#333" Foreground="White" Height="35" HorizontalAlignment="Stretch" BorderBrush="#FF7E578C"/>
+                    <TextBox x:Name="txtPasswordVisible" FontSize="16" Background="#333" Foreground="White" Height="35" HorizontalAlignment="Stretch" BorderBrush="#FF7E578C" Visibility="Collapsed" IsReadOnly="True"/>
+                </Grid>
 
                 <!-- Botones de Iniciar sesión y Registrarse -->
                 <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <!-- Botón de Iniciar Sesión -->
-                    <Button x:Name="btnIniciarSesion" Content="Iniciar Sesión" FontSize="16" Width="120" Height="40" Margin="10,0,10,0">
+                    <Button x:Name="btnLogin" Content="{x:Static p:Resources.btnLogin}" FontSize="16" Width="318" Height="40" Click="BtnLogin_Click">
                         <Button.Style>
                             <Style TargetType="{x:Type Button}">
                                 <Setter Property="Background" Value="#7A1B9D"/>
@@ -61,7 +66,6 @@
                                         </ControlTemplate>
                                     </Setter.Value>
                                 </Setter>
-                                <!-- Efecto Hover -->
                                 <Style.Triggers>
                                     <Trigger Property="IsMouseOver" Value="True">
                                         <Setter Property="Background" Value="#9C27B0"/>
@@ -75,49 +79,84 @@
                             </Style>
                         </Button.Style>
                     </Button>
-
-                    <!-- Botón de Registrarse -->
-                    <Button x:Name="btnRegistrarse" Content="Registrarse" FontSize="16" Width="120" Height="40" Margin="10,0,10,0">
-                        <Button.Style>
-                            <Style TargetType="{x:Type Button}">
-                                <Setter Property="Background" Value="#FF4081"/>
-                                <Setter Property="Foreground" Value="White"/>
-                                <Setter Property="BorderBrush" Value="Transparent"/>
-                                <Setter Property="BorderThickness" Value="0"/>
-                                <Setter Property="FontWeight" Value="Bold"/>
-                                <Setter Property="Effect">
-                                    <Setter.Value>
-                                        <DropShadowEffect Color="Black" ShadowDepth="5" BlurRadius="10"/>
-                                    </Setter.Value>
-                                </Setter>
-                                <Setter Property="Template">
-                                    <Setter.Value>
-                                        <ControlTemplate TargetType="{x:Type Button}">
-                                            <Grid>
-                                                <Border CornerRadius="20" Background="{TemplateBinding Background}">
-                                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                                </Border>
-                                            </Grid>
-                                        </ControlTemplate>
-                                    </Setter.Value>
-                                </Setter>
-                                <!-- Efecto Hover -->
-                                <Style.Triggers>
-                                    <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Background" Value="#FF6F91"/>
-                                        <Setter Property="Effect">
-                                            <Setter.Value>
-                                                <DropShadowEffect Color="#FFFF8CB3" ShadowDepth="10" BlurRadius="15"/>
-                                            </Setter.Value>
-                                        </Setter>
-                                    </Trigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Button.Style>
-                    </Button>
                 </StackPanel>
+
+                <Button x:Name="btnGuest" Content="{x:Static p:Resources.btnGuest}" FontSize="16" Margin="35,10,193,-50" Grid.Row="5" Click="BtnGuest_Click">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Background" Value="#FF4081"/>
+                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="BorderBrush" Value="Transparent"/>
+                            <Setter Property="BorderThickness" Value="0"/>
+                            <Setter Property="FontWeight" Value="Bold"/>
+                            <Setter Property="Effect">
+                                <Setter.Value>
+                                    <DropShadowEffect Color="Black" ShadowDepth="5" BlurRadius="10"/>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Grid>
+                                            <Border CornerRadius="20" Background="{TemplateBinding Background}">
+                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            </Border>
+                                        </Grid>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#FF6F91"/>
+                                    <Setter Property="Effect">
+                                        <Setter.Value>
+                                            <DropShadowEffect Color="#FFFF8CB3" ShadowDepth="10" BlurRadius="15"/>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+
+                <Button x:Name="btnSignIn" Content="{x:Static p:Resources.btnSignIn}" FontSize="16" Margin="195,11,33,-51" Grid.Row="5" Grid.RowSpan="2" Click="BtnSignIn_Click">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Background" Value="#FF4081"/>
+                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="BorderBrush" Value="Transparent"/>
+                            <Setter Property="BorderThickness" Value="0"/>
+                            <Setter Property="FontWeight" Value="Bold"/>
+                            <Setter Property="Effect">
+                                <Setter.Value>
+                                    <DropShadowEffect Color="Black" ShadowDepth="5" BlurRadius="10"/>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Grid>
+                                            <Border CornerRadius="20" Background="{TemplateBinding Background}">
+                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            </Border>
+                                        </Grid>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#FF6F91"/>
+                                    <Setter Property="Effect">
+                                        <Setter.Value>
+                                            <DropShadowEffect Color="#FFFF8CB3" ShadowDepth="10" BlurRadius="15"/>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
             </Grid>
         </Grid>
-        
     </DockPanel>
 </Page>

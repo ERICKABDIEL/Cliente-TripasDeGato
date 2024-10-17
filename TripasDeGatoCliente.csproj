@@ -35,8 +35,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="log4net, Version=3.0.1.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>packages\log4net.3.0.1\lib\net462\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -55,6 +62,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Connected Services\TripasDeGatoServicio\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Logic\ConstantsManager.cs" />
+    <Compile Include="Logic\DialogManager.cs" />
+    <Compile Include="Logic\Hasher.cs" />
+    <Compile Include="Logic\LoggerManager.cs" />
+    <Compile Include="Logic\UserProfileSnglenton.cs" />
+    <Compile Include="Logic\Validador.cs" />
     <Compile Include="Properties\Resources.es-MX.Designer.cs">
       <DependentUpon>Resources.es-MX.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -125,6 +143,20 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Connected Services\TripasDeGatoServicio\item.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\TripasDeGatoServicio\item1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\TripasDeGatoServicio\item2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\TripasDeGatoServicio\TripasDeGatoCliente.TripasDeGatoServicio.Profile.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\TripasDeGatoServicio\TripasGameService.wsdl" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>PublicSettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -135,7 +167,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Audio\" />
-    <Folder Include="Logic\" />
     <Folder Include="packages\" />
     <Folder Include="Video\" />
   </ItemGroup>
@@ -152,9 +183,23 @@
     <Resource Include="Images\LogoWhitoutBackground.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Connected Services\TripasDeGatoServicio\item.disco" />
+    <None Include="Connected Services\TripasDeGatoServicio\configuration91.svcinfo" />
+    <None Include="Connected Services\TripasDeGatoServicio\configuration.svcinfo" />
+    <None Include="Connected Services\TripasDeGatoServicio\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Resource Include="Images\ImageDefaultProfile.png" />
     <Content Include="Images\ViewWait.mp4">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\TripasDeGatoServicio\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
