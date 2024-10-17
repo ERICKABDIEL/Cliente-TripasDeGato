@@ -14,7 +14,6 @@
                 <Border.Background>
                     <ImageBrush ImageSource="/Images/BackgroundLeft.png" Stretch="UniformToFill"/>
                 </Border.Background>
-                <ToggleButton x:Name="btnTogglePassword" Width="30" Content="👁" HorizontalAlignment="Left" VerticalAlignment="Top" Checked="BtnTogglePassword_Checked" Unchecked="BtnTogglePassword_Unchecked" Background="#FF13011B" BorderBrush="#FF13011B" Foreground="#FFFDEBEB" Margin="1154,430,0,0"/>
             </Border>
 
             <!-- Botón de Volver/Regresar -->
@@ -98,14 +97,8 @@
                 <!-- Etiqueta de Contraseña -->
                 <Label x:Name="lblPassword" Content="{x:Static p:Resources.lbPasswordSignIn}" Grid.Row="4" FontSize="18" Foreground="White" Margin="0,10,0,5" HorizontalAlignment="Left"/>
 
-                <!-- Caja de Contraseña (oculta por defecto) -->
-                <PasswordBox Grid.Row="5" x:Name="txtPassword" FontSize="16" Background="#333" Foreground="White" Margin="0,0,0,10" Height="35" HorizontalAlignment="Stretch" Visibility="Visible"/>
-
-                <!-- Caja de Contraseña visible (para mostrar la contraseña cuando el botón esté activado) -->
-                <TextBox Grid.Row="5" x:Name="txtPasswordVisible" FontSize="16" Background="#333" Foreground="White" Margin="0,0,0,10" Height="35" HorizontalAlignment="Stretch" Visibility="Collapsed"/>
-
-
-
+                <!-- Caja de Contraseña -->
+                <PasswordBox Grid.Row="5" x:Name="txtPassword" FontSize="16" Background="#333" Foreground="White" Margin="0,0,0,10" Height="35" HorizontalAlignment="Stretch"/>
 
                 <!-- Botón de Registrarse -->
                 <StackPanel Grid.Row="6" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">

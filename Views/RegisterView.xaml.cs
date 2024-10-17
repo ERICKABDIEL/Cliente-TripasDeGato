@@ -19,7 +19,7 @@ namespace TripasDeGatoCliente.Views
             // Recoger datos del formulario
             string email = txtCorreo.Text;
             string username = txtNombre.Text;
-            string password = txtPassword.Password;
+            string password = txtPassword.Password; // Solo se recoge del PasswordBox ahora
 
             // Validar los campos
             if (!ValidateFields(email, username, password))
@@ -42,10 +42,20 @@ namespace TripasDeGatoCliente.Views
             };
 
             // Llamar al servicio para crear la cuenta
-            IUserManager userManager = new UserManagerClient();
-            int result = userManager.createAccount(newUser, newProfile);
+            TripasDeGatoServicio.UserManagerClient proxy = new TripasDeGatoServicio.UserManagerClient();
+            TripasDeGatoServicio.LoginUser loginUser = new TripasDeGatoServicio.LoginUser
+            {
+                mail = email,
+                password = password
+            };
 
-            // Manejo de resultados
+            TripasDeGatoServicio.Profile profile = new TripasDeGatoServicio.Profile
+            {
+                userName = username
+            };
+
+            int result = proxy.createAccount(loginUser, profile);
+
             if (result == Constants.SUCCES_OPERATION)
             {
                 MessageBox.Show("Account created successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -91,7 +101,7 @@ namespace TripasDeGatoCliente.Views
             {
                 txtPassword.BorderBrush = Brushes.Red; // Marcar el campo en rojo
                 MessageBox.Show("Por favor complete este campo", "Error de Validación", MessageBoxButton.OK, MessageBoxImage.Error);
-                isValid = false;
+                isValid = true;
             }
             else
             {
@@ -114,22 +124,6 @@ namespace TripasDeGatoCliente.Views
         {
             // Volver a la vista de inicio de sesión
             GoToLoginView();
-        }
-
-        // Mostrar la contraseña en el TextBox
-        private void BtnTogglePassword_Checked(object sender, RoutedEventArgs e)
-        {
-            txtPasswordVisible.Text = txtPassword.Password;
-            txtPasswordVisible.Visibility = Visibility.Visible;
-            txtPassword.Visibility = Visibility.Collapsed;
-        }
-
-        // Ocultar la contraseña en el PasswordBox
-        private void BtnTogglePassword_Unchecked(object sender, RoutedEventArgs e)
-        {
-            txtPassword.Password = txtPasswordVisible.Text;
-            txtPasswordVisible.Visibility = Visibility.Collapsed;
-            txtPassword.Visibility = Visibility.Visible;
         }
     }
 }
