@@ -117,8 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="btnAddFriend" xml:space="preserve">
+  <data name="btnAdd" xml:space="preserve">
     <value>Añadir</value>
+  </data>
+  <data name="btnAddFriend" xml:space="preserve">
+    <value>Añadir amigo</value>
+  </data>
+  <data name="btnGuest" xml:space="preserve">
+    <value>Invitado</value>
   </data>
   <data name="btnInviteFriend" xml:space="preserve">
     <value>Invitar amigo</value>
@@ -132,6 +138,9 @@
   <data name="btnLeaveRoom" xml:space="preserve">
     <value>Abandonar</value>
   </data>
+  <data name="btnLogin" xml:space="preserve">
+    <value>Jugar</value>
+  </data>
   <data name="btnProfile" xml:space="preserve">
     <value>Perfil</value>
   </data>
@@ -141,6 +150,9 @@
   <data name="btnSave" xml:space="preserve">
     <value>Guardar</value>
   </data>
+  <data name="btnSignIn" xml:space="preserve">
+    <value>Registrarse</value>
+  </data>
   <data name="btnStartGame" xml:space="preserve">
     <value>Crear partida</value>
   </data>
@@ -149,6 +161,24 @@
   </data>
   <data name="columnPoints" xml:space="preserve">
     <value>Puntos</value>
+  </data>
+  <data name="dialogMissmatchesCredentials" xml:space="preserve">
+    <value>Las credenciales no coinciden</value>
+  </data>
+  <data name="dialogTiteWarning" xml:space="preserve">
+    <value>Advertencia</value>
+  </data>
+  <data name="dialogTitleConfirmation" xml:space="preserve">
+    <value>Confirmación</value>
+  </data>
+  <data name="dialogTitleError" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="dialogTitleSucces" xml:space="preserve">
+    <value>Éxito</value>
+  </data>
+  <data name="dialogWrongData" xml:space="preserve">
+    <value>Datos erróneos</value>
   </data>
   <data name="globalBtnBack" xml:space="preserve">
     <value>Volver</value>
@@ -167,6 +197,9 @@
   </data>
   <data name="lbDuration" xml:space="preserve">
     <value>Tiempo:</value>
+  </data>
+  <data name="lbEmail" xml:space="preserve">
+    <value>Correo</value>
   </data>
   <data name="lbFileFormat" xml:space="preserve">
     <value>Seleccione otro archivo que sí sea compatible</value>
@@ -194,6 +227,9 @@
   </data>
   <data name="lbPassword" xml:space="preserve">
     <value>Contraseña </value>
+  </data>
+  <data name="lbPasswordSignIn" xml:space="preserve">
+    <value>Contraseña</value>
   </data>
   <data name="titleActionFailed" xml:space="preserve">
     <value>Acción fallida</value>

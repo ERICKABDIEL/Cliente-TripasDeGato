@@ -2,10 +2,9 @@
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:p="clr-namespace:TripasDeGatoCliente.Properties"
-      Title="Lobby" 
       Width="1280" 
-      Background="#FF111111"
-      Height="720">
+      Background="Black"
+      Height="720" Foreground="{x:Null}">
 
     <Page.Resources>
         <!-- Estilo para los botones -->
@@ -35,37 +34,106 @@
             <!-- Efectos hover -->
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="#FF4A90E2"/>
-                    <Setter Property="Foreground" Value="Black"/>
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                <GradientStop Color="#FFA52BD2" Offset="0.0"/>
+                                <!-- Color superior más claro -->
+                                <GradientStop Color="#FF310744" Offset="1.0"/>
+                                <!-- Color inferior más claro -->
+                            </LinearGradientBrush>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="Effect">
+                        <Setter.Value>
+                            <DropShadowEffect Color="#FFD876FC" ShadowDepth="10" BlurRadius="15"/>
+                        </Setter.Value>
+                    </Setter>
                 </Trigger>
             </Style.Triggers>
         </Style>
     </Page.Resources>
 
     <Grid>
+        <!-- Botón Volver -->
+        <Button x:Name="btnBack" Content="{x:Static p:Resources.globalBtnBack}" HorizontalAlignment="Left" VerticalAlignment="Top" 
+                Width="150" Height="50" Margin="66,70,0,0" FontSize="16" FontWeight="Bold">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                <GradientStop Color="#FF7A1B9D" Offset="0.0"/>
+                                <!-- Color superior -->
+                                <GradientStop Color="#FF15031D" Offset="1.0"/>
+                                <!-- Color inferior -->
+                            </LinearGradientBrush>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="BorderBrush" Value="Transparent"/>
+                    <Setter Property="BorderThickness" Value="0"/>
+                    <Setter Property="FontWeight" Value="Bold"/>
+                    <Setter Property="Effect">
+                        <Setter.Value>
+                            <DropShadowEffect Color="Black" ShadowDepth="5" BlurRadius="10"/>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="Button">
+                                <Grid>
+                                    <Border CornerRadius="15" Background="{TemplateBinding Background}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </Grid>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <!-- Efecto Brillante Hover -->
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                        <GradientStop Color="#FFA52BD2" Offset="0.0"/>
+                                        <!-- Color superior más claro -->
+                                        <GradientStop Color="#FF310744" Offset="1.0"/>
+                                        <!-- Color inferior más claro -->
+                                    </LinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="Effect">
+                                <Setter.Value>
+                                    <DropShadowEffect Color="#FFD876FC" ShadowDepth="10" BlurRadius="15"/>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+
         <!-- Logo del juego -->
         <Image x:Name="imageLogo" Source="/Images/LogoWhitoutBackground.png" 
-               HorizontalAlignment="Left" Height="428" Margin="142,119,0,0" 
+               HorizontalAlignment="Center" Height="428" Margin="0,124,0,0" 
                VerticalAlignment="Top" Width="410"/>
 
         <!-- Botones del lobby con estilo personalizado -->
-        <Button x:Name="btnProfile" Content="Perfil" HorizontalAlignment="Left" 
+        <Button x:Name="btnProfile" Content="{x:Static p:Resources.btnProfile}" HorizontalAlignment="Left" 
                 Margin="1068,70,0,0" VerticalAlignment="Top" Background="Black" BorderBrush="#FF8D4AE2"/>
 
-        <Button x:Name="btnStartGame" Content="Crear partida" HorizontalAlignment="Left" 
+        <Button x:Name="btnStartGame" Content="{x:Static p:Resources.btnStartGame}" HorizontalAlignment="Left" 
                 Margin="1068,530,0,0" VerticalAlignment="Top" Background="Black" BorderBrush="#FF8D4AE2"/>
 
-        <Button x:Name="btnJoinGame" Content="Unirse a partida" HorizontalAlignment="Left" 
-                Margin="1068,604,0,0" VerticalAlignment="Top" Click="Button_Click" Background="Black" BorderBrush="#FF8D4AE2"/>
+        <Button x:Name="btnJoinGame" Content="{x:Static p:Resources.btnJoinGame}" HorizontalAlignment="Left" 
+                Margin="1068,601,0,69" Click="Button_Click" Background="Black" BorderBrush="#FF8D4AE2"/>
 
-        <Button x:Name="btnLeaderboard" Content="Ver leaderboard" HorizontalAlignment="Left" 
-                Margin="248,632,0,0" VerticalAlignment="Top" Background="Black" BorderBrush="#FF8D4AE2"/>
+        <Button x:Name="btnLeaderboard" Content="{x:Static p:Resources.btnLeaderboard}" HorizontalAlignment="Left" 
+                Margin="76,601,0,0" VerticalAlignment="Top" Background="Black" BorderBrush="#FF8D4AE2"/>
 
-        <Button Content="Ajustes" HorizontalAlignment="Left" Margin="66,632,0,0" 
-                VerticalAlignment="Top" Background="Black" BorderBrush="#FF8D4AE2"/>
+        <Button x:Name="btnAddFriend" Content="{x:Static p:Resources.btnAddFriend}" HorizontalAlignment="Left" 
+         Margin="254,601,0,0" VerticalAlignment="Top" Background="Black" BorderBrush="#FF8D4AE2"/>
 
-        <!-- Video o GIF -->
-        <MediaElement Source="/Images/ViewWait.mp4" HorizontalAlignment="Left" 
-                Height="348" Margin="520,167,0,0" VerticalAlignment="Top" Width="562"/>
     </Grid>
 </Page>
