@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 using TripasDeGatoCliente.Logic;
 using TripasDeGatoCliente.TripasDeGatoServicio;
 using static TripasDeGatoCliente.Logic.ConstantsManager;
@@ -13,12 +14,12 @@ namespace TripasDeGatoCliente.Views
             InitializeComponent();
         }
 
-        private void BtnRegistrarse_Click(object sender, RoutedEventArgs e)
+        private void BtnSignIn_Click(object sender, RoutedEventArgs e)
         {
             // Recoger datos del formulario
             string email = txtCorreo.Text;
             string username = txtNombre.Text;
-            string password = txtPassword.Password;
+            string password = txtPassword.Password; // Solo se recoge del PasswordBox ahora
 
             // Validar los campos
             if (!ValidateFields(email, username, password))
@@ -41,10 +42,20 @@ namespace TripasDeGatoCliente.Views
             };
 
             // Llamar al servicio para crear la cuenta
-            IUserManager userManager = new UserManagerClient();
-            int result = userManager.createAccount(newUser, newProfile);
+            TripasDeGatoServicio.UserManagerClient proxy = new TripasDeGatoServicio.UserManagerClient();
+            TripasDeGatoServicio.LoginUser loginUser = new TripasDeGatoServicio.LoginUser
+            {
+                mail = email,
+                password = password
+            };
 
-            // Manejo de resultados
+            TripasDeGatoServicio.Profile profile = new TripasDeGatoServicio.Profile
+            {
+                userName = username
+            };
+
+            int result = proxy.createAccount(loginUser, profile);
+
             if (result == Constants.SUCCES_OPERATION)
             {
                 MessageBox.Show("Account created successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -59,34 +70,60 @@ namespace TripasDeGatoCliente.Views
 
         private bool ValidateFields(string email, string username, string password)
         {
+            bool isValid = true;
+
             // Validar el correo
             if (!Validador.ValidateEmail(email))
             {
-                MessageBox.Show("Invalid email format.", "Validation Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                return false;
+                txtCorreo.BorderBrush = Brushes.Red; // Marcar el campo en rojo
+                MessageBox.Show("Por favor complete este campo", "Error de Validación", MessageBoxButton.OK, MessageBoxImage.Error);
+                isValid = false;
+            }
+            else
+            {
+                txtCorreo.BorderBrush = Brushes.White; // Reiniciar a normal
             }
 
             // Validar el nombre de usuario
             if (!Validador.ValidateUsername(username))
             {
-                MessageBox.Show("Username must be between 5 and 50 characters and can contain letters, numbers, and underscores.", "Validation Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                return false;
+                txtNombre.BorderBrush = Brushes.Red; // Marcar el campo en rojo
+                MessageBox.Show("Por favor complete este campo", "Error de Validación", MessageBoxButton.OK, MessageBoxImage.Error);
+                isValid = false;
+            }
+            else
+            {
+                txtNombre.BorderBrush = Brushes.White; // Reiniciar a normal
             }
 
             // Validar la contraseña
             if (!Validador.ValidatePassword(password))
             {
-                MessageBox.Show("Password must be at least 10 characters long and contain at least one letter and one number.", "Validation Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                return false;
+                txtPassword.BorderBrush = Brushes.Red; // Marcar el campo en rojo
+                MessageBox.Show("Por favor complete este campo", "Error de Validación", MessageBoxButton.OK, MessageBoxImage.Error);
+                isValid = true;
+            }
+            else
+            {
+                txtPassword.BorderBrush = Brushes.White; // Reiniciar a normal
             }
 
-            return true; // Todos los campos son válidos
+            return isValid; // Retornar el estado de validación
         }
 
         private void GoToLoginView()
         {
-            LoginView loginView = new LoginView();
-            this.NavigationService.Navigate(loginView);
+            // Regresar a la vista de inicio de sesión
+            if (this.NavigationService.CanGoBack)
+            {
+                this.NavigationService.GoBack();
+            }
+        }
+
+        private void BtnBack_Click(object sender, RoutedEventArgs e)
+        {
+            // Volver a la vista de inicio de sesión
+            GoToLoginView();
         }
     }
 }

@@ -17,7 +17,7 @@
             </Border>
 
             <!-- Botón de Volver/Regresar -->
-            <Button x:Name="btnBack" Content="{x:Static p:Resources.globalBtnBack}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="150" Height="50" Margin="34,45,0,0" FontSize="16" FontWeight="Bold">
+            <Button x:Name="btnBack" Content="{x:Static p:Resources.globalBtnBack}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="150" Height="50" Margin="34,45,0,0" FontSize="16" FontWeight="Bold" Click="BtnBack_Click">
                 <Button.Style>
                     <Style TargetType="Button">
                         <Setter Property="Background">
@@ -96,11 +96,13 @@
 
                 <!-- Etiqueta de Contraseña -->
                 <Label x:Name="lblPassword" Content="{x:Static p:Resources.lbPasswordSignIn}" Grid.Row="4" FontSize="18" Foreground="White" Margin="0,10,0,5" HorizontalAlignment="Left"/>
+
+                <!-- Caja de Contraseña -->
                 <PasswordBox Grid.Row="5" x:Name="txtPassword" FontSize="16" Background="#333" Foreground="White" Margin="0,0,0,10" Height="35" HorizontalAlignment="Stretch"/>
 
                 <!-- Botón de Registrarse -->
                 <StackPanel Grid.Row="6" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <Button x:Name="btnRegistrarse" Content="{x:Static p:Resources.btnSignIn}" FontSize="16" Width="283" Height="40" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+                    <Button x:Name="btnSignIn" Content="{x:Static p:Resources.btnSignIn}" FontSize="16" Width="283" Height="40" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="BtnSignIn_Click">
                         <Button.Style>
                             <Style TargetType="{x:Type Button}">
                                 <Setter Property="Background" Value="#7A1B9D"/>
