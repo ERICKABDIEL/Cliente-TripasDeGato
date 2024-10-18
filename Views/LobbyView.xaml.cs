@@ -25,5 +25,16 @@ namespace TripasDeGatoCliente.Views
                 lbUserName.Content = "Usuario desconocido"; // O un valor predeterminado
             }
         }
+
+        // Evento de clic del botón 'btnBack'
+        private void BtnBack_Click(object sender, RoutedEventArgs e)
+        {
+            // Restablecer el singleton del usuario logueado
+            UserProfileSingleton.Instance.ResetInstance();
+
+            // Navegar de vuelta a la vista de inicio de sesión (LoginView)
+            LoginView loginView = new LoginView();
+            this.NavigationService.Navigate(loginView);
+        }
     }
 }

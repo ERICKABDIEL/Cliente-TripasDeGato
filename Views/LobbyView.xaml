@@ -56,7 +56,7 @@
 
     <Grid>
         <!-- Botón Volver -->
-        <Button x:Name="btnBack" Content="{x:Static p:Resources.globalBtnBack}" HorizontalAlignment="Left" VerticalAlignment="Top" 
+        <Button x:Name="btnBack" Content="{x:Static p:Resources.globalBtnBack}" HorizontalAlignment="Left" VerticalAlignment="Top" Click="BtnBack_Click" 
                 Width="150" Height="50" Margin="66,70,0,0" FontSize="16" FontWeight="Bold">
             <Button.Style>
                 <Style TargetType="Button">
@@ -134,7 +134,39 @@
 
         <Button x:Name="btnAddFriend" Content="{x:Static p:Resources.btnAddFriend}" HorizontalAlignment="Left" 
          Margin="254,601,0,0" VerticalAlignment="Top" Background="Black" BorderBrush="#FF8D4AE2"/>
-        <Label x:Name="lbUserName" Content="Label" HorizontalAlignment="Center" Margin="0,59,0,0" VerticalAlignment="Top" Height="60" Width="148" Foreground="#FFFCF6DB" FontSize="24" FontFamily="Rockwell Extra Bold"/>
+        <Label x:Name="lbUserName" Content="Label" HorizontalAlignment="Center" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="0,59,0,0" Height="60"  Width="410" Foreground="#FFFCF6DB"  FontSize="24" FontFamily="Rockwell Extra Bold"/>
+        <ListBox x:Name="lstAmigos" 
+                 Width="200" 
+                 Height="278" 
+                 HorizontalAlignment="Left" 
+                 Margin="76,210,0,0" 
+                 VerticalAlignment="Top" 
+                 BorderBrush="#FF8D4AE2" 
+                 Foreground="White" >
+            <ListBox.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF781B9A" Offset="0.004"/>
+                    <GradientStop Color="Black" Offset="1"/>
+                </LinearGradientBrush>
+            </ListBox.Background>
+        </ListBox>
+        <Button x:Name="btnEliminarAmigo" 
+                Content="Eliminar Amigo" 
+                HorizontalAlignment="Left" 
+                Margin="184,505,0,0" 
+                VerticalAlignment="Top" 
+                Click="BtnEliminarAmigo_Click" 
+                BorderBrush="#FF8D4AE2" 
+                Foreground="White" Height="36" Width="92" FontSize="12" Background="Black" />
+        <Button x:Name="btnAddFriend1" 
+            Content="Eliminar Amigo" 
+            HorizontalAlignment="Left" 
+            Margin="76,505,0,0" 
+            VerticalAlignment="Top" 
+            Click="BtnEliminarAmigo_Click" 
+            Background="Black" 
+            BorderBrush="#FF8D4AE2" 
+            Foreground="White" Height="36" Width="92" FontSize="12" />
 
     </Grid>
 </Page>
