@@ -67,11 +67,11 @@
         </Grid.RowDefinitions>
 
         <!-- Botón Volver -->
-        <Button x:Name="btnBack" 
+        <Button x:Name="btnSignOut" 
                 Content="{x:Static p:Resources.globalBtnBack}" 
                 HorizontalAlignment="Left" 
                 VerticalAlignment="Top" 
-                Click="BtnBack_Click" 
+                Click="BtnSignOut_Click" 
                 Width="150" 
                 Height="50" 
                 Margin="66,70,0,0" 

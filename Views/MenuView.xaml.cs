@@ -36,7 +36,7 @@ namespace TripasDeGatoCliente.Views
             }
         }
 
-        private void BtnBack_Click(object sender, RoutedEventArgs e)
+        private void BtnSignOut_Click(object sender, RoutedEventArgs e)
         {
             UserProfileSingleton.Instance.ResetInstance();
             LoginView loginView = new LoginView();
