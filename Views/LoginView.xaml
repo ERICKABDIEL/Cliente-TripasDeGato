@@ -1,11 +1,11 @@
 ﻿<Page x:Class="TripasDeGatoCliente.Views.LoginView"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:TripasDeGatoCliente.Views"
       xmlns:p="clr-namespace:TripasDeGatoCliente.Properties"
-      mc:Ignorable="d" 
+      mc:Ignorable="d"
       d:DesignHeight="720" d:DesignWidth="1280">
 
     <DockPanel>
@@ -14,7 +14,9 @@
                 <Border.Background>
                     <ImageBrush ImageSource="/Images/BackgroundLeft.png" Stretch="UniformToFill"/>
                 </Border.Background>
-                <ToggleButton x:Name="btnTogglePassword" Width="30" Content="👁" HorizontalAlignment="Left" VerticalAlignment="Top" Checked="BtnTogglePassword_Checked" Unchecked="BtnTogglePassword_Unchecked" Background="#FF13011B" BorderBrush="#FF13011B" Foreground="#FFFDEBEB" Margin="1128,363,0,0"/>
+                <ToggleButton x:Name="btnTogglePassword" Width="30" Content="👁" HorizontalAlignment="Left" VerticalAlignment="Top" 
+                              Checked="BtnTogglePassword_Checked" Unchecked="BtnTogglePassword_Unchecked" 
+                              Background="#FF13011B" BorderBrush="#FF13011B" Foreground="#FFFDEBEB" Margin="1128,363,0,0"/>
             </Border>
             <Grid HorizontalAlignment="Left" VerticalAlignment="Center" Width="371" Height="300" Background="#FF13011B" Margin="749,0,0,0">
                 <Grid.RowDefinitions>
@@ -27,20 +29,16 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
-                <!-- Etiqueta de Correo -->
                 <Label x:Name="lblEmail" Content="{x:Static p:Resources.lbEmail}" Grid.Row="0" FontSize="18" Foreground="White" Margin="0,10,0,5" HorizontalAlignment="Left"/>
                 <TextBox Grid.Row="1" x:Name="txtEmail" FontSize="16" Background="#333" Foreground="White" Margin="0,0,0,10" Height="35" HorizontalAlignment="Stretch" BorderBrush="#FF7F588D"/>
 
-                <!-- Etiqueta de Contraseña -->
                 <Label x:Name="lblPassword" Content="{x:Static p:Resources.lbPassword}" Grid.Row="2" FontSize="18" Foreground="White" Margin="0,10,0,5" HorizontalAlignment="Left"/>
 
-                <!-- Caja de Contraseña con ToggleButton para mostrar/ocultar contraseña -->
                 <Grid Grid.Row="3" HorizontalAlignment="Stretch">
                     <PasswordBox x:Name="txtPassword" FontSize="16" Background="#333" Foreground="White" Height="35" HorizontalAlignment="Stretch" BorderBrush="#FF7E578C"/>
                     <TextBox x:Name="txtPasswordVisible" FontSize="16" Background="#333" Foreground="White" Height="35" HorizontalAlignment="Stretch" BorderBrush="#FF7E578C" Visibility="Collapsed" IsReadOnly="True"/>
                 </Grid>
 
-                <!-- Botones de Iniciar sesión y Registrarse -->
                 <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <Button x:Name="btnLogin" Content="{x:Static p:Resources.btnLogin}" FontSize="16" Width="318" Height="40" Click="BtnLogin_Click">
                         <Button.Style>
@@ -81,7 +79,7 @@
                     </Button>
                 </StackPanel>
 
-                <Button x:Name="btnGuest" Content="{x:Static p:Resources.btnGuest}" FontSize="16" Margin="35,10,193,-50" Grid.Row="5" >
+                <Button x:Name="btnGuest" Content="{x:Static p:Resources.btnGuest}" FontSize="16" Margin="35,10,193,-50" Grid.Row="5">
                     <Button.Style>
                         <Style TargetType="{x:Type Button}">
                             <Setter Property="Background" Value="#FF4081"/>

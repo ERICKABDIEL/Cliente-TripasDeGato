@@ -7,118 +7,105 @@ using TripasDeGatoCliente.Logic;
 using static TripasDeGatoCliente.Logic.ConstantsManager;
 using TripasDeGatoCliente.TripasDeGatoServicio;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace TripasDeGatoCliente.Views
 {
     public partial class MenuView : Page
     {
+        private UserManagerClient userManager;
+        private FriendsManagerClient friendsManager;
+
         public MenuView()
         {
             InitializeComponent();
-            LoadUserProfile(); // Cargar los datos del usuario en la ventana
+            userManager = new UserManagerClient();
+            friendsManager = new FriendsManagerClient();
+            LoadUserProfileAsync();
         }
 
-        // Método para cargar los datos del usuario
-        private void LoadUserProfile()
+        private async void LoadUserProfileAsync()
         {
-            // Verificar que el singleton tiene un nombre y mostrarlo
             if (!string.IsNullOrEmpty(UserProfileSingleton.Nombre))
             {
-                lbUserName.Content = UserProfileSingleton.Nombre; // Mostrar el nombre del usuario en la etiqueta
+                lbUserName.Content = UserProfileSingleton.Nombre;
             }
             else
             {
-                lbUserName.Content = "Usuario desconocido"; // O un valor predeterminado
+                lbUserName.Content = "Usuario desconocido";
             }
         }
 
-        // Evento de clic del botón 'btnBack'
         private void BtnBack_Click(object sender, RoutedEventArgs e)
         {
-            // Restablecer el singleton del usuario logueado
             UserProfileSingleton.Instance.ResetInstance();
-
-            // Navegar de vuelta a la vista de inicio de sesión (LoginView)
             LoginView loginView = new LoginView();
             this.NavigationService.Navigate(loginView);
         }
+
         private bool areElementsVisible = false;
 
-        private void BtnFriends_Click(object sender, RoutedEventArgs e)
+        private async void BtnFriends_Click(object sender, RoutedEventArgs e)
         {
-            // Alternar visibilidad
             areElementsVisible = !areElementsVisible;
 
-            // Si los elementos deben mostrarse
             if (areElementsVisible)
             {
-                // Mostrar los controles
                 lstFriends.Visibility = Visibility.Visible;
                 btnAddFriend.Visibility = Visibility.Visible;
                 btnRemoveFriend.Visibility = Visibility.Visible;
-                LoadFriendsList();
+                await LoadFriendsListAsync(); // Cambiado a método asíncrono
 
-
-                // Habilitar los controles
                 lstFriends.IsEnabled = true;
                 btnAddFriend.IsEnabled = true;
                 btnRemoveFriend.IsEnabled = true;
 
-                // Cambiar el color del botón para mostrar que está activo
                 btnFriends.Background = new SolidColorBrush(Colors.Green);
             }
             else
             {
-                // Ocultar los controles
                 lstFriends.Visibility = Visibility.Collapsed;
                 btnAddFriend.Visibility = Visibility.Collapsed;
                 btnRemoveFriend.Visibility = Visibility.Collapsed;
-                txtFriendName.Visibility = Visibility.Collapsed; // Ocultar TextBox
-                btnAdd.Visibility = Visibility.Collapsed; // Ocultar botón agregar
+                txtFriendName.Visibility = Visibility.Collapsed;
+                btnAdd.Visibility = Visibility.Collapsed;
 
-                // Deshabilitar los controles
                 lstFriends.IsEnabled = false;
                 btnAddFriend.IsEnabled = false;
                 btnRemoveFriend.IsEnabled = false;
-                txtFriendName.IsEnabled = false; // Deshabilitar TextBox
-                btnAdd.IsEnabled = false; // Deshabilitar botón agregar
+                txtFriendName.IsEnabled = false;
+                btnAdd.IsEnabled = false;
 
-                // Restaurar el color original del botón
                 btnFriends.Background = new SolidColorBrush(Colors.Black);
                 btnAddFriend.Background = new SolidColorBrush(Colors.Black);
             }
         }
+
         private void BtnAddFriend_Click(object sender, RoutedEventArgs e)
         {
-            // Alternar visibilidad
             areElementsVisible = !areElementsVisible;
 
             if (areElementsVisible)
             {
-                txtFriendName.Visibility = Visibility.Visible; // Mostrar TextBox
-                btnAdd.Visibility = Visibility.Visible; // Mostrar botón agregar
-                txtFriendName.IsEnabled = true; // Habilitar TextBox
-                btnAdd.IsEnabled = true; // Habilitar botón agregar
+                txtFriendName.Visibility = Visibility.Visible;
+                btnAdd.Visibility = Visibility.Visible;
+                txtFriendName.IsEnabled = true;
+                btnAdd.IsEnabled = true;
 
-                // Cambiar el color del botón para mostrar que está activo
                 btnAddFriend.Background = new SolidColorBrush(Colors.Green);
             }
             else
             {
-                // Ocultar los controles
-                txtFriendName.Visibility = Visibility.Collapsed; // Ocultar TextBox
-                btnAdd.Visibility = Visibility.Collapsed; // Ocultar botón agregar
+                txtFriendName.Visibility = Visibility.Collapsed;
+                btnAdd.Visibility = Visibility.Collapsed;
 
-                // Deshabilitar los controles
-                txtFriendName.IsEnabled = false; // Deshabilitar TextBox
-                btnAdd.IsEnabled = false; // Deshabilitar botón agregar
+                txtFriendName.IsEnabled = false;
+                btnAdd.IsEnabled = false;
 
-                // Restaurar el color original del botón
                 btnAddFriend.Background = new SolidColorBrush(Colors.Black);
             }
         }
 
-        // Evento para agregar un amigo
         private async void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
             string friendName = txtFriendName.Text.Trim();
@@ -127,22 +114,17 @@ namespace TripasDeGatoCliente.Views
             {
                 try
                 {
-                    // Crear la instancia del cliente de UserManager
-                    UserManagerClient userManager = new UserManagerClient();
-
-                    // Obtener el ID del perfil del amigo utilizando el método getProfileId en el servidor
-                    int friendProfileId = userManager.getProfileId(friendName);
+                    int friendProfileId = await userManager.getProfileIdAsync(friendName);
 
                     if (friendProfileId > 0)
                     {
-                        FriendsManagerClient friendsManager = new FriendsManagerClient();
                         int userProfileId = UserProfileSingleton.IdPerfil;
-                        int result = friendsManager.addFriend(userProfileId, friendProfileId);
+                        int result = await friendsManager.addFriendAsync(userProfileId, friendProfileId);
 
                         if (result == Constants.SUCCES_OPERATION)
                         {
                             MessageBox.Show($"Amigo '{friendName}' agregado correctamente.");
-                            await LoadFriendsList();
+                            await LoadFriendsListAsync();
                         }
                         else
                         {
@@ -154,7 +136,6 @@ namespace TripasDeGatoCliente.Views
                         MessageBox.Show("No se encontró un perfil que coincida con ese nombre.");
                     }
 
-                    // Limpiar el TextBox después de agregar
                     txtFriendName.Clear();
                 }
                 catch (FaultException<ProfileNotFoundFault> ex)
@@ -172,19 +153,18 @@ namespace TripasDeGatoCliente.Views
             }
         }
 
-        // Método para cargar la lista de amigos
-        private async Task LoadFriendsList()
+        private async Task LoadFriendsListAsync()
         {
             try
             {
-                FriendsManagerClient friendsManager = new FriendsManagerClient();
                 int userProfileId = UserProfileSingleton.IdPerfil;
+                var friendsList = await friendsManager.getFriendsAsync(userProfileId);
 
-                // Obtén la lista de amigos desde el servidor
-                var friendsList = await friendsManager.getFriendsAsync(userProfileId); // Asegúrate de que este método sea asincrónico
+                // Extraemos solo los nombres de los amigos para mostrar en la lista
+                var friendNames = friendsList.Select(friend => friend.userName).ToList();
 
-                // Actualiza el ListBox con la lista de amigos
-                lstFriends.ItemsSource = friendsList; // Asegúrate de que friendsList sea una colección adecuada para enlazar
+                // Asignamos la lista de nombres al ListBox
+                lstFriends.ItemsSource = friendNames;
             }
             catch (Exception ex)
             {
@@ -192,7 +172,63 @@ namespace TripasDeGatoCliente.Views
             }
         }
 
+        private async void BtnRemoveFriend_Click(object sender, RoutedEventArgs e)
+        {
+            if (lstFriends.SelectedItem != null)
+            {
+                string selectedFriendName = lstFriends.SelectedItem.ToString();
 
+                try
+                {
+                    int friendProfileId = await userManager.getProfileIdAsync(selectedFriendName);
 
+                    if (friendProfileId > 0)
+                    {
+                        int userProfileId = UserProfileSingleton.IdPerfil;
+                        int result = await friendsManager.deleteFriendAsync(userProfileId, friendProfileId);
+
+                        if (result == Constants.SUCCES_OPERATION)
+                        {
+                            MessageBox.Show($"Amistad con '{selectedFriendName}' eliminada correctamente.");
+                            await LoadFriendsListAsync(); // Recargar la lista de amigos después de eliminar
+                        }
+                        else
+                        {
+                            MessageBox.Show("Error al eliminar la amistad. Intenta de nuevo.");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se encontró el perfil del amigo seleccionado.");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Ocurrió un error al intentar eliminar la amistad: {ex.Message}");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Por favor, selecciona un amigo para eliminar.");
+            }
+        }
+
+        private void GoToLobbyView()
+        {
+            LobbyView lobbyView = new LobbyView();
+            if (this.NavigationService != null)
+            {
+                this.NavigationService.Navigate(lobbyView);
+            }
+            else
+            {
+                MessageBox.Show("Error: No se puede navegar a LobbyView.");
+            }
+        }
+
+        private void BtnStartGame_Click(object sender, RoutedEventArgs e)
+        {
+            GoToLobbyView();
+        }
     }
 }

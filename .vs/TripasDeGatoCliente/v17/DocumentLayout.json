@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\TripasDeGatoCliente\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{614FAE94-10A3-4B88-927C-17395A2CB479}|TripasDeGatoCliente.csproj|C:\\TripasDeGatoCliente\\views\\menuview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{614FAE94-10A3-4B88-927C-17395A2CB479}|TripasDeGatoCliente.csproj|solutionrelative:views\\menuview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{614FAE94-10A3-4B88-927C-17395A2CB479}|TripasDeGatoCliente.csproj|c:\\tripasdegatocliente\\views\\lobbyview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{614FAE94-10A3-4B88-927C-17395A2CB479}|TripasDeGatoCliente.csproj|solutionrelative:views\\lobbyview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{614FAE94-10A3-4B88-927C-17395A2CB479}|TripasDeGatoCliente.csproj|c:\\tripasdegatocliente\\views\\menuview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{614FAE94-10A3-4B88-927C-17395A2CB479}|TripasDeGatoCliente.csproj|solutionrelative:views\\menuview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{614FAE94-10A3-4B88-927C-17395A2CB479}|TripasDeGatoCliente.csproj|c:\\tripasdegatocliente\\views\\menuview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{614FAE94-10A3-4B88-927C-17395A2CB479}|TripasDeGatoCliente.csproj|solutionrelative:views\\menuview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -27,26 +27,26 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "MenuView.xaml.cs",
-              "DocumentMoniker": "C:\\TripasDeGatoCliente\\Views\\MenuView.xaml.cs",
-              "RelativeDocumentMoniker": "Views\\MenuView.xaml.cs",
-              "ToolTip": "C:\\TripasDeGatoCliente\\Views\\MenuView.xaml.cs",
-              "RelativeToolTip": "Views\\MenuView.xaml.cs",
-              "ViewState": "AQIAAI0AAAAAAAAAAAAYwMUAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-18T02:43:24.758Z",
+              "Title": "LobbyView.xaml",
+              "DocumentMoniker": "C:\\TripasDeGatoCliente\\Views\\LobbyView.xaml",
+              "RelativeDocumentMoniker": "Views\\LobbyView.xaml",
+              "ToolTip": "C:\\TripasDeGatoCliente\\Views\\LobbyView.xaml",
+              "RelativeToolTip": "Views\\LobbyView.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-10-18T15:31:07.696Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "MenuView.xaml",
-              "DocumentMoniker": "C:\\TripasDeGatoCliente\\Views\\MenuView.xaml",
-              "RelativeDocumentMoniker": "Views\\MenuView.xaml",
-              "ToolTip": "C:\\TripasDeGatoCliente\\Views\\MenuView.xaml",
-              "RelativeToolTip": "Views\\MenuView.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-10-18T02:11:54.607Z",
+              "Title": "MenuView.xaml.cs",
+              "DocumentMoniker": "C:\\TripasDeGatoCliente\\Views\\MenuView.xaml.cs",
+              "RelativeDocumentMoniker": "Views\\MenuView.xaml.cs",
+              "ToolTip": "C:\\TripasDeGatoCliente\\Views\\MenuView.xaml.cs",
+              "RelativeToolTip": "Views\\MenuView.xaml.cs",
+              "ViewState": "AQIAAK4AAAAAAAAAAAAYwMkAAABGAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-18T15:45:53.334Z",
               "EditorCaption": ""
             }
           ]

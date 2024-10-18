@@ -156,6 +156,9 @@
   <data name="btnSignIn" xml:space="preserve">
     <value>Registrarse</value>
   </data>
+  <data name="btnSignOut" xml:space="preserve">
+    <value>Cerrar sesion</value>
+  </data>
   <data name="btnStartGame" xml:space="preserve">
     <value>Crear partida</value>
   </data>

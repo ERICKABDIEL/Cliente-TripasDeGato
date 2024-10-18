@@ -38,7 +38,7 @@ namespace TripasDeGatoCliente.Views
             LoginUser userAccount = new LoginUser
             {
                 mail = txtEmail.Text,
-                password = Hasher.HashToSHA256(txtPassword.Password) 
+                password = Hasher.HashToSHA256(txtPassword.Password)
             };
 
             if (VerifyFields())
@@ -91,7 +91,7 @@ namespace TripasDeGatoCliente.Views
                     Profile profile = userManager.getProfile(user.mail, user.password);
                     if (profile != null)
                     {
-                        ObtainSingletonData(profile); 
+                        ObtainSingletonData(profile);
                         validateResult = true;
                     }
                     else

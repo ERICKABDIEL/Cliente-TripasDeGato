@@ -16,40 +16,36 @@ namespace TripasDeGatoCliente.Views
 
         private void BtnSignIn_Click(object sender, RoutedEventArgs e)
         {
-            // Recoger datos del formulario
             string email = txtCorreo.Text;
             string username = txtNombre.Text;
-            string password = txtPassword.Password; // Solo se recoge del PasswordBox ahora
+            string password = txtPassword.Password;
 
-            // Validar los campos
             if (!ValidateFields(email, username, password))
             {
-                return; // Si hay errores, no continuar
+                return;
             }
 
-            // Crear el usuario y perfil
-            LoginUser newUser = new LoginUser
+            var newUser = new LoginUser
             {
                 mail = email,
-                password = Hasher.HashToSHA256(password) // Hashear la contraseña
+                password = Hasher.HashToSHA256(password)
             };
 
-            Profile newProfile = new Profile
+            var newProfile = new Profile
             {
                 userName = username,
                 score = Constants.INITIAL_SCORE,
                 picturePath = "/Images/ImageDefaultProfile"
             };
 
-            // Llamar al servicio para crear la cuenta, usar contraseña hasheada
-            TripasDeGatoServicio.UserManagerClient proxy = new TripasDeGatoServicio.UserManagerClient();
-            TripasDeGatoServicio.LoginUser loginUser = new TripasDeGatoServicio.LoginUser
+            var proxy = new TripasDeGatoServicio.UserManagerClient();
+            var loginUser = new TripasDeGatoServicio.LoginUser
             {
                 mail = email,
-                password = newUser.password // Usar la contraseña hasheada
+                password = newUser.password
             };
 
-            TripasDeGatoServicio.Profile profile = new TripasDeGatoServicio.Profile
+            var profile = new TripasDeGatoServicio.Profile
             {
                 userName = username
             };
@@ -59,7 +55,6 @@ namespace TripasDeGatoCliente.Views
             if (result == Constants.SUCCES_OPERATION)
             {
                 MessageBox.Show("Account created successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-                // Navegar a la vista de inicio de sesión
                 GoToLoginView();
             }
             else
@@ -68,53 +63,48 @@ namespace TripasDeGatoCliente.Views
             }
         }
 
-
         private bool ValidateFields(string email, string username, string password)
         {
             bool isValid = true;
 
-            // Validar el correo
             if (!Validador.ValidateEmail(email))
             {
-                txtCorreo.BorderBrush = Brushes.Red; // Marcar el campo en rojo
+                txtCorreo.BorderBrush = Brushes.Red;
                 MessageBox.Show("Por favor complete este campo", "Error de Validación", MessageBoxButton.OK, MessageBoxImage.Error);
                 isValid = false;
             }
             else
             {
-                txtCorreo.BorderBrush = Brushes.White; // Reiniciar a normal
+                txtCorreo.BorderBrush = Brushes.White;
             }
 
-            // Validar el nombre de usuario
             if (!Validador.ValidateUsername(username))
             {
-                txtNombre.BorderBrush = Brushes.Red; // Marcar el campo en rojo
+                txtNombre.BorderBrush = Brushes.Red;
                 MessageBox.Show("Por favor complete este campo", "Error de Validación", MessageBoxButton.OK, MessageBoxImage.Error);
                 isValid = false;
             }
             else
             {
-                txtNombre.BorderBrush = Brushes.White; // Reiniciar a normal
+                txtNombre.BorderBrush = Brushes.White;
             }
 
-            //Validar la contraseña
             if (!Validador.ValidatePassword(password))
             {
-                txtPassword.BorderBrush = Brushes.Red; // Marcar el campo en rojo
+                txtPassword.BorderBrush = Brushes.Red;
                 MessageBox.Show("Por favor complete este campo", "Error de Validación", MessageBoxButton.OK, MessageBoxImage.Error);
                 isValid = false;
             }
             else
             {
-                txtPassword.BorderBrush = Brushes.White; // Reiniciar a normal
+                txtPassword.BorderBrush = Brushes.White;
             }
 
-            return isValid; // Retornar el estado de validación
+            return isValid;
         }
 
         private void GoToLoginView()
         {
-            // Regresar a la vista de inicio de sesión
             if (this.NavigationService.CanGoBack)
             {
                 this.NavigationService.GoBack();
@@ -123,7 +113,6 @@ namespace TripasDeGatoCliente.Views
 
         private void BtnBack_Click(object sender, RoutedEventArgs e)
         {
-            // Volver a la vista de inicio de sesión
             GoToLoginView();
         }
     }

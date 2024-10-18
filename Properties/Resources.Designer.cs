@@ -178,6 +178,15 @@ namespace TripasDeGatoCliente.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Sign Out.
+        /// </summary>
+        public static string btnSignOut {
+            get {
+                return ResourceManager.GetString("btnSignOut", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Start game.
         /// </summary>
         public static string btnStartGame {

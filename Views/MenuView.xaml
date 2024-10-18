@@ -2,7 +2,10 @@
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:p="clr-namespace:TripasDeGatoCliente.Properties"
-      xmlns:av="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="av" x:Class="TripasDeGatoCliente.Views.MenuView"
+      xmlns:av="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      mc:Ignorable="av" 
+      x:Class="TripasDeGatoCliente.Views.MenuView"
       Width="1280" 
       Height="720" 
       Background="Black"
@@ -21,8 +24,6 @@
             <Setter Property="Width" Value="140"/>
             <Setter Property="Height" Value="50"/>
             <Setter Property="Margin" Value="10"/>
-
-            <!-- Bordes redondeados -->
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
@@ -34,8 +35,6 @@
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
-
-            <!-- Efectos hover -->
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
                     <Setter Property="Background">
@@ -62,6 +61,10 @@
 
     <!-- Grid principal -->
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="131*"/>
+            <RowDefinition Height="589*"/>
+        </Grid.RowDefinitions>
 
         <!-- Botón Volver -->
         <Button x:Name="btnBack" 
@@ -74,7 +77,6 @@
                 Margin="66,70,0,0" 
                 FontSize="16" 
                 FontWeight="Bold">
-
             <Button.Style>
                 <Style TargetType="{x:Type Button}">
                     <Setter Property="Background">
@@ -105,8 +107,6 @@
                             </ControlTemplate>
                         </Setter.Value>
                     </Setter>
-
-                    <!-- Efecto Hover -->
                     <Style.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter Property="Background">
@@ -135,7 +135,7 @@
                Height="428" 
                Margin="0,124,0,0" 
                VerticalAlignment="Top" 
-               Width="410"/>
+               Width="410" Grid.RowSpan="2"/>
 
         <!-- Botones del lobby -->
         <Button x:Name="btnProfile" 
@@ -149,34 +149,35 @@
         <Button x:Name="btnStartGame" 
                 Content="{x:Static p:Resources.btnStartGame}" 
                 HorizontalAlignment="Left" 
-                Margin="1068,530,0,0" 
+                Margin="1068,399,0,0" 
                 VerticalAlignment="Top" 
                 Background="Black" 
-                BorderBrush="#FF8D4AE2"/> 
+                BorderBrush="#FF8D4AE2"
+                Click="BtnStartGame_Click" Grid.Row="1"/>
 
         <Button x:Name="btnJoinGame" 
                 Content="{x:Static p:Resources.btnJoinGame}" 
                 HorizontalAlignment="Left" 
-                Margin="1068,601,0,69" 
+                Margin="1068,470,0,69" 
                 Background="Black" 
-                BorderBrush="#FF8D4AE2"/>
+                BorderBrush="#FF8D4AE2" Grid.Row="1"/>
 
         <Button x:Name="btnLeaderboard" 
                 Content="{x:Static p:Resources.btnLeaderboard}" 
                 HorizontalAlignment="Left" 
-                Margin="76,601,0,0" 
+                Margin="76,470,0,0" 
                 VerticalAlignment="Top" 
                 Background="Black" 
-                BorderBrush="#FF8D4AE2"/>
+                BorderBrush="#FF8D4AE2" Grid.Row="1"/>
 
         <Button x:Name="btnFriends" 
                 Content="{x:Static p:Resources.btnFriends}" 
                 HorizontalAlignment="Left" 
-                Margin="254,601,0,0" 
+                Margin="254,470,0,0" 
                 VerticalAlignment="Top" 
                 Click="BtnFriends_Click"
                 Background="Black" 
-                BorderBrush="#FF8D4AE2"/>
+                BorderBrush="#FF8D4AE2" Grid.Row="1"/>
 
         <!-- Información del usuario -->
         <Label x:Name="lbUserName" 
@@ -197,10 +198,13 @@
                  Width="200" 
                  Height="278" 
                  HorizontalAlignment="Left" 
-                 Margin="76,210,0,0" 
+                 Margin="76,79,0,0" 
                  VerticalAlignment="Top" 
                  BorderBrush="#FF8D4AE2" 
-                 Foreground="White" av:ItemsSource="{av:SampleData ItemCount=5}" Visibility="Collapsed" IsEnabled="False">
+                 Foreground="White" 
+                 av:ItemsSource="{av:SampleData ItemCount=5}" 
+                 Visibility="Collapsed" 
+                 IsEnabled="False" Grid.Row="1">
             <ListBox.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="#FF781B9A" Offset="0.004"/>
@@ -213,20 +217,22 @@
         <Button x:Name="btnRemoveFriend" 
                 Content="{x:Static p:Resources.btnRemoveFriend}" 
                 HorizontalAlignment="Left" 
-                Margin="184,505,0,0" 
+                Margin="184,374,0,0" 
                 VerticalAlignment="Top" 
-                
                 BorderBrush="#FF8D4AE2" 
                 Foreground="White" 
                 Height="36" 
                 Width="92" 
                 FontSize="12" 
-                Background="Black" IsEnabled="False" Visibility="Collapsed"/>
+                Background="Black" 
+                IsEnabled="False" 
+                Visibility="Collapsed"
+                Click="BtnRemoveFriend_Click" Grid.Row="1"/>
 
         <Button x:Name="btnAddFriend" 
                 Content="{x:Static p:Resources.btnAddFriend}" 
                 HorizontalAlignment="Left" 
-                Margin="76,505,0,0" 
+                Margin="76,374,0,0" 
                 VerticalAlignment="Top" 
                 Click="BtnAddFriend_Click"
                 Background="Black" 
@@ -234,31 +240,37 @@
                 Foreground="White" 
                 Height="36" 
                 Width="92" 
-                FontSize="12" IsEnabled="False" Visibility="Collapsed"/>
+                FontSize="12" 
+                IsEnabled="False" 
+                Visibility="Collapsed" Grid.Row="1"/>
 
         <TextBox x:Name="txtFriendName" 
-         Width="200" 
-         Height="30" 
-         HorizontalAlignment="Left" 
-         Margin="76,151,0,0" 
-         VerticalAlignment="Top" 
-         FontSize="12" 
-         Background="#FF2C2C2C" 
-         Foreground="White"
-         BorderBrush="#FF8D4AE2" 
-         BorderThickness="2" IsEnabled="False" Visibility="Collapsed"/>
+                 Width="200" 
+                 Height="30" 
+                 HorizontalAlignment="Left" 
+                 Margin="76,20,0,0" 
+                 VerticalAlignment="Top" 
+                 FontSize="12" 
+                 Background="#FF2C2C2C" 
+                 Foreground="White"
+                 BorderBrush="#FF8D4AE2" 
+                 BorderThickness="2" 
+                 IsEnabled="False" 
+                 Visibility="Collapsed" Grid.Row="1"/>
 
         <Button x:Name="btnAdd" 
-        Content="{x:Static p:Resources.btnAdd}" 
-        HorizontalAlignment="Left" 
-        Margin="290,150,0,0" 
-        VerticalAlignment="Top" 
-        Background="Black" 
-        Foreground="White" 
-        BorderBrush="#FF8D4AE2" 
-        BorderThickness="2" 
-        Click="BtnAdd_Click" 
-        Height="36" 
-        Width="76" IsEnabled="False" Visibility="Collapsed"/>
+                Content="{x:Static p:Resources.btnAdd}" 
+                HorizontalAlignment="Left" 
+                Margin="290,19,0,0" 
+                VerticalAlignment="Top" 
+                Background="Black" 
+                Foreground="White" 
+                BorderBrush="#FF8D4AE2" 
+                BorderThickness="2" 
+                Click="BtnAdd_Click" 
+                Height="36" 
+                Width="76" 
+                IsEnabled="False" 
+                Visibility="Collapsed" Grid.Row="1"/>
     </Grid>
 </Page>
