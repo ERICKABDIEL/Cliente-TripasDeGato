@@ -183,6 +183,128 @@ namespace TripasDeGatoCliente.TripasDeGatoServicio {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ProfileNotFoundFault", Namespace="http://schemas.datacontract.org/2004/07/TripasService.Contracts")]
+    [System.SerializableAttribute()]
+    public partial class ProfileNotFoundFault : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string errorMessageField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string errorMessage {
+            get {
+                return this.errorMessageField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.errorMessageField, value) != true)) {
+                    this.errorMessageField = value;
+                    this.RaisePropertyChanged("errorMessage");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Message", Namespace="http://schemas.datacontract.org/2004/07/TripasService.Contracts")]
+    [System.SerializableAttribute()]
+    public partial class Message : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string chatMessageField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime timeStampField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string userNameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string chatMessage {
+            get {
+                return this.chatMessageField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.chatMessageField, value) != true)) {
+                    this.chatMessageField = value;
+                    this.RaisePropertyChanged("chatMessage");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime timeStamp {
+            get {
+                return this.timeStampField;
+            }
+            set {
+                if ((this.timeStampField.Equals(value) != true)) {
+                    this.timeStampField = value;
+                    this.RaisePropertyChanged("timeStamp");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string userName {
+            get {
+                return this.userNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.userNameField, value) != true)) {
+                    this.userNameField = value;
+                    this.RaisePropertyChanged("userName");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="TripasDeGatoServicio.IUserManager")]
     public interface IUserManager {
@@ -210,6 +332,13 @@ namespace TripasDeGatoCliente.TripasDeGatoServicio {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/verifyLogin", ReplyAction="http://tempuri.org/IUserManager/verifyLoginResponse")]
         System.Threading.Tasks.Task<int> verifyLoginAsync(TripasDeGatoCliente.TripasDeGatoServicio.LoginUser user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/getProfileId", ReplyAction="http://tempuri.org/IUserManager/getProfileIdResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TripasDeGatoCliente.TripasDeGatoServicio.ProfileNotFoundFault), Action="http://tempuri.org/IUserManager/getProfileIdProfileNotFoundFaultFault", Name="ProfileNotFoundFault", Namespace="http://schemas.datacontract.org/2004/07/TripasService.Contracts")]
+        int getProfileId(string userName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/getProfileId", ReplyAction="http://tempuri.org/IUserManager/getProfileIdResponse")]
+        System.Threading.Tasks.Task<int> getProfileIdAsync(string userName);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -269,6 +398,14 @@ namespace TripasDeGatoCliente.TripasDeGatoServicio {
         
         public System.Threading.Tasks.Task<int> verifyLoginAsync(TripasDeGatoCliente.TripasDeGatoServicio.LoginUser user) {
             return base.Channel.verifyLoginAsync(user);
+        }
+        
+        public int getProfileId(string userName) {
+            return base.Channel.getProfileId(userName);
+        }
+        
+        public System.Threading.Tasks.Task<int> getProfileIdAsync(string userName) {
+            return base.Channel.getProfileIdAsync(userName);
         }
     }
     
@@ -344,6 +481,103 @@ namespace TripasDeGatoCliente.TripasDeGatoServicio {
         
         public System.Threading.Tasks.Task<TripasDeGatoCliente.TripasDeGatoServicio.Profile[]> getFriendsAsync(int idProfile) {
             return base.Channel.getFriendsAsync(idProfile);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="TripasDeGatoServicio.IChatManager", CallbackContract=typeof(TripasDeGatoCliente.TripasDeGatoServicio.IChatManagerCallback))]
+    public interface IChatManager {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChatManager/sendMessage", ReplyAction="http://tempuri.org/IChatManager/sendMessageResponse")]
+        void sendMessage(string userName, TripasDeGatoCliente.TripasDeGatoServicio.Message message);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChatManager/sendMessage", ReplyAction="http://tempuri.org/IChatManager/sendMessageResponse")]
+        System.Threading.Tasks.Task sendMessageAsync(string userName, TripasDeGatoCliente.TripasDeGatoServicio.Message message);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChatManager/connectToLobby", ReplyAction="http://tempuri.org/IChatManager/connectToLobbyResponse")]
+        void connectToLobby(string userName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChatManager/connectToLobby", ReplyAction="http://tempuri.org/IChatManager/connectToLobbyResponse")]
+        System.Threading.Tasks.Task connectToLobbyAsync(string userName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChatManager/leaveLobby", ReplyAction="http://tempuri.org/IChatManager/leaveLobbyResponse")]
+        void leaveLobby(string userName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChatManager/leaveLobby", ReplyAction="http://tempuri.org/IChatManager/leaveLobbyResponse")]
+        System.Threading.Tasks.Task leaveLobbyAsync(string userName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChatManager/getMessageHistory", ReplyAction="http://tempuri.org/IChatManager/getMessageHistoryResponse")]
+        TripasDeGatoCliente.TripasDeGatoServicio.Message[] getMessageHistory();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChatManager/getMessageHistory", ReplyAction="http://tempuri.org/IChatManager/getMessageHistoryResponse")]
+        System.Threading.Tasks.Task<TripasDeGatoCliente.TripasDeGatoServicio.Message[]> getMessageHistoryAsync();
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IChatManagerCallback {
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatManager/broadcastMessage")]
+        void broadcastMessage(TripasDeGatoCliente.TripasDeGatoServicio.Message message);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IChatManagerChannel : TripasDeGatoCliente.TripasDeGatoServicio.IChatManager, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class ChatManagerClient : System.ServiceModel.DuplexClientBase<TripasDeGatoCliente.TripasDeGatoServicio.IChatManager>, TripasDeGatoCliente.TripasDeGatoServicio.IChatManager {
+        
+        public ChatManagerClient(System.ServiceModel.InstanceContext callbackInstance) : 
+                base(callbackInstance) {
+        }
+        
+        public ChatManagerClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName) : 
+                base(callbackInstance, endpointConfigurationName) {
+        }
+        
+        public ChatManagerClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, string remoteAddress) : 
+                base(callbackInstance, endpointConfigurationName, remoteAddress) {
+        }
+        
+        public ChatManagerClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(callbackInstance, endpointConfigurationName, remoteAddress) {
+        }
+        
+        public ChatManagerClient(System.ServiceModel.InstanceContext callbackInstance, System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(callbackInstance, binding, remoteAddress) {
+        }
+        
+        public void sendMessage(string userName, TripasDeGatoCliente.TripasDeGatoServicio.Message message) {
+            base.Channel.sendMessage(userName, message);
+        }
+        
+        public System.Threading.Tasks.Task sendMessageAsync(string userName, TripasDeGatoCliente.TripasDeGatoServicio.Message message) {
+            return base.Channel.sendMessageAsync(userName, message);
+        }
+        
+        public void connectToLobby(string userName) {
+            base.Channel.connectToLobby(userName);
+        }
+        
+        public System.Threading.Tasks.Task connectToLobbyAsync(string userName) {
+            return base.Channel.connectToLobbyAsync(userName);
+        }
+        
+        public void leaveLobby(string userName) {
+            base.Channel.leaveLobby(userName);
+        }
+        
+        public System.Threading.Tasks.Task leaveLobbyAsync(string userName) {
+            return base.Channel.leaveLobbyAsync(userName);
+        }
+        
+        public TripasDeGatoCliente.TripasDeGatoServicio.Message[] getMessageHistory() {
+            return base.Channel.getMessageHistory();
+        }
+        
+        public System.Threading.Tasks.Task<TripasDeGatoCliente.TripasDeGatoServicio.Message[]> getMessageHistoryAsync() {
+            return base.Channel.getMessageHistoryAsync();
         }
     }
 }
