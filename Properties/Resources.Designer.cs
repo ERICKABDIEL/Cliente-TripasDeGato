@@ -79,6 +79,15 @@ namespace TripasDeGatoCliente.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Friends.
+        /// </summary>
+        public static string btnFriends {
+            get {
+                return ResourceManager.GetString("btnFriends", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Guest.
         /// </summary>
         public static string btnGuest {

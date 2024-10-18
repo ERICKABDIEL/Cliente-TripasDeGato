@@ -1,6 +1,7 @@
 C:\TripasDeGatoCliente\obj\Debug\TripasDeGatoCliente.csproj.AssemblyReference.cache
 C:\TripasDeGatoCliente\obj\Debug\MainWindow.g.cs
 C:\TripasDeGatoCliente\obj\Debug\Views\LobbyView.g.cs
+C:\TripasDeGatoCliente\obj\Debug\Views\MenuView.g.cs
 C:\TripasDeGatoCliente\obj\Debug\Views\RegisterView.g.cs
 C:\TripasDeGatoCliente\obj\Debug\Views\LoginView.g.cs
 C:\TripasDeGatoCliente\obj\Debug\App.g.cs
@@ -18,6 +19,7 @@ C:\TripasDeGatoCliente\bin\Debug\log4net.pdb
 C:\TripasDeGatoCliente\bin\Debug\log4net.xml
 C:\TripasDeGatoCliente\obj\Debug\MainWindow.baml
 C:\TripasDeGatoCliente\obj\Debug\Views\LobbyView.baml
+C:\TripasDeGatoCliente\obj\Debug\Views\MenuView.baml
 C:\TripasDeGatoCliente\obj\Debug\Views\RegisterView.baml
 C:\TripasDeGatoCliente\obj\Debug\Views\LoginView.baml
 C:\TripasDeGatoCliente\obj\Debug\TripasDeGatoCliente.g.resources

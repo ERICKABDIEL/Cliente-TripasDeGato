@@ -58,6 +58,35 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_IChatManager_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <msf:WindowsTransportSecurity xmlns:msf="http://schemas.microsoft.com/ws/2006/05/framing/policy">
+                  <msf:ProtectionLevel>EncryptAndSign</msf:ProtectionLevel>
+                </msf:WindowsTransportSecurity>
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
   <wsdl:types>
     <xs:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
       <xs:import namespace="http://schemas.datacontract.org/2004/07/TripasService.Contracts" />
@@ -119,6 +148,20 @@
           </xs:sequence>
         </xs:complexType>
       </xs:element>
+      <xs:element name="getProfileId">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getProfileIdResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="getProfileIdResult" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
       <xs:element name="addFriend">
         <xs:complexType>
           <xs:sequence>
@@ -160,6 +203,62 @@
         <xs:complexType>
           <xs:sequence>
             <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/TripasService.Contracts" minOccurs="0" name="getFriendsResult" nillable="true" type="q6:ArrayOfProfile" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="sendMessage">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
+            <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/TripasService.Contracts" minOccurs="0" name="message" nillable="true" type="q7:Message" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="sendMessageResponse">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="connectToLobby">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="connectToLobbyResponse">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="leaveLobby">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="leaveLobbyResponse">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getMessageHistory">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getMessageHistoryResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/TripasService.Contracts" minOccurs="0" name="getMessageHistoryResult" nillable="true" type="q8:ArrayOfMessage" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="broadcastMessage">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/TripasService.Contracts" minOccurs="0" name="message" nillable="true" type="q9:Message" />
           </xs:sequence>
         </xs:complexType>
       </xs:element>
@@ -223,12 +322,32 @@
         </xs:sequence>
       </xs:complexType>
       <xs:element name="Profile" nillable="true" type="tns:Profile" />
+      <xs:complexType name="ProfileNotFoundFault">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="errorMessage" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ProfileNotFoundFault" nillable="true" type="tns:ProfileNotFoundFault" />
       <xs:complexType name="ArrayOfProfile">
         <xs:sequence>
           <xs:element minOccurs="0" maxOccurs="unbounded" name="Profile" nillable="true" type="tns:Profile" />
         </xs:sequence>
       </xs:complexType>
       <xs:element name="ArrayOfProfile" nillable="true" type="tns:ArrayOfProfile" />
+      <xs:complexType name="Message">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="chatMessage" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="timeStamp" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Message" nillable="true" type="tns:Message" />
+      <xs:complexType name="ArrayOfMessage">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="Message" nillable="true" type="tns:Message" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfMessage" nillable="true" type="tns:ArrayOfMessage" />
     </xs:schema>
   </wsdl:types>
   <wsdl:message name="IUserManager_createAccount_InputMessage">
@@ -255,6 +374,15 @@
   <wsdl:message name="IUserManager_verifyLogin_OutputMessage">
     <wsdl:part name="parameters" element="tns:verifyLoginResponse" />
   </wsdl:message>
+  <wsdl:message name="IUserManager_getProfileId_InputMessage">
+    <wsdl:part name="parameters" element="tns:getProfileId" />
+  </wsdl:message>
+  <wsdl:message name="IUserManager_getProfileId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getProfileIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserManager_getProfileId_ProfileNotFoundFaultFault_FaultMessage">
+    <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/TripasService.Contracts" name="detail" element="q1:ProfileNotFoundFault" />
+  </wsdl:message>
   <wsdl:message name="IFriendsManager_addFriend_InputMessage">
     <wsdl:part name="parameters" element="tns:addFriend" />
   </wsdl:message>
@@ -273,6 +401,33 @@
   <wsdl:message name="IFriendsManager_getFriends_OutputMessage">
     <wsdl:part name="parameters" element="tns:getFriendsResponse" />
   </wsdl:message>
+  <wsdl:message name="IChatManager_sendMessage_InputMessage">
+    <wsdl:part name="parameters" element="tns:sendMessage" />
+  </wsdl:message>
+  <wsdl:message name="IChatManager_sendMessage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:sendMessageResponse" />
+  </wsdl:message>
+  <wsdl:message name="IChatManager_connectToLobby_InputMessage">
+    <wsdl:part name="parameters" element="tns:connectToLobby" />
+  </wsdl:message>
+  <wsdl:message name="IChatManager_connectToLobby_OutputMessage">
+    <wsdl:part name="parameters" element="tns:connectToLobbyResponse" />
+  </wsdl:message>
+  <wsdl:message name="IChatManager_leaveLobby_InputMessage">
+    <wsdl:part name="parameters" element="tns:leaveLobby" />
+  </wsdl:message>
+  <wsdl:message name="IChatManager_leaveLobby_OutputMessage">
+    <wsdl:part name="parameters" element="tns:leaveLobbyResponse" />
+  </wsdl:message>
+  <wsdl:message name="IChatManager_getMessageHistory_InputMessage">
+    <wsdl:part name="parameters" element="tns:getMessageHistory" />
+  </wsdl:message>
+  <wsdl:message name="IChatManager_getMessageHistory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getMessageHistoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IChatManager_broadcastMessage_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:broadcastMessage" />
+  </wsdl:message>
   <wsdl:portType name="IUserManager">
     <wsdl:operation name="createAccount">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/createAccount" message="tns:IUserManager_createAccount_InputMessage" />
@@ -290,6 +445,11 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/verifyLogin" message="tns:IUserManager_verifyLogin_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserManager/verifyLoginResponse" message="tns:IUserManager_verifyLogin_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="getProfileId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/getProfileId" message="tns:IUserManager_getProfileId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserManager/getProfileIdResponse" message="tns:IUserManager_getProfileId_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IUserManager/getProfileIdProfileNotFoundFaultFault" name="ProfileNotFoundFaultFault" message="tns:IUserManager_getProfileId_ProfileNotFoundFaultFault_FaultMessage" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IFriendsManager">
     <wsdl:operation name="addFriend">
@@ -303,6 +463,27 @@
     <wsdl:operation name="getFriends">
       <wsdl:input wsaw:Action="http://tempuri.org/IFriendsManager/getFriends" message="tns:IFriendsManager_getFriends_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IFriendsManager/getFriendsResponse" message="tns:IFriendsManager_getFriends_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IChatManager">
+    <wsdl:operation name="sendMessage">
+      <wsdl:input wsaw:Action="http://tempuri.org/IChatManager/sendMessage" message="tns:IChatManager_sendMessage_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IChatManager/sendMessageResponse" message="tns:IChatManager_sendMessage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="connectToLobby">
+      <wsdl:input wsaw:Action="http://tempuri.org/IChatManager/connectToLobby" message="tns:IChatManager_connectToLobby_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IChatManager/connectToLobbyResponse" message="tns:IChatManager_connectToLobby_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="leaveLobby">
+      <wsdl:input wsaw:Action="http://tempuri.org/IChatManager/leaveLobby" message="tns:IChatManager_leaveLobby_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IChatManager/leaveLobbyResponse" message="tns:IChatManager_leaveLobby_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getMessageHistory">
+      <wsdl:input wsaw:Action="http://tempuri.org/IChatManager/getMessageHistory" message="tns:IChatManager_getMessageHistory_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IChatManager/getMessageHistoryResponse" message="tns:IChatManager_getMessageHistory_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="broadcastMessage">
+      <wsdl:output wsaw:Action="http://tempuri.org/IChatManager/broadcastMessage" message="tns:IChatManager_broadcastMessage_OutputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IUserManager" type="tns:IUserManager">
@@ -344,6 +525,18 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="getProfileId">
+      <soap12:operation soapAction="http://tempuri.org/IUserManager/getProfileId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ProfileNotFoundFaultFault">
+        <soap12:fault use="literal" name="ProfileNotFoundFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="NetTcpBinding_IFriendsManager" type="tns:IFriendsManager">
     <wsp:PolicyReference URI="#NetTcpBinding_IFriendsManager_policy" />
@@ -376,6 +569,52 @@
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_IChatManager" type="tns:IChatManager">
+    <wsp:PolicyReference URI="#NetTcpBinding_IChatManager_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="sendMessage">
+      <soap12:operation soapAction="http://tempuri.org/IChatManager/sendMessage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="connectToLobby">
+      <soap12:operation soapAction="http://tempuri.org/IChatManager/connectToLobby" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="leaveLobby">
+      <soap12:operation soapAction="http://tempuri.org/IChatManager/leaveLobby" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getMessageHistory">
+      <soap12:operation soapAction="http://tempuri.org/IChatManager/getMessageHistory" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="broadcastMessage">
+      <soap12:operation soapAction="http://tempuri.org/IChatManager/broadcastMessage" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
   <wsdl:service name="TripasGameService">
     <wsdl:port name="NetTcpBinding_IUserManager" binding="tns:NetTcpBinding_IUserManager">
       <soap12:address location="net.tcp://localhost:8081/UserManager" />
@@ -390,6 +629,15 @@
       <soap12:address location="net.tcp://localhost:8081/FriendsManager" />
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8081/FriendsManager</wsa10:Address>
+        <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
+          <Upn>ERICK_ATZIN\abdie</Upn>
+        </Identity>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_IChatManager" binding="tns:NetTcpBinding_IChatManager">
+      <soap12:address location="net.tcp://localhost:8081/ChatManager" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:8081/ChatManager</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
           <Upn>ERICK_ATZIN\abdie</Upn>
         </Identity>

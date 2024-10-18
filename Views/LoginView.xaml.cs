@@ -120,8 +120,8 @@ namespace TripasDeGatoCliente.Views
 
         private void DisplayMainMenuView()
         {
-            LobbyView lobbyView = new LobbyView();
-            this.NavigationService.Navigate(lobbyView);
+            MenuView menuView = new MenuView();
+            this.NavigationService.Navigate(menuView);
         }
         private void BtnSignIn_Click(object sender, RoutedEventArgs e)
         {
