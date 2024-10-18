@@ -23,7 +23,7 @@ namespace TripasDeGatoCliente
         public MainWindow()
         {
             InitializeComponent();
-            NavigationFrame.Navigate(new Views.MenuView());
+            NavigationFrame.Navigate(new Views.LoginView());
         }
 
     }

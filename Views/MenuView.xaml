@@ -152,7 +152,7 @@
                 Margin="1068,530,0,0" 
                 VerticalAlignment="Top" 
                 Background="Black" 
-                BorderBrush="#FF8D4AE2"/>
+                BorderBrush="#FF8D4AE2"/> 
 
         <Button x:Name="btnJoinGame" 
                 Content="{x:Static p:Resources.btnJoinGame}" 
@@ -180,7 +180,7 @@
 
         <!-- Información del usuario -->
         <Label x:Name="lbUserName" 
-               Content="Label" 
+               Content="UserName" 
                HorizontalAlignment="Center" 
                VerticalAlignment="Top" 
                HorizontalContentAlignment="Center" 
@@ -193,7 +193,7 @@
                FontFamily="Rockwell Extra Bold"/>
 
         <!-- Listado de amigos -->
-        <ListBox x:Name="lstAmigos" 
+        <ListBox x:Name="lstFriends" 
                  Width="200" 
                  Height="278" 
                  HorizontalAlignment="Left" 

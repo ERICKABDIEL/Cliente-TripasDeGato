@@ -6,6 +6,7 @@ using System.Windows.Media;
 using TripasDeGatoCliente.Logic;
 using static TripasDeGatoCliente.Logic.ConstantsManager;
 using TripasDeGatoCliente.TripasDeGatoServicio;
+using System.Threading.Tasks;
 
 namespace TripasDeGatoCliente.Views
 {
@@ -52,12 +53,14 @@ namespace TripasDeGatoCliente.Views
             if (areElementsVisible)
             {
                 // Mostrar los controles
-                lstAmigos.Visibility = Visibility.Visible;
+                lstFriends.Visibility = Visibility.Visible;
                 btnAddFriend.Visibility = Visibility.Visible;
                 btnRemoveFriend.Visibility = Visibility.Visible;
+                LoadFriendsList();
+
 
                 // Habilitar los controles
-                lstAmigos.IsEnabled = true;
+                lstFriends.IsEnabled = true;
                 btnAddFriend.IsEnabled = true;
                 btnRemoveFriend.IsEnabled = true;
 
@@ -67,14 +70,14 @@ namespace TripasDeGatoCliente.Views
             else
             {
                 // Ocultar los controles
-                lstAmigos.Visibility = Visibility.Collapsed;
+                lstFriends.Visibility = Visibility.Collapsed;
                 btnAddFriend.Visibility = Visibility.Collapsed;
                 btnRemoveFriend.Visibility = Visibility.Collapsed;
                 txtFriendName.Visibility = Visibility.Collapsed; // Ocultar TextBox
                 btnAdd.Visibility = Visibility.Collapsed; // Ocultar botón agregar
 
                 // Deshabilitar los controles
-                lstAmigos.IsEnabled = false;
+                lstFriends.IsEnabled = false;
                 btnAddFriend.IsEnabled = false;
                 btnRemoveFriend.IsEnabled = false;
                 txtFriendName.IsEnabled = false; // Deshabilitar TextBox
@@ -139,6 +142,7 @@ namespace TripasDeGatoCliente.Views
                         if (result == Constants.SUCCES_OPERATION)
                         {
                             MessageBox.Show($"Amigo '{friendName}' agregado correctamente.");
+                            await LoadFriendsList();
                         }
                         else
                         {
@@ -165,6 +169,26 @@ namespace TripasDeGatoCliente.Views
             else
             {
                 MessageBox.Show("Por favor, ingresa un nombre válido.");
+            }
+        }
+
+        // Método para cargar la lista de amigos
+        private async Task LoadFriendsList()
+        {
+            try
+            {
+                FriendsManagerClient friendsManager = new FriendsManagerClient();
+                int userProfileId = UserProfileSingleton.IdPerfil;
+
+                // Obtén la lista de amigos desde el servidor
+                var friendsList = await friendsManager.getFriendsAsync(userProfileId); // Asegúrate de que este método sea asincrónico
+
+                // Actualiza el ListBox con la lista de amigos
+                lstFriends.ItemsSource = friendsList; // Asegúrate de que friendsList sea una colección adecuada para enlazar
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ocurrió un error al cargar la lista de amigos: {ex.Message}");
             }
         }
 
