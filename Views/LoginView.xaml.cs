@@ -101,7 +101,7 @@ namespace TripasDeGatoCliente.Views
                 }
                 else
                 {
-                    DialogManager.ShowErrorMessageAlert("Credenciales incorrectas.");
+                    DialogManager.ShowErrorMessageAlert("Correo o contraseña incorrectos.");
                 }
             }
             catch (Exception ex)

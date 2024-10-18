@@ -230,5 +230,22 @@ namespace TripasDeGatoCliente.Views
         {
             GoToLobbyView();
         }
+        private void GoToPerfilView()
+        {
+            ProfileView profileView = new ProfileView();
+            if (this.NavigationService != null)
+            {
+                this.NavigationService.Navigate(profileView);
+            }
+            else
+            {
+                MessageBox.Show("Error: No se puede navegar al menu.");
+            }
+        }
+
+        private void BtnBack_Click(object sender, RoutedEventArgs e)
+        {
+            GoToPerfilView();
+        }
     }
 }

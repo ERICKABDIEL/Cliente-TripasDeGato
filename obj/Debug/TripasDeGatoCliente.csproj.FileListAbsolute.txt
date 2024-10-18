@@ -11,6 +11,7 @@ C:\TripasDeGatoCliente\obj\Debug\TripasDeGatoCliente.csproj.AssemblyReference.ca
 C:\TripasDeGatoCliente\obj\Debug\MainWindow.g.cs
 C:\TripasDeGatoCliente\obj\Debug\Views\LobbyView.g.cs
 C:\TripasDeGatoCliente\obj\Debug\Views\MenuView.g.cs
+C:\TripasDeGatoCliente\obj\Debug\Views\ProfileView.g.cs
 C:\TripasDeGatoCliente\obj\Debug\Views\RegisterView.g.cs
 C:\TripasDeGatoCliente\obj\Debug\Views\LoginView.g.cs
 C:\TripasDeGatoCliente\obj\Debug\App.g.cs
@@ -20,6 +21,7 @@ C:\TripasDeGatoCliente\obj\Debug\TripasDeGatoCliente_MarkupCompile.lref
 C:\TripasDeGatoCliente\obj\Debug\MainWindow.baml
 C:\TripasDeGatoCliente\obj\Debug\Views\LobbyView.baml
 C:\TripasDeGatoCliente\obj\Debug\Views\MenuView.baml
+C:\TripasDeGatoCliente\obj\Debug\Views\ProfileView.baml
 C:\TripasDeGatoCliente\obj\Debug\Views\RegisterView.baml
 C:\TripasDeGatoCliente\obj\Debug\Views\LoginView.baml
 C:\TripasDeGatoCliente\obj\Debug\TripasDeGatoCliente.g.resources

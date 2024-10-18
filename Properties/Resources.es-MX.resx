@@ -123,6 +123,9 @@
   <data name="btnAddFriend" xml:space="preserve">
     <value>Añadir amigo</value>
   </data>
+  <data name="btnEdit" xml:space="preserve">
+    <value>Editar</value>
+  </data>
   <data name="btnFriends" xml:space="preserve">
     <value>Amigos</value>
   </data>
