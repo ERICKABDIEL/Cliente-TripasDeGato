@@ -127,13 +127,14 @@
                 Margin="1068,530,0,0" VerticalAlignment="Top" Background="Black" BorderBrush="#FF8D4AE2"/>
 
         <Button x:Name="btnJoinGame" Content="{x:Static p:Resources.btnJoinGame}" HorizontalAlignment="Left" 
-                Margin="1068,601,0,69" Click="Button_Click" Background="Black" BorderBrush="#FF8D4AE2"/>
+                Margin="1068,601,0,69"  Background="Black" BorderBrush="#FF8D4AE2"/>
 
         <Button x:Name="btnLeaderboard" Content="{x:Static p:Resources.btnLeaderboard}" HorizontalAlignment="Left" 
                 Margin="76,601,0,0" VerticalAlignment="Top" Background="Black" BorderBrush="#FF8D4AE2"/>
 
         <Button x:Name="btnAddFriend" Content="{x:Static p:Resources.btnAddFriend}" HorizontalAlignment="Left" 
          Margin="254,601,0,0" VerticalAlignment="Top" Background="Black" BorderBrush="#FF8D4AE2"/>
+        <Label x:Name="lbUserName" Content="Label" HorizontalAlignment="Center" Margin="0,59,0,0" VerticalAlignment="Top" Height="60" Width="148" Foreground="#FFFCF6DB" FontSize="24" FontFamily="Rockwell Extra Bold"/>
 
     </Grid>
 </Page>
