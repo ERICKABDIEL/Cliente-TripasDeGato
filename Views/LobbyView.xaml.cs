@@ -13,11 +13,10 @@ namespace TripasDeGatoCliente.Views
     public partial class LobbyView : Page, IChatManagerCallback
     {
         private ChatManagerClient chatManager;
-        private string lobbyCode = "1234"; // Código de la sala
-
         public LobbyView()
         {
             InitializeComponent();
+            labelPlayer1.Content = UserProfileSingleton.Nombre;
             chatManager = new ChatManagerClient(new InstanceContext(this));
             InitializeChatAsync();
         }
@@ -68,7 +67,7 @@ namespace TripasDeGatoCliente.Views
 
                 TextBlock messageBlock = new TextBlock
                 {
-                    Text = $"{message.userName}: {message.chatMessage} {DateTime.Now:HH:mm}",
+                    Text = $"{message.chatMessage} {DateTime.Now:HH:mm}",
                     Foreground = new SolidColorBrush(Colors.Black),
                     FontSize = 12,
                     FontWeight = FontWeights.Bold,

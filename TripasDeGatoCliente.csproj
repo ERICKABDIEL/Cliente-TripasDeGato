@@ -184,7 +184,6 @@
     <Resource Include="Images\LogoWhitoutBackground.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\ImageDefaultProfile.png" />
     <None Include="Connected Services\TripasDeGatoServicio\configuration91.svcinfo" />
     <None Include="Connected Services\TripasDeGatoServicio\configuration.svcinfo" />
     <None Include="Connected Services\TripasDeGatoServicio\Reference.svcmap">
@@ -192,6 +191,7 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <Resource Include="Images\DefaultImageProfile.png" />
+    <Resource Include="Images\DefaultImageProfile2.png" />
     <Content Include="Images\ViewWait.mp4">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

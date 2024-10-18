@@ -61,12 +61,12 @@
                Width="410"/>
 
         <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left" Margin="46,259,0,0">
-            <Image Source="/Images/ImageDefaultProfile.png" Width="190" Height="210" />
+            <Image Source="/Images/DefaultImageProfile2.png" Width="190" Height="210" />
             <TextBlock Text="Jugador 2" Foreground="White" FontSize="16" HorizontalAlignment="Center" FontFamily="Rockwell Extra Bold" />
         </StackPanel>
 
         <StackPanel VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,259,42,0">
-            <Image Source="/Images/ImageDefaultProfile.png" Width="190" Height="210" RenderTransformOrigin="0.5,0.5">
+            <Image Source="/Images/DefaultImageProfile.png" Width="190" Height="210" RenderTransformOrigin="0.5,0.5">
                 <Image.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -80,7 +80,7 @@
         </StackPanel>
 
         <ScrollViewer VerticalScrollBarVisibility="Auto"
-                      Margin="200,120,200,200"
+                      Margin="200,120,232,200"
                       Background="#33000000">
             <StackPanel x:Name="ChatMessagesPanel" Orientation="Vertical">
             </StackPanel>
