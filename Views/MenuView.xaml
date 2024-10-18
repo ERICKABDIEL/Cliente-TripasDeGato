@@ -68,7 +68,7 @@
 
         <!-- Botón Volver -->
         <Button x:Name="btnSignOut" 
-                Content="{x:Static p:Resources.globalBtnBack}" 
+                Content="{x:Static p:Resources.btnSignOut}" 
                 HorizontalAlignment="Left" 
                 VerticalAlignment="Top" 
                 Click="BtnSignOut_Click" 
@@ -140,7 +140,7 @@
         <!-- Botones del lobby -->
         <Button x:Name="btnProfile" 
                 Content="{x:Static p:Resources.btnProfile}" 
-                Click="BtnPerfil_Click"
+                Click="BtnProfile_Click"
                 HorizontalAlignment="Left" 
                 Margin="1068,70,0,0" 
                 VerticalAlignment="Top" 

@@ -8,6 +8,7 @@ using TripasDeGatoCliente.Logic;
 using TripasDeGatoCliente.Properties;
 using TripasDeGatoCliente.TripasDeGatoServicio;
 using static TripasDeGatoCliente.Logic.ConstantsManager;
+using System.Windows.Media.Animation;
 
 namespace TripasDeGatoCliente.Views
 {
