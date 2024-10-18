@@ -123,6 +123,9 @@
   <data name="btnAddFriend" xml:space="preserve">
     <value>Añadir amigo</value>
   </data>
+  <data name="btnEdit" xml:space="preserve">
+    <value>Editar</value>
+  </data>
   <data name="btnFriends" xml:space="preserve">
     <value>Amigos</value>
   </data>
@@ -155,6 +158,9 @@
   </data>
   <data name="btnSignIn" xml:space="preserve">
     <value>Registrarse</value>
+  </data>
+  <data name="btnSignOut" xml:space="preserve">
+    <value>Cerrar sesion</value>
   </data>
   <data name="btnStartGame" xml:space="preserve">
     <value>Crear partida</value>

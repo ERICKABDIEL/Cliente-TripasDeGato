@@ -6,7 +6,8 @@
       xmlns:local="clr-namespace:TripasDeGatoCliente.Views"
       xmlns:p="clr-namespace:TripasDeGatoCliente.Properties"
       mc:Ignorable="d" 
-      d:DesignHeight="720" d:DesignWidth="1280">
+      d:DesignHeight="720" 
+      d:DesignWidth="1280">
 
     <DockPanel>
         <Grid>
@@ -17,16 +18,23 @@
             </Border>
 
             <!-- Botón de Volver/Regresar -->
-            <Button x:Name="btnBack" Content="{x:Static p:Resources.globalBtnBack}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="150" Height="50" Margin="34,45,0,0" FontSize="16" FontWeight="Bold" Click="BtnBack_Click">
+            <Button x:Name="btnBack" 
+                    Content="{x:Static p:Resources.globalBtnBack}" 
+                    HorizontalAlignment="Left" 
+                    VerticalAlignment="Top" 
+                    Width="150" 
+                    Height="50" 
+                    Margin="34,45,0,0" 
+                    FontSize="16" 
+                    FontWeight="Bold" 
+                    Click="BtnBack_Click">
                 <Button.Style>
                     <Style TargetType="Button">
                         <Setter Property="Background">
                             <Setter.Value>
                                 <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
                                     <GradientStop Color="#FF7A1B9D" Offset="0.0"/>
-                                    <!-- Color superior -->
                                     <GradientStop Color="#FF15031D" Offset="1.0"/>
-                                    <!-- Color inferior -->
                                 </LinearGradientBrush>
                             </Setter.Value>
                         </Setter>
@@ -50,16 +58,13 @@
                                 </ControlTemplate>
                             </Setter.Value>
                         </Setter>
-                        <!-- Efecto Brillante Hover -->
                         <Style.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
                                 <Setter Property="Background">
                                     <Setter.Value>
                                         <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
                                             <GradientStop Color="#FFA52BD2" Offset="0.0"/>
-                                            <!-- Color superior más claro -->
                                             <GradientStop Color="#FF310744" Offset="1.0"/>
-                                            <!-- Color inferior más claro -->
                                         </LinearGradientBrush>
                                     </Setter.Value>
                                 </Setter>
@@ -75,7 +80,6 @@
             </Button>
 
             <Grid HorizontalAlignment="Left" VerticalAlignment="Center" Width="361" Height="352" Background="#FF13011B" Margin="784,0,0,0">
-                <!-- Resto del contenido -->
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
@@ -87,22 +91,68 @@
                 </Grid.RowDefinitions>
 
                 <!-- Etiqueta de Correo -->
-                <Label x:Name="lblCorreo" Content="{x:Static p:Resources.lbEmail}" Grid.Row="0" FontSize="18" Foreground="White" Margin="0,10,0,5" HorizontalAlignment="Left"/>
-                <TextBox Grid.Row="1" x:Name="txtCorreo" FontSize="16" Background="#333" Foreground="White" Margin="0,0,0,10" Height="35" HorizontalAlignment="Stretch"/>
+                <Label x:Name="lblCorreo" 
+                       Content="{x:Static p:Resources.lbEmail}" 
+                       Grid.Row="0" 
+                       FontSize="18" 
+                       Foreground="White" 
+                       Margin="0,10,0,5" 
+                       HorizontalAlignment="Left"/>
+                <TextBox Grid.Row="1" 
+                         x:Name="txtCorreo" 
+                         FontSize="16" 
+                         Background="#333" 
+                         Foreground="White" 
+                         Margin="0,0,0,10" 
+                         Height="35" 
+                         HorizontalAlignment="Stretch"/>
 
                 <!-- Etiqueta de Nombre -->
-                <Label x:Name="lblNombre" Content="{x:Static p:Resources.globalLbUser}" Grid.Row="2" FontSize="18" Foreground="White" Margin="0,10,0,5" HorizontalAlignment="Left"/>
-                <TextBox Grid.Row="3" x:Name="txtNombre" FontSize="16" Background="#333" Foreground="White" Margin="0,0,0,10" Height="35" HorizontalAlignment="Stretch"/>
+                <Label x:Name="lblNombre" 
+                       Content="{x:Static p:Resources.globalLbUser}" 
+                       Grid.Row="2" 
+                       FontSize="18" 
+                       Foreground="White" 
+                       Margin="0,10,0,5" 
+                       HorizontalAlignment="Left"/>
+                <TextBox Grid.Row="3" 
+                         x:Name="txtNombre" 
+                         FontSize="16" 
+                         Background="#333" 
+                         Foreground="White" 
+                         Margin="0,0,0,10" 
+                         Height="35" 
+                         HorizontalAlignment="Stretch"/>
 
                 <!-- Etiqueta de Contraseña -->
-                <Label x:Name="lblPassword" Content="{x:Static p:Resources.lbPasswordSignIn}" Grid.Row="4" FontSize="18" Foreground="White" Margin="0,10,0,5" HorizontalAlignment="Left"/>
+                <Label x:Name="lblPassword" 
+                       Content="{x:Static p:Resources.lbPasswordSignIn}" 
+                       Grid.Row="4" 
+                       FontSize="18" 
+                       Foreground="White" 
+                       Margin="0,10,0,5" 
+                       HorizontalAlignment="Left"/>
 
                 <!-- Caja de Contraseña -->
-                <PasswordBox Grid.Row="5" x:Name="txtPassword" FontSize="16" Background="#333" Foreground="White" Margin="0,0,0,10" Height="35" HorizontalAlignment="Stretch"/>
+                <PasswordBox Grid.Row="5" 
+                             x:Name="txtPassword" 
+                             FontSize="16" 
+                             Background="#333" 
+                             Foreground="White" 
+                             Margin="0,0,0,10" 
+                             Height="35" 
+                             HorizontalAlignment="Stretch"/>
 
                 <!-- Botón de Registrarse -->
                 <StackPanel Grid.Row="6" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <Button x:Name="btnSignIn" Content="{x:Static p:Resources.btnSignIn}" FontSize="16" Width="283" Height="40" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="BtnSignIn_Click">
+                    <Button x:Name="btnSignIn" 
+                            Content="{x:Static p:Resources.btnSignIn}" 
+                            FontSize="16" 
+                            Width="283" 
+                            Height="40" 
+                            HorizontalContentAlignment="Center" 
+                            VerticalContentAlignment="Center" 
+                            Click="BtnSignIn_Click">
                         <Button.Style>
                             <Style TargetType="{x:Type Button}">
                                 <Setter Property="Background" Value="#7A1B9D"/>
@@ -126,7 +176,6 @@
                                         </ControlTemplate>
                                     </Setter.Value>
                                 </Setter>
-                                <!-- Efecto Hover -->
                                 <Style.Triggers>
                                     <Trigger Property="IsMouseOver" Value="True">
                                         <Setter Property="Background" Value="#9C27B0"/>

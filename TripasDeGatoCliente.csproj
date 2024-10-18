@@ -89,6 +89,9 @@
     <Compile Include="Views\MenuView.xaml.cs">
       <DependentUpon>MenuView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\ProfileView.xaml.cs">
+      <DependentUpon>ProfileView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\RegisterView.xaml.cs">
       <DependentUpon>RegisterView.xaml</DependentUpon>
     </Compile>
@@ -112,6 +115,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\MenuView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ProfileView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -184,7 +191,6 @@
     <Resource Include="Images\LogoWhitoutBackground.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\ImageDefaultProfile.png" />
     <None Include="Connected Services\TripasDeGatoServicio\configuration91.svcinfo" />
     <None Include="Connected Services\TripasDeGatoServicio\configuration.svcinfo" />
     <None Include="Connected Services\TripasDeGatoServicio\Reference.svcmap">
@@ -192,6 +198,7 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <Resource Include="Images\DefaultImageProfile.png" />
+    <Resource Include="Images\DefaultImageProfile2.png" />
     <Content Include="Images\ViewWait.mp4">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

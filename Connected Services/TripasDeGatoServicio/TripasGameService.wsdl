@@ -192,6 +192,21 @@
           </xs:sequence>
         </xs:complexType>
       </xs:element>
+      <xs:element name="deleteFriendship">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="userName1" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="userName2" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="deleteFriendshipResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="deleteFriendshipResult" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
       <xs:element name="getFriends">
         <xs:complexType>
           <xs:sequence>
@@ -395,6 +410,12 @@
   <wsdl:message name="IFriendsManager_deleteFriend_OutputMessage">
     <wsdl:part name="parameters" element="tns:deleteFriendResponse" />
   </wsdl:message>
+  <wsdl:message name="IFriendsManager_deleteFriendship_InputMessage">
+    <wsdl:part name="parameters" element="tns:deleteFriendship" />
+  </wsdl:message>
+  <wsdl:message name="IFriendsManager_deleteFriendship_OutputMessage">
+    <wsdl:part name="parameters" element="tns:deleteFriendshipResponse" />
+  </wsdl:message>
   <wsdl:message name="IFriendsManager_getFriends_InputMessage">
     <wsdl:part name="parameters" element="tns:getFriends" />
   </wsdl:message>
@@ -459,6 +480,10 @@
     <wsdl:operation name="deleteFriend">
       <wsdl:input wsaw:Action="http://tempuri.org/IFriendsManager/deleteFriend" message="tns:IFriendsManager_deleteFriend_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IFriendsManager/deleteFriendResponse" message="tns:IFriendsManager_deleteFriend_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteFriendship">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFriendsManager/deleteFriendship" message="tns:IFriendsManager_deleteFriendship_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFriendsManager/deleteFriendshipResponse" message="tns:IFriendsManager_deleteFriendship_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="getFriends">
       <wsdl:input wsaw:Action="http://tempuri.org/IFriendsManager/getFriends" message="tns:IFriendsManager_getFriends_InputMessage" />
@@ -552,6 +577,15 @@
     </wsdl:operation>
     <wsdl:operation name="deleteFriend">
       <soap12:operation soapAction="http://tempuri.org/IFriendsManager/deleteFriend" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteFriendship">
+      <soap12:operation soapAction="http://tempuri.org/IFriendsManager/deleteFriendship" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
