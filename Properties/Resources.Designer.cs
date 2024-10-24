@@ -223,11 +223,47 @@ namespace TripasDeGatoCliente.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Connection error with the server.
+        /// </summary>
+        public static string dialogConnectionErrorWithServer {
+            get {
+                return ResourceManager.GetString("dialogConnectionErrorWithServer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Invalid Email.
+        /// </summary>
+        public static string dialogInvalidEmail {
+            get {
+                return ResourceManager.GetString("dialogInvalidEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Invalid Password.
+        /// </summary>
+        public static string dialogInvalidPassword {
+            get {
+                return ResourceManager.GetString("dialogInvalidPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Credentials do not match.
         /// </summary>
         public static string dialogMissmatchesCredentials {
             get {
                 return ResourceManager.GetString("dialogMissmatchesCredentials", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a The user profile could not be retrieved.
+        /// </summary>
+        public static string dialogNotRetrievedProfile {
+            get {
+                return ResourceManager.GetString("dialogNotRetrievedProfile", resourceCulture);
             }
         }
         
@@ -435,6 +471,15 @@ namespace TripasDeGatoCliente.Properties {
         public static string lbPasswordSignIn {
             get {
                 return ResourceManager.GetString("lbPasswordSignIn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Recover Password.
+        /// </summary>
+        public static string lbRecoverPassword {
+            get {
+                return ResourceManager.GetString("lbRecoverPassword", resourceCulture);
             }
         }
         

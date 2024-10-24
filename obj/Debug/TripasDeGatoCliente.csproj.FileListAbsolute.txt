@@ -1,4 +1,4 @@
-C:\TripasDeGatoCliente\bin\Debug\Images\ViewWait.mp4
+C:\TripasDeGatoCliente\bin\Debug\Videos\ViewWait.mp4
 C:\TripasDeGatoCliente\bin\Debug\TripasDeGatoCliente.exe.config
 C:\TripasDeGatoCliente\bin\Debug\TripasDeGatoCliente.exe
 C:\TripasDeGatoCliente\bin\Debug\TripasDeGatoCliente.pdb
