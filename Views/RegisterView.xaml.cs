@@ -16,40 +16,6 @@ namespace TripasDeGatoCliente.Views
             InitializeComponent();
         }
 
-        /*private void BtnSignIn_Click(object sender, RoutedEventArgs e)
-        {
-            string email = txtEmail.Text;
-            string username = txtName.Text;
-            string password = txtPassword.Password;
-
-            if (!ValidateFields(email, username, password))
-            {
-                return;
-            }
-
-            var userProxy = new TripasDeGatoServicio.UserManagerClient();
-            bool emailRegistered = userProxy.isEmailRegistered(email);
-            if (emailRegistered)
-            {
-                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogEmailInUse);
-                HighlightField(txtEmail);
-                return;
-            }
-
-            // Proxy para IEmailVerificationManager
-            var emailVerificationProxy = new TripasDeGatoServicio.IEmail
-            int result = emailVerificationProxy.
-
-            if (result == Constants.SUCCES_OPERATION)
-            {
-                validationGrid.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                DialogManager.ShowErrorMessageAlert("Error sending verification code. Please try again.");
-            }
-        }*/
-
         private void BtnSignIn_Click(object sender, RoutedEventArgs e)
         {
             string email = txtEmail.Text;
@@ -62,6 +28,7 @@ namespace TripasDeGatoCliente.Views
             }
 
             var userProxy = new TripasDeGatoServicio.UserManagerClient();
+
             bool emailRegistered = userProxy.isEmailRegistered(email);
             if (emailRegistered)
             {
@@ -70,42 +37,77 @@ namespace TripasDeGatoCliente.Views
                 return;
             }
 
-            var newUser = new LoginUser
-            {
-                mail = email,
-                password = Hasher.HashToSHA256(password)
-            };
-
-            var newProfile = new Profile
-            {
-                userName = username,
-                score = Constants.INITIAL_SCORE,
-                picturePath = "/Images/DefaultImageProfile"
-            };
-
-            var loginUser = new TripasDeGatoServicio.LoginUser
-            {
-                mail = email,
-                password = newUser.password
-            };
-
-            var profile = new TripasDeGatoServicio.Profile
-            {
-                userName = username
-            };
-
-            int result = userProxy.createAccount(loginUser, profile);
+            var emailVerificationProxy = new TripasDeGatoServicio.EmailVerificationManagerClient();
+            int result = emailVerificationProxy.sendVerificationCodeRegister(email);
 
             if (result == Constants.SUCCES_OPERATION)
             {
-                DialogManager.ShowSuccessMessageAlert(Properties.Resources.dialogAccountCreatedSuccesfully);
-                GoToLoginView();
+                validationGrid.Visibility = Visibility.Visible;
+                DialogManager.ShowSuccessMessageAlert("Verification code sent successfully. Please check your email.");
             }
             else
             {
-                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogAccountCreatedErrror);
+                DialogManager.ShowErrorMessageAlert("Error sending verification code. Please try again.");
             }
         }
+
+        private void BtnResendCode_Click(object sender, RoutedEventArgs e)
+        {
+            var emailVerificationProxy = new TripasDeGatoServicio.EmailVerificationManagerClient();
+            int result = emailVerificationProxy.sendVerificationCodeRegister(txtEmail.Text);
+
+            if (result == Constants.SUCCES_OPERATION)
+            {
+                DialogManager.ShowSuccessMessageAlert("Verification code resent successfully. Please check your email.");
+            }
+            else
+            {
+                DialogManager.ShowErrorMessageAlert("Error resending verification code. Please try again.");
+            }
+        }
+
+        private void BtnValidate_Click(object sender, RoutedEventArgs e)
+        {
+            string enteredCode = $"{txtValidationCode1.Text}{txtValidationCode2.Text}{txtValidationCode3.Text}{txtValidationCode4.Text}{txtValidationCode5.Text}{txtValidationCode6.Text}";
+
+            var emailVerificationProxy = new TripasDeGatoServicio.EmailVerificationManagerClient();
+            bool isCodeValid = emailVerificationProxy.verifyCode(txtEmail.Text, enteredCode);
+
+            if (isCodeValid)
+            {
+                var userProxy = new TripasDeGatoServicio.UserManagerClient();
+
+                var newUser = new TripasDeGatoServicio.LoginUser
+                {
+                    mail = txtEmail.Text,
+                    password = Hasher.HashToSHA256(txtPassword.Password)
+                };
+
+                var newProfile = new TripasDeGatoServicio.Profile
+                {
+                    userName = txtName.Text,
+                    score = Constants.INITIAL_SCORE,
+                    picturePath = "/Images/DefaultImageProfile"
+                };
+
+                int accountResult = userProxy.createAccount(newUser, newProfile);
+
+                if (accountResult == Constants.SUCCES_OPERATION)
+                {
+                    DialogManager.ShowSuccessMessageAlert(Properties.Resources.dialogAccountCreatedSuccesfully);
+                    GoToLoginView();
+                }
+                else
+                {
+                    DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogAccountCreatedErrror);
+                }
+            }
+            else
+            {
+                DialogManager.ShowErrorMessageAlert("Invalid verification code. Please try again.");
+            }
+        }
+
 
         private bool ValidateFields(string email, string username, string password)
         {
@@ -241,21 +243,31 @@ namespace TripasDeGatoCliente.Views
         {
             GoToLoginView();
         }
-
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-        private void BtnValidate_Click(object sender, RoutedEventArgs e)
-        {
-        } 
-        private void BtnResendCode_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
         private void BtnBackValidate_Click(object sender, RoutedEventArgs e)
         {
-
+            validationGrid.Visibility = Visibility.Collapsed;
+            txtEmail.Clear();
+            txtName.Clear();
+            txtPassword.Clear();
+            txtPasswordVisible.Clear();
         }
+        private void TxtValidationCode_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox currentTextBox = sender as TextBox;
+            if (currentTextBox.Text.Length == 1)
+            {
+                if (currentTextBox == txtValidationCode1)
+                    txtValidationCode2.Focus();
+                else if (currentTextBox == txtValidationCode2)
+                    txtValidationCode3.Focus();
+                else if (currentTextBox == txtValidationCode3)
+                    txtValidationCode4.Focus();
+                else if (currentTextBox == txtValidationCode4)
+                    txtValidationCode5.Focus();
+                else if (currentTextBox == txtValidationCode5)
+                    txtValidationCode6.Focus();
+            }
+        }
+
     }
 }

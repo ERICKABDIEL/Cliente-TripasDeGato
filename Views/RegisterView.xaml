@@ -188,9 +188,9 @@
                         </Style>
                     </Button.Style>
                 </Button>
-                <Label x:Name="lbInvalidEmail" Content="{x:Static p:Resources.lbEmailValid}" HorizontalAlignment="Left" Margin="125,37,0,0" Grid.Row="1" VerticalAlignment="Top" Foreground="#FFED3838" Grid.RowSpan="2" Visibility="Collapsed"/>
-                <Label x:Name="lbInvalidUser" Content="{x:Static p:Resources.lbUserNameValid}" HorizontalAlignment="Left" Margin="125,40,0,0" Grid.Row="3" VerticalAlignment="Top" Foreground="#FFED3838" Grid.RowSpan="2" Visibility="Collapsed"/>
-                <Label x:Name="lbInvalidPassword" Content="{x:Static p:Resources.lbPasswordValid}" HorizontalAlignment="Left" Margin="125,32,0,0" Grid.Row="5" VerticalAlignment="Top" Foreground="#FFED3838" Visibility="Collapsed"/>
+                <Label x:Name="lbInvalidEmail" Content="{x:Static p:Resources.lbEmailValid}" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Top" Foreground="#FFED3838" Grid.RowSpan="2" Margin="0,33,0,0" Visibility="Collapsed"/>
+                <Label x:Name="lbInvalidUser" Content="{x:Static p:Resources.lbUserNameValid}" HorizontalAlignment="Center" Margin="0,40,0,0" Grid.Row="3" VerticalAlignment="Top" Foreground="#FFED3838" Grid.RowSpan="2" Visibility="Collapsed"/>
+                <Label x:Name="lbInvalidPassword" Content="{x:Static p:Resources.lbPasswordValid}" HorizontalAlignment="Center" Margin="0,34,0,0" Grid.Row="5" VerticalAlignment="Top" Foreground="#FFED3838" Visibility="Collapsed"/>
             </Grid>
             <Grid x:Name="validationGrid" Visibility="Collapsed" Background="#FF2E0B3E" Width="407" Height="184" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="420,0,0,0">
                 <Grid.RowDefinitions>
@@ -204,7 +204,7 @@
 
                 <Label Content="Ingrese el código de validación:" FontSize="18" Foreground="White" Margin="0,10,0,5" HorizontalAlignment="Center"/>
                 <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Center" Margin="0,0,0,10">
-                    <TextBox x:Name="txtValidationCode1" Width="50" Margin="5" MaxLength="1" FontSize="24" TextAlignment="Center" Foreground="White" BorderBrush="#FF020202">
+                    <TextBox x:Name="txtValidationCode1" TextChanged="TxtValidationCode_TextChanged" Width="50" Margin="5" MaxLength="1" FontSize="24" TextAlignment="Center" Foreground="White" BorderBrush="#FF020202">
                         <TextBox.Background>
                             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                                 <GradientStop Color="#FF7F588D"/>
@@ -212,7 +212,7 @@
                             </LinearGradientBrush>
                         </TextBox.Background>
                     </TextBox>
-                    <TextBox x:Name="txtValidationCode2" Width="50" Margin="5" MaxLength="1" FontSize="24" TextAlignment="Center" Foreground="White" BorderBrush="#FF020202">
+                    <TextBox x:Name="txtValidationCode2" TextChanged="TxtValidationCode_TextChanged" Width="50" Margin="5" MaxLength="1" FontSize="24" TextAlignment="Center" Foreground="White" BorderBrush="#FF020202">
                         <TextBox.Background>
                             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                                 <GradientStop Color="#FF7F588D"/>
@@ -220,7 +220,7 @@
                             </LinearGradientBrush>
                         </TextBox.Background>
                     </TextBox>
-                    <TextBox x:Name="txtValidationCode3" Width="50" Margin="5" MaxLength="1" FontSize="24" TextAlignment="Center" Foreground="White" BorderBrush="#FF020202">
+                    <TextBox x:Name="txtValidationCode3" TextChanged="TxtValidationCode_TextChanged" Width="50" Margin="5" MaxLength="1" FontSize="24" TextAlignment="Center" Foreground="White" BorderBrush="#FF020202">
                         <TextBox.Background>
                             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                                 <GradientStop Color="#FF7F588D"/>
@@ -228,7 +228,7 @@
                             </LinearGradientBrush>
                         </TextBox.Background>
                     </TextBox>
-                    <TextBox x:Name="txtValidationCode4" Width="50" Margin="5" MaxLength="1" FontSize="24" TextAlignment="Center" Foreground="White" BorderBrush="#FF020202">
+                    <TextBox x:Name="txtValidationCode4" TextChanged="TxtValidationCode_TextChanged" Width="50" Margin="5" MaxLength="1" FontSize="24" TextAlignment="Center" Foreground="White" BorderBrush="#FF020202">
                         <TextBox.Background>
                             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                                 <GradientStop Color="#FF7F588D"/>
@@ -236,7 +236,7 @@
                             </LinearGradientBrush>
                         </TextBox.Background>
                     </TextBox>
-                    <TextBox x:Name="txtValidationCode5" Width="50" Margin="5" MaxLength="1" FontSize="24" TextAlignment="Center" Foreground="White" BorderBrush="#FF020202">
+                    <TextBox x:Name="txtValidationCode5" TextChanged="TxtValidationCode_TextChanged" Width="50" Margin="5" MaxLength="1" FontSize="24" TextAlignment="Center" Foreground="White" BorderBrush="#FF020202">
                         <TextBox.Background>
                             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                                 <GradientStop Color="#FF7F588D"/>
@@ -244,7 +244,7 @@
                             </LinearGradientBrush>
                         </TextBox.Background>
                     </TextBox>
-                    <TextBox x:Name="txtValidationCode6" Width="50" Margin="5" MaxLength="1" FontSize="24" TextAlignment="Center" Foreground="White" BorderBrush="#FF020202">
+                    <TextBox x:Name="txtValidationCode6" TextChanged="TxtValidationCode_TextChanged" Width="50" Margin="5" MaxLength="1" FontSize="24" TextAlignment="Center" Foreground="White" BorderBrush="#FF020202">
                         <TextBox.Background>
                             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                                 <GradientStop Color="#FF7F588D"/>

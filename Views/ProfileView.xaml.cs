@@ -76,11 +76,8 @@ namespace TripasDeGatoCliente.Views
             }
         }
 
-        // Método para guardar el perfil (simulación de la lógica de guardado)
         private void SaveProfile(string userName, string selectedLanguage)
         {
-            // Si tienes lógica para guardar en el servidor, podrías llamar a un servicio aquí
-            // Por ejemplo, enviar los datos actualizados al servidor
         }
         private void GoToMenuView()
         {

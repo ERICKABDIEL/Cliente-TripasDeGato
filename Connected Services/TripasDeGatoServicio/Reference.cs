@@ -357,12 +357,6 @@ namespace TripasDeGatoCliente.TripasDeGatoServicio {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/updateProfilePic", ReplyAction="http://tempuri.org/IUserManager/updateProfilePicResponse")]
         System.Threading.Tasks.Task<int> updateProfilePicAsync(int idProfile, string newProfilePic);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/updateLoginPassword", ReplyAction="http://tempuri.org/IUserManager/updateLoginPasswordResponse")]
-        int updateLoginPassword(string mail, string newPassword);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/updateLoginPassword", ReplyAction="http://tempuri.org/IUserManager/updateLoginPasswordResponse")]
-        System.Threading.Tasks.Task<int> updateLoginPasswordAsync(string mail, string newPassword);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -454,14 +448,6 @@ namespace TripasDeGatoCliente.TripasDeGatoServicio {
         
         public System.Threading.Tasks.Task<int> updateProfilePicAsync(int idProfile, string newProfilePic) {
             return base.Channel.updateProfilePicAsync(idProfile, newProfilePic);
-        }
-        
-        public int updateLoginPassword(string mail, string newPassword) {
-            return base.Channel.updateLoginPassword(mail, newPassword);
-        }
-        
-        public System.Threading.Tasks.Task<int> updateLoginPasswordAsync(string mail, string newPassword) {
-            return base.Channel.updateLoginPasswordAsync(mail, newPassword);
         }
     }
     
@@ -648,6 +634,191 @@ namespace TripasDeGatoCliente.TripasDeGatoServicio {
         
         public System.Threading.Tasks.Task<TripasDeGatoCliente.TripasDeGatoServicio.Message[]> getMessageHistoryAsync() {
             return base.Channel.getMessageHistoryAsync();
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="TripasDeGatoServicio.IPasswordRecoveryManager")]
+    public interface IPasswordRecoveryManager {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPasswordRecoveryManager/SendRecoveryCode", ReplyAction="http://tempuri.org/IPasswordRecoveryManager/SendRecoveryCodeResponse")]
+        int SendRecoveryCode(string email);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPasswordRecoveryManager/SendRecoveryCode", ReplyAction="http://tempuri.org/IPasswordRecoveryManager/SendRecoveryCodeResponse")]
+        System.Threading.Tasks.Task<int> SendRecoveryCodeAsync(string email);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPasswordRecoveryManager/VerifyRecoveryCode", ReplyAction="http://tempuri.org/IPasswordRecoveryManager/VerifyRecoveryCodeResponse")]
+        bool VerifyRecoveryCode(string email, string code);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPasswordRecoveryManager/VerifyRecoveryCode", ReplyAction="http://tempuri.org/IPasswordRecoveryManager/VerifyRecoveryCodeResponse")]
+        System.Threading.Tasks.Task<bool> VerifyRecoveryCodeAsync(string email, string code);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPasswordRecoveryManager/UpdatePassword", ReplyAction="http://tempuri.org/IPasswordRecoveryManager/UpdatePasswordResponse")]
+        int UpdatePassword(string email, string newPassword);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPasswordRecoveryManager/UpdatePassword", ReplyAction="http://tempuri.org/IPasswordRecoveryManager/UpdatePasswordResponse")]
+        System.Threading.Tasks.Task<int> UpdatePasswordAsync(string email, string newPassword);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IPasswordRecoveryManagerChannel : TripasDeGatoCliente.TripasDeGatoServicio.IPasswordRecoveryManager, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class PasswordRecoveryManagerClient : System.ServiceModel.ClientBase<TripasDeGatoCliente.TripasDeGatoServicio.IPasswordRecoveryManager>, TripasDeGatoCliente.TripasDeGatoServicio.IPasswordRecoveryManager {
+        
+        public PasswordRecoveryManagerClient() {
+        }
+        
+        public PasswordRecoveryManagerClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public PasswordRecoveryManagerClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public PasswordRecoveryManagerClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public PasswordRecoveryManagerClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        public int SendRecoveryCode(string email) {
+            return base.Channel.SendRecoveryCode(email);
+        }
+        
+        public System.Threading.Tasks.Task<int> SendRecoveryCodeAsync(string email) {
+            return base.Channel.SendRecoveryCodeAsync(email);
+        }
+        
+        public bool VerifyRecoveryCode(string email, string code) {
+            return base.Channel.VerifyRecoveryCode(email, code);
+        }
+        
+        public System.Threading.Tasks.Task<bool> VerifyRecoveryCodeAsync(string email, string code) {
+            return base.Channel.VerifyRecoveryCodeAsync(email, code);
+        }
+        
+        public int UpdatePassword(string email, string newPassword) {
+            return base.Channel.UpdatePassword(email, newPassword);
+        }
+        
+        public System.Threading.Tasks.Task<int> UpdatePasswordAsync(string email, string newPassword) {
+            return base.Channel.UpdatePasswordAsync(email, newPassword);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="TripasDeGatoServicio.IEmailVerificationManager")]
+    public interface IEmailVerificationManager {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEmailVerificationManager/sendVerificationCodeRegister", ReplyAction="http://tempuri.org/IEmailVerificationManager/sendVerificationCodeRegisterResponse" +
+            "")]
+        int sendVerificationCodeRegister(string email);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEmailVerificationManager/sendVerificationCodeRegister", ReplyAction="http://tempuri.org/IEmailVerificationManager/sendVerificationCodeRegisterResponse" +
+            "")]
+        System.Threading.Tasks.Task<int> sendVerificationCodeRegisterAsync(string email);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEmailVerificationManager/verifyCode", ReplyAction="http://tempuri.org/IEmailVerificationManager/verifyCodeResponse")]
+        bool verifyCode(string email, string code);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEmailVerificationManager/verifyCode", ReplyAction="http://tempuri.org/IEmailVerificationManager/verifyCodeResponse")]
+        System.Threading.Tasks.Task<bool> verifyCodeAsync(string email, string code);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IEmailVerificationManagerChannel : TripasDeGatoCliente.TripasDeGatoServicio.IEmailVerificationManager, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class EmailVerificationManagerClient : System.ServiceModel.ClientBase<TripasDeGatoCliente.TripasDeGatoServicio.IEmailVerificationManager>, TripasDeGatoCliente.TripasDeGatoServicio.IEmailVerificationManager {
+        
+        public EmailVerificationManagerClient() {
+        }
+        
+        public EmailVerificationManagerClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public EmailVerificationManagerClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public EmailVerificationManagerClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public EmailVerificationManagerClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        public int sendVerificationCodeRegister(string email) {
+            return base.Channel.sendVerificationCodeRegister(email);
+        }
+        
+        public System.Threading.Tasks.Task<int> sendVerificationCodeRegisterAsync(string email) {
+            return base.Channel.sendVerificationCodeRegisterAsync(email);
+        }
+        
+        public bool verifyCode(string email, string code) {
+            return base.Channel.verifyCode(email, code);
+        }
+        
+        public System.Threading.Tasks.Task<bool> verifyCodeAsync(string email, string code) {
+            return base.Channel.verifyCodeAsync(email, code);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="TripasDeGatoServicio.ILeaderboardManager")]
+    public interface ILeaderboardManager {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILeaderboardManager/getHighestScores", ReplyAction="http://tempuri.org/ILeaderboardManager/getHighestScoresResponse")]
+        TripasDeGatoCliente.TripasDeGatoServicio.Profile[] getHighestScores();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILeaderboardManager/getHighestScores", ReplyAction="http://tempuri.org/ILeaderboardManager/getHighestScoresResponse")]
+        System.Threading.Tasks.Task<TripasDeGatoCliente.TripasDeGatoServicio.Profile[]> getHighestScoresAsync();
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface ILeaderboardManagerChannel : TripasDeGatoCliente.TripasDeGatoServicio.ILeaderboardManager, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class LeaderboardManagerClient : System.ServiceModel.ClientBase<TripasDeGatoCliente.TripasDeGatoServicio.ILeaderboardManager>, TripasDeGatoCliente.TripasDeGatoServicio.ILeaderboardManager {
+        
+        public LeaderboardManagerClient() {
+        }
+        
+        public LeaderboardManagerClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public LeaderboardManagerClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public LeaderboardManagerClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public LeaderboardManagerClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        public TripasDeGatoCliente.TripasDeGatoServicio.Profile[] getHighestScores() {
+            return base.Channel.getHighestScores();
+        }
+        
+        public System.Threading.Tasks.Task<TripasDeGatoCliente.TripasDeGatoServicio.Profile[]> getHighestScoresAsync() {
+            return base.Channel.getHighestScoresAsync();
         }
     }
 }

@@ -4,7 +4,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Threading;
-using TripasDeGatoCliente.TripasDeGatoServicio; // Suponiendo que uses esta referencia para WCF
+using TripasDeGatoCliente.TripasDeGatoServicio;
 using TripasDeGatoCliente.Logic;
 using System.Threading.Tasks;
 
@@ -25,7 +25,7 @@ namespace TripasDeGatoCliente.Views
         {
             try
             {
-                await Task.Run(() => chatManager.connectToLobby(UserProfileSingleton.Nombre)); // Conexión asíncrona
+                await Task.Run(() => chatManager.connectToLobby(UserProfileSingleton.Nombre));
                 SendWelcomeNotification();
             }
             catch (Exception ex)
@@ -44,7 +44,7 @@ namespace TripasDeGatoCliente.Views
 
             try
             {
-                await Task.Run(() => chatManager.sendMessage(UserProfileSingleton.Nombre, message)); // Envío de mensaje asíncrono
+                await Task.Run(() => chatManager.sendMessage(UserProfileSingleton.Nombre, message)); 
             }
             catch (Exception ex)
             {
@@ -95,7 +95,7 @@ namespace TripasDeGatoCliente.Views
 
                 try
                 {
-                    await Task.Run(() => chatManager.sendMessage(UserProfileSingleton.Nombre, message)); // Envío de mensaje asíncrono
+                    await Task.Run(() => chatManager.sendMessage(UserProfileSingleton.Nombre, message));
                     txtMessageInput.Clear();
                 }
                 catch (Exception ex)
@@ -108,7 +108,6 @@ namespace TripasDeGatoCliente.Views
         private void HandleChatException(Exception ex)
         {
             MessageBox.Show($"Error en la comunicación del chat: {ex.Message}");
-            // Puedes agregar más lógica para manejar los diferentes tipos de excepciones
         }
 
         private void ScrollToBottom()

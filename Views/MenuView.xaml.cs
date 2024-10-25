@@ -54,7 +54,7 @@ namespace TripasDeGatoCliente.Views
                 lstFriends.Visibility = Visibility.Visible;
                 btnAddFriend.Visibility = Visibility.Visible;
                 btnRemoveFriend.Visibility = Visibility.Visible;
-                await LoadFriendsListAsync(); // Cambiado a método asíncrono
+                await LoadFriendsListAsync(); 
 
                 lstFriends.IsEnabled = true;
                 btnAddFriend.IsEnabled = true;
@@ -115,10 +115,14 @@ namespace TripasDeGatoCliente.Views
                 try
                 {
                     int friendProfileId = await userManager.getProfileIdAsync(friendName);
+                    int userProfileId = UserProfileSingleton.IdPerfil;
 
-                    if (friendProfileId > 0)
+                    if (friendProfileId == userProfileId)
                     {
-                        int userProfileId = UserProfileSingleton.IdPerfil;
+                        MessageBox.Show("No puedes agregarte a ti mismo como amigo.");
+                    }
+                    else if (friendProfileId > 0)
+                    {
                         int result = await friendsManager.addFriendAsync(userProfileId, friendProfileId);
 
                         if (result == Constants.SUCCES_OPERATION)
@@ -153,6 +157,8 @@ namespace TripasDeGatoCliente.Views
             }
         }
 
+
+
         private async Task LoadFriendsListAsync()
         {
             try
@@ -160,10 +166,8 @@ namespace TripasDeGatoCliente.Views
                 int userProfileId = UserProfileSingleton.IdPerfil;
                 var friendsList = await friendsManager.getFriendsAsync(userProfileId);
 
-                // Extraemos solo los nombres de los amigos para mostrar en la lista
                 var friendNames = friendsList.Select(friend => friend.userName).ToList();
 
-                // Asignamos la lista de nombres al ListBox
                 lstFriends.ItemsSource = friendNames;
             }
             catch (Exception ex)
@@ -190,7 +194,7 @@ namespace TripasDeGatoCliente.Views
                         if (result == Constants.SUCCES_OPERATION)
                         {
                             MessageBox.Show($"Amistad con '{selectedFriendName}' eliminada correctamente.");
-                            await LoadFriendsListAsync(); // Recargar la lista de amigos después de eliminar
+                            await LoadFriendsListAsync(); 
                         }
                         else
                         {

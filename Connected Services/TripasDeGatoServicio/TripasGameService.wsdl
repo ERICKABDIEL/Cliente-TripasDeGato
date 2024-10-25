@@ -87,6 +87,93 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_IPasswordRecoveryManager_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <msf:WindowsTransportSecurity xmlns:msf="http://schemas.microsoft.com/ws/2006/05/framing/policy">
+                  <msf:ProtectionLevel>EncryptAndSign</msf:ProtectionLevel>
+                </msf:WindowsTransportSecurity>
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_IEmailVerificationManager_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <msf:WindowsTransportSecurity xmlns:msf="http://schemas.microsoft.com/ws/2006/05/framing/policy">
+                  <msf:ProtectionLevel>EncryptAndSign</msf:ProtectionLevel>
+                </msf:WindowsTransportSecurity>
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_ILeaderboardManager_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <msf:WindowsTransportSecurity xmlns:msf="http://schemas.microsoft.com/ws/2006/05/framing/policy">
+                  <msf:ProtectionLevel>EncryptAndSign</msf:ProtectionLevel>
+                </msf:WindowsTransportSecurity>
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd0" namespace="http://tempuri.org/" />
@@ -145,12 +232,6 @@
   <wsdl:message name="IUserManager_updateProfilePic_OutputMessage">
     <wsdl:part name="parameters" element="tns:updateProfilePicResponse" />
   </wsdl:message>
-  <wsdl:message name="IUserManager_updateLoginPassword_InputMessage">
-    <wsdl:part name="parameters" element="tns:updateLoginPassword" />
-  </wsdl:message>
-  <wsdl:message name="IUserManager_updateLoginPassword_OutputMessage">
-    <wsdl:part name="parameters" element="tns:updateLoginPasswordResponse" />
-  </wsdl:message>
   <wsdl:message name="IFriendsManager_addFriend_InputMessage">
     <wsdl:part name="parameters" element="tns:addFriend" />
   </wsdl:message>
@@ -202,6 +283,42 @@
   <wsdl:message name="IChatManager_broadcastMessage_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:broadcastMessage" />
   </wsdl:message>
+  <wsdl:message name="IPasswordRecoveryManager_SendRecoveryCode_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendRecoveryCode" />
+  </wsdl:message>
+  <wsdl:message name="IPasswordRecoveryManager_SendRecoveryCode_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SendRecoveryCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPasswordRecoveryManager_VerifyRecoveryCode_InputMessage">
+    <wsdl:part name="parameters" element="tns:VerifyRecoveryCode" />
+  </wsdl:message>
+  <wsdl:message name="IPasswordRecoveryManager_VerifyRecoveryCode_OutputMessage">
+    <wsdl:part name="parameters" element="tns:VerifyRecoveryCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPasswordRecoveryManager_UpdatePassword_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatePassword" />
+  </wsdl:message>
+  <wsdl:message name="IPasswordRecoveryManager_UpdatePassword_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatePasswordResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEmailVerificationManager_sendVerificationCodeRegister_InputMessage">
+    <wsdl:part name="parameters" element="tns:sendVerificationCodeRegister" />
+  </wsdl:message>
+  <wsdl:message name="IEmailVerificationManager_sendVerificationCodeRegister_OutputMessage">
+    <wsdl:part name="parameters" element="tns:sendVerificationCodeRegisterResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEmailVerificationManager_verifyCode_InputMessage">
+    <wsdl:part name="parameters" element="tns:verifyCode" />
+  </wsdl:message>
+  <wsdl:message name="IEmailVerificationManager_verifyCode_OutputMessage">
+    <wsdl:part name="parameters" element="tns:verifyCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILeaderboardManager_getHighestScores_InputMessage">
+    <wsdl:part name="parameters" element="tns:getHighestScores" />
+  </wsdl:message>
+  <wsdl:message name="ILeaderboardManager_getHighestScores_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getHighestScoresResponse" />
+  </wsdl:message>
   <wsdl:portType name="IUserManager">
     <wsdl:operation name="createAccount">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/createAccount" message="tns:IUserManager_createAccount_InputMessage" />
@@ -235,10 +352,6 @@
     <wsdl:operation name="updateProfilePic">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/updateProfilePic" message="tns:IUserManager_updateProfilePic_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserManager/updateProfilePicResponse" message="tns:IUserManager_updateProfilePic_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="updateLoginPassword">
-      <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/updateLoginPassword" message="tns:IUserManager_updateLoginPassword_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IUserManager/updateLoginPasswordResponse" message="tns:IUserManager_updateLoginPassword_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IFriendsManager">
@@ -278,6 +391,36 @@
     </wsdl:operation>
     <wsdl:operation name="broadcastMessage">
       <wsdl:output wsaw:Action="http://tempuri.org/IChatManager/broadcastMessage" message="tns:IChatManager_broadcastMessage_OutputCallbackMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IPasswordRecoveryManager">
+    <wsdl:operation name="SendRecoveryCode">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPasswordRecoveryManager/SendRecoveryCode" message="tns:IPasswordRecoveryManager_SendRecoveryCode_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPasswordRecoveryManager/SendRecoveryCodeResponse" message="tns:IPasswordRecoveryManager_SendRecoveryCode_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="VerifyRecoveryCode">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPasswordRecoveryManager/VerifyRecoveryCode" message="tns:IPasswordRecoveryManager_VerifyRecoveryCode_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPasswordRecoveryManager/VerifyRecoveryCodeResponse" message="tns:IPasswordRecoveryManager_VerifyRecoveryCode_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePassword">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPasswordRecoveryManager/UpdatePassword" message="tns:IPasswordRecoveryManager_UpdatePassword_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPasswordRecoveryManager/UpdatePasswordResponse" message="tns:IPasswordRecoveryManager_UpdatePassword_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IEmailVerificationManager">
+    <wsdl:operation name="sendVerificationCodeRegister">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEmailVerificationManager/sendVerificationCodeRegister" message="tns:IEmailVerificationManager_sendVerificationCodeRegister_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEmailVerificationManager/sendVerificationCodeRegisterResponse" message="tns:IEmailVerificationManager_sendVerificationCodeRegister_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="verifyCode">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEmailVerificationManager/verifyCode" message="tns:IEmailVerificationManager_verifyCode_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEmailVerificationManager/verifyCodeResponse" message="tns:IEmailVerificationManager_verifyCode_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ILeaderboardManager">
+    <wsdl:operation name="getHighestScores">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILeaderboardManager/getHighestScores" message="tns:ILeaderboardManager_getHighestScores_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILeaderboardManager/getHighestScoresResponse" message="tns:ILeaderboardManager_getHighestScores_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IUserManager" type="tns:IUserManager">
@@ -351,15 +494,6 @@
     </wsdl:operation>
     <wsdl:operation name="updateProfilePic">
       <soap12:operation soapAction="http://tempuri.org/IUserManager/updateProfilePic" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="updateLoginPassword">
-      <soap12:operation soapAction="http://tempuri.org/IUserManager/updateLoginPassword" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -454,6 +588,72 @@
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_IPasswordRecoveryManager" type="tns:IPasswordRecoveryManager">
+    <wsp:PolicyReference URI="#NetTcpBinding_IPasswordRecoveryManager_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="SendRecoveryCode">
+      <soap12:operation soapAction="http://tempuri.org/IPasswordRecoveryManager/SendRecoveryCode" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VerifyRecoveryCode">
+      <soap12:operation soapAction="http://tempuri.org/IPasswordRecoveryManager/VerifyRecoveryCode" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePassword">
+      <soap12:operation soapAction="http://tempuri.org/IPasswordRecoveryManager/UpdatePassword" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_IEmailVerificationManager" type="tns:IEmailVerificationManager">
+    <wsp:PolicyReference URI="#NetTcpBinding_IEmailVerificationManager_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="sendVerificationCodeRegister">
+      <soap12:operation soapAction="http://tempuri.org/IEmailVerificationManager/sendVerificationCodeRegister" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="verifyCode">
+      <soap12:operation soapAction="http://tempuri.org/IEmailVerificationManager/verifyCode" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_ILeaderboardManager" type="tns:ILeaderboardManager">
+    <wsp:PolicyReference URI="#NetTcpBinding_ILeaderboardManager_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="getHighestScores">
+      <soap12:operation soapAction="http://tempuri.org/ILeaderboardManager/getHighestScores" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
   <wsdl:service name="TripasGameService">
     <wsdl:port name="NetTcpBinding_IUserManager" binding="tns:NetTcpBinding_IUserManager">
       <soap12:address location="net.tcp://localhost:8081/UserManager" />
@@ -477,6 +677,33 @@
       <soap12:address location="net.tcp://localhost:8081/ChatManager" />
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8081/ChatManager</wsa10:Address>
+        <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
+          <Upn>ERICK_ATZIN\abdie</Upn>
+        </Identity>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_IPasswordRecoveryManager" binding="tns:NetTcpBinding_IPasswordRecoveryManager">
+      <soap12:address location="net.tcp://localhost:8081/PasswordRecoveryManager" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:8081/PasswordRecoveryManager</wsa10:Address>
+        <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
+          <Upn>ERICK_ATZIN\abdie</Upn>
+        </Identity>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_IEmailVerificationManager" binding="tns:NetTcpBinding_IEmailVerificationManager">
+      <soap12:address location="net.tcp://localhost:8081/EmailVerificationManager" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:8081/EmailVerificationManager</wsa10:Address>
+        <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
+          <Upn>ERICK_ATZIN\abdie</Upn>
+        </Identity>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_ILeaderboardManager" binding="tns:NetTcpBinding_ILeaderboardManager">
+      <soap12:address location="net.tcp://localhost:8081/LeaderboardManager" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:8081/LeaderboardManager</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
           <Upn>ERICK_ATZIN\abdie</Upn>
         </Identity>
