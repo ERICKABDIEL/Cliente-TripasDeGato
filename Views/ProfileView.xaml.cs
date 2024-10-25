@@ -27,18 +27,20 @@ namespace TripasDeGatoCliente.Views
 
         private void EnableEditing()
         {
-            txtUserName.IsReadOnly = false;
+            txtUserName.IsEnabled = true;
             cboxLanguage.IsEnabled = true;
             btnSave.IsEnabled = true;
             isEditing = true;
+            btnSave.Visibility= Visibility.Visible;
         }
 
         private void DisableEditing()
         {
-            txtUserName.IsReadOnly = true;
+            txtUserName.IsEnabled= false;
             cboxLanguage.IsEnabled = false;
             btnSave.IsEnabled = false;
             isEditing = false;
+            btnSave.Visibility = Visibility.Collapsed;
         }
 
         private void btnEdit_Click(object sender, RoutedEventArgs e)

@@ -243,7 +243,7 @@ namespace TripasDeGatoCliente.Views
             }
         }
 
-        private void BtnBack_Click(object sender, RoutedEventArgs e)
+        private void BtnProfile_Click(object sender, RoutedEventArgs e)
         {
             GoToPerfilView();
         }

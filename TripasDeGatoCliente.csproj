@@ -176,7 +176,6 @@
   <ItemGroup>
     <Folder Include="Audio\" />
     <Folder Include="packages\" />
-    <Folder Include="Video\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\BackgroundCenter.png" />
@@ -199,7 +198,7 @@
     </None>
     <Resource Include="Images\DefaultImageProfile.png" />
     <Resource Include="Images\DefaultImageProfile2.png" />
-    <Content Include="Images\ViewWait.mp4">
+    <Content Include="Videos\ViewWait.mp4">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

@@ -171,8 +171,20 @@
   <data name="columnPoints" xml:space="preserve">
     <value>Puntos</value>
   </data>
+  <data name="dialogConnectionErrorWithServer" xml:space="preserve">
+    <value>Error de conexión con el servidor</value>
+  </data>
+  <data name="dialogInvalidEmail" xml:space="preserve">
+    <value>Correo inválido</value>
+  </data>
+  <data name="dialogInvalidPassword" xml:space="preserve">
+    <value>Contraseña inválida</value>
+  </data>
   <data name="dialogMissmatchesCredentials" xml:space="preserve">
     <value>Las credenciales no coinciden</value>
+  </data>
+  <data name="dialogNotRetrievedProfile" xml:space="preserve">
+    <value>No se pudo obtener el perfil del usuario</value>
   </data>
   <data name="dialogTiteWarning" xml:space="preserve">
     <value>Advertencia</value>
@@ -242,6 +254,9 @@
   </data>
   <data name="lbPasswordSignIn" xml:space="preserve">
     <value>Contraseña</value>
+  </data>
+  <data name="lbRecoverPassword" xml:space="preserve">
+    <value>Recuperar contraseña</value>
   </data>
   <data name="titleActionFailed" xml:space="preserve">
     <value>Acción fallida</value>

@@ -6,7 +6,7 @@ namespace TripasDeGatoCliente.Logic
 {
     public static class Validador
     {
-        private static Regex passwordRegex = new Regex("^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d\\W]{10,50}$", RegexOptions.None, TimeSpan.FromMilliseconds(1000));
+        private static Regex passwordRegex = new Regex("^(?=.*[A-Za-zñÑ])(?=.*\\d)[A-Za-zñÑ\\d\\W]{10,50}$", RegexOptions.None, TimeSpan.FromMilliseconds(1000));
         private static Regex usernameRegex = new Regex("^[A-Za-z0-9_]{5,50}$", RegexOptions.None, TimeSpan.FromMilliseconds(1000));
         private static Regex emailRegex = new Regex(@"^[^@\s]+@[^@\s]+\.[^@\s]+$", RegexOptions.None, TimeSpan.FromMilliseconds(1000));
         private static Regex codeLobbyMatchRegex = new Regex(@"^[A-Za-z0-9]{6}$", RegexOptions.None, TimeSpan.FromMilliseconds(1000));

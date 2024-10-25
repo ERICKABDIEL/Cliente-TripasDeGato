@@ -2,7 +2,6 @@
 using System;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
 using System.Windows.Media;
 using TripasDeGatoCliente.Logic;
 using TripasDeGatoCliente.Properties;
@@ -20,6 +19,7 @@ namespace TripasDeGatoCliente.Views
             txtEmail.TextChanged += TxtEmail_TextChanged;
             txtPassword.PasswordChanged += TxtPassword_PasswordChanged;
         }
+
         private void TxtEmail_TextChanged(object sender, TextChangedEventArgs e)
         {
             txtEmail.BorderBrush = new SolidColorBrush(Colors.White);
@@ -28,12 +28,27 @@ namespace TripasDeGatoCliente.Views
         private void TxtPassword_PasswordChanged(object sender, RoutedEventArgs e)
         {
             txtPassword.BorderBrush = new SolidColorBrush(Colors.White);
+            UpdatePasswordVisibilityIcon();
         }
 
         private void BtnLogin_Click(object sender, RoutedEventArgs e)
         {
             txtEmail.BorderBrush = new SolidColorBrush(Colors.White);
             txtPassword.BorderBrush = new SolidColorBrush(Colors.White);
+
+            if (string.IsNullOrWhiteSpace(txtEmail.Text))
+            {
+                txtEmail.BorderBrush = Brushes.Red;
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogInvalidEmail);
+                return; 
+            }
+
+            if (string.IsNullOrWhiteSpace(txtPassword.Password))
+            {
+                txtPassword.BorderBrush = Brushes.Red;
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogInvalidPassword);
+                return; 
+            }
 
             LoginUser userAccount = new LoginUser
             {
@@ -57,6 +72,7 @@ namespace TripasDeGatoCliente.Views
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogWrongData);
             }
         }
+
 
         private bool VerifyFields()
         {
@@ -96,18 +112,18 @@ namespace TripasDeGatoCliente.Views
                     }
                     else
                     {
-                        DialogManager.ShowErrorMessageAlert("No se pudo obtener el perfil del usuario.");
+                        DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogNotRetrievedProfile);
                     }
                 }
                 else
                 {
-                    DialogManager.ShowErrorMessageAlert("Correo o contraseña incorrectos.");
+                    DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogMissmatchesCredentials);
                 }
             }
             catch (Exception ex)
             {
                 logger.LogError(ex);
-                DialogManager.ShowErrorMessageAlert("Error de comunicación con el servidor.");
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogConnectionErrorWithServer);
             }
 
             return validateResult;
@@ -123,10 +139,15 @@ namespace TripasDeGatoCliente.Views
             MenuView menuView = new MenuView();
             this.NavigationService.Navigate(menuView);
         }
+
         private void BtnSignIn_Click(object sender, RoutedEventArgs e)
         {
             RegisterView registerView = new RegisterView();
             this.NavigationService.Navigate(registerView);
+        }
+        private void BtnGuest_Click(object sender, RoutedEventArgs e)
+        {
+
         }
 
         private void BtnTogglePassword_Checked(object sender, RoutedEventArgs e)
@@ -154,5 +175,11 @@ namespace TripasDeGatoCliente.Views
                 btnTogglePassword.Visibility = Visibility.Collapsed;
             }
         }
+
+        private void BtnRecoverPassword_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
     }
 }
