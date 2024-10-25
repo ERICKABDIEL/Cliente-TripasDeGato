@@ -16,13 +16,18 @@ namespace TripasDeGatoCliente.Views
             DisableEditing();
         }
 
-        // Método para cargar los datos del perfil desde el singleton
         private void LoadProfile()
         {
+            if (!string.IsNullOrEmpty(UserProfileSingleton.Nombre))
+            {
+                lbUserNameProfile.Content = UserProfileSingleton.Nombre;
+            }
+            else
+            {
+                lbUserNameProfile.Content = "Usuario desconocido";
+            }
             txtUserName.Text = UserProfileSingleton.Nombre;
-            cboxLanguage.SelectedItem = "Español"; // Aquí podrías ajustar según el idioma guardado, por ahora es un ejemplo
-            // Si tuvieras un campo para mostrar la imagen del perfil, podrías cargarlo así:
-            // imgProfilePicture.Source = new BitmapImage(new Uri(UserProfileSingleton.FotoRuta));
+            cboxLanguage.SelectedItem = "Español";
         }
 
         private void EnableEditing()

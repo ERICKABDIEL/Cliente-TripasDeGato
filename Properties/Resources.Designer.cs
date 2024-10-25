@@ -169,6 +169,15 @@ namespace TripasDeGatoCliente.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Resend Code.
+        /// </summary>
+        public static string btnResendCode {
+            get {
+                return ResourceManager.GetString("btnResendCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Save.
         /// </summary>
         public static string btnSave {
@@ -205,6 +214,15 @@ namespace TripasDeGatoCliente.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Validate.
+        /// </summary>
+        public static string btnValidate {
+            get {
+                return ResourceManager.GetString("btnValidate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Player.
         /// </summary>
         public static string columnPlayer {
@@ -223,11 +241,38 @@ namespace TripasDeGatoCliente.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Error creating account. Please try again.
+        /// </summary>
+        public static string dialogAccountCreatedErrror {
+            get {
+                return ResourceManager.GetString("dialogAccountCreatedErrror", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Account created successfully!.
+        /// </summary>
+        public static string dialogAccountCreatedSuccesfully {
+            get {
+                return ResourceManager.GetString("dialogAccountCreatedSuccesfully", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Connection error with the server.
         /// </summary>
         public static string dialogConnectionErrorWithServer {
             get {
                 return ResourceManager.GetString("dialogConnectionErrorWithServer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a This email is already registered. Please use a different email.
+        /// </summary>
+        public static string dialogEmailInUse {
+            get {
+                return ResourceManager.GetString("dialogEmailInUse", resourceCulture);
             }
         }
         
@@ -385,6 +430,15 @@ namespace TripasDeGatoCliente.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Valid example: user@domain.com.
+        /// </summary>
+        public static string lbEmailValid {
+            get {
+                return ResourceManager.GetString("lbEmailValid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Please choose a compatible file type.
         /// </summary>
         public static string lbFileFormat {
@@ -475,11 +529,29 @@ namespace TripasDeGatoCliente.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a 10 to 50 characters, with letters and numbers.
+        /// </summary>
+        public static string lbPasswordValid {
+            get {
+                return ResourceManager.GetString("lbPasswordValid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Recover Password.
         /// </summary>
         public static string lbRecoverPassword {
             get {
                 return ResourceManager.GetString("lbRecoverPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a 5 to 50 characters. Use letters, numbers, or _.
+        /// </summary>
+        public static string lbUserNameValid {
+            get {
+                return ResourceManager.GetString("lbUserNameValid", resourceCulture);
             }
         }
         

@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using log4net;
+using System.ServiceModel;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using TripasDeGatoCliente.Logic;
@@ -14,14 +16,57 @@ namespace TripasDeGatoCliente.Views
             InitializeComponent();
         }
 
-        private void BtnSignIn_Click(object sender, RoutedEventArgs e)
+        /*private void BtnSignIn_Click(object sender, RoutedEventArgs e)
         {
-            string email = txtCorreo.Text;
-            string username = txtNombre.Text;
+            string email = txtEmail.Text;
+            string username = txtName.Text;
             string password = txtPassword.Password;
 
             if (!ValidateFields(email, username, password))
             {
+                return;
+            }
+
+            var userProxy = new TripasDeGatoServicio.UserManagerClient();
+            bool emailRegistered = userProxy.isEmailRegistered(email);
+            if (emailRegistered)
+            {
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogEmailInUse);
+                HighlightField(txtEmail);
+                return;
+            }
+
+            // Proxy para IEmailVerificationManager
+            var emailVerificationProxy = new TripasDeGatoServicio.IEmail
+            int result = emailVerificationProxy.
+
+            if (result == Constants.SUCCES_OPERATION)
+            {
+                validationGrid.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                DialogManager.ShowErrorMessageAlert("Error sending verification code. Please try again.");
+            }
+        }*/
+
+        private void BtnSignIn_Click(object sender, RoutedEventArgs e)
+        {
+            string email = txtEmail.Text;
+            string username = txtName.Text;
+            string password = txtPassword.Password;
+
+            if (!ValidateFields(email, username, password))
+            {
+                return;
+            }
+
+            var userProxy = new TripasDeGatoServicio.UserManagerClient();
+            bool emailRegistered = userProxy.isEmailRegistered(email);
+            if (emailRegistered)
+            {
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogEmailInUse);
+                HighlightField(txtEmail);
                 return;
             }
 
@@ -35,10 +80,9 @@ namespace TripasDeGatoCliente.Views
             {
                 userName = username,
                 score = Constants.INITIAL_SCORE,
-                picturePath = "/Images/ImageDefaultProfile"
+                picturePath = "/Images/DefaultImageProfile"
             };
 
-            var proxy = new TripasDeGatoServicio.UserManagerClient();
             var loginUser = new TripasDeGatoServicio.LoginUser
             {
                 mail = email,
@@ -50,16 +94,16 @@ namespace TripasDeGatoCliente.Views
                 userName = username
             };
 
-            int result = proxy.createAccount(loginUser, profile);
+            int result = userProxy.createAccount(loginUser, profile);
 
             if (result == Constants.SUCCES_OPERATION)
             {
-                MessageBox.Show("Account created successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                DialogManager.ShowSuccessMessageAlert(Properties.Resources.dialogAccountCreatedSuccesfully);
                 GoToLoginView();
             }
             else
             {
-                MessageBox.Show("Error creating account. Please try again.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogAccountCreatedErrror);
             }
         }
 
@@ -69,38 +113,36 @@ namespace TripasDeGatoCliente.Views
 
             if (!Validador.ValidateEmail(email))
             {
-                txtCorreo.BorderBrush = Brushes.Red;
-                MessageBox.Show("Por favor complete este campo", "Error de Validación", MessageBoxButton.OK, MessageBoxImage.Error);
+                HighlightField(txtEmail);
+                lbInvalidEmail.Visibility = Visibility.Visible;
                 isValid = false;
-            }
-            else
-            {
-                txtCorreo.BorderBrush = Brushes.White;
             }
 
             if (!Validador.ValidateUsername(username))
             {
-                txtNombre.BorderBrush = Brushes.Red;
-                MessageBox.Show("Por favor complete este campo", "Error de Validación", MessageBoxButton.OK, MessageBoxImage.Error);
+                HighlightField(txtName);
+                lbInvalidUser.Visibility = Visibility.Visible;
                 isValid = false;
-            }
-            else
-            {
-                txtNombre.BorderBrush = Brushes.White;
             }
 
             if (!Validador.ValidatePassword(password))
             {
-                txtPassword.BorderBrush = Brushes.Red;
-                MessageBox.Show("Por favor complete este campo", "Error de Validación", MessageBoxButton.OK, MessageBoxImage.Error);
+                HighlightField(txtPassword);
+                lbInvalidPassword.Visibility = Visibility.Visible;
                 isValid = false;
             }
             else
             {
-                txtPassword.BorderBrush = Brushes.White;
+                ResetField(txtPassword);
+                lbInvalidPassword.Visibility = Visibility.Collapsed;
             }
 
             return isValid;
+        }
+
+        private void HighlightField(Control control)
+        {
+            control.BorderBrush = Brushes.Red;
         }
 
         private void GoToLoginView()
@@ -111,9 +153,109 @@ namespace TripasDeGatoCliente.Views
             }
         }
 
+        private void TxtPassword_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            string password = txtPassword.Password;
+
+            if (!Validador.ValidatePassword(password))
+            {
+                HighlightField(txtPassword);
+                lbInvalidPassword.Visibility = Visibility.Visible;
+                txtPassword.ToolTip = "Password does not meet the criteria";
+            }
+            else
+            {
+                ResetField(txtPassword);
+                lbInvalidPassword.Visibility = Visibility.Collapsed;
+
+                txtPassword.ToolTip = null;
+            }
+
+            UpdatePasswordVisibilityIcon();
+        }
+        private void ResetField(Control control)
+        {
+            control.BorderBrush = Brushes.White;
+        }
+
+        private void TxtName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string username = txtName.Text;
+            if (!Validador.ValidateUsername(username))
+            {
+                HighlightField(txtName);
+                lbInvalidUser.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                txtName.BorderBrush = Brushes.White;
+                lbInvalidUser.Visibility = Visibility.Collapsed;
+                txtName.ToolTip = null;
+            }
+        }
+
+        private void TxtEmail_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string email = txtEmail.Text;
+            if (!Validador.ValidateEmail(email))
+            {
+                HighlightField(txtEmail);
+                lbInvalidEmail.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                txtEmail.BorderBrush = Brushes.White;
+                lbInvalidEmail.Visibility = Visibility.Collapsed;
+                txtEmail.ToolTip = null;
+            }
+        }
+
+
+        private void BtnTogglePassword_Checked(object sender, RoutedEventArgs e)
+        {
+            txtPasswordVisible.Text = txtPassword.Password;
+            txtPasswordVisible.Visibility = Visibility.Visible;
+            txtPassword.Visibility = Visibility.Collapsed;
+        }
+
+        private void BtnTogglePassword_Unchecked(object sender, RoutedEventArgs e)
+        {
+            txtPassword.Password = txtPasswordVisible.Text;
+            txtPasswordVisible.Visibility = Visibility.Collapsed;
+            txtPassword.Visibility = Visibility.Visible;
+        }
+
+        private void UpdatePasswordVisibilityIcon()
+        {
+            if (txtPassword.Password.Length > 0)
+            {
+                btnTogglePassword.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                btnTogglePassword.Visibility = Visibility.Collapsed;
+            }
+        }
+
         private void BtnBack_Click(object sender, RoutedEventArgs e)
         {
             GoToLoginView();
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+        private void BtnValidate_Click(object sender, RoutedEventArgs e)
+        {
+        } 
+        private void BtnResendCode_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void BtnBackValidate_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

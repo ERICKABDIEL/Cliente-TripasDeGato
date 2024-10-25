@@ -11,9 +11,7 @@
       Background="Black"
       Foreground="{x:Null}">
 
-    <!-- Recursos de la página -->
     <Page.Resources>
-        <!-- Estilo para los botones -->
         <Style TargetType="{x:Type Button}">
             <Setter Property="Background" Value="#FF2C2C2C"/>
             <Setter Property="Foreground" Value="White"/>
@@ -40,14 +38,14 @@
                     <Setter Property="Background">
                         <Setter.Value>
                             <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                                <GradientStop Color="#FFA52BD2" Offset="0.0"/>
-                                <GradientStop Color="#FF310744" Offset="1.0"/>
+                                <GradientStop Color="#FFFCF8D7" Offset="0.0"/>
+                                <GradientStop Color="Black" Offset="1.0"/>
                             </LinearGradientBrush>
                         </Setter.Value>
                     </Setter>
                     <Setter Property="Effect">
                         <Setter.Value>
-                            <DropShadowEffect Color="#FFD876FC" ShadowDepth="10" BlurRadius="15"/>
+                            <DropShadowEffect Color="#FF86836A" ShadowDepth="10" BlurRadius="15"/>
                         </Setter.Value>
                     </Setter>
                 </Trigger>
@@ -59,14 +57,12 @@
         </Storyboard>
     </Page.Resources>
 
-    <!-- Grid principal -->
     <Grid Margin="0,-2,0,2">
         <Grid.RowDefinitions>
             <RowDefinition Height="131*"/>
             <RowDefinition Height="589*"/>
         </Grid.RowDefinitions>
 
-        <!-- Botón Volver -->
         <Button x:Name="btnBack" 
                 Content="{x:Static p:Resources.globalBtnBack}" 
                 HorizontalAlignment="Left" 
@@ -119,14 +115,14 @@
                             <Setter Property="Background">
                                 <Setter.Value>
                                     <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                                        <GradientStop Color="#FFA52BD2" Offset="0.0"/>
-                                        <GradientStop Color="#FF310744" Offset="1.0"/>
+                                        <GradientStop Color="#FFFCF8D7" Offset="0.0"/>
+                                        <GradientStop Color="Black" Offset="1.0"/>
                                     </LinearGradientBrush>
                                 </Setter.Value>
                             </Setter>
                             <Setter Property="Effect">
                                 <Setter.Value>
-                                    <DropShadowEffect Color="#FFD876FC" ShadowDepth="10" BlurRadius="15"/>
+                                    <DropShadowEffect Color="#FFFCF8D7" ShadowDepth="10" BlurRadius="15"/>
                                 </Setter.Value>
                             </Setter>
                         </Trigger>
@@ -135,7 +131,6 @@
             </Button.Style>
         </Button>
 
-        <!-- Logo del juego -->
         <Image x:Name="imageProfile" 
                Source="/Images/DefaultImageProfile.png" 
                HorizontalAlignment="Left" 
@@ -144,7 +139,6 @@
                VerticalAlignment="Top" 
                Width="410" Grid.RowSpan="2"/>
 
-        <!-- Botones del lobby -->
 
         <Button x:Name="btnEdit" 
                 Content="{x:Static p:Resources.btnEdit}" 
@@ -169,7 +163,6 @@
                 Click="btnSave_Click"
                 IsEnabled="False"/>
 
-        <!-- Información del usuario -->
         <Label x:Name="lbUserNameProfile" 
                Content="UserName" 
                HorizontalAlignment="Center" 
