@@ -153,6 +153,9 @@
   <data name="btnRemoveFriend" xml:space="preserve">
     <value>Eliminar</value>
   </data>
+  <data name="btnResendCode" xml:space="preserve">
+    <value>Reenviar Código</value>
+  </data>
   <data name="btnSave" xml:space="preserve">
     <value>Guardar</value>
   </data>
@@ -165,14 +168,26 @@
   <data name="btnStartGame" xml:space="preserve">
     <value>Crear partida</value>
   </data>
+  <data name="btnValidate" xml:space="preserve">
+    <value>Validar</value>
+  </data>
   <data name="columnPlayer" xml:space="preserve">
     <value>Jugador</value>
   </data>
   <data name="columnPoints" xml:space="preserve">
     <value>Puntos</value>
   </data>
+  <data name="dialogAccountCreatedErrror" xml:space="preserve">
+    <value>Error al crear la cuenta. Por favor intentelo de nuevo!</value>
+  </data>
+  <data name="dialogAccountCreatedSuccesfully" xml:space="preserve">
+    <value>La cuenta se ha creado exitosamente!</value>
+  </data>
   <data name="dialogConnectionErrorWithServer" xml:space="preserve">
     <value>Error de conexión con el servidor</value>
+  </data>
+  <data name="dialogEmailInUse" xml:space="preserve">
+    <value>Este correo ya ha sido registrado. Por favor use un correo distinto</value>
   </data>
   <data name="dialogInvalidEmail" xml:space="preserve">
     <value>Correo inválido</value>
@@ -225,6 +240,9 @@
   <data name="lbEmail" xml:space="preserve">
     <value>Correo</value>
   </data>
+  <data name="lbEmailValid" xml:space="preserve">
+    <value>Ejemplo válido usuario@dominio.com</value>
+  </data>
   <data name="lbFileFormat" xml:space="preserve">
     <value>Seleccione otro archivo que sí sea compatible</value>
   </data>
@@ -255,8 +273,14 @@
   <data name="lbPasswordSignIn" xml:space="preserve">
     <value>Contraseña</value>
   </data>
+  <data name="lbPasswordValid" xml:space="preserve">
+    <value>De 10 a 50 caracteres, con letras y números</value>
+  </data>
   <data name="lbRecoverPassword" xml:space="preserve">
     <value>Recuperar contraseña</value>
+  </data>
+  <data name="lbUserNameValid" xml:space="preserve">
+    <value>De 5 a 50 caracteres. Usa letras, números o _</value>
   </data>
   <data name="titleActionFailed" xml:space="preserve">
     <value>Acción fallida</value>

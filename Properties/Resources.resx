@@ -153,6 +153,9 @@
   <data name="btnRemoveFriend" xml:space="preserve">
     <value>Remove</value>
   </data>
+  <data name="btnResendCode" xml:space="preserve">
+    <value>Resend Code</value>
+  </data>
   <data name="btnSave" xml:space="preserve">
     <value>Save</value>
   </data>
@@ -165,14 +168,26 @@
   <data name="btnStartGame" xml:space="preserve">
     <value>Start game</value>
   </data>
+  <data name="btnValidate" xml:space="preserve">
+    <value>Validate</value>
+  </data>
   <data name="columnPlayer" xml:space="preserve">
     <value>Player</value>
   </data>
   <data name="columnPoints" xml:space="preserve">
     <value>Points</value>
   </data>
+  <data name="dialogAccountCreatedErrror" xml:space="preserve">
+    <value>Error creating account. Please try again</value>
+  </data>
+  <data name="dialogAccountCreatedSuccesfully" xml:space="preserve">
+    <value>Account created successfully!</value>
+  </data>
   <data name="dialogConnectionErrorWithServer" xml:space="preserve">
     <value>Connection error with the server</value>
+  </data>
+  <data name="dialogEmailInUse" xml:space="preserve">
+    <value>This email is already registered. Please use a different email</value>
   </data>
   <data name="dialogInvalidEmail" xml:space="preserve">
     <value>Invalid Email</value>
@@ -225,6 +240,9 @@
   <data name="lbEmail" xml:space="preserve">
     <value>Email</value>
   </data>
+  <data name="lbEmailValid" xml:space="preserve">
+    <value>Valid example: user@domain.com</value>
+  </data>
   <data name="lbFileFormat" xml:space="preserve">
     <value>Please choose a compatible file type</value>
   </data>
@@ -255,8 +273,14 @@
   <data name="lbPasswordSignIn" xml:space="preserve">
     <value>Password</value>
   </data>
+  <data name="lbPasswordValid" xml:space="preserve">
+    <value>10 to 50 characters, with letters and numbers</value>
+  </data>
   <data name="lbRecoverPassword" xml:space="preserve">
     <value>Recover Password</value>
+  </data>
+  <data name="lbUserNameValid" xml:space="preserve">
+    <value>5 to 50 characters. Use letters, numbers, or _</value>
   </data>
   <data name="titleActionFailed" xml:space="preserve">
     <value>Action failed</value>

@@ -88,282 +88,11 @@
     </wsp:ExactlyOne>
   </wsp:Policy>
   <wsdl:types>
-    <xs:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-      <xs:import namespace="http://schemas.datacontract.org/2004/07/TripasService.Contracts" />
-      <xs:element name="createAccount">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/TripasService.Contracts" minOccurs="0" name="user" nillable="true" type="q1:LoginUser" />
-            <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/TripasService.Contracts" minOccurs="0" name="profile" nillable="true" type="q2:Profile" />
-          </xs:sequence>
-        </xs:complexType>
-      </xs:element>
-      <xs:element name="createAccountResponse">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element minOccurs="0" name="createAccountResult" type="xs:int" />
-          </xs:sequence>
-        </xs:complexType>
-      </xs:element>
-      <xs:element name="updateProfile">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/TripasService.Contracts" minOccurs="0" name="profile" nillable="true" type="q3:Profile" />
-          </xs:sequence>
-        </xs:complexType>
-      </xs:element>
-      <xs:element name="updateProfileResponse">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element minOccurs="0" name="updateProfileResult" type="xs:int" />
-          </xs:sequence>
-        </xs:complexType>
-      </xs:element>
-      <xs:element name="getProfile">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
-            <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
-          </xs:sequence>
-        </xs:complexType>
-      </xs:element>
-      <xs:element name="getProfileResponse">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/TripasService.Contracts" minOccurs="0" name="getProfileResult" nillable="true" type="q4:Profile" />
-          </xs:sequence>
-        </xs:complexType>
-      </xs:element>
-      <xs:element name="verifyLogin">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/TripasService.Contracts" minOccurs="0" name="user" nillable="true" type="q5:LoginUser" />
-          </xs:sequence>
-        </xs:complexType>
-      </xs:element>
-      <xs:element name="verifyLoginResponse">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element minOccurs="0" name="verifyLoginResult" type="xs:int" />
-          </xs:sequence>
-        </xs:complexType>
-      </xs:element>
-      <xs:element name="getProfileId">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
-          </xs:sequence>
-        </xs:complexType>
-      </xs:element>
-      <xs:element name="getProfileIdResponse">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element minOccurs="0" name="getProfileIdResult" type="xs:int" />
-          </xs:sequence>
-        </xs:complexType>
-      </xs:element>
-      <xs:element name="addFriend">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element minOccurs="0" name="idProfile1" type="xs:int" />
-            <xs:element minOccurs="0" name="idProfile2" type="xs:int" />
-          </xs:sequence>
-        </xs:complexType>
-      </xs:element>
-      <xs:element name="addFriendResponse">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element minOccurs="0" name="addFriendResult" type="xs:int" />
-          </xs:sequence>
-        </xs:complexType>
-      </xs:element>
-      <xs:element name="deleteFriend">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element minOccurs="0" name="idProfile1" type="xs:int" />
-            <xs:element minOccurs="0" name="idProfile2" type="xs:int" />
-          </xs:sequence>
-        </xs:complexType>
-      </xs:element>
-      <xs:element name="deleteFriendResponse">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element minOccurs="0" name="deleteFriendResult" type="xs:int" />
-          </xs:sequence>
-        </xs:complexType>
-      </xs:element>
-      <xs:element name="deleteFriendship">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element minOccurs="0" name="userName1" nillable="true" type="xs:string" />
-            <xs:element minOccurs="0" name="userName2" nillable="true" type="xs:string" />
-          </xs:sequence>
-        </xs:complexType>
-      </xs:element>
-      <xs:element name="deleteFriendshipResponse">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element minOccurs="0" name="deleteFriendshipResult" type="xs:int" />
-          </xs:sequence>
-        </xs:complexType>
-      </xs:element>
-      <xs:element name="getFriends">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element minOccurs="0" name="idProfile" type="xs:int" />
-          </xs:sequence>
-        </xs:complexType>
-      </xs:element>
-      <xs:element name="getFriendsResponse">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/TripasService.Contracts" minOccurs="0" name="getFriendsResult" nillable="true" type="q6:ArrayOfProfile" />
-          </xs:sequence>
-        </xs:complexType>
-      </xs:element>
-      <xs:element name="sendMessage">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
-            <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/TripasService.Contracts" minOccurs="0" name="message" nillable="true" type="q7:Message" />
-          </xs:sequence>
-        </xs:complexType>
-      </xs:element>
-      <xs:element name="sendMessageResponse">
-        <xs:complexType>
-          <xs:sequence />
-        </xs:complexType>
-      </xs:element>
-      <xs:element name="connectToLobby">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
-          </xs:sequence>
-        </xs:complexType>
-      </xs:element>
-      <xs:element name="connectToLobbyResponse">
-        <xs:complexType>
-          <xs:sequence />
-        </xs:complexType>
-      </xs:element>
-      <xs:element name="leaveLobby">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
-          </xs:sequence>
-        </xs:complexType>
-      </xs:element>
-      <xs:element name="leaveLobbyResponse">
-        <xs:complexType>
-          <xs:sequence />
-        </xs:complexType>
-      </xs:element>
-      <xs:element name="getMessageHistory">
-        <xs:complexType>
-          <xs:sequence />
-        </xs:complexType>
-      </xs:element>
-      <xs:element name="getMessageHistoryResponse">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/TripasService.Contracts" minOccurs="0" name="getMessageHistoryResult" nillable="true" type="q8:ArrayOfMessage" />
-          </xs:sequence>
-        </xs:complexType>
-      </xs:element>
-      <xs:element name="broadcastMessage">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/TripasService.Contracts" minOccurs="0" name="message" nillable="true" type="q9:Message" />
-          </xs:sequence>
-        </xs:complexType>
-      </xs:element>
-    </xs:schema>
-    <xs:schema xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-      <xs:element name="anyType" nillable="true" type="xs:anyType" />
-      <xs:element name="anyURI" nillable="true" type="xs:anyURI" />
-      <xs:element name="base64Binary" nillable="true" type="xs:base64Binary" />
-      <xs:element name="boolean" nillable="true" type="xs:boolean" />
-      <xs:element name="byte" nillable="true" type="xs:byte" />
-      <xs:element name="dateTime" nillable="true" type="xs:dateTime" />
-      <xs:element name="decimal" nillable="true" type="xs:decimal" />
-      <xs:element name="double" nillable="true" type="xs:double" />
-      <xs:element name="float" nillable="true" type="xs:float" />
-      <xs:element name="int" nillable="true" type="xs:int" />
-      <xs:element name="long" nillable="true" type="xs:long" />
-      <xs:element name="QName" nillable="true" type="xs:QName" />
-      <xs:element name="short" nillable="true" type="xs:short" />
-      <xs:element name="string" nillable="true" type="xs:string" />
-      <xs:element name="unsignedByte" nillable="true" type="xs:unsignedByte" />
-      <xs:element name="unsignedInt" nillable="true" type="xs:unsignedInt" />
-      <xs:element name="unsignedLong" nillable="true" type="xs:unsignedLong" />
-      <xs:element name="unsignedShort" nillable="true" type="xs:unsignedShort" />
-      <xs:element name="char" nillable="true" type="tns:char" />
-      <xs:simpleType name="char">
-        <xs:restriction base="xs:int" />
-      </xs:simpleType>
-      <xs:element name="duration" nillable="true" type="tns:duration" />
-      <xs:simpleType name="duration">
-        <xs:restriction base="xs:duration">
-          <xs:pattern value="\-?P(\d*D)?(T(\d*H)?(\d*M)?(\d*(\.\d*)?S)?)?" />
-          <xs:minInclusive value="-P10675199DT2H48M5.4775808S" />
-          <xs:maxInclusive value="P10675199DT2H48M5.4775807S" />
-        </xs:restriction>
-      </xs:simpleType>
-      <xs:element name="guid" nillable="true" type="tns:guid" />
-      <xs:simpleType name="guid">
-        <xs:restriction base="xs:string">
-          <xs:pattern value="[\da-fA-F]{8}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{12}" />
-        </xs:restriction>
-      </xs:simpleType>
-      <xs:attribute name="FactoryType" type="xs:QName" />
-      <xs:attribute name="Id" type="xs:ID" />
-      <xs:attribute name="Ref" type="xs:IDREF" />
-    </xs:schema>
-    <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/TripasService.Contracts" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/TripasService.Contracts" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-      <xs:complexType name="LoginUser">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="idLoginUser" type="xs:int" />
-          <xs:element minOccurs="0" name="mail" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
-        </xs:sequence>
-      </xs:complexType>
-      <xs:element name="LoginUser" nillable="true" type="tns:LoginUser" />
-      <xs:complexType name="Profile">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="idProfile" type="xs:int" />
-          <xs:element minOccurs="0" name="picturePath" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="score" type="xs:int" />
-          <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
-        </xs:sequence>
-      </xs:complexType>
-      <xs:element name="Profile" nillable="true" type="tns:Profile" />
-      <xs:complexType name="ProfileNotFoundFault">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="errorMessage" nillable="true" type="xs:string" />
-        </xs:sequence>
-      </xs:complexType>
-      <xs:element name="ProfileNotFoundFault" nillable="true" type="tns:ProfileNotFoundFault" />
-      <xs:complexType name="ArrayOfProfile">
-        <xs:sequence>
-          <xs:element minOccurs="0" maxOccurs="unbounded" name="Profile" nillable="true" type="tns:Profile" />
-        </xs:sequence>
-      </xs:complexType>
-      <xs:element name="ArrayOfProfile" nillable="true" type="tns:ArrayOfProfile" />
-      <xs:complexType name="Message">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="chatMessage" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="timeStamp" type="xs:dateTime" />
-          <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
-        </xs:sequence>
-      </xs:complexType>
-      <xs:element name="Message" nillable="true" type="tns:Message" />
-      <xs:complexType name="ArrayOfMessage">
-        <xs:sequence>
-          <xs:element minOccurs="0" maxOccurs="unbounded" name="Message" nillable="true" type="tns:Message" />
-        </xs:sequence>
-      </xs:complexType>
-      <xs:element name="ArrayOfMessage" nillable="true" type="tns:ArrayOfMessage" />
-    </xs:schema>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/TripasService.Contracts" />
+    </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IUserManager_createAccount_InputMessage">
     <wsdl:part name="parameters" element="tns:createAccount" />
@@ -397,6 +126,30 @@
   </wsdl:message>
   <wsdl:message name="IUserManager_getProfileId_ProfileNotFoundFaultFault_FaultMessage">
     <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/TripasService.Contracts" name="detail" element="q1:ProfileNotFoundFault" />
+  </wsdl:message>
+  <wsdl:message name="IUserManager_isEmailRegistered_InputMessage">
+    <wsdl:part name="parameters" element="tns:isEmailRegistered" />
+  </wsdl:message>
+  <wsdl:message name="IUserManager_isEmailRegistered_OutputMessage">
+    <wsdl:part name="parameters" element="tns:isEmailRegisteredResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserManager_updateProfileName_InputMessage">
+    <wsdl:part name="parameters" element="tns:updateProfileName" />
+  </wsdl:message>
+  <wsdl:message name="IUserManager_updateProfileName_OutputMessage">
+    <wsdl:part name="parameters" element="tns:updateProfileNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserManager_updateProfilePic_InputMessage">
+    <wsdl:part name="parameters" element="tns:updateProfilePic" />
+  </wsdl:message>
+  <wsdl:message name="IUserManager_updateProfilePic_OutputMessage">
+    <wsdl:part name="parameters" element="tns:updateProfilePicResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserManager_updateLoginPassword_InputMessage">
+    <wsdl:part name="parameters" element="tns:updateLoginPassword" />
+  </wsdl:message>
+  <wsdl:message name="IUserManager_updateLoginPassword_OutputMessage">
+    <wsdl:part name="parameters" element="tns:updateLoginPasswordResponse" />
   </wsdl:message>
   <wsdl:message name="IFriendsManager_addFriend_InputMessage">
     <wsdl:part name="parameters" element="tns:addFriend" />
@@ -470,6 +223,22 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/getProfileId" message="tns:IUserManager_getProfileId_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserManager/getProfileIdResponse" message="tns:IUserManager_getProfileId_OutputMessage" />
       <wsdl:fault wsaw:Action="http://tempuri.org/IUserManager/getProfileIdProfileNotFoundFaultFault" name="ProfileNotFoundFaultFault" message="tns:IUserManager_getProfileId_ProfileNotFoundFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="isEmailRegistered">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/isEmailRegistered" message="tns:IUserManager_isEmailRegistered_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserManager/isEmailRegisteredResponse" message="tns:IUserManager_isEmailRegistered_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="updateProfileName">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/updateProfileName" message="tns:IUserManager_updateProfileName_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserManager/updateProfileNameResponse" message="tns:IUserManager_updateProfileName_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="updateProfilePic">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/updateProfilePic" message="tns:IUserManager_updateProfilePic_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserManager/updateProfilePicResponse" message="tns:IUserManager_updateProfilePic_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="updateLoginPassword">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/updateLoginPassword" message="tns:IUserManager_updateLoginPassword_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserManager/updateLoginPasswordResponse" message="tns:IUserManager_updateLoginPassword_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IFriendsManager">
@@ -561,6 +330,42 @@
       <wsdl:fault name="ProfileNotFoundFaultFault">
         <soap12:fault use="literal" name="ProfileNotFoundFaultFault" namespace="" />
       </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="isEmailRegistered">
+      <soap12:operation soapAction="http://tempuri.org/IUserManager/isEmailRegistered" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateProfileName">
+      <soap12:operation soapAction="http://tempuri.org/IUserManager/updateProfileName" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateProfilePic">
+      <soap12:operation soapAction="http://tempuri.org/IUserManager/updateProfilePic" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateLoginPassword">
+      <soap12:operation soapAction="http://tempuri.org/IUserManager/updateLoginPassword" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="NetTcpBinding_IFriendsManager" type="tns:IFriendsManager">

@@ -322,10 +322,10 @@ namespace TripasDeGatoCliente.TripasDeGatoServicio {
         System.Threading.Tasks.Task<int> updateProfileAsync(TripasDeGatoCliente.TripasDeGatoServicio.Profile profile);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/getProfile", ReplyAction="http://tempuri.org/IUserManager/getProfileResponse")]
-        TripasDeGatoCliente.TripasDeGatoServicio.Profile getProfile(string email, string password);
+        TripasDeGatoCliente.TripasDeGatoServicio.Profile getProfile(string mail, string password);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/getProfile", ReplyAction="http://tempuri.org/IUserManager/getProfileResponse")]
-        System.Threading.Tasks.Task<TripasDeGatoCliente.TripasDeGatoServicio.Profile> getProfileAsync(string email, string password);
+        System.Threading.Tasks.Task<TripasDeGatoCliente.TripasDeGatoServicio.Profile> getProfileAsync(string mail, string password);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/verifyLogin", ReplyAction="http://tempuri.org/IUserManager/verifyLoginResponse")]
         int verifyLogin(TripasDeGatoCliente.TripasDeGatoServicio.LoginUser user);
@@ -339,6 +339,30 @@ namespace TripasDeGatoCliente.TripasDeGatoServicio {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/getProfileId", ReplyAction="http://tempuri.org/IUserManager/getProfileIdResponse")]
         System.Threading.Tasks.Task<int> getProfileIdAsync(string userName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/isEmailRegistered", ReplyAction="http://tempuri.org/IUserManager/isEmailRegisteredResponse")]
+        bool isEmailRegistered(string mail);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/isEmailRegistered", ReplyAction="http://tempuri.org/IUserManager/isEmailRegisteredResponse")]
+        System.Threading.Tasks.Task<bool> isEmailRegisteredAsync(string mail);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/updateProfileName", ReplyAction="http://tempuri.org/IUserManager/updateProfileNameResponse")]
+        int updateProfileName(int idProfile, string newProfileName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/updateProfileName", ReplyAction="http://tempuri.org/IUserManager/updateProfileNameResponse")]
+        System.Threading.Tasks.Task<int> updateProfileNameAsync(int idProfile, string newProfileName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/updateProfilePic", ReplyAction="http://tempuri.org/IUserManager/updateProfilePicResponse")]
+        int updateProfilePic(int idProfile, string newProfilePic);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/updateProfilePic", ReplyAction="http://tempuri.org/IUserManager/updateProfilePicResponse")]
+        System.Threading.Tasks.Task<int> updateProfilePicAsync(int idProfile, string newProfilePic);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/updateLoginPassword", ReplyAction="http://tempuri.org/IUserManager/updateLoginPasswordResponse")]
+        int updateLoginPassword(string mail, string newPassword);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/updateLoginPassword", ReplyAction="http://tempuri.org/IUserManager/updateLoginPasswordResponse")]
+        System.Threading.Tasks.Task<int> updateLoginPasswordAsync(string mail, string newPassword);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -384,12 +408,12 @@ namespace TripasDeGatoCliente.TripasDeGatoServicio {
             return base.Channel.updateProfileAsync(profile);
         }
         
-        public TripasDeGatoCliente.TripasDeGatoServicio.Profile getProfile(string email, string password) {
-            return base.Channel.getProfile(email, password);
+        public TripasDeGatoCliente.TripasDeGatoServicio.Profile getProfile(string mail, string password) {
+            return base.Channel.getProfile(mail, password);
         }
         
-        public System.Threading.Tasks.Task<TripasDeGatoCliente.TripasDeGatoServicio.Profile> getProfileAsync(string email, string password) {
-            return base.Channel.getProfileAsync(email, password);
+        public System.Threading.Tasks.Task<TripasDeGatoCliente.TripasDeGatoServicio.Profile> getProfileAsync(string mail, string password) {
+            return base.Channel.getProfileAsync(mail, password);
         }
         
         public int verifyLogin(TripasDeGatoCliente.TripasDeGatoServicio.LoginUser user) {
@@ -406,6 +430,38 @@ namespace TripasDeGatoCliente.TripasDeGatoServicio {
         
         public System.Threading.Tasks.Task<int> getProfileIdAsync(string userName) {
             return base.Channel.getProfileIdAsync(userName);
+        }
+        
+        public bool isEmailRegistered(string mail) {
+            return base.Channel.isEmailRegistered(mail);
+        }
+        
+        public System.Threading.Tasks.Task<bool> isEmailRegisteredAsync(string mail) {
+            return base.Channel.isEmailRegisteredAsync(mail);
+        }
+        
+        public int updateProfileName(int idProfile, string newProfileName) {
+            return base.Channel.updateProfileName(idProfile, newProfileName);
+        }
+        
+        public System.Threading.Tasks.Task<int> updateProfileNameAsync(int idProfile, string newProfileName) {
+            return base.Channel.updateProfileNameAsync(idProfile, newProfileName);
+        }
+        
+        public int updateProfilePic(int idProfile, string newProfilePic) {
+            return base.Channel.updateProfilePic(idProfile, newProfilePic);
+        }
+        
+        public System.Threading.Tasks.Task<int> updateProfilePicAsync(int idProfile, string newProfilePic) {
+            return base.Channel.updateProfilePicAsync(idProfile, newProfilePic);
+        }
+        
+        public int updateLoginPassword(string mail, string newPassword) {
+            return base.Channel.updateLoginPassword(mail, newPassword);
+        }
+        
+        public System.Threading.Tasks.Task<int> updateLoginPasswordAsync(string mail, string newPassword) {
+            return base.Channel.updateLoginPasswordAsync(mail, newPassword);
         }
     }
     
