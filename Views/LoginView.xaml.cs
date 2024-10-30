@@ -50,15 +50,12 @@ namespace TripasDeGatoCliente.Views
                 return; 
             }
 
-            LoginUser userAccount = new LoginUser
-            {
-                mail = txtEmail.Text,
-                password = Hasher.HashToSHA256(txtPassword.Password)
-            };
+            string mail = txtEmail.Text;
+            string password = Hasher.HashToSHA256(txtPassword.Password);
 
             if (VerifyFields())
             {
-                if (ValidateCredentials(userAccount))
+                if (ValidateCredentials(mail, password))
                 {
                     DisplayMainMenuView();
                 }
@@ -91,7 +88,7 @@ namespace TripasDeGatoCliente.Views
             return passwordValid && emailValid;
         }
 
-        public bool ValidateCredentials(LoginUser user)
+        public bool ValidateCredentials(string mail, string password)
         {
             bool validateResult = false;
             LoggerManager logger = new LoggerManager(this.GetType());
@@ -100,11 +97,11 @@ namespace TripasDeGatoCliente.Views
             try
             {
                 IUserManager userManager = new UserManagerClient();
-                validationResult = userManager.verifyLogin(user);
+                validationResult = userManager.verifyLogin(mail, password);
 
                 if (validationResult == Constants.DATA_MATCHES)
                 {
-                    Profile profile = userManager.getProfile(user.mail, user.password);
+                    Profile profile = userManager.getProfileByMail(mail);
                     if (profile != null)
                     {
                         ObtainSingletonData(profile);

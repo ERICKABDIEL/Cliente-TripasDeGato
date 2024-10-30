@@ -30,25 +30,11 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="getProfile">
+  <xs:element name="verifyLogin">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="mail" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="getProfileResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/TripasService.Contracts" minOccurs="0" name="getProfileResult" nillable="true" type="q4:Profile" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="verifyLogin">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/TripasService.Contracts" minOccurs="0" name="user" nillable="true" type="q5:LoginUser" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -117,18 +103,17 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="updateLoginPassword">
+  <xs:element name="getProfileByMail">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="mail" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="newPassword" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="updateLoginPasswordResponse">
+  <xs:element name="getProfileByMailResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="updateLoginPasswordResult" type="xs:int" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/TripasService.Contracts" minOccurs="0" name="getProfileByMailResult" nillable="true" type="q4:Profile" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -187,7 +172,7 @@
   <xs:element name="getFriendsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/TripasService.Contracts" minOccurs="0" name="getFriendsResult" nillable="true" type="q6:ArrayOfProfile" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/TripasService.Contracts" minOccurs="0" name="getFriendsResult" nillable="true" type="q5:ArrayOfProfile" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -195,7 +180,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/TripasService.Contracts" minOccurs="0" name="message" nillable="true" type="q7:Message" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/TripasService.Contracts" minOccurs="0" name="message" nillable="true" type="q6:Message" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -236,14 +221,99 @@
   <xs:element name="getMessageHistoryResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/TripasService.Contracts" minOccurs="0" name="getMessageHistoryResult" nillable="true" type="q8:ArrayOfMessage" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/TripasService.Contracts" minOccurs="0" name="getMessageHistoryResult" nillable="true" type="q7:ArrayOfMessage" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="broadcastMessage">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/TripasService.Contracts" minOccurs="0" name="message" nillable="true" type="q9:Message" />
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/TripasService.Contracts" minOccurs="0" name="message" nillable="true" type="q8:Message" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendRecoveryCode">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendRecoveryCodeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SendRecoveryCodeResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="VerifyRecoveryCode">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="code" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="VerifyRecoveryCodeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="VerifyRecoveryCodeResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdatePassword">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="newPassword" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdatePasswordResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UpdatePasswordResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="sendVerificationCodeRegister">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="sendVerificationCodeRegisterResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sendVerificationCodeRegisterResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="verifyCode">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="code" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="verifyCodeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="verifyCodeResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getHighestScores">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getHighestScoresResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/TripasService.Contracts" minOccurs="0" name="getHighestScoresResult" nillable="true" type="q9:ArrayOfProfile" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

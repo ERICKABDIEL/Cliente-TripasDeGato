@@ -22,11 +22,12 @@
     <MetadataSource Address="http://localhost:8082" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="5ae2cc4c-43f9-4f07-b5ff-6eac36e49115" SourceId="1" SourceUrl="http://localhost:8082/?xsd=xsd2" />
-    <MetadataFile FileName="TripasGameService.wsdl" MetadataType="Wsdl" ID="5e2de370-e294-438b-8d74-3018686f72cf" SourceId="1" SourceUrl="http://localhost:8082/?wsdl" />
     <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="b050a23c-58e0-4ee8-9f09-558fa2ee4dba" SourceId="1" SourceUrl="http://localhost:8082/?xsd=xsd0" />
-    <MetadataFile FileName="item.disco" MetadataType="Disco" ID="8bb9ef18-fbf9-4b35-b99e-a4e43ce342e1" SourceId="1" SourceUrl="http://localhost:8082/?disco" />
     <MetadataFile FileName="item2.xsd" MetadataType="Schema" ID="0b39f717-9496-498f-ac3c-4fac9e9b011b" SourceId="1" SourceUrl="http://localhost:8082/?xsd=xsd1" />
+    <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="5ae2cc4c-43f9-4f07-b5ff-6eac36e49115" SourceId="1" SourceUrl="http://localhost:8082/?xsd=xsd2" />
+    <MetadataFile FileName="item3.xsd" MetadataType="Schema" ID="14dca751-6b05-40ca-875a-cbffd17aec53" SourceId="1" SourceUrl="http://localhost:8082/?xsd=xsd3" />
+    <MetadataFile FileName="item.disco" MetadataType="Disco" ID="8bb9ef18-fbf9-4b35-b99e-a4e43ce342e1" SourceId="1" SourceUrl="http://localhost:8082/?disco" />
+    <MetadataFile FileName="TripasGameService.wsdl" MetadataType="Wsdl" ID="5e2de370-e294-438b-8d74-3018686f72cf" SourceId="1" SourceUrl="http://localhost:8082/?wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
