@@ -346,10 +346,10 @@ namespace TripasDeGatoCliente.TripasDeGatoServicio {
         System.Threading.Tasks.Task<int> createAccountAsync(TripasDeGatoCliente.TripasDeGatoServicio.LoginUser user, TripasDeGatoCliente.TripasDeGatoServicio.Profile profile);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/updateProfile", ReplyAction="http://tempuri.org/IUserManager/updateProfileResponse")]
-        int updateProfile(TripasDeGatoCliente.TripasDeGatoServicio.Profile profile);
+        int updateProfile(int idProfile, string newUsername, string newPic);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/updateProfile", ReplyAction="http://tempuri.org/IUserManager/updateProfileResponse")]
-        System.Threading.Tasks.Task<int> updateProfileAsync(TripasDeGatoCliente.TripasDeGatoServicio.Profile profile);
+        System.Threading.Tasks.Task<int> updateProfileAsync(int idProfile, string newUsername, string newPic);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/verifyLogin", ReplyAction="http://tempuri.org/IUserManager/verifyLoginResponse")]
         int verifyLogin(string mail, string password);
@@ -424,12 +424,12 @@ namespace TripasDeGatoCliente.TripasDeGatoServicio {
             return base.Channel.createAccountAsync(user, profile);
         }
         
-        public int updateProfile(TripasDeGatoCliente.TripasDeGatoServicio.Profile profile) {
-            return base.Channel.updateProfile(profile);
+        public int updateProfile(int idProfile, string newUsername, string newPic) {
+            return base.Channel.updateProfile(idProfile, newUsername, newPic);
         }
         
-        public System.Threading.Tasks.Task<int> updateProfileAsync(TripasDeGatoCliente.TripasDeGatoServicio.Profile profile) {
-            return base.Channel.updateProfileAsync(profile);
+        public System.Threading.Tasks.Task<int> updateProfileAsync(int idProfile, string newUsername, string newPic) {
+            return base.Channel.updateProfileAsync(idProfile, newUsername, newPic);
         }
         
         public int verifyLogin(string mail, string password) {
