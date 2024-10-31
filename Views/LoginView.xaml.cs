@@ -289,7 +289,7 @@ namespace TripasDeGatoCliente.Views
 
             IPasswordRecoveryManager passwordRecovery = new PasswordRecoveryManagerClient();
 
-            int result = passwordRecovery.UpdatePassword(email, Hasher.HashToSHA256(newPassword));
+            int result = passwordRecovery.UpdatePassword(userEmail, Hasher.HashToSHA256(newPassword));
 
             if (result == Constants.SUCCES_OPERATION) {
                 DialogManager.ShowSuccessMessageAlert("La contraseña ha sido actualizada exitosamente.");
