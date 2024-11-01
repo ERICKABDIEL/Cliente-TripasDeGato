@@ -8,6 +8,7 @@ using static TripasDeGatoCliente.Logic.ConstantsManager;
 using TripasDeGatoCliente.TripasDeGatoServicio;
 using System.Threading.Tasks;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace TripasDeGatoCliente.Views
 {
@@ -15,12 +16,14 @@ namespace TripasDeGatoCliente.Views
     {
         private UserManagerClient userManager;
         private FriendsManagerClient friendsManager;
+        private StatusManagerClient statusManager;
 
         public MenuView()
         {
             InitializeComponent();
             userManager = new UserManagerClient();
             friendsManager = new FriendsManagerClient();
+            statusManager = new StatusManagerClient();
             LoadUserProfileAsync();
         }
 
@@ -153,21 +156,25 @@ namespace TripasDeGatoCliente.Views
             }
         }
 
-        private async Task LoadFriendsListAsync()
-        {
-            try
-            {
+        private async Task LoadFriendsListAsync() {
+            try {
                 int userProfileId = UserProfileSingleton.IdPerfil;
+
+                // Obtener la lista de amigos
                 var friendsList = await friendsManager.getFriendsAsync(userProfileId);
 
-                // Extraemos solo los nombres de los amigos para mostrar en la lista
-                var friendNames = friendsList.Select(friend => friend.userName).ToList();
+                // Crear una lista para almacenar amigos con su estado
+                var friendsWithStatus = new List<string>();
 
-                // Asignamos la lista de nombres al ListBox
-                lstFriends.ItemsSource = friendNames;
-            }
-            catch (Exception ex)
-            {
+                // Iterar sobre la lista de amigos y consultar su estado
+                foreach (var friend in friendsList) {
+                    var status = await statusManager.GetPlayerStatusAsync(friend.idProfile); // Asume que tienes un método async para esto
+                    friendsWithStatus.Add($"{friend.userName} - {status}");
+                }
+
+                // Asignamos la lista de amigos con estado al ListBox
+                lstFriends.ItemsSource = friendsWithStatus;
+            } catch (Exception ex) {
                 MessageBox.Show($"Ocurrió un error al cargar la lista de amigos: {ex.Message}");
             }
         }

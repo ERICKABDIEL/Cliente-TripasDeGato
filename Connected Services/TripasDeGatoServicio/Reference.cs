@@ -109,7 +109,7 @@ namespace TripasDeGatoCliente.TripasDeGatoServicio {
         private int scoreField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private TripasDeGatoCliente.TripasDeGatoServicio.GaneEnumsPlayerStatus statusField;
+        private TripasDeGatoCliente.TripasDeGatoServicio.PlayerStatus statusField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string userNameField;
@@ -164,7 +164,7 @@ namespace TripasDeGatoCliente.TripasDeGatoServicio {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public TripasDeGatoCliente.TripasDeGatoServicio.GaneEnumsPlayerStatus status {
+        public TripasDeGatoCliente.TripasDeGatoServicio.PlayerStatus status {
             get {
                 return this.statusField;
             }
@@ -200,8 +200,8 @@ namespace TripasDeGatoCliente.TripasDeGatoServicio {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="GaneEnums.PlayerStatus", Namespace="http://schemas.datacontract.org/2004/07/TripasService.Enums")]
-    public enum GaneEnumsPlayerStatus : int {
+    [System.Runtime.Serialization.DataContractAttribute(Name="PlayerStatus", Namespace="http://schemas.datacontract.org/2004/07/TripasService.Contracts")]
+    public enum PlayerStatus : int {
         
         [System.Runtime.Serialization.EnumMemberAttribute()]
         Offline = 0,
@@ -333,6 +333,20 @@ namespace TripasDeGatoCliente.TripasDeGatoServicio {
                 propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
             }
         }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="GameEnums.PlayerStatus", Namespace="http://schemas.datacontract.org/2004/07/TripasService.Enums")]
+    public enum GameEnumsPlayerStatus : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Offline = 0,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Online = 1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        InGame = 2,
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -849,6 +863,81 @@ namespace TripasDeGatoCliente.TripasDeGatoServicio {
         
         public System.Threading.Tasks.Task<TripasDeGatoCliente.TripasDeGatoServicio.Profile[]> getHighestScoresAsync() {
             return base.Channel.getHighestScoresAsync();
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="TripasDeGatoServicio.IStatusManager")]
+    public interface IStatusManager {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStatusManager/SetPlayerStatus", ReplyAction="http://tempuri.org/IStatusManager/SetPlayerStatusResponse")]
+        bool SetPlayerStatus(int idProfile, TripasDeGatoCliente.TripasDeGatoServicio.GameEnumsPlayerStatus status);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStatusManager/SetPlayerStatus", ReplyAction="http://tempuri.org/IStatusManager/SetPlayerStatusResponse")]
+        System.Threading.Tasks.Task<bool> SetPlayerStatusAsync(int idProfile, TripasDeGatoCliente.TripasDeGatoServicio.GameEnumsPlayerStatus status);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStatusManager/GetPlayerStatus", ReplyAction="http://tempuri.org/IStatusManager/GetPlayerStatusResponse")]
+        TripasDeGatoCliente.TripasDeGatoServicio.GameEnumsPlayerStatus GetPlayerStatus(int idProfile);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStatusManager/GetPlayerStatus", ReplyAction="http://tempuri.org/IStatusManager/GetPlayerStatusResponse")]
+        System.Threading.Tasks.Task<TripasDeGatoCliente.TripasDeGatoServicio.GameEnumsPlayerStatus> GetPlayerStatusAsync(int idProfile);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStatusManager/DisconnectPlayer", ReplyAction="http://tempuri.org/IStatusManager/DisconnectPlayerResponse")]
+        int DisconnectPlayer(int idProfile);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStatusManager/DisconnectPlayer", ReplyAction="http://tempuri.org/IStatusManager/DisconnectPlayerResponse")]
+        System.Threading.Tasks.Task<int> DisconnectPlayerAsync(int idProfile);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IStatusManagerChannel : TripasDeGatoCliente.TripasDeGatoServicio.IStatusManager, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class StatusManagerClient : System.ServiceModel.ClientBase<TripasDeGatoCliente.TripasDeGatoServicio.IStatusManager>, TripasDeGatoCliente.TripasDeGatoServicio.IStatusManager {
+        
+        public StatusManagerClient() {
+        }
+        
+        public StatusManagerClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public StatusManagerClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public StatusManagerClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public StatusManagerClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        public bool SetPlayerStatus(int idProfile, TripasDeGatoCliente.TripasDeGatoServicio.GameEnumsPlayerStatus status) {
+            return base.Channel.SetPlayerStatus(idProfile, status);
+        }
+        
+        public System.Threading.Tasks.Task<bool> SetPlayerStatusAsync(int idProfile, TripasDeGatoCliente.TripasDeGatoServicio.GameEnumsPlayerStatus status) {
+            return base.Channel.SetPlayerStatusAsync(idProfile, status);
+        }
+        
+        public TripasDeGatoCliente.TripasDeGatoServicio.GameEnumsPlayerStatus GetPlayerStatus(int idProfile) {
+            return base.Channel.GetPlayerStatus(idProfile);
+        }
+        
+        public System.Threading.Tasks.Task<TripasDeGatoCliente.TripasDeGatoServicio.GameEnumsPlayerStatus> GetPlayerStatusAsync(int idProfile) {
+            return base.Channel.GetPlayerStatusAsync(idProfile);
+        }
+        
+        public int DisconnectPlayer(int idProfile) {
+            return base.Channel.DisconnectPlayer(idProfile);
+        }
+        
+        public System.Threading.Tasks.Task<int> DisconnectPlayerAsync(int idProfile) {
+            return base.Channel.DisconnectPlayerAsync(idProfile);
         }
     }
 }
