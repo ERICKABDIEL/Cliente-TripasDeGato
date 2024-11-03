@@ -183,23 +183,101 @@
   <data name="dialogAccountCreatedSuccesfully" xml:space="preserve">
     <value>La cuenta se ha creado exitosamente!</value>
   </data>
+  <data name="dialogAddFriendSuccessfully" xml:space="preserve">
+    <value>Amigo '{0}' agregado correctamente</value>
+  </data>
+  <data name="dialogChangesSaved" xml:space="preserve">
+    <value>Changes have been saved successfully</value>
+  </data>
+  <data name="dialogChatCommunicationError" xml:space="preserve">
+    <value>Error en la comunicación del chat: {0}</value>
+  </data>
+  <data name="dialogCommunicationError" xml:space="preserve">
+    <value>Error de comunicación. Por favor, intente más tarde</value>
+  </data>
+  <data name="dialogCompleteFieldsError" xml:space="preserve">
+    <value>Por favor, complete los campos correctamente</value>
+  </data>
   <data name="dialogConnectionErrorWithServer" xml:space="preserve">
     <value>Error de conexión con el servidor</value>
   </data>
   <data name="dialogEmailInUse" xml:space="preserve">
     <value>Este correo ya ha sido registrado. Por favor use un correo distinto</value>
   </data>
+  <data name="dialogErrorAddingFriend" xml:space="preserve">
+    <value>Error al agregar el amigo. Intenta de nuevo</value>
+  </data>
+  <data name="dialogErrorDeletingFriendship" xml:space="preserve">
+    <value>Error al eliminar la amistad. Intenta de nuevo</value>
+  </data>
+  <data name="dialogErrorDeletingFriendshipDetails" xml:space="preserve">
+    <value>Ocurrió un error al intentar eliminar la amistad: {0}</value>
+  </data>
+  <data name="dialogErrorLoadingFriendsList" xml:space="preserve">
+    <value>Ocurrió un error al cargar la lista de amigos: {0}</value>
+  </data>
+  <data name="dialogErrorResendingRecoveryCode" xml:space="preserve">
+    <value>Error al reenviar el código de recuperación</value>
+  </data>
+  <data name="dialogErrorSavingProfile" xml:space="preserve">
+    <value>Error al guardar el perfil: {0}</value>
+  </data>
+  <data name="dialogErrorSavingProfileData" xml:space="preserve">
+    <value>Hubo un error al guardar los datos del perfil</value>
+  </data>
+  <data name="dialogErrorSendingRecoveryCode" xml:space="preserve">
+    <value>Error al enviar el código de recuperación</value>
+  </data>
+  <data name="dialogErrorSendingVerificationCode" xml:space="preserve">
+    <value>Error al enviar el código de verificación. Por favor, intente de nuevo</value>
+  </data>
+  <data name="dialogErrorUpdatingPassowrd" xml:space="preserve">
+    <value>Error al actualizar la contraseña</value>
+  </data>
+  <data name="dialogErrorUpdatingPlayerStatus" xml:space="preserve">
+    <value>Error al actualizar el estado del jugador</value>
+  </data>
+  <data name="dialogFriendshipDeleted" xml:space="preserve">
+    <value>Amistad con '{0}' eliminada correctamente</value>
+  </data>
   <data name="dialogInvalidEmail" xml:space="preserve">
     <value>Correo inválido</value>
   </data>
+  <data name="dialogInvalidName" xml:space="preserve">
+    <value>Por favor, ingresa un nombre válido</value>
+  </data>
   <data name="dialogInvalidPassword" xml:space="preserve">
     <value>Contraseña inválida</value>
+  </data>
+  <data name="dialogInvalidRecoveryCode" xml:space="preserve">
+    <value>Código de recuperación inválido. Por favor, inténtelo de nuevo</value>
+  </data>
+  <data name="dialogInvalidVerificationCode" xml:space="preserve">
+    <value>Código de verificación inválido. Por favor, intente de nuevo</value>
   </data>
   <data name="dialogMissmatchesCredentials" xml:space="preserve">
     <value>Las credenciales no coinciden</value>
   </data>
   <data name="dialogNotRetrievedProfile" xml:space="preserve">
     <value>No se pudo obtener el perfil del usuario</value>
+  </data>
+  <data name="dialogNullEmail" xml:space="preserve">
+    <value>Ingrese un correo electrónico</value>
+  </data>
+  <data name="dialogPasswordUpdatedSuccessfully" xml:space="preserve">
+    <value>La contraseña ha sido actualizada exitosamente</value>
+  </data>
+  <data name="dialogProfileNotFound" xml:space="preserve">
+    <value>No se encontró un perfil que coincida con ese nombre</value>
+  </data>
+  <data name="dialogRecoveryCodeHasBeenSent" xml:space="preserve">
+    <value>Se ha enviado un código de recuperación a su correo</value>
+  </data>
+  <data name="dialogRequestTimeout" xml:space="preserve">
+    <value>La solicitud ha tardado demasiado. Por favor, intente más tarde</value>
+  </data>
+  <data name="dialogSelectFriendToDelete" xml:space="preserve">
+    <value>Por favor, selecciona un amigo para eliminar</value>
   </data>
   <data name="dialogTiteWarning" xml:space="preserve">
     <value>Advertencia</value>
@@ -212,6 +290,18 @@
   </data>
   <data name="dialogTitleSucces" xml:space="preserve">
     <value>Éxito</value>
+  </data>
+  <data name="dialogUnexpectedError" xml:space="preserve">
+    <value>Ocurrio un error: {0}</value>
+  </data>
+  <data name="dialogUserJoinedChat" xml:space="preserve">
+    <value>{0} se ha unido al chat</value>
+  </data>
+  <data name="dialogVerificationCodeResent" xml:space="preserve">
+    <value>Código de recuperación reenviado exitosamente</value>
+  </data>
+  <data name="dialogVerificationCodeSent" xml:space="preserve">
+    <value>Código de verificación enviado con éxito. Por favor, revise su correo electrónico</value>
   </data>
   <data name="dialogWrongData" xml:space="preserve">
     <value>Datos erróneos</value>
@@ -278,6 +368,9 @@
   </data>
   <data name="lbRecoverPassword" xml:space="preserve">
     <value>Recuperar contraseña</value>
+  </data>
+  <data name="lbScore" xml:space="preserve">
+    <value>Puntaje: {0}</value>
   </data>
   <data name="lbUserNameValid" xml:space="preserve">
     <value>De 5 a 50 caracteres. Usa letras, números o _</value>

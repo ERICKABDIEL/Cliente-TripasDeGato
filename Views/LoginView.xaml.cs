@@ -1,14 +1,10 @@
-﻿using System.ServiceModel;
-using System;
+﻿using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using TripasDeGatoCliente.Logic;
-using TripasDeGatoCliente.Properties;
 using TripasDeGatoCliente.TripasDeGatoServicio;
 using static TripasDeGatoCliente.Logic.ConstantsManager;
-using System.Xml.Linq;
-using System.Linq;
 
 namespace TripasDeGatoCliente.Views {
     public partial class LoginView : Page {
@@ -42,6 +38,7 @@ namespace TripasDeGatoCliente.Views {
 
             if (VerifyFields()) {
                 if (ValidateCredentials(mail, password)) {
+                    SetPlayerOnlineStatus(UserProfileSingleton.IdPerfil);
                     DisplayMainMenuView();
                 } else {
                     DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogMissmatchesCredentials);
@@ -145,12 +142,12 @@ namespace TripasDeGatoCliente.Views {
             string email = txtEmailRecovery.Text.Trim();
 
             if (string.IsNullOrWhiteSpace(email)) {
-                DialogManager.ShowErrorMessageAlert("Por favor, ingrese un correo electrónico.");
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogNullEmail);
                 return;
             }
 
             if (!Validador.ValidateEmail(email)) {
-                DialogManager.ShowErrorMessageAlert("El correo electrónico ingresado no es válido.");
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogInvalidEmail);
                 return;
             }
 
@@ -162,11 +159,11 @@ namespace TripasDeGatoCliente.Views {
                 userEmail = email;
                 enterEmailGrid.Visibility = Visibility.Collapsed;
                 validationGrid.Visibility = Visibility.Visible;
-                DialogManager.ShowSuccessMessageAlert("Se ha enviado un código de recuperación a su correo.");
+                DialogManager.ShowSuccessMessageAlert(Properties.Resources.dialogRecoveryCodeHasBeenSent);
             } else if (result == Constants.NO_DATA_MATCHES) {
-                DialogManager.ShowErrorMessageAlert("El correo electrónico no está registrado.");
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogInvalidEmail);
             } else {
-                DialogManager.ShowErrorMessageAlert("Error al enviar el código de recuperación.");
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogErrorSendingRecoveryCode);
             }
         }
         private void BtnBackEnterEmail_Click(object sender, RoutedEventArgs e) {
@@ -186,21 +183,21 @@ namespace TripasDeGatoCliente.Views {
                 validationGrid.Visibility = Visibility.Collapsed;
                 recoveryPasswordGrid.Visibility = Visibility.Visible;
             } else {
-                DialogManager.ShowErrorMessageAlert("Código de verificación inválido. Por favor, inténtelo de nuevo.");
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogInvalidRecoveryCode);
             }
         }
         private void BtnResendCode_Click(object sender, RoutedEventArgs e) {
             if (string.IsNullOrEmpty(userEmail)) {
-                DialogManager.ShowErrorMessageAlert("No se ha ingresado un correo electrónico.");
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogNullEmail);
                 return;
             }
 
             var emailVerificationProxy = new TripasDeGatoServicio.PasswordRecoveryManagerClient();
             int result = emailVerificationProxy.SendRecoveryCode(userEmail);
             if (result == Constants.SUCCES_OPERATION) {
-                DialogManager.ShowSuccessMessageAlert("Código de verificación reenviado exitosamente. Por favor, revise su correo.");
+                DialogManager.ShowSuccessMessageAlert(Properties.Resources.dialogRecoveryCodeResent);
             } else {
-                DialogManager.ShowErrorMessageAlert("Error al reenviar el código de verificación. Por favor, intente nuevamente.");
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogErrorResendingRecoveryCode);
             }
         }
 
@@ -238,12 +235,12 @@ namespace TripasDeGatoCliente.Views {
             string email = txtEmail.Text.Trim();
 
             if (newPassword != confirmPassword) {
-                DialogManager.ShowErrorMessageAlert("Las contraseñas no coinciden. Por favor, inténtelo de nuevo.");
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogMissmatchesCredentials);
                 return;
             }
 
             if (!IsValidPassword(newPassword)) {
-                DialogManager.ShowErrorMessageAlert("La nueva contraseña no cumple con los requisitos de seguridad.");
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogInvalidPassword);
                 return;
             }
 
@@ -251,11 +248,11 @@ namespace TripasDeGatoCliente.Views {
             int result = passwordRecovery.UpdatePassword(userEmail, Hasher.HashToSHA256(newPassword));
 
             if (result == Constants.SUCCES_OPERATION) {
-                DialogManager.ShowSuccessMessageAlert("La contraseña ha sido actualizada exitosamente.");
+                DialogManager.ShowSuccessMessageAlert(Properties.Resources.dialogPasswordUpdatedSuccessfully);
                 txtNewPassword.Clear();
                 txtNewPasswordConfirm.Clear();
             } else {
-                DialogManager.ShowErrorMessageAlert($"Error al actualizar la contraseña. Por favor, inténtelo de nuevo. {email}, {newPassword}");
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogErrorUpdatingPassowrd);
             }
         }
         private bool IsValidPassword(string password) {
@@ -286,7 +283,18 @@ namespace TripasDeGatoCliente.Views {
         }
 
 
-
+        //NUEVO
+        private void SetPlayerOnlineStatus(int playerId) {
+            try {
+                IStatusManager statusManager = new StatusManagerClient();
+                statusManager.SetPlayerStatus(playerId, GameEnumsPlayerStatus.Online);
+            } catch (Exception ex) {
+                // Manejo de errores, tal vez quieras registrar el error
+                LoggerManager logger = new LoggerManager(this.GetType());
+                logger.LogError(ex);
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogErrorUpdatingPlayerStatus);
+            }
+        }
 
     }
 }

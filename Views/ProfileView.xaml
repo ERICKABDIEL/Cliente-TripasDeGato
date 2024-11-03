@@ -148,7 +148,10 @@
                 Background="#FFFCF8D7" 
                 BorderBrush="White"
                 Click="btnEdit_Click"
-                Grid.Row="1" Foreground="Black" FontFamily="Rockwell Extra Bold"/>
+                Grid.Row="1" 
+                Foreground="Black" 
+                FontFamily="Rockwell Extra Bold"
+                Style="{StaticResource {x:Type Button}}"/>
 
         <Button x:Name="btnSave" 
                 Content="{x:Static p:Resources.btnSave}" 
@@ -161,22 +164,36 @@
                 Foreground="Black" 
                 Visibility="Collapsed" 
                 Click="btnSave_Click"
-                IsEnabled="False"/>
+                IsEnabled="False"
+                Style="{StaticResource {x:Type Button}}"/>
 
         <Label x:Name="lbUserNameProfile" 
                Content="UserName" 
-               HorizontalAlignment="Center" 
+               HorizontalAlignment="Left" 
                VerticalAlignment="Top" 
                HorizontalContentAlignment="Center" 
                VerticalContentAlignment="Center" 
-               Margin="0,59,0,0" 
+               Margin="437,27,0,0" 
                Height="60" 
                Width="410" 
                Foreground="#FFFCF6DB" 
                FontSize="24" 
                FontFamily="Rockwell Extra Bold"/>
 
-        <Image x:Name="imageLogo_Copiar" 
+        <Label x:Name="lbScoreProfile" 
+               Content="Score" 
+               HorizontalAlignment="Left" 
+               VerticalAlignment="Top" 
+               HorizontalContentAlignment="Center" 
+               VerticalContentAlignment="Center" 
+               Margin="437,71,0,0" 
+               Height="60" 
+               Width="410" 
+               Foreground="#FFFCF6DB" 
+               FontSize="16" 
+               FontFamily="Rockwell Extra Bold"/>   
+
+        <Image x:Name="imageLogo" 
             Source="/Images/LogoWhitoutBackground.png" 
             HorizontalAlignment="Left" 
             Height="312" 
@@ -184,7 +201,7 @@
             VerticalAlignment="Top" 
             Width="266" Grid.RowSpan="2"/>
         <Label Content="Nombre de usuario:" HorizontalAlignment="Left" Margin="248,426,0,0" Grid.Row="1" VerticalAlignment="Top" Width="196" FontFamily="Rockwell Extra Bold" Foreground="#FFFCF6DB" FontSize="14"/>
-        <Label Content="Idioma:&#xD;&#xA;" HorizontalAlignment="Left" Margin="346,485,0,0" Grid.Row="1" VerticalAlignment="Top" Width="88" FontFamily="Rockwell Extra Bold" Foreground="#FFFCF6DB" FontSize="14" Height="26"/>
+        <Label Content="Idioma:" HorizontalAlignment="Left" Margin="346,485,0,0" Grid.Row="1" VerticalAlignment="Top" Width="88" FontFamily="Rockwell Extra Bold" Foreground="#FFFCF6DB" FontSize="14" Height="26"/>
         <TextBox x:Name="txtUserName" HorizontalAlignment="Center" Margin="0,428,0,0" Grid.Row="1" TextWrapping="Wrap"  VerticalAlignment="Top" Width="382" Height="30" Foreground="#FFF6D08A" Background="#FF5C5C5C" FontFamily="Rockwell Extra Bold" FontSize="16" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" IsEnabled="False" />
         <ComboBox x:Name="cboxLanguage" HorizontalAlignment="Center" Margin="0,483,0,0" Grid.Row="1" VerticalAlignment="Top" Width="382" Background="#FF5C5C5C" Height="30" IsEnabled="False"/>
     </Grid>

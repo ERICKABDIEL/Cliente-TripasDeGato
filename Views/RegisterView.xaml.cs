@@ -43,11 +43,11 @@ namespace TripasDeGatoCliente.Views
             if (result == Constants.SUCCES_OPERATION)
             {
                 validationGrid.Visibility = Visibility.Visible;
-                DialogManager.ShowSuccessMessageAlert("Verification code sent successfully. Please check your email.");
+                DialogManager.ShowSuccessMessageAlert(Properties.Resources.dialogVerificationCodeSent);
             }
             else
             {
-                DialogManager.ShowErrorMessageAlert("Error sending verification code. Please try again.");
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogErrorSendingVerificationCode);
             }
         }
 
@@ -104,7 +104,7 @@ namespace TripasDeGatoCliente.Views
             }
             else
             {
-                DialogManager.ShowErrorMessageAlert("Invalid verification code. Please try again.");
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogInvalidVerificationCode);
             }
         }
 

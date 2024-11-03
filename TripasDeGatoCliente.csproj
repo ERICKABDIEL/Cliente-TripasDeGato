@@ -166,6 +166,12 @@
     <None Include="Connected Services\TripasDeGatoServicio\item2.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\TripasDeGatoServicio\item3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\TripasDeGatoServicio\TripasDeGatoCliente.TripasDeGatoServicio.GameEnumsPlayerStatus.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\TripasDeGatoServicio\TripasDeGatoCliente.TripasDeGatoServicio.Message.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
