@@ -4,40 +4,33 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using TripasDeGatoCliente.Logic;
-using static TripasDeGatoCliente.Logic.ConstantsManager;
 using TripasDeGatoCliente.TripasDeGatoServicio;
 using System.Threading.Tasks;
-using System.Linq;
+using System.Collections.Generic;
+using System.Reflection.Emit;
 
-namespace TripasDeGatoCliente.Views
-{
-    public partial class MenuView : Page
-    {
+namespace TripasDeGatoCliente.Views {
+    public partial class MenuView : Page {
         private UserManagerClient userManager;
         private FriendsManagerClient friendsManager;
+        private StatusManagerClient statusManager;
 
-        public MenuView()
-        {
+        public MenuView() {
             InitializeComponent();
             userManager = new UserManagerClient();
             friendsManager = new FriendsManagerClient();
+            statusManager = new StatusManagerClient();
             LoadUserProfileAsync();
         }
 
-        private async void LoadUserProfileAsync()
-        {
-            if (!string.IsNullOrEmpty(UserProfileSingleton.Nombre))
-            {
-                lbUserName.Content = UserProfileSingleton.Nombre;
-            }
-            else
-            {
-                lbUserName.Content = "Usuario desconocido";
-            }
+        private async void LoadUserProfileAsync() {
+            // Carga el nombre de usuario desde el Singleton
+            lbUserName.Content = !string.IsNullOrEmpty(UserProfileSingleton.Nombre)
+                ? UserProfileSingleton.Nombre
+                : "Usuario desconocido";
         }
 
-        private void BtnSignOut_Click(object sender, RoutedEventArgs e)
-        {
+        private void BtnSignOut_Click(object sender, RoutedEventArgs e) {
             UserProfileSingleton.Instance.ResetInstance();
             LoginView loginView = new LoginView();
             this.NavigationService.Navigate(loginView);
@@ -45,57 +38,53 @@ namespace TripasDeGatoCliente.Views
 
         private bool areElementsVisible = false;
 
-        private async void BtnFriends_Click(object sender, RoutedEventArgs e)
-        {
+        private async void BtnFriends_Click(object sender, RoutedEventArgs e) {
             areElementsVisible = !areElementsVisible;
 
-            if (areElementsVisible)
-            {
+            if (areElementsVisible) {
                 lstFriends.Visibility = Visibility.Visible;
                 btnAddFriend.Visibility = Visibility.Visible;
                 btnRemoveFriend.Visibility = Visibility.Visible;
-                await LoadFriendsListAsync(); 
+                await LoadFriendsListAsync();
 
                 lstFriends.IsEnabled = true;
                 btnAddFriend.IsEnabled = true;
                 btnRemoveFriend.IsEnabled = true;
 
                 btnFriends.Background = new SolidColorBrush(Colors.Green);
-            }
-            else
-            {
-                lstFriends.Visibility = Visibility.Collapsed;
-                btnAddFriend.Visibility = Visibility.Collapsed;
-                btnRemoveFriend.Visibility = Visibility.Collapsed;
-                txtFriendName.Visibility = Visibility.Collapsed;
-                btnAdd.Visibility = Visibility.Collapsed;
-
-                lstFriends.IsEnabled = false;
-                btnAddFriend.IsEnabled = false;
-                btnRemoveFriend.IsEnabled = false;
-                txtFriendName.IsEnabled = false;
-                btnAdd.IsEnabled = false;
-
-                btnFriends.Background = new SolidColorBrush(Colors.Black);
-                btnAddFriend.Background = new SolidColorBrush(Colors.Black);
+            } else {
+                HideFriendElements();
             }
         }
 
-        private void BtnAddFriend_Click(object sender, RoutedEventArgs e)
-        {
+        private void HideFriendElements() {
+            lstFriends.Visibility = Visibility.Collapsed;
+            btnAddFriend.Visibility = Visibility.Collapsed;
+            btnRemoveFriend.Visibility = Visibility.Collapsed;
+            txtFriendName.Visibility = Visibility.Collapsed;
+            btnAdd.Visibility = Visibility.Collapsed;
+
+            lstFriends.IsEnabled = false;
+            btnAddFriend.IsEnabled = false;
+            btnRemoveFriend.IsEnabled = false;
+            txtFriendName.IsEnabled = false;
+            btnAdd.IsEnabled = false;
+
+            btnFriends.Background = new SolidColorBrush(Colors.Black);
+            btnAddFriend.Background = new SolidColorBrush(Colors.Black);
+        }
+
+        private void BtnAddFriend_Click(object sender, RoutedEventArgs e) {
             areElementsVisible = !areElementsVisible;
 
-            if (areElementsVisible)
-            {
+            if (areElementsVisible) {
                 txtFriendName.Visibility = Visibility.Visible;
                 btnAdd.Visibility = Visibility.Visible;
                 txtFriendName.IsEnabled = true;
                 btnAdd.IsEnabled = true;
 
                 btnAddFriend.Background = new SolidColorBrush(Colors.Green);
-            }
-            else
-            {
+            } else {
                 txtFriendName.Visibility = Visibility.Collapsed;
                 btnAdd.Visibility = Visibility.Collapsed;
 
@@ -106,149 +95,103 @@ namespace TripasDeGatoCliente.Views
             }
         }
 
-        private async void BtnAdd_Click(object sender, RoutedEventArgs e)
-        {
+        private async void BtnAdd_Click(object sender, RoutedEventArgs e) {
             string friendName = txtFriendName.Text.Trim();
 
-            if (!string.IsNullOrEmpty(friendName))
-            {
-                try
-                {
+            if (!string.IsNullOrEmpty(friendName)) {
+                try {
                     int friendProfileId = await userManager.getProfileIdAsync(friendName);
-                    int userProfileId = UserProfileSingleton.IdPerfil;
 
-                    if (friendProfileId == userProfileId)
-                    {
-                        MessageBox.Show("No puedes agregarte a ti mismo como amigo.");
-                    }
-                    else if (friendProfileId > 0)
-                    {
+                    if (friendProfileId > 0) {
+                        int userProfileId = UserProfileSingleton.IdPerfil;
                         int result = await friendsManager.addFriendAsync(userProfileId, friendProfileId);
 
-                        if (result == Constants.SUCCES_OPERATION)
-                        {
-                            MessageBox.Show($"Amigo '{friendName}' agregado correctamente.");
+                        if (result == ConstantsManager.Constants.SUCCES_OPERATION) {
+                            DialogManager.ShowSuccessMessageAlert(string.Format(Properties.Resources.dialogAddFriendSuccessfully, friendName));
                             await LoadFriendsListAsync();
+                        } else {
+                            DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogErrorAddingFriend);
                         }
-                        else
-                        {
-                            MessageBox.Show("Error al agregar el amigo. Intenta de nuevo.");
-                        }
+                    } else {
+                        DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogProfileNotFound);
                     }
-                    else
-                    {
-                        MessageBox.Show("No se encontró un perfil que coincida con ese nombre.");
-                    }
-
                     txtFriendName.Clear();
+                } catch (FaultException<ProfileNotFoundFault> ex) {
+                    DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogNotRetrievedProfile);
+                } catch (Exception ex) {
+                    DialogManager.ShowErrorMessageAlert(string.Format(Properties.Resources.dialogUnexpectedError, ex.Message));
                 }
-                catch (FaultException<ProfileNotFoundFault> ex)
-                {
-                    MessageBox.Show(ex.Detail.errorMessage, "Perfil no encontrado");
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Ocurrió un error: {ex.Message}");
-                }
-            }
-            else
-            {
-                MessageBox.Show("Por favor, ingresa un nombre válido.");
+            } else {
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogInvalidName);
+
             }
         }
 
-
-
-        private async Task LoadFriendsListAsync()
-        {
-            try
-            {
+        private async Task LoadFriendsListAsync() {
+            try {
                 int userProfileId = UserProfileSingleton.IdPerfil;
                 var friendsList = await friendsManager.getFriendsAsync(userProfileId);
 
-                var friendNames = friendsList.Select(friend => friend.userName).ToList();
+                var friendsWithStatus = new List<string>();
 
-                lstFriends.ItemsSource = friendNames;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Ocurrió un error al cargar la lista de amigos: {ex.Message}");
+                foreach (var friend in friendsList) {
+                    var status = await statusManager.GetPlayerStatusAsync(friend.idProfile);
+                    friendsWithStatus.Add($"{friend.userName} - {status}");
+                }
+
+                lstFriends.ItemsSource = friendsWithStatus;
+            } catch (Exception ex) {
+                DialogManager.ShowErrorMessageAlert(string.Format(Properties.Resources.dialogErrorLoadingFriendsList, ex.Message));
             }
         }
 
-        private async void BtnRemoveFriend_Click(object sender, RoutedEventArgs e)
-        {
-            if (lstFriends.SelectedItem != null)
-            {
+        private async void BtnRemoveFriend_Click(object sender, RoutedEventArgs e) {
+            if (lstFriends.SelectedItem != null) {
                 string selectedFriendName = lstFriends.SelectedItem.ToString();
 
-                try
-                {
+                try {
                     int friendProfileId = await userManager.getProfileIdAsync(selectedFriendName);
 
-                    if (friendProfileId > 0)
-                    {
+                    if (friendProfileId > 0) {
                         int userProfileId = UserProfileSingleton.IdPerfil;
                         int result = await friendsManager.deleteFriendAsync(userProfileId, friendProfileId);
 
-                        if (result == Constants.SUCCES_OPERATION)
-                        {
-                            MessageBox.Show($"Amistad con '{selectedFriendName}' eliminada correctamente.");
-                            await LoadFriendsListAsync(); 
+                        if (result == ConstantsManager.Constants.SUCCES_OPERATION) {
+                            DialogManager.ShowSuccessMessageAlert(string.Format(Properties.Resources.dialogFriendshipDeleted, selectedFriendName));
+                            await LoadFriendsListAsync();
+                        } else {
+                            DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogErrorDeletingFriendship);
                         }
-                        else
-                        {
-                            MessageBox.Show("Error al eliminar la amistad. Intenta de nuevo.");
-                        }
+                    } else {
+                        DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogNotRetrievedProfile);
                     }
-                    else
-                    {
-                        MessageBox.Show("No se encontró el perfil del amigo seleccionado.");
-                    }
+                } catch (Exception ex) {
+                    DialogManager.ShowErrorMessageAlert(string.Format(Properties.Resources.dialogErrorDeletingFriendshipDetails, ex.Message));
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Ocurrió un error al intentar eliminar la amistad: {ex.Message}");
-                }
-            }
-            else
-            {
-                MessageBox.Show("Por favor, selecciona un amigo para eliminar.");
+            } else {
+                DialogManager.ShowWarningMessageAlert(Properties.Resources.dialogSelectFriendToDelete);
             }
         }
 
-        private void GoToLobbyView()
-        {
+        private void GoToLobbyView() {
             LobbyView lobbyView = new LobbyView();
-            if (this.NavigationService != null)
-            {
+            if (this.NavigationService != null) {
                 this.NavigationService.Navigate(lobbyView);
-            }
-            else
-            {
-                MessageBox.Show("Error: No se puede navegar a LobbyView.");
-            }
+            } 
         }
 
-        private void BtnStartGame_Click(object sender, RoutedEventArgs e)
-        {
+        private void BtnStartGame_Click(object sender, RoutedEventArgs e) {
             GoToLobbyView();
         }
-        private void GoToPerfilView()
-        {
+
+        private void GoToPerfilView() {
             ProfileView profileView = new ProfileView();
-            if (this.NavigationService != null)
-            {
+            if (this.NavigationService != null) {
                 this.NavigationService.Navigate(profileView);
-            }
-            else
-            {
-                MessageBox.Show("Error: No se puede navegar al menu.");
             }
         }
 
-        private void BtnProfile_Click(object sender, RoutedEventArgs e)
-        {
+        private void BtnProfile_Click(object sender, RoutedEventArgs e) {
             GoToPerfilView();
         }
     }

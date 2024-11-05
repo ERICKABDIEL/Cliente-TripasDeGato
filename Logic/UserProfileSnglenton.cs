@@ -41,5 +41,11 @@ namespace TripasDeGatoCliente.Logic
             Contrasena = null;
             Correo = null;
         }
+        public static void UpdateFotoRuta(string nuevaRuta) {
+            FotoRuta = nuevaRuta;
+        }
+        public static void UpdateNombre(string nuevoNombre) {
+            Nombre = nuevoNombre;
+        }
     }
 }

@@ -259,6 +259,51 @@ namespace TripasDeGatoCliente.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Friend &apos;{0}&apos; added successfully.
+        /// </summary>
+        public static string dialogAddFriendSuccessfully {
+            get {
+                return ResourceManager.GetString("dialogAddFriendSuccessfully", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Los cambios se han guardado correctamente.
+        /// </summary>
+        public static string dialogChangesSaved {
+            get {
+                return ResourceManager.GetString("dialogChangesSaved", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Chat communication error: {0}.
+        /// </summary>
+        public static string dialogChatCommunicationError {
+            get {
+                return ResourceManager.GetString("dialogChatCommunicationError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Communication error. Please try again later.
+        /// </summary>
+        public static string dialogCommunicationError {
+            get {
+                return ResourceManager.GetString("dialogCommunicationError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Please complete the fields correctly.
+        /// </summary>
+        public static string dialogCompleteFieldsError {
+            get {
+                return ResourceManager.GetString("dialogCompleteFieldsError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Connection error with the server.
         /// </summary>
         public static string dialogConnectionErrorWithServer {
@@ -277,6 +322,114 @@ namespace TripasDeGatoCliente.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Error adding friend. Please try again.
+        /// </summary>
+        public static string dialogErrorAddingFriend {
+            get {
+                return ResourceManager.GetString("dialogErrorAddingFriend", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Error deleting friendship. Please try again.
+        /// </summary>
+        public static string dialogErrorDeletingFriendship {
+            get {
+                return ResourceManager.GetString("dialogErrorDeletingFriendship", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a An error occurred while trying to delete the friendship: {0}.
+        /// </summary>
+        public static string dialogErrorDeletingFriendshipDetails {
+            get {
+                return ResourceManager.GetString("dialogErrorDeletingFriendshipDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a An error occurred while loading the friends list: {0}.
+        /// </summary>
+        public static string dialogErrorLoadingFriendsList {
+            get {
+                return ResourceManager.GetString("dialogErrorLoadingFriendsList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Error resending the recovery code.
+        /// </summary>
+        public static string dialogErrorResendingRecoveryCode {
+            get {
+                return ResourceManager.GetString("dialogErrorResendingRecoveryCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Error saving profile: {0}.
+        /// </summary>
+        public static string dialogErrorSavingProfile {
+            get {
+                return ResourceManager.GetString("dialogErrorSavingProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a There was an error saving the profile data.
+        /// </summary>
+        public static string dialogErrorSavingProfileData {
+            get {
+                return ResourceManager.GetString("dialogErrorSavingProfileData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Error sending the recovery code.
+        /// </summary>
+        public static string dialogErrorSendingRecoveryCode {
+            get {
+                return ResourceManager.GetString("dialogErrorSendingRecoveryCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Error sending verification code. Please try again.
+        /// </summary>
+        public static string dialogErrorSendingVerificationCode {
+            get {
+                return ResourceManager.GetString("dialogErrorSendingVerificationCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Error updating the password.
+        /// </summary>
+        public static string dialogErrorUpdatingPassowrd {
+            get {
+                return ResourceManager.GetString("dialogErrorUpdatingPassowrd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Error updating the player&apos;s status.
+        /// </summary>
+        public static string dialogErrorUpdatingPlayerStatus {
+            get {
+                return ResourceManager.GetString("dialogErrorUpdatingPlayerStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Friendship with &apos;{0}&apos; deleted successfully.
+        /// </summary>
+        public static string dialogFriendshipDeleted {
+            get {
+                return ResourceManager.GetString("dialogFriendshipDeleted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Invalid Email.
         /// </summary>
         public static string dialogInvalidEmail {
@@ -286,11 +439,38 @@ namespace TripasDeGatoCliente.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Please enter a valid name.
+        /// </summary>
+        public static string dialogInvalidName {
+            get {
+                return ResourceManager.GetString("dialogInvalidName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Invalid Password.
         /// </summary>
         public static string dialogInvalidPassword {
             get {
                 return ResourceManager.GetString("dialogInvalidPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Invalid recovery code. Please try again.
+        /// </summary>
+        public static string dialogInvalidRecoveryCode {
+            get {
+                return ResourceManager.GetString("dialogInvalidRecoveryCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Invalid verification code. Please try again.
+        /// </summary>
+        public static string dialogInvalidVerificationCode {
+            get {
+                return ResourceManager.GetString("dialogInvalidVerificationCode", resourceCulture);
             }
         }
         
@@ -309,6 +489,69 @@ namespace TripasDeGatoCliente.Properties {
         public static string dialogNotRetrievedProfile {
             get {
                 return ResourceManager.GetString("dialogNotRetrievedProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Enter an email address.
+        /// </summary>
+        public static string dialogNullEmail {
+            get {
+                return ResourceManager.GetString("dialogNullEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a The password has been successfully updated.
+        /// </summary>
+        public static string dialogPasswordUpdatedSuccessfully {
+            get {
+                return ResourceManager.GetString("dialogPasswordUpdatedSuccessfully", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a No profile matching that name was found.
+        /// </summary>
+        public static string dialogProfileNotFound {
+            get {
+                return ResourceManager.GetString("dialogProfileNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a A recovery code has been sent to your email.
+        /// </summary>
+        public static string dialogRecoveryCodeHasBeenSent {
+            get {
+                return ResourceManager.GetString("dialogRecoveryCodeHasBeenSent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Recovery code resent successfully.
+        /// </summary>
+        public static string dialogRecoveryCodeResent {
+            get {
+                return ResourceManager.GetString("dialogRecoveryCodeResent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a The request has timed out. Please try again later.
+        /// </summary>
+        public static string dialogRequestTimeout {
+            get {
+                return ResourceManager.GetString("dialogRequestTimeout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Please select a friend to delete.
+        /// </summary>
+        public static string dialogSelectFriendToDelete {
+            get {
+                return ResourceManager.GetString("dialogSelectFriendToDelete", resourceCulture);
             }
         }
         
@@ -345,6 +588,33 @@ namespace TripasDeGatoCliente.Properties {
         public static string dialogTitleWarning {
             get {
                 return ResourceManager.GetString("dialogTitleWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a An error occurred: {0}.
+        /// </summary>
+        public static string dialogUnexpectedError {
+            get {
+                return ResourceManager.GetString("dialogUnexpectedError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a {0} has joined the chat.
+        /// </summary>
+        public static string dialogUserJoinedChat {
+            get {
+                return ResourceManager.GetString("dialogUserJoinedChat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Verification code sent successfully. Please check your email.
+        /// </summary>
+        public static string dialogVerificationCodeSent {
+            get {
+                return ResourceManager.GetString("dialogVerificationCodeSent", resourceCulture);
             }
         }
         
@@ -543,6 +813,15 @@ namespace TripasDeGatoCliente.Properties {
         public static string lbRecoverPassword {
             get {
                 return ResourceManager.GetString("lbRecoverPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Score: {0}.
+        /// </summary>
+        public static string lbScore {
+            get {
+                return ResourceManager.GetString("lbScore", resourceCulture);
             }
         }
         

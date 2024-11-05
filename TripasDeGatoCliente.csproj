@@ -83,6 +83,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Views\GameMatch.xaml.cs">
+      <DependentUpon>GameMatch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Laderboard.xaml.cs">
+      <DependentUpon>Laderboard.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\LobbyView.xaml.cs">
       <DependentUpon>LobbyView.xaml</DependentUpon>
     </Compile>
@@ -110,6 +116,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\GameMatch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Laderboard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\LobbyView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -166,6 +180,12 @@
     <None Include="Connected Services\TripasDeGatoServicio\item2.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\TripasDeGatoServicio\item3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\TripasDeGatoServicio\TripasDeGatoCliente.TripasDeGatoServicio.GameEnumsPlayerStatus.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\TripasDeGatoServicio\TripasDeGatoCliente.TripasDeGatoServicio.Message.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -188,7 +208,7 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\BackgroundCenter.png" />
-    <Resource Include="Images\Designer %282%29.jpeg" />
+    <Resource Include="Images\BannerGame.jpeg" />
     <Resource Include="Images\Logo.png" />
     <Resource Include="Images\Pet.gif" />
   </ItemGroup>
@@ -208,6 +228,15 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <Resource Include="Images\Profiles\ImageProfile1.png" />
+    <Resource Include="Images\Profiles\ImageProfile2.png" />
+    <Resource Include="Images\Profiles\ImageProfile3.png" />
+    <Resource Include="Images\Profiles\ImageProfile4.png" />
+    <Resource Include="Images\Profiles\ImageProfile5.png" />
+    <Resource Include="Images\Profiles\ImageProfile6.png" />
+    <Resource Include="Images\Profiles\ImageProfile7.png" />
+    <Resource Include="Images\Profiles\ImageProfile8.png" />
+    <Resource Include="Images\Profiles\ImageProfile9.png" />
     <Content Include="Videos\ViewWait.mp4">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

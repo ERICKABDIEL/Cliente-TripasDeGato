@@ -36,9 +36,8 @@ namespace TripasDeGatoCliente.Views
 
         private async void SendWelcomeNotification()
         {
-            var message = new Message
-            {
-                chatMessage = $"{UserProfileSingleton.Nombre} se ha unido al chat.",
+            var message = new Message {
+                chatMessage = string.Format(Properties.Resources.dialogUserJoinedChat, UserProfileSingleton.Nombre),
                 userName = "Server notification"
             };
 
@@ -107,7 +106,7 @@ namespace TripasDeGatoCliente.Views
 
         private void HandleChatException(Exception ex)
         {
-            MessageBox.Show($"Error en la comunicación del chat: {ex.Message}");
+            DialogManager.ShowErrorMessageAlert(string.Format(Properties.Resources.dialogChatCommunicationError, ex.Message));
         }
 
         private void ScrollToBottom()
@@ -124,10 +123,6 @@ namespace TripasDeGatoCliente.Views
             if (this.NavigationService != null)
             {
                 this.NavigationService.Navigate(menuView);
-            }
-            else
-            {
-                MessageBox.Show("Error: No se puede navegar al menu.");
             }
         }
 

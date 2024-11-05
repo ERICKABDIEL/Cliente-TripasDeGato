@@ -183,23 +183,104 @@
   <data name="dialogAccountCreatedSuccesfully" xml:space="preserve">
     <value>Account created successfully!</value>
   </data>
+  <data name="dialogAddFriendSuccessfully" xml:space="preserve">
+    <value>Friend '{0}' added successfully</value>
+  </data>
+  <data name="dialogChangesSaved" xml:space="preserve">
+    <value>Los cambios se han guardado correctamente</value>
+  </data>
+  <data name="dialogChatCommunicationError" xml:space="preserve">
+    <value>Chat communication error: {0}</value>
+  </data>
+  <data name="dialogCommunicationError" xml:space="preserve">
+    <value>Communication error. Please try again later</value>
+  </data>
+  <data name="dialogCompleteFieldsError" xml:space="preserve">
+    <value>Please complete the fields correctly</value>
+  </data>
   <data name="dialogConnectionErrorWithServer" xml:space="preserve">
     <value>Connection error with the server</value>
   </data>
   <data name="dialogEmailInUse" xml:space="preserve">
     <value>This email is already registered. Please use a different email</value>
   </data>
+  <data name="dialogErrorAddingFriend" xml:space="preserve">
+    <value>Error adding friend. Please try again</value>
+  </data>
+  <data name="dialogErrorDeletingFriendship" xml:space="preserve">
+    <value>Error deleting friendship. Please try again</value>
+  </data>
+  <data name="dialogErrorDeletingFriendshipDetails" xml:space="preserve">
+    <value>An error occurred while trying to delete the friendship: {0}</value>
+  </data>
+  <data name="dialogErrorLoadingFriendsList" xml:space="preserve">
+    <value>An error occurred while loading the friends list: {0}</value>
+  </data>
+  <data name="dialogErrorResendingRecoveryCode" xml:space="preserve">
+    <value>Error resending the recovery code</value>
+  </data>
+  <data name="dialogErrorSavingProfile" xml:space="preserve">
+    <value>Error saving profile: {0}</value>
+  </data>
+  <data name="dialogErrorSavingProfileData" xml:space="preserve">
+    <value>There was an error saving the profile data</value>
+  </data>
+  <data name="dialogErrorSendingRecoveryCode" xml:space="preserve">
+    <value>Error sending the recovery code</value>
+  </data>
+  <data name="dialogErrorSendingVerificationCode" xml:space="preserve">
+    <value>Error sending verification code. Please try again</value>
+  </data>
+  <data name="dialogErrorUpdatingPassowrd" xml:space="preserve">
+    <value>Error updating the password</value>
+  </data>
+  <data name="dialogErrorUpdatingPlayerStatus" xml:space="preserve">
+    <value>Error updating the player's status</value>
+  </data>
+  <data name="dialogFriendshipDeleted" xml:space="preserve">
+    <value>Friendship with '{0}' deleted successfully</value>
+  </data>
   <data name="dialogInvalidEmail" xml:space="preserve">
     <value>Invalid Email</value>
   </data>
+  <data name="dialogInvalidName" xml:space="preserve">
+    <value>Please enter a valid name</value>
+  </data>
   <data name="dialogInvalidPassword" xml:space="preserve">
     <value>Invalid Password</value>
+  </data>
+  <data name="dialogInvalidRecoveryCode" xml:space="preserve">
+    <value>Invalid recovery code. Please try again</value>
+  </data>
+  <data name="dialogInvalidVerificationCode" xml:space="preserve">
+    <value>Invalid verification code. Please try again</value>
   </data>
   <data name="dialogMissmatchesCredentials" xml:space="preserve">
     <value>Credentials do not match</value>
   </data>
   <data name="dialogNotRetrievedProfile" xml:space="preserve">
     <value>The user profile could not be retrieved</value>
+  </data>
+  <data name="dialogNullEmail" xml:space="preserve">
+    <value>Enter an email address</value>
+  </data>
+  <data name="dialogPasswordUpdatedSuccessfully" xml:space="preserve">
+    <value>The password has been successfully updated</value>
+  </data>
+  <data name="dialogProfileNotFound" xml:space="preserve">
+    <value>No profile matching that name was found</value>
+  </data>
+  <data name="dialogRecoveryCodeHasBeenSent" xml:space="preserve">
+    <value>A recovery code has been sent to your email</value>
+  </data>
+  <data name="dialogRecoveryCodeResent" xml:space="preserve">
+    <value>Recovery code resent successfully</value>
+  </data>
+  <data name="dialogRequestTimeout" xml:space="preserve">
+    <value>The request has timed out. Please try again later</value>
+  </data>
+  <data name="dialogSelectFriendToDelete" xml:space="preserve">
+    <value>Please select a friend to delete</value>
   </data>
   <data name="dialogTitleConfirmation" xml:space="preserve">
     <value>Confirmation</value>
@@ -212,6 +293,15 @@
   </data>
   <data name="dialogTitleWarning" xml:space="preserve">
     <value>Warning</value>
+  </data>
+  <data name="dialogUnexpectedError" xml:space="preserve">
+    <value>An error occurred: {0}</value>
+  </data>
+  <data name="dialogUserJoinedChat" xml:space="preserve">
+    <value>{0} has joined the chat</value>
+  </data>
+  <data name="dialogVerificationCodeSent" xml:space="preserve">
+    <value>Verification code sent successfully. Please check your email</value>
   </data>
   <data name="dialogWrongData" xml:space="preserve">
     <value>Wrong Data</value>
@@ -278,6 +368,9 @@
   </data>
   <data name="lbRecoverPassword" xml:space="preserve">
     <value>Recover Password</value>
+  </data>
+  <data name="lbScore" xml:space="preserve">
+    <value>Score: {0}</value>
   </data>
   <data name="lbUserNameValid" xml:space="preserve">
     <value>5 to 50 characters. Use letters, numbers, or _</value>
