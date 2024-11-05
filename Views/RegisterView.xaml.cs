@@ -146,15 +146,6 @@ namespace TripasDeGatoCliente.Views
         {
             control.BorderBrush = Brushes.Red;
         }
-
-        private void GoToLoginView()
-        {
-            if (this.NavigationService.CanGoBack)
-            {
-                this.NavigationService.GoBack();
-            }
-        }
-
         private void TxtPassword_PasswordChanged(object sender, RoutedEventArgs e)
         {
             string password = txtPassword.Password;
@@ -163,7 +154,6 @@ namespace TripasDeGatoCliente.Views
             {
                 HighlightField(txtPassword);
                 lbInvalidPassword.Visibility = Visibility.Visible;
-                txtPassword.ToolTip = "Password does not meet the criteria";
             }
             else
             {
@@ -212,6 +202,11 @@ namespace TripasDeGatoCliente.Views
             }
         }
 
+        private void GoToLoginView() {
+            if (this.NavigationService.CanGoBack) {
+                this.NavigationService.GoBack();
+            }
+        }
 
         private void BtnTogglePassword_Checked(object sender, RoutedEventArgs e)
         {

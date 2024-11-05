@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Runtime.InteropServices.ComTypes;
 using System.ServiceModel;
 using System.Windows;
@@ -20,9 +21,7 @@ namespace TripasDeGatoCliente.Views {
         private void LoadProfile() {
             lbUserNameProfile.Content = !string.IsNullOrEmpty(UserProfileSingleton.Nombre) ? UserProfileSingleton.Nombre : "Usuario desconocido";
             txtUserName.Text = UserProfileSingleton.Nombre;
-
-            cboxLanguage.SelectedItem = "Español";
-
+            cboxLanguage.ItemsSource = new List<string> { "Español", "Inglés", "Francés" };
             if (!string.IsNullOrEmpty(UserProfileSingleton.FotoRuta)) {
                 imageProfile.Source = new BitmapImage(new Uri(UserProfileSingleton.FotoRuta, UriKind.RelativeOrAbsolute));
             }

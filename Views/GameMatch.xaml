@@ -34,7 +34,7 @@
                      VerticalAlignment="Top"
                      Margin="64,486,0,0"
                      Grid.Column="1" Grid.Row="1"/>
-        <Label x:Name="labelPlayer1" Content="Player 1" Foreground="White" FontSize="16" FontFamily="Rockwell Extra Bold" Margin="84,41,83,33" />
+        <Label x:Name="labelPlayer1" Content="Player 1" Foreground="White" FontSize="16" FontFamily="Rockwell Extra Bold" Margin="92,41,75,33" />
         <Label x:Name="labelPlayer2" Content="Player 2" Foreground="White" FontSize="16" FontFamily="Rockwell Extra Bold" Margin="82,41,82,33" Grid.Column="2" />
 
     </Grid>

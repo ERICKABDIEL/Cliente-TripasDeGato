@@ -372,9 +372,10 @@
 
                 <Label x:Name="lblEmail" Content="{x:Static p:Resources.lbEmail}" Grid.Row="0" FontSize="18" Foreground="White" Margin="0,10,0,5"/>
                 <TextBox Grid.Row="1" x:Name="txtEmail" FontSize="16" Background="#333" Foreground="White" Margin="0,0,0,10" BorderBrush="#FF7F588D" Height="35"/>
+                <Label x:Name="lbInvalidEmail" Content="{x:Static p:Resources.lbEmailValid}" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Top" Foreground="#FFED3838" Grid.RowSpan="2" Margin="0,33,0,0" Visibility="Collapsed"/>
 
                 <Label x:Name="lblPassword" Content="{x:Static p:Resources.lbPassword}" Grid.Row="2" FontSize="18" Foreground="White" Margin="0,10,0,5"/>
-
+                <Label x:Name="lbInvalidPassword" Content="{x:Static p:Resources.lbPasswordValid}" HorizontalAlignment="Center" Margin="0,30,0,0" Grid.Row="3" VerticalAlignment="Top" Foreground="#FFED3838" Visibility="Collapsed" Grid.RowSpan="2"/>
                 <Grid Grid.Row="3" Margin="0,0,0,10">
                     <PasswordBox x:Name="txtPassword" FontSize="16" Background="#333" Foreground="White" Height="35" BorderBrush="#FF7E578C" Visibility="Visible"/>
                     <TextBox x:Name="txtPasswordVisible" FontSize="16" Background="#333" Foreground="White" Height="35" HorizontalAlignment="Stretch" BorderBrush="#FF7E578C" Visibility="Collapsed" IsReadOnly="False" />
