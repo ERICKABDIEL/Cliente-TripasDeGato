@@ -5,44 +5,37 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:TripasDeGatoCliente.Views"
       mc:Ignorable="d" 
-      Width="1280" Height="720"
-      Background="Black">
+      Width="1280" Height="720">
 
     <Grid>
-        <!-- Definimos las filas y columnas para distribuir el espacio -->
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
-            <!-- Espacio superior -->
             <RowDefinition Height="5*" />
-            <!-- Espacio para el Canvas -->
             <RowDefinition Height="*" />
-            <!-- Espacio inferior -->
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="51*" />
-            <!-- Espacio izquierdo -->
             <ColumnDefinition Width="154*" />
-            <!-- Espacio para el Canvas -->
             <ColumnDefinition Width="51*" />
-            <!-- Espacio derecho -->
         </Grid.ColumnDefinitions>
 
-        <!-- Canvas para dibujar -->
-        <Canvas Grid.Row="1" Grid.Column="1" Name="drawingCanvas" Background="White" />
-        <Image Source="/Images/Profiles/ImageProfile1.png" RenderTransformOrigin="0.5,0.5" Margin="32,138,33,166" Grid.Row="1">
-            <Image.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="-0.338"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Image.RenderTransform>
-        </Image>
-        <Label x:Name="labelPlayer1" Content="Player 1" Foreground="White" FontSize="16" FontFamily="Rockwell Extra Bold" Margin="84,348,83,137" Grid.Row="1" />
-        <Image Source="/Images/Profiles/ImageProfile2.png" Margin="33,143,32,161" Grid.Column="2" Grid.Row="1" />
-        <TextBlock Text="Jugador 2" Foreground="White" FontSize="16" FontFamily="Rockwell Extra Bold" Margin="81,353,80,142" Grid.Row="1" Grid.Column="2" />
+        <Image Source="/Images/SceneCat.png" HorizontalAlignment="Left" Height="720" VerticalAlignment="Top" Width="1280" Grid.ColumnSpan="3" Grid.RowSpan="3"/>
+
+        <Canvas Grid.Row="1" Grid.Column="1" x:Name="drawingCanvas" Background="Transparent" Margin="178,135,218,156" />
+
+        <ProgressBar x:Name="timeProgressBar" 
+                     Height="20" 
+                     Width="639" 
+                     Maximum="100" 
+                     Value="100" 
+                     Foreground="Green"
+                     HorizontalAlignment="Left"
+                     VerticalAlignment="Top"
+                     Margin="64,486,0,0"
+                     Grid.Column="1" Grid.Row="1"/>
+        <Label x:Name="labelPlayer1" Content="Player 1" Foreground="White" FontSize="16" FontFamily="Rockwell Extra Bold" Margin="92,41,75,33" />
+        <Label x:Name="labelPlayer2" Content="Player 2" Foreground="White" FontSize="16" FontFamily="Rockwell Extra Bold" Margin="82,41,82,33" Grid.Column="2" />
 
     </Grid>
 </Page>

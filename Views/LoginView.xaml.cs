@@ -18,17 +18,18 @@ namespace TripasDeGatoCliente.Views {
 
         private string userEmail;
         private void BtnLogin_Click(object sender, RoutedEventArgs e) {
-            txtEmail.BorderBrush = new SolidColorBrush(Colors.White);
-            txtPassword.BorderBrush = new SolidColorBrush(Colors.White);
+            ResetField(txtEmail);
+            ResetField(txtPassword);
+            ResetField(txtPasswordVisible);
 
             if (string.IsNullOrWhiteSpace(txtEmail.Text)) {
-                txtEmail.BorderBrush = Brushes.Red;
+                HighlightField(txtEmail);
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogInvalidEmail);
                 return;
             }
 
             if (string.IsNullOrWhiteSpace(txtPassword.Password)) {
-                txtPassword.BorderBrush = Brushes.Red;
+                HighlightField(txtPassword);
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogInvalidPassword);
                 return;
             }
@@ -40,22 +41,41 @@ namespace TripasDeGatoCliente.Views {
                 if (ValidateCredentials(mail, password)) {
                     SetPlayerOnlineStatus(UserProfileSingleton.IdPerfil);
                     DisplayMainMenuView();
-                } else {
-                    DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogMissmatchesCredentials);
-                }
+                } 
             } else {
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogWrongData);
             }
         }
-        private void TxtEmail_TextChanged(object sender, TextChangedEventArgs e) {
-            txtEmail.BorderBrush = new SolidColorBrush(Colors.White);
+        private void TxtEmail_TextChanged(object sender, TextChangedEventArgs e) 
+        {
+            String email = txtEmail.Text;
+            if (!Validador.ValidateEmail(email)) {
+                HighlightField(txtEmail);
+                lbInvalidEmail.Visibility = Visibility.Visible;
+            } else {
+                ResetField(txtEmail);
+                lbInvalidEmail.Visibility = Visibility.Collapsed;
+                txtEmail.ToolTip = null;
+            }
         }
 
         private void TxtPassword_PasswordChanged(object sender, RoutedEventArgs e) {
-            txtPassword.BorderBrush = new SolidColorBrush(Colors.White);
+            string password = txtPassword.Password;
+            if (!Validador.ValidatePassword(password)) {
+                HighlightField(txtPassword);
+                lbInvalidPassword.Visibility = Visibility.Visible;
+            } else {
+                ResetField(txtPassword);
+                lbInvalidPassword.Visibility = Visibility.Collapsed;
+            }
             UpdatePasswordVisibilityIcon();
         }
-
+        private void HighlightField(Control control) {
+            control.BorderBrush = Brushes.Red;
+        }
+        private void ResetField(Control control) {
+            control.BorderBrush = Brushes.White;
+        }
         private bool VerifyFields() {
             bool passwordValid = Validador.ValidatePassword(txtPassword.Password);
             bool emailValid = Validador.ValidateEmail(txtEmail.Text);

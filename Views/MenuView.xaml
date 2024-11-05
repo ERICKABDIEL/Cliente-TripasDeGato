@@ -180,9 +180,8 @@
                 Background="Black" 
                 BorderBrush="#FF8D4AE2" Grid.Row="1"/>
 
-        <!-- Información del usuario -->
         <Label x:Name="lbUserName" 
-               Content="UserName" 
+               Content="{x:Static p:Resources.lbUserName}" 
                HorizontalAlignment="Center" 
                VerticalAlignment="Top" 
                HorizontalContentAlignment="Center" 
@@ -194,7 +193,6 @@
                FontSize="24" 
                FontFamily="Rockwell Extra Bold"/>
 
-        <!-- Listado de amigos -->
         <ListBox x:Name="lstFriends" 
                  Width="200" 
                  Height="278" 
@@ -214,7 +212,6 @@
             </ListBox.Background>
         </ListBox>
 
-        <!-- Botones de gestión de amigos -->
         <Button x:Name="btnRemoveFriend" 
                 Content="{x:Static p:Resources.btnRemoveFriend}" 
                 HorizontalAlignment="Left" 

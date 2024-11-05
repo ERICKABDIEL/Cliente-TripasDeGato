@@ -268,6 +268,15 @@ namespace TripasDeGatoCliente.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a You cannot add yourself as a friend.
+        /// </summary>
+        public static string dialogCannotAddSelfAsFriend {
+            get {
+                return ResourceManager.GetString("dialogCannotAddSelfAsFriend", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Los cambios se han guardado correctamente.
         /// </summary>
         public static string dialogChangesSaved {
@@ -822,6 +831,15 @@ namespace TripasDeGatoCliente.Properties {
         public static string lbScore {
             get {
                 return ResourceManager.GetString("lbScore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a User Name.
+        /// </summary>
+        public static string lbUserName {
+            get {
+                return ResourceManager.GetString("lbUserName", resourceCulture);
             }
         }
         
