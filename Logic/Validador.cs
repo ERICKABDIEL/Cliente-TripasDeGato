@@ -38,24 +38,22 @@ namespace TripasDeGatoCliente.Logic
             return !string.IsNullOrWhiteSpace(cleanedUsername) && validateRegexPattern(cleanedUsername, usernameRegex);
         }
 
-        public static bool ValidateEmail(string email)
-        {
+        public static bool ValidateEmail(string email) {
             string cleanedEmail = email?.Trim();
 
-            if (!string.IsNullOrWhiteSpace(cleanedEmail) && cleanedEmail.Length <= 254)
-            {
-                try
-                {
-                    var mailAddress = new MailAddress(cleanedEmail);
-                    return true;
-                }
-                catch (FormatException)
-                {
-                    return false;
+            if (!string.IsNullOrWhiteSpace(cleanedEmail) && cleanedEmail.Length <= 254) {
+                if (emailRegex.IsMatch(cleanedEmail)) {
+                    try {
+                        var mailAddress = new MailAddress(cleanedEmail);
+                        return true;
+                    } catch (FormatException) {
+                        return false;
+                    }
                 }
             }
             return false;
         }
+
 
         public static bool validateCode(string codeLobby)
         {

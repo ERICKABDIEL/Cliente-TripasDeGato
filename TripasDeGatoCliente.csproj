@@ -208,7 +208,7 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\BackgroundCenter.png" />
-    <Resource Include="Images\Designer %282%29.jpeg" />
+    <Resource Include="Images\BannerGame.jpeg" />
     <Resource Include="Images\Logo.png" />
     <Resource Include="Images\Pet.gif" />
   </ItemGroup>
@@ -228,6 +228,15 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <Resource Include="Images\Profiles\ImageProfile1.png" />
+    <Resource Include="Images\Profiles\ImageProfile2.png" />
+    <Resource Include="Images\Profiles\ImageProfile3.png" />
+    <Resource Include="Images\Profiles\ImageProfile4.png" />
+    <Resource Include="Images\Profiles\ImageProfile5.png" />
+    <Resource Include="Images\Profiles\ImageProfile6.png" />
+    <Resource Include="Images\Profiles\ImageProfile7.png" />
+    <Resource Include="Images\Profiles\ImageProfile8.png" />
+    <Resource Include="Images\Profiles\ImageProfile9.png" />
     <Content Include="Videos\ViewWait.mp4">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

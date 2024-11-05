@@ -289,7 +289,6 @@ namespace TripasDeGatoCliente.Views {
                 IStatusManager statusManager = new StatusManagerClient();
                 statusManager.SetPlayerStatus(playerId, GameEnumsPlayerStatus.Online);
             } catch (Exception ex) {
-                // Manejo de errores, tal vez quieras registrar el error
                 LoggerManager logger = new LoggerManager(this.GetType());
                 logger.LogError(ex);
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogErrorUpdatingPlayerStatus);

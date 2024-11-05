@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TripasDeGatoCliente", "TripasDeGatoCliente.csproj", "{614FAE94-10A3-4B88-927C-17395A2CB479}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProject", "D:\Trabajos de Erick\LIS UV\5 QUINTO PERIODO\Tecnologias\Proyecto\TripasDeGato-Cliente\UnitTestProject\UnitTestProject.csproj", "{F787DDA6-5160-4145-A6B4-24FEE39DA4E2}"
+	ProjectSection(ProjectDependencies) = postProject
+		{614FAE94-10A3-4B88-927C-17395A2CB479} = {614FAE94-10A3-4B88-927C-17395A2CB479}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
