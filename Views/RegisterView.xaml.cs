@@ -87,7 +87,7 @@ namespace TripasDeGatoCliente.Views
                 {
                     userName = txtName.Text,
                     score = Constants.INITIAL_SCORE,
-                    picturePath = "/Images/DefaultImageProfile"
+                    picturePath = "/Images/Profiles/ImageProfile2.png"
                 };
 
                 int accountResult = userProxy.createAccount(newUser, newProfile);

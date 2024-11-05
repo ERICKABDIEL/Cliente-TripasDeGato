@@ -186,6 +186,9 @@
   <data name="dialogAddFriendSuccessfully" xml:space="preserve">
     <value>Friend '{0}' added successfully</value>
   </data>
+  <data name="dialogCannotAddSelfAsFriend" xml:space="preserve">
+    <value>You cannot add yourself as a friend</value>
+  </data>
   <data name="dialogChangesSaved" xml:space="preserve">
     <value>Changes have been saved successfully</value>
   </data>
@@ -371,6 +374,9 @@
   </data>
   <data name="lbScore" xml:space="preserve">
     <value>Score: {0}</value>
+  </data>
+  <data name="lbUserName" xml:space="preserve">
+    <value>User Name</value>
   </data>
   <data name="lbUserNameValid" xml:space="preserve">
     <value>5 to 50 characters. Use letters, numbers, or _</value>

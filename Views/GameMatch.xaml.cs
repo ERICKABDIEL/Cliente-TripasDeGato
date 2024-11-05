@@ -1,17 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace TripasDeGatoCliente.Views {
     /// <summary>
@@ -19,37 +12,64 @@ namespace TripasDeGatoCliente.Views {
     /// </summary>
     public partial class GameMatch : Page {
         private Polyline currentLine;
+        private DispatcherTimer timer;
+        private int totalTime = 20;
+        private double remainingTime;
 
         public GameMatch() {
             InitializeComponent();
-            // Suscribimos los eventos al Canvas
             drawingCanvas.MouseDown += Canvas_MouseDown;
             drawingCanvas.MouseMove += Canvas_MouseMove;
             drawingCanvas.MouseUp += Canvas_MouseUp;
+
+            StartTimer();
+        }
+
+        private void StartTimer() {
+            remainingTime = totalTime;
+            timeProgressBar.Value = 100; 
+
+            timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromMilliseconds(100); 
+            timer.Tick += Timer_Tick;
+            timer.Start();
+        }
+
+        private void Timer_Tick(object sender, EventArgs e) {
+            if (remainingTime > 0) {
+                remainingTime -= 0.1; 
+
+                timeProgressBar.Value = (remainingTime / totalTime) * 100;
+
+                if (remainingTime > totalTime * 0.5) {
+                    timeProgressBar.Foreground = Brushes.Green;
+                } else if (remainingTime > totalTime * 0.2) { 
+                    timeProgressBar.Foreground = Brushes.Orange;
+                } else { 
+                    timeProgressBar.Foreground = Brushes.Red;
+                }
+            } else {
+                timer.Stop();
+            }
         }
 
         private void Canvas_MouseDown(object sender, MouseButtonEventArgs e) {
-            // Inicia un nuevo trazo
             currentLine = new Polyline {
-                Stroke = Brushes.Blue, // Color de la línea
-                StrokeThickness = 2     // Grosor de la línea
+                Stroke = Brushes.Blue, 
+                StrokeThickness = 5     
             };
-            drawingCanvas.Children.Add(currentLine); // Agrega la línea al Canvas
-            currentLine.Points.Add(e.GetPosition(drawingCanvas)); // Primer punto
+            drawingCanvas.Children.Add(currentLine); 
+            currentLine.Points.Add(e.GetPosition(drawingCanvas)); 
         }
 
         private void Canvas_MouseMove(object sender, MouseEventArgs e) {
-            // Solo agrega puntos si el botón izquierdo está presionado
             if (e.LeftButton == MouseButtonState.Pressed && currentLine != null) {
-                // Agrega el punto actual a la línea
                 currentLine.Points.Add(e.GetPosition(drawingCanvas));
             }
         }
 
         private void Canvas_MouseUp(object sender, MouseButtonEventArgs e) {
-            // Finaliza el trazo
             currentLine = null;
         }
     }
 }
-

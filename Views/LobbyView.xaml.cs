@@ -130,5 +130,15 @@ namespace TripasDeGatoCliente.Views
         {
             GoToMenuView();
         }
+
+        private void BtnStartGame_Click(object sender, RoutedEventArgs e) {
+            GoToGameMatchView();
+        }
+        private void GoToGameMatchView() {
+            GameMatch gameMatch = new GameMatch();
+            if (this.NavigationService != null) {
+                this.NavigationService.Navigate(gameMatch);
+            }
+        }
     }
 }

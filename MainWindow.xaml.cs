@@ -13,7 +13,7 @@ namespace TripasDeGatoCliente
         {
             InitializeComponent();
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-            NavigationFrame.Navigate(new Views.GameMatch());
+            NavigationFrame.Navigate(new Views.LoginView());
         }
     }
 }

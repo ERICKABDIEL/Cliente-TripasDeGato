@@ -40,9 +40,7 @@ namespace TripasDeGatoCliente.Views {
                 if (ValidateCredentials(mail, password)) {
                     SetPlayerOnlineStatus(UserProfileSingleton.IdPerfil);
                     DisplayMainMenuView();
-                } else {
-                    DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogMissmatchesCredentials);
-                }
+                } 
             } else {
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogWrongData);
             }

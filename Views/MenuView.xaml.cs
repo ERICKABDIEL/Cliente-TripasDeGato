@@ -101,9 +101,12 @@ namespace TripasDeGatoCliente.Views {
             if (!string.IsNullOrEmpty(friendName)) {
                 try {
                     int friendProfileId = await userManager.getProfileIdAsync(friendName);
-
+                    int userProfileId = UserProfileSingleton.IdPerfil;
+                    if (friendProfileId == userProfileId) {
+                        DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogCannotAddSelfAsFriend);
+                        return;
+                    }
                     if (friendProfileId > 0) {
-                        int userProfileId = UserProfileSingleton.IdPerfil;
                         int result = await friendsManager.addFriendAsync(userProfileId, friendProfileId);
 
                         if (result == ConstantsManager.Constants.SUCCES_OPERATION) {
