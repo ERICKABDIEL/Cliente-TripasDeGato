@@ -68,7 +68,7 @@ namespace TripasDeGatoCliente.Views {
                 var service = new TripasDeGatoServicio.UserManagerClient();
                 int idProfile = UserProfileSingleton.IdPerfil;
                 string newPic = UserProfileSingleton.FotoRuta;
-                int updateResult = service.updateProfile(idProfile, userName, newPic);
+                int updateResult = service.UpdateProfile(idProfile, userName, newPic);
 
                 if (updateResult == ConstantsManager.Constants.SUCCES_OPERATION) {
                     UserProfileSingleton.UpdateNombre(userName);

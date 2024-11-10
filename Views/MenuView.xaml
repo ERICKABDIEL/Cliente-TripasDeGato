@@ -161,7 +161,7 @@
                 HorizontalAlignment="Left" 
                 Margin="1068,470,0,69" 
                 Background="Black" 
-                BorderBrush="#FF8D4AE2" Grid.Row="1"/>
+                BorderBrush="#FF8D4AE2" Grid.Row="1" Click="btnJoinGame_Click"/>
 
         <Button x:Name="btnLeaderboard" 
                 Content="{x:Static p:Resources.btnLeaderboard}" 
@@ -180,8 +180,9 @@
                 Background="Black" 
                 BorderBrush="#FF8D4AE2" Grid.Row="1"/>
 
+        <!-- Información del usuario -->
         <Label x:Name="lbUserName" 
-               Content="{x:Static p:Resources.lbUserName}" 
+               Content="UserName" 
                HorizontalAlignment="Center" 
                VerticalAlignment="Top" 
                HorizontalContentAlignment="Center" 
@@ -193,6 +194,7 @@
                FontSize="24" 
                FontFamily="Rockwell Extra Bold"/>
 
+        <!-- Listado de amigos -->
         <ListBox x:Name="lstFriends" 
                  Width="200" 
                  Height="278" 
@@ -212,6 +214,7 @@
             </ListBox.Background>
         </ListBox>
 
+        <!-- Botones de gestión de amigos -->
         <Button x:Name="btnRemoveFriend" 
                 Content="{x:Static p:Resources.btnRemoveFriend}" 
                 HorizontalAlignment="Left" 
