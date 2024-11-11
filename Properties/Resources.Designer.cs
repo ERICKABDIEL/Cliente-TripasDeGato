@@ -187,6 +187,15 @@ namespace TripasDeGatoCliente.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Save password.
+        /// </summary>
+        public static string btnSavePassword {
+            get {
+                return ResourceManager.GetString("btnSavePassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Sign In.
         /// </summary>
         public static string btnSignIn {
@@ -313,6 +322,15 @@ namespace TripasDeGatoCliente.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Failed to establish a connection with the server. Please check your internet connection and try it again..
+        /// </summary>
+        public static string dialogComunicationException {
+            get {
+                return ResourceManager.GetString("dialogComunicationException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Connection error with the server.
         /// </summary>
         public static string dialogConnectionErrorWithServer {
@@ -331,11 +349,29 @@ namespace TripasDeGatoCliente.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Failed to find the endpoint. Please check the server configuration and try again..
+        /// </summary>
+        public static string dialogEndPointException {
+            get {
+                return ResourceManager.GetString("dialogEndPointException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Error adding friend. Please try again.
         /// </summary>
         public static string dialogErrorAddingFriend {
             get {
                 return ResourceManager.GetString("dialogErrorAddingFriend", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Error creating the lobby. Please try again.
+        /// </summary>
+        public static string dialogErrorCreatingLobby {
+            get {
+                return ResourceManager.GetString("dialogErrorCreatingLobby", resourceCulture);
             }
         }
         
@@ -493,6 +529,15 @@ namespace TripasDeGatoCliente.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Navigation error. Please try again later.
+        /// </summary>
+        public static string dialogNavigationError {
+            get {
+                return ResourceManager.GetString("dialogNavigationError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a The user profile could not be retrieved.
         /// </summary>
         public static string dialogNotRetrievedProfile {
@@ -561,6 +606,15 @@ namespace TripasDeGatoCliente.Properties {
         public static string dialogSelectFriendToDelete {
             get {
                 return ResourceManager.GetString("dialogSelectFriendToDelete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Try again waiting time has expired. Please check your connection to the server..
+        /// </summary>
+        public static string dialogTimeOutException {
+            get {
+                return ResourceManager.GetString("dialogTimeOutException", resourceCulture);
             }
         }
         
@@ -718,6 +772,24 @@ namespace TripasDeGatoCliente.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Enter your new password.
+        /// </summary>
+        public static string lbEnterNewPassword {
+            get {
+                return ResourceManager.GetString("lbEnterNewPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Enter the validation code:.
+        /// </summary>
+        public static string lbEnterValidationCode {
+            get {
+                return ResourceManager.GetString("lbEnterValidationCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Please choose a compatible file type.
         /// </summary>
         public static string lbFileFormat {
@@ -835,6 +907,15 @@ namespace TripasDeGatoCliente.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Unknown user.
+        /// </summary>
+        public static string lbUnknownUser {
+            get {
+                return ResourceManager.GetString("lbUnknownUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a User Name.
         /// </summary>
         public static string lbUserName {
@@ -849,6 +930,15 @@ namespace TripasDeGatoCliente.Properties {
         public static string lbUserNameValid {
             get {
                 return ResourceManager.GetString("lbUserNameValid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Verify your password.
+        /// </summary>
+        public static string lbVerifyPassword {
+            get {
+                return ResourceManager.GetString("lbVerifyPassword", resourceCulture);
             }
         }
         

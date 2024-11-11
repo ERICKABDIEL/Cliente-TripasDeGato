@@ -159,6 +159,9 @@
   <data name="btnSave" xml:space="preserve">
     <value>Guardar</value>
   </data>
+  <data name="btnSavePassword" xml:space="preserve">
+    <value>Guardar contraseña</value>
+  </data>
   <data name="btnSignIn" xml:space="preserve">
     <value>Registrarse</value>
   </data>
@@ -201,14 +204,23 @@
   <data name="dialogCompleteFieldsError" xml:space="preserve">
     <value>Por favor, complete los campos correctamente</value>
   </data>
+  <data name="dialogComunicationException" xml:space="preserve">
+    <value>Se ha producido un fallo para establecer la conexión al servidor. Cheque su conexión a internet e inténtelo de nuevo</value>
+  </data>
   <data name="dialogConnectionErrorWithServer" xml:space="preserve">
     <value>Error de conexión con el servidor</value>
   </data>
   <data name="dialogEmailInUse" xml:space="preserve">
     <value>Este correo ya ha sido registrado. Por favor use un correo distinto</value>
   </data>
+  <data name="dialogEndPointException" xml:space="preserve">
+    <value>Fallo al encontrar el punto de acceso. Por favor cheque la configuración al servidor e inténtelo de nuevo.</value>
+  </data>
   <data name="dialogErrorAddingFriend" xml:space="preserve">
     <value>Error al agregar el amigo. Intenta de nuevo</value>
+  </data>
+  <data name="dialogErrorCreatingLobby" xml:space="preserve">
+    <value>Error al crear el lobby. Por favor, intente de nuevo</value>
   </data>
   <data name="dialogErrorDeletingFriendship" xml:space="preserve">
     <value>Error al eliminar la amistad. Intenta de nuevo</value>
@@ -261,6 +273,9 @@
   <data name="dialogMissmatchesCredentials" xml:space="preserve">
     <value>Las credenciales no coinciden</value>
   </data>
+  <data name="dialogNavigationError" xml:space="preserve">
+    <value>Error de navegación. Por favor, intente más tarde</value>
+  </data>
   <data name="dialogNotRetrievedProfile" xml:space="preserve">
     <value>No se pudo obtener el perfil del usuario</value>
   </data>
@@ -281,6 +296,9 @@
   </data>
   <data name="dialogSelectFriendToDelete" xml:space="preserve">
     <value>Por favor, selecciona un amigo para eliminar</value>
+  </data>
+  <data name="dialogTimeOutException" xml:space="preserve">
+    <value>El tiempo de espera ha caducado, inténtelo de nuevo. Por favor cheque su conexión a internet.</value>
   </data>
   <data name="dialogTiteWarning" xml:space="preserve">
     <value>Advertencia</value>
@@ -336,6 +354,12 @@
   <data name="lbEmailValid" xml:space="preserve">
     <value>Ejemplo válido usuario@dominio.com</value>
   </data>
+  <data name="lbEnterNewPassword" xml:space="preserve">
+    <value>Ingrese su nueva contraseña</value>
+  </data>
+  <data name="lbEnterValidationCode" xml:space="preserve">
+    <value>Ingrese el código de validación:</value>
+  </data>
   <data name="lbFileFormat" xml:space="preserve">
     <value>Seleccione otro archivo que sí sea compatible</value>
   </data>
@@ -375,11 +399,17 @@
   <data name="lbScore" xml:space="preserve">
     <value>Puntaje: {0}</value>
   </data>
+  <data name="lbUnknownUser" xml:space="preserve">
+    <value>Usuario desconocido</value>
+  </data>
   <data name="lbUserName" xml:space="preserve">
     <value>Nombre de usuario</value>
   </data>
   <data name="lbUserNameValid" xml:space="preserve">
     <value>De 5 a 50 caracteres. Usa letras, números o _</value>
+  </data>
+  <data name="lbVerifyPassword" xml:space="preserve">
+    <value>Verifique su contraseña</value>
   </data>
   <data name="titleActionFailed" xml:space="preserve">
     <value>Acción fallida</value>

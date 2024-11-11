@@ -82,3 +82,5 @@ C:\Users\cv419\Source\Repos\Cliente-TripasDeGato\obj\Debug\TripasDeGatoCliente.e
 C:\Users\cv419\Source\Repos\Cliente-TripasDeGato\obj\Debug\TripasDeGatoCliente.pdb
 C:\Users\cv419\Source\Repos\Cliente-TripasDeGato\obj\Debug\Views\SelectLobbyView.g.cs
 C:\Users\cv419\Source\Repos\Cliente-TripasDeGato\obj\Debug\Views\SelectLobbyView.baml
+C:\TripasDeGatoCliente\obj\Debug\Views\SelectLobbyView.g.cs
+C:\TripasDeGatoCliente\obj\Debug\Views\SelectLobbyView.baml
