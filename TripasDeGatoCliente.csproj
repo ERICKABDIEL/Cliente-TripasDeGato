@@ -252,6 +252,8 @@
     <Resource Include="Images\Profiles\ImageProfile9.png" />
     <Resource Include="Images\SceneBackground.png" />
     <Resource Include="Images\SceneCat.png" />
+    <Resource Include="Images\BackgroundLaderboard.png" />
+    <Resource Include="Images\BackgroundSelectLobby.png" />
     <Content Include="Videos\ViewWait.mp4">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
