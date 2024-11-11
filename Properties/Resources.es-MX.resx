@@ -193,7 +193,7 @@
     <value>No puedes agregarte a ti mismo como amigo</value>
   </data>
   <data name="dialogChangesSaved" xml:space="preserve">
-    <value>Los cambios han sifo guardados exitosamente</value>
+    <value>Los cambios han sido guardados exitosamente</value>
   </data>
   <data name="dialogChatCommunicationError" xml:space="preserve">
     <value>Error en la comunicación del chat: {0}</value>
@@ -233,6 +233,9 @@
   </data>
   <data name="dialogErrorResendingRecoveryCode" xml:space="preserve">
     <value>Error al reenviar el código de recuperación</value>
+  </data>
+  <data name="dialogErrorResendingVerificationCode" xml:space="preserve">
+    <value>Error al reenviar el código de verificación. Por favor, intente nuevamente</value>
   </data>
   <data name="dialogErrorSavingProfile" xml:space="preserve">
     <value>Error al guardar el perfil: {0}</value>
@@ -320,6 +323,9 @@
   </data>
   <data name="dialogVerificationCodeResent" xml:space="preserve">
     <value>Código de recuperación reenviado exitosamente</value>
+  </data>
+  <data name="dialogVerificationCodeResentSuccessfully" xml:space="preserve">
+    <value>Código de verificación reenviado con éxito. Por favor, revisa tu correo electrónico</value>
   </data>
   <data name="dialogVerificationCodeSent" xml:space="preserve">
     <value>Código de verificación enviado con éxito. Por favor, revise su correo electrónico</value>

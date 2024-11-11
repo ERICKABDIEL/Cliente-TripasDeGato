@@ -65,9 +65,9 @@ namespace TripasDeGatoCliente.Views
                 int result = emailVerificationProxy.SendVerificationCodeRegister(txtEmail.Text);
 
                 if (result == Constants.SUCCES_OPERATION) {
-                    DialogManager.ShowSuccessMessageAlert("Verification code resent successfully. Please check your email.");
+                    DialogManager.ShowSuccessMessageAlert(Properties.Resources.dialogVerificationCodeResentSuccessfully);
                 } else {
-                    DialogManager.ShowErrorMessageAlert("Error resending verification code. Please try again.");
+                    DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogErrorResendingVerificationCode);
                 }
             } catch (EndpointNotFoundException ex) {
                 logger.LogError(ex);
