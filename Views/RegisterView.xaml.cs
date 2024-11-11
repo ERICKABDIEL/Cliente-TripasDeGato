@@ -57,6 +57,7 @@ namespace TripasDeGatoCliente.Views
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
             }
         }
+       
         private void BtnResendCode_Click(object sender, RoutedEventArgs e) {
             LoggerManager logger = new LoggerManager(this.GetType());
             try {
@@ -166,6 +167,7 @@ namespace TripasDeGatoCliente.Views
         {
             control.BorderBrush = Brushes.Red;
         }
+        
         private void TxtPasswordVisible_PasswordChanged(object sender, RoutedEventArgs e) {
             string password = txtPassword.Password;
 
@@ -179,6 +181,7 @@ namespace TripasDeGatoCliente.Views
 
             UpdatePasswordVisibilityIcon();
         }
+        
         private void TxtPassword_PasswordChanged(object sender, RoutedEventArgs e) {
             string password = txtPassword.Password;
 
@@ -208,6 +211,7 @@ namespace TripasDeGatoCliente.Views
                 lbInvalidUser.Visibility = Visibility.Collapsed;
             }
         }
+        
         private void TxtEmail_TextChanged(object sender, TextChangedEventArgs e) {
             string email = txtEmail.Text;
             if (!Validador.ValidateEmail(email)) {
@@ -255,6 +259,7 @@ namespace TripasDeGatoCliente.Views
         {
             GoToLoginView();
         }
+        
         private void BtnBackValidate_Click(object sender, RoutedEventArgs e)
         {
             validationGrid.Visibility = Visibility.Collapsed;
@@ -263,6 +268,7 @@ namespace TripasDeGatoCliente.Views
             txtPassword.Clear();
             txtPasswordVisible.Clear();
         }
+        
         private void TxtValidationCode_TextChanged(object sender, TextChangedEventArgs e)
         {
             TextBox currentTextBox = sender as TextBox;
