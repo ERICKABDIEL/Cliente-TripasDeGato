@@ -412,6 +412,15 @@ namespace TripasDeGatoCliente.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Error resending verification code. Please try again.
+        /// </summary>
+        public static string dialogErrorResendingVerificationCode {
+            get {
+                return ResourceManager.GetString("dialogErrorResendingVerificationCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Error saving profile: {0}.
         /// </summary>
         public static string dialogErrorSavingProfile {
@@ -669,6 +678,15 @@ namespace TripasDeGatoCliente.Properties {
         public static string dialogUserJoinedChat {
             get {
                 return ResourceManager.GetString("dialogUserJoinedChat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Verification code resent successfully. Please check your email.
+        /// </summary>
+        public static string dialogVerificationCodeResentSuccessfully {
+            get {
+                return ResourceManager.GetString("dialogVerificationCodeResentSuccessfully", resourceCulture);
             }
         }
         
