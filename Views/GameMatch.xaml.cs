@@ -56,7 +56,7 @@ namespace TripasDeGatoCliente.Views {
         private void Canvas_MouseDown(object sender, MouseButtonEventArgs e) {
             currentLine = new Polyline {
                 Stroke = Brushes.Blue, 
-                StrokeThickness = 5     
+                StrokeThickness = 10     
             };
             drawingCanvas.Children.Add(currentLine); 
             currentLine.Points.Add(e.GetPosition(drawingCanvas)); 
