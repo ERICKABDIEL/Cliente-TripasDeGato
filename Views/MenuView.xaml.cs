@@ -240,7 +240,7 @@ namespace TripasDeGatoCliente.Views {
             if (this.NavigationService != null) {
                 this.NavigationService.Navigate(profileView);
             } else {
-                MessageBox.Show("Error: No se puede navegar al menu.");
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogNavigationError);
             }
         }
 
@@ -253,7 +253,7 @@ namespace TripasDeGatoCliente.Views {
             if (this.NavigationService != null) {
                 this.NavigationService.Navigate(selectLobbyView);
             } else {
-                MessageBox.Show("Error: No se puede navegar a SelectLobbyView.");
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogNavigationError);
             }
         }
     }
