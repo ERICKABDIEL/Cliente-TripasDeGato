@@ -255,6 +255,7 @@
     <Resource Include="Images\BackgroundLaderboard.png" />
     <Resource Include="Images\BackgroundSelectLobby.png" />
     <Resource Include="Images\BackgroundLobby.png" />
+    <Resource Include="Images\BackgroundMenu.png" />
     <Content Include="Videos\ViewWait.mp4">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
