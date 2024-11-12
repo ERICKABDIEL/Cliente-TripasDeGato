@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Timers;
 using System.ComponentModel;
 using System.Reflection.Emit;
+using log4net.Repository.Hierarchy;
 
 namespace TripasDeGatoCliente.Views {
     public partial class LobbyView : Page, IChatManagerCallback, ILobbyManagerCallback {
@@ -25,52 +26,110 @@ namespace TripasDeGatoCliente.Views {
             this.lobbyCode = lobbyCode;
             lbCode.Content = lobbyCode;
             lobbyBrowser = new LobbyBrowserClient();
-            InitializeLobby();
             lobbyManager = new LobbyManagerClient(new InstanceContext(this));
             chatManager = new ChatManagerClient(new InstanceContext(this));
-            //StartRefreshTimer();
+            InitializeLobbyAsync();
             InitializeConnectionsAsync();
-
         }
 
         private async void InitializeConnectionsAsync() {
+            LoggerManager logger = new LoggerManager(this.GetType());
             try {
                 await InitializeChatAsync();
                 await ConnectToLobbyAsync();
-            } catch (Exception ex) {
-                await Dispatcher.InvokeAsync(() => {
-                    DialogManager.ShowErrorMessageAlert($"Error al inicializar conexiones: {ex.Message}");
-                    GoToMenuView();
-                });
+            } catch (EndpointNotFoundException ex) {
+                logger.LogError(ex);
+                Dispatcher.Invoke(() => DialogManager.ShowErrorMessageAlert("Error: No se encontró el servicio."));
+                GoToMenuView();
+            } catch (CommunicationException ex) {
+                logger.LogError(ex);
+                Dispatcher.Invoke(() => DialogManager.ShowErrorMessageAlert("Error de comunicación con el servicio."));
+                GoToMenuView();
+            } catch (TimeoutException ex) {
+                logger.LogError(ex);
+                Dispatcher.Invoke(() => DialogManager.ShowErrorMessageAlert("El tiempo de espera para la conexión ha expirado."));
+                GoToMenuView();
             }
         }
 
         private async Task InitializeChatAsync() {
+            LoggerManager logger = new LoggerManager(this.GetType());
             try {
-                await Task.Run(() => chatManager.ConnectToChatAsync(UserProfileSingleton.Nombre, lobbyCode));
+                await chatManager.ConnectToChatAsync(UserProfileSingleton.Nombre, lobbyCode);
             } catch (EndpointNotFoundException ex) {
-                throw new Exception("No se pudo conectar al servicio de chat", ex);
+                logger.LogError(ex);
+                DialogManager.ShowErrorMessageAlert("No se pudo conectar al servicio de chat.");
             } catch (TimeoutException ex) {
-                throw new Exception("Tiempo de espera agotado al conectar al chat", ex);
+                logger.LogError(ex);
+                DialogManager.ShowErrorMessageAlert("Tiempo de espera agotado al conectar al chat.");
+            } catch (CommunicationException ex) {
+                logger.LogError(ex);
+                DialogManager.ShowErrorMessageAlert("Error de comunicación al conectar al chat.");
             }
         }
 
+
         private async Task ConnectToLobbyAsync() {
+            LoggerManager logger = new LoggerManager(this.GetType());
             try {
-                bool connected = await Task.Run(() =>
-                    lobbyManager.ConnectPlayerToLobby(lobbyCode, UserProfileSingleton.IdPerfil));
+                bool connected = await Task.Run(() => lobbyManager.ConnectPlayerToLobby(lobbyCode, UserProfileSingleton.IdPerfil));
 
                 if (!connected) {
-                    throw new Exception("No se pudo conectar al lobby");
+                    DialogManager.ShowErrorMessageAlert("No se pudo conectar al lobby.");
+                } else {
+                    isConnected = true;
                 }
-                isConnected = true;
-
             } catch (EndpointNotFoundException ex) {
-                throw new Exception("No se pudo conectar al servicio del lobby", ex);
+                logger.LogError(ex);
+                DialogManager.ShowErrorMessageAlert("No se pudo conectar al servicio del lobby.");
             } catch (TimeoutException ex) {
-                throw new Exception("Tiempo de espera agotado al conectar al lobby", ex);
+                logger.LogError(ex);
+                DialogManager.ShowErrorMessageAlert("Tiempo de espera agotado al conectar al lobby.");
             } catch (CommunicationException ex) {
-                throw new Exception("Error de comunicación al conectar al lobby", ex);
+                logger.LogError(ex);
+                DialogManager.ShowErrorMessageAlert("Error de comunicación al conectar al lobby.");
+            }
+        }
+
+        private async Task InitializeLobbyAsync() {
+            LoggerManager logger = new LoggerManager(this.GetType());
+            try {
+                Lobby lobby = await lobbyBrowser.GetLobbyByCodeAsync(lobbyCode);
+                labelPlayer1.Content = lobby.Players.ContainsKey("PlayerOne") ? lobby.Players["PlayerOne"].userName : "Esperando jugador...";
+                labelPlayer2.Content = lobby.Players.ContainsKey("PlayerTwo") ? lobby.Players["PlayerTwo"].userName : "Esperando jugador...";
+            } catch (EndpointNotFoundException ex) {
+                logger.LogError(ex);
+                DialogManager.ShowErrorMessageAlert("No se pudo obtener los datos del lobby.");
+            } catch (TimeoutException ex) {
+                logger.LogError(ex);
+                DialogManager.ShowErrorMessageAlert("Tiempo de espera agotado al obtener los datos del lobby.");
+            } catch (CommunicationException ex) {
+                logger.LogError(ex);
+                DialogManager.ShowErrorMessageAlert("Error de comunicación al obtener los datos del lobby.");
+            }
+        }
+        private async void BtnSendMessage_Click(object sender, RoutedEventArgs e) {
+            LoggerManager logger = new LoggerManager(this.GetType());
+            string messageText = txtMessageInput.Text.Trim();
+            if (!string.IsNullOrEmpty(messageText)) {
+                var message = new Message {
+                    userName = UserProfileSingleton.Nombre,
+                    chatMessage = messageText
+                };
+
+                try {
+                    await chatManager.SendMessageAsync(UserProfileSingleton.Nombre, message, lobbyCode);
+                    txtMessageInput.Clear();
+                } catch (EndpointNotFoundException ex) {
+                    logger.LogError(ex);
+                    DialogManager.ShowErrorMessageAlert("No se pudo enviar el mensaje.");
+                } catch (TimeoutException ex) {
+                    logger.LogError(ex);
+                    DialogManager.ShowErrorMessageAlert("Tiempo de espera agotado al enviar el mensaje.");
+                } catch (CommunicationException ex) {
+                    logger.LogError(ex);
+                    DialogManager.ShowErrorMessageAlert("Error de comunicación al enviar el mensaje.");
+                }
             }
         }
 
@@ -78,7 +137,7 @@ namespace TripasDeGatoCliente.Views {
             try {
                 Lobby lobby = await lobbyBrowser.GetLobbyByCodeAsync(lobbyCode);
 
-                labelPlayer2.Text = lobby.Players.ContainsKey("PlayerTwo") ? lobby.Players["PlayerTwo"].userName : "Esperando jugador...";
+                labelPlayer2.Content = lobby.Players.ContainsKey("PlayerTwo") ? lobby.Players["PlayerTwo"].userName : "Esperando jugador...";
                 labelPlayer1.Content = lobby.Players.ContainsKey("PlayerOne") ? lobby.Players["PlayerOne"].userName : "Esperando jugador...";
             } catch (Exception ex) {
                 DialogManager.ShowErrorMessageAlert($"Error al inicializar lobby: {ex.Message}");
@@ -116,27 +175,6 @@ namespace TripasDeGatoCliente.Views {
                 Console.WriteLine($"Ocurrió un error inesperado, {ex}");
             }
         }*/
-
-        private async void BtnSendMessage_Click(object sender, RoutedEventArgs e) {
-            string messageText = txtMessageInput.Text.Trim();
-
-            if (!string.IsNullOrEmpty(messageText)) {
-                var message = new Message {
-                    userName = UserProfileSingleton.Nombre,
-                    chatMessage = messageText
-                };
-
-                try {
-                    await Task.Run(() => chatManager.SendMessageAsync(UserProfileSingleton.Nombre, message, lobbyCode));
-                    txtMessageInput.Clear();
-                } catch (EndpointNotFoundException endPointException) {
-                    DialogManager.ShowErrorMessageAlert(endPointException.Message);
-                } catch (TimeoutException timeOutException) {
-                    DialogManager.ShowErrorMessageAlert(timeOutException.Message);
-                }
-            }
-        }
-
 
         private void ScrollToBottom() {
             var scrollViewer = VisualTreeHelper.GetParent(ChatMessagesPanel) as ScrollViewer;
@@ -183,13 +221,13 @@ namespace TripasDeGatoCliente.Views {
         public void GuestLeftCallback() {
             Dispatcher.Invoke(() => {
                 MessageBox.Show("Jugador dos abandonó");
-                labelPlayer2.Text = "Esperando jugador...";
+                labelPlayer2.Content = "Esperando jugador...";
             });
         }
 
         public void GuestJoinedCallback(string guestName) {
             Dispatcher.Invoke(() => {
-                labelPlayer2.Text = guestName;
+                labelPlayer2.Content = guestName;
             });
         }
 

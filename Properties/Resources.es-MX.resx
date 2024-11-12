@@ -169,7 +169,7 @@
     <value>Cerrar sesion</value>
   </data>
   <data name="btnStartGame" xml:space="preserve">
-    <value>Crear partida</value>
+    <value>Jugar</value>
   </data>
   <data name="btnValidate" xml:space="preserve">
     <value>Validar</value>

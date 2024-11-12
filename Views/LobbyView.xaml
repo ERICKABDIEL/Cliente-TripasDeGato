@@ -10,22 +10,27 @@
       Background="Black">
 
     <Page.Resources>
-        <Style TargetType="{x:Type Button}">
-            <Setter Property="Background" Value="#FF2C2C2C"/>
-            <Setter Property="Foreground" Value="White"/>
-            <Setter Property="FontFamily" Value="Comic Sans MS"/>
-            <Setter Property="FontSize" Value="16"/>
-            <Setter Property="BorderBrush" Value="#FF4A90E2"/>
+        <!-- Estilo para los botones -->
+        <Style TargetType="Button">
+            <Setter Property="FontFamily" Value="Georgia"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Foreground" Value="#6B4423"/>
+            <Setter Property="Background" Value="#D8C3A5"/>
+            <Setter Property="BorderBrush" Value="#C9A97C"/>
             <Setter Property="BorderThickness" Value="2"/>
-            <Setter Property="Width" Value="140"/>
-            <Setter Property="Height" Value="50"/>
-            <Setter Property="Margin" Value="10"/>
+            <Setter Property="Padding" Value="5,2"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Width" Value="75"/>
+            <Setter Property="Height" Value="30"/>
             <Setter Property="Template">
                 <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type Button}">
-                        <Border CornerRadius="15" Background="{TemplateBinding Background}" 
-                                BorderBrush="{TemplateBinding BorderBrush}" 
-                                BorderThickness="{TemplateBinding BorderThickness}">
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="8">
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Border>
                     </ControlTemplate>
@@ -33,57 +38,28 @@
             </Setter>
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background">
-                        <Setter.Value>
-                            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                                <GradientStop Color="#FFA52BD2" Offset="0.0"/>
-                                <GradientStop Color="#FF310744" Offset="1.0"/>
-                            </LinearGradientBrush>
-                        </Setter.Value>
-                    </Setter>
-                    <Setter Property="Effect">
-                        <Setter.Value>
-                            <DropShadowEffect Color="#FFD876FC" ShadowDepth="10" BlurRadius="15"/>
-                        </Setter.Value>
-                    </Setter>
+                    <Setter Property="Background" Value="#E2B497"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Background" Value="#B98A6F"/>
                 </Trigger>
             </Style.Triggers>
         </Style>
     </Page.Resources>
 
     <Grid>
+
         <Image x:Name="imageLogo" 
-               Source="/Images/LogoWhitoutBackground.png" 
-               HorizontalAlignment="Center" 
-               Height="428" 
-               Margin="0,124,0,0" 
+               Source="/Images/BackgroundLobby.png" 
+               HorizontalAlignment="Left" 
+               Height="720" 
+               Margin="-6,10,0,0" 
                VerticalAlignment="Top" 
-               Width="410"/>
-
-        <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left" Margin="46,259,0,0">
-            <Image Source="/Images/DefaultImageProfile2.png" Width="190" Height="210" />
-            <TextBlock x:Name="labelPlayer2" Text="Jugador 2" Foreground="White" FontSize="16" HorizontalAlignment="Center" FontFamily="Rockwell Extra Bold" />
-        </StackPanel>
-
-        <StackPanel VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,259,42,0">
-            <Image Source="/Images/DefaultImageProfile.png" Width="190" Height="210" RenderTransformOrigin="0.5,0.5">
-                <Image.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform/>
-                        <SkewTransform/>
-                        <RotateTransform Angle="-0.338"/>
-                        <TranslateTransform/>
-                    </TransformGroup>
-                </Image.RenderTransform>
-            </Image>
-            <Label x:Name="labelPlayer1" Content="Player 1" Foreground="White" FontSize="16" HorizontalAlignment="Center" FontFamily="Rockwell Extra Bold" />
-        </StackPanel>
+               Width="1280"/>
 
         <ScrollViewer VerticalScrollBarVisibility="Auto"
-                      Margin="200,120,232,200"
-                      Background="#33000000">
-            <StackPanel x:Name="ChatMessagesPanel" Orientation="Vertical">
-            </StackPanel>
+                      Margin="241,155,272,165">
+            <StackPanel x:Name="ChatMessagesPanel" Orientation="Vertical"/>
         </ScrollViewer>
 
         <StackPanel VerticalAlignment="Bottom" 
@@ -94,25 +70,20 @@
         <Button x:Name="btnInvitedFriend" 
                 Content="{x:Static p:Resources.btnInviteFriend}" 
                 HorizontalAlignment="Left" 
-                Margin="1068,530,0,0" 
-                VerticalAlignment="Top" 
-                Background="Black" 
-                BorderBrush="#FF8D4AE2"/>
+                Margin="1022,558,0,0" 
+                VerticalAlignment="Top" Width="144" Height="40"/>
 
         <Button x:Name="btnStartGame" 
                 Content="{x:Static p:Resources.btnStartGame}" 
                 HorizontalAlignment="Left" 
-                Margin="1068,601,0,69" 
-                Background="Black" 
-                BorderBrush="#FF8D4AE2"/>
+                Margin="1022,624,0,0" VerticalAlignment="Top" Width="144" Height="40"/>
 
-        <Button x:Name="btnLeaderboard" 
+        <Button x:Name="btnKickPlayer" 
                 Content="{x:Static p:Resources.globalKick}" 
                 HorizontalAlignment="Left" 
-                Margin="76,601,0,0" 
+                Margin="71,624,0,0" 
                 VerticalAlignment="Top" 
-                Background="Black" 
-                BorderBrush="#FF8D4AE2"/>
+                Height="40" Width="138"/>
 
         <TextBox x:Name="txtMessageInput" 
          Background="#2F2F2F" 
@@ -123,36 +94,41 @@
          FontSize="20" 
          MaxLength="100" 
          Padding="5" 
-         Margin="285,606,395,74" />
+         Margin="285,626,395,54" />
 
         <Button Content="Enviar" 
-                Width="NaN" 
+                Width="79" 
                 Height="40" 
                 Background="#FFCAC3AF" 
                 Foreground="Black" 
                 FontWeight="Bold" 
                 FontSize="16" 
-                Margin="908,604,272,0" 
+                Margin="901,626,0,0" 
                 VerticalAlignment="Top" 
                 Click="BtnSendMessage_Click"
-                BorderBrush="#FF4A3555"/>
+                BorderBrush="#FF4A3555" HorizontalAlignment="Left"/>
 
         <Button x:Name="btnBack" 
-            Content="{x:Static p:Resources.globalBtnBack}" 
-            HorizontalAlignment="Left" 
-            VerticalAlignment="Top" 
-            Click="BtnBack_Click" 
-            Width="150" 
-            Height="50" 
-            Margin="66,70,0,0" 
-            FontSize="16" 
-            FontWeight="Bold">
+                Content="{x:Static p:Resources.globalBtnBack}" 
+                HorizontalAlignment="Left" 
+                VerticalAlignment="Top" 
+                Width="150" 
+                Height="50" 
+                Margin="58,52,0,0" 
+                FontSize="16" 
+                FontWeight="Bold">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0,1">
+                    <GradientStop Color="#FFDBB277"/>
+                    <GradientStop Color="#FF9A663F" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
             <Button.Style>
                 <Style TargetType="{x:Type Button}">
                     <Setter Property="Background">
                         <Setter.Value>
                             <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                                <GradientStop Color="#FF7A1B9D" Offset="0.0"/>
+                                <GradientStop Color="#FFDBB277" Offset="0.0"/>
                                 <GradientStop Color="#FF15031D" Offset="1.0"/>
                             </LinearGradientBrush>
                         </Setter.Value>
@@ -182,14 +158,14 @@
                             <Setter Property="Background">
                                 <Setter.Value>
                                     <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                                        <GradientStop Color="#FFA52BD2" Offset="0.0"/>
-                                        <GradientStop Color="#FF310744" Offset="1.0"/>
+                                        <GradientStop Color="#FFDBB277" Offset="0.0"/>
+                                        <GradientStop Color="#FF967A51" Offset="1.0"/>
                                     </LinearGradientBrush>
                                 </Setter.Value>
                             </Setter>
                             <Setter Property="Effect">
                                 <Setter.Value>
-                                    <DropShadowEffect Color="#FFD876FC" ShadowDepth="10" BlurRadius="15"/>
+                                    <DropShadowEffect Color="#FF99633D" ShadowDepth="10" BlurRadius="15"/>
                                 </Setter.Value>
                             </Setter>
                         </Trigger>
@@ -197,6 +173,10 @@
                 </Style>
             </Button.Style>
         </Button>
-        <Label x:Name="lbCode" Content="Label" HorizontalAlignment="Center" Margin="0,70,0,0" VerticalAlignment="Top" Foreground="White" FontSize="36"/>
+        <Label x:Name="lbCode" Content="Label" HorizontalAlignment="Center" Margin="0,453,0,0" VerticalAlignment="Top" Foreground="Black" FontSize="36" Background="{x:Null}" Height="58" Width="164" HorizontalContentAlignment="Center" FontFamily="Rockwell Extra Bold"/>
+        <Image Source="/Images/DefaultImageProfile.png" RenderTransformOrigin="0.5,0.5" Margin="999,320,91,190"/>
+        <Label x:Name="labelPlayer1" Content="Player 1" Foreground="Black" FontSize="16" FontFamily="Rockwell Extra Bold" HorizontalAlignment="Left" Margin="1050,254,0,437" HorizontalContentAlignment="Center" />
+        <Image Source="/Images/DefaultImageProfile2.png" Margin="38,320,1052,190" />
+        <Label x:Name="labelPlayer2" Content="Player 2" Foreground="Black" FontSize="16" FontFamily="Rockwell Extra Bold" HorizontalAlignment="Left" Margin="89,254,0,437" HorizontalContentAlignment="Center" />
     </Grid>
 </Page>
