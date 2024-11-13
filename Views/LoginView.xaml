@@ -17,10 +17,13 @@
             </Border>
 
             <Grid Grid.Row="3" Margin="0,0,0,10">
-                <PasswordBox x:Name="txtPassword" FontSize="14" Background="{x:Null}" Foreground="Black" BorderBrush="#FF432B1E" Visibility="Visible" Margin="663,340,427,340" FontFamily="Cooper Black"/>
-                <TextBox x:Name="txtPasswordVisible" FontSize="14" Background="{x:Null}" Foreground="Black" Height="35" BorderBrush="#FF432B1E" Visibility="Collapsed" IsReadOnly="False" Margin="663,340,427,340" />
+                <PasswordBox x:Name="txtPassword" FontSize="14" Background="{x:Null}" Foreground="Black" BorderBrush="#FF432B1E" Visibility="Visible" Margin="663,340,427,340" FontFamily="Cooper Black" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                <TextBox x:Name="txtPasswordVisible" FontSize="14" Background="{x:Null}" Foreground="Black" Height="35" BorderBrush="#FF432B1E" Visibility="Collapsed" IsReadOnly="False" Margin="663,340,427,340" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="Cooper Black" />
                 <ToggleButton x:Name="btnTogglePassword" Content="👁" Width="27" Height="30" HorizontalAlignment="Left" VerticalAlignment="Center" Checked="BtnTogglePassword_Checked" Unchecked="BtnTogglePassword_Unchecked" Margin="826,0,0,0"/>
-                <Button x:Name="btnSignIn" Content="{x:Static p:Resources.btnSignIn}" FontSize="16" Click="BtnSignIn_Click" Margin="688,477,476,199" Background="{x:Null}">
+                <Button x:Name="btnSignIn" Content="{x:Static p:Resources.btnSignIn}" FontSize="16" Click="BtnSignIn_Click" Margin="663,475,477,192">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/Images/BackgroundButton2.png"/>
+                    </Button.Background>
                     <Button.Style>
                         <Style TargetType="{x:Type Button}">
                             <Setter Property="Background" Value="#FFFFA040"/>
@@ -49,7 +52,7 @@
                                     <Setter Property="Background" Value="#FF6F91"/>
                                     <Setter Property="Effect">
                                         <Setter.Value>
-                                            <DropShadowEffect Color="White" ShadowDepth="10" BlurRadius="25"/>
+                                            <DropShadowEffect Color="#FFCA855F" ShadowDepth="10" BlurRadius="25"/>
                                         </Setter.Value>
                                     </Setter>
                                 </Trigger>
@@ -57,7 +60,10 @@
                         </Style>
                     </Button.Style>
                 </Button>
-                <Button x:Name="btnGuest" Content="{x:Static p:Resources.btnGuest}" FontSize="16" Margin="490,477,674,0" Click="BtnGuest_Click" VerticalAlignment="Top" Height="35" Background="{x:Null}">
+                <Button x:Name="btnGuest" Content="{x:Static p:Resources.btnGuest}" FontSize="16" Margin="482,475,658,0" Click="BtnGuest_Click" VerticalAlignment="Top" Height="43">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/Images/BackgroundButton2.png"/>
+                    </Button.Background>
                     <Button.Style>
                         <Style TargetType="{x:Type Button}">
                             <Setter Property="Background" Value="#FFFFA040"/>
@@ -86,7 +92,7 @@
                                     <Setter Property="Background" Value="#FF6F91"/>
                                     <Setter Property="Effect">
                                         <Setter.Value>
-                                            <DropShadowEffect Color="White" ShadowDepth="10" BlurRadius="25"/>
+                                            <DropShadowEffect Color="#FFCA855F" ShadowDepth="10" BlurRadius="25"/>
                                         </Setter.Value>
                                     </Setter>
                                 </Trigger>
@@ -94,7 +100,10 @@
                         </Style>
                     </Button.Style>
                 </Button>
-                <Button x:Name="btnLogin" Content="{x:Static p:Resources.btnLogin}" FontSize="16" Click="BtnLogin_Click" Margin="564,401,563,269" Background="{x:Null}">
+                <Button x:Name="btnLogin" Content="{x:Static p:Resources.btnLogin}" FontSize="16" Click="BtnLogin_Click" Margin="550,395,550,273" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/Images/BackgroundButton1.png"/>
+                    </Button.Background>
                     <Button.Style>
                         <Style TargetType="{x:Type Button}">
                             <Setter Property="Background" Value="#FF9D741B"/>
@@ -123,7 +132,7 @@
                                     <Setter Property="Background" Value="#FF9D741B"/>
                                     <Setter Property="Effect">
                                         <Setter.Value>
-                                            <DropShadowEffect Color="White" ShadowDepth="10" BlurRadius="25"/>
+                                            <DropShadowEffect Color="#FFF5C58F" ShadowDepth="10" BlurRadius="25"/>
                                         </Setter.Value>
                                     </Setter>
                                 </Trigger>
@@ -133,14 +142,14 @@
                 </Button>
                 <TextBlock Text="{x:Static p:Resources.lbRecoverPassword}"
                FontSize="16" Foreground="Black"
-               HorizontalAlignment="Left" VerticalAlignment="Top" TextDecorations="Underline"
-               Cursor="Hand" MouseLeftButtonDown="BtnRecoverPassword_Click" Margin="570,451,0,0">
+               HorizontalAlignment="Center" VerticalAlignment="Top" TextDecorations="Underline"
+               Cursor="Hand" MouseLeftButtonDown="BtnRecoverPassword_Click" Margin="0,446,0,0">
                     <TextBlock.Effect>
-                        <DropShadowEffect Color="Black" ShadowDepth="2" Opacity="0.7" BlurRadius="5" />
+                        <DropShadowEffect Color="Black" ShadowDepth="3" Opacity="0.7" BlurRadius="10" />
                     </TextBlock.Effect>
                 </TextBlock>
                 <Label x:Name="lblEmail" Content="{x:Static p:Resources.lbEmail}"  FontSize="18" Foreground="Black" Margin="431,304,655,369" FontFamily="Cooper Black" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                <TextBox x:Name="txtEmail" FontSize="14" Background="{x:Null}" Foreground="Black" Margin="431,340,655,340" BorderBrush="#FF432B1E" FontFamily="Cooper Black"/>
+                <TextBox x:Name="txtEmail" FontSize="14" Background="{x:Null}" Foreground="Black" Margin="431,340,655,340" BorderBrush="#FF432B1E" FontFamily="Cooper Black" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
                 <Label x:Name="lblPassword" Content="{x:Static p:Resources.lbPassword}" FontSize="18" Foreground="Black" Margin="663,304,427,370" FontFamily="Cooper Black" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
                 <Label x:Name="lbInvalidEmail" Content="{x:Static p:Resources.lbEmailValid}" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="#FFED3838" Margin="435,368,0,0" Width="185" RenderTransformOrigin="0.34,0.655" Height="26" FontSize="10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Visibility="Collapsed"/>
                 <Label x:Name="lbInvalidPassword" Content="{x:Static p:Resources.lbPasswordValid}" HorizontalAlignment="Left" Margin="663,363,0,0"  VerticalAlignment="Top" Foreground="#FFED3838" Width="190" FontSize="9" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="38" Panel.ZIndex="2" Visibility="Collapsed"/>
