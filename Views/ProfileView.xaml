@@ -178,16 +178,9 @@
                Width="410" 
                Foreground="#FFFCF6DB" 
                FontSize="24" 
-               FontFamily="Rockwell Extra Bold" RenderTransformOrigin="0.5,0.5">
-            <Label.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform AngleX="0"/>
-                    <RotateTransform/>
-                    <TranslateTransform X="0"/>
-                </TransformGroup>
-            </Label.RenderTransform>
-        </Label>
+               FontFamily="Rockwell Extra Bold" 
+               RenderTransformOrigin="0.5,0.5"/>
+
 
         <Label x:Name="lbScoreProfile" 
                Content="{x:Static p:Resources.lbScore}" 
@@ -203,16 +196,106 @@
                FontFamily="Rockwell Extra Bold"/>
 
         <Image x:Name="imageLogo" 
-            Source="/Images/LogoWhitoutBackground.png" 
-            HorizontalAlignment="Left" 
-            Height="312" 
-            Margin="969,59,0,0" 
-            VerticalAlignment="Top" 
-            Width="266" Grid.RowSpan="2"/>
-        <Label x:Name="lbUserName" Content="{x:Static p:Resources.lbUserName}" HorizontalAlignment="Left" Margin="248,426,0,0" Grid.Row="1" VerticalAlignment="Top" Width="196" FontFamily="Rockwell Extra Bold" Foreground="#FFFCF6DB" FontSize="14"/>
-        <Label x:Name="lbLanguage" Content="{x:Static p:Resources.lbLanguage}" HorizontalAlignment="Left" Margin="338,485,0,0" Grid.Row="1" VerticalAlignment="Top" Width="96" FontFamily="Rockwell Extra Bold" Foreground="#FFFCF6DB" FontSize="14" Height="26"/>
-        <TextBox x:Name="txtUserName" HorizontalAlignment="Center" Margin="0,428,0,0" Grid.Row="1" TextWrapping="Wrap"  VerticalAlignment="Top" Width="382" Height="30" Foreground="#FFF6D08A" Background="#FF5C5C5C" FontFamily="Rockwell Extra Bold" FontSize="16" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" IsEnabled="False" />
-        <ComboBox x:Name="cboxLanguage" HorizontalAlignment="Center" Margin="0,483,0,0" Grid.Row="1" VerticalAlignment="Top" Width="382" Background="#FF5C5C5C" Height="30" IsEnabled="False"/>
+               Source="/Images/LogoWhitoutBackground.png" 
+               HorizontalAlignment="Left" 
+               Height="312" 
+               Margin="969,59,0,0" 
+               VerticalAlignment="Top" 
+               Width="266" Grid.RowSpan="2"/>
+        
+        <Label x:Name="lbUserName"  
+               Content="{x:Static p:Resources.lbUserName}" 
+               HorizontalAlignment="Left" 
+               Margin="248,426,0,0" 
+               Grid.Row="1" 
+               VerticalAlignment="Top" 
+               Width="196" 
+               FontFamily="Rockwell Extra Bold" 
+               Foreground="#FFFCF6DB" 
+               FontSize="14"/>
+        
+        <Label x:Name="lbLanguage" 
+               Content="{x:Static p:Resources.lbLanguage}" 
+               HorizontalAlignment="Left" 
+               Margin="338,485,0,0" 
+               Grid.Row="1" 
+               VerticalAlignment="Top" 
+               Width="96" 
+               FontFamily="Rockwell Extra Bold" 
+               Foreground="#FFFCF6DB" 
+               FontSize="14" 
+               Height="26"/>
+        
+        <TextBox x:Name="txtUserName" 
+                 HorizontalAlignment="Center" 
+                 Margin="0,428,0,0" 
+                 Grid.Row="1" 
+                 TextWrapping="Wrap"  
+                 VerticalAlignment="Top" 
+                 Width="382" 
+                 Height="30" 
+                 Foreground="#FFF6D08A" 
+                 Background="#FF5C5C5C" 
+                 FontFamily="Rockwell Extra Bold" 
+                 FontSize="16" 
+                 HorizontalContentAlignment="Center" 
+                 VerticalContentAlignment="Center" 
+                 IsEnabled="False" />
+        
+        <ComboBox x:Name="cboxLanguage" 
+                  HorizontalAlignment="Center" 
+                  Margin="0,483,0,0" 
+                  Grid.Row="1" 
+                  VerticalAlignment="Top" 
+                  Width="382" 
+                  Background="#FF5C5C5C" 
+                  Height="30" 
+                  IsEnabled="False"/>
+        <Popup x:Name="popup_Profile" StaysOpen="False" Placement="Center" IsOpen="False" 
+               AllowsTransparency="False" Width="600" Height="200" HorizontalOffset="0" VerticalOffset="0">
+            <Border BorderThickness="2" Background="White" Width="600" Height="200">
+                <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <ListBox x:Name="lsb_ProfilePics" 
+                                             ScrollViewer.HorizontalScrollBarVisibility="Auto" Width="580" 
+                                             Height="180" BorderThickness="0" Background="Transparent">
+                            <ListBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel Orientation="Horizontal"/>
+                                </ItemsPanelTemplate>
+                            </ListBox.ItemsPanel>
+                            <ListBoxItem Tag="/Images/Profiles/ImageProfile1.png">
+                                <Image Source="/Images/Profiles/ImageProfile1.png" Width="100" Height="100"/>
+                            </ListBoxItem>
+                            <ListBoxItem Tag="/Images/Profiles/ImageProfile2.png">
+                                <Image Source="/Images/Profiles/ImageProfile2.png" Width="100" Height="100"/>
+                            </ListBoxItem>
+                            <ListBoxItem Tag="/Images/Profiles/ImageProfile3.png">
+                                <Image Source="/Images/Profiles/ImageProfile3.png" Width="100" Height="100"/>
+                            </ListBoxItem>
+                            <ListBoxItem Tag="/Images/Profiles/ImageProfile4.png">
+                                <Image Source="/Images/Profiles/ImageProfile4.png" Width="100" Height="100"/>
+                            </ListBoxItem>
+                            <ListBoxItem Tag="/Images/Profiles/ImageProfile5.png">
+                                <Image Source="/Images/Profiles/ImageProfile5.png" Width="100" Height="100"/>
+                            </ListBoxItem>
+                            <ListBoxItem Tag="/Images/Profiles/ImageProfile6.png">
+                                <Image Source="/Images/Profiles/ImageProfile6.png" Width="100" Height="100"/>
+                            </ListBoxItem>
+                            <ListBoxItem Tag="/Images/Profiles/ImageProfile7.png">
+                                <Image Source="/Images/Profiles/ImageProfile7.png" Width="100" Height="100"/>
+                            </ListBoxItem>
+                            <ListBoxItem Tag="/Images/Profiles/ImageProfile8.png">
+                                <Image Source="/Images/Profiles/ImageProfile8.png" Width="100" Height="100"/>
+                            </ListBoxItem>
+                            <ListBoxItem Tag="/Images/Profiles/ImageProfile9.png">
+                                <Image Source="/Images/Profiles/ImageProfile9.png" Width="100" Height="100"/>
+                            </ListBoxItem>
+                        </ListBox>
+                    </StackPanel>
+                </ScrollViewer>
+            </Border>
+        </Popup>
     </Grid>
 </Page>
 

@@ -400,7 +400,7 @@
     <value>Password</value>
   </data>
   <data name="lbPasswordValid" xml:space="preserve">
-    <value>10 to 50 characters, with letters and numbers</value>
+    <value>10 to 50 characters, &amp;#xD;&amp;#xA;with letters and numbers</value>
   </data>
   <data name="lbRecoverPassword" xml:space="preserve">
     <value>Recover Password</value>
