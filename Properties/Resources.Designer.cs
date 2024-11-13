@@ -907,7 +907,7 @@ namespace TripasDeGatoCliente.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a 10 to 50 characters, with letters and numbers.
+        ///   Busca una cadena traducida similar a 10 to 50 characters, &amp;#xD;&amp;#xA;with letters and numbers.
         /// </summary>
         public static string lbPasswordValid {
             get {
