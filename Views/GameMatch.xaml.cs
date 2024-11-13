@@ -71,5 +71,6 @@ namespace TripasDeGatoCliente.Views {
         private void Canvas_MouseUp(object sender, MouseButtonEventArgs e) {
             currentLine = null;
         }
+
     }
 }

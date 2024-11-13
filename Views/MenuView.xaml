@@ -148,7 +148,7 @@
                 Content="{x:Static p:Resources.btnJoinGame}" 
                 HorizontalAlignment="Left" 
                 Margin="1029,483,0,66" 
-                Click="btnJoinGame_Click" Grid.Row="1" Height="40"/>
+                Click="BtnJoinGame_Click" Grid.Row="1" Height="40"/>
 
         <Button x:Name="btnLeaderboard" 
                 Content="{x:Static p:Resources.btnLeaderboard}" 

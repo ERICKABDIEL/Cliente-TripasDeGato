@@ -94,7 +94,7 @@
          FontSize="20" 
          MaxLength="100" 
          Padding="5" 
-         Margin="285,626,395,54" />
+         Margin="339,626,395,54" />
 
         <Button Content="Enviar" 
                 Width="79" 

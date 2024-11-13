@@ -46,14 +46,14 @@ namespace TripasDeGatoCliente.Views
                 } else {
                     DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogErrorSendingVerificationCode);
                 }
-            } catch (EndpointNotFoundException ex) {
-                logger.LogError(ex);
+            } catch (EndpointNotFoundException endpointNotFoundException) {
+                logger.LogError(endpointNotFoundException);
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogEndPointException);
-            } catch (TimeoutException ex) {
-                logger.LogError(ex);
+            } catch (TimeoutException timeoutException) {
+                logger.LogError(timeoutException);
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogTimeOutException);
-            } catch (CommunicationException ex) {
-                logger.LogError(ex);
+            } catch (CommunicationException communicationException) {
+                logger.LogError(communicationException);
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
             }
         }
@@ -69,15 +69,15 @@ namespace TripasDeGatoCliente.Views
                 } else {
                     DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogErrorResendingVerificationCode);
                 }
-            } catch (EndpointNotFoundException ex) {
-                logger.LogError(ex);
+            } catch (EndpointNotFoundException endpointNotFoundException) {
+                logger.LogError(endpointNotFoundException);
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogEndPointException);
-            } catch (TimeoutException ex) {
-                logger.LogError(ex);
-                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
-            } catch (CommunicationException ex) {
-                logger.LogError(ex);
+            } catch (TimeoutException timeoutException) {
+                logger.LogError(timeoutException);
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogTimeOutException);
+            } catch (CommunicationException communicationException) {
+                logger.LogError(communicationException);
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
             }
         }
 
@@ -100,7 +100,7 @@ namespace TripasDeGatoCliente.Views
                     var newProfile = new TripasDeGatoServicio.Profile {
                         userName = txtName.Text,
                         score = Constants.INITIAL_SCORE,
-                        picturePath = "/Images/Profiles/ImageProfile2.png"
+                        picturePath = "/Images/Profiles/ImageProfile1.png"
                     };
 
                     int accountResult = userProxy.CreateAccount(newUser, newProfile);
@@ -115,15 +115,15 @@ namespace TripasDeGatoCliente.Views
                 } else {
                     DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogInvalidVerificationCode);
                 }
-            } catch (EndpointNotFoundException ex) {
-                logger.LogError(ex);
+            } catch (EndpointNotFoundException endpointNotFoundException) {
+                logger.LogError(endpointNotFoundException);
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogEndPointException);
-            } catch (TimeoutException ex) {
-                logger.LogError(ex);
-                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
-            } catch (CommunicationException ex) {
-                logger.LogError(ex);
+            } catch (TimeoutException timeoutException) {
+                logger.LogError(timeoutException);
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogTimeOutException);
+            } catch (CommunicationException communicationException) {
+                logger.LogError(communicationException);
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
             }
         }
 
