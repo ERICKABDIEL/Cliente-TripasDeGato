@@ -36,7 +36,7 @@ namespace TripasDeGatoCliente.Views {
             return Task.CompletedTask;
         }
 
-        private async void btnJoinGame_Click(object sender, RoutedEventArgs e) {
+        private async void BtnJoinGame_Click(object sender, RoutedEventArgs e) {
 
             if (LobbyDataGrid.SelectedItem is Lobby selectedLobby) {
                 string lobbyCode = selectedLobby.Code;
@@ -64,13 +64,15 @@ namespace TripasDeGatoCliente.Views {
         }
 
 
-        private void btnBack_Click(object sender, RoutedEventArgs e) {
+        private void BtnBack_Click(object sender, RoutedEventArgs e) {
             MenuView menuView = new MenuView();
             if (this.NavigationService != null) {
                 this.NavigationService.Navigate(menuView);
             } else {
                 MessageBox.Show("Error: No se puede navegar al menu.");
             }
+        }
+        private void BtnSearch_Click(object sender, RoutedEventArgs e) {
         }
     }
 }

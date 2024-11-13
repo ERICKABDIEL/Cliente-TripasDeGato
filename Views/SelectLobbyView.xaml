@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:TripasDeGatoCliente.Views"
+      xmlns:p="clr-namespace:TripasDeGatoCliente.Properties"
       mc:Ignorable="d" 
       d:DesignHeight="720" d:DesignWidth="1280"
       Title="SelectLobbyView">
@@ -82,10 +83,37 @@
         </DataGrid>
 
         <!-- Botones con estilo personalizado -->
-        <Button x:Name="btnBack" Content="Volver" HorizontalAlignment="Left" Margin="881,298,0,0" VerticalAlignment="Top" 
-                Click="btnBack_Click" Grid.Row="1" Height="43" Width="144"/>
-        <Button x:Name="btnJoinGame" Content="Unirse" HorizontalAlignment="Left" Margin="881,239,0,0" VerticalAlignment="Top" 
-                Click="btnJoinGame_Click" Grid.Row="1" Width="144" Height="44"/>
+        <Button x:Name="btnBack" Content="{x:Static p:Resources.globalBtnBack}" HorizontalAlignment="Left" Margin="881,298,0,0" VerticalAlignment="Top" 
+                Click="BtnBack_Click" Grid.Row="1" Height="43" Width="144"/>
+        <Button x:Name="btnJoinGame" Content="{x:Static p:Resources.btnJoinGame}" HorizontalAlignment="Left" Margin="881,239,0,0" VerticalAlignment="Top" 
+                Click="BtnJoinGame_Click" Grid.Row="1" Width="144" Height="44"/>
+        <Button x:Name="btnSearch" Content="{x:Static p:Resources.btnSearch}" HorizontalAlignment="Left" Margin="598,139,0,0" VerticalAlignment="Top" 
+            Click="BtnSearch_Click" Width="144" Height="44"/>
+        <Label x:Name="lbCodeLobby" 
+            Content="Codigo de sala:"
+            HorizontalAlignment="Left" 
+            VerticalAlignment="Top" 
+            HorizontalContentAlignment="Center" 
+            VerticalContentAlignment="Center" 
+            Margin="60,132,0,0" 
+            Height="55" 
+            Width="226" 
+            Foreground="White" 
+            FontSize="18" 
+            FontFamily="Rockwell Extra Bold"/>
+        <TextBox x:Name="txtCodeLobby" 
+            HorizontalAlignment="Left" 
+            Margin="336,144,0,0" 
+            TextWrapping="Wrap"  
+            VerticalAlignment="Top" 
+            Width="199" 
+            Height="30" 
+            Foreground="White" 
+            Background="{x:Null}" 
+            FontFamily="Rockwell Extra Bold" 
+            FontSize="18" 
+            HorizontalContentAlignment="Center" 
+            VerticalContentAlignment="Center" />
         <!-- Imagen de fondo -->
 
         <Grid.RowDefinitions>

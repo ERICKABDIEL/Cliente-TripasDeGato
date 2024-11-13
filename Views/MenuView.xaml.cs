@@ -123,14 +123,14 @@ namespace TripasDeGatoCliente.Views {
                 } catch (FaultException<ProfileNotFoundFault> ex) {
                     logger.LogError(ex);
                     DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogNotRetrievedProfile);
-                } catch (EndpointNotFoundException ex) {
-                    logger.LogError(ex);
+                } catch (EndpointNotFoundException endpointNotFoundException) {
+                    logger.LogError(endpointNotFoundException);
                     DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogEndPointException);
-                } catch (TimeoutException ex) {
-                    logger.LogError(ex);
+                } catch (TimeoutException timeoutException) {
+                    logger.LogError(timeoutException);
                     DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogTimeOutException);
-                } catch (CommunicationException ex) {
-                    logger.LogError(ex);
+                } catch (CommunicationException communicationException) {
+                    logger.LogError(communicationException);
                     DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
                 }
             } else {
@@ -152,16 +152,16 @@ namespace TripasDeGatoCliente.Views {
                 }
 
                 lstFriends.ItemsSource = friendsWithStatus;
-            } catch (EndpointNotFoundException ex) {
-                logger.LogError(ex);
+            } catch (EndpointNotFoundException endpointNotFoundException) {
+                logger.LogError(endpointNotFoundException);
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogEndPointException);
-            } catch (TimeoutException ex) {
-                logger.LogError(ex);
+            } catch (TimeoutException timeoutException) {
+                logger.LogError(timeoutException);
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogTimeOutException);
-            } catch (CommunicationException ex) {
-                logger.LogError(ex);
+            } catch (CommunicationException communicationException) {
+                logger.LogError(communicationException);
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
-            } 
+            }
         }
 
         private async void BtnRemoveFriend_Click(object sender, RoutedEventArgs e) {
@@ -185,16 +185,16 @@ namespace TripasDeGatoCliente.Views {
                     } else {
                         DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogNotRetrievedProfile);
                     }
-                } catch (EndpointNotFoundException ex) {
-                    logger.LogError(ex);
+                } catch (EndpointNotFoundException endpointNotFoundException) {
+                    logger.LogError(endpointNotFoundException);
                     DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogEndPointException);
-                } catch (TimeoutException ex) {
-                    logger.LogError(ex);
+                } catch (TimeoutException timeoutException) {
+                    logger.LogError(timeoutException);
                     DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogTimeOutException);
-                } catch (CommunicationException ex) {
-                    logger.LogError(ex);
+                } catch (CommunicationException communicationException) {
+                    logger.LogError(communicationException);
                     DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
-                } 
+                }
             } else {
                 DialogManager.ShowWarningMessageAlert(Properties.Resources.dialogSelectFriendToDelete);
             }
@@ -214,14 +214,14 @@ namespace TripasDeGatoCliente.Views {
                 } else {
                     DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogErrorCreatingLobby);
                 }
-            } catch (EndpointNotFoundException ex) {
-                logger.LogError(ex);
+            } catch (EndpointNotFoundException endpointNotFoundException) {
+                logger.LogError(endpointNotFoundException);
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogEndPointException);
-            } catch (TimeoutException ex) {
-                logger.LogError(ex);
+            } catch (TimeoutException timeoutException) {
+                logger.LogError(timeoutException);
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogTimeOutException);
-            } catch (CommunicationException ex) {
-                logger.LogError(ex);
+            } catch (CommunicationException communicationException) {
+                logger.LogError(communicationException);
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
             }
         }
@@ -248,7 +248,7 @@ namespace TripasDeGatoCliente.Views {
             GoToPerfilView();
         }
 
-        private void btnJoinGame_Click(object sender, RoutedEventArgs e) {
+        private void BtnJoinGame_Click(object sender, RoutedEventArgs e) {
             SelectLobbyView selectLobbyView = new SelectLobbyView();
             if (this.NavigationService != null) {
                 this.NavigationService.Navigate(selectLobbyView);

@@ -190,7 +190,7 @@
         </Label>
 
         <Label x:Name="lbScoreProfile" 
-               Content="Score" 
+               Content="{x:Static p:Resources.lbScore}" 
                HorizontalAlignment="Left" 
                VerticalAlignment="Top" 
                HorizontalContentAlignment="Center" 

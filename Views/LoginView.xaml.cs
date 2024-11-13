@@ -64,14 +64,14 @@ namespace TripasDeGatoCliente.Views {
                 } else {
                     DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogMissmatchesCredentials);
                 }
-            } catch (EndpointNotFoundException ex) {
-                logger.LogError(ex);
+            } catch (EndpointNotFoundException endpointNotFoundException) {
+                logger.LogError(endpointNotFoundException);
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogEndPointException);
-            } catch (TimeoutException ex) {
-                logger.LogError(ex);
+            } catch (TimeoutException timeoutException) {
+                logger.LogError(timeoutException);
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogTimeOutException);
-            } catch (CommunicationException ex) {
-                logger.LogError(ex);
+            } catch (CommunicationException communicationException) {
+                logger.LogError(communicationException);
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
             }
 
@@ -87,16 +87,16 @@ namespace TripasDeGatoCliente.Views {
             try {
                 IStatusManager statusManager = new StatusManagerClient();
                 statusManager.SetPlayerStatus(playerId, GameEnumsPlayerStatus.Online);
-            } catch (EndpointNotFoundException ex) {
-                logger.LogError(ex);
+            } catch (EndpointNotFoundException endpointNotFoundException) {
+                logger.LogError(endpointNotFoundException);
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogEndPointException);
-            } catch (TimeoutException ex) {
-                logger.LogError(ex);
+            } catch (TimeoutException timeoutException) {
+                logger.LogError(timeoutException);
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogTimeOutException);
-            } catch (CommunicationException ex) {
-                logger.LogError(ex);
+            } catch (CommunicationException communicationException) {
+                logger.LogError(communicationException);
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
-            } 
+            }
         }
 
         private void DisplayMainMenuView() {
@@ -194,16 +194,16 @@ namespace TripasDeGatoCliente.Views {
                 } else {
                     DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogInvalidRecoveryCode);
                 }
-            } catch (EndpointNotFoundException ex) {
-                logger.LogError(ex);
+            } catch (EndpointNotFoundException endpointNotFoundException) {
+                logger.LogError(endpointNotFoundException);
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogEndPointException);
-            } catch (TimeoutException ex) {
-                logger.LogError(ex);
+            } catch (TimeoutException timeoutException) {
+                logger.LogError(timeoutException);
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogTimeOutException);
-            } catch (CommunicationException ex) {
-                logger.LogError(ex);
+            } catch (CommunicationException communicationException) {
+                logger.LogError(communicationException);
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
-            } 
+            }
         }
 
         private void BtnResendCode_Click(object sender, RoutedEventArgs e) {
@@ -223,14 +223,14 @@ namespace TripasDeGatoCliente.Views {
                 } else {
                     DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogErrorResendingRecoveryCode);
                 }
-            } catch (EndpointNotFoundException ex) {
-                logger.LogError(ex);
+            } catch (EndpointNotFoundException endpointNotFoundException) {
+                logger.LogError(endpointNotFoundException);
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogEndPointException);
-            } catch (TimeoutException ex) {
-                logger.LogError(ex);
+            } catch (TimeoutException timeoutException) {
+                logger.LogError(timeoutException);
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogTimeOutException);
-            } catch (CommunicationException ex) {
-                logger.LogError(ex);
+            } catch (CommunicationException communicationException) {
+                logger.LogError(communicationException);
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
             }
         }
@@ -288,16 +288,16 @@ namespace TripasDeGatoCliente.Views {
                 } else {
                     DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogErrorUpdatingPassowrd);
                 }
-            } catch (EndpointNotFoundException ex) {
-                logger.LogError(ex);
+            } catch (EndpointNotFoundException endpointNotFoundException) {
+                logger.LogError(endpointNotFoundException);
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogEndPointException);
-            } catch (TimeoutException ex) {
-                logger.LogError(ex);
+            } catch (TimeoutException timeoutException) {
+                logger.LogError(timeoutException);
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogTimeOutException);
-            } catch (CommunicationException ex) {
-                logger.LogError(ex);
+            } catch (CommunicationException communicationException) {
+                logger.LogError(communicationException);
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
-            } 
+            }
         }
 
         private bool IsValidPassword(string password) {

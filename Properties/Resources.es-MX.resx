@@ -162,6 +162,9 @@
   <data name="btnSavePassword" xml:space="preserve">
     <value>Guardar contraseña</value>
   </data>
+  <data name="btnSearch" xml:space="preserve">
+    <value>Buscar</value>
+  </data>
   <data name="btnSignIn" xml:space="preserve">
     <value>Registrarse</value>
   </data>
