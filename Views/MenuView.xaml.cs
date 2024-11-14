@@ -9,6 +9,7 @@ using TripasDeGatoCliente.TripasDeGatoServicio;
 using System.Threading.Tasks;
 using System.Linq;
 using System.Collections.Generic;
+using log4net.Repository.Hierarchy;
 
 namespace TripasDeGatoCliente.Views {
     public partial class MenuView : Page {
@@ -30,7 +31,7 @@ namespace TripasDeGatoCliente.Views {
             if (!string.IsNullOrEmpty(UserProfileSingleton.Nombre)) {
                 lbUserName.Content = UserProfileSingleton.Nombre;
             } else {
-                lbUserName.Content = "Usuario desconocido";
+                lbUserName.Content = Properties.Resources.lbUnknownUser;
             }
         }
 
@@ -97,39 +98,48 @@ namespace TripasDeGatoCliente.Views {
 
         private async void BtnAdd_Click(object sender, RoutedEventArgs e) {
             string friendName = txtFriendName.Text.Trim();
-
+            LoggerManager logger = new LoggerManager(this.GetType());
             if (!string.IsNullOrEmpty(friendName)) {
                 try {
                     int friendProfileId = await userManager.GetProfileIdAsync(friendName);
                     int userProfileId = UserProfileSingleton.IdPerfil;
 
                     if (friendProfileId == userProfileId) {
-                        MessageBox.Show("No puedes agregarte a ti mismo como amigo.");
+                        DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogCannotAddSelfAsFriend);
                     } else if (friendProfileId > 0) {
                         int result = await friendsManager.AddFriendAsync(userProfileId, friendProfileId);
 
                         if (result == Constants.SUCCES_OPERATION) {
-                            MessageBox.Show($"Amigo '{friendName}' agregado correctamente.");
+                            DialogManager.ShowSuccessMessageAlert(string.Format(Properties.Resources.dialogAddFriendSuccessfully, friendName));
                             await LoadFriendsListAsync();
                         } else {
-                            MessageBox.Show("Error al agregar el amigo. Intenta de nuevo.");
+                            DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogErrorAddingFriend);
                         }
                     } else {
-                        MessageBox.Show("No se encontró un perfil que coincida con ese nombre.");
+                        DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogProfileNotFound);
                     }
 
                     txtFriendName.Clear();
                 } catch (FaultException<ProfileNotFoundFault> ex) {
-                    MessageBox.Show(ex.Detail.errorMessage, "Perfil no encontrado");
-                } catch (Exception ex) {
-                    MessageBox.Show($"Ocurrió un error: {ex.Message}");
+                    logger.LogError(ex);
+                    DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogNotRetrievedProfile);
+                } catch (EndpointNotFoundException endpointNotFoundException) {
+                    logger.LogError(endpointNotFoundException);
+                    DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogEndPointException);
+                } catch (TimeoutException timeoutException) {
+                    logger.LogError(timeoutException);
+                    DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogTimeOutException);
+                } catch (CommunicationException communicationException) {
+                    logger.LogError(communicationException);
+                    DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
                 }
             } else {
-                MessageBox.Show("Por favor, ingresa un nombre válido.");
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogInvalidName);
             }
         }
 
         private async Task LoadFriendsListAsync() {
+            LoggerManager logger = new LoggerManager(this.GetType());
             try {
                 int userProfileId = UserProfileSingleton.IdPerfil;
                 var friendsList = await friendsManager.GetFriendsAsync(userProfileId);
@@ -142,12 +152,20 @@ namespace TripasDeGatoCliente.Views {
                 }
 
                 lstFriends.ItemsSource = friendsWithStatus;
-            } catch (Exception ex) {
-                MessageBox.Show($"Ocurrió un error al cargar la lista de amigos: {ex.Message}");
+            } catch (EndpointNotFoundException endpointNotFoundException) {
+                logger.LogError(endpointNotFoundException);
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogEndPointException);
+            } catch (TimeoutException timeoutException) {
+                logger.LogError(timeoutException);
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogTimeOutException);
+            } catch (CommunicationException communicationException) {
+                logger.LogError(communicationException);
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
             }
         }
 
         private async void BtnRemoveFriend_Click(object sender, RoutedEventArgs e) {
+            LoggerManager logger = new LoggerManager(this.GetType());
             if (lstFriends.SelectedItem != null) {
                 string selectedFriendName = lstFriends.SelectedItem.ToString();
 
@@ -159,23 +177,31 @@ namespace TripasDeGatoCliente.Views {
                         int result = await friendsManager.DeleteFriendAsync(userProfileId, friendProfileId);
 
                         if (result == Constants.SUCCES_OPERATION) {
-                            MessageBox.Show($"Amistad con '{selectedFriendName}' eliminada correctamente.");
+                            DialogManager.ShowSuccessMessageAlert(string.Format(Properties.Resources.dialogFriendshipDeleted, selectedFriendName));
                             await LoadFriendsListAsync();
                         } else {
-                            MessageBox.Show("Error al eliminar la amistad. Intenta de nuevo.");
+                            DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogErrorDeletingFriendship);
                         }
                     } else {
-                        MessageBox.Show("No se encontró el perfil del amigo seleccionado.");
+                        DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogNotRetrievedProfile);
                     }
-                } catch (Exception ex) {
-                    MessageBox.Show($"Ocurrió un error al intentar eliminar la amistad: {ex.Message}");
+                } catch (EndpointNotFoundException endpointNotFoundException) {
+                    logger.LogError(endpointNotFoundException);
+                    DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogEndPointException);
+                } catch (TimeoutException timeoutException) {
+                    logger.LogError(timeoutException);
+                    DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogTimeOutException);
+                } catch (CommunicationException communicationException) {
+                    logger.LogError(communicationException);
+                    DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
                 }
             } else {
-                MessageBox.Show("Por favor, selecciona un amigo para eliminar.");
+                DialogManager.ShowWarningMessageAlert(Properties.Resources.dialogSelectFriendToDelete);
             }
         }
 
         private async void BtnStartGame_Click(object sender, RoutedEventArgs e) {
+            LoggerManager logger = new LoggerManager(this.GetType());
             string gameName = "NombreDelJuego";
             int nodeCount = 2;
             Profile owner = new Profile { idProfile = UserProfileSingleton.IdPerfil, userName = UserProfileSingleton.Nombre };
@@ -186,10 +212,17 @@ namespace TripasDeGatoCliente.Views {
                 if (!string.IsNullOrEmpty(lobbyCode)) {
                     GoToLobbyView(lobbyCode);
                 } else {
-                    MessageBox.Show("Error al crear el lobby.");
+                    DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogErrorCreatingLobby);
                 }
-            } catch (Exception ex) {
-                MessageBox.Show($"Ocurrió un error al crear el lobby: {ex.Message}");
+            } catch (EndpointNotFoundException endpointNotFoundException) {
+                logger.LogError(endpointNotFoundException);
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogEndPointException);
+            } catch (TimeoutException timeoutException) {
+                logger.LogError(timeoutException);
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogTimeOutException);
+            } catch (CommunicationException communicationException) {
+                logger.LogError(communicationException);
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
             }
         }
 
@@ -198,7 +231,7 @@ namespace TripasDeGatoCliente.Views {
             if (this.NavigationService != null) {
                 this.NavigationService.Navigate(lobbyView);
             } else {
-                MessageBox.Show("Error: No se puede navegar a LobbyView.");
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogNavigationError);
             }
         }
 
@@ -207,7 +240,7 @@ namespace TripasDeGatoCliente.Views {
             if (this.NavigationService != null) {
                 this.NavigationService.Navigate(profileView);
             } else {
-                MessageBox.Show("Error: No se puede navegar al menu.");
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogNavigationError);
             }
         }
 
@@ -215,14 +248,13 @@ namespace TripasDeGatoCliente.Views {
             GoToPerfilView();
         }
 
-        private void btnJoinGame_Click(object sender, RoutedEventArgs e) {
+        private void BtnJoinGame_Click(object sender, RoutedEventArgs e) {
             SelectLobbyView selectLobbyView = new SelectLobbyView();
             if (this.NavigationService != null) {
                 this.NavigationService.Navigate(selectLobbyView);
             } else {
-                MessageBox.Show("Error: No se puede navegar a SelectLobbyView.");
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogNavigationError);
             }
         }
-
     }
 }

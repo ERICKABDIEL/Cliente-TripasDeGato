@@ -137,8 +137,8 @@
                 <!-- Caja de Contraseña -->
                 <StackPanel Grid.Row="5" Orientation="Vertical" Margin="0,0,0,10">
                     <Grid Grid.Row="3" Margin="0,0,0,10">
-                        <PasswordBox x:Name="txtPassword" FontSize="16" Background="#333" Foreground="White" Height="35" HorizontalAlignment="Stretch" BorderBrush="#FF7E578C" Visibility="Visible"/>
-                        <TextBox x:Name="txtPasswordVisible" FontSize="16" Background="#333" Foreground="White" Height="35" HorizontalAlignment="Stretch" BorderBrush="#FF7E578C" Visibility="Collapsed" IsReadOnly="True" />
+                        <PasswordBox x:Name="txtPassword" FontSize="16" Background="#333" Foreground="White" Height="35" HorizontalAlignment="Stretch" BorderBrush="#FF7E578C" Visibility="Visible" PasswordChanged="TxtPassword_PasswordChanged"/>
+                        <TextBox x:Name="txtPasswordVisible" FontSize="16" Background="#333" Foreground="White" Height="35" HorizontalAlignment="Stretch" BorderBrush="#FF7E578C" Visibility="Collapsed" IsReadOnly="True" TextChanged="TxtPasswordVisible_PasswordChanged"/>
                         <!-- ToggleButton para alternar la visibilidad de la contraseña -->
                         <ToggleButton x:Name="btnTogglePassword" Content="👁" Width="35" Height="35" HorizontalAlignment="Right" VerticalAlignment="Center" Checked="BtnTogglePassword_Checked" Unchecked="BtnTogglePassword_Unchecked"/>
                     </Grid>
@@ -202,7 +202,7 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
-                <Label Content="Ingrese el código de validación:" FontSize="18" Foreground="White" Margin="0,10,0,5" HorizontalAlignment="Center"/>
+                <Label Name="lbEnterValidationCode" Content="{x:Static p:Resources.lbEnterValidationCode}" FontSize="18" Foreground="White" Margin="0,10,0,5" HorizontalAlignment="Center"/>
                 <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Center" Margin="0,0,0,10">
                     <TextBox x:Name="txtValidationCode1" TextChanged="TxtValidationCode_TextChanged" Width="50" Margin="5" MaxLength="1" FontSize="24" TextAlignment="Center" Foreground="White" BorderBrush="#FF020202">
                         <TextBox.Background>
@@ -254,7 +254,7 @@
                     </TextBox>
                 </StackPanel>
 
-                <Button x:Name="btnValidate" Content="Validar" HorizontalAlignment="Left" Margin="280,23,0,-62" Click="BtnValidate_Click" Grid.Row="5" Width="104">
+                <Button x:Name="btnValidate" Content="{x:Static p:Resources.btnValidate}" HorizontalAlignment="Left" Margin="280,23,0,-62" Click="BtnValidate_Click" Grid.Row="5" Width="104">
                     <Button.Style>
                         <Style TargetType="{x:Type Button}">
                             <Setter Property="Background" Value="#7A1B9D"/>

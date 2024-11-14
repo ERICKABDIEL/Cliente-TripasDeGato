@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ServiceModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -8,6 +9,7 @@ using static TripasDeGatoCliente.Logic.ConstantsManager;
 
 namespace TripasDeGatoCliente.Views {
     public partial class LoginView : Page {
+        private string userEmail;
         public LoginView() {
             InitializeComponent();
             UpdatePasswordVisibilityIcon();
@@ -16,110 +18,88 @@ namespace TripasDeGatoCliente.Views {
         }
 
 
-        private string userEmail;
         private void BtnLogin_Click(object sender, RoutedEventArgs e) {
             ResetField(txtEmail);
             ResetField(txtPassword);
             ResetField(txtPasswordVisible);
 
-            if (string.IsNullOrWhiteSpace(txtEmail.Text)) {
-                HighlightField(txtEmail);
-                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogInvalidEmail);
+            if (!VerifyFields()) {
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogWrongData);
                 return;
             }
 
-            if (string.IsNullOrWhiteSpace(txtPassword.Password)) {
-                HighlightField(txtPassword);
-                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogInvalidPassword);
-                return;
-            }
-
-            string mail = txtEmail.Text;
+            string email = txtEmail.Text;
             string password = Hasher.HashToSHA256(txtPassword.Password);
 
-            if (VerifyFields()) {
-                if (ValidateCredentials(mail, password)) {
-                    SetPlayerOnlineStatus(UserProfileSingleton.IdPerfil);
-                    DisplayMainMenuView();
-                } 
-            } else {
-                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogWrongData);
+            if (AuthenticateUser(email, password)) {
+                SetPlayerOnlineStatus(UserProfileSingleton.IdPerfil);
+                DisplayMainMenuView();
             }
         }
-        private void TxtEmail_TextChanged(object sender, TextChangedEventArgs e) 
-        {
-            String email = txtEmail.Text;
-            if (!Validador.ValidateEmail(email)) {
-                HighlightField(txtEmail);
-                lbInvalidEmail.Visibility = Visibility.Visible;
-            } else {
-                ResetField(txtEmail);
-                lbInvalidEmail.Visibility = Visibility.Collapsed;
-                txtEmail.ToolTip = null;
-            }
-        }
-
-        private void TxtPassword_PasswordChanged(object sender, RoutedEventArgs e) {
-            string password = txtPassword.Password;
-            if (!Validador.ValidatePassword(password)) {
-                HighlightField(txtPassword);
-                lbInvalidPassword.Visibility = Visibility.Visible;
-            } else {
-                ResetField(txtPassword);
-                lbInvalidPassword.Visibility = Visibility.Collapsed;
-            }
-            UpdatePasswordVisibilityIcon();
-        }
-        private void HighlightField(Control control) {
-            control.BorderBrush = Brushes.Red;
-        }
-        private void ResetField(Control control) {
-            control.BorderBrush = Brushes.White;
-        }
+       
         private bool VerifyFields() {
-            bool passwordValid = Validador.ValidatePassword(txtPassword.Password);
             bool emailValid = Validador.ValidateEmail(txtEmail.Text);
+            bool passwordValid = Validador.ValidatePassword(txtPassword.Password);
 
-            if (!passwordValid) {
-                txtPassword.BorderBrush = Brushes.Red;
-            }
-            if (!emailValid) {
-                txtEmail.BorderBrush = Brushes.Red;
-            }
+            HighlightField(txtEmail, emailValid);
+            HighlightField(txtPassword, passwordValid);
 
-            return passwordValid && emailValid;
+            return emailValid && passwordValid;
         }
-
-        public bool ValidateCredentials(string mail, string password) {
-            bool validateResult = false;
+        
+        private bool AuthenticateUser(string email, string hashedPassword) {
             LoggerManager logger = new LoggerManager(this.GetType());
-            int validationResult = 0;
+            bool isAuthenticated = false;
 
             try {
                 IUserManager userManager = new UserManagerClient();
-                validationResult = userManager.VerifyLogin(mail, password);
+                int validationResult = userManager.VerifyLogin(email, hashedPassword);
 
                 if (validationResult == Constants.DATA_MATCHES) {
-                    Profile profile = userManager.GetProfileByMail(mail);
+                    Profile profile = userManager.GetProfileByMail(email);
                     if (profile != null) {
                         ObtainSingletonData(profile);
-                        validateResult = true;
+                        isAuthenticated = true;
                     } else {
                         DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogNotRetrievedProfile);
                     }
                 } else {
                     DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogMissmatchesCredentials);
                 }
-            } catch (Exception ex) {
-                logger.LogError(ex);
-                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogConnectionErrorWithServer);
+            } catch (EndpointNotFoundException endpointNotFoundException) {
+                logger.LogError(endpointNotFoundException);
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogEndPointException);
+            } catch (TimeoutException timeoutException) {
+                logger.LogError(timeoutException);
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogTimeOutException);
+            } catch (CommunicationException communicationException) {
+                logger.LogError(communicationException);
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
             }
 
-            return validateResult;
+            return isAuthenticated;
         }
-
+        
         private void ObtainSingletonData(Profile profile) {
             UserProfileSingleton.Instance.CreateInstance(profile);
+        }
+        //NUEVO
+        private void SetPlayerOnlineStatus(int playerId) {
+            LoggerManager logger = new LoggerManager(this.GetType());
+
+            try {
+                IStatusManager statusManager = new StatusManagerClient();
+                statusManager.SetPlayerStatus(playerId, GameEnumsPlayerStatus.Online);
+            } catch (EndpointNotFoundException endpointNotFoundException) {
+                logger.LogError(endpointNotFoundException);
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogEndPointException);
+            } catch (TimeoutException timeoutException) {
+                logger.LogError(timeoutException);
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogTimeOutException);
+            } catch (CommunicationException communicationException) {
+                logger.LogError(communicationException);
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
+            }
         }
 
         private void DisplayMainMenuView() {
@@ -127,38 +107,42 @@ namespace TripasDeGatoCliente.Views {
             this.NavigationService.Navigate(menuView);
         }
 
+        private void HighlightField(Control control, bool isValid) {
+            control.BorderBrush = isValid ? Brushes.White : Brushes.Red;
+        }
+
+        private void TxtEmail_TextChanged(object sender, TextChangedEventArgs e) {
+            string email = txtEmail.Text;
+            bool isValid = Validador.ValidateEmail(email);
+
+            HighlightField(txtEmail, isValid);
+            lbInvalidEmail.Visibility = isValid ? Visibility.Collapsed : Visibility.Visible;
+        }
+
+        private void TxtPassword_PasswordChanged(object sender, RoutedEventArgs e) {
+            string password = txtPassword.Password;
+            bool isValid = Validador.ValidatePassword(password);
+
+            HighlightField(txtPassword, isValid);
+            lbInvalidPassword.Visibility = isValid ? Visibility.Collapsed : Visibility.Visible;
+            UpdatePasswordVisibilityIcon();
+        }
+
+        private void ResetField(Control control) {
+            control.BorderBrush = Brushes.White;
+        }
+
         private void BtnSignIn_Click(object sender, RoutedEventArgs e) {
             RegisterView registerView = new RegisterView();
             this.NavigationService.Navigate(registerView);
         }
+
         private void BtnGuest_Click(object sender, RoutedEventArgs e) {
 
         }
 
-        private void BtnTogglePassword_Checked(object sender, RoutedEventArgs e) {
-            txtPasswordVisible.Text = txtPassword.Password;
-            txtPasswordVisible.Visibility = Visibility.Visible;
-            txtPassword.Visibility = Visibility.Collapsed;
-        }
-
-        private void BtnTogglePassword_Unchecked(object sender, RoutedEventArgs e) {
-            txtPassword.Password = txtPasswordVisible.Text;
-            txtPasswordVisible.Visibility = Visibility.Collapsed;
-            txtPassword.Visibility = Visibility.Visible;
-        }
-
-        private void UpdatePasswordVisibilityIcon() {
-            if (txtPassword.Password.Length > 0) {
-                btnTogglePassword.Visibility = Visibility.Visible;
-            } else {
-                btnTogglePassword.Visibility = Visibility.Collapsed;
-            }
-        }
-
-        private void BtnRecoverPassword_Click(object sender, RoutedEventArgs e) {
-            enterEmailGrid.Visibility = Visibility.Visible;
-        }
         private void BtnContinue_Click(object sender, RoutedEventArgs e) {
+            LoggerManager logger = new LoggerManager(this.GetType());
             string email = txtEmailRecovery.Text.Trim();
 
             if (string.IsNullOrWhiteSpace(email)) {
@@ -171,53 +155,91 @@ namespace TripasDeGatoCliente.Views {
                 return;
             }
 
-            IPasswordRecoveryManager passwordRecovery = new PasswordRecoveryManagerClient();
+            try {
+                IPasswordRecoveryManager passwordRecovery = new PasswordRecoveryManagerClient();
+                int result = passwordRecovery.SendRecoveryCode(email);
 
-            int result = passwordRecovery.SendRecoveryCode(email);
-
-            if (result == Constants.SUCCES_OPERATION) {
-                userEmail = email;
-                enterEmailGrid.Visibility = Visibility.Collapsed;
-                validationGrid.Visibility = Visibility.Visible;
-                DialogManager.ShowSuccessMessageAlert(Properties.Resources.dialogRecoveryCodeHasBeenSent);
-            } else if (result == Constants.NO_DATA_MATCHES) {
-                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogInvalidEmail);
-            } else {
-                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogErrorSendingRecoveryCode);
+                if (result == Constants.SUCCES_OPERATION) {
+                    userEmail = email;
+                    enterEmailGrid.Visibility = Visibility.Collapsed;
+                    validationGrid.Visibility = Visibility.Visible;
+                    DialogManager.ShowSuccessMessageAlert(Properties.Resources.dialogRecoveryCodeHasBeenSent);
+                } else if (result == Constants.NO_DATA_MATCHES) {
+                    DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogInvalidEmail);
+                } else {
+                    DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogErrorSendingRecoveryCode);
+                }
+            } catch (EndpointNotFoundException ex) {
+                logger.LogError(ex);
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogEndPointException);
+            } catch (TimeoutException ex) {
+                logger.LogError(ex);
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogTimeOutException);
+            } catch (CommunicationException ex) {
+                logger.LogError(ex);
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
             }
         }
+
         private void BtnBackEnterEmail_Click(object sender, RoutedEventArgs e) {
             enterEmailGrid.Visibility = Visibility.Collapsed;
             txtEmail.Clear();
             txtPassword.Clear();
             txtPasswordVisible.Clear();
         }
+
         private void BtnValidate_Click(object sender, RoutedEventArgs e) {
+            LoggerManager logger = new LoggerManager(this.GetType());
             string enteredCode = $"{txtValidationCode1.Text}{txtValidationCode2.Text}{txtValidationCode3.Text}{txtValidationCode4.Text}{txtValidationCode5.Text}{txtValidationCode6.Text}";
 
-            IPasswordRecoveryManager passwordRecovery = new PasswordRecoveryManagerClient();
+            try {
+                IPasswordRecoveryManager passwordRecovery = new PasswordRecoveryManagerClient();
+                bool isCodeValid = passwordRecovery.VerifyRecoveryCode(userEmail, enteredCode);
 
-            bool isCodeValid = passwordRecovery.VerifyRecoveryCode(userEmail, enteredCode);
-
-            if (isCodeValid) {
-                validationGrid.Visibility = Visibility.Collapsed;
-                recoveryPasswordGrid.Visibility = Visibility.Visible;
-            } else {
-                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogInvalidRecoveryCode);
+                if (isCodeValid) {
+                    validationGrid.Visibility = Visibility.Collapsed;
+                    recoveryPasswordGrid.Visibility = Visibility.Visible;
+                } else {
+                    DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogInvalidRecoveryCode);
+                }
+            } catch (EndpointNotFoundException endpointNotFoundException) {
+                logger.LogError(endpointNotFoundException);
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogEndPointException);
+            } catch (TimeoutException timeoutException) {
+                logger.LogError(timeoutException);
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogTimeOutException);
+            } catch (CommunicationException communicationException) {
+                logger.LogError(communicationException);
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
             }
         }
+
         private void BtnResendCode_Click(object sender, RoutedEventArgs e) {
+            LoggerManager logger = new LoggerManager(this.GetType());
+
             if (string.IsNullOrEmpty(userEmail)) {
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogNullEmail);
                 return;
             }
 
-            var emailVerificationProxy = new TripasDeGatoServicio.PasswordRecoveryManagerClient();
-            int result = emailVerificationProxy.SendRecoveryCode(userEmail);
-            if (result == Constants.SUCCES_OPERATION) {
-                DialogManager.ShowSuccessMessageAlert(Properties.Resources.dialogRecoveryCodeResent);
-            } else {
-                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogErrorResendingRecoveryCode);
+            try {
+                var emailVerificationProxy = new TripasDeGatoServicio.PasswordRecoveryManagerClient();
+                int result = emailVerificationProxy.SendRecoveryCode(userEmail);
+
+                if (result == Constants.SUCCES_OPERATION) {
+                    DialogManager.ShowSuccessMessageAlert(Properties.Resources.dialogRecoveryCodeResent);
+                } else {
+                    DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogErrorResendingRecoveryCode);
+                }
+            } catch (EndpointNotFoundException endpointNotFoundException) {
+                logger.LogError(endpointNotFoundException);
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogEndPointException);
+            } catch (TimeoutException timeoutException) {
+                logger.LogError(timeoutException);
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogTimeOutException);
+            } catch (CommunicationException communicationException) {
+                logger.LogError(communicationException);
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
             }
         }
 
@@ -227,11 +249,46 @@ namespace TripasDeGatoCliente.Views {
             txtPassword.Clear();
             txtPasswordVisible.Clear();
         }
-        private void BtnBackRecovery_Click(object sender, RoutedEventArgs e) {
-            recoveryPasswordGrid.Visibility = Visibility.Collapsed;
-            txtEmail.Clear();
-            txtPassword.Clear();
-            txtPasswordVisible.Clear();
+       
+        private void BtnSavePassword_Click(object sender, RoutedEventArgs e) {
+            LoggerManager logger = new LoggerManager(this.GetType());
+
+            string newPassword = txtNewPassword.Password.Trim();
+            string confirmPassword = txtNewPasswordConfirm.Password.Trim();
+            string email = txtEmail.Text.Trim();
+
+            if (newPassword != confirmPassword) {
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogMissmatchesCredentials);
+                return;
+            }
+
+            if (!IsValidPassword(newPassword)) {
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogInvalidPassword);
+                return;
+            }
+
+            try {
+                IPasswordRecoveryManager passwordRecovery = new PasswordRecoveryManagerClient();
+                int result = passwordRecovery.UpdatePassword(userEmail, Hasher.HashToSHA256(newPassword));
+
+                if (result == Constants.SUCCES_OPERATION) {
+                    DialogManager.ShowSuccessMessageAlert(Properties.Resources.dialogPasswordUpdatedSuccessfully);
+                    txtNewPassword.Clear();
+                    txtNewPasswordConfirm.Clear();
+                    recoveryPasswordGrid.Visibility = Visibility.Collapsed;
+                } else {
+                    DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogErrorUpdatingPassowrd);
+                }
+            } catch (EndpointNotFoundException endpointNotFoundException) {
+                logger.LogError(endpointNotFoundException);
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogEndPointException);
+            } catch (TimeoutException timeoutException) {
+                logger.LogError(timeoutException);
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogTimeOutException);
+            } catch (CommunicationException communicationException) {
+                logger.LogError(communicationException);
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
+            }
         }
 
         private void TxtValidationCode_TextChanged(object sender, TextChangedEventArgs e) {
@@ -249,32 +306,7 @@ namespace TripasDeGatoCliente.Views {
                     txtValidationCode6.Focus();
             }
         }
-        private void BtnSavePassword_Click(object sender, RoutedEventArgs e) {
-            string newPassword = txtNewPassword.Password.Trim();
-            string confirmPassword = txtNewPasswordConfirm.Password.Trim();
-            string email = txtEmail.Text.Trim();
 
-            if (newPassword != confirmPassword) {
-                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogMissmatchesCredentials);
-                return;
-            }
-
-            if (!IsValidPassword(newPassword)) {
-                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogInvalidPassword);
-                return;
-            }
-
-            IPasswordRecoveryManager passwordRecovery = new PasswordRecoveryManagerClient();
-            int result = passwordRecovery.UpdatePassword(userEmail, Hasher.HashToSHA256(newPassword));
-
-            if (result == Constants.SUCCES_OPERATION) {
-                DialogManager.ShowSuccessMessageAlert(Properties.Resources.dialogPasswordUpdatedSuccessfully);
-                txtNewPassword.Clear();
-                txtNewPasswordConfirm.Clear();
-            } else {
-                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogErrorUpdatingPassowrd);
-            }
-        }
         private bool IsValidPassword(string password) {
             bool isValid = true;
             if (!Validador.ValidatePassword(password)) {
@@ -282,6 +314,7 @@ namespace TripasDeGatoCliente.Views {
             }
             return isValid;
         }
+        
         private void BtnToggleNewPassword_Checked(object sender, RoutedEventArgs e) {
             txtNewPasswordVisible.Text = txtNewPassword.Password;
             txtNewPasswordVisible.Visibility = Visibility.Visible;
@@ -302,18 +335,31 @@ namespace TripasDeGatoCliente.Views {
             txtNewPasswordConfirmVisible.Visibility = Visibility.Collapsed;
         }
         
-
-        //NUEVO
-        private void SetPlayerOnlineStatus(int playerId) {
-            try {
-                IStatusManager statusManager = new StatusManagerClient();
-                statusManager.SetPlayerStatus(playerId, GameEnumsPlayerStatus.Online);
-            } catch (Exception ex) {
-                LoggerManager logger = new LoggerManager(this.GetType());
-                logger.LogError(ex);
-                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogErrorUpdatingPlayerStatus);
-            }
+        private void BtnBackRecovery_Click(object sender, RoutedEventArgs e) {
+            recoveryPasswordGrid.Visibility = Visibility.Collapsed;
+            txtEmail.Clear();
+            txtPassword.Clear();
+            txtPasswordVisible.Clear();
         }
 
+        private void BtnTogglePassword_Checked(object sender, RoutedEventArgs e) {
+            txtPasswordVisible.Text = txtPassword.Password;
+            txtPasswordVisible.Visibility = Visibility.Visible;
+            txtPassword.Visibility = Visibility.Collapsed;
+        }
+
+        private void BtnTogglePassword_Unchecked(object sender, RoutedEventArgs e) {
+            txtPassword.Password = txtPasswordVisible.Text;
+            txtPasswordVisible.Visibility = Visibility.Collapsed;
+            txtPassword.Visibility = Visibility.Visible;
+        }
+
+        private void UpdatePasswordVisibilityIcon() {
+            btnTogglePassword.Visibility = txtPassword.Password.Length > 0 ? Visibility.Visible : Visibility.Collapsed;
+        }
+
+        private void BtnRecoverPassword_Click(object sender, RoutedEventArgs e) {
+            enterEmailGrid.Visibility = Visibility.Visible;
+        }
     }
 }

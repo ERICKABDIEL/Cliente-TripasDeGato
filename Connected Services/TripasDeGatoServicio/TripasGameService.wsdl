@@ -975,7 +975,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8081/UserManager</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>Z\cv419</Upn>
+          <Upn>ERICK_ATZIN\abdie</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
@@ -984,7 +984,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8081/FriendsManager</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>Z\cv419</Upn>
+          <Upn>ERICK_ATZIN\abdie</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
@@ -993,7 +993,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8081/ChatManager</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>Z\cv419</Upn>
+          <Upn>ERICK_ATZIN\abdie</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
@@ -1002,7 +1002,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8081/PasswordRecoveryManager</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>Z\cv419</Upn>
+          <Upn>ERICK_ATZIN\abdie</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
@@ -1011,7 +1011,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8081/EmailVerificationManager</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>Z\cv419</Upn>
+          <Upn>ERICK_ATZIN\abdie</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
@@ -1020,7 +1020,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8081/LeaderboardManager</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>Z\cv419</Upn>
+          <Upn>ERICK_ATZIN\abdie</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
@@ -1029,7 +1029,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8081/StatusManager</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>Z\cv419</Upn>
+          <Upn>ERICK_ATZIN\abdie</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
@@ -1038,7 +1038,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8081/LobbyManager</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>Z\cv419</Upn>
+          <Upn>ERICK_ATZIN\abdie</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
@@ -1047,7 +1047,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8081/LobbyBrowser</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>Z\cv419</Upn>
+          <Upn>ERICK_ATZIN\abdie</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>

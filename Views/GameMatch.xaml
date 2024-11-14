@@ -22,7 +22,90 @@
 
         <Image Source="/Images/SceneCat.png" HorizontalAlignment="Left" Height="720" VerticalAlignment="Top" Width="1280" Grid.ColumnSpan="3" Grid.RowSpan="3"/>
 
-        <Canvas Grid.Row="1" Grid.Column="1" x:Name="drawingCanvas" Background="Transparent" Margin="178,135,218,156" />
+        <!-- Canvas con un Path irregular -->
+        <Canvas Grid.Row="1" Grid.Column="1" x:Name="drawingCanvas" Margin="115,109,111,57" Background="Black" Opacity="0.48">
+            <Canvas.Clip>
+                <PathGeometry>
+                    <PathFigure StartPoint="200,01">
+                        <LineSegment Point="200,01" />
+                        <LineSegment Point="210,02" />
+                        <LineSegment Point="220,05" />
+                        <LineSegment Point="225,06" />
+                        <LineSegment Point="230,07" />
+                        <LineSegment Point="233,08" />
+                        <LineSegment Point="240,11" />
+                        <LineSegment Point="242,11" />
+                        <LineSegment Point="254,16" />
+                        <LineSegment Point="257,21" />
+                        <LineSegment Point="257,22" />
+                        <LineSegment Point="268,40" />
+                        <LineSegment Point="288,60" />
+                        <LineSegment Point="320,79" />
+                        <LineSegment Point="380,92" />
+                        <LineSegment Point="430,91" />
+                        <LineSegment Point="472,80" />
+                        <LineSegment Point="478,105" />
+                        <LineSegment Point="478,120" />
+                        <LineSegment Point="478,140" />
+                        <LineSegment Point="475,159" />
+                        <LineSegment Point="535,218" />
+                        <LineSegment Point="545,240" />
+                        <LineSegment Point="540,260" />
+                        <LineSegment Point="532,265" />
+                        <LineSegment Point="529,270" />
+                        <LineSegment Point="500,280" />
+                        <LineSegment Point="480,280" />
+                        <LineSegment Point="470,280" />
+                        <LineSegment Point="410,265" />
+                        <LineSegment Point="400,255" />
+                        <LineSegment Point="395,258" />
+                        <LineSegment Point="396,300" />
+                        <LineSegment Point="402,310" />
+                        <LineSegment Point="408,324" />
+                        <LineSegment Point="405,335" />
+                        <LineSegment Point="400,340" />
+                        <LineSegment Point="380,346" />
+                        <LineSegment Point="350,348" />
+                        <LineSegment Point="330,345" />
+                        <LineSegment Point="330,345" />
+                        <LineSegment Point="300,325" />
+                        <LineSegment Point="300,325" />
+                        <LineSegment Point="270,285" />
+                        <LineSegment Point="235,286" />
+                        <LineSegment Point="234,295" />
+                        <LineSegment Point="245,310" />
+                        <LineSegment Point="245,320" />
+                        <LineSegment Point="237,330" />
+                        <LineSegment Point="220,337" />
+                        <LineSegment Point="200,337" />
+                        <LineSegment Point="180,332" />
+                        <LineSegment Point="149,306" />
+                        <LineSegment Point="135,278" />
+                        <LineSegment Point="108,291" />
+                        <LineSegment Point="104,305" />
+                        <LineSegment Point="112,321" />
+                        <LineSegment Point="104,338" />
+                        <LineSegment Point="81,345" />
+                        <LineSegment Point="55,345" />
+                        <LineSegment Point="30,335" />
+                        <LineSegment Point="13,310" />
+                        <LineSegment Point="2,275" />
+                        <LineSegment Point="2,250" />
+                        <LineSegment Point="08,223" />
+                        <LineSegment Point="18,205" />
+                        <LineSegment Point="24,193" />
+                        <LineSegment Point="22,153" />
+                        <LineSegment Point="23,123" />
+                        <LineSegment Point="35,90" />
+                        <LineSegment Point="70,50" />
+                        <LineSegment Point="90,30" />
+                        <LineSegment Point="140,05" />
+                        <LineSegment Point="156,00" />
+                    </PathFigure>
+                </PathGeometry>
+            </Canvas.Clip>
+        </Canvas>
+
 
         <ProgressBar x:Name="timeProgressBar" 
                      Height="20" 
@@ -36,6 +119,5 @@
                      Grid.Column="1" Grid.Row="1"/>
         <Label x:Name="labelPlayer1" Content="Player 1" Foreground="White" FontSize="16" FontFamily="Rockwell Extra Bold" Margin="92,41,75,33" />
         <Label x:Name="labelPlayer2" Content="Player 2" Foreground="White" FontSize="16" FontFamily="Rockwell Extra Bold" Margin="82,41,82,33" Grid.Column="2" />
-
     </Grid>
 </Page>
