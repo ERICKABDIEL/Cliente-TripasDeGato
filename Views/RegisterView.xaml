@@ -219,7 +219,7 @@
                    VerticalAlignment="Top" 
                    Foreground="#FFED3838" 
                    Visibility="Collapsed"/>
-            <Grid x:Name="verificationGrid" Width="558" Height="302" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="364,256,0,0">
+            <Grid x:Name="verificationGrid" Width="558" Height="302" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="364,256,0,0" Visibility="Collapsed">
                 <Grid.Background>
                     <ImageBrush ImageSource="/Images/BackgroundValidation.png"/>
                 </Grid.Background>
