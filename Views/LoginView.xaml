@@ -244,7 +244,7 @@
                        VerticalContentAlignment="Center"
                        Height="38" 
                        Panel.ZIndex="2" Visibility="Collapsed"/>
-                <Grid x:Name="recoveryGrid" Width="558" Height="302" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="364,256,0,0" Visibility="Collapsed">
+                <Grid x:Name="recoveryGrid" Width="558" Height="302" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="364,256,0,0">
                     <Grid.Background>
                         <ImageBrush ImageSource="/Images/BackgroundValidation.png"/>
                     </Grid.Background>
