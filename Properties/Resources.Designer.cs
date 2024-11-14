@@ -79,6 +79,15 @@ namespace TripasDeGatoCliente.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Continue.
+        /// </summary>
+        public static string btnContinue {
+            get {
+                return ResourceManager.GetString("btnContinue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Edit.
         /// </summary>
         public static string btnEdit {
@@ -795,6 +804,15 @@ namespace TripasDeGatoCliente.Properties {
         public static string lbEmailValid {
             get {
                 return ResourceManager.GetString("lbEmailValid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Enter your email.
+        /// </summary>
+        public static string lbEnterEmail {
+            get {
+                return ResourceManager.GetString("lbEnterEmail", resourceCulture);
             }
         }
         
