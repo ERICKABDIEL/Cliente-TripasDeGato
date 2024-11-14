@@ -26,6 +26,7 @@ namespace TripasDeGatoCliente.Views {
             this.lobbyCode = lobbyCode;
             lbCode.Content = lobbyCode;
             lobbyBrowser = new LobbyBrowserClient();
+            InitializeLobby();
             lobbyManager = new LobbyManagerClient(new InstanceContext(this));
             chatManager = new ChatManagerClient(new InstanceContext(this));
             InitializeConnectionsAsync();
@@ -90,23 +91,6 @@ namespace TripasDeGatoCliente.Views {
             }
         }
 
-        private async Task InitializeLobbyAsync() {
-            LoggerManager logger = new LoggerManager(this.GetType());
-            try {
-                Lobby lobby = await lobbyBrowser.GetLobbyByCodeAsync(lobbyCode);
-                labelPlayer1.Content = lobby.Players.ContainsKey("PlayerOne") ? lobby.Players["PlayerOne"].userName : "Esperando jugador...";
-                labelPlayer2.Content = lobby.Players.ContainsKey("PlayerTwo") ? lobby.Players["PlayerTwo"].userName : "Esperando jugador...";
-            } catch (EndpointNotFoundException ex) {
-                logger.LogError(ex);
-                DialogManager.ShowErrorMessageAlert("No se pudo obtener los datos del lobby.");
-            } catch (TimeoutException ex) {
-                logger.LogError(ex);
-                DialogManager.ShowErrorMessageAlert("Tiempo de espera agotado al obtener los datos del lobby.");
-            } catch (CommunicationException ex) {
-                logger.LogError(ex);
-                DialogManager.ShowErrorMessageAlert("Error de comunicación al obtener los datos del lobby.");
-            }
-        }
         private async void BtnSendMessage_Click(object sender, RoutedEventArgs e) {
             LoggerManager logger = new LoggerManager(this.GetType());
             string messageText = txtMessageInput.Text.Trim();
@@ -150,26 +134,6 @@ namespace TripasDeGatoCliente.Views {
                         lobbyManager.LeaveLobby(lobbyCode, UserProfileSingleton.IdPerfil));
                 } catch (Exception ex) {
                     Console.WriteLine($"Error al salir del lobby: {ex.Message}");
-                }
-            }
-        }
-
-        private async void BtnSendMessage_Click(object sender, RoutedEventArgs e) {
-            string messageText = txtMessageInput.Text.Trim();
-
-            if (!string.IsNullOrEmpty(messageText)) {
-                var message = new Message {
-                    userName = UserProfileSingleton.Nombre,
-                    chatMessage = messageText
-                };
-
-                try {
-                    await Task.Run(() => chatManager.SendMessageAsync(UserProfileSingleton.Nombre, message, lobbyCode));
-                    txtMessageInput.Clear();
-                } catch (EndpointNotFoundException endPointException) {
-                    DialogManager.ShowErrorMessageAlert(endPointException.Message);
-                } catch (TimeoutException timeOutException) {
-                    DialogManager.ShowErrorMessageAlert(timeOutException.Message);
                 }
             }
         }
@@ -219,7 +183,7 @@ namespace TripasDeGatoCliente.Views {
         public void GuestLeftCallback() {
 
             Dispatcher.Invoke(() => {
-                labelPlayer2.Text = "Esperando jugador...";
+                labelPlayer2.Content = "Esperando jugador...";
             });
         }
 
