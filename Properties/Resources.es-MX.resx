@@ -297,6 +297,9 @@
   <data name="dialogRecoveryCodeHasBeenSent" xml:space="preserve">
     <value>Se ha enviado un código de recuperación a su correo</value>
   </data>
+  <data name="dialogRecoveryCodeResent" xml:space="preserve">
+    <value>Código de recuperación reenviado exitosamente</value>
+  </data>
   <data name="dialogRequestTimeout" xml:space="preserve">
     <value>La solicitud ha tardado demasiado. Por favor, intente más tarde</value>
   </data>
@@ -323,9 +326,6 @@
   </data>
   <data name="dialogUserJoinedChat" xml:space="preserve">
     <value>{0} se ha unido al chat</value>
-  </data>
-  <data name="dialogVerificationCodeResent" xml:space="preserve">
-    <value>Código de recuperación reenviado exitosamente</value>
   </data>
   <data name="dialogVerificationCodeResentSuccessfully" xml:space="preserve">
     <value>Código de verificación reenviado con éxito. Por favor, revisa tu correo electrónico</value>
@@ -366,8 +366,11 @@
   <data name="lbEnterNewPassword" xml:space="preserve">
     <value>Ingrese su nueva contraseña</value>
   </data>
-  <data name="lbEnterValidationCode" xml:space="preserve">
-    <value>Ingrese el código de validación:</value>
+  <data name="lbEnterRecoveryCode" xml:space="preserve">
+    <value>Ingrese el código de recuperación:</value>
+  </data>
+  <data name="lbEnterVerificationCode" xml:space="preserve">
+    <value>Ingrese el código de verificación:</value>
   </data>
   <data name="lbFileFormat" xml:space="preserve">
     <value>Seleccione otro archivo que sí sea compatible</value>

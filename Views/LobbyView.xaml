@@ -53,9 +53,9 @@
                Source="/Images/BackgroundLobby.png" 
                HorizontalAlignment="Left" 
                Height="720" 
-               Margin="-6,10,0,0" 
-               VerticalAlignment="Top" 
-               Width="1280"/>
+               Margin="-4,0,0,0" 
+               VerticalAlignment="Center" 
+               Width="1298"/>
 
         <ScrollViewer VerticalScrollBarVisibility="Auto"
                       Margin="241,155,272,165">
@@ -70,18 +70,18 @@
         <Button x:Name="btnInvitedFriend" 
                 Content="{x:Static p:Resources.btnInviteFriend}" 
                 HorizontalAlignment="Left" 
-                Margin="1022,558,0,0" 
+                Margin="1022,549,0,0" 
                 VerticalAlignment="Top" Width="144" Height="40"/>
 
         <Button x:Name="btnStartGame" 
                 Content="{x:Static p:Resources.btnStartGame}" 
                 HorizontalAlignment="Left" 
-                Margin="1022,624,0,0" VerticalAlignment="Top" Width="144" Height="40"/>
+                Margin="1022,615,0,0" VerticalAlignment="Top" Width="144" Height="40"/>
 
         <Button x:Name="btnKickPlayer" 
                 Content="{x:Static p:Resources.globalKick}" 
                 HorizontalAlignment="Left" 
-                Margin="71,624,0,0" 
+                Margin="71,615,0,0" 
                 VerticalAlignment="Top" 
                 Height="40" Width="138"/>
 
@@ -94,7 +94,7 @@
          FontSize="20" 
          MaxLength="100" 
          Padding="5" 
-         Margin="339,626,395,54" />
+         Margin="341,615,393,65" />
 
         <Button Content="Enviar" 
                 Width="79" 
@@ -103,7 +103,7 @@
                 Foreground="Black" 
                 FontWeight="Bold" 
                 FontSize="16" 
-                Margin="901,626,0,0" 
+                Margin="901,615,0,0" 
                 VerticalAlignment="Top" 
                 Click="BtnSendMessage_Click"
                 BorderBrush="#FF4A3555" HorizontalAlignment="Left"/>
@@ -116,7 +116,8 @@
                 Height="50" 
                 Margin="58,52,0,0" 
                 FontSize="16" 
-                FontWeight="Bold" Click="BtnBack_Click">
+                FontWeight="Bold"
+                Click="BtnBack_Click">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0,1">
                     <GradientStop Color="#FFDBB277"/>
@@ -174,9 +175,9 @@
             </Button.Style>
         </Button>
         <Label x:Name="lbCode" Content="Label" HorizontalAlignment="Center" Margin="0,453,0,0" VerticalAlignment="Top" Foreground="Black" FontSize="36" Background="{x:Null}" Height="58" Width="164" HorizontalContentAlignment="Center" FontFamily="Rockwell Extra Bold"/>
-        <Image Source="/Images/DefaultImageProfile.png" RenderTransformOrigin="0.5,0.5" Margin="999,320,91,190"/>
-        <Label x:Name="labelPlayer1" Content="Player 1" Foreground="Black" FontSize="16" FontFamily="Rockwell Extra Bold" HorizontalAlignment="Left" Margin="1050,254,0,437" HorizontalContentAlignment="Center" />
-        <Image Source="/Images/DefaultImageProfile2.png" Margin="38,320,1052,190" />
-        <Label x:Name="labelPlayer2" Content="Player 2" Foreground="Black" FontSize="16" FontFamily="Rockwell Extra Bold" HorizontalAlignment="Left" Margin="89,254,0,437" HorizontalContentAlignment="Center" />
+        <Image Source="/Images/Profiles/ImageProfile1.png" RenderTransformOrigin="0.5,0.5" Margin="999,320,91,190"/>
+        <Label x:Name="labelPlayer1" Content="Player 1" Foreground="Black" FontSize="16" FontFamily="Rockwell Extra Bold" HorizontalAlignment="Left" Margin="1050,244,0,447" HorizontalContentAlignment="Center" />
+        <Label x:Name="labelPlayer2" Content="Player 2" Foreground="Black" FontSize="16" FontFamily="Rockwell Extra Bold" HorizontalAlignment="Left" Margin="89,244,0,447" HorizontalContentAlignment="Center" />
+        <Image Source="/Images/Profiles/ImageProfile1.png" Margin="38,320,1052,190" />
     </Grid>
 </Page>

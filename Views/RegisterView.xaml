@@ -13,31 +13,112 @@
         <Grid>
             <Border>
                 <Border.Background>
-                    <ImageBrush ImageSource="/Images/BackgroundLeft.png" Stretch="UniformToFill"/>
+                    <ImageBrush ImageSource="/Images/BackgroundLogin.png" Stretch="UniformToFill"/>
                 </Border.Background>
-            </Border>
 
-            <!-- Botón de Volver/Regresar -->
+            </Border>
+            <Label x:Name="lblEmail" 
+                   Content="{x:Static p:Resources.lbEmail}" 
+                   Grid.Row="0" 
+                   FontSize="18" 
+                   Foreground="Black" 
+                   Margin="0,293,0,395" 
+                   HorizontalAlignment="Center" 
+                   FontFamily="Cooper Black" 
+                   Background="Transparent" 
+                   Width="332" 
+                   HorizontalContentAlignment="Center" 
+                   VerticalContentAlignment="Center"/>
+            <Label x:Name="lblName" 
+                   Content="{x:Static p:Resources.globalLbUser}" 
+                   FontSize="18" 
+                   Foreground="Black" 
+                   Margin="0,353,0,0" 
+                   HorizontalAlignment="Center" 
+                   HorizontalContentAlignment="Center" 
+                   VerticalContentAlignment="Center" 
+                   FontFamily="Cooper Black" 
+                   Width="332" 
+                   VerticalAlignment="Top"/>
+            <Label x:Name="lblPassword" 
+                   Content="{x:Static p:Resources.lbPasswordSignIn}" 
+                   FontSize="18" 
+                   Margin="0,412,0,274" 
+                   HorizontalAlignment="Center" 
+                   VerticalContentAlignment="Center" 
+                   HorizontalContentAlignment="Center" 
+                   FontFamily="Cooper Black" 
+                   Width="332"/>
+            <TextBox x:Name="txtEmail" 
+                     FontSize="16" 
+                     Background="{x:Null}" 
+                     Foreground="White" 
+                     Margin="474,320,474,372"
+                     TextChanged="TxtEmail_TextChanged" 
+                     BorderBrush="#FF432B1E" 
+                     HorizontalContentAlignment="Center" 
+                     VerticalContentAlignment="Center" 
+                     Height="28" 
+                     FontFamily="Cooper Black" />
+            <TextBox x:Name="txtName" 
+                     FontSize="16" 
+                     Background="{x:Null}" 
+                     Foreground="White" 
+                     Margin="474,381,474,311" 
+                     Height="28"
+                     TextChanged="TxtName_TextChanged" 
+                     BorderBrush="#FF432B1E" 
+                     FontFamily="Cooper Black"/>
+            <StackPanel Grid.Row="5" Orientation="Vertical" Margin="0,0,0,10">
+                <Grid Grid.Row="3" Margin="0,0,0,10">
+                    <PasswordBox x:Name="txtPassword"
+                                 FontSize="16" 
+                                 Background="{x:Null}" 
+                                 Foreground="White" 
+                                 Height="28" 
+                                 BorderBrush="#FF432B1E" 
+                                 Visibility="Visible" 
+                                 PasswordChanged="TxtPassword_PasswordChanged" 
+                                 Margin="474,441,474,-441" 
+                                 FontFamily="Cooper Black"/>
+                    <TextBox x:Name="txtPasswordVisible" 
+                             FontSize="16" 
+                             Background="{x:Null}" 
+                             Foreground="Black" 
+                             Height="28" 
+                             BorderBrush="#FF432B1E" 
+                             IsReadOnly="False" 
+                             TextChanged="TxtPasswordVisible_PasswordChanged"
+                             Margin="474,441,474,-441" 
+                             Width="332" 
+                             FontFamily="Cooper Black"/>
+                    <ToggleButton x:Name="btnTogglePassword" 
+                                  Content="👁" 
+                                  Width="28" 
+                                  Height="28" 
+                                  HorizontalAlignment="Right" 
+                                  VerticalAlignment="Bottom" 
+                                  Checked="BtnTogglePassword_Checked" 
+                                  Unchecked="BtnTogglePassword_Unchecked" 
+                                  Margin="0,0,475,-441"/>
+                </Grid>
+            </StackPanel>
             <Button x:Name="btnBack" 
                     Content="{x:Static p:Resources.globalBtnBack}" 
                     HorizontalAlignment="Left" 
                     VerticalAlignment="Top" 
-                    Width="150" 
+                    Width="166" 
                     Height="50" 
-                    Margin="34,45,0,0" 
+                    Margin="474,482,0,0" 
                     FontSize="16" 
                     FontWeight="Bold" 
                     Click="BtnBack_Click">
+                <Button.Background>
+                    <ImageBrush ImageSource="/Images/BackgroundButton2.png"/>
+                </Button.Background>
                 <Button.Style>
-                    <Style TargetType="Button">
-                        <Setter Property="Background">
-                            <Setter.Value>
-                                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                                    <GradientStop Color="#FF7A1B9D" Offset="0.0"/>
-                                    <GradientStop Color="#FF15031D" Offset="1.0"/>
-                                </LinearGradientBrush>
-                            </Setter.Value>
-                        </Setter>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Background" Value="#FFFFA040"/>
                         <Setter Property="Foreground" Value="White"/>
                         <Setter Property="BorderBrush" Value="Transparent"/>
                         <Setter Property="BorderThickness" Value="0"/>
@@ -51,7 +132,7 @@
                             <Setter.Value>
                                 <ControlTemplate TargetType="{x:Type Button}">
                                     <Grid>
-                                        <Border CornerRadius="15" Background="{TemplateBinding Background}">
+                                        <Border CornerRadius="20" Background="{TemplateBinding Background}">
                                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                         </Border>
                                     </Grid>
@@ -60,17 +141,9 @@
                         </Setter>
                         <Style.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background">
-                                    <Setter.Value>
-                                        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                                            <GradientStop Color="#FFA52BD2" Offset="0.0"/>
-                                            <GradientStop Color="#FF310744" Offset="1.0"/>
-                                        </LinearGradientBrush>
-                                    </Setter.Value>
-                                </Setter>
                                 <Setter Property="Effect">
                                     <Setter.Value>
-                                        <DropShadowEffect Color="#FFD876FC" ShadowDepth="10" BlurRadius="15"/>
+                                        <DropShadowEffect Color="#FFCA855F" ShadowDepth="10" BlurRadius="25"/>
                                     </Setter.Value>
                                 </Setter>
                             </Trigger>
@@ -78,293 +151,320 @@
                     </Style>
                 </Button.Style>
             </Button>
-
-            <Grid HorizontalAlignment="Left" VerticalAlignment="Center" Width="361" Height="392" Background="#FF13011B" Margin="784,0,0,0">
+            <StackPanel Grid.Row="6" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Button x:Name="btnSignIn" 
+                    Content="{x:Static p:Resources.btnSignIn}" 
+                    FontSize="16" 
+                    HorizontalContentAlignment="Center" 
+                    VerticalContentAlignment="Center" 
+                    Click="BtnSignIn_Click" 
+                    Margin="660,484,454,188">
+                <Button.Background>
+                    <ImageBrush ImageSource="/Images/BackgroundButton2.png"/>
+                </Button.Background>
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Background" Value="#FFFFA040"/>
+                        <Setter Property="Foreground" Value="White"/>
+                        <Setter Property="BorderBrush" Value="Transparent"/>
+                        <Setter Property="BorderThickness" Value="0"/>
+                        <Setter Property="FontWeight" Value="Bold"/>
+                        <Setter Property="Effect">
+                            <Setter.Value>
+                                <DropShadowEffect Color="Black" ShadowDepth="5" BlurRadius="10"/>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Grid>
+                                        <Border CornerRadius="20" Background="{TemplateBinding Background}">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </Grid>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Effect">
+                                    <Setter.Value>
+                                        <DropShadowEffect Color="#FFCA855F" ShadowDepth="10" BlurRadius="25"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+            <Label x:Name="lbInvalidEmail" 
+                   Content="{x:Static p:Resources.lbEmailValid}" 
+                   HorizontalAlignment="Left" 
+                   VerticalAlignment="Top" 
+                   Foreground="#FFED3838" 
+                   Margin="532,341,0,0" 
+                   Visibility="Collapsed"/>
+            <Label x:Name="lbInvalidUser" 
+                   Content="{x:Static p:Resources.lbUserNameValid}" 
+                   HorizontalAlignment="Center" 
+                   Margin="0,402,0,0" 
+                   VerticalAlignment="Top" 
+                   Foreground="#FFED3838" 
+                   Width="244" 
+                   Visibility="Collapsed"/>
+            <Label x:Name="lbInvalidPassword" 
+                   Content="{x:Static p:Resources.lbPasswordValid}" 
+                   HorizontalAlignment="Center" 
+                   Margin="0,463,0,0" 
+                   VerticalAlignment="Top" 
+                   Foreground="#FFED3838" 
+                   Visibility="Collapsed"/>
+            <Grid x:Name="verificationGrid" Width="558" Height="302" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="364,256,0,0" Visibility="Collapsed">
+                <Grid.Background>
+                    <ImageBrush ImageSource="/Images/BackgroundValidation.png"/>
+                </Grid.Background>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto" MinHeight="48.94"/>
+                    <RowDefinition Height="Auto" MinHeight="53.923"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
-                <!-- Etiqueta de Correo -->
-                <Label x:Name="lblEmail" 
-                       Content="{x:Static p:Resources.lbEmail}" 
-                       Grid.Row="0" 
-                       FontSize="18" 
-                       Foreground="White" 
-                       Margin="0,10,0,5" 
-                       HorizontalAlignment="Left"/>
-                <TextBox Grid.Row="1" 
-                         x:Name="txtEmail" 
-                         FontSize="16" 
-                         Background="#333" 
-                         Foreground="White" 
-                         Margin="0,0,0,10" 
-                         Height="35" 
-                         HorizontalAlignment="Stretch"
-                         TextChanged="TxtEmail_TextChanged"/>
-
-                <!-- Etiqueta de Nombre -->
-                <Label x:Name="lblName" 
-                       Content="{x:Static p:Resources.globalLbUser}" 
-                       Grid.Row="2" 
-                       FontSize="18" 
-                       Foreground="White" 
-                       Margin="0,10,0,5" 
-                       HorizontalAlignment="Left"/>
-                <TextBox Grid.Row="3" 
-                         x:Name="txtName" 
-                         FontSize="16" 
-                         Background="#333" 
-                         Foreground="White" 
-                         Margin="0,0,0,10" 
-                         Height="35" 
-                         HorizontalAlignment="Stretch"
-                         TextChanged="TxtName_TextChanged"/>
-
-                <!-- Etiqueta de Contraseña -->
-                <Label x:Name="lblPassword" 
-                       Content="{x:Static p:Resources.lbPasswordSignIn}" 
-                       Grid.Row="4" 
-                       FontSize="18" 
-                       Foreground="White" 
-                       Margin="0,10,0,5" 
-                       HorizontalAlignment="Left"/>
-
-                <!-- Caja de Contraseña -->
-                <StackPanel Grid.Row="5" Orientation="Vertical" Margin="0,0,0,10">
-                    <Grid Grid.Row="3" Margin="0,0,0,10">
-                        <PasswordBox x:Name="txtPassword" FontSize="16" Background="#333" Foreground="White" Height="35" HorizontalAlignment="Stretch" BorderBrush="#FF7E578C" Visibility="Visible" PasswordChanged="TxtPassword_PasswordChanged"/>
-                        <TextBox x:Name="txtPasswordVisible" FontSize="16" Background="#333" Foreground="White" Height="35" HorizontalAlignment="Stretch" BorderBrush="#FF7E578C" Visibility="Collapsed" IsReadOnly="True" TextChanged="TxtPasswordVisible_PasswordChanged"/>
-                        <!-- ToggleButton para alternar la visibilidad de la contraseña -->
-                        <ToggleButton x:Name="btnTogglePassword" Content="👁" Width="35" Height="35" HorizontalAlignment="Right" VerticalAlignment="Center" Checked="BtnTogglePassword_Checked" Unchecked="BtnTogglePassword_Unchecked"/>
-                    </Grid>
+                <Label Name="lbEnterVerificationCode" 
+                       Content="{x:Static p:Resources.lbEnterVerificationCode}" 
+                           FontSize="18" 
+                           Foreground="Black" 
+                           Margin="0,27,0,-7" 
+                           HorizontalAlignment="Center" 
+                           Width="360" 
+                           Grid.Row="1" 
+                           Grid.RowSpan="2"
+                           HorizontalContentAlignment="Center" 
+                           VerticalContentAlignment="Center"/>
+                <Button x:Name="btnValidate" Content="{x:Static p:Resources.btnValidate}" 
+                            HorizontalAlignment="Left"
+                            Margin="368,98,0,-137"
+                            Click="BtnValidate_Click" 
+                            Grid.Row="5" Width="104">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Background" Value="#FFA07952"/>
+                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="BorderBrush" Value="Transparent"/>
+                            <Setter Property="BorderThickness" Value="0"/>
+                            <Setter Property="FontWeight" Value="Bold"/>
+                            <Setter Property="Effect">
+                                <Setter.Value>
+                                    <DropShadowEffect Color="Black" ShadowDepth="5" BlurRadius="10"/>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Grid>
+                                            <Border CornerRadius="20" Background="{TemplateBinding Background}">
+                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            </Border>
+                                        </Grid>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#FF54340D"/>
+                                    <Setter Property="Effect">
+                                        <Setter.Value>
+                                            <DropShadowEffect Color="#FFF1BB85" ShadowDepth="10" BlurRadius="15"/>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Button x:Name="btnResendCode" 
+                        Content="{x:Static p:Resources.btnResendCode}" 
+                            HorizontalAlignment="Center"
+                            Margin="0,98,0,-137" 
+                            Click="BtnResendCode_Click"
+                            Grid.Row="5"
+                            Width="102">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Background" Value="#FFA07952"/>
+                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="BorderBrush" Value="Transparent"/>
+                            <Setter Property="BorderThickness" Value="0"/>
+                            <Setter Property="FontWeight" Value="Bold"/>
+                            <Setter Property="Effect">
+                                <Setter.Value>
+                                    <DropShadowEffect Color="Black" ShadowDepth="5" BlurRadius="10"/>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Grid>
+                                            <Border CornerRadius="20" Background="{TemplateBinding Background}">
+                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            </Border>
+                                        </Grid>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#FF54340D"/>
+                                    <Setter Property="Effect">
+                                        <Setter.Value>
+                                            <DropShadowEffect Color="#FFF1BB85" ShadowDepth="10" BlurRadius="15"/>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Button x:Name="btnBackToRegister" 
+                        Content="{x:Static p:Resources.globalBtnBack}" 
+                           HorizontalAlignment="Left" 
+                           Margin="86,98,0,-137" 
+                           Click="BtnBackValidate_Click"
+                           Grid.Row="5"
+                           Width="103">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Background" Value="#FFA07952"/>
+                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="BorderBrush" Value="Transparent"/>
+                            <Setter Property="BorderThickness" Value="0"/>
+                            <Setter Property="FontWeight" Value="Bold"/>
+                            <Setter Property="Effect">
+                                <Setter.Value>
+                                    <DropShadowEffect Color="Black" ShadowDepth="5" BlurRadius="10"/>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Grid>
+                                            <Border CornerRadius="20" Background="{TemplateBinding Background}">
+                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            </Border>
+                                        </Grid>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#FF54340D"/>
+                                    <Setter Property="Effect">
+                                        <Setter.Value>
+                                            <DropShadowEffect Color="#FFF1BB85" ShadowDepth="10" BlurRadius="15"/>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <StackPanel Orientation="Horizontal" Grid.Row="2" HorizontalAlignment="Center" Margin="0,31,0,-75" Width="360">
+                    <TextBox x:Name="txtValidationCode1" 
+                                 TextChanged="TxtValidationCode_TextChanged"
+                                 Width="50" 
+                                 Margin="5" 
+                                 MaxLength="1" 
+                                 FontSize="24" 
+                                 TextAlignment="Center" 
+                                 Foreground="White" 
+                                 BorderBrush="#FF020202">
+                        <TextBox.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FF98714A" Offset="1"/>
+                                <GradientStop Color="#FFEDE1C1" Offset="0"/>
+                            </LinearGradientBrush>
+                        </TextBox.Background>
+                    </TextBox>
+                    <TextBox x:Name="txtValidationCode2" 
+                                 TextChanged="TxtValidationCode_TextChanged" 
+                                 Width="50" 
+                                 Margin="5"
+                                 MaxLength="1" 
+                                 FontSize="24" 
+                                 TextAlignment="Center" 
+                                 Foreground="White"
+                                 BorderBrush="#FF020202">
+                        <TextBox.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FF98714A" Offset="1"/>
+                                <GradientStop Color="#FFEDE1C1" Offset="0"/>
+                            </LinearGradientBrush>
+                        </TextBox.Background>
+                    </TextBox>
+                    <TextBox x:Name="txtValidationCode3" 
+                                 TextChanged="TxtValidationCode_TextChanged"
+                                 Width="50" 
+                                 Margin="5" 
+                                 MaxLength="1" 
+                                 FontSize="24" 
+                                 TextAlignment="Center" 
+                                 Foreground="White" 
+                                 BorderBrush="#FF020202">
+                        <TextBox.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FF98714A" Offset="1"/>
+                                <GradientStop Color="#FFEDE1C1" Offset="0"/>
+                            </LinearGradientBrush>
+                        </TextBox.Background>
+                    </TextBox>
+                    <TextBox x:Name="txtValidationCode4" 
+                                 TextChanged="TxtValidationCode_TextChanged"
+                                 Width="50" 
+                                 Margin="5" 
+                                 MaxLength="1" 
+                                 FontSize="24"
+                                 TextAlignment="Center" 
+                                 Foreground="White" 
+                                 BorderBrush="#FF020202">
+                        <TextBox.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FF98714A" Offset="1"/>
+                                <GradientStop Color="#FFEDE1C1" Offset="0"/>
+                            </LinearGradientBrush>
+                        </TextBox.Background>
+                    </TextBox>
+                    <TextBox x:Name="txtValidationCode5" 
+                                 TextChanged="TxtValidationCode_TextChanged" 
+                                 Width="50"
+                                 Margin="5" 
+                                 MaxLength="1" 
+                                 FontSize="24" 
+                                 TextAlignment="Center" 
+                                 Foreground="White" 
+                                 BorderBrush="#FF020202">
+                        <TextBox.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FF98714A" Offset="1"/>
+                                <GradientStop Color="#FFEDE1C1" Offset="0"/>
+                            </LinearGradientBrush>
+                        </TextBox.Background>
+                    </TextBox>
+                    <TextBox x:Name="txtValidationCode6"
+                                 TextChanged="TxtValidationCode_TextChanged"
+                                 Width="50" 
+                                 Margin="5" 
+                                 MaxLength="1"
+                                 FontSize="24" 
+                                 TextAlignment="Center" 
+                                 Foreground="White"
+                                 BorderBrush="#FF020202">
+                        <TextBox.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FF98714A" Offset="1"/>
+                                <GradientStop Color="#FFEDE1C1" Offset="0"/>
+                            </LinearGradientBrush>
+                        </TextBox.Background>
+                    </TextBox>
                 </StackPanel>
-
-                <!-- Botón de Registrarse -->
-                <StackPanel Grid.Row="6" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Button x:Name="btnSignIn" 
-                            Content="{x:Static p:Resources.btnSignIn}" 
-                            FontSize="16" 
-                            HorizontalContentAlignment="Center" 
-                            VerticalContentAlignment="Center" 
-                            Click="BtnSignIn_Click" Margin="35,88,43,-71" Grid.Row="5">
-                    <Button.Style>
-                        <Style TargetType="{x:Type Button}">
-                            <Setter Property="Background" Value="#7A1B9D"/>
-                            <Setter Property="Foreground" Value="White"/>
-                            <Setter Property="BorderBrush" Value="Transparent"/>
-                            <Setter Property="BorderThickness" Value="0"/>
-                            <Setter Property="FontWeight" Value="Bold"/>
-                            <Setter Property="Effect">
-                                <Setter.Value>
-                                    <DropShadowEffect Color="Black" ShadowDepth="5" BlurRadius="10"/>
-                                </Setter.Value>
-                            </Setter>
-                            <Setter Property="Template">
-                                <Setter.Value>
-                                    <ControlTemplate TargetType="{x:Type Button}">
-                                        <Grid>
-                                            <Border CornerRadius="20" Background="{TemplateBinding Background}">
-                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                            </Border>
-                                        </Grid>
-                                    </ControlTemplate>
-                                </Setter.Value>
-                            </Setter>
-                            <Style.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" Value="#9C27B0"/>
-                                    <Setter Property="Effect">
-                                        <Setter.Value>
-                                            <DropShadowEffect Color="#FFD876FC" ShadowDepth="10" BlurRadius="15"/>
-                                        </Setter.Value>
-                                    </Setter>
-                                </Trigger>
-                            </Style.Triggers>
-                        </Style>
-                    </Button.Style>
-                </Button>
-                <Label x:Name="lbInvalidEmail" Content="{x:Static p:Resources.lbEmailValid}" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Top" Foreground="#FFED3838" Grid.RowSpan="2" Margin="0,33,0,0" Visibility="Collapsed"/>
-                <Label x:Name="lbInvalidUser" Content="{x:Static p:Resources.lbUserNameValid}" HorizontalAlignment="Center" Margin="0,40,0,0" Grid.Row="3" VerticalAlignment="Top" Foreground="#FFED3838" Grid.RowSpan="2" Visibility="Collapsed"/>
-                <Label x:Name="lbInvalidPassword" Content="{x:Static p:Resources.lbPasswordValid}" HorizontalAlignment="Center" Margin="0,34,0,0" Grid.Row="5" VerticalAlignment="Top" Foreground="#FFED3838" Visibility="Collapsed"/>
-            </Grid>
-            <Grid x:Name="validationGrid" Visibility="Collapsed" Background="#FF2E0B3E" Width="407" Height="184" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="420,0,0,0">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-
-                <Label Name="lbEnterValidationCode" Content="{x:Static p:Resources.lbEnterValidationCode}" FontSize="18" Foreground="White" Margin="0,10,0,5" HorizontalAlignment="Center"/>
-                <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Center" Margin="0,0,0,10">
-                    <TextBox x:Name="txtValidationCode1" TextChanged="TxtValidationCode_TextChanged" Width="50" Margin="5" MaxLength="1" FontSize="24" TextAlignment="Center" Foreground="White" BorderBrush="#FF020202">
-                        <TextBox.Background>
-                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                <GradientStop Color="#FF7F588D"/>
-                                <GradientStop Color="#FF32043E" Offset="1"/>
-                            </LinearGradientBrush>
-                        </TextBox.Background>
-                    </TextBox>
-                    <TextBox x:Name="txtValidationCode2" TextChanged="TxtValidationCode_TextChanged" Width="50" Margin="5" MaxLength="1" FontSize="24" TextAlignment="Center" Foreground="White" BorderBrush="#FF020202">
-                        <TextBox.Background>
-                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                <GradientStop Color="#FF7F588D"/>
-                                <GradientStop Color="#FF32043E" Offset="1"/>
-                            </LinearGradientBrush>
-                        </TextBox.Background>
-                    </TextBox>
-                    <TextBox x:Name="txtValidationCode3" TextChanged="TxtValidationCode_TextChanged" Width="50" Margin="5" MaxLength="1" FontSize="24" TextAlignment="Center" Foreground="White" BorderBrush="#FF020202">
-                        <TextBox.Background>
-                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                <GradientStop Color="#FF7F588D"/>
-                                <GradientStop Color="#FF32043E" Offset="1"/>
-                            </LinearGradientBrush>
-                        </TextBox.Background>
-                    </TextBox>
-                    <TextBox x:Name="txtValidationCode4" TextChanged="TxtValidationCode_TextChanged" Width="50" Margin="5" MaxLength="1" FontSize="24" TextAlignment="Center" Foreground="White" BorderBrush="#FF020202">
-                        <TextBox.Background>
-                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                <GradientStop Color="#FF7F588D"/>
-                                <GradientStop Color="#FF32043E" Offset="1"/>
-                            </LinearGradientBrush>
-                        </TextBox.Background>
-                    </TextBox>
-                    <TextBox x:Name="txtValidationCode5" TextChanged="TxtValidationCode_TextChanged" Width="50" Margin="5" MaxLength="1" FontSize="24" TextAlignment="Center" Foreground="White" BorderBrush="#FF020202">
-                        <TextBox.Background>
-                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                <GradientStop Color="#FF7F588D"/>
-                                <GradientStop Color="#FF32043E" Offset="1"/>
-                            </LinearGradientBrush>
-                        </TextBox.Background>
-                    </TextBox>
-                    <TextBox x:Name="txtValidationCode6" TextChanged="TxtValidationCode_TextChanged" Width="50" Margin="5" MaxLength="1" FontSize="24" TextAlignment="Center" Foreground="White" BorderBrush="#FF020202">
-                        <TextBox.Background>
-                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                <GradientStop Color="#FF7F588D"/>
-                                <GradientStop Color="#FF32043E" Offset="1"/>
-                            </LinearGradientBrush>
-                        </TextBox.Background>
-                    </TextBox>
-                </StackPanel>
-
-                <Button x:Name="btnValidate" Content="{x:Static p:Resources.btnValidate}" HorizontalAlignment="Left" Margin="280,23,0,-62" Click="BtnValidate_Click" Grid.Row="5" Width="104">
-                    <Button.Style>
-                        <Style TargetType="{x:Type Button}">
-                            <Setter Property="Background" Value="#7A1B9D"/>
-                            <Setter Property="Foreground" Value="White"/>
-                            <Setter Property="BorderBrush" Value="Transparent"/>
-                            <Setter Property="BorderThickness" Value="0"/>
-                            <Setter Property="FontWeight" Value="Bold"/>
-                            <Setter Property="Effect">
-                                <Setter.Value>
-                                    <DropShadowEffect Color="Black" ShadowDepth="5" BlurRadius="10"/>
-                                </Setter.Value>
-                            </Setter>
-                            <Setter Property="Template">
-                                <Setter.Value>
-                                    <ControlTemplate TargetType="{x:Type Button}">
-                                        <Grid>
-                                            <Border CornerRadius="20" Background="{TemplateBinding Background}">
-                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                            </Border>
-                                        </Grid>
-                                    </ControlTemplate>
-                                </Setter.Value>
-                            </Setter>
-                            <Style.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" Value="#9C27B0"/>
-                                    <Setter Property="Effect">
-                                        <Setter.Value>
-                                            <DropShadowEffect Color="#FFD876FC" ShadowDepth="10" BlurRadius="15"/>
-                                        </Setter.Value>
-                                    </Setter>
-                                </Trigger>
-                            </Style.Triggers>
-                        </Style>
-                    </Button.Style>
-                </Button>
-                <Button x:Name="btnResendCode" Content="{x:Static p:Resources.btnResendCode}" HorizontalAlignment="Center" Margin="0,23,0,-62" Click="BtnResendCode_Click" Grid.Row="5" Width="103">
-                    <Button.Style>
-                        <Style TargetType="{x:Type Button}">
-                            <Setter Property="Background" Value="#7A1B9D"/>
-                            <Setter Property="Foreground" Value="White"/>
-                            <Setter Property="BorderBrush" Value="Transparent"/>
-                            <Setter Property="BorderThickness" Value="0"/>
-                            <Setter Property="FontWeight" Value="Bold"/>
-                            <Setter Property="Effect">
-                                <Setter.Value>
-                                    <DropShadowEffect Color="Black" ShadowDepth="5" BlurRadius="10"/>
-                                </Setter.Value>
-                            </Setter>
-                            <Setter Property="Template">
-                                <Setter.Value>
-                                    <ControlTemplate TargetType="{x:Type Button}">
-                                        <Grid>
-                                            <Border CornerRadius="20" Background="{TemplateBinding Background}">
-                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                            </Border>
-                                        </Grid>
-                                    </ControlTemplate>
-                                </Setter.Value>
-                            </Setter>
-                            <Style.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" Value="#9C27B0"/>
-                                    <Setter Property="Effect">
-                                        <Setter.Value>
-                                            <DropShadowEffect Color="#FFD876FC" ShadowDepth="10" BlurRadius="15"/>
-                                        </Setter.Value>
-                                    </Setter>
-                                </Trigger>
-                            </Style.Triggers>
-                        </Style>
-                    </Button.Style>
-                </Button>
-                <Button x:Name="btnBackToRegister" Content="{x:Static p:Resources.globalBtnBack}" HorizontalAlignment="Left" Margin="24,23,0,-62" Click="BtnBackValidate_Click" Grid.Row="5" Width="103">
-                    <Button.Style>
-                        <Style TargetType="{x:Type Button}">
-                            <Setter Property="Background" Value="#7A1B9D"/>
-                            <Setter Property="Foreground" Value="White"/>
-                            <Setter Property="BorderBrush" Value="Transparent"/>
-                            <Setter Property="BorderThickness" Value="0"/>
-                            <Setter Property="FontWeight" Value="Bold"/>
-                            <Setter Property="Effect">
-                                <Setter.Value>
-                                    <DropShadowEffect Color="Black" ShadowDepth="5" BlurRadius="10"/>
-                                </Setter.Value>
-                            </Setter>
-                            <Setter Property="Template">
-                                <Setter.Value>
-                                    <ControlTemplate TargetType="{x:Type Button}">
-                                        <Grid>
-                                            <Border CornerRadius="20" Background="{TemplateBinding Background}">
-                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                            </Border>
-                                        </Grid>
-                                    </ControlTemplate>
-                                </Setter.Value>
-                            </Setter>
-                            <Style.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" Value="#9C27B0"/>
-                                    <Setter Property="Effect">
-                                        <Setter.Value>
-                                            <DropShadowEffect Color="#FFD876FC" ShadowDepth="10" BlurRadius="15"/>
-                                        </Setter.Value>
-                                    </Setter>
-                                </Trigger>
-                            </Style.Triggers>
-                        </Style>
-                    </Button.Style>
-                </Button>
             </Grid>
         </Grid>
     </DockPanel>

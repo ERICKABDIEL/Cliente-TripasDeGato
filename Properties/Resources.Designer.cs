@@ -808,11 +808,20 @@ namespace TripasDeGatoCliente.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Enter the validation code:.
+        ///   Busca una cadena traducida similar a Enter the recovery code:.
         /// </summary>
-        public static string lbEnterValidationCode {
+        public static string lbEnterRecoveryCode {
             get {
-                return ResourceManager.GetString("lbEnterValidationCode", resourceCulture);
+                return ResourceManager.GetString("lbEnterRecoveryCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Enter the verification code:.
+        /// </summary>
+        public static string lbEnterVerificationCode {
+            get {
+                return ResourceManager.GetString("lbEnterVerificationCode", resourceCulture);
             }
         }
         
