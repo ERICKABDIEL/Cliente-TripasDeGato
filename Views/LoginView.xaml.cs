@@ -301,7 +301,7 @@ namespace TripasDeGatoCliente.Views {
             txtNewPasswordConfirm.Visibility = Visibility.Visible;
             txtNewPasswordConfirmVisible.Visibility = Visibility.Collapsed;
         }
-
+        
 
         //NUEVO
         private void SetPlayerOnlineStatus(int playerId) {

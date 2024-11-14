@@ -28,7 +28,6 @@ namespace TripasDeGatoCliente.Views {
             InitializeLobby();
             lobbyManager = new LobbyManagerClient(new InstanceContext(this));
             chatManager = new ChatManagerClient(new InstanceContext(this));
-            //StartRefreshTimer();
             InitializeConnectionsAsync();
 
         }
@@ -96,27 +95,6 @@ namespace TripasDeGatoCliente.Views {
             }
         }
 
-        /*private void StartRefreshTimer() {
-            refreshTimer = new Timer(1000);
-            refreshTimer.Elapsed += async (sender, e) => await RefreshLobbyData();
-            refreshTimer.Start();
-        }
-
-        private async Task RefreshLobbyData() {
-            try {
-                Dispatcher.Invoke(() => {
-                    Lobby lobby = lobbyBrowser.GetLobbyByCode(lobbyCode);
-                    if (lobby != null) {
-                        labelPlayer2.Text = lobby.Players.ContainsKey("PlayerTwo") ? lobby.Players["PlayerTwo"].userName : "Esperando jugador...";
-                    }
-                });
-            } catch (InvalidOperationException invalidOperationException) {
-                Console.WriteLine($"Se intentó modificar la UI desde un hilo incorrecto, {invalidOperationException.Message}");
-            } catch (Exception ex) {
-                Console.WriteLine($"Ocurrió un error inesperado, {ex}");
-            }
-        }*/
-
         private async void BtnSendMessage_Click(object sender, RoutedEventArgs e) {
             string messageText = txtMessageInput.Text.Trim();
 
@@ -136,7 +114,6 @@ namespace TripasDeGatoCliente.Views {
                 }
             }
         }
-
 
         private void ScrollToBottom() {
             var scrollViewer = VisualTreeHelper.GetParent(ChatMessagesPanel) as ScrollViewer;
@@ -181,8 +158,8 @@ namespace TripasDeGatoCliente.Views {
             });
         }
         public void GuestLeftCallback() {
+
             Dispatcher.Invoke(() => {
-                MessageBox.Show("Jugador dos abandonó");
                 labelPlayer2.Text = "Esperando jugador...";
             });
         }
