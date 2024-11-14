@@ -366,8 +366,11 @@
   <data name="lbEnterNewPassword" xml:space="preserve">
     <value>Enter your new password</value>
   </data>
-  <data name="lbEnterValidationCode" xml:space="preserve">
-    <value>Enter the validation code:</value>
+  <data name="lbEnterRecoveryCode" xml:space="preserve">
+    <value>Enter the recovery code:</value>
+  </data>
+  <data name="lbEnterVerificationCode" xml:space="preserve">
+    <value>Enter the verification code:</value>
   </data>
   <data name="lbFileFormat" xml:space="preserve">
     <value>Please choose a compatible file type</value>
