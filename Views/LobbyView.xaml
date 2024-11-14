@@ -116,7 +116,7 @@
                 Height="50" 
                 Margin="58,52,0,0" 
                 FontSize="16" 
-                FontWeight="Bold">
+                FontWeight="Bold" Click="BtnBack_Click">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0,1">
                     <GradientStop Color="#FFDBB277"/>

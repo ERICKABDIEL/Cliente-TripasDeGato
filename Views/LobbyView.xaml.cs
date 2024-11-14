@@ -26,9 +26,9 @@ namespace TripasDeGatoCliente.Views {
             this.lobbyCode = lobbyCode;
             lbCode.Content = lobbyCode;
             lobbyBrowser = new LobbyBrowserClient();
+            InitializeLobby();
             lobbyManager = new LobbyManagerClient(new InstanceContext(this));
             chatManager = new ChatManagerClient(new InstanceContext(this));
-            InitializeLobbyAsync();
             InitializeConnectionsAsync();
         }
 
@@ -91,23 +91,6 @@ namespace TripasDeGatoCliente.Views {
             }
         }
 
-        private async Task InitializeLobbyAsync() {
-            LoggerManager logger = new LoggerManager(this.GetType());
-            try {
-                Lobby lobby = await lobbyBrowser.GetLobbyByCodeAsync(lobbyCode);
-                labelPlayer1.Content = lobby.Players.ContainsKey("PlayerOne") ? lobby.Players["PlayerOne"].userName : "Esperando jugador...";
-                labelPlayer2.Content = lobby.Players.ContainsKey("PlayerTwo") ? lobby.Players["PlayerTwo"].userName : "Esperando jugador...";
-            } catch (EndpointNotFoundException ex) {
-                logger.LogError(ex);
-                DialogManager.ShowErrorMessageAlert("No se pudo obtener los datos del lobby.");
-            } catch (TimeoutException ex) {
-                logger.LogError(ex);
-                DialogManager.ShowErrorMessageAlert("Tiempo de espera agotado al obtener los datos del lobby.");
-            } catch (CommunicationException ex) {
-                logger.LogError(ex);
-                DialogManager.ShowErrorMessageAlert("Error de comunicación al obtener los datos del lobby.");
-            }
-        }
         private async void BtnSendMessage_Click(object sender, RoutedEventArgs e) {
             LoggerManager logger = new LoggerManager(this.GetType());
             string messageText = txtMessageInput.Text.Trim();
@@ -155,27 +138,6 @@ namespace TripasDeGatoCliente.Views {
             }
         }
 
-        /*private void StartRefreshTimer() {
-            refreshTimer = new Timer(1000);
-            refreshTimer.Elapsed += async (sender, e) => await RefreshLobbyData();
-            refreshTimer.Start();
-        }
-
-        private async Task RefreshLobbyData() {
-            try {
-                Dispatcher.Invoke(() => {
-                    Lobby lobby = lobbyBrowser.GetLobbyByCode(lobbyCode);
-                    if (lobby != null) {
-                        labelPlayer2.Text = lobby.Players.ContainsKey("PlayerTwo") ? lobby.Players["PlayerTwo"].userName : "Esperando jugador...";
-                    }
-                });
-            } catch (InvalidOperationException invalidOperationException) {
-                Console.WriteLine($"Se intentó modificar la UI desde un hilo incorrecto, {invalidOperationException.Message}");
-            } catch (Exception ex) {
-                Console.WriteLine($"Ocurrió un error inesperado, {ex}");
-            }
-        }*/
-
         private void ScrollToBottom() {
             var scrollViewer = VisualTreeHelper.GetParent(ChatMessagesPanel) as ScrollViewer;
             scrollViewer?.ScrollToEnd();
@@ -219,8 +181,8 @@ namespace TripasDeGatoCliente.Views {
             });
         }
         public void GuestLeftCallback() {
+
             Dispatcher.Invoke(() => {
-                MessageBox.Show("Jugador dos abandonó");
                 labelPlayer2.Content = "Esperando jugador...";
             });
         }
