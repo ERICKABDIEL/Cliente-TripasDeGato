@@ -155,6 +155,7 @@
                 HorizontalAlignment="Left" 
                 Margin="130,483,0,0" 
                 VerticalAlignment="Top" 
+                Click="BtnLaderboard_Click"
                 Grid.Row="1" Height="40"/>
 
         <Button x:Name="btnFriends" 
@@ -186,15 +187,14 @@
                  HorizontalAlignment="Left" 
                  Margin="76,79,0,0" 
                  VerticalAlignment="Top" 
-                 BorderBrush="#FF8D4AE2" 
+                 BorderBrush="#FF432B1E" 
                  Foreground="White" 
-                 av:ItemsSource="{av:SampleData ItemCount=5}" 
-                 Visibility="Collapsed" 
-                 IsEnabled="False" Grid.Row="1">
+                 av:ItemsSource="{av:SampleData ItemCount=10}" 
+                 IsEnabled="False" Grid.Row="1" Visibility="Collapsed">
             <ListBox.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="#FF781B9A" Offset="0.004"/>
-                    <GradientStop Color="Black" Offset="1"/>
+                    <GradientStop Color="#FFCFBD8B"/>
+                    <GradientStop Color="#FF68492C" Offset="0.996"/>
                 </LinearGradientBrush>
             </ListBox.Background>
         </ListBox>
@@ -205,30 +205,27 @@
                 HorizontalAlignment="Left" 
                 Margin="184,374,0,0" 
                 VerticalAlignment="Top" 
-                BorderBrush="#FF8D4AE2" 
+                BorderBrush="#FF432B1E" 
                 Foreground="White" 
                 Height="36" 
                 Width="92" 
                 FontSize="12" 
-                Background="Black" 
-                IsEnabled="False" 
-                Visibility="Collapsed"
-                Click="BtnRemoveFriend_Click" Grid.Row="1"/>
+                IsEnabled="False"
+                Click="BtnRemoveFriend_Click" Grid.Row="1" Background="#FF432B1E" Visibility="Collapsed">
+        </Button>
 
         <Button x:Name="btnAddFriend" 
                 Content="{x:Static p:Resources.btnAddFriend}" 
                 HorizontalAlignment="Left" 
                 Margin="76,374,0,0" 
                 VerticalAlignment="Top" 
-                Click="BtnAddFriend_Click"
-                Background="Black" 
-                BorderBrush="#FF8D4AE2" 
-                Foreground="White" 
+                Click="BtnAddFriend_Click" 
                 Height="36" 
                 Width="92" 
                 FontSize="12" 
-                IsEnabled="False" 
-                Visibility="Collapsed" Grid.Row="1"/>
+                IsEnabled="False" Grid.Row="1" BorderBrush="#FF432B1E" Foreground="White" Background="#FF432B1E" Visibility="Collapsed">
+
+        </Button>
 
         <TextBox x:Name="txtFriendName" 
                  Width="200" 
@@ -237,26 +234,24 @@
                  Margin="76,20,0,0" 
                  VerticalAlignment="Top" 
                  FontSize="12" 
-                 Background="#FF2C2C2C" 
+                 Background="#FF272323" 
                  Foreground="White"
-                 BorderBrush="#FF8D4AE2" 
+                 BorderBrush="#FFC9A97C" 
                  BorderThickness="2" 
-                 IsEnabled="False" 
-                 Visibility="Collapsed" Grid.Row="1"/>
+                 IsEnabled="False" Grid.Row="1" Visibility="Collapsed"/>
 
         <Button x:Name="btnAdd" 
                 Content="{x:Static p:Resources.btnAdd}" 
                 HorizontalAlignment="Left" 
-                Margin="290,19,0,0" 
+                Margin="284,20,0,0" 
                 VerticalAlignment="Top" 
-                Background="Black" 
                 Foreground="White" 
-                BorderBrush="#FF8D4AE2" 
+                BorderBrush="#FF432B1E" 
                 BorderThickness="2" 
                 Click="BtnAdd_Click" 
-                Height="36" 
-                Width="76" 
-                IsEnabled="False" 
-                Visibility="Collapsed" Grid.Row="1"/>
+                Height="34" 
+                Width="113" 
+                IsEnabled="False" Grid.Row="1" Background="#FF432B1E" Visibility="Collapsed">
+        </Button>
     </Grid>
 </Page>

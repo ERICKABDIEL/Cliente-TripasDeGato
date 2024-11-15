@@ -348,6 +348,9 @@
   <data name="globalKick" xml:space="preserve">
     <value>Kick player</value>
   </data>
+  <data name="globalLbEnterCodeLobby" xml:space="preserve">
+    <value>Code lobby</value>
+  </data>
   <data name="globalLbUser" xml:space="preserve">
     <value>User</value>
   </data>

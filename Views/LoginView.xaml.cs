@@ -102,6 +102,11 @@ namespace TripasDeGatoCliente.Views {
             }
         }
 
+        private void BtnGuest_Click(object sender, RoutedEventArgs e) {
+            CodeGameMatch codeGameMatch = new CodeGameMatch();
+            this.NavigationService.Navigate(codeGameMatch);
+        }
+
         private void DisplayMainMenuView() {
             MenuView menuView = new MenuView();
             this.NavigationService.Navigate(menuView);
@@ -137,9 +142,6 @@ namespace TripasDeGatoCliente.Views {
             this.NavigationService.Navigate(registerView);
         }
 
-        private void BtnGuest_Click(object sender, RoutedEventArgs e) {
-
-        }
 
         private void BtnContinue_Click(object sender, RoutedEventArgs e) {
             LoggerManager logger = new LoggerManager(this.GetType());

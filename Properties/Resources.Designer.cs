@@ -754,6 +754,15 @@ namespace TripasDeGatoCliente.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Code lobby.
+        /// </summary>
+        public static string globalLbEnterCodeLobby {
+            get {
+                return ResourceManager.GetString("globalLbEnterCodeLobby", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a User.
         /// </summary>
         public static string globalLbUser {

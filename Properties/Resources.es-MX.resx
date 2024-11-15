@@ -348,6 +348,9 @@
   <data name="globalKick" xml:space="preserve">
     <value>Expulsar jugador</value>
   </data>
+  <data name="globalLbEnterCodeLobby" xml:space="preserve">
+    <value>Código de sala</value>
+  </data>
   <data name="globalLbUser" xml:space="preserve">
     <value>Usuario</value>
   </data>
