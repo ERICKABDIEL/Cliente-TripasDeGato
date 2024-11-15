@@ -72,9 +72,29 @@ namespace TripasDeGatoCliente.Views {
                 MessageBox.Show("Error: No se puede navegar al menu.");
             }
         }
-        private void BtnSearch_Click(object sender, RoutedEventArgs e) {
+        private async void BtnSearch_Click(object sender, RoutedEventArgs e) {
+            string searchCode = txtCodeLobby.Text.Trim(); // Obtener el texto ingresado en el TextBox
+
+            try {
+                var lobbies = await lobbyBrowser.GetAvailableLobbiesAsync(); // Obtener los lobbies de manera asincrónica
+
+                // Filtrar los lobbies según el código ingresado
+                var filteredLobbies = lobbies.Where(lobby => lobby.Code.Contains(searchCode)).ToList();
+
+                // Si no se encuentran lobbies, mostrar un mensaje
+                if (filteredLobbies.Count == 0) {
+                    MessageBox.Show("No se encontraron lobbies con ese código.");
+                }
+
+                // Actualizar el DataGrid con los lobbies filtrados
+                LobbyDataGrid.ItemsSource = filteredLobbies;
+            } catch (Exception ex) {
+                MessageBox.Show($"Error al buscar los lobbies: {ex.Message}");
+            }
         }
+
         //Nuevo
+        /*
         public void GenerateGuestProfile() {
             LoggerManager logger = new LoggerManager(this.GetType());
 
@@ -95,6 +115,6 @@ namespace TripasDeGatoCliente.Views {
                 logger.LogError(communicationException);
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
             }
-        }
+        }*/
     }
 }

@@ -113,7 +113,7 @@
             FontFamily="Rockwell Extra Bold" 
             FontSize="18" 
             HorizontalContentAlignment="Center" 
-            VerticalContentAlignment="Center" />
+            VerticalContentAlignment="Center" MaxLength="6" />
         <!-- Imagen de fondo -->
 
         <Grid.RowDefinitions>
