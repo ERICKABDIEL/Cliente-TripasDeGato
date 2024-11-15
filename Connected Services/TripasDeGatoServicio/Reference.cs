@@ -590,12 +590,6 @@ namespace TripasDeGatoCliente.TripasDeGatoServicio {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFriendsManager/DeleteFriend", ReplyAction="http://tempuri.org/IFriendsManager/DeleteFriendResponse")]
         System.Threading.Tasks.Task<int> DeleteFriendAsync(int idProfile1, int idProfile2);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFriendsManager/DeleteFriendship", ReplyAction="http://tempuri.org/IFriendsManager/DeleteFriendshipResponse")]
-        int DeleteFriendship(string userName1, string userName2);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFriendsManager/DeleteFriendship", ReplyAction="http://tempuri.org/IFriendsManager/DeleteFriendshipResponse")]
-        System.Threading.Tasks.Task<int> DeleteFriendshipAsync(string userName1, string userName2);
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFriendsManager/GetFriends", ReplyAction="http://tempuri.org/IFriendsManager/GetFriendsResponse")]
         TripasDeGatoCliente.TripasDeGatoServicio.Profile[] GetFriends(int idProfile);
         
@@ -644,14 +638,6 @@ namespace TripasDeGatoCliente.TripasDeGatoServicio {
         
         public System.Threading.Tasks.Task<int> DeleteFriendAsync(int idProfile1, int idProfile2) {
             return base.Channel.DeleteFriendAsync(idProfile1, idProfile2);
-        }
-        
-        public int DeleteFriendship(string userName1, string userName2) {
-            return base.Channel.DeleteFriendship(userName1, userName2);
-        }
-        
-        public System.Threading.Tasks.Task<int> DeleteFriendshipAsync(string userName1, string userName2) {
-            return base.Channel.DeleteFriendshipAsync(userName1, userName2);
         }
         
         public TripasDeGatoCliente.TripasDeGatoServicio.Profile[] GetFriends(int idProfile) {

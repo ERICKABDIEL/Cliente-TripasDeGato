@@ -203,7 +203,7 @@ namespace TripasDeGatoCliente.Views {
         private async void BtnStartGame_Click(object sender, RoutedEventArgs e) {
             LoggerManager logger = new LoggerManager(this.GetType());
             string gameName = "NombreDelJuego";
-            int nodeCount = 2;
+            int nodeCount = 2;  
             Profile owner = new Profile { idProfile = UserProfileSingleton.IdPerfil, userName = UserProfileSingleton.Nombre };
 
             try {

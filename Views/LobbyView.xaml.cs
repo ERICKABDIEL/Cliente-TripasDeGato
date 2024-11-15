@@ -26,7 +26,7 @@ namespace TripasDeGatoCliente.Views {
             this.lobbyCode = lobbyCode;
             lbCode.Content = lobbyCode;
             lobbyBrowser = new LobbyBrowserClient();
-            InitializeLobby();
+            LoadLobby();
             lobbyManager = new LobbyManagerClient(new InstanceContext(this));
             chatManager = new ChatManagerClient(new InstanceContext(this));
             InitializeConnectionsAsync();
@@ -116,7 +116,7 @@ namespace TripasDeGatoCliente.Views {
             }
         }
 
-        public async void InitializeLobby() {
+        public async void LoadLobby() {
             try {
                 Lobby lobby = await lobbyBrowser.GetLobbyByCodeAsync(lobbyCode);
 
