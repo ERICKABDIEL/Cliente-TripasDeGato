@@ -1,15 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TripasDeGatoCliente.TripasDeGatoServicio;
+﻿using TripasDeGatoCliente.TripasDeGatoServicio;
 
-namespace TripasDeGatoCliente.Logic
-{
-    public class UserProfileSingleton
-    {
-        // Instancia única del singleton
+namespace TripasDeGatoCliente.Logic {
+    public class UserProfileSingleton {
         private static readonly UserProfileSingleton singlentonInstance = new UserProfileSingleton();
 
         public static int IdPerfil { get; private set; }
@@ -22,17 +14,22 @@ namespace TripasDeGatoCliente.Logic
 
         public static UserProfileSingleton Instance => singlentonInstance;
 
-        public void CreateInstance(Profile profile)
-        {
+        public void CreateInstance(Profile profile) {
             IdPerfil = profile.idProfile;
             Nombre = profile.userName;
             Puntaje = profile.score;
             FotoRuta = profile.picturePath;
-
         }
 
-        public void ResetInstance()
-        {
+        public void CreateGuestInstance() {
+            GuestProfile guestProfile = new GuestProfile(); 
+            IdPerfil = guestProfile.GuestId;
+            Nombre = guestProfile.Username;
+            Puntaje = 0;  
+            FotoRuta = guestProfile.Avatar;
+        }
+
+        public void ResetInstance() {
             IdPerfil = 0;
             Nombre = null;
             Puntaje = 0;
@@ -41,9 +38,11 @@ namespace TripasDeGatoCliente.Logic
             Contrasena = null;
             Correo = null;
         }
+
         public static void UpdateFotoRuta(string nuevaRuta) {
             FotoRuta = nuevaRuta;
         }
+
         public static void UpdateNombre(string nuevoNombre) {
             Nombre = nuevoNombre;
         }

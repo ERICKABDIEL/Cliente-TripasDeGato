@@ -65,6 +65,7 @@
                 <Button x:Name="btnLogin" 
                         Content="{x:Static p:Resources.btnLogin}"
                         FontSize="16" 
+                        Click="BtnLogin_Click"
                         Margin="653,447,447,221" 
                         VerticalContentAlignment="Center"
                         HorizontalContentAlignment="Center">
