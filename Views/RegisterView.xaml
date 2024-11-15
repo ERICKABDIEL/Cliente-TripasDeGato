@@ -240,7 +240,8 @@
                            Grid.RowSpan="2"
                            HorizontalContentAlignment="Center" 
                            VerticalContentAlignment="Center"/>
-                <Button x:Name="btnValidate" Content="{x:Static p:Resources.btnValidate}" 
+                <Button x:Name="btnValidate"
+                        Content="{x:Static p:Resources.btnValidate}" 
                             HorizontalAlignment="Left"
                             Margin="368,98,0,-137"
                             Click="BtnValidate_Click" 

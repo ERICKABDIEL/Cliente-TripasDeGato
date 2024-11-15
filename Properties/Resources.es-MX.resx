@@ -123,6 +123,9 @@
   <data name="btnAddFriend" xml:space="preserve">
     <value>Añadir amigo</value>
   </data>
+  <data name="btnContinue" xml:space="preserve">
+    <value>Continuar</value>
+  </data>
   <data name="btnEdit" xml:space="preserve">
     <value>Editar</value>
   </data>
@@ -345,6 +348,9 @@
   <data name="globalKick" xml:space="preserve">
     <value>Expulsar jugador</value>
   </data>
+  <data name="globalLbEnterCodeLobby" xml:space="preserve">
+    <value>Código de sala</value>
+  </data>
   <data name="globalLbUser" xml:space="preserve">
     <value>Usuario</value>
   </data>
@@ -362,6 +368,9 @@
   </data>
   <data name="lbEmailValid" xml:space="preserve">
     <value>Ejemplo válido usuario@dominio.com</value>
+  </data>
+  <data name="lbEnterEmail" xml:space="preserve">
+    <value>Ingrese su correo</value>
   </data>
   <data name="lbEnterNewPassword" xml:space="preserve">
     <value>Ingrese su nueva contraseña</value>

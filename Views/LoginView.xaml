@@ -244,7 +244,7 @@
                        VerticalContentAlignment="Center"
                        Height="38" 
                        Panel.ZIndex="2" Visibility="Collapsed"/>
-                <Grid x:Name="recoveryGrid" Width="558" Height="302" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="364,256,0,0">
+                <Grid x:Name="recoveryGrid" Width="558" Height="302" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="364,256,0,0" Visibility="Collapsed">
                     <Grid.Background>
                         <ImageBrush ImageSource="/Images/BackgroundValidation.png"/>
                     </Grid.Background>
@@ -514,7 +514,7 @@
                         </TextBox.Background>
                     </TextBox>
                     <Label x:Name="lbEnterEmail" 
-                           Content="Ingrese su correo"
+                           Content="{x:Static p:Resources.lbEnterEmail}"
                            FontSize="20" 
                            Foreground="Black" 
                            Margin="0,57,0,206" 
@@ -524,7 +524,7 @@
                            FontFamily="Cooper Black" 
                            VerticalContentAlignment="Center"/>
                     <Button x:Name="btnContinue" 
-                            Content="Continuar" 
+                            Content="{x:Static p:Resources.btnContinue}" 
                             HorizontalAlignment="Left" 
                             Margin="303,196,0,66" 
                             Click="BtnContinue_Click"
@@ -565,7 +565,12 @@
                             </Style>
                         </Button.Style>
                     </Button>
-                    <Button x:Name="btnBack" Content="{x:Static p:Resources.globalBtnBack}" HorizontalAlignment="Left" Margin="138,196,0,66" Click="BtnBackEnterEmail_Click" Width="113">
+                    <Button x:Name="btnBack" 
+                            Content="{x:Static p:Resources.globalBtnBack}" 
+                            HorizontalAlignment="Left"
+                            Margin="138,196,0,66"
+                            Click="BtnBackEnterEmail_Click"
+                            Width="113">
                         <Button.Style>
                             <Style TargetType="{x:Type Button}">
                                 <Setter Property="Background" Value="#FFA07952"/>

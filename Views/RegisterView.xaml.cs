@@ -130,7 +130,6 @@ namespace TripasDeGatoCliente.Views
         private bool ValidateFields(string email, string username, string password) {
             bool isValid = true;
 
-            // Validación de correo
             if (!Validador.ValidateEmail(email)) {
                 HighlightField(txtEmail);
                 lbInvalidEmail.Visibility = Visibility.Visible;
@@ -140,7 +139,6 @@ namespace TripasDeGatoCliente.Views
                 lbInvalidEmail.Visibility = Visibility.Collapsed;
             }
 
-            // Validación de nombre de usuario
             if (!Validador.ValidateUsername(username)) {
                 HighlightField(txtName);
                 lbInvalidUser.Visibility = Visibility.Visible;
@@ -150,7 +148,6 @@ namespace TripasDeGatoCliente.Views
                 lbInvalidUser.Visibility = Visibility.Collapsed;
             }
 
-            // Validación de contraseña
             if (!Validador.ValidatePassword(password)) {
                 HighlightField(txtPassword);
                 lbInvalidPassword.Visibility = Visibility.Visible;

@@ -69,6 +69,8 @@
     </Compile>
     <Compile Include="Logic\ConstantsManager.cs" />
     <Compile Include="Logic\DialogManager.cs" />
+    <Compile Include="Logic\GuestProfile.cs" />
+    <Compile Include="Logic\GuestProfileSinglenton.cs" />
     <Compile Include="Logic\Hasher.cs" />
     <Compile Include="Logic\LoggerManager.cs" />
     <Compile Include="Logic\UserProfileSnglenton.cs" />
@@ -82,6 +84,9 @@
       <DependentUpon>Resources.en-US.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\CodeGameMatch.xaml.cs">
+      <DependentUpon>CodeGameMatch.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\GameMatch.xaml.cs">
       <DependentUpon>GameMatch.xaml</DependentUpon>
@@ -119,6 +124,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\CodeGameMatch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\GameMatch.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

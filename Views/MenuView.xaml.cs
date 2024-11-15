@@ -36,10 +36,19 @@ namespace TripasDeGatoCliente.Views {
         }
 
         private void BtnSignOut_Click(object sender, RoutedEventArgs e) {
+            SignOut();
+            NavigateToLoginView();
+        }
+
+        private void SignOut() {
             UserProfileSingleton.Instance.ResetInstance();
+        }
+
+        private void NavigateToLoginView() {
             LoginView loginView = new LoginView();
             this.NavigationService.Navigate(loginView);
         }
+
 
         private bool areElementsVisible = false;
 
@@ -56,7 +65,7 @@ namespace TripasDeGatoCliente.Views {
                 btnAddFriend.IsEnabled = true;
                 btnRemoveFriend.IsEnabled = true;
 
-                btnFriends.Background = new SolidColorBrush(Colors.Green);
+                btnFriends.Background = new SolidColorBrush(Color.FromArgb(51, 216, 195, 165));
             } else {
                 lstFriends.Visibility = Visibility.Collapsed;
                 btnAddFriend.Visibility = Visibility.Collapsed;
@@ -70,8 +79,8 @@ namespace TripasDeGatoCliente.Views {
                 txtFriendName.IsEnabled = false;
                 btnAdd.IsEnabled = false;
 
-                btnFriends.Background = new SolidColorBrush(Colors.Black);
-                btnAddFriend.Background = new SolidColorBrush(Colors.Black);
+                btnFriends.Background = new SolidColorBrush(Color.FromArgb(51, 216, 195, 165));
+                btnAddFriend.Background = new SolidColorBrush(Color.FromArgb(255, 67, 43, 30));
             }
         }
 
@@ -84,7 +93,7 @@ namespace TripasDeGatoCliente.Views {
                 txtFriendName.IsEnabled = true;
                 btnAdd.IsEnabled = true;
 
-                btnAddFriend.Background = new SolidColorBrush(Colors.Green);
+                btnAddFriend.Background = new SolidColorBrush(Color.FromArgb(51, 67, 43, 30));
             } else {
                 txtFriendName.Visibility = Visibility.Collapsed;
                 btnAdd.Visibility = Visibility.Collapsed;
@@ -92,51 +101,70 @@ namespace TripasDeGatoCliente.Views {
                 txtFriendName.IsEnabled = false;
                 btnAdd.IsEnabled = false;
 
-                btnAddFriend.Background = new SolidColorBrush(Colors.Black);
+                btnAddFriend.Background = new SolidColorBrush(Color.FromArgb(255, 67, 43, 30));
             }
         }
 
+        //SE REFACTORIZO EL CODIGO DE AQUI PARA AGREGAR AMIGO
         private async void BtnAdd_Click(object sender, RoutedEventArgs e) {
             string friendName = txtFriendName.Text.Trim();
-            LoggerManager logger = new LoggerManager(this.GetType());
-            if (!string.IsNullOrEmpty(friendName)) {
-                try {
-                    int friendProfileId = await userManager.GetProfileIdAsync(friendName);
-                    int userProfileId = UserProfileSingleton.IdPerfil;
+            if (ValidateFriendName(friendName)) {
+                await AddFriend(friendName);
+            }
+            txtFriendName.Clear();
+        }
 
-                    if (friendProfileId == userProfileId) {
-                        DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogCannotAddSelfAsFriend);
-                    } else if (friendProfileId > 0) {
-                        int result = await friendsManager.AddFriendAsync(userProfileId, friendProfileId);
-
-                        if (result == Constants.SUCCES_OPERATION) {
-                            DialogManager.ShowSuccessMessageAlert(string.Format(Properties.Resources.dialogAddFriendSuccessfully, friendName));
-                            await LoadFriendsListAsync();
-                        } else {
-                            DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogErrorAddingFriend);
-                        }
-                    } else {
-                        DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogProfileNotFound);
-                    }
-
-                    txtFriendName.Clear();
-                } catch (FaultException<ProfileNotFoundFault> ex) {
-                    logger.LogError(ex);
-                    DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogNotRetrievedProfile);
-                } catch (EndpointNotFoundException endpointNotFoundException) {
-                    logger.LogError(endpointNotFoundException);
-                    DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogEndPointException);
-                } catch (TimeoutException timeoutException) {
-                    logger.LogError(timeoutException);
-                    DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogTimeOutException);
-                } catch (CommunicationException communicationException) {
-                    logger.LogError(communicationException);
-                    DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
-                }
-            } else {
+        private bool ValidateFriendName(string friendName) {
+            if (string.IsNullOrEmpty(friendName)) {
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogInvalidName);
+                return false;
+            }
+            return true;
+        }
+
+        private async Task AddFriend(string friendName) {
+            LoggerManager logger = new LoggerManager(this.GetType());
+            try {
+                int friendProfileId = await userManager.GetProfileIdAsync(friendName);
+                if (friendProfileId == UserProfileSingleton.IdPerfil) {
+                    DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogCannotAddSelfAsFriend);
+                } else if (friendProfileId > 0) {
+                    await ExecuteFriendAddition(friendProfileId, friendName);
+                } else {
+                    DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogProfileNotFound);
+                }
+            } catch (Exception ex) {
+                HandleException(ex, logger);
             }
         }
+
+        private async Task ExecuteFriendAddition(int friendProfileId, string friendName) {
+            int userProfileId = UserProfileSingleton.IdPerfil;
+            int result = await friendsManager.AddFriendAsync(userProfileId, friendProfileId);
+            if (result == Constants.SUCCES_OPERATION) {
+                DialogManager.ShowSuccessMessageAlert(string.Format(Properties.Resources.dialogAddFriendSuccessfully, friendName));
+                await LoadFriendsListAsync();
+            } else {
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogErrorAddingFriend);
+            }
+        }
+
+        private void HandleException(Exception ex, LoggerManager logger) {
+            if (ex is FaultException<ProfileNotFoundFault> faultEx) {
+                logger.LogError(faultEx);
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogNotRetrievedProfile);
+            } else if (ex is EndpointNotFoundException) {
+                logger.LogError(ex);
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogEndPointException);
+            } else if (ex is TimeoutException) {
+                logger.LogError(ex);
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogTimeOutException);
+            } else if (ex is CommunicationException) {
+                logger.LogError(ex);
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
+            }
+        }
+        //HASTA AQUI PARA AGREGAR AMIGO
 
         private async Task LoadFriendsListAsync() {
             LoggerManager logger = new LoggerManager(this.GetType());
@@ -164,6 +192,7 @@ namespace TripasDeGatoCliente.Views {
             }
         }
 
+        //SE REFACTORIOZO ESTE METODO BTNREMOVEFRIEND_CLICK DE AQUI 
         private async void BtnRemoveFriend_Click(object sender, RoutedEventArgs e) {
             LoggerManager logger = new LoggerManager(this.GetType());
             if (lstFriends.SelectedItem != null) {
@@ -199,6 +228,7 @@ namespace TripasDeGatoCliente.Views {
                 DialogManager.ShowWarningMessageAlert(Properties.Resources.dialogSelectFriendToDelete);
             }
         }
+        //HASTA AQUI SE REFACTORIZO EL REMOVEFRIEND
 
         private async void BtnStartGame_Click(object sender, RoutedEventArgs e) {
             LoggerManager logger = new LoggerManager(this.GetType());
@@ -246,6 +276,18 @@ namespace TripasDeGatoCliente.Views {
 
         private void BtnProfile_Click(object sender, RoutedEventArgs e) {
             GoToPerfilView();
+        }
+
+        private void BtnLaderboard_Click(object sender, RoutedEventArgs e) {
+            GoToLaderboardView();
+        }
+        private void GoToLaderboardView() {
+            Laderboard laderboardView = new Laderboard();
+            if (this.NavigationService != null) {
+                this.NavigationService.Navigate(laderboardView);
+            } else {
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogNavigationError);
+            }
         }
 
         private void BtnJoinGame_Click(object sender, RoutedEventArgs e) {

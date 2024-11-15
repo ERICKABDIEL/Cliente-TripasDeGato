@@ -90,7 +90,7 @@
         <Button x:Name="btnSearch" Content="{x:Static p:Resources.btnSearch}" HorizontalAlignment="Left" Margin="598,139,0,0" VerticalAlignment="Top" 
             Click="BtnSearch_Click" Width="144" Height="44"/>
         <Label x:Name="lbCodeLobby" 
-            Content="Codigo de sala:"
+            Content="{x:Static p:Resources.globalLbEnterCodeLobby}"
             HorizontalAlignment="Left" 
             VerticalAlignment="Top" 
             HorizontalContentAlignment="Center" 

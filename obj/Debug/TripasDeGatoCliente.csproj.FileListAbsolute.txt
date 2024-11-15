@@ -84,3 +84,5 @@ C:\TripasDeGatoCliente\obj\Debug\en-US\TripasDeGatoCliente.resources.dll
 C:\TripasDeGatoCliente\obj\Debug\TripasDe.B94AA308.Up2Date
 C:\TripasDeGatoCliente\obj\Debug\TripasDeGatoCliente.exe
 C:\TripasDeGatoCliente\obj\Debug\TripasDeGatoCliente.pdb
+C:\TripasDeGatoCliente\obj\Debug\Views\CodeGameMatch.g.cs
+C:\TripasDeGatoCliente\obj\Debug\Views\CodeGameMatch.baml
