@@ -9,6 +9,7 @@ using TripasDeGatoCliente.TripasDeGatoServicio;
 namespace TripasDeGatoCliente.Views {
     public partial class CodeGameMatch : Page {
         private LobbyBrowserClient lobbyBrowser;
+
         public CodeGameMatch() {
             InitializeComponent();
             lobbyBrowser = new LobbyBrowserClient();
@@ -19,7 +20,10 @@ namespace TripasDeGatoCliente.Views {
 
             try {
                 string codeMatch = txtCodeLobby.Text;
-                GuestProfileSingleton.Instance.CreateInstance(codeMatch);
+
+                UserProfileSingleton.Instance.CreateGuestInstance();
+
+                // CodeMatch = codeMatch;
             } catch (EndpointNotFoundException endpointException) {
                 logger.LogError(endpointException);
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogEndPointException);
@@ -36,14 +40,21 @@ namespace TripasDeGatoCliente.Views {
             LoginView loginView = new LoginView();
             this.NavigationService.Navigate(loginView);
         }
-        /*
+
         public async void BtnLogin_Click(object sender, RoutedEventArgs e) {
             GenerateGuestProfile();
-            string lobbyCode = GuestProfileSingleton.CodeMatch;
-            GuestProfile guest = GuestProfileSingleton.PerfilInvitado;
+
             try {
-                if (guest != null && !string.IsNullOrEmpty(lobbyCode)) {
-                    bool joined = await lobbyBrowser.JoinLobbyAsync(lobbyCode, guest);
+                if (!string.IsNullOrEmpty(txtCodeLobby.Text)) {
+                    string lobbyCode = txtCodeLobby.Text;
+                    var guestProfile = new Profile {
+                        idProfile = UserProfileSingleton.IdPerfil,
+                        userName = UserProfileSingleton.Nombre,
+                        picturePath = UserProfileSingleton.FotoRuta,
+                        score = UserProfileSingleton.Puntaje
+                    };
+
+                    bool joined = await lobbyBrowser.JoinLobbyAsync(lobbyCode, guestProfile);
                     if (joined) {
                         LobbyView lobbyView = new LobbyView(lobbyCode);
                         this.NavigationService.Navigate(lobbyView);
@@ -56,6 +67,6 @@ namespace TripasDeGatoCliente.Views {
             } catch (Exception ex) {
                 MessageBox.Show($"Error al intentar unirse al lobby: {ex.Message}");
             }
-        }*/
+        }
     }
 }
