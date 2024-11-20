@@ -123,6 +123,9 @@
   <data name="btnAddFriend" xml:space="preserve">
     <value>Añadir amigo</value>
   </data>
+  <data name="btnContinue" xml:space="preserve">
+    <value>Continuar</value>
+  </data>
   <data name="btnEdit" xml:space="preserve">
     <value>Editar</value>
   </data>
@@ -297,6 +300,9 @@
   <data name="dialogRecoveryCodeHasBeenSent" xml:space="preserve">
     <value>Se ha enviado un código de recuperación a su correo</value>
   </data>
+  <data name="dialogRecoveryCodeResent" xml:space="preserve">
+    <value>Código de recuperación reenviado exitosamente</value>
+  </data>
   <data name="dialogRequestTimeout" xml:space="preserve">
     <value>La solicitud ha tardado demasiado. Por favor, intente más tarde</value>
   </data>
@@ -324,9 +330,6 @@
   <data name="dialogUserJoinedChat" xml:space="preserve">
     <value>{0} se ha unido al chat</value>
   </data>
-  <data name="dialogVerificationCodeResent" xml:space="preserve">
-    <value>Código de recuperación reenviado exitosamente</value>
-  </data>
   <data name="dialogVerificationCodeResentSuccessfully" xml:space="preserve">
     <value>Código de verificación reenviado con éxito. Por favor, revisa tu correo electrónico</value>
   </data>
@@ -344,6 +347,9 @@
   </data>
   <data name="globalKick" xml:space="preserve">
     <value>Expulsar jugador</value>
+  </data>
+  <data name="globalLbEnterCodeLobby" xml:space="preserve">
+    <value>Código de sala</value>
   </data>
   <data name="globalLbUser" xml:space="preserve">
     <value>Usuario</value>
@@ -363,11 +369,17 @@
   <data name="lbEmailValid" xml:space="preserve">
     <value>Ejemplo válido usuario@dominio.com</value>
   </data>
+  <data name="lbEnterEmail" xml:space="preserve">
+    <value>Ingrese su correo</value>
+  </data>
   <data name="lbEnterNewPassword" xml:space="preserve">
     <value>Ingrese su nueva contraseña</value>
   </data>
-  <data name="lbEnterValidationCode" xml:space="preserve">
-    <value>Ingrese el código de validación:</value>
+  <data name="lbEnterRecoveryCode" xml:space="preserve">
+    <value>Ingrese el código de recuperación:</value>
+  </data>
+  <data name="lbEnterVerificationCode" xml:space="preserve">
+    <value>Ingrese el código de verificación:</value>
   </data>
   <data name="lbFileFormat" xml:space="preserve">
     <value>Seleccione otro archivo que sí sea compatible</value>

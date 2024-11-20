@@ -102,6 +102,11 @@ namespace TripasDeGatoCliente.Views {
             }
         }
 
+        private void BtnGuest_Click(object sender, RoutedEventArgs e) {
+            CodeGameMatch codeGameMatch = new CodeGameMatch();
+            this.NavigationService.Navigate(codeGameMatch);
+        }
+
         private void DisplayMainMenuView() {
             MenuView menuView = new MenuView();
             this.NavigationService.Navigate(menuView);
@@ -137,9 +142,6 @@ namespace TripasDeGatoCliente.Views {
             this.NavigationService.Navigate(registerView);
         }
 
-        private void BtnGuest_Click(object sender, RoutedEventArgs e) {
-
-        }
 
         private void BtnContinue_Click(object sender, RoutedEventArgs e) {
             LoggerManager logger = new LoggerManager(this.GetType());
@@ -162,7 +164,7 @@ namespace TripasDeGatoCliente.Views {
                 if (result == Constants.SUCCES_OPERATION) {
                     userEmail = email;
                     enterEmailGrid.Visibility = Visibility.Collapsed;
-                    validationGrid.Visibility = Visibility.Visible;
+                    recoveryGrid.Visibility = Visibility.Visible;
                     DialogManager.ShowSuccessMessageAlert(Properties.Resources.dialogRecoveryCodeHasBeenSent);
                 } else if (result == Constants.NO_DATA_MATCHES) {
                     DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogInvalidEmail);
@@ -197,7 +199,7 @@ namespace TripasDeGatoCliente.Views {
                 bool isCodeValid = passwordRecovery.VerifyRecoveryCode(userEmail, enteredCode);
 
                 if (isCodeValid) {
-                    validationGrid.Visibility = Visibility.Collapsed;
+                    recoveryGrid.Visibility = Visibility.Collapsed;
                     recoveryPasswordGrid.Visibility = Visibility.Visible;
                 } else {
                     DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogInvalidRecoveryCode);
@@ -244,7 +246,7 @@ namespace TripasDeGatoCliente.Views {
         }
 
         private void BtnBackValidate_Click(object sender, RoutedEventArgs e) {
-            validationGrid.Visibility = Visibility.Collapsed;
+            recoveryGrid.Visibility = Visibility.Collapsed;
             txtEmail.Clear();
             txtPassword.Clear();
             txtPasswordVisible.Clear();

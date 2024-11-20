@@ -79,6 +79,15 @@ namespace TripasDeGatoCliente.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Continue.
+        /// </summary>
+        public static string btnContinue {
+            get {
+                return ResourceManager.GetString("btnContinue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Edit.
         /// </summary>
         public static string btnEdit {
@@ -745,6 +754,15 @@ namespace TripasDeGatoCliente.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Code lobby.
+        /// </summary>
+        public static string globalLbEnterCodeLobby {
+            get {
+                return ResourceManager.GetString("globalLbEnterCodeLobby", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a User.
         /// </summary>
         public static string globalLbUser {
@@ -799,6 +817,15 @@ namespace TripasDeGatoCliente.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Enter your email.
+        /// </summary>
+        public static string lbEnterEmail {
+            get {
+                return ResourceManager.GetString("lbEnterEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Enter your new password.
         /// </summary>
         public static string lbEnterNewPassword {
@@ -808,11 +835,20 @@ namespace TripasDeGatoCliente.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Enter the validation code:.
+        ///   Busca una cadena traducida similar a Enter the recovery code:.
         /// </summary>
-        public static string lbEnterValidationCode {
+        public static string lbEnterRecoveryCode {
             get {
-                return ResourceManager.GetString("lbEnterValidationCode", resourceCulture);
+                return ResourceManager.GetString("lbEnterRecoveryCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Enter the verification code:.
+        /// </summary>
+        public static string lbEnterVerificationCode {
+            get {
+                return ResourceManager.GetString("lbEnterVerificationCode", resourceCulture);
             }
         }
         

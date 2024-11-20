@@ -41,7 +41,7 @@ namespace TripasDeGatoCliente.Views
                 int result = emailVerificationProxy.SendVerificationCodeRegister(email);
 
                 if (result == Constants.SUCCES_OPERATION) {
-                    validationGrid.Visibility = Visibility.Visible;
+                    verificationGrid.Visibility = Visibility.Visible;
                     DialogManager.ShowSuccessMessageAlert(Properties.Resources.dialogVerificationCodeSent);
                 } else {
                     DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogErrorSendingVerificationCode);
@@ -107,7 +107,7 @@ namespace TripasDeGatoCliente.Views
 
                     if (accountResult == Constants.SUCCES_OPERATION) {
                         DialogManager.ShowSuccessMessageAlert(Properties.Resources.dialogAccountCreatedSuccesfully);
-                        validationGrid.Visibility = Visibility.Collapsed;
+                        verificationGrid.Visibility = Visibility.Collapsed;
                         GoToLoginView();
                     } else {
                         DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogAccountCreatedErrror);
@@ -130,7 +130,6 @@ namespace TripasDeGatoCliente.Views
         private bool ValidateFields(string email, string username, string password) {
             bool isValid = true;
 
-            // Validación de correo
             if (!Validador.ValidateEmail(email)) {
                 HighlightField(txtEmail);
                 lbInvalidEmail.Visibility = Visibility.Visible;
@@ -140,7 +139,6 @@ namespace TripasDeGatoCliente.Views
                 lbInvalidEmail.Visibility = Visibility.Collapsed;
             }
 
-            // Validación de nombre de usuario
             if (!Validador.ValidateUsername(username)) {
                 HighlightField(txtName);
                 lbInvalidUser.Visibility = Visibility.Visible;
@@ -150,7 +148,6 @@ namespace TripasDeGatoCliente.Views
                 lbInvalidUser.Visibility = Visibility.Collapsed;
             }
 
-            // Validación de contraseña
             if (!Validador.ValidatePassword(password)) {
                 HighlightField(txtPassword);
                 lbInvalidPassword.Visibility = Visibility.Visible;
@@ -262,7 +259,7 @@ namespace TripasDeGatoCliente.Views
         
         private void BtnBackValidate_Click(object sender, RoutedEventArgs e)
         {
-            validationGrid.Visibility = Visibility.Collapsed;
+            verificationGrid.Visibility = Visibility.Collapsed;
             txtEmail.Clear();
             txtName.Clear();
             txtPassword.Clear();

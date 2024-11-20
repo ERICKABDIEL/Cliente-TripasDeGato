@@ -17,10 +17,42 @@
             </Border>
 
             <Grid Grid.Row="3" Margin="0,0,0,10">
-                <PasswordBox x:Name="txtPassword" FontSize="14" Background="{x:Null}" Foreground="Black" BorderBrush="#FF432B1E" Visibility="Visible" Margin="663,340,427,340" FontFamily="Cooper Black" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
-                <TextBox x:Name="txtPasswordVisible" FontSize="14" Background="{x:Null}" Foreground="Black" Height="35" BorderBrush="#FF432B1E" Visibility="Collapsed" IsReadOnly="False" Margin="663,340,427,340" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="Cooper Black" />
-                <ToggleButton x:Name="btnTogglePassword" Content="👁" Width="27" Height="30" HorizontalAlignment="Left" VerticalAlignment="Center" Checked="BtnTogglePassword_Checked" Unchecked="BtnTogglePassword_Unchecked" Margin="826,0,0,0"/>
-                <Button x:Name="btnSignIn" Content="{x:Static p:Resources.btnSignIn}" FontSize="16" Click="BtnSignIn_Click" Margin="663,475,477,192">
+                <PasswordBox x:Name="txtPassword" 
+                             FontSize="14"
+                             Background="{x:Null}"
+                             Foreground="Black"
+                             BorderBrush="#FF432B1E"
+                             Visibility="Visible" 
+                             Margin="663,340,427,340" 
+                             FontFamily="Cooper Black"
+                             VerticalContentAlignment="Center" 
+                             HorizontalContentAlignment="Center"/>
+                <TextBox x:Name="txtPasswordVisible" 
+                         FontSize="14" 
+                         Background="{x:Null}"
+                         Foreground="Black"
+                         Height="35"
+                         BorderBrush="#FF432B1E"
+                         Visibility="Collapsed"
+                         IsReadOnly="False" 
+                         Margin="663,340,427,340"
+                         VerticalContentAlignment="Center" 
+                         HorizontalContentAlignment="Center"
+                         FontFamily="Cooper Black" />
+                <ToggleButton x:Name="btnTogglePassword" 
+                              Content="👁" 
+                              Width="27" 
+                              Height="30" 
+                              HorizontalAlignment="Left" 
+                              VerticalAlignment="Center"
+                              Checked="BtnTogglePassword_Checked"
+                              Unchecked="BtnTogglePassword_Unchecked"
+                              Margin="826,0,0,0"/>
+                <Button x:Name="btnSignIn" 
+                        Content="{x:Static p:Resources.btnSignIn}" 
+                        FontSize="16" 
+                        Click="BtnSignIn_Click" 
+                        Margin="663,475,477,192">
                     <Button.Background>
                         <ImageBrush ImageSource="/Images/BackgroundButton2.png"/>
                     </Button.Background>
@@ -49,7 +81,6 @@
                             </Setter>
                             <Style.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" Value="#FF6F91"/>
                                     <Setter Property="Effect">
                                         <Setter.Value>
                                             <DropShadowEffect Color="#FFCA855F" ShadowDepth="10" BlurRadius="25"/>
@@ -60,7 +91,13 @@
                         </Style>
                     </Button.Style>
                 </Button>
-                <Button x:Name="btnGuest" Content="{x:Static p:Resources.btnGuest}" FontSize="16" Margin="482,475,658,0" Click="BtnGuest_Click" VerticalAlignment="Top" Height="43">
+                <Button x:Name="btnGuest" 
+                        Content="{x:Static p:Resources.btnGuest}"
+                        FontSize="16" 
+                        Margin="482,475,658,0" 
+                        Click="BtnGuest_Click"
+                        VerticalAlignment="Top"
+                        Height="43">
                     <Button.Background>
                         <ImageBrush ImageSource="/Images/BackgroundButton2.png"/>
                     </Button.Background>
@@ -89,7 +126,6 @@
                             </Setter>
                             <Style.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" Value="#FF6F91"/>
                                     <Setter Property="Effect">
                                         <Setter.Value>
                                             <DropShadowEffect Color="#FFCA855F" ShadowDepth="10" BlurRadius="25"/>
@@ -100,7 +136,13 @@
                         </Style>
                     </Button.Style>
                 </Button>
-                <Button x:Name="btnLogin" Content="{x:Static p:Resources.btnLogin}" FontSize="16" Click="BtnLogin_Click" Margin="550,395,550,273" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
+                <Button x:Name="btnLogin" 
+                        Content="{x:Static p:Resources.btnLogin}"
+                        FontSize="16" 
+                        Click="BtnLogin_Click" 
+                        Margin="550,395,550,273" 
+                        VerticalContentAlignment="Center"
+                        HorizontalContentAlignment="Center">
                     <Button.Background>
                         <ImageBrush ImageSource="/Images/BackgroundButton1.png"/>
                     </Button.Background>
@@ -141,19 +183,68 @@
                     </Button.Style>
                 </Button>
                 <TextBlock Text="{x:Static p:Resources.lbRecoverPassword}"
-               FontSize="16" Foreground="Black"
-               HorizontalAlignment="Center" VerticalAlignment="Top" TextDecorations="Underline"
-               Cursor="Hand" MouseLeftButtonDown="BtnRecoverPassword_Click" Margin="0,446,0,0">
+                           FontSize="16" 
+                           Foreground="Black"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Top" 
+                           TextDecorations="Underline"
+                           Cursor="Hand"
+                           MouseLeftButtonDown="BtnRecoverPassword_Click" 
+                           Margin="0,446,0,0">
                     <TextBlock.Effect>
                         <DropShadowEffect Color="Black" ShadowDepth="3" Opacity="0.7" BlurRadius="10" />
                     </TextBlock.Effect>
                 </TextBlock>
-                <Label x:Name="lblEmail" Content="{x:Static p:Resources.lbEmail}"  FontSize="18" Foreground="Black" Margin="431,304,655,369" FontFamily="Cooper Black" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                <TextBox x:Name="txtEmail" FontSize="14" Background="{x:Null}" Foreground="Black" Margin="431,340,655,340" BorderBrush="#FF432B1E" FontFamily="Cooper Black" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
-                <Label x:Name="lblPassword" Content="{x:Static p:Resources.lbPassword}" FontSize="18" Foreground="Black" Margin="663,304,427,370" FontFamily="Cooper Black" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                <Label x:Name="lbInvalidEmail" Content="{x:Static p:Resources.lbEmailValid}" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="#FFED3838" Margin="435,368,0,0" Width="185" RenderTransformOrigin="0.34,0.655" Height="26" FontSize="10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Visibility="Collapsed"/>
-                <Label x:Name="lbInvalidPassword" Content="{x:Static p:Resources.lbPasswordValid}" HorizontalAlignment="Left" Margin="663,363,0,0"  VerticalAlignment="Top" Foreground="#FFED3838" Width="190" FontSize="9" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="38" Panel.ZIndex="2" Visibility="Collapsed"/>
-                <Grid x:Name="validationGrid" Width="558" Height="302" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="364,256,0,0" Visibility="Collapsed">
+                <Label x:Name="lblEmail" 
+                       Content="{x:Static p:Resources.lbEmail}" 
+                       FontSize="18" 
+                       Foreground="Black" 
+                       Margin="431,304,655,369" 
+                       FontFamily="Cooper Black"
+                       HorizontalContentAlignment="Center" 
+                       VerticalContentAlignment="Center"/>
+                <TextBox x:Name="txtEmail" 
+                         FontSize="14" 
+                         Background="{x:Null}"
+                         Foreground="Black"
+                         Margin="431,340,655,340"
+                         BorderBrush="#FF432B1E"
+                         FontFamily="Cooper Black" 
+                         VerticalContentAlignment="Center" 
+                         HorizontalContentAlignment="Center"/>
+                <Label x:Name="lblPassword" 
+                       Content="{x:Static p:Resources.lbPassword}" 
+                       FontSize="18" 
+                       Foreground="Black"
+                       Margin="663,304,427,370" 
+                       FontFamily="Cooper Black"
+                       HorizontalContentAlignment="Center"
+                       VerticalContentAlignment="Center"/>
+                <Label x:Name="lbInvalidEmail" 
+                       Content="{x:Static p:Resources.lbEmailValid}" 
+                       HorizontalAlignment="Left" 
+                       VerticalAlignment="Top" 
+                       Foreground="#FFED3838" 
+                       Margin="435,368,0,0"
+                       Width="185" 
+                       RenderTransformOrigin="0.34,0.655"
+                       Height="26" FontSize="10" 
+                       HorizontalContentAlignment="Center"
+                       VerticalContentAlignment="Center" 
+                       Visibility="Collapsed"/>
+                <Label x:Name="lbInvalidPassword" 
+                       Content="{x:Static p:Resources.lbPasswordValid}" 
+                       HorizontalAlignment="Left" 
+                       Margin="663,363,0,0"  
+                       VerticalAlignment="Top" 
+                       Foreground="#FFED3838" 
+                       Width="190" 
+                       FontSize="9" 
+                       HorizontalContentAlignment="Center" 
+                       VerticalContentAlignment="Center"
+                       Height="38" 
+                       Panel.ZIndex="2" Visibility="Collapsed"/>
+                <Grid x:Name="recoveryGrid" Width="558" Height="302" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="364,256,0,0" Visibility="Collapsed">
                     <Grid.Background>
                         <ImageBrush ImageSource="/Images/BackgroundValidation.png"/>
                     </Grid.Background>
@@ -163,9 +254,27 @@
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
 
-                    <Label x:Name="lbEnterValidationCode" Content="{x:Static p:Resources.lbEnterValidationCode}" FontSize="18" Foreground="Black" Margin="146,27,0,-7" HorizontalAlignment="Left" Width="261" Grid.Row="1" Grid.RowSpan="2"/>
+                    <Label x:Name="lbEnterRecoveryCode" 
+                           Content="{x:Static p:Resources.lbEnterRecoveryCode}" 
+                           FontSize="18" 
+                           Foreground="Black" 
+                           Margin="0,27,0,-7" 
+                           HorizontalAlignment="Center" 
+                           Width="360" 
+                           Grid.Row="1" 
+                           Grid.RowSpan="2"
+                           HorizontalContentAlignment="Center" 
+                           VerticalContentAlignment="Center"/>
                     <StackPanel Orientation="Horizontal" Grid.Row="2" HorizontalAlignment="Center" Margin="0,31,0,-75" Width="360">
-                        <TextBox x:Name="txtValidationCode1" TextChanged="TxtValidationCode_TextChanged" Width="50" Margin="5" MaxLength="1" FontSize="24" TextAlignment="Center" Foreground="White" BorderBrush="#FF020202">
+                        <TextBox x:Name="txtValidationCode1" 
+                                 TextChanged="TxtValidationCode_TextChanged"
+                                 Width="50" 
+                                 Margin="5" 
+                                 MaxLength="1" 
+                                 FontSize="24" 
+                                 TextAlignment="Center" 
+                                 Foreground="White" 
+                                 BorderBrush="#FF020202">
                             <TextBox.Background>
                                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                                     <GradientStop Color="#FF98714A" Offset="1"/>
@@ -173,7 +282,15 @@
                                 </LinearGradientBrush>
                             </TextBox.Background>
                         </TextBox>
-                        <TextBox x:Name="txtValidationCode2" TextChanged="TxtValidationCode_TextChanged" Width="50" Margin="5" MaxLength="1" FontSize="24" TextAlignment="Center" Foreground="White" BorderBrush="#FF020202">
+                        <TextBox x:Name="txtValidationCode2" 
+                                 TextChanged="TxtValidationCode_TextChanged" 
+                                 Width="50" 
+                                 Margin="5"
+                                 MaxLength="1" 
+                                 FontSize="24" 
+                                 TextAlignment="Center" 
+                                 Foreground="White"
+                                 BorderBrush="#FF020202">
                             <TextBox.Background>
                                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                                     <GradientStop Color="#FF98714A" Offset="1"/>
@@ -181,7 +298,15 @@
                                 </LinearGradientBrush>
                             </TextBox.Background>
                         </TextBox>
-                        <TextBox x:Name="txtValidationCode3" TextChanged="TxtValidationCode_TextChanged" Width="50" Margin="5" MaxLength="1" FontSize="24" TextAlignment="Center" Foreground="White" BorderBrush="#FF020202">
+                        <TextBox x:Name="txtValidationCode3" 
+                                 TextChanged="TxtValidationCode_TextChanged"
+                                 Width="50" 
+                                 Margin="5" 
+                                 MaxLength="1" 
+                                 FontSize="24" 
+                                 TextAlignment="Center" 
+                                 Foreground="White" 
+                                 BorderBrush="#FF020202">
                             <TextBox.Background>
                                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                                     <GradientStop Color="#FF98714A" Offset="1"/>
@@ -189,7 +314,15 @@
                                 </LinearGradientBrush>
                             </TextBox.Background>
                         </TextBox>
-                        <TextBox x:Name="txtValidationCode4" TextChanged="TxtValidationCode_TextChanged" Width="50" Margin="5" MaxLength="1" FontSize="24" TextAlignment="Center" Foreground="White" BorderBrush="#FF020202">
+                        <TextBox x:Name="txtValidationCode4" 
+                                 TextChanged="TxtValidationCode_TextChanged"
+                                 Width="50" 
+                                 Margin="5" 
+                                 MaxLength="1" 
+                                 FontSize="24"
+                                 TextAlignment="Center" 
+                                 Foreground="White" 
+                                 BorderBrush="#FF020202">
                             <TextBox.Background>
                                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                                     <GradientStop Color="#FF98714A" Offset="1"/>
@@ -197,7 +330,15 @@
                                 </LinearGradientBrush>
                             </TextBox.Background>
                         </TextBox>
-                        <TextBox x:Name="txtValidationCode5" TextChanged="TxtValidationCode_TextChanged" Width="50" Margin="5" MaxLength="1" FontSize="24" TextAlignment="Center" Foreground="White" BorderBrush="#FF020202">
+                        <TextBox x:Name="txtValidationCode5" 
+                                 TextChanged="TxtValidationCode_TextChanged" 
+                                 Width="50"
+                                 Margin="5" 
+                                 MaxLength="1" 
+                                 FontSize="24" 
+                                 TextAlignment="Center" 
+                                 Foreground="White" 
+                                 BorderBrush="#FF020202">
                             <TextBox.Background>
                                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                                     <GradientStop Color="#FF98714A" Offset="1"/>
@@ -205,7 +346,15 @@
                                 </LinearGradientBrush>
                             </TextBox.Background>
                         </TextBox>
-                        <TextBox x:Name="txtValidationCode6" TextChanged="TxtValidationCode_TextChanged" Width="50" Margin="5" MaxLength="1" FontSize="24" TextAlignment="Center" Foreground="White" BorderBrush="#FF020202">
+                        <TextBox x:Name="txtValidationCode6"
+                                 TextChanged="TxtValidationCode_TextChanged"
+                                 Width="50" 
+                                 Margin="5" 
+                                 MaxLength="1"
+                                 FontSize="24" 
+                                 TextAlignment="Center" 
+                                 Foreground="White"
+                                 BorderBrush="#FF020202">
                             <TextBox.Background>
                                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                                     <GradientStop Color="#FF98714A" Offset="1"/>
@@ -215,7 +364,12 @@
                         </TextBox>
                     </StackPanel>
 
-                    <Button x:Name="btnValidate" Content="{x:Static p:Resources.btnValidate}" HorizontalAlignment="Left" Margin="368,98,0,-137" Click="BtnValidate_Click" Grid.Row="5" Width="104">
+                    <Button x:Name="btnValidate" 
+                            Content="{x:Static p:Resources.btnValidate}" 
+                            HorizontalAlignment="Left"
+                            Margin="368,98,0,-137"
+                            Click="BtnValidate_Click" 
+                            Grid.Row="5" Width="104">
                         <Button.Style>
                             <Style TargetType="{x:Type Button}">
                                 <Setter Property="Background" Value="#FFA07952"/>
@@ -252,7 +406,13 @@
                             </Style>
                         </Button.Style>
                     </Button>
-                    <Button x:Name="btnResendCode" Content="{x:Static p:Resources.btnResendCode}" HorizontalAlignment="Center" Margin="0,98,0,-137" Click="BtnResendCode_Click" Grid.Row="5" Width="102">
+                    <Button x:Name="btnResendCode" 
+                            Content="{x:Static p:Resources.btnResendCode}"
+                            HorizontalAlignment="Center"
+                            Margin="0,98,0,-137" 
+                            Click="BtnResendCode_Click"
+                            Grid.Row="5"
+                            Width="102">
                         <Button.Style>
                             <Style TargetType="{x:Type Button}">
                                 <Setter Property="Background" Value="#FFA07952"/>
@@ -289,7 +449,13 @@
                             </Style>
                         </Button.Style>
                     </Button>
-                    <Button x:Name="btnBackToRegister" Content="{x:Static p:Resources.globalBtnBack}" HorizontalAlignment="Left" Margin="86,98,0,-137" Click="BtnBackValidate_Click" Grid.Row="5" Width="103">
+                    <Button x:Name="btnBackToRegister"
+                            Content="{x:Static p:Resources.globalBtnBack}" 
+                            HorizontalAlignment="Left" 
+                            Margin="86,98,0,-137" 
+                            Click="BtnBackValidate_Click"
+                            Grid.Row="5"
+                            Width="103">
                         <Button.Style>
                             <Style TargetType="{x:Type Button}">
                                 <Setter Property="Background" Value="#FFA07952"/>
@@ -331,7 +497,15 @@
                     <Grid.Background>
                         <ImageBrush ImageSource="/Images/BackgroundValidation.png"/>
                     </Grid.Background>
-                    <TextBox x:Name="txtEmailRecovery" FontSize="16" TextAlignment="Center" Foreground="Black" BorderBrush="#FF020202" Margin="138,110,138,148" FontFamily="Cooper Black" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+                    <TextBox x:Name="txtEmailRecovery" 
+                             FontSize="16" 
+                             TextAlignment="Center"
+                             Foreground="Black" 
+                             BorderBrush="#FF020202" 
+                             Margin="138,110,138,148" 
+                             FontFamily="Cooper Black" 
+                             HorizontalContentAlignment="Center"
+                             VerticalContentAlignment="Center">
                         <TextBox.Background>
                             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                                 <GradientStop Color="#FF98714A" Offset="1"/>
@@ -339,8 +513,22 @@
                             </LinearGradientBrush>
                         </TextBox.Background>
                     </TextBox>
-                    <Label x:Name="lbEnterEmail" Content="Ingrese su correo" FontSize="20" Foreground="Black" Margin="0,57,0,206" HorizontalAlignment="Center" Width="282" HorizontalContentAlignment="Center" FontFamily="Cooper Black" VerticalContentAlignment="Center"/>
-                    <Button x:Name="btnContinue" Content="Continuar" HorizontalAlignment="Left" Margin="303,196,0,66" Click="BtnContinue_Click" Width="117">
+                    <Label x:Name="lbEnterEmail" 
+                           Content="{x:Static p:Resources.lbEnterEmail}"
+                           FontSize="20" 
+                           Foreground="Black" 
+                           Margin="0,57,0,206" 
+                           HorizontalAlignment="Center"
+                           Width="282" 
+                           HorizontalContentAlignment="Center"
+                           FontFamily="Cooper Black" 
+                           VerticalContentAlignment="Center"/>
+                    <Button x:Name="btnContinue" 
+                            Content="{x:Static p:Resources.btnContinue}" 
+                            HorizontalAlignment="Left" 
+                            Margin="303,196,0,66" 
+                            Click="BtnContinue_Click"
+                            Width="117">
                         <Button.Style>
                             <Style TargetType="{x:Type Button}">
                                 <Setter Property="Background" Value="#FFA07952"/>
@@ -377,7 +565,12 @@
                             </Style>
                         </Button.Style>
                     </Button>
-                    <Button x:Name="btnBack" Content="{x:Static p:Resources.globalBtnBack}" HorizontalAlignment="Left" Margin="138,196,0,66" Click="BtnBackEnterEmail_Click" Width="113">
+                    <Button x:Name="btnBack" 
+                            Content="{x:Static p:Resources.globalBtnBack}" 
+                            HorizontalAlignment="Left"
+                            Margin="138,196,0,66"
+                            Click="BtnBackEnterEmail_Click"
+                            Width="113">
                         <Button.Style>
                             <Style TargetType="{x:Type Button}">
                                 <Setter Property="Background" Value="#FFA07952"/>
@@ -420,14 +613,78 @@
                     <Grid.Background>
                         <ImageBrush ImageSource="/Images/BackgroundValidation.png"/>
                     </Grid.Background>
-                    <PasswordBox x:Name="txtNewPassword" Background="{x:Null}" Height="35" BorderBrush="Black" Visibility="Visible" Margin="104,90,108,177" FontSize="16" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                    <TextBox x:Name="txtNewPasswordVisible" Background="{x:Null}" Foreground="Black" Height="35" BorderBrush="Black" Visibility="Collapsed" Margin="104,90,108,189" FontSize="16" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
-                    <ToggleButton x:Name="btnToggleNewPassword" Content="👁" Width="35" Height="35" HorizontalAlignment="Left" VerticalAlignment="Top" Checked="BtnToggleNewPassword_Checked" Unchecked="BtnToggleNewPassword_Unchecked" Margin="415,90,0,0"/>
-                    <PasswordBox x:Name="txtNewPasswordConfirm" Background="{x:Null}" Foreground="Black" BorderBrush="#FF020202" Visibility="Visible" Margin="104,162,108,107" FontSize="16" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
-                    <TextBox x:Name="txtNewPasswordConfirmVisible" Background="{x:Null}" Foreground="Black" Height="35" BorderBrush="Black" Visibility="Collapsed" Margin="104,162,108,116" FontSize="16"/>
-                    <Label x:Name="lblNewPassword" Content="{x:Static p:Resources.lbEnterNewPassword}" Grid.Row="0" FontSize="18" Foreground="#FF060606" Margin="0,54,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Width="346" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Cooper Black"/>
-                    <Label x:Name="lblVerifyPassword" Content="{x:Static p:Resources.lbVerifyPassword}" Grid.Row="0" FontSize="18" Foreground="Black" Margin="106,130,108,140" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="Cooper Black"/>
-                    <Button x:Name="btnBackRecovery" Content="{x:Static p:Resources.globalBtnBack}" HorizontalAlignment="Left" Margin="104,214,0,50" Click="BtnBackRecovery_Click" Width="147">
+                    <PasswordBox x:Name="txtNewPassword" 
+                                 Background="{x:Null}" 
+                                 Height="35" 
+                                 BorderBrush="Black" 
+                                 Visibility="Visible"
+                                 Margin="104,90,108,177"
+                                 FontSize="16" 
+                                 HorizontalContentAlignment="Center" 
+                                 VerticalContentAlignment="Center"/>
+                    <TextBox x:Name="txtNewPasswordVisible" 
+                             Background="{x:Null}" 
+                             Foreground="Black" 
+                             Height="35" 
+                             BorderBrush="Black"
+                             Visibility="Collapsed"
+                             Margin="104,90,108,189" 
+                             FontSize="16" 
+                             VerticalContentAlignment="Center"
+                             HorizontalContentAlignment="Center"/>
+                    <ToggleButton x:Name="btnToggleNewPassword"
+                                  Content="👁" 
+                                  Width="35" 
+                                  Height="35" 
+                                  HorizontalAlignment="Left" 
+                                  VerticalAlignment="Top"
+                                  Checked="BtnToggleNewPassword_Checked" 
+                                  Unchecked="BtnToggleNewPassword_Unchecked"
+                                  Margin="415,90,0,0"/>
+                    <PasswordBox x:Name="txtNewPasswordConfirm" 
+                                 Background="{x:Null}"
+                                 Foreground="Black" 
+                                 BorderBrush="#FF020202"
+                                 Visibility="Visible" 
+                                 Margin="104,162,108,107"
+                                 FontSize="16" 
+                                 VerticalContentAlignment="Center" 
+                                 HorizontalContentAlignment="Center"/>
+                    <TextBox x:Name="txtNewPasswordConfirmVisible"
+                             Background="{x:Null}" 
+                             Foreground="Black" 
+                             Height="35" 
+                             BorderBrush="Black"
+                             Visibility="Collapsed" 
+                             Margin="104,162,108,116" 
+                             FontSize="16"/>
+                    <Label x:Name="lblNewPassword" 
+                           Content="{x:Static p:Resources.lbEnterNewPassword}" 
+                           Grid.Row="0"
+                           FontSize="18" 
+                           Foreground="#FF060606" 
+                           Margin="0,54,0,0" 
+                           HorizontalAlignment="Center" 
+                           VerticalAlignment="Top"
+                           Width="346" 
+                           HorizontalContentAlignment="Center" 
+                           VerticalContentAlignment="Center"
+                           FontFamily="Cooper Black"/>
+                    <Label x:Name="lblVerifyPassword" 
+                           Content="{x:Static p:Resources.lbVerifyPassword}"
+                           Grid.Row="0" 
+                           FontSize="18" 
+                           Foreground="Black" 
+                           Margin="106,130,108,140"
+                           VerticalContentAlignment="Center" 
+                           HorizontalContentAlignment="Center" 
+                           FontFamily="Cooper Black"/>
+                    <Button x:Name="btnBackRecovery" 
+                            Content="{x:Static p:Resources.globalBtnBack}"
+                            HorizontalAlignment="Left"
+                            Margin="104,214,0,50"
+                            Click="BtnBackRecovery_Click"
+                            Width="147">
                         <Button.Style>
                             <Style TargetType="{x:Type Button}">
                                 <Setter Property="Background" Value="#FFA07952"/>
@@ -464,7 +721,12 @@
                             </Style>
                         </Button.Style>
                     </Button>
-                    <Button x:Name="btnSaveNewPassword" Content="{x:Static p:Resources.btnSavePassword}" HorizontalAlignment="Left" Margin="287,214,0,50" Click="BtnSavePassword_Click" Width="147">
+                    <Button x:Name="btnSaveNewPassword"
+                            Content="{x:Static p:Resources.btnSavePassword}"
+                            HorizontalAlignment="Left"
+                            Margin="287,214,0,50"
+                            Click="BtnSavePassword_Click" 
+                            Width="147">
                         <Button.Style>
                             <Style TargetType="{x:Type Button}">
                                 <Setter Property="Background" Value="#FFA07952"/>
@@ -501,7 +763,6 @@
                             </Style>
                         </Button.Style>
                     </Button>
-
                 </Grid>
             </Grid>
         </Grid>

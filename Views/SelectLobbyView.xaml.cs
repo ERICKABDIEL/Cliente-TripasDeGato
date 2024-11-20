@@ -71,5 +71,27 @@ namespace TripasDeGatoCliente.Views {
         }
         private void BtnSearch_Click(object sender, RoutedEventArgs e) {
         }
+        //Nuevo
+        public void GenerateGuestProfile() {
+            LoggerManager logger = new LoggerManager(this.GetType());
+
+            try {
+                string randomUsername = GuestProfile.RandomChooserUsername();
+                string randomAvatar = GuestProfile.RandomChooserAvatarIcon();
+                string codeMatch = txtCodeLobby.Text;
+                GuestProfileSingleton.Instance.CreateInstance(codeMatch);
+                SelectLobbyView selectLobbyView = new SelectLobbyView();
+                this.NavigationService.Navigate(selectLobbyView);
+            } catch (EndpointNotFoundException endpointException) {
+                logger.LogError(endpointException);
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogEndPointException);
+            } catch (TimeoutException timeoutException) {
+                logger.LogError(timeoutException);
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogTimeOutException);
+            } catch (CommunicationException communicationException) {
+                logger.LogError(communicationException);
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
+            }
+        }
     }
 }
