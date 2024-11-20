@@ -11,12 +11,13 @@ using System.Windows.Threading;
 namespace TripasDeGatoCliente.Views {
     public partial class GameMatch : Page {
         private Polyline currentLine;
-        private List<Polyline> allTraces; 
-        private List<Point> currentTraceCoordinates; 
+        private List<List<Point>> traceCoordinatesList; // Lista para almacenar las coordenadas
+        private List<Polyline> traceGraphicsList;       // Lista para almacenar los gráficos
+        private List<Point> currentTraceCoordinates;    // Coordenadas del trazo actual
         private DispatcherTimer timer;
         private int totalTime = 20;
         private double remainingTime;
-     //   private readonly IServerConnection server;  
+        //   private readonly IServerConnection server;  
 
         public GameMatch(/*IServerConnection serverConnection*/) {
             InitializeComponent();
@@ -24,12 +25,13 @@ namespace TripasDeGatoCliente.Views {
             drawingCanvas.MouseMove += Canvas_MouseMove;
             drawingCanvas.MouseUp += Canvas_MouseUp;
 
-       //     this.server = serverConnection;
-            allTraces = new List<Polyline>();
+            //     this.server = serverConnection;
+            traceCoordinatesList = new List<List<Point>>();
+            traceGraphicsList = new List<Polyline>();
             currentTraceCoordinates = new List<Point>();
 
             // Suscribirse para recibir trazos desde el servidor
-         //   this.server.OnTraceReceived += AddTraceFromServer;
+            //   this.server.OnTraceReceived += AddTraceFromServer;
 
             StartTimer();
         }
@@ -83,8 +85,9 @@ namespace TripasDeGatoCliente.Views {
         }
 
         private void Canvas_MouseUp(object sender, MouseButtonEventArgs e) {
-            // Guardar el trazo actual en la lista global
-            allTraces.Add(currentLine);
+            // Guardar el trazo actual en las listas globales
+            traceCoordinatesList.Add(new List<Point>(currentTraceCoordinates));
+            traceGraphicsList.Add(currentLine);
 
             // Enviar el trazo al servidor
             SendTraceToServer(currentTraceCoordinates);
@@ -92,7 +95,7 @@ namespace TripasDeGatoCliente.Views {
             // Verificar intersecciones con trazos anteriores
             if (CheckIntersection(currentTraceCoordinates)) {
                 MessageBox.Show("¡Infracción detectada! Perdiste.");
-      //          server.SendGameResult(false); 
+                //          server.SendGameResult(false); 
             }
 
             currentLine = null;
@@ -100,12 +103,12 @@ namespace TripasDeGatoCliente.Views {
 
         private void SendTraceToServer(List<Point> traceCoordinates) {
             // Serializar las coordenadas y enviarlas al servidor
-     //       server.SendTrace(traceCoordinates);
+            //       server.SendTrace(traceCoordinates);
         }
 
         private void AddTraceFromServer(List<Point> traceCoordinates) {
             Polyline receivedLine = new Polyline {
-                Stroke = Brushes.Red, 
+                Stroke = Brushes.Red,
                 StrokeThickness = 10
             };
 
@@ -113,15 +116,19 @@ namespace TripasDeGatoCliente.Views {
                 receivedLine.Points.Add(point);
             }
 
+            // Agregar el trazo recibido a las listas globales
+            traceCoordinatesList.Add(traceCoordinates);
+            traceGraphicsList.Add(receivedLine);
+
+            // Dibujar el nuevo trazo en el lienzo
             drawingCanvas.Children.Add(receivedLine);
-            allTraces.Add(receivedLine);
         }
 
         private bool CheckIntersection(List<Point> newTrace) {
             // Comprobar si algún punto del nuevo trazo intersecta con trazos anteriores
-            foreach (var trace in allTraces) {
+            foreach (var trace in traceCoordinatesList) {
                 foreach (var point in newTrace) {
-                    if (trace.Points.Any(existingPoint => ArePointsClose(point, existingPoint))) {
+                    if (trace.Any(existingPoint => ArePointsClose(point, existingPoint))) {
                         return true;
                     }
                 }
@@ -137,9 +144,9 @@ namespace TripasDeGatoCliente.Views {
     }
 
     // Interfaz de conexión con el servidor
-   /* public interface IServerConnection {
-        event Action<List<Point>> OnTraceReceived;
-        void SendTrace(List<Point> traceCoordinates);
-        void SendGameResult(bool isWinner);
-    }*/
+    /* public interface IServerConnection {
+         event Action<List<Point>> OnTraceReceived;
+         void SendTrace(List<Point> traceCoordinates);
+         void SendGameResult(bool isWinner);
+     }*/
 }

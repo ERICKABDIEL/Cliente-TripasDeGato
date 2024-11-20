@@ -145,8 +145,18 @@
         </Grid>
        
         
-        <Label x:Name="labelPlayer1" Content="Player 1" Foreground="White" FontSize="16" FontFamily="Rockwell Extra Bold" Margin="90,40,1097,640" />
-        <Label x:Name="labelPlayer2" Content="Player 2" Foreground="White" FontSize="16" FontFamily="Rockwell Extra Bold" Margin="1090,40,77,640" />
+        <Label x:Name="labelPlayer1" 
+               Content="Player 1" 
+               Foreground="White"
+               FontSize="16" 
+               FontFamily="Rockwell Extra Bold"
+               Margin="90,40,1097,640" />
+        <Label x:Name="labelPlayer2" 
+               Content="Player 2" 
+               Foreground="White" 
+               FontSize="16" 
+               FontFamily="Rockwell Extra Bold"
+               Margin="1090,40,77,640" />
         <ProgressBar x:Name="timeProgressBar" 
                      Height="20" 
                      Width="640" 
