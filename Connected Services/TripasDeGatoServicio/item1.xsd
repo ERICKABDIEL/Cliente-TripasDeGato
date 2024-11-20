@@ -3,7 +3,6 @@
   <xs:import schemaLocation="http://localhost:8082/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/TripasService.Contracts" />
   <xs:import schemaLocation="http://localhost:8082/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/TripasService.Utils" />
   <xs:import schemaLocation="http://localhost:8082/?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/TripasService.Logic" />
-  <xs:import schemaLocation="http://localhost:8082/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
   <xs:element name="CreateAccount">
     <xs:complexType>
       <xs:sequence>
@@ -78,6 +77,36 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="UpdateProfileName">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idProfile" type="xs:int" />
+        <xs:element minOccurs="0" name="newProfileName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateProfileNameResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UpdateProfileNameResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateProfilePic">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idProfile" type="xs:int" />
+        <xs:element minOccurs="0" name="newProfilePic" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateProfilePicResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UpdateProfilePicResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="GetProfileByMail">
     <xs:complexType>
       <xs:sequence>
@@ -119,6 +148,21 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="DeleteFriendResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteFriendship">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userName1" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="userName2" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteFriendshipResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="DeleteFriendshipResult" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -399,7 +443,6 @@
         <xs:element minOccurs="0" name="gameName" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="nodeCount" type="xs:int" />
         <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/TripasService.Contracts" minOccurs="0" name="owner" nillable="true" type="q12:Profile" />
-        <xs:element xmlns:q13="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="duration" type="q13:duration" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -420,7 +463,7 @@
   <xs:element name="GetLobbyByCodeResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/TripasService.Logic" minOccurs="0" name="GetLobbyByCodeResult" nillable="true" type="q14:Lobby" />
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/TripasService.Logic" minOccurs="0" name="GetLobbyByCodeResult" nillable="true" type="q13:Lobby" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

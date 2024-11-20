@@ -28,8 +28,8 @@ namespace TripasDeGatoCliente.Views {
         }
 
         private async void LoadUserProfileAsync() {
-            if (!string.IsNullOrEmpty(UserProfileSingleton.Nombre)) {
-                lbUserName.Content = UserProfileSingleton.Nombre;
+            if (!string.IsNullOrEmpty(UserProfileSingleton.UserName)) {
+                lbUserName.Content = UserProfileSingleton.UserName;
             } else {
                 lbUserName.Content = Properties.Resources.lbUnknownUser;
             }
@@ -126,7 +126,7 @@ namespace TripasDeGatoCliente.Views {
             LoggerManager logger = new LoggerManager(this.GetType());
             try {
                 int friendProfileId = await userManager.GetProfileIdAsync(friendName);
-                if (friendProfileId == UserProfileSingleton.IdPerfil) {
+                if (friendProfileId == UserProfileSingleton.IdProfile) {
                     DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogCannotAddSelfAsFriend);
                 } else if (friendProfileId > 0) {
                     await ExecuteFriendAddition(friendProfileId, friendName);
@@ -139,7 +139,7 @@ namespace TripasDeGatoCliente.Views {
         }
 
         private async Task ExecuteFriendAddition(int friendProfileId, string friendName) {
-            int userProfileId = UserProfileSingleton.IdPerfil;
+            int userProfileId = UserProfileSingleton.IdProfile;
             int result = await friendsManager.AddFriendAsync(userProfileId, friendProfileId);
             if (result == Constants.SUCCES_OPERATION) {
                 DialogManager.ShowSuccessMessageAlert(string.Format(Properties.Resources.dialogAddFriendSuccessfully, friendName));
@@ -169,7 +169,7 @@ namespace TripasDeGatoCliente.Views {
         private async Task LoadFriendsListAsync() {
             LoggerManager logger = new LoggerManager(this.GetType());
             try {
-                int userProfileId = UserProfileSingleton.IdPerfil;
+                int userProfileId = UserProfileSingleton.IdProfile;
                 var friendsList = await friendsManager.GetFriendsAsync(userProfileId);
 
                 var friendsWithStatus = new List<string>();
@@ -202,7 +202,7 @@ namespace TripasDeGatoCliente.Views {
                     int friendProfileId = await userManager.GetProfileIdAsync(selectedFriendName);
 
                     if (friendProfileId > 0) {
-                        int userProfileId = UserProfileSingleton.IdPerfil;
+                        int userProfileId = UserProfileSingleton.IdProfile;
                         int result = await friendsManager.DeleteFriendAsync(userProfileId, friendProfileId);
 
                         if (result == Constants.SUCCES_OPERATION) {
@@ -231,20 +231,23 @@ namespace TripasDeGatoCliente.Views {
         //HASTA AQUI SE REFACTORIZO EL REMOVEFRIEND
 
         private async void BtnStartGame_Click(object sender, RoutedEventArgs e) {
-            GoToLobbyConfigView();
+            GoToCreateLobbyView();
         }
-        /*private void GoToLobbyView(string lobbyCode) {
-            LobbyView lobbyView = new LobbyView(lobbyCode);
-            if (this.NavigationService != null) {
-                this.NavigationService.Navigate(lobbyView);
-            } else {
-                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogNavigationError);
-            }
-        }*/
 
+        private void BtnProfile_Click(object sender, RoutedEventArgs e) {
+            GoToPerfilView();
+        }
 
-        private void GoToLobbyConfigView() {
-            LobbyConfig lobbyConfig = new LobbyConfig();
+        private void BtnLaderboard_Click(object sender, RoutedEventArgs e) {
+            GoToLaderboardView();
+        }
+
+        private void BtnJoinGame_Click(object sender, RoutedEventArgs e) {
+            GoToSelectLobbyView();
+        }
+
+        private void GoToCreateLobbyView() {
+            CreateLobbyView lobbyConfig = new CreateLobbyView();
             if (this.NavigationService != null) {
                 this.NavigationService.Navigate(lobbyConfig);
             } else {
@@ -261,13 +264,6 @@ namespace TripasDeGatoCliente.Views {
             }
         }
 
-        private void BtnProfile_Click(object sender, RoutedEventArgs e) {
-            GoToPerfilView();
-        }
-
-        private void BtnLaderboard_Click(object sender, RoutedEventArgs e) {
-            GoToLaderboardView();
-        }
         private void GoToLaderboardView() {
             Laderboard laderboardView = new Laderboard();
             if (this.NavigationService != null) {
@@ -276,8 +272,7 @@ namespace TripasDeGatoCliente.Views {
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogNavigationError);
             }
         }
-
-        private void BtnJoinGame_Click(object sender, RoutedEventArgs e) {
+        private void GoToSelectLobbyView() {
             SelectLobbyView selectLobbyView = new SelectLobbyView();
             if (this.NavigationService != null) {
                 this.NavigationService.Navigate(selectLobbyView);
@@ -285,5 +280,6 @@ namespace TripasDeGatoCliente.Views {
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogNavigationError);
             }
         }
+
     }
 }

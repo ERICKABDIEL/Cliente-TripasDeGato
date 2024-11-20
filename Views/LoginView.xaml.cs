@@ -32,7 +32,7 @@ namespace TripasDeGatoCliente.Views {
             string password = Hasher.HashToSHA256(txtPassword.Password);
 
             if (AuthenticateUser(email, password)) {
-                SetPlayerOnlineStatus(UserProfileSingleton.IdPerfil);
+                SetPlayerOnlineStatus(UserProfileSingleton.IdProfile);
                 DisplayMainMenuView();
             }
         }

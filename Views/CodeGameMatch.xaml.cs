@@ -1,6 +1,5 @@
 ﻿using System;
 using System.ServiceModel;
-using System.ServiceModel.Security;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -16,13 +15,6 @@ namespace TripasDeGatoCliente.Views {
             lobbyBrowser = new LobbyBrowserClient();
         }
 
-
-        public void GenerateProfile() {
-            TripasDeGatoServicio.Profile profile = new Profile();
-            profile.userName = string.Empty;
-            profile.picturePath = string.Empty;
-            profile.status = 0;
-        }
         public void GenerateGuestProfile() {
             LoggerManager logger = new LoggerManager(this.GetType());
 
@@ -49,12 +41,6 @@ namespace TripasDeGatoCliente.Views {
             this.NavigationService.Navigate(loginView);
         }
 
-<<<<<<< HEAD
-        private void btnPlay_Click(object sender, RoutedEventArgs e) {
-
-        }
-      
-=======
         public async void BtnLogin_Click(object sender, RoutedEventArgs e) {
             GenerateGuestProfile();
 
@@ -62,10 +48,10 @@ namespace TripasDeGatoCliente.Views {
                 if (!string.IsNullOrEmpty(txtCodeLobby.Text)) {
                     string lobbyCode = txtCodeLobby.Text;
                     var guestProfile = new Profile {
-                        idProfile = UserProfileSingleton.IdPerfil,
-                        userName = UserProfileSingleton.Nombre,
-                        picturePath = UserProfileSingleton.FotoRuta,
-                        score = UserProfileSingleton.Puntaje
+                        idProfile = UserProfileSingleton.IdProfile,
+                        userName = UserProfileSingleton.UserName,
+                        picturePath = UserProfileSingleton.PicPath,
+                        score = UserProfileSingleton.Score
                     };
 
                     bool joined = await lobbyBrowser.JoinLobbyAsync(lobbyCode, guestProfile);
@@ -82,6 +68,5 @@ namespace TripasDeGatoCliente.Views {
                 MessageBox.Show($"Error al intentar unirse al lobby: {ex.Message}");
             }
         }
->>>>>>> ea51fff247118dce3908e67f885b666fa446b6c8
     }
 }

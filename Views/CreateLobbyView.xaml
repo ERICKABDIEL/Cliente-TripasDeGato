@@ -1,0 +1,166 @@
+﻿<Page x:Class="TripasDeGatoCliente.Views.CreateLobbyView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:TripasDeGatoCliente.Views"
+      xmlns:p="clr-namespace:TripasDeGatoCliente.Properties"
+      mc:Ignorable="d"
+      d:DesignHeight="720" d:DesignWidth="1280">
+
+    <DockPanel>
+        <Grid>
+            <Border>
+                <Border.Background>
+                    <ImageBrush ImageSource="/Images/BackgroundLogin.png" Stretch="UniformToFill"/>
+                </Border.Background>
+                <Label x:Name="lblMapLobby_Copiar" 
+                    Content="Mapa:" 
+                    FontSize="14" 
+                    Foreground="Black" 
+                    Margin="0,0,1112,683" 
+                    FontFamily="Cooper Black"
+                    HorizontalContentAlignment="Center" 
+                    VerticalContentAlignment="Center"/>
+            </Border>
+
+            <Grid Grid.Row="3" Margin="0,0,0,10">
+                <Button x:Name="btnBack" 
+                        Content="{x:Static p:Resources.globalBtnBack}"
+                        FontSize="16" 
+                        Margin="460,483,640,0" 
+                        Click="BtnBack_Click"
+                        VerticalAlignment="Top"
+                        Height="43">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/Images/BackgroundButton2.png"/>
+                    </Button.Background>
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Background" Value="#FFFFA040"/>
+                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="BorderBrush" Value="Transparent"/>
+                            <Setter Property="BorderThickness" Value="0"/>
+                            <Setter Property="FontWeight" Value="Bold"/>
+                            <Setter Property="Effect">
+                                <Setter.Value>
+                                    <DropShadowEffect Color="Black" ShadowDepth="5" BlurRadius="10"/>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Grid>
+                                            <Border CornerRadius="20" Background="{TemplateBinding Background}">
+                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            </Border>
+                                        </Grid>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Effect">
+                                        <Setter.Value>
+                                            <DropShadowEffect Color="#FFCA855F" ShadowDepth="10" BlurRadius="25"/>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Button x:Name="btnCreateLobby" 
+                        Content="Crear"
+                        FontSize="16" 
+                        Click="BtnCreateLobby_Click"
+                        Margin="656,483,444,185" 
+                        VerticalContentAlignment="Center"
+                        HorizontalContentAlignment="Center">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/Images/BackgroundButton1.png"/>
+                    </Button.Background>
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Background" Value="#FF9D741B"/>
+                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="BorderBrush" Value="Transparent"/>
+                            <Setter Property="BorderThickness" Value="0"/>
+                            <Setter Property="FontWeight" Value="Bold"/>
+                            <Setter Property="Effect">
+                                <Setter.Value>
+                                    <DropShadowEffect Color="Black" ShadowDepth="5" BlurRadius="10"/>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Grid>
+                                            <Border CornerRadius="20" Background="{TemplateBinding Background}">
+                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            </Border>
+                                        </Grid>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#FF9D741B"/>
+                                    <Setter Property="Effect">
+                                        <Setter.Value>
+                                            <DropShadowEffect Color="#FFF5C58F" ShadowDepth="10" BlurRadius="25"/>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Label x:Name="lblNameLobby" 
+                       Content="Nombre de partida:" 
+                       FontSize="14" 
+                       Foreground="Black" 
+                       Margin="422,318,675,355" 
+                       FontFamily="Cooper Black"
+                       HorizontalContentAlignment="Center" 
+                       VerticalContentAlignment="Center"/>
+                <TextBox x:Name="txtNameLobby" 
+                         FontSize="14" 
+                         Background="{x:Null}"
+                         Foreground="Black"
+                         Margin="595,322,460,359"
+                         BorderBrush="#FF432B1E"
+                         FontFamily="Cooper Black" 
+                         VerticalContentAlignment="Center" 
+                         HorizontalContentAlignment="Center" MaxLength="20"/>
+                <Label x:Name="lblNodeLobby" 
+                    Content="Nodos:" 
+                    FontSize="14" 
+                    Foreground="Black" 
+                    Margin="422,359,690,314" 
+                    FontFamily="Cooper Black"
+                    HorizontalContentAlignment="Center" 
+                    VerticalContentAlignment="Center"/>
+                <Label x:Name="lblMapLobby" 
+                    Content="Mapa:" 
+                    FontSize="14" 
+                    Foreground="Black" 
+                    Margin="422,396,690,277" 
+                    FontFamily="Cooper Black"
+                    HorizontalContentAlignment="Center" 
+                    VerticalContentAlignment="Center"/>
+                <Label x:Name="lblTimeLobby" 
+                    Content="Tiempo:" 
+                    FontSize="14" 
+                    Foreground="Black" 
+                    Margin="422,433,690,240" 
+                    FontFamily="Cooper Black"
+                    HorizontalContentAlignment="Center" 
+                    VerticalContentAlignment="Center"/>
+                <ComboBox x:Name="cboxNode" HorizontalAlignment="Left" Margin="595,367,0,0" VerticalAlignment="Top" Width="225"/>
+                <ComboBox x:Name="cboxMap" HorizontalAlignment="Left" Margin="595,406,0,0" VerticalAlignment="Top" Width="225"/>
+                <ComboBox x:Name="cboxTime" HorizontalAlignment="Left" Margin="595,441,0,0" VerticalAlignment="Top" Width="225" Background="#FFEFE4C4" BorderBrush="Black"/>
+            </Grid>
+        </Grid>
+    </DockPanel>
+</Page>

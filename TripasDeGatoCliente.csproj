@@ -88,6 +88,9 @@
     <Compile Include="Views\CodeGameMatch.xaml.cs">
       <DependentUpon>CodeGameMatch.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\CreateLobbyView.xaml.cs">
+      <DependentUpon>CreateLobbyView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\GameMatch.xaml.cs">
       <DependentUpon>GameMatch.xaml</DependentUpon>
     </Compile>
@@ -125,6 +128,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\CodeGameMatch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CreateLobbyView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -260,6 +267,9 @@
     <Resource Include="Images\BackgroundValidation.png" />
     <Resource Include="Images\BackgroundButton1.png" />
     <Resource Include="Images\BackgroundButton2.png" />
+    <Resource Include="Images\Scene\SceneCat.png" />
+    <Resource Include="Images\Scene\SceneDog.png" />
+    <Resource Include="Images\Scene\SceneBear.png" />
     <Content Include="Videos\ViewWait.mp4">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

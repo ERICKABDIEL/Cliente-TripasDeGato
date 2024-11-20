@@ -4,14 +4,14 @@
   <ProjectLanguage>C#</ProjectLanguage>
   <ProjectType>Product</ProjectType>
   <ProjectGuid>614fae94-10a3-4b88-927c-17395a2cb479</ProjectGuid>
-  <FullPath>C:\Users\cv419\source\repos\Cliente-TripasDeGato\TripasDeGatoCliente.csproj</FullPath>
+  <FullPath>C:\TripasDeGatoCliente\TripasDeGatoCliente.csproj</FullPath>
   <IsExcluded>false</IsExcluded>
   <AnalysisResults>
-    <AnalysisResult Id="FilesToAnalyze" Location="C:\Users\cv419\source\repos\Cliente-TripasDeGato\.sonarqube\conf\1\FilesToAnalyze.txt" />
+    <AnalysisResult Id="FilesToAnalyze" Location="C:\TripasDeGatoCliente\.sonarqube\conf\1\FilesToAnalyze.txt" />
   </AnalysisResults>
   <AnalysisSettings>
-    <Property Name="sonar.cs.roslyn.reportFilePaths">C:\Users\cv419\source\repos\Cliente-TripasDeGato\.sonarqube\out\1\Issues.json</Property>
-    <Property Name="sonar.cs.analyzer.projectOutPaths">C:\Users\cv419\source\repos\Cliente-TripasDeGato\.sonarqube\out\1</Property>
+    <Property Name="sonar.cs.roslyn.reportFilePaths">C:\TripasDeGatoCliente\.sonarqube\out\1\Issues.json</Property>
+    <Property Name="sonar.cs.analyzer.projectOutPaths">C:\TripasDeGatoCliente\.sonarqube\out\1</Property>
   </AnalysisSettings>
   <Configuration>Debug</Configuration>
   <Platform>AnyCPU</Platform>

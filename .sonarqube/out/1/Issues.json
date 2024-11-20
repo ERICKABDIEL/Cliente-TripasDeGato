@@ -5,45 +5,24 @@
     {
       "tool": {
         "name": "Compilador de Microsoft (R) Visual C#",
-        "version": "4.11.0.0",
-        "fileVersion": "4.11.0-3.24376.4 (5e3a11e2)",
-        "semanticVersion": "4.11.0",
+        "version": "4.10.0.0",
+        "fileVersion": "4.10.0-3.24324.8 (04fb3916)",
+        "semanticVersion": "4.10.0",
         "language": "es-MX"
       },
       "results": [
         {
-          "ruleId": "CS4014",
-          "level": "warning",
-          "message": "Como esta llamada no es 'awaited', la ejecución del método actual continuará antes de que se complete la llamada. Puede aplicar el operador 'await' al resultado de la llamada.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/cv419/source/repos/Cliente-TripasDeGato/Views/Laderboard.xaml.cs",
-                "region": {
-                  "startLine": 19,
-                  "startColumn": 13,
-                  "endLine": 19,
-                  "endColumn": 39
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
           "ruleId": "CS1998",
           "level": "warning",
           "message": "El método asincrónico carece de operadores \"await\" y se ejecutará de forma sincrónica. Puede usar el operador 'await' para esperar llamadas API que no sean de bloqueo o 'await Task.Run(...)' para hacer tareas enlazadas a la CPU en un subproceso en segundo plano.",
           "locations": [
             {
               "resultFile": {
-                "uri": "file:///C:/Users/cv419/source/repos/Cliente-TripasDeGato/Views/MenuView.xaml.cs",
+                "uri": "file:///C:/TripasDeGatoCliente/Views/MenuView.xaml.cs",
                 "region": {
-                  "startLine": 30,
+                  "startLine": 27,
                   "startColumn": 28,
-                  "endLine": 30,
+                  "endLine": 27,
                   "endColumn": 48
                 }
               }
@@ -51,69 +30,6 @@
           ],
           "properties": {
             "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "CS1998",
-          "level": "warning",
-          "message": "El método asincrónico carece de operadores \"await\" y se ejecutará de forma sincrónica. Puede usar el operador 'await' para esperar llamadas API que no sean de bloqueo o 'await Task.Run(...)' para hacer tareas enlazadas a la CPU en un subproceso en segundo plano.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/cv419/source/repos/Cliente-TripasDeGato/Views/ProfileView.xaml.cs",
-                "region": {
-                  "startLine": 66,
-                  "startColumn": 28,
-                  "endLine": 66,
-                  "endColumn": 39
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "CS0169",
-          "level": "warning",
-          "message": "El campo 'LobbyView.refreshTimer' nunca se usa",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/cv419/source/repos/Cliente-TripasDeGato/Views/LobbyView.xaml.cs",
-                "region": {
-                  "startLine": 20,
-                  "startColumn": 23,
-                  "endLine": 20,
-                  "endColumn": 35
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 3
-          }
-        },
-        {
-          "ruleId": "CS0169",
-          "level": "warning",
-          "message": "El campo 'SelectLobbyView.lobbyManager' nunca se usa",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/cv419/source/repos/Cliente-TripasDeGato/Views/SelectLobbyView.xaml.cs",
-                "region": {
-                  "startLine": 14,
-                  "startColumn": 36,
-                  "endLine": 14,
-                  "endColumn": 48
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 3
           }
         },
         {
@@ -123,7 +39,7 @@
           "locations": [
             {
               "resultFile": {
-                "uri": "file:///C:/Users/cv419/source/repos/Cliente-TripasDeGato/Logic/ConstantsManager.cs",
+                "uri": "file:///C:/TripasDeGatoCliente/Logic/ConstantsManager.cs",
                 "region": {
                   "startLine": 9,
                   "startColumn": 20,
@@ -138,18 +54,18 @@
           }
         },
         {
-          "ruleId": "S1118",
+          "ruleId": "S125",
           "level": "warning",
-          "message": "Add a 'protected' constructor or the 'static' keyword to the class declaration.",
+          "message": "Remove this commented out code.",
           "locations": [
             {
               "resultFile": {
-                "uri": "file:///C:/Users/cv419/source/repos/Cliente-TripasDeGato/Logic/Hasher.cs",
+                "uri": "file:///C:/TripasDeGatoCliente/Views/ProfileView.xaml.cs",
                 "region": {
-                  "startLine": 7,
-                  "startColumn": 20,
-                  "endLine": 7,
-                  "endColumn": 26
+                  "startLine": 25,
+                  "startColumn": 13,
+                  "endLine": 25,
+                  "endColumn": 99
                 }
               }
             }
@@ -165,7 +81,7 @@
           "locations": [
             {
               "resultFile": {
-                "uri": "file:///C:/Users/cv419/source/repos/Cliente-TripasDeGato/Logic/DialogManager.cs",
+                "uri": "file:///C:/TripasDeGatoCliente/Logic/DialogManager.cs",
                 "region": {
                   "startLine": 10,
                   "startColumn": 25,
@@ -180,18 +96,18 @@
           }
         },
         {
-          "ruleId": "S4487",
+          "ruleId": "S1118",
           "level": "warning",
-          "message": "Remove this unread private field 'lobbyBrowser' or refactor the code to use its value.",
+          "message": "Add a 'protected' constructor or the 'static' keyword to the class declaration.",
           "locations": [
             {
               "resultFile": {
-                "uri": "file:///C:/Users/cv419/source/repos/Cliente-TripasDeGato/Views/CodeGameMatch.xaml.cs",
+                "uri": "file:///C:/TripasDeGatoCliente/Logic/Hasher.cs",
                 "region": {
-                  "startLine": 12,
-                  "startColumn": 36,
-                  "endLine": 12,
-                  "endColumn": 48
+                  "startLine": 7,
+                  "startColumn": 20,
+                  "endLine": 7,
+                  "endColumn": 26
                 }
               }
             }
@@ -203,16 +119,16 @@
         {
           "ruleId": "S1144",
           "level": "warning",
-          "message": "Remove the unused private field 'refreshTimer'.",
+          "message": "Remove the unused private field 'emailRegex'.",
           "locations": [
             {
               "resultFile": {
-                "uri": "file:///C:/Users/cv419/source/repos/Cliente-TripasDeGato/Views/LobbyView.xaml.cs",
+                "uri": "file:///C:/TripasDeGatoCliente/Logic/Validador.cs",
                 "region": {
-                  "startLine": 20,
+                  "startLine": 11,
                   "startColumn": 9,
-                  "endLine": 20,
-                  "endColumn": 36
+                  "endLine": 11,
+                  "endColumn": 136
                 }
               }
             }
@@ -222,39 +138,18 @@
           }
         },
         {
-          "ruleId": "S1144",
+          "ruleId": "S3168",
           "level": "warning",
-          "message": "Remove the unused private field 'lobbyManager'.",
+          "message": "Return 'Task' instead.",
           "locations": [
             {
               "resultFile": {
-                "uri": "file:///C:/Users/cv419/source/repos/Cliente-TripasDeGato/Views/SelectLobbyView.xaml.cs",
-                "region": {
-                  "startLine": 14,
-                  "startColumn": 9,
-                  "endLine": 14,
-                  "endColumn": 49
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S3241",
-          "level": "warning",
-          "message": "Change return type to 'void'; not a single caller uses the returned value.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/cv419/source/repos/Cliente-TripasDeGato/Views/SelectLobbyView.xaml.cs",
+                "uri": "file:///C:/TripasDeGatoCliente/Views/LobbyView.xaml.cs",
                 "region": {
                   "startLine": 24,
-                  "startColumn": 17,
+                  "startColumn": 23,
                   "endLine": 24,
-                  "endColumn": 21
+                  "endColumn": 27
                 }
               }
             }
@@ -264,92 +159,18 @@
           }
         },
         {
-          "ruleId": "S4144",
+          "ruleId": "S3168",
           "level": "warning",
-          "message": "Update this method so that its implementation is not identical to 'TxtPasswordVisible_PasswordChanged'.",
+          "message": "Return 'Task' instead.",
           "locations": [
             {
               "resultFile": {
-                "uri": "file:///C:/Users/cv419/source/repos/Cliente-TripasDeGato/Views/RegisterView.xaml.cs",
-                "region": {
-                  "startLine": 182,
-                  "startColumn": 22,
-                  "endLine": 182,
-                  "endColumn": 49
-                }
-              }
-            }
-          ],
-          "relatedLocations": [
-            {
-              "physicalLocation": {
-                "uri": "file:///C:/Users/cv419/source/repos/Cliente-TripasDeGato/Views/RegisterView.xaml.cs",
-                "region": {
-                  "startLine": 168,
-                  "startColumn": 22,
-                  "endLine": 168,
-                  "endColumn": 56
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1,
-            "customProperties": {
-              "0": null
-            }
-          }
-        },
-        {
-          "ruleId": "S1066",
-          "level": "warning",
-          "message": "Merge this if statement with the enclosing one.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/cv419/source/repos/Cliente-TripasDeGato/Logic/Validador.cs",
-                "region": {
-                  "startLine": 45,
-                  "startColumn": 17,
-                  "endLine": 45,
-                  "endColumn": 19
-                }
-              }
-            }
-          ],
-          "relatedLocations": [
-            {
-              "physicalLocation": {
-                "uri": "file:///C:/Users/cv419/source/repos/Cliente-TripasDeGato/Logic/Validador.cs",
-                "region": {
-                  "startLine": 44,
-                  "startColumn": 13,
-                  "endLine": 44,
-                  "endColumn": 15
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1,
-            "customProperties": {
-              "0": null
-            }
-          }
-        },
-        {
-          "ruleId": "S6444",
-          "level": "warning",
-          "message": "Pass a timeout to limit the execution time.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/cv419/source/repos/Cliente-TripasDeGato/Logic/Validador.cs",
+                "uri": "file:///C:/TripasDeGatoCliente/Views/LobbyView.xaml.cs",
                 "region": {
                   "startLine": 37,
-                  "startColumn": 38,
+                  "startColumn": 23,
                   "endLine": 37,
-                  "endColumn": 80
+                  "endColumn": 27
                 }
               }
             }
@@ -359,18 +180,18 @@
           }
         },
         {
-          "ruleId": "S6444",
+          "ruleId": "S3168",
           "level": "warning",
-          "message": "Pass a timeout to limit the execution time.",
+          "message": "Return 'Task' instead.",
           "locations": [
             {
               "resultFile": {
-                "uri": "file:///C:/Users/cv419/source/repos/Cliente-TripasDeGato/Logic/Validador.cs",
+                "uri": "file:///C:/TripasDeGatoCliente/Views/MenuView.xaml.cs",
                 "region": {
-                  "startLine": 31,
-                  "startColumn": 38,
-                  "endLine": 31,
-                  "endColumn": 80
+                  "startLine": 27,
+                  "startColumn": 23,
+                  "endLine": 27,
+                  "endColumn": 27
                 }
               }
             }
@@ -382,99 +203,15 @@
         {
           "ruleId": "S2325",
           "level": "warning",
-          "message": "Make 'GenerateProfile' a static method.",
+          "message": "Make 'ObtainSingletonData' a static method.",
           "locations": [
             {
               "resultFile": {
-                "uri": "file:///C:/Users/cv419/source/repos/Cliente-TripasDeGato/Views/CodeGameMatch.xaml.cs",
+                "uri": "file:///C:/TripasDeGatoCliente/Views/LoginView.xaml.cs",
                 "region": {
-                  "startLine": 19,
-                  "startColumn": 21,
-                  "endLine": 19,
-                  "endColumn": 36
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S6444",
-          "level": "warning",
-          "message": "Pass a timeout to limit the execution time.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/cv419/source/repos/Cliente-TripasDeGato/Logic/Validador.cs",
-                "region": {
-                  "startLine": 60,
-                  "startColumn": 34,
-                  "endLine": 60,
-                  "endColumn": 77
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S1481",
-          "level": "warning",
-          "message": "Remove the unused local variable 'mailAddress'.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/cv419/source/repos/Cliente-TripasDeGato/Logic/Validador.cs",
-                "region": {
-                  "startLine": 47,
-                  "startColumn": 29,
-                  "endLine": 47,
-                  "endColumn": 40
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S6444",
-          "level": "warning",
-          "message": "Pass a timeout to limit the execution time.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/cv419/source/repos/Cliente-TripasDeGato/Logic/Validador.cs",
-                "region": {
-                  "startLine": 66,
-                  "startColumn": 35,
-                  "endLine": 66,
-                  "endColumn": 74
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S2245",
-          "level": "warning",
-          "message": "Make sure that using this pseudorandom number generator is safe here.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/cv419/source/repos/Cliente-TripasDeGato/Logic/GuestProfile.cs",
-                "region": {
-                  "startLine": 20,
-                  "startColumn": 29,
-                  "endLine": 20,
+                  "startLine": 117,
+                  "startColumn": 22,
+                  "endLine": 117,
                   "endColumn": 41
                 }
               }
@@ -485,165 +222,39 @@
           }
         },
         {
-          "ruleId": "S1186",
+          "ruleId": "S2325",
           "level": "warning",
-          "message": "Add a nested comment explaining why this method is empty, throw a 'NotSupportedException' or complete the implementation.",
+          "message": "Make 'GetLogger' a static method.",
           "locations": [
             {
               "resultFile": {
-                "uri": "file:///C:/Users/cv419/source/repos/Cliente-TripasDeGato/Views/SelectLobbyView.xaml.cs",
+                "uri": "file:///C:/TripasDeGatoCliente/Logic/LoggerManager.cs",
                 "region": {
-                  "startLine": 72,
+                  "startLine": 16,
+                  "startColumn": 21,
+                  "endLine": 16,
+                  "endColumn": 30
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2325",
+          "level": "warning",
+          "message": "Make 'HandleChatException' a static method.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/TripasDeGatoCliente/Views/LobbyView.xaml.cs",
+                "region": {
+                  "startLine": 108,
                   "startColumn": 22,
-                  "endLine": 72,
-                  "endColumn": 37
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S1186",
-          "level": "warning",
-          "message": "Add a nested comment explaining why this method is empty, throw a 'NotSupportedException' or complete the implementation.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/cv419/source/repos/Cliente-TripasDeGato/Views/CodeGameMatch.xaml.cs",
-                "region": {
-                  "startLine": 48,
-                  "startColumn": 22,
-                  "endLine": 48,
-                  "endColumn": 35
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S6444",
-          "level": "warning",
-          "message": "Pass a timeout to limit the execution time.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/cv419/source/repos/Cliente-TripasDeGato/Logic/Validador.cs",
-                "region": {
-                  "startLine": 74,
-                  "startColumn": 29,
-                  "endLine": 74,
-                  "endColumn": 77
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S2245",
-          "level": "warning",
-          "message": "Make sure that using this pseudorandom number generator is safe here.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/cv419/source/repos/Cliente-TripasDeGato/Logic/GuestProfile.cs",
-                "region": {
-                  "startLine": 26,
-                  "startColumn": 29,
-                  "endLine": 26,
+                  "endLine": 108,
                   "endColumn": 41
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S1481",
-          "level": "warning",
-          "message": "Remove the unused local variable 'randomUsername'.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/cv419/source/repos/Cliente-TripasDeGato/Views/SelectLobbyView.xaml.cs",
-                "region": {
-                  "startLine": 79,
-                  "startColumn": 24,
-                  "endLine": 79,
-                  "endColumn": 38
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S1481",
-          "level": "warning",
-          "message": "Remove the unused local variable 'randomAvatar'.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/cv419/source/repos/Cliente-TripasDeGato/Views/SelectLobbyView.xaml.cs",
-                "region": {
-                  "startLine": 80,
-                  "startColumn": 24,
-                  "endLine": 80,
-                  "endColumn": 36
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S2325",
-          "level": "warning",
-          "message": "Make 'ResetSingleton' a static method.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/cv419/source/repos/Cliente-TripasDeGato/Logic/GuestProfileSinglenton.cs",
-                "region": {
-                  "startLine": 23,
-                  "startColumn": 21,
-                  "endLine": 23,
-                  "endColumn": 35
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S2325",
-          "level": "warning",
-          "message": "Make 'CreateInstance' a static method.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/cv419/source/repos/Cliente-TripasDeGato/Logic/UserProfileSnglenton.cs",
-                "region": {
-                  "startLine": 25,
-                  "startColumn": 21,
-                  "endLine": 25,
-                  "endColumn": 35
                 }
               }
             }
@@ -659,7 +270,7 @@
           "locations": [
             {
               "resultFile": {
-                "uri": "file:///C:/Users/cv419/source/repos/Cliente-TripasDeGato/Logic/UserProfileSnglenton.cs",
+                "uri": "file:///C:/TripasDeGatoCliente/Logic/UserProfileSnglenton.cs",
                 "region": {
                   "startLine": 34,
                   "startColumn": 21,
@@ -680,11 +291,11 @@
           "locations": [
             {
               "resultFile": {
-                "uri": "file:///C:/Users/cv419/source/repos/Cliente-TripasDeGato/Logic/GuestProfileSinglenton.cs",
+                "uri": "file:///C:/TripasDeGatoCliente/Logic/UserProfileSnglenton.cs",
                 "region": {
-                  "startLine": 14,
+                  "startLine": 25,
                   "startColumn": 21,
-                  "endLine": 14,
+                  "endLine": 25,
                   "endColumn": 35
                 }
               }
@@ -695,399 +306,39 @@
           }
         },
         {
-          "ruleId": "S2325",
+          "ruleId": "S6444",
           "level": "warning",
-          "message": "Make 'GetLogger' a static method.",
+          "message": "Pass a timeout to limit the execution time.",
           "locations": [
             {
               "resultFile": {
-                "uri": "file:///C:/Users/cv419/source/repos/Cliente-TripasDeGato/Logic/LoggerManager.cs",
+                "uri": "file:///C:/TripasDeGatoCliente/Logic/Validador.cs",
                 "region": {
-                  "startLine": 16,
-                  "startColumn": 21,
-                  "endLine": 16,
-                  "endColumn": 30
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S3168",
-          "level": "warning",
-          "message": "Return 'Task' instead.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/cv419/source/repos/Cliente-TripasDeGato/Views/MenuView.xaml.cs",
-                "region": {
-                  "startLine": 30,
-                  "startColumn": 23,
-                  "endLine": 30,
-                  "endColumn": 27
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S2325",
-          "level": "warning",
-          "message": "Make 'SignOut' a static method.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/cv419/source/repos/Cliente-TripasDeGato/Views/MenuView.xaml.cs",
-                "region": {
-                  "startLine": 43,
-                  "startColumn": 22,
-                  "endLine": 43,
-                  "endColumn": 29
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S3168",
-          "level": "warning",
-          "message": "Return 'Task' instead.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/cv419/source/repos/Cliente-TripasDeGato/Views/LobbyView.xaml.cs",
-                "region": {
-                  "startLine": 35,
-                  "startColumn": 23,
-                  "endLine": 35,
-                  "endColumn": 27
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S2325",
-          "level": "warning",
-          "message": "Make 'ObtainSingletonData' a static method.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/cv419/source/repos/Cliente-TripasDeGato/Views/LoginView.xaml.cs",
-                "region": {
-                  "startLine": 83,
-                  "startColumn": 22,
-                  "endLine": 83,
-                  "endColumn": 41
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S3168",
-          "level": "warning",
-          "message": "Return 'Task' instead.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/cv419/source/repos/Cliente-TripasDeGato/Views/ProfileView.xaml.cs",
-                "region": {
-                  "startLine": 66,
-                  "startColumn": 23,
-                  "endLine": 66,
-                  "endColumn": 27
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S1172",
-          "level": "warning",
-          "message": "Remove this unused method parameter 'selectedLanguage'.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/cv419/source/repos/Cliente-TripasDeGato/Views/ProfileView.xaml.cs",
-                "region": {
-                  "startLine": 66,
-                  "startColumn": 57,
-                  "endLine": 66,
+                  "startLine": 31,
+                  "startColumn": 38,
+                  "endLine": 31,
                   "endColumn": 80
                 }
               }
             }
           ],
           "properties": {
-            "warningLevel": 1,
-            "customProperties": {
-              "IsRemovable": "True"
-            }
-          }
-        },
-        {
-          "ruleId": "S2325",
-          "level": "warning",
-          "message": "Make 'ValidateFriendName' a static method.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/cv419/source/repos/Cliente-TripasDeGato/Views/MenuView.xaml.cs",
-                "region": {
-                  "startLine": 117,
-                  "startColumn": 22,
-                  "endLine": 117,
-                  "endColumn": 40
-                }
-              }
-            }
-          ],
-          "properties": {
             "warningLevel": 1
           }
         },
         {
-          "ruleId": "S2325",
+          "ruleId": "S6444",
           "level": "warning",
-          "message": "Make 'HighlightField' a static method.",
+          "message": "Pass a timeout to limit the execution time.",
           "locations": [
             {
               "resultFile": {
-                "uri": "file:///C:/Users/cv419/source/repos/Cliente-TripasDeGato/Views/LoginView.xaml.cs",
-                "region": {
-                  "startLine": 115,
-                  "startColumn": 22,
-                  "endLine": 115,
-                  "endColumn": 36
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S2325",
-          "level": "warning",
-          "message": "Make 'ResetField' a static method.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/cv419/source/repos/Cliente-TripasDeGato/Views/LoginView.xaml.cs",
-                "region": {
-                  "startLine": 136,
-                  "startColumn": 22,
-                  "endLine": 136,
-                  "endColumn": 32
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S2325",
-          "level": "warning",
-          "message": "Make 'HighlightField' a static method.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/cv419/source/repos/Cliente-TripasDeGato/Views/RegisterView.xaml.cs",
-                "region": {
-                  "startLine": 163,
-                  "startColumn": 22,
-                  "endLine": 163,
-                  "endColumn": 36
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S6966",
-          "level": "warning",
-          "message": "Await UpdateProfileAsync instead.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/cv419/source/repos/Cliente-TripasDeGato/Views/ProfileView.xaml.cs",
-                "region": {
-                  "startLine": 71,
-                  "startColumn": 36,
-                  "endLine": 71,
-                  "endColumn": 86
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S6966",
-          "level": "warning",
-          "message": "Await InvokeAsync instead.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/cv419/source/repos/Cliente-TripasDeGato/Views/LobbyView.xaml.cs",
+                "uri": "file:///C:/TripasDeGatoCliente/Logic/Validador.cs",
                 "region": {
                   "startLine": 42,
-                  "startColumn": 17,
+                  "startColumn": 38,
                   "endLine": 42,
-                  "endColumn": 115
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S6966",
-          "level": "warning",
-          "message": "Await InvokeAsync instead.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/cv419/source/repos/Cliente-TripasDeGato/Views/LobbyView.xaml.cs",
-                "region": {
-                  "startLine": 46,
-                  "startColumn": 17,
-                  "endLine": 46,
-                  "endColumn": 119
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S6966",
-          "level": "warning",
-          "message": "Await InvokeAsync instead.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/cv419/source/repos/Cliente-TripasDeGato/Views/LobbyView.xaml.cs",
-                "region": {
-                  "startLine": 50,
-                  "startColumn": 17,
-                  "endLine": 50,
-                  "endColumn": 130
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S3168",
-          "level": "warning",
-          "message": "Return 'Task' instead.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/cv419/source/repos/Cliente-TripasDeGato/Views/LobbyView.xaml.cs",
-                "region": {
-                  "startLine": 119,
-                  "startColumn": 22,
-                  "endLine": 119,
-                  "endColumn": 26
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S2325",
-          "level": "warning",
-          "message": "Make 'ResetField' a static method.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/cv419/source/repos/Cliente-TripasDeGato/Views/RegisterView.xaml.cs",
-                "region": {
-                  "startLine": 196,
-                  "startColumn": 22,
-                  "endLine": 196,
-                  "endColumn": 32
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S2325",
-          "level": "warning",
-          "message": "Make 'HandleException' a static method.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/cv419/source/repos/Cliente-TripasDeGato/Views/MenuView.xaml.cs",
-                "region": {
-                  "startLine": 152,
-                  "startColumn": 22,
-                  "endLine": 152,
-                  "endColumn": 37
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S2325",
-          "level": "warning",
-          "message": "Make 'IsValidPassword' a static method.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/cv419/source/repos/Cliente-TripasDeGato/Views/LoginView.xaml.cs",
-                "region": {
-                  "startLine": 312,
-                  "startColumn": 22,
-                  "endLine": 312,
-                  "endColumn": 37
+                  "endColumn": 80
                 }
               }
             }
@@ -1099,16 +350,79 @@
         {
           "ruleId": "S1481",
           "level": "warning",
-          "message": "Remove the unused local variable 'email'.",
+          "message": "Remove the unused local variable 'newProfile'.",
           "locations": [
             {
               "resultFile": {
-                "uri": "file:///C:/Users/cv419/source/repos/Cliente-TripasDeGato/Views/LoginView.xaml.cs",
+                "uri": "file:///C:/TripasDeGatoCliente/Views/RegisterView.xaml.cs",
                 "region": {
-                  "startLine": 260,
-                  "startColumn": 20,
-                  "endLine": 260,
-                  "endColumn": 25
+                  "startLine": 34,
+                  "startColumn": 17,
+                  "endLine": 34,
+                  "endColumn": 27
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1481",
+          "level": "warning",
+          "message": "Remove the unused local variable 'mailAddress'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/TripasDeGatoCliente/Logic/Validador.cs",
+                "region": {
+                  "startLine": 58,
+                  "startColumn": 25,
+                  "endLine": 58,
+                  "endColumn": 36
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S6444",
+          "level": "warning",
+          "message": "Pass a timeout to limit the execution time.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/TripasDeGatoCliente/Logic/Validador.cs",
+                "region": {
+                  "startLine": 72,
+                  "startColumn": 34,
+                  "endLine": 72,
+                  "endColumn": 77
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S6444",
+          "level": "warning",
+          "message": "Pass a timeout to limit the execution time.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/TripasDeGatoCliente/Logic/Validador.cs",
+                "region": {
+                  "startLine": 82,
+                  "startColumn": 35,
+                  "endLine": 82,
+                  "endColumn": 74
                 }
               }
             }
@@ -1119,20 +433,6 @@
         }
       ],
       "rules": {
-        "CS0169": {
-          "id": "CS0169",
-          "shortDescription": "Nunca se usa el campo",
-          "defaultLevel": "warning",
-          "helpUri": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn&k=k(CS0169)",
-          "properties": {
-            "category": "Compiler",
-            "isEnabledByDefault": true,
-            "tags": [
-              "Compiler",
-              "Telemetry"
-            ]
-          }
-        },
         "CS1998": {
           "id": "CS1998",
           "shortDescription": "El método asincrónico carece de operadores \"await\" y se ejecutará de forma sincrónica",
@@ -1144,38 +444,6 @@
             "tags": [
               "Compiler",
               "Telemetry"
-            ]
-          }
-        },
-        "CS4014": {
-          "id": "CS4014",
-          "shortDescription": "Dado que no se esperaba esta llamada, la ejecución del método actual continuará antes de que se complete la llamada",
-          "fullDescription": "El método actual llama a un método asincrónico que devuelve una tarea o un Task<TResult>, y no aplica el operador Await al resultado. La llamada al método asincrónico inicia una tarea asincrónica. Sin embargo, debido a que no se aplica ningún operador Await, el programa continúa sin esperar a que finalice la tarea. En la mayoría de los casos, este comportamiento no es el esperado. Generalmente, otros aspectos del método de llamada dependen de los resultados de la llamada. O bien, se espera como mínimo que el método al que se llama se complete antes de volver al método que contiene la llamada.\u000d\u000a\u000d\u000aUn problema de igual importancia es el que se genera con las excepciones que se producen en el método asincrónico al que se llama. Las excepciones que se producen en un método que devuelve una tarea o un Task<TResult> se almacenan en la tarea devuelta. Si no espera por la tarea o no realiza una comprobación explícita de excepciones, la excepción se pierde. Si espera por la tarea, su excepción se vuelve a producir.\u000d\u000a\u000d\u000aComo procedimiento recomendado, siempre debe esperar por la llamada.\u000d\u000a\u000d\u000aConsidere la posibilidad de suprimir la advertencia solo si tiene la seguridad de que no desea esperar a que la llamada asincrónica se complete y que el método al que se llama no producirá excepciones. En ese caso, puede suprimir la advertencia asignando el resultado de la tarea de la llamada a una variable.",
-          "defaultLevel": "warning",
-          "helpUri": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn&k=k(CS4014)",
-          "properties": {
-            "category": "Compiler",
-            "isEnabledByDefault": true,
-            "tags": [
-              "Compiler",
-              "Telemetry"
-            ]
-          }
-        },
-        "S1066": {
-          "id": "S1066",
-          "shortDescription": "Mergeable \"if\" statements should be combined",
-          "fullDescription": "Nested code - blocks of code inside blocks of code - is eventually necessary, but increases complexity. This is why keeping the code as flat as possible, by avoiding unnecessary nesting, is considered a good practice.",
-          "defaultLevel": "warning",
-          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-1066",
-          "properties": {
-            "category": "Major Code Smell",
-            "isEnabledByDefault": true,
-            "tags": [
-              "C#",
-              "MainSourceScope",
-              "TestSourceScope",
-              "SonarWay"
             ]
           }
         },
@@ -1213,31 +481,14 @@
             ]
           }
         },
-        "S1172": {
-          "id": "S1172",
-          "shortDescription": "Unused method parameters should be removed",
-          "fullDescription": "A typical code smell known as unused function parameters refers to parameters declared in a function but not used anywhere within the function’s body. While this might seem harmless at first glance, it can lead to confusion and potential errors in your code. Disregarding the values passed to such parameters, the function’s behavior will be the same, but the programmer’s intention won’t be clearly expressed anymore. Therefore, removing function parameters that are not being utilized is considered best practice.",
+        "S125": {
+          "id": "S125",
+          "shortDescription": "Sections of code should not be commented out",
+          "fullDescription": "Commented-out code distracts the focus from the actual executed code. It creates a noise that increases maintenance code. And because it is never executed, it quickly becomes out of date and invalid.",
           "defaultLevel": "warning",
-          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-1172",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-125",
           "properties": {
             "category": "Major Code Smell",
-            "isEnabledByDefault": true,
-            "tags": [
-              "C#",
-              "MainSourceScope",
-              "TestSourceScope",
-              "SonarWay"
-            ]
-          }
-        },
-        "S1186": {
-          "id": "S1186",
-          "shortDescription": "Methods should not be empty",
-          "fullDescription": "An empty method is generally considered bad practice and can lead to confusion, readability, and maintenance issues. Empty methods bring no functionality and are misleading to others as they might think the method implementation fulfills a specific and identified requirement.",
-          "defaultLevel": "warning",
-          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-1186",
-          "properties": {
-            "category": "Critical Code Smell",
             "isEnabledByDefault": true,
             "tags": [
               "C#",
@@ -1260,22 +511,6 @@
               "C#",
               "MainSourceScope",
               "TestSourceScope",
-              "SonarWay"
-            ]
-          }
-        },
-        "S2245": {
-          "id": "S2245",
-          "shortDescription": "Using pseudorandom number generators (PRNGs) is security-sensitive",
-          "fullDescription": "Using pseudorandom number generators (PRNGs) is security-sensitive. For example, it has led in the past to the following vulnerabilities:",
-          "defaultLevel": "warning",
-          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-2245",
-          "properties": {
-            "category": "Critical Security Hotspot",
-            "isEnabledByDefault": true,
-            "tags": [
-              "C#",
-              "MainSourceScope",
               "SonarWay"
             ]
           }
@@ -1314,23 +549,6 @@
             ]
           }
         },
-        "S3241": {
-          "id": "S3241",
-          "shortDescription": "Methods should not return values that are never used",
-          "fullDescription": "Private methods are intended for use only within their scope. If these methods return values that are not utilized by any calling functions, it indicates that the return operation is unnecessary. Removing such returns can enhance both efficiency and code clarity.",
-          "defaultLevel": "warning",
-          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-3241",
-          "properties": {
-            "category": "Minor Code Smell",
-            "isEnabledByDefault": true,
-            "tags": [
-              "C#",
-              "MainSourceScope",
-              "TestSourceScope",
-              "SonarWay"
-            ]
-          }
-        },
         "S3903": {
           "id": "S3903",
           "shortDescription": "Types should be defined in named namespaces",
@@ -1339,40 +557,6 @@
           "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-3903",
           "properties": {
             "category": "Major Bug",
-            "isEnabledByDefault": true,
-            "tags": [
-              "C#",
-              "MainSourceScope",
-              "TestSourceScope",
-              "SonarWay"
-            ]
-          }
-        },
-        "S4144": {
-          "id": "S4144",
-          "shortDescription": "Methods should not have identical implementations",
-          "fullDescription": "Two methods having the same implementation are suspicious. It might be that something else was intended. Or the duplication is intentional, which becomes a maintenance burden.",
-          "defaultLevel": "warning",
-          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-4144",
-          "properties": {
-            "category": "Major Code Smell",
-            "isEnabledByDefault": true,
-            "tags": [
-              "C#",
-              "MainSourceScope",
-              "TestSourceScope",
-              "SonarWay"
-            ]
-          }
-        },
-        "S4487": {
-          "id": "S4487",
-          "shortDescription": "Unread \"private\" fields should be removed",
-          "fullDescription": "Private fields which are written but never read are a case of \"dead store\". Changing the value of such a field is useless and most probably indicates an error in the code.",
-          "defaultLevel": "warning",
-          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-4487",
-          "properties": {
-            "category": "Critical Code Smell",
             "isEnabledByDefault": true,
             "tags": [
               "C#",
@@ -1394,23 +578,6 @@
             "tags": [
               "C#",
               "MainSourceScope",
-              "SonarWay"
-            ]
-          }
-        },
-        "S6966": {
-          "id": "S6966",
-          "shortDescription": "Awaitable method should be used",
-          "fullDescription": "In an async method, any blocking operations should be avoided.",
-          "defaultLevel": "warning",
-          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-6966",
-          "properties": {
-            "category": "Major Code Smell",
-            "isEnabledByDefault": true,
-            "tags": [
-              "C#",
-              "MainSourceScope",
-              "TestSourceScope",
               "SonarWay"
             ]
           }

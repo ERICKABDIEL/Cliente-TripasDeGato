@@ -12,13 +12,14 @@ using System.ComponentModel;
 using System.Reflection.Emit;
 using log4net.Repository.Hierarchy;
 using System.Windows.Media.Imaging;
+using System.Diagnostics.Eventing.Reader;
 
 namespace TripasDeGatoCliente.Views {
     public partial class LobbyView : Page, IChatManagerCallback, ILobbyManagerCallback {
         private ChatManagerClient chatManager;
         private LobbyManagerClient lobbyManager;
         private LobbyBrowserClient lobbyBrowser;
-        private Timer refreshTimer;
+        private UserManagerClient userManager;
         private bool isConnected = false;
         private string lobbyCode;
 
@@ -27,12 +28,13 @@ namespace TripasDeGatoCliente.Views {
             this.lobbyCode = lobbyCode;
             lbCode.Content = lobbyCode;
             lobbyBrowser = new LobbyBrowserClient();
-            LoadLobby();
+            InitializeLobby();
             lobbyManager = new LobbyManagerClient(new InstanceContext(this));
             chatManager = new ChatManagerClient(new InstanceContext(this));
+            userManager = new UserManagerClient();
             InitializeConnectionsAsync();
-            if (!string.IsNullOrEmpty(UserProfileSingleton.FotoRuta)) {
-                imgProfile1.Source = new BitmapImage(new Uri(UserProfileSingleton.FotoRuta, UriKind.RelativeOrAbsolute));
+            if (!string.IsNullOrEmpty(UserProfileSingleton.PicPath)) {
+                imgProfile1.Source = new BitmapImage(new Uri(UserProfileSingleton.PicPath, UriKind.RelativeOrAbsolute));
             }
         }
 
@@ -59,7 +61,7 @@ namespace TripasDeGatoCliente.Views {
         private async Task InitializeChatAsync() {
             LoggerManager logger = new LoggerManager(this.GetType());
             try {
-                await chatManager.ConnectToChatAsync(UserProfileSingleton.Nombre, lobbyCode);
+                await chatManager.ConnectToChatAsync(UserProfileSingleton.UserName, lobbyCode);
             } catch (EndpointNotFoundException ex) {
                 logger.LogError(ex);
                 DialogManager.ShowErrorMessageAlert("No se pudo conectar al servicio de chat.");
@@ -76,7 +78,7 @@ namespace TripasDeGatoCliente.Views {
         private async Task ConnectToLobbyAsync() {
             LoggerManager logger = new LoggerManager(this.GetType());
             try {
-                bool connected = await Task.Run(() => lobbyManager.ConnectPlayerToLobby(lobbyCode, UserProfileSingleton.IdPerfil));
+                bool connected = await Task.Run(() => lobbyManager.ConnectPlayerToLobby(lobbyCode, UserProfileSingleton.IdProfile));
 
                 if (!connected) {
                     DialogManager.ShowErrorMessageAlert("No se pudo conectar al lobby.");
@@ -100,12 +102,12 @@ namespace TripasDeGatoCliente.Views {
             string messageText = txtMessageInput.Text.Trim();
             if (!string.IsNullOrEmpty(messageText)) {
                 var message = new Message {
-                    userName = UserProfileSingleton.Nombre,
+                    userName = UserProfileSingleton.UserName,
                     chatMessage = messageText
                 };
 
                 try {
-                    await chatManager.SendMessageAsync(UserProfileSingleton.Nombre, message, lobbyCode);
+                    await chatManager.SendMessageAsync(UserProfileSingleton.UserName, message, lobbyCode);
                     txtMessageInput.Clear();
                 } catch (EndpointNotFoundException ex) {
                     logger.LogError(ex);
@@ -120,14 +122,47 @@ namespace TripasDeGatoCliente.Views {
             }
         }
 
-        public async void LoadLobby() {
-            try {
-                Lobby lobby = await lobbyBrowser.GetLobbyByCodeAsync(lobbyCode);
-
-                labelPlayer2.Content = lobby.Players.ContainsKey("PlayerTwo") ? lobby.Players["PlayerTwo"].userName : "Esperando jugador...";
+        public async void InitializeLobby() {
+            Lobby lobby = await lobbyBrowser.GetLobbyByCodeAsync(lobbyCode);
+            if (IsUserHost(lobby)) {
                 labelPlayer1.Content = lobby.Players.ContainsKey("PlayerOne") ? lobby.Players["PlayerOne"].userName : "Esperando jugador...";
+                labelPlayer2.Content = lobby.Players.ContainsKey("PlayerTwo") ? lobby.Players["PlayerTwo"].userName : "Esperando jugador...";
+                imgProfile1.Source = new BitmapImage(new Uri(UserProfileSingleton.PicPath, UriKind.RelativeOrAbsolute));
+                //string ruta= userManager.getPicByName(lobby.Players["PlayerTwo"].userName);
+                //imgProfile2.Source = new BitmapImage(ruta);
+
+
+            } else {
+                labelPlayer1.Content = lobby.Players.ContainsKey("PlayerTwo") ? lobby.Players["PlayerTwo"].userName : "Esperando jugador...";
+                labelPlayer2.Content = lobby.Players.ContainsKey("PlayerOne") ? lobby.Players["PlayerOne"].userName : "Esperando jugador...";
+                imgProfile1.Source = new BitmapImage(new Uri(UserProfileSingleton.PicPath, UriKind.RelativeOrAbsolute));
+                //string ruta= userManager.getPicByName(lobby.Players["PlayerTwo"].userName);
+                btnKickPlayer.Visibility = Visibility.Collapsed;
+                btnInvitedFriend.Visibility = Visibility.Collapsed;
+                btnStartGame.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        private bool IsUserHost(Lobby lobby) {
+            return lobby.Players.TryGetValue("PlayerOne", out var host) && host.userName == UserProfileSingleton.UserName;
+        }
+
+        private async void BtnBack_Click(object sender, RoutedEventArgs e) {
+            try {
+                // Verificar si el ID del perfil es menor a 100000
+                if (UserProfileSingleton.IdProfile < 100000) {
+                    // Si el ID es menor, navegar al menú
+                    await lobbyManager.LeaveLobbyAsync(lobbyCode, UserProfileSingleton.IdProfile);
+                    await chatManager.LeaveChatAsync(UserProfileSingleton.UserName, lobbyCode);
+                    GoToMenuView();
+                } else {
+                    // Si el ID es mayor, navegar al login
+                    await lobbyManager.LeaveLobbyAsync(lobbyCode, UserProfileSingleton.IdProfile);
+                    await chatManager.LeaveChatAsync(UserProfileSingleton.UserName, lobbyCode);
+                    GoToLoginView();
+                }
             } catch (Exception ex) {
-                DialogManager.ShowErrorMessageAlert($"Error al inicializar lobby: {ex.Message}");
+                MessageBox.Show($"Error al salir del lobby: {ex.Message}");
             }
         }
 
@@ -135,7 +170,7 @@ namespace TripasDeGatoCliente.Views {
             if (isConnected) {
                 try {
                     await Task.Run(() =>
-                        lobbyManager.LeaveLobby(lobbyCode, UserProfileSingleton.IdPerfil));
+                        lobbyManager.LeaveLobby(lobbyCode, UserProfileSingleton.IdProfile));
                 } catch (Exception ex) {
                     Console.WriteLine($"Error al salir del lobby: {ex.Message}");
                 }
@@ -156,15 +191,15 @@ namespace TripasDeGatoCliente.Views {
             }
         }
 
-        private async void BtnBack_Click(object sender, RoutedEventArgs e) {
-            try {
-                await lobbyManager.LeaveLobbyAsync(lobbyCode, UserProfileSingleton.IdPerfil);
-                await chatManager.LeaveChatAsync(UserProfileSingleton.Nombre, lobbyCode);
-                GoToMenuView();
-            } catch (Exception ex) {
-                MessageBox.Show($"Error al salir del lobby: {ex.Message}");
+        private void GoToLoginView() {
+            LoginView loginView = new LoginView();
+            if (this.NavigationService != null) {
+                this.NavigationService.Navigate(loginView);
+            } else {
+                MessageBox.Show("Error: No se puede navegar al login");
             }
         }
+
 
         public void RemoveFromLobby() {
             Dispatcher.Invoke(() => {
@@ -179,8 +214,6 @@ namespace TripasDeGatoCliente.Views {
                 await Task.Run(() =>
                     DialogManager.ShowWarningMessageAlert("El anfitrión abandonó el lobby.")
                 );
-
-                // Immediately navigate to MenuView without requiring user interaction
                 GoToMenuView();
             });
         }
@@ -213,7 +246,7 @@ namespace TripasDeGatoCliente.Views {
                     BorderThickness = new Thickness(1),
                     Padding = new Thickness(10),
                     Margin = new Thickness(20, 5, 20, 5),
-                    HorizontalAlignment = message.userName == UserProfileSingleton.Nombre ? HorizontalAlignment.Right : HorizontalAlignment.Left
+                    HorizontalAlignment = message.userName == UserProfileSingleton.UserName ? HorizontalAlignment.Right : HorizontalAlignment.Left
                 };
 
                 TextBlock messageBlock = new TextBlock {

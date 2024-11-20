@@ -16,6 +16,9 @@ namespace TripasDeGatoCliente.Views {
 
         public SelectLobbyView() {
             InitializeComponent();
+            //ESTO HACÍA ANTES, NO FUNCIONA
+            //InstanceContext context = new InstanceContext(this);
+            //lobbyManager = new LobbyManagerClient(context);
             lobbyBrowser = new LobbyBrowserClient();
 
             LoadLobbiesAsync();
@@ -38,8 +41,8 @@ namespace TripasDeGatoCliente.Views {
             if (LobbyDataGrid.SelectedItem is Lobby selectedLobby) {
                 string lobbyCode = selectedLobby.Code;
                 Profile guest = new Profile {
-                    idProfile = UserProfileSingleton.IdPerfil,
-                    userName = UserProfileSingleton.Nombre
+                    idProfile = UserProfileSingleton.IdProfile,
+                    userName = UserProfileSingleton.UserName
                 };
 
                 try {
