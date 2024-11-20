@@ -273,7 +273,7 @@
                                  MaxLength="1" 
                                  FontSize="24" 
                                  TextAlignment="Center" 
-                                 Foreground="White" 
+                                 Foreground="Black" 
                                  BorderBrush="#FF020202">
                             <TextBox.Background>
                                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -289,7 +289,7 @@
                                  MaxLength="1" 
                                  FontSize="24" 
                                  TextAlignment="Center" 
-                                 Foreground="White"
+                                 Foreground="Black"
                                  BorderBrush="#FF020202">
                             <TextBox.Background>
                                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -305,7 +305,7 @@
                                  MaxLength="1" 
                                  FontSize="24" 
                                  TextAlignment="Center" 
-                                 Foreground="White" 
+                                 Foreground="Black" 
                                  BorderBrush="#FF020202">
                             <TextBox.Background>
                                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -321,7 +321,7 @@
                                  MaxLength="1" 
                                  FontSize="24"
                                  TextAlignment="Center" 
-                                 Foreground="White" 
+                                 Foreground="Black" 
                                  BorderBrush="#FF020202">
                             <TextBox.Background>
                                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -337,7 +337,7 @@
                                  MaxLength="1" 
                                  FontSize="24" 
                                  TextAlignment="Center" 
-                                 Foreground="White" 
+                                 Foreground="Black" 
                                  BorderBrush="#FF020202">
                             <TextBox.Background>
                                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -353,7 +353,7 @@
                                  MaxLength="1"
                                  FontSize="24" 
                                  TextAlignment="Center" 
-                                 Foreground="White"
+                                 Foreground="Black"
                                  BorderBrush="#FF020202">
                             <TextBox.Background>
                                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -657,7 +657,7 @@
                              BorderBrush="Black"
                              Visibility="Collapsed" 
                              Margin="104,162,108,116" 
-                             FontSize="16"/>
+                             FontSize="16" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
                     <Label x:Name="lblNewPassword" 
                            Content="{x:Static p:Resources.lbEnterNewPassword}" 
                            Grid.Row="0"

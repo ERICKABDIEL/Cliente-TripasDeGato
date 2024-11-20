@@ -14,15 +14,18 @@ namespace TripasDeGatoCliente.Logic
 
             public const int SUCCES_OPERATION = 1;
 
-            public const int NO_DATA_MATCHES = 0;
+            public const int NO_DATA_MATCHES = -2;
 
-            public const int DATA_MATCHES = 1;
+            public const int DATA_MATCHES = 2;
 
             public const int INITIAL_SCORE = 0;
 
             public const string DEFAULT_IMAGE_PLAYER = " ";
 
             public const string DEFAULT_IMAGE_GUEST = " ";
+
+            public const int HOW_MANY_SCORES = 10;      // Cantidad de puntajes a mostrar
+
 
         }
     }
