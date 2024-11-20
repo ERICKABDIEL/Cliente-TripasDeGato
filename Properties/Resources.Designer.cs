@@ -592,6 +592,15 @@ namespace TripasDeGatoCliente.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a The player is already online. It is not possible to log in again..
+        /// </summary>
+        public static string dialogPlayerAlreadyOnline {
+            get {
+                return ResourceManager.GetString("dialogPlayerAlreadyOnline", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a No profile matching that name was found.
         /// </summary>
         public static string dialogProfileNotFound {

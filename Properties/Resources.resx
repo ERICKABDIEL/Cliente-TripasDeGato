@@ -294,6 +294,9 @@
   <data name="dialogPasswordUpdatedSuccessfully" xml:space="preserve">
     <value>The password has been successfully updated</value>
   </data>
+  <data name="dialogPlayerAlreadyOnline" xml:space="preserve">
+    <value>The player is already online. It is not possible to log in again.</value>
+  </data>
   <data name="dialogProfileNotFound" xml:space="preserve">
     <value>No profile matching that name was found</value>
   </data>

@@ -294,6 +294,9 @@
   <data name="dialogPasswordUpdatedSuccessfully" xml:space="preserve">
     <value>La contraseña ha sido actualizada exitosamente</value>
   </data>
+  <data name="dialogPlayerAlreadyOnline" xml:space="preserve">
+    <value>El jugador ya está en línea. No es posible iniciar sesión nuevamente.</value>
+  </data>
   <data name="dialogProfileNotFound" xml:space="preserve">
     <value>No se encontró un perfil que coincida con ese nombre</value>
   </data>

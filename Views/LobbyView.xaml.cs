@@ -200,7 +200,6 @@ namespace TripasDeGatoCliente.Views {
             }
         }
 
-
         public void RemoveFromLobby() {
             Dispatcher.Invoke(() => {
                 MessageBox.Show("Has sido eliminado del lobby.");
@@ -218,7 +217,6 @@ namespace TripasDeGatoCliente.Views {
             });
         }
         public void GuestLeftCallback() {
-
             Dispatcher.Invoke(() => {
                 labelPlayer2.Content = "Esperando jugador...";
             });

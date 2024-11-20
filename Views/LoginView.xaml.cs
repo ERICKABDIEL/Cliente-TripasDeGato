@@ -36,7 +36,7 @@ namespace TripasDeGatoCliente.Views {
                 DisplayMainMenuView();
             }
         }
-       
+
         private bool VerifyFields() {
             bool emailValid = Validador.ValidateEmail(txtEmail.Text);
             bool passwordValid = Validador.ValidatePassword(txtPassword.Password);
@@ -46,7 +46,7 @@ namespace TripasDeGatoCliente.Views {
 
             return emailValid && passwordValid;
         }
-        
+
         private bool AuthenticateUser(string email, string hashedPassword) {
             LoggerManager logger = new LoggerManager(this.GetType());
             bool isAuthenticated = false;
@@ -57,7 +57,12 @@ namespace TripasDeGatoCliente.Views {
 
                 if (validationResult == Constants.DATA_MATCHES) {
                     Profile profile = userManager.GetProfileByMail(email);
+
                     if (profile != null) {
+                        if (IsPlayerOnline(profile.idProfile)) {
+                            return false;
+                        }
+
                         ObtainSingletonData(profile);
                         isAuthenticated = true;
                     } else {
@@ -79,7 +84,32 @@ namespace TripasDeGatoCliente.Views {
 
             return isAuthenticated;
         }
-        
+
+        private bool IsPlayerOnline(int idProfile) {
+            LoggerManager logger = new LoggerManager(this.GetType());
+            try {
+                IStatusManager statusManager = new StatusManagerClient();
+                var playerStatus = statusManager.GetPlayerStatus(idProfile);
+
+                if (playerStatus == GameEnumsPlayerStatus.Online) {
+                    DialogManager.ShowWarningMessageAlert(Properties.Resources.dialogPlayerAlreadyOnline);
+                    return true;
+                }
+            } catch (EndpointNotFoundException endpointNotFoundException) {
+                logger.LogError(endpointNotFoundException);
+                DialogManager.ShowErrorMessageAlert("Error al verificar el estado del jugador: servicio no disponible.");
+            } catch (TimeoutException timeoutException) {
+                logger.LogError(timeoutException);
+                DialogManager.ShowErrorMessageAlert("Error al verificar el estado del jugador: tiempo de espera agotado.");
+            } catch (CommunicationException communicationException) {
+                logger.LogError(communicationException);
+                DialogManager.ShowErrorMessageAlert("Error al verificar el estado del jugador: problema de comunicación.");
+            }
+
+            return false;
+        }
+
+
         private void ObtainSingletonData(Profile profile) {
             UserProfileSingleton.Instance.CreateInstance(profile);
         }
@@ -251,7 +281,7 @@ namespace TripasDeGatoCliente.Views {
             txtPassword.Clear();
             txtPasswordVisible.Clear();
         }
-       
+
         private void BtnSavePassword_Click(object sender, RoutedEventArgs e) {
             LoggerManager logger = new LoggerManager(this.GetType());
 
@@ -316,7 +346,7 @@ namespace TripasDeGatoCliente.Views {
             }
             return isValid;
         }
-        
+
         private void BtnToggleNewPassword_Checked(object sender, RoutedEventArgs e) {
             txtNewPasswordVisible.Text = txtNewPassword.Password;
             txtNewPasswordVisible.Visibility = Visibility.Visible;
@@ -336,7 +366,7 @@ namespace TripasDeGatoCliente.Views {
             txtNewPasswordConfirm.Visibility = Visibility.Visible;
             txtNewPasswordConfirmVisible.Visibility = Visibility.Collapsed;
         }
-        
+
         private void BtnBackRecovery_Click(object sender, RoutedEventArgs e) {
             recoveryPasswordGrid.Visibility = Visibility.Collapsed;
             txtEmail.Clear();
