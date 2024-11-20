@@ -143,8 +143,8 @@
                 </Canvas.Clip>
             </Canvas>
         </Grid>
-       
-        
+
+
         <Label x:Name="labelPlayer1" 
                Content="Player 1" 
                Foreground="White"

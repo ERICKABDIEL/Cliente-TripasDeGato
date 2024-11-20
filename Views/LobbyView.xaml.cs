@@ -149,14 +149,11 @@ namespace TripasDeGatoCliente.Views {
 
         private async void BtnBack_Click(object sender, RoutedEventArgs e) {
             try {
-                // Verificar si el ID del perfil es menor a 100000
                 if (UserProfileSingleton.IdProfile < 100000) {
-                    // Si el ID es menor, navegar al menú
                     await lobbyManager.LeaveLobbyAsync(lobbyCode, UserProfileSingleton.IdProfile);
                     await chatManager.LeaveChatAsync(UserProfileSingleton.UserName, lobbyCode);
                     GoToMenuView();
                 } else {
-                    // Si el ID es mayor, navegar al login
                     await lobbyManager.LeaveLobbyAsync(lobbyCode, UserProfileSingleton.IdProfile);
                     await chatManager.LeaveChatAsync(UserProfileSingleton.UserName, lobbyCode);
                     GoToLoginView();
@@ -213,6 +210,7 @@ namespace TripasDeGatoCliente.Views {
                 await Task.Run(() =>
                     DialogManager.ShowWarningMessageAlert("El anfitrión abandonó el lobby.")
                 );
+
                 GoToMenuView();
             });
         }
