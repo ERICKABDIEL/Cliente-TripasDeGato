@@ -231,35 +231,25 @@ namespace TripasDeGatoCliente.Views {
         //HASTA AQUI SE REFACTORIZO EL REMOVEFRIEND
 
         private async void BtnStartGame_Click(object sender, RoutedEventArgs e) {
-            LoggerManager logger = new LoggerManager(this.GetType());
-            string gameName = "NombreDelJuego";
-            int nodeCount = 2;
-            Profile owner = new Profile { idProfile = UserProfileSingleton.IdProfile, userName = UserProfileSingleton.UserName };
-
-            try {
-                string lobbyCode = await lobbyBrowser.CreateLobbyAsync(gameName, nodeCount, owner);
-
-                if (!string.IsNullOrEmpty(lobbyCode)) {
-                    GoToLobbyView(lobbyCode);
-                } else {
-                    DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogErrorCreatingLobby);
-                }
-            } catch (EndpointNotFoundException endpointNotFoundException) {
-                logger.LogError(endpointNotFoundException);
-                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogEndPointException);
-            } catch (TimeoutException timeoutException) {
-                logger.LogError(timeoutException);
-                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogTimeOutException);
-            } catch (CommunicationException communicationException) {
-                logger.LogError(communicationException);
-                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
-            }
+            GoToCreateLobbyView();
         }
 
-        private void GoToLobbyView(string lobbyCode) {
-            LobbyView lobbyView = new LobbyView(lobbyCode);
+        private void BtnProfile_Click(object sender, RoutedEventArgs e) {
+            GoToPerfilView();
+        }
+
+        private void BtnLaderboard_Click(object sender, RoutedEventArgs e) {
+            GoToLaderboardView();
+        }
+
+        private void BtnJoinGame_Click(object sender, RoutedEventArgs e) {
+            GoToSelectLobbyView();
+        }
+
+        private void GoToCreateLobbyView() {
+            CreateLobbyView lobbyConfig = new CreateLobbyView();
             if (this.NavigationService != null) {
-                this.NavigationService.Navigate(lobbyView);
+                this.NavigationService.Navigate(lobbyConfig);
             } else {
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogNavigationError);
             }
@@ -274,13 +264,6 @@ namespace TripasDeGatoCliente.Views {
             }
         }
 
-        private void BtnProfile_Click(object sender, RoutedEventArgs e) {
-            GoToPerfilView();
-        }
-
-        private void BtnLaderboard_Click(object sender, RoutedEventArgs e) {
-            GoToLaderboardView();
-        }
         private void GoToLaderboardView() {
             Laderboard laderboardView = new Laderboard();
             if (this.NavigationService != null) {
@@ -289,8 +272,7 @@ namespace TripasDeGatoCliente.Views {
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogNavigationError);
             }
         }
-
-        private void BtnJoinGame_Click(object sender, RoutedEventArgs e) {
+        private void GoToSelectLobbyView() {
             SelectLobbyView selectLobbyView = new SelectLobbyView();
             if (this.NavigationService != null) {
                 this.NavigationService.Navigate(selectLobbyView);
@@ -298,5 +280,6 @@ namespace TripasDeGatoCliente.Views {
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogNavigationError);
             }
         }
+
     }
 }

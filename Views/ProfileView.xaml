@@ -251,7 +251,7 @@
                   Background="#FF5C5C5C" 
                   Height="30" 
                   IsEnabled="False"/>
-        <Border x:Name="borderProfiles" BorderThickness="2" Width="600" Height="200" Margin="338,95,342,294" Grid.Row="1" Background="Black">
+        <Border x:Name="borderProfiles" BorderThickness="2" Width="600" Height="200" Margin="338,95,342,294" Grid.Row="1" Background="Black" Visibility="Collapsed">
             <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <ListBox x:Name="lsb_ProfilePics" 

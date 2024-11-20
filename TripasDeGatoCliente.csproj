@@ -88,6 +88,9 @@
     <Compile Include="Views\CodeGameMatch.xaml.cs">
       <DependentUpon>CodeGameMatch.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\CreateLobbyView.xaml.cs">
+      <DependentUpon>CreateLobbyView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\GameMatch.xaml.cs">
       <DependentUpon>GameMatch.xaml</DependentUpon>
     </Compile>
@@ -125,6 +128,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\CodeGameMatch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CreateLobbyView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

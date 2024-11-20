@@ -164,24 +164,20 @@ namespace TripasDeGatoCliente.Views
         {
             control.BorderBrush = Brushes.Red;
         }
-        
-        private void TxtPasswordVisible_PasswordChanged(object sender, RoutedEventArgs e) {
-            string password = txtPassword.Password;
 
-            if (!Validador.ValidatePassword(password)) {
-                HighlightField(txtPassword);
-                lbInvalidPassword.Visibility = Visibility.Visible;
-            } else {
-                ResetField(txtPassword);
-                lbInvalidPassword.Visibility = Visibility.Collapsed;
-            }
-
-            UpdatePasswordVisibilityIcon();
-        }
-        
         private void TxtPassword_PasswordChanged(object sender, RoutedEventArgs e) {
-            string password = txtPassword.Password;
+            if (txtPassword.Visibility == Visibility.Visible) {
+                ValidatePassword(txtPassword.Password);
+            }
+        }
 
+        private void TxtPasswordVisible_PasswordChanged(object sender, RoutedEventArgs e) {
+            if (txtPasswordVisible.Visibility == Visibility.Visible) {
+                ValidatePassword(txtPasswordVisible.Text);
+            }
+        }
+
+        private void ValidatePassword(string password) {
             if (!Validador.ValidatePassword(password)) {
                 HighlightField(txtPassword);
                 lbInvalidPassword.Visibility = Visibility.Visible;
@@ -189,9 +185,30 @@ namespace TripasDeGatoCliente.Views
                 ResetField(txtPassword);
                 lbInvalidPassword.Visibility = Visibility.Collapsed;
             }
-
-            UpdatePasswordVisibilityIcon();
         }
+
+        private void BtnTogglePassword_Checked(object sender, RoutedEventArgs e)
+        {
+            txtPasswordVisible.Text = txtPassword.Password;
+            txtPasswordVisible.Visibility = Visibility.Visible;
+            txtPassword.Visibility = Visibility.Collapsed;
+        }
+
+        private void BtnTogglePassword_Unchecked(object sender, RoutedEventArgs e)
+        {
+            txtPassword.Password = txtPasswordVisible.Text;
+            txtPasswordVisible.Visibility = Visibility.Collapsed;
+            txtPassword.Visibility = Visibility.Visible;
+        }
+
+        private void UpdatePasswordVisibilityIcon() {
+            if (!string.IsNullOrEmpty(txtPassword.Password) || !string.IsNullOrEmpty(txtPasswordVisible.Text)) {
+                btnTogglePassword.Visibility = Visibility.Visible;
+            } else {
+                btnTogglePassword.Visibility = Visibility.Collapsed;
+            }
+        }
+
 
         private void ResetField(Control control)
         {
@@ -226,31 +243,7 @@ namespace TripasDeGatoCliente.Views
             }
         }
 
-        private void BtnTogglePassword_Checked(object sender, RoutedEventArgs e)
-        {
-            txtPasswordVisible.Text = txtPassword.Password;
-            txtPasswordVisible.Visibility = Visibility.Visible;
-            txtPassword.Visibility = Visibility.Collapsed;
-        }
 
-        private void BtnTogglePassword_Unchecked(object sender, RoutedEventArgs e)
-        {
-            txtPassword.Password = txtPasswordVisible.Text;
-            txtPasswordVisible.Visibility = Visibility.Collapsed;
-            txtPassword.Visibility = Visibility.Visible;
-        }
-
-        private void UpdatePasswordVisibilityIcon()
-        {
-            if (txtPassword.Password.Length > 0)
-            {
-                btnTogglePassword.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                btnTogglePassword.Visibility = Visibility.Collapsed;
-            }
-        }
 
         private void BtnBack_Click(object sender, RoutedEventArgs e)
         {
