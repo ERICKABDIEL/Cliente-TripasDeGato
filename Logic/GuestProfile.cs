@@ -15,7 +15,7 @@ namespace TripasDeGatoCliente.Logic {
         }
 
         public static int GenerateRandomId() {
-            return random.Next(10000, 20001);
+            return random.Next(100000, 110001);
         }
 
         public static string RandomChooserAvatarIcon() {

@@ -18,13 +18,13 @@ namespace TripasDeGatoCliente.Views {
         }
 
         private void LoadProfile() {
-            lbUserNameProfile.Content = !string.IsNullOrEmpty(UserProfileSingleton.Nombre) ? UserProfileSingleton.Nombre : "Usuario desconocido";
-            txtUserName.Text = UserProfileSingleton.Nombre;
+            lbUserNameProfile.Content = !string.IsNullOrEmpty(UserProfileSingleton.UserName) ? UserProfileSingleton.UserName : "Usuario desconocido";
+            txtUserName.Text = UserProfileSingleton.UserName;
             cboxLanguage.ItemsSource = new List<string> { "Español", "Inglés", "Francés" };
-            if (!string.IsNullOrEmpty(UserProfileSingleton.FotoRuta)) {
-                imageProfile.Source = new BitmapImage(new Uri(UserProfileSingleton.FotoRuta, UriKind.RelativeOrAbsolute));
+            if (!string.IsNullOrEmpty(UserProfileSingleton.PicPath)) {
+                imageProfile.Source = new BitmapImage(new Uri(UserProfileSingleton.PicPath, UriKind.RelativeOrAbsolute));
             }
-            lbScoreProfile.Content = string.Format(Properties.Resources.lbScore, UserProfileSingleton.Puntaje);
+            lbScoreProfile.Content = string.Format(Properties.Resources.lbScore, UserProfileSingleton.Score);
         }
 
         private void EnableEditing() {
@@ -74,8 +74,8 @@ namespace TripasDeGatoCliente.Views {
         private async void SaveProfile(string userName, string selectedLanguage, string selectedProfile) {
             try {
                 var service = new TripasDeGatoServicio.UserManagerClient();
-                int idProfile = UserProfileSingleton.IdPerfil;
-                string newPic = selectedProfile ?? UserProfileSingleton.FotoRuta;  // Asigna la nueva foto seleccionada
+                int idProfile = UserProfileSingleton.IdProfile;
+                string newPic = selectedProfile ?? UserProfileSingleton.PicPath;  // Asigna la nueva foto seleccionada
                 int updateResult = await service.UpdateProfileAsync(idProfile, userName, newPic);
 
                 if (updateResult == ConstantsManager.Constants.SUCCES_OPERATION) {

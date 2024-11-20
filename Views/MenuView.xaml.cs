@@ -28,8 +28,8 @@ namespace TripasDeGatoCliente.Views {
         }
 
         private async void LoadUserProfileAsync() {
-            if (!string.IsNullOrEmpty(UserProfileSingleton.Nombre)) {
-                lbUserName.Content = UserProfileSingleton.Nombre;
+            if (!string.IsNullOrEmpty(UserProfileSingleton.UserName)) {
+                lbUserName.Content = UserProfileSingleton.UserName;
             } else {
                 lbUserName.Content = Properties.Resources.lbUnknownUser;
             }
@@ -126,7 +126,7 @@ namespace TripasDeGatoCliente.Views {
             LoggerManager logger = new LoggerManager(this.GetType());
             try {
                 int friendProfileId = await userManager.GetProfileIdAsync(friendName);
-                if (friendProfileId == UserProfileSingleton.IdPerfil) {
+                if (friendProfileId == UserProfileSingleton.IdProfile) {
                     DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogCannotAddSelfAsFriend);
                 } else if (friendProfileId > 0) {
                     await ExecuteFriendAddition(friendProfileId, friendName);
@@ -139,7 +139,7 @@ namespace TripasDeGatoCliente.Views {
         }
 
         private async Task ExecuteFriendAddition(int friendProfileId, string friendName) {
-            int userProfileId = UserProfileSingleton.IdPerfil;
+            int userProfileId = UserProfileSingleton.IdProfile;
             int result = await friendsManager.AddFriendAsync(userProfileId, friendProfileId);
             if (result == Constants.SUCCES_OPERATION) {
                 DialogManager.ShowSuccessMessageAlert(string.Format(Properties.Resources.dialogAddFriendSuccessfully, friendName));
@@ -169,7 +169,7 @@ namespace TripasDeGatoCliente.Views {
         private async Task LoadFriendsListAsync() {
             LoggerManager logger = new LoggerManager(this.GetType());
             try {
-                int userProfileId = UserProfileSingleton.IdPerfil;
+                int userProfileId = UserProfileSingleton.IdProfile;
                 var friendsList = await friendsManager.GetFriendsAsync(userProfileId);
 
                 var friendsWithStatus = new List<string>();
@@ -202,7 +202,7 @@ namespace TripasDeGatoCliente.Views {
                     int friendProfileId = await userManager.GetProfileIdAsync(selectedFriendName);
 
                     if (friendProfileId > 0) {
-                        int userProfileId = UserProfileSingleton.IdPerfil;
+                        int userProfileId = UserProfileSingleton.IdProfile;
                         int result = await friendsManager.DeleteFriendAsync(userProfileId, friendProfileId);
 
                         if (result == Constants.SUCCES_OPERATION) {
@@ -234,7 +234,7 @@ namespace TripasDeGatoCliente.Views {
             LoggerManager logger = new LoggerManager(this.GetType());
             string gameName = "NombreDelJuego";
             int nodeCount = 2;
-            Profile owner = new Profile { idProfile = UserProfileSingleton.IdPerfil, userName = UserProfileSingleton.Nombre };
+            Profile owner = new Profile { idProfile = UserProfileSingleton.IdProfile, userName = UserProfileSingleton.UserName };
 
             try {
                 string lobbyCode = await lobbyBrowser.CreateLobbyAsync(gameName, nodeCount, owner);

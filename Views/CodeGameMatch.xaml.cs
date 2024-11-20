@@ -48,10 +48,10 @@ namespace TripasDeGatoCliente.Views {
                 if (!string.IsNullOrEmpty(txtCodeLobby.Text)) {
                     string lobbyCode = txtCodeLobby.Text;
                     var guestProfile = new Profile {
-                        idProfile = UserProfileSingleton.IdPerfil,
-                        userName = UserProfileSingleton.Nombre,
-                        picturePath = UserProfileSingleton.FotoRuta,
-                        score = UserProfileSingleton.Puntaje
+                        idProfile = UserProfileSingleton.IdProfile,
+                        userName = UserProfileSingleton.UserName,
+                        picturePath = UserProfileSingleton.PicPath,
+                        score = UserProfileSingleton.Score
                     };
 
                     bool joined = await lobbyBrowser.JoinLobbyAsync(lobbyCode, guestProfile);

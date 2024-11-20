@@ -260,6 +260,9 @@
     <Resource Include="Images\BackgroundValidation.png" />
     <Resource Include="Images\BackgroundButton1.png" />
     <Resource Include="Images\BackgroundButton2.png" />
+    <Resource Include="Images\Scene\SceneCat.png" />
+    <Resource Include="Images\Scene\SceneDog.png" />
+    <Resource Include="Images\Scene\SceneBear.png" />
     <Content Include="Videos\ViewWait.mp4">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

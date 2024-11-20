@@ -41,8 +41,8 @@ namespace TripasDeGatoCliente.Views {
             if (LobbyDataGrid.SelectedItem is Lobby selectedLobby) {
                 string lobbyCode = selectedLobby.Code;
                 Profile guest = new Profile {
-                    idProfile = UserProfileSingleton.IdPerfil,
-                    userName = UserProfileSingleton.Nombre
+                    idProfile = UserProfileSingleton.IdProfile,
+                    userName = UserProfileSingleton.UserName
                 };
 
                 try {
