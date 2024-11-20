@@ -86,3 +86,7 @@ C:\TripasDeGatoCliente\obj\Debug\TripasDeGatoCliente.exe
 C:\TripasDeGatoCliente\obj\Debug\TripasDeGatoCliente.pdb
 C:\TripasDeGatoCliente\obj\Debug\Views\CodeGameMatch.g.cs
 C:\TripasDeGatoCliente\obj\Debug\Views\CodeGameMatch.baml
+C:\Users\cv419\Source\Repos\Cliente-TripasDeGato\obj\Debug\Views\CodeGameMatch.g.cs
+C:\Users\cv419\Source\Repos\Cliente-TripasDeGato\obj\Debug\Views\CodeGameMatch.baml
+C:\Users\cv419\Source\Repos\Cliente-TripasDeGato\obj\Debug\Views\LobbyConfig.g.cs
+C:\Users\cv419\Source\Repos\Cliente-TripasDeGato\obj\Debug\Views\LobbyConfig.baml

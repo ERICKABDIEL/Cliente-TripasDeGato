@@ -231,35 +231,22 @@ namespace TripasDeGatoCliente.Views {
         //HASTA AQUI SE REFACTORIZO EL REMOVEFRIEND
 
         private async void BtnStartGame_Click(object sender, RoutedEventArgs e) {
-            LoggerManager logger = new LoggerManager(this.GetType());
-            string gameName = "NombreDelJuego";
-            int nodeCount = 2;  
-            Profile owner = new Profile { idProfile = UserProfileSingleton.IdPerfil, userName = UserProfileSingleton.Nombre };
-
-            try {
-                string lobbyCode = await lobbyBrowser.CreateLobbyAsync(gameName, nodeCount, owner);
-
-                if (!string.IsNullOrEmpty(lobbyCode)) {
-                    GoToLobbyView(lobbyCode);
-                } else {
-                    DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogErrorCreatingLobby);
-                }
-            } catch (EndpointNotFoundException endpointNotFoundException) {
-                logger.LogError(endpointNotFoundException);
-                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogEndPointException);
-            } catch (TimeoutException timeoutException) {
-                logger.LogError(timeoutException);
-                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogTimeOutException);
-            } catch (CommunicationException communicationException) {
-                logger.LogError(communicationException);
-                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
-            }
+            GoToLobbyConfigView();
         }
-
-        private void GoToLobbyView(string lobbyCode) {
+        /*private void GoToLobbyView(string lobbyCode) {
             LobbyView lobbyView = new LobbyView(lobbyCode);
             if (this.NavigationService != null) {
                 this.NavigationService.Navigate(lobbyView);
+            } else {
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogNavigationError);
+            }
+        }*/
+
+
+        private void GoToLobbyConfigView() {
+            LobbyConfig lobbyConfig = new LobbyConfig();
+            if (this.NavigationService != null) {
+                this.NavigationService.Navigate(lobbyConfig);
             } else {
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogNavigationError);
             }

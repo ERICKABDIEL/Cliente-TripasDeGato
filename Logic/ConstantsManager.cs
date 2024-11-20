@@ -16,7 +16,7 @@ namespace TripasDeGatoCliente.Logic
 
             public const int NO_DATA_MATCHES = 0;
 
-            public const int DATA_MATCHES = 1;
+            public const int DATA_MATCHES = 2;
 
             public const int INITIAL_SCORE = 0;
 

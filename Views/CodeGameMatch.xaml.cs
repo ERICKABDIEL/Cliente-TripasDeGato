@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ServiceModel;
+using System.ServiceModel.Security;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -14,6 +15,13 @@ namespace TripasDeGatoCliente.Views {
             lobbyBrowser = new LobbyBrowserClient();
         }
 
+
+        public void GenerateProfile() {
+            TripasDeGatoServicio.Profile profile = new Profile();
+            profile.userName = string.Empty;
+            profile.picturePath = string.Empty;
+            profile.status = 0;
+        }
         public void GenerateGuestProfile() {
             LoggerManager logger = new LoggerManager(this.GetType());
 
@@ -36,26 +44,10 @@ namespace TripasDeGatoCliente.Views {
             LoginView loginView = new LoginView();
             this.NavigationService.Navigate(loginView);
         }
-        /*
-        public async void BtnLogin_Click(object sender, RoutedEventArgs e) {
-            GenerateGuestProfile();
-            string lobbyCode = GuestProfileSingleton.CodeMatch;
-            GuestProfile guest = GuestProfileSingleton.PerfilInvitado;
-            try {
-                if (guest != null && !string.IsNullOrEmpty(lobbyCode)) {
-                    bool joined = await lobbyBrowser.JoinLobbyAsync(lobbyCode, guest);
-                    if (joined) {
-                        LobbyView lobbyView = new LobbyView(lobbyCode);
-                        this.NavigationService.Navigate(lobbyView);
-                    } else {
-                        MessageBox.Show("No se pudo unir al lobby. Puede que esté lleno o que ya no esté disponible.");
-                    }
-                } else {
-                    MessageBox.Show("Error: el perfil del invitado o el código del lobby no son válidos.");
-                }
-            } catch (Exception ex) {
-                MessageBox.Show($"Error al intentar unirse al lobby: {ex.Message}");
-            }
-        }*/
+
+        private void btnPlay_Click(object sender, RoutedEventArgs e) {
+
+        }
+      
     }
 }
