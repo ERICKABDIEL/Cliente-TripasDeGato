@@ -77,36 +77,6 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="UpdateProfileName">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="idProfile" type="xs:int" />
-        <xs:element minOccurs="0" name="newProfileName" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="UpdateProfileNameResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="UpdateProfileNameResult" type="xs:int" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="UpdateProfilePic">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="idProfile" type="xs:int" />
-        <xs:element minOccurs="0" name="newProfilePic" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="UpdateProfilePicResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="UpdateProfilePicResult" type="xs:int" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
   <xs:element name="GetProfileByMail">
     <xs:complexType>
       <xs:sequence>
@@ -148,21 +118,6 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="DeleteFriendResult" type="xs:int" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="DeleteFriendship">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="userName1" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="userName2" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="DeleteFriendshipResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="DeleteFriendshipResult" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
