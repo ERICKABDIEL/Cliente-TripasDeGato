@@ -304,18 +304,6 @@
   <wsdl:message name="IUserManager_IsEmailRegistered_OutputMessage">
     <wsdl:part name="parameters" element="tns:IsEmailRegisteredResponse" />
   </wsdl:message>
-  <wsdl:message name="IUserManager_UpdateProfileName_InputMessage">
-    <wsdl:part name="parameters" element="tns:UpdateProfileName" />
-  </wsdl:message>
-  <wsdl:message name="IUserManager_UpdateProfileName_OutputMessage">
-    <wsdl:part name="parameters" element="tns:UpdateProfileNameResponse" />
-  </wsdl:message>
-  <wsdl:message name="IUserManager_UpdateProfilePic_InputMessage">
-    <wsdl:part name="parameters" element="tns:UpdateProfilePic" />
-  </wsdl:message>
-  <wsdl:message name="IUserManager_UpdateProfilePic_OutputMessage">
-    <wsdl:part name="parameters" element="tns:UpdateProfilePicResponse" />
-  </wsdl:message>
   <wsdl:message name="IUserManager_GetProfileByMail_InputMessage">
     <wsdl:part name="parameters" element="tns:GetProfileByMail" />
   </wsdl:message>
@@ -488,14 +476,6 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/IsEmailRegistered" message="tns:IUserManager_IsEmailRegistered_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserManager/IsEmailRegisteredResponse" message="tns:IUserManager_IsEmailRegistered_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="UpdateProfileName">
-      <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/UpdateProfileName" message="tns:IUserManager_UpdateProfileName_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IUserManager/UpdateProfileNameResponse" message="tns:IUserManager_UpdateProfileName_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="UpdateProfilePic">
-      <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/UpdateProfilePic" message="tns:IUserManager_UpdateProfilePic_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IUserManager/UpdateProfilePicResponse" message="tns:IUserManager_UpdateProfilePic_OutputMessage" />
-    </wsdl:operation>
     <wsdl:operation name="GetProfileByMail">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/GetProfileByMail" message="tns:IUserManager_GetProfileByMail_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserManager/GetProfileByMailResponse" message="tns:IUserManager_GetProfileByMail_OutputMessage" />
@@ -661,24 +641,6 @@
     </wsdl:operation>
     <wsdl:operation name="IsEmailRegistered">
       <soap12:operation soapAction="http://tempuri.org/IUserManager/IsEmailRegistered" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="UpdateProfileName">
-      <soap12:operation soapAction="http://tempuri.org/IUserManager/UpdateProfileName" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="UpdateProfilePic">
-      <soap12:operation soapAction="http://tempuri.org/IUserManager/UpdateProfilePic" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

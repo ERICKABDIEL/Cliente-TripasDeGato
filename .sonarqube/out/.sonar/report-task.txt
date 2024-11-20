@@ -1,6 +1,6 @@
-projectKey=TripasDeGatoCliente
+projectKey=Cliente
 serverUrl=http://localhost:9000
 serverVersion=10.7.0.96327
-dashboardUrl=http://localhost:9000/dashboard?id=TripasDeGatoCliente
-ceTaskId=11da427d-3f62-4d1e-91db-bd591e6cc432
-ceTaskUrl=http://localhost:9000/api/ce/task?id=11da427d-3f62-4d1e-91db-bd591e6cc432
+dashboardUrl=http://localhost:9000/dashboard?id=Cliente
+ceTaskId=2c8d9e22-e932-4ced-93f8-e6835ab51819
+ceTaskUrl=http://localhost:9000/api/ce/task?id=2c8d9e22-e932-4ced-93f8-e6835ab51819

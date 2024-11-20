@@ -1,1 +1,1 @@
-C:\TripasDeGatoCliente\.sonarqube\out\1
+C:\Users\cv419\source\repos\Cliente-TripasDeGato\.sonarqube\out\1
