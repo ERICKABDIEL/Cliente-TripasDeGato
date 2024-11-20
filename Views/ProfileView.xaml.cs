@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Runtime.InteropServices.ComTypes;
 using System.ServiceModel;
 using System.Windows;
 using System.Windows.Controls;
@@ -33,6 +32,8 @@ namespace TripasDeGatoCliente.Views {
             cboxLanguage.IsEnabled = true;
             btnSave.IsEnabled = true;
             isEditing = true;
+            borderProfiles.IsEnabled = true;
+            borderProfiles.Visibility = Visibility.Visible;
             btnSave.Visibility = Visibility.Visible;
         }
 
@@ -41,6 +42,8 @@ namespace TripasDeGatoCliente.Views {
             cboxLanguage.IsEnabled = false;
             btnSave.IsEnabled = false;
             isEditing = false;
+            borderProfiles.IsEnabled = false;
+            borderProfiles.Visibility = Visibility.Collapsed;
             btnSave.Visibility = Visibility.Collapsed;
         }
 
@@ -50,25 +53,30 @@ namespace TripasDeGatoCliente.Views {
             }
         }
 
-        private void btnSave_Click(object sender, RoutedEventArgs e) {
+        private void BtnSave_Click(object sender, RoutedEventArgs e) {
             if (isEditing) {
                 if (ValidateFields()) {
                     string userName = txtUserName.Text;
                     string selectedLanguage = cboxLanguage.SelectedItem?.ToString();
 
-                    SaveProfile(userName, selectedLanguage);
+                    // Obtén el ListBoxItem seleccionado y su Tag
+                    var selectedListBoxItem = lsb_ProfilePics.SelectedItem as ListBoxItem;
+                    string selectedProfile = selectedListBoxItem?.Tag?.ToString();
+
+                    SaveProfile(userName, selectedLanguage, selectedProfile);
                 } else {
                     DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogCompleteFieldsError);
                 }
             }
         }
 
-        private async void SaveProfile(string userName, string selectedLanguage) {
+
+        private async void SaveProfile(string userName, string selectedLanguage, string selectedProfile) {
             try {
                 var service = new TripasDeGatoServicio.UserManagerClient();
                 int idProfile = UserProfileSingleton.IdPerfil;
-                string newPic = UserProfileSingleton.FotoRuta;
-                int updateResult = service.UpdateProfile(idProfile, userName, newPic);
+                string newPic = selectedProfile ?? UserProfileSingleton.FotoRuta;  // Asigna la nueva foto seleccionada
+                int updateResult = await service.UpdateProfileAsync(idProfile, userName, newPic);
 
                 if (updateResult == ConstantsManager.Constants.SUCCES_OPERATION) {
                     UserProfileSingleton.UpdateNombre(userName);
@@ -90,7 +98,6 @@ namespace TripasDeGatoCliente.Views {
             }
         }
 
-
         private bool ValidateFields() {
             bool isValid = true;
 
@@ -98,16 +105,14 @@ namespace TripasDeGatoCliente.Views {
                 isValid = false;
                 txtUserName.BorderBrush = System.Windows.Media.Brushes.Red;
             } else {
-                txtUserName.BorderBrush = System.Windows.Media.Brushes.White; 
+                txtUserName.BorderBrush = System.Windows.Media.Brushes.White;
             }
             return isValid;
         }
 
         private void GoToMenuView() {
             MenuView menuView = new MenuView();
-            if (this.NavigationService != null) {
-                this.NavigationService.Navigate(menuView);
-            } 
+            this.NavigationService?.Navigate(menuView);
         }
 
         private void BtnBack_Click(object sender, RoutedEventArgs e) {

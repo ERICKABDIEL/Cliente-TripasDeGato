@@ -10,6 +10,7 @@ using TripasDeGatoCliente.TripasDeGatoServicio;
 namespace TripasDeGatoCliente.Views {
     public partial class CodeGameMatch : Page {
         private LobbyBrowserClient lobbyBrowser;
+
         public CodeGameMatch() {
             InitializeComponent();
             lobbyBrowser = new LobbyBrowserClient();
@@ -27,7 +28,10 @@ namespace TripasDeGatoCliente.Views {
 
             try {
                 string codeMatch = txtCodeLobby.Text;
-                GuestProfileSingleton.Instance.CreateInstance(codeMatch);
+
+                UserProfileSingleton.Instance.CreateGuestInstance();
+
+                // CodeMatch = codeMatch;
             } catch (EndpointNotFoundException endpointException) {
                 logger.LogError(endpointException);
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogEndPointException);
@@ -45,9 +49,39 @@ namespace TripasDeGatoCliente.Views {
             this.NavigationService.Navigate(loginView);
         }
 
+<<<<<<< HEAD
         private void btnPlay_Click(object sender, RoutedEventArgs e) {
 
         }
       
+=======
+        public async void BtnLogin_Click(object sender, RoutedEventArgs e) {
+            GenerateGuestProfile();
+
+            try {
+                if (!string.IsNullOrEmpty(txtCodeLobby.Text)) {
+                    string lobbyCode = txtCodeLobby.Text;
+                    var guestProfile = new Profile {
+                        idProfile = UserProfileSingleton.IdPerfil,
+                        userName = UserProfileSingleton.Nombre,
+                        picturePath = UserProfileSingleton.FotoRuta,
+                        score = UserProfileSingleton.Puntaje
+                    };
+
+                    bool joined = await lobbyBrowser.JoinLobbyAsync(lobbyCode, guestProfile);
+                    if (joined) {
+                        LobbyView lobbyView = new LobbyView(lobbyCode);
+                        this.NavigationService.Navigate(lobbyView);
+                    } else {
+                        MessageBox.Show("No se pudo unir al lobby. Puede que esté lleno o que ya no esté disponible.");
+                    }
+                } else {
+                    MessageBox.Show("Error: el perfil del invitado o el código del lobby no son válidos.");
+                }
+            } catch (Exception ex) {
+                MessageBox.Show($"Error al intentar unirse al lobby: {ex.Message}");
+            }
+        }
+>>>>>>> ea51fff247118dce3908e67f885b666fa446b6c8
     }
 }

@@ -11,6 +11,7 @@ using System.Timers;
 using System.ComponentModel;
 using System.Reflection.Emit;
 using log4net.Repository.Hierarchy;
+using System.Windows.Media.Imaging;
 
 namespace TripasDeGatoCliente.Views {
     public partial class LobbyView : Page, IChatManagerCallback, ILobbyManagerCallback {
@@ -30,6 +31,9 @@ namespace TripasDeGatoCliente.Views {
             lobbyManager = new LobbyManagerClient(new InstanceContext(this));
             chatManager = new ChatManagerClient(new InstanceContext(this));
             InitializeConnectionsAsync();
+            if (!string.IsNullOrEmpty(UserProfileSingleton.FotoRuta)) {
+                imgProfile1.Source = new BitmapImage(new Uri(UserProfileSingleton.FotoRuta, UriKind.RelativeOrAbsolute));
+            }
         }
 
         private async void InitializeConnectionsAsync() {
@@ -191,6 +195,15 @@ namespace TripasDeGatoCliente.Views {
             Dispatcher.Invoke(() => {
                 labelPlayer2.Content = guestName;
             });
+        }
+
+        private void BtnStartGame_Click(object sender, RoutedEventArgs e) {
+            GameMatch gameMatch = new GameMatch();
+            if (this.NavigationService != null) {
+                this.NavigationService.Navigate(gameMatch);
+            } else {
+                MessageBox.Show("Error: No se puede navegar a la partida.");
+            }
         }
 
         public void BroadcastMessage(Message message) {

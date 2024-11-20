@@ -15,6 +15,7 @@ namespace TripasDeGatoCliente.Views {
         private DispatcherTimer timer;
         private int totalTime = 20;
         private double remainingTime;
+       
 
         public GameMatch() {
             InitializeComponent();

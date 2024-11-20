@@ -58,6 +58,7 @@
                 Height="50" 
                 Margin="10,42,0,0" 
                 FontSize="16" 
+                Click="BtnBack_Click"
                 FontWeight="Bold">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0,1">
