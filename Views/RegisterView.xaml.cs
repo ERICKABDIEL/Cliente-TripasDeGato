@@ -23,29 +23,13 @@ namespace TripasDeGatoCliente.Views
             string username = txtName.Text;
             string password = txtPassword.Password;
 
-            if (!ValidateFields(email, username, password)) {
-                return;
-            }
+            if (!ValidateFields(email, username, password)) return;
 
             try {
-                var userProxy = new TripasDeGatoServicio.UserManagerClient();
+                if (!VerifyEmailAvailability(email)) return;
+                if (!VerifyUsernameAvailability(username)) return;
 
-                bool emailRegistered = userProxy.IsEmailRegistered(email);
-                if (emailRegistered) {
-                    DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogEmailInUse);
-                    HighlightField(txtEmail);
-                    return;
-                }
-
-                var emailVerificationProxy = new TripasDeGatoServicio.EmailVerificationManagerClient();
-                int result = emailVerificationProxy.SendVerificationCodeRegister(email);
-
-                if (result == Constants.SUCCES_OPERATION) {
-                    verificationGrid.Visibility = Visibility.Visible;
-                    DialogManager.ShowSuccessMessageAlert(Properties.Resources.dialogVerificationCodeSent);
-                } else {
-                    DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogErrorSendingVerificationCode);
-                }
+                SendVerificationCode(email);
             } catch (EndpointNotFoundException endpointNotFoundException) {
                 logger.LogError(endpointNotFoundException);
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogEndPointException);
@@ -57,7 +41,54 @@ namespace TripasDeGatoCliente.Views
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
             }
         }
-       
+        private bool VerifyEmailAvailability(string email) {
+            var userProxy = new TripasDeGatoServicio.UserManagerClient();
+            int emailCheckResult = userProxy.IsEmailRegistered(email);
+
+            if (emailCheckResult == Constants.DATA_MATCHES) {
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogEmailInUse);
+                HighlightField(txtEmail);
+                return false;
+            }
+
+            if (emailCheckResult == Constants.ERROR_OPERATION) {
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogErrorCheckingEmail);
+                return false;
+            }
+
+            return true;
+        }
+
+        private bool VerifyUsernameAvailability(string username) {
+            var userProxy = new TripasDeGatoServicio.UserManagerClient();
+            int usernameCheckResult = userProxy.IsNameRegistered(username);
+
+            if (usernameCheckResult == Constants.DATA_MATCHES) {
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogUserNameInUse);
+                HighlightField(txtName);
+                return false;
+            }
+
+            if (usernameCheckResult == Constants.ERROR_OPERATION) {
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogErrorCheckingUserName);
+                return false;
+            }
+
+            return true;
+        }
+
+        private void SendVerificationCode(string email) {
+            var emailVerificationProxy = new TripasDeGatoServicio.EmailVerificationManagerClient();
+            int result = emailVerificationProxy.SendVerificationCodeRegister(email);
+
+            if (result == Constants.SUCCES_OPERATION) {
+                verificationGrid.Visibility = Visibility.Visible;
+                DialogManager.ShowSuccessMessageAlert(Properties.Resources.dialogVerificationCodeSent);
+            } else {
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogErrorSendingVerificationCode);
+            }
+        }
+
         private void BtnResendCode_Click(object sender, RoutedEventArgs e) {
             LoggerManager logger = new LoggerManager(this.GetType());
             try {

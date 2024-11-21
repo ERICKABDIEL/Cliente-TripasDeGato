@@ -225,6 +225,12 @@
   <data name="dialogErrorAddingFriend" xml:space="preserve">
     <value>Error al agregar el amigo. Intenta de nuevo</value>
   </data>
+  <data name="dialogErrorCheckingEmail" xml:space="preserve">
+    <value>Error al verificar el correo electrónico</value>
+  </data>
+  <data name="dialogErrorCheckingUserName" xml:space="preserve">
+    <value>Error al verificar el nombre de usuario</value>
+  </data>
   <data name="dialogErrorCreatingLobby" xml:space="preserve">
     <value>Error al crear el lobby. Por favor, intente de nuevo</value>
   </data>
@@ -332,6 +338,9 @@
   </data>
   <data name="dialogUserJoinedChat" xml:space="preserve">
     <value>{0} se ha unido al chat</value>
+  </data>
+  <data name="dialogUserNameInUse" xml:space="preserve">
+    <value>El nombre de usuario ya está en uso</value>
   </data>
   <data name="dialogVerificationCodeResentSuccessfully" xml:space="preserve">
     <value>Código de verificación reenviado con éxito. Por favor, revisa tu correo electrónico</value>

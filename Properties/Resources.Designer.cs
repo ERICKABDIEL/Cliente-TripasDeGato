@@ -385,6 +385,24 @@ namespace TripasDeGatoCliente.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Error checking the email.
+        /// </summary>
+        public static string dialogErrorCheckingEmail {
+            get {
+                return ResourceManager.GetString("dialogErrorCheckingEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Error checking the username.
+        /// </summary>
+        public static string dialogErrorCheckingUserName {
+            get {
+                return ResourceManager.GetString("dialogErrorCheckingUserName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Error creating the lobby. Please try again.
         /// </summary>
         public static string dialogErrorCreatingLobby {
@@ -705,6 +723,15 @@ namespace TripasDeGatoCliente.Properties {
         public static string dialogUserJoinedChat {
             get {
                 return ResourceManager.GetString("dialogUserJoinedChat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a The username is already in use.
+        /// </summary>
+        public static string dialogUserNameInUse {
+            get {
+                return ResourceManager.GetString("dialogUserNameInUse", resourceCulture);
             }
         }
         
