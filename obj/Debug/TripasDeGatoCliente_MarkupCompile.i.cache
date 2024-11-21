@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\TripasDeGatoCliente\App.xaml
-111419917559
+11-6987688
 1447816675
-27941866512
+272065795
 18327966138
-MainWindow.xaml;Views\CodeGameMatch.xaml;Views\CreateLobbyView.xaml;Views\GameMatch.xaml;Views\Laderboard.xaml;Views\LobbyView.xaml;Views\MenuView.xaml;Views\ProfileView.xaml;Views\RegisterView.xaml;Views\LoginView.xaml;Views\SelectLobbyView.xaml;
+MainWindow.xaml;Views\CodeGameMatchView.xaml;Views\CreateLobbyView.xaml;Views\GameMatchView.xaml;Views\LaderboardView.xaml;Views\LobbyView.xaml;Views\MenuView.xaml;Views\ProfileView.xaml;Views\RegisterView.xaml;Views\LoginView.xaml;Views\SelectLobbyView.xaml;
 
 False
 

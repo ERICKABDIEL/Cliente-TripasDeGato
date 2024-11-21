@@ -261,13 +261,42 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_IMatchManager_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <msf:WindowsTransportSecurity xmlns:msf="http://schemas.microsoft.com/ws/2006/05/framing/policy">
+                  <msf:ProtectionLevel>EncryptAndSign</msf:ProtectionLevel>
+                </msf:WindowsTransportSecurity>
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/TripasService.Contracts" />
-      <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/TripasService.Utils" />
-      <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/TripasService.Logic" />
+      <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/TripasService.Logic" />
+      <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/TripasService.Utils" />
       <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd5" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
@@ -304,11 +333,23 @@
   <wsdl:message name="IUserManager_IsEmailRegistered_OutputMessage">
     <wsdl:part name="parameters" element="tns:IsEmailRegisteredResponse" />
   </wsdl:message>
+  <wsdl:message name="IUserManager_IsNameRegistered_InputMessage">
+    <wsdl:part name="parameters" element="tns:IsNameRegistered" />
+  </wsdl:message>
+  <wsdl:message name="IUserManager_IsNameRegistered_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IsNameRegisteredResponse" />
+  </wsdl:message>
   <wsdl:message name="IUserManager_GetProfileByMail_InputMessage">
     <wsdl:part name="parameters" element="tns:GetProfileByMail" />
   </wsdl:message>
   <wsdl:message name="IUserManager_GetProfileByMail_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetProfileByMailResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserManager_GetPicPath_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPicPath" />
+  </wsdl:message>
+  <wsdl:message name="IUserManager_GetPicPath_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPicPathResponse" />
   </wsdl:message>
   <wsdl:message name="IFriendsManager_AddFriend_InputMessage">
     <wsdl:part name="parameters" element="tns:AddFriend" />
@@ -406,6 +447,9 @@
   <wsdl:message name="ILobbyManager_ConnectPlayerToLobby_OutputMessage">
     <wsdl:part name="parameters" element="tns:ConnectPlayerToLobbyResponse" />
   </wsdl:message>
+  <wsdl:message name="ILobbyManager_StartMatch_InputMessage">
+    <wsdl:part name="parameters" element="tns:StartMatch" />
+  </wsdl:message>
   <wsdl:message name="ILobbyManager_RemoveFromLobby_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:RemoveFromLobby" />
   </wsdl:message>
@@ -429,6 +473,12 @@
   </wsdl:message>
   <wsdl:message name="ILobbyManager_GuestJoinedCallback_InputCallbackMessage">
     <wsdl:part name="parameters" element="tns:GuestJoinedCallbackResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyManager_GameStarted_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:GameStarted" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyManager_GameStarted_InputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:GameStartedResponse" />
   </wsdl:message>
   <wsdl:message name="ILobbyBrowser_GetAvailableLobbies_InputMessage">
     <wsdl:part name="parameters" element="tns:GetAvailableLobbies" />
@@ -454,6 +504,24 @@
   <wsdl:message name="ILobbyBrowser_GetLobbyByCode_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetLobbyByCodeResponse" />
   </wsdl:message>
+  <wsdl:message name="IMatchManager_RegisterTrace_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegisterTrace" />
+  </wsdl:message>
+  <wsdl:message name="IMatchManager_RegisterTrace_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegisterTraceResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMatchManager_RegisterPlayerCallback_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegisterPlayerCallback" />
+  </wsdl:message>
+  <wsdl:message name="IMatchManager_RegisterPlayerCallback_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegisterPlayerCallbackResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMatchManager_MatchEnded_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:MatchEnded" />
+  </wsdl:message>
+  <wsdl:message name="IMatchManager_TraceReceived_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:TraceReceived" />
+  </wsdl:message>
   <wsdl:portType name="IUserManager">
     <wsdl:operation name="CreateAccount">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/CreateAccount" message="tns:IUserManager_CreateAccount_InputMessage" />
@@ -476,9 +544,17 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/IsEmailRegistered" message="tns:IUserManager_IsEmailRegistered_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserManager/IsEmailRegisteredResponse" message="tns:IUserManager_IsEmailRegistered_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="IsNameRegistered">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/IsNameRegistered" message="tns:IUserManager_IsNameRegistered_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserManager/IsNameRegisteredResponse" message="tns:IUserManager_IsNameRegistered_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="GetProfileByMail">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/GetProfileByMail" message="tns:IUserManager_GetProfileByMail_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserManager/GetProfileByMailResponse" message="tns:IUserManager_GetProfileByMail_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPicPath">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/GetPicPath" message="tns:IUserManager_GetPicPath_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserManager/GetPicPathResponse" message="tns:IUserManager_GetPicPath_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IFriendsManager">
@@ -562,6 +638,9 @@
       <wsdl:input wsaw:Action="http://tempuri.org/ILobbyManager/ConnectPlayerToLobby" message="tns:ILobbyManager_ConnectPlayerToLobby_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ILobbyManager/ConnectPlayerToLobbyResponse" message="tns:ILobbyManager_ConnectPlayerToLobby_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="StartMatch">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyManager/StartMatch" message="tns:ILobbyManager_StartMatch_InputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="RemoveFromLobby">
       <wsdl:output wsaw:Action="http://tempuri.org/ILobbyManager/RemoveFromLobby" message="tns:ILobbyManager_RemoveFromLobby_OutputCallbackMessage" />
       <wsdl:input wsaw:Action="http://tempuri.org/ILobbyManager/RemoveFromLobbyResponse" message="tns:ILobbyManager_RemoveFromLobby_InputCallbackMessage" />
@@ -577,6 +656,10 @@
     <wsdl:operation name="GuestJoinedCallback">
       <wsdl:output wsaw:Action="http://tempuri.org/ILobbyManager/GuestJoinedCallback" message="tns:ILobbyManager_GuestJoinedCallback_OutputCallbackMessage" />
       <wsdl:input wsaw:Action="http://tempuri.org/ILobbyManager/GuestJoinedCallbackResponse" message="tns:ILobbyManager_GuestJoinedCallback_InputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GameStarted">
+      <wsdl:output wsaw:Action="http://tempuri.org/ILobbyManager/GameStarted" message="tns:ILobbyManager_GameStarted_OutputCallbackMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyManager/GameStartedResponse" message="tns:ILobbyManager_GameStarted_InputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="ILobbyBrowser">
@@ -595,6 +678,22 @@
     <wsdl:operation name="GetLobbyByCode">
       <wsdl:input wsaw:Action="http://tempuri.org/ILobbyBrowser/GetLobbyByCode" message="tns:ILobbyBrowser_GetLobbyByCode_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ILobbyBrowser/GetLobbyByCodeResponse" message="tns:ILobbyBrowser_GetLobbyByCode_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IMatchManager">
+    <wsdl:operation name="RegisterTrace">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMatchManager/RegisterTrace" message="tns:IMatchManager_RegisterTrace_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMatchManager/RegisterTraceResponse" message="tns:IMatchManager_RegisterTrace_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RegisterPlayerCallback">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMatchManager/RegisterPlayerCallback" message="tns:IMatchManager_RegisterPlayerCallback_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMatchManager/RegisterPlayerCallbackResponse" message="tns:IMatchManager_RegisterPlayerCallback_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="MatchEnded">
+      <wsdl:output wsaw:Action="http://tempuri.org/IMatchManager/MatchEnded" message="tns:IMatchManager_MatchEnded_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TraceReceived">
+      <wsdl:output wsaw:Action="http://tempuri.org/IMatchManager/TraceReceived" message="tns:IMatchManager_TraceReceived_OutputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IUserManager" type="tns:IUserManager">
@@ -648,8 +747,26 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="IsNameRegistered">
+      <soap12:operation soapAction="http://tempuri.org/IUserManager/IsNameRegistered" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetProfileByMail">
       <soap12:operation soapAction="http://tempuri.org/IUserManager/GetProfileByMail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPicPath">
+      <soap12:operation soapAction="http://tempuri.org/IUserManager/GetPicPath" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -835,6 +952,12 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="StartMatch">
+      <soap12:operation soapAction="http://tempuri.org/ILobbyManager/StartMatch" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
     <wsdl:operation name="RemoveFromLobby">
       <soap12:operation soapAction="http://tempuri.org/ILobbyManager/RemoveFromLobby" style="document" />
       <wsdl:input>
@@ -864,6 +987,15 @@
     </wsdl:operation>
     <wsdl:operation name="GuestJoinedCallback">
       <soap12:operation soapAction="http://tempuri.org/ILobbyManager/GuestJoinedCallback" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GameStarted">
+      <soap12:operation soapAction="http://tempuri.org/ILobbyManager/GameStarted" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -907,6 +1039,40 @@
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_IMatchManager" type="tns:IMatchManager">
+    <wsp:PolicyReference URI="#NetTcpBinding_IMatchManager_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="RegisterTrace">
+      <soap12:operation soapAction="http://tempuri.org/IMatchManager/RegisterTrace" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegisterPlayerCallback">
+      <soap12:operation soapAction="http://tempuri.org/IMatchManager/RegisterPlayerCallback" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MatchEnded">
+      <soap12:operation soapAction="http://tempuri.org/IMatchManager/MatchEnded" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraceReceived">
+      <soap12:operation soapAction="http://tempuri.org/IMatchManager/TraceReceived" style="document" />
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>
@@ -989,6 +1155,15 @@
       <soap12:address location="net.tcp://localhost:8081/LobbyBrowser" />
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8081/LobbyBrowser</wsa10:Address>
+        <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
+          <Upn>ERICK_ATZIN\abdie</Upn>
+        </Identity>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_IMatchManager" binding="tns:NetTcpBinding_IMatchManager">
+      <soap12:address location="net.tcp://localhost:8081/MatchManager" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:8081/MatchManager</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
           <Upn>ERICK_ATZIN\abdie</Upn>
         </Identity>

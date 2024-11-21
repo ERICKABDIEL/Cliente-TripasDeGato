@@ -1,1 +1,0 @@
-C:\TripasDeGatoCliente\.sonarqube\out\1

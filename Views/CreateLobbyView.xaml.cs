@@ -82,7 +82,7 @@ namespace TripasDeGatoCliente.Views {
                 };
 
                 // Llamada al método remoto
-                string lobbyCode = await lobbyBrowser.CreateLobbyAsync(gameName, nodeCount, owner);
+                string lobbyCode = await lobbyBrowser.CreateLobbyAsync(gameName, nodeCount, owner, duration);
 
                 if (!string.IsNullOrEmpty(lobbyCode)) {
                     // Navegar a LobbyView con el código generado

@@ -1,0 +1,131 @@
+﻿<Page x:Class="TripasDeGatoCliente.Views.CodeGameMatch"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:TripasDeGatoCliente.Views"
+      xmlns:p="clr-namespace:TripasDeGatoCliente.Properties"
+      mc:Ignorable="d"
+      d:DesignHeight="720" d:DesignWidth="1280">
+
+    <DockPanel>
+        <Grid>
+            <Border>
+                <Border.Background>
+                    <ImageBrush ImageSource="/Images/BackgroundLogin.png" Stretch="UniformToFill"/>
+                </Border.Background>
+            </Border>
+
+            <Grid Grid.Row="3" Margin="0,0,0,10">
+                <Button x:Name="btnBack" 
+                        Content="{x:Static p:Resources.globalBtnBack}"
+                        FontSize="16" 
+                        Margin="460,444,640,0" 
+                        Click="BtnBack_Click"
+                        VerticalAlignment="Top"
+                        Height="43">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/Images/BackgroundButton2.png"/>
+                    </Button.Background>
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Background" Value="#FFFFA040"/>
+                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="BorderBrush" Value="Transparent"/>
+                            <Setter Property="BorderThickness" Value="0"/>
+                            <Setter Property="FontWeight" Value="Bold"/>
+                            <Setter Property="Effect">
+                                <Setter.Value>
+                                    <DropShadowEffect Color="Black" ShadowDepth="5" BlurRadius="10"/>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Grid>
+                                            <Border CornerRadius="20" Background="{TemplateBinding Background}">
+                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            </Border>
+                                        </Grid>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Effect">
+                                        <Setter.Value>
+                                            <DropShadowEffect Color="#FFCA855F" ShadowDepth="10" BlurRadius="25"/>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Button x:Name="btnLogin" 
+                        Content="{x:Static p:Resources.btnLogin}"
+                        FontSize="16" 
+                        Click="BtnLogin_Click"
+                        Margin="653,447,447,221" 
+                        VerticalContentAlignment="Center"
+                        HorizontalContentAlignment="Center">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/Images/BackgroundButton1.png"/>
+                    </Button.Background>
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Background" Value="#FF9D741B"/>
+                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="BorderBrush" Value="Transparent"/>
+                            <Setter Property="BorderThickness" Value="0"/>
+                            <Setter Property="FontWeight" Value="Bold"/>
+                            <Setter Property="Effect">
+                                <Setter.Value>
+                                    <DropShadowEffect Color="Black" ShadowDepth="5" BlurRadius="10"/>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Grid>
+                                            <Border CornerRadius="20" Background="{TemplateBinding Background}">
+                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            </Border>
+                                        </Grid>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#FF9D741B"/>
+                                    <Setter Property="Effect">
+                                        <Setter.Value>
+                                            <DropShadowEffect Color="#FFF5C58F" ShadowDepth="10" BlurRadius="25"/>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Label x:Name="lblCodeMatch" 
+                       Content="{x:Static p:Resources.globalLbEnterCodeLobby}" 
+                       FontSize="22" 
+                       Foreground="Black" 
+                       Margin="469,311,470,362" 
+                       FontFamily="Cooper Black"
+                       HorizontalContentAlignment="Center" 
+                       VerticalContentAlignment="Center"/>
+                <TextBox x:Name="txtCodeLobby" 
+                         FontSize="20" 
+                         Background="{x:Null}"
+                         Foreground="Black"
+                         Margin="550,369,526,293"
+                         BorderBrush="#FF432B1E"
+                         FontFamily="Cooper Black" 
+                         VerticalContentAlignment="Center" 
+                         HorizontalContentAlignment="Center" MaxLength="6"/>
+            </Grid>
+            </Grid>
+    </DockPanel>
+</Page>

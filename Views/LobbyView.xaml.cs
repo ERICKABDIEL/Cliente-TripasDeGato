@@ -128,15 +128,16 @@ namespace TripasDeGatoCliente.Views {
                 labelPlayer1.Content = lobby.Players.ContainsKey("PlayerOne") ? lobby.Players["PlayerOne"].userName : "Esperando jugador...";
                 labelPlayer2.Content = lobby.Players.ContainsKey("PlayerTwo") ? lobby.Players["PlayerTwo"].userName : "Esperando jugador...";
                 imgProfile1.Source = new BitmapImage(new Uri(UserProfileSingleton.PicPath, UriKind.RelativeOrAbsolute));
-                //string ruta= userManager.getPicByName(lobby.Players["PlayerTwo"].userName);
-                //imgProfile2.Source = new BitmapImage(ruta);
+                string ruta= userManager.GetPicPath(lobby.Players["PlayerTwo"].userName);
+                imgProfile2.Source = new BitmapImage(new Uri(ruta, UriKind.RelativeOrAbsolute));
 
 
             } else {
                 labelPlayer1.Content = lobby.Players.ContainsKey("PlayerTwo") ? lobby.Players["PlayerTwo"].userName : "Esperando jugador...";
                 labelPlayer2.Content = lobby.Players.ContainsKey("PlayerOne") ? lobby.Players["PlayerOne"].userName : "Esperando jugador...";
                 imgProfile1.Source = new BitmapImage(new Uri(UserProfileSingleton.PicPath, UriKind.RelativeOrAbsolute));
-                //string ruta= userManager.getPicByName(lobby.Players["PlayerTwo"].userName);
+                string ruta= userManager.GetPicPath(lobby.Players["PlayerTwo"].userName);
+                imgProfile2.Source = new BitmapImage(new Uri(ruta, UriKind.RelativeOrAbsolute));
                 btnKickPlayer.Visibility = Visibility.Collapsed;
                 btnInvitedFriend.Visibility = Visibility.Collapsed;
                 btnStartGame.Visibility = Visibility.Collapsed;
@@ -149,11 +150,14 @@ namespace TripasDeGatoCliente.Views {
 
         private async void BtnBack_Click(object sender, RoutedEventArgs e) {
             try {
+                // Verificar si el ID del perfil es menor a 100000
                 if (UserProfileSingleton.IdProfile < 100000) {
+                    // Si el ID es menor, navegar al menú
                     await lobbyManager.LeaveLobbyAsync(lobbyCode, UserProfileSingleton.IdProfile);
                     await chatManager.LeaveChatAsync(UserProfileSingleton.UserName, lobbyCode);
                     GoToMenuView();
                 } else {
+                    // Si el ID es mayor, navegar al login
                     await lobbyManager.LeaveLobbyAsync(lobbyCode, UserProfileSingleton.IdProfile);
                     await chatManager.LeaveChatAsync(UserProfileSingleton.UserName, lobbyCode);
                     GoToLoginView();
@@ -197,6 +201,7 @@ namespace TripasDeGatoCliente.Views {
             }
         }
 
+
         public void RemoveFromLobby() {
             Dispatcher.Invoke(() => {
                 MessageBox.Show("Has sido eliminado del lobby.");
@@ -210,11 +215,21 @@ namespace TripasDeGatoCliente.Views {
                 await Task.Run(() =>
                     DialogManager.ShowWarningMessageAlert("El anfitrión abandonó el lobby.")
                 );
-
-                GoToMenuView();
+                try {
+                    if (UserProfileSingleton.IdProfile < 100000) {
+                        GoToMenuView();
+                    } else {
+                        GoToLoginView();
+                    }
+                } catch (Exception ex) {
+                    MessageBox.Show($"Error al salir del lobby: {ex.Message}");
+                }
+            ;
             });
         }
+
         public void GuestLeftCallback() {
+
             Dispatcher.Invoke(() => {
                 labelPlayer2.Content = "Esperando jugador...";
             });
@@ -227,12 +242,7 @@ namespace TripasDeGatoCliente.Views {
         }
 
         private void BtnStartGame_Click(object sender, RoutedEventArgs e) {
-            GameMatch gameMatch = new GameMatch();
-            if (this.NavigationService != null) {
-                this.NavigationService.Navigate(gameMatch);
-            } else {
-                MessageBox.Show("Error: No se puede navegar a la partida.");
-            }
+            lobbyManager.StartMatch(lobbyCode);
         }
 
         public void BroadcastMessage(Message message) {
@@ -258,6 +268,21 @@ namespace TripasDeGatoCliente.Views {
                 ChatMessagesPanel.Children.Add(messageContainer);
                 ScrollToBottom();
             });
+        }
+
+        public void GameStarted() {
+            GoToGameMatch();
+        }
+
+        private void GoToGameMatch() {
+            Application.Current.Dispatcher.Invoke(() => {
+                var gameMatch = new GameMatch();
+                NavigationService?.Navigate(gameMatch);
+            });
+        }
+
+        private void btnInvitedFriend_Click(object sender, RoutedEventArgs e) {
+
         }
     }
 }
