@@ -88,3 +88,5 @@ C:\TripasDeGatoCliente\obj\Debug\Views\LaderboardView.g.cs
 C:\TripasDeGatoCliente\obj\Debug\Views\CodeGameMatchView.baml
 C:\TripasDeGatoCliente\obj\Debug\Views\GameMatchView.baml
 C:\TripasDeGatoCliente\obj\Debug\Views\LaderboardView.baml
+C:\TripasDeGatoCliente\bin\Debug\Newtonsoft.Json.dll
+C:\TripasDeGatoCliente\bin\Debug\Newtonsoft.Json.xml

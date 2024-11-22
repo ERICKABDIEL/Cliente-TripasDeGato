@@ -1,0 +1,43 @@
+﻿C:\TripasDeGatoCliente\Logic\ConstantsManager.cs
+C:\TripasDeGatoCliente\Logic\DialogManager.cs
+C:\TripasDeGatoCliente\Logic\GuestProfile.cs
+C:\TripasDeGatoCliente\Logic\GuestProfileSinglenton.cs
+C:\TripasDeGatoCliente\Logic\Hasher.cs
+C:\TripasDeGatoCliente\Logic\LoggerManager.cs
+C:\TripasDeGatoCliente\Logic\Trace.cs
+C:\TripasDeGatoCliente\Logic\UserProfileSnglenton.cs
+C:\TripasDeGatoCliente\Logic\Validador.cs
+C:\TripasDeGatoCliente\Views\CodeGameMatchView.xaml.cs
+C:\TripasDeGatoCliente\Views\CreateLobbyView.xaml.cs
+C:\TripasDeGatoCliente\Views\GameMatchView.xaml.cs
+C:\TripasDeGatoCliente\Views\LaderboardView.xaml.cs
+C:\TripasDeGatoCliente\Views\LobbyView.xaml.cs
+C:\TripasDeGatoCliente\Views\MenuView.xaml.cs
+C:\TripasDeGatoCliente\Views\ProfileView.xaml.cs
+C:\TripasDeGatoCliente\Views\RegisterView.xaml.cs
+C:\TripasDeGatoCliente\Views\LoginView.xaml.cs
+C:\TripasDeGatoCliente\Views\SelectLobbyView.xaml.cs
+C:\TripasDeGatoCliente\App.xaml.cs
+C:\TripasDeGatoCliente\MainWindow.xaml.cs
+C:\TripasDeGatoCliente\Properties\AssemblyInfo.cs
+C:\TripasDeGatoCliente\Videos\ViewWait.mp4
+C:\TripasDeGatoCliente\Properties\Resources.es-MX.resx
+C:\TripasDeGatoCliente\Properties\Resources.en-US.resx
+C:\TripasDeGatoCliente\Properties\Resources.resx
+C:\TripasDeGatoCliente\Connected Services\TripasDeGatoServicio\item.xsd
+C:\TripasDeGatoCliente\Connected Services\TripasDeGatoServicio\item1.xsd
+C:\TripasDeGatoCliente\Connected Services\TripasDeGatoServicio\item2.xsd
+C:\TripasDeGatoCliente\Connected Services\TripasDeGatoServicio\item3.xsd
+C:\TripasDeGatoCliente\Connected Services\TripasDeGatoServicio\item4.xsd
+C:\TripasDeGatoCliente\Connected Services\TripasDeGatoServicio\item41.xsd
+C:\TripasDeGatoCliente\Connected Services\TripasDeGatoServicio\TripasDeGatoCliente.TripasDeGatoServicio.GameEnumsPlayerStatus.datasource
+C:\TripasDeGatoCliente\Connected Services\TripasDeGatoServicio\TripasDeGatoCliente.TripasDeGatoServicio.Lobby.datasource
+C:\TripasDeGatoCliente\Connected Services\TripasDeGatoServicio\TripasDeGatoCliente.TripasDeGatoServicio.Profile.datasource
+C:\TripasDeGatoCliente\Connected Services\TripasDeGatoServicio\TripasGameService.wsdl
+C:\TripasDeGatoCliente\packages.config
+C:\TripasDeGatoCliente\Properties\Settings.settings
+C:\TripasDeGatoCliente\App.config
+C:\TripasDeGatoCliente\Connected Services\TripasDeGatoServicio\item.disco
+C:\TripasDeGatoCliente\Connected Services\TripasDeGatoServicio\configuration91.svcinfo
+C:\TripasDeGatoCliente\Connected Services\TripasDeGatoServicio\configuration.svcinfo
+C:\TripasDeGatoCliente\Connected Services\TripasDeGatoServicio\Reference.svcmap

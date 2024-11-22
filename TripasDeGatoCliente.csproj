@@ -38,6 +38,9 @@
     <Reference Include="log4net, Version=3.0.1.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>packages\log4net.3.0.1\lib\net462\log4net.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
@@ -209,7 +212,7 @@
     <None Include="Connected Services\TripasDeGatoServicio\item4.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\TripasDeGatoServicio\item41.xsd">
+    <None Include="Connected Services\TripasDeGatoServicio\item5.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\TripasDeGatoServicio\TripasDeGatoCliente.TripasDeGatoServicio.GameEnumsPlayerStatus.datasource">
@@ -242,13 +245,6 @@
     <Resource Include="Images\LogoWhitoutBackground.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\TripasDeGatoServicio\item.disco" />
-    <None Include="Connected Services\TripasDeGatoServicio\configuration91.svcinfo" />
-    <None Include="Connected Services\TripasDeGatoServicio\configuration.svcinfo" />
-    <None Include="Connected Services\TripasDeGatoServicio\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
     <Resource Include="Images\Profiles\ImageProfile1.png" />
     <Resource Include="Images\Profiles\ImageProfile2.png" />
     <Resource Include="Images\Profiles\ImageProfile3.png" />
@@ -270,6 +266,13 @@
     <Resource Include="Images\Scene\SceneCat.png" />
     <Resource Include="Images\Scene\SceneDog.png" />
     <Resource Include="Images\Scene\SceneBear.png" />
+    <None Include="Connected Services\TripasDeGatoServicio\item.disco" />
+    <None Include="Connected Services\TripasDeGatoServicio\configuration91.svcinfo" />
+    <None Include="Connected Services\TripasDeGatoServicio\configuration.svcinfo" />
+    <None Include="Connected Services\TripasDeGatoServicio\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="Videos\ViewWait.mp4">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

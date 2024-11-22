@@ -41,33 +41,31 @@
       <xs:element minOccurs="0" name="EndNode" nillable="true" type="tns:Node" />
       <xs:element minOccurs="0" name="Player" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="StartNode" nillable="true" type="tns:Node" />
-      <xs:element minOccurs="0" name="Thickness" type="xs:double" />
       <xs:element minOccurs="0" name="Timestamp" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="TracePoints" nillable="true" type="tns:ArrayOfPoint" />
+      <xs:element minOccurs="0" name="TracePoints" nillable="true" type="tns:ArrayOfTracePoint" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Trace" nillable="true" type="tns:Trace" />
   <xs:complexType name="Node">
     <xs:sequence>
       <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Owner" nillable="true" type="tns:Profile" />
       <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/TripasService.Utils" minOccurs="0" name="Status" type="q3:GameEnums.NodeStatus" />
       <xs:element minOccurs="0" name="X" type="xs:double" />
       <xs:element minOccurs="0" name="Y" type="xs:double" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Node" nillable="true" type="tns:Node" />
-  <xs:complexType name="ArrayOfPoint">
+  <xs:complexType name="ArrayOfTracePoint">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Point" nillable="true" type="tns:Point" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TracePoint" nillable="true" type="tns:TracePoint" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="ArrayOfPoint" nillable="true" type="tns:ArrayOfPoint" />
-  <xs:complexType name="Point">
+  <xs:element name="ArrayOfTracePoint" nillable="true" type="tns:ArrayOfTracePoint" />
+  <xs:complexType name="TracePoint">
     <xs:sequence>
       <xs:element minOccurs="0" name="X" type="xs:double" />
       <xs:element minOccurs="0" name="Y" type="xs:double" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="Point" nillable="true" type="tns:Point" />
+  <xs:element name="TracePoint" nillable="true" type="tns:TracePoint" />
 </xs:schema>
