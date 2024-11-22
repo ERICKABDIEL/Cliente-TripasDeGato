@@ -466,13 +466,10 @@ namespace TripasDeGatoCliente.TripasDeGatoServicio {
         private TripasDeGatoCliente.TripasDeGatoServicio.Node StartNodeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private double ThicknessField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.DateTime TimestampField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private TripasDeGatoCliente.TripasDeGatoServicio.Point[] TracePointsField;
+        private System.Collections.Generic.List<TripasDeGatoCliente.TripasDeGatoServicio.TracePoint> TracePointsField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -537,19 +534,6 @@ namespace TripasDeGatoCliente.TripasDeGatoServicio {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public double Thickness {
-            get {
-                return this.ThicknessField;
-            }
-            set {
-                if ((this.ThicknessField.Equals(value) != true)) {
-                    this.ThicknessField = value;
-                    this.RaisePropertyChanged("Thickness");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
         public System.DateTime Timestamp {
             get {
                 return this.TimestampField;
@@ -563,7 +547,7 @@ namespace TripasDeGatoCliente.TripasDeGatoServicio {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public TripasDeGatoCliente.TripasDeGatoServicio.Point[] TracePoints {
+        public System.Collections.Generic.List<TripasDeGatoCliente.TripasDeGatoServicio.TracePoint> TracePoints {
             get {
                 return this.TracePointsField;
             }
@@ -598,9 +582,6 @@ namespace TripasDeGatoCliente.TripasDeGatoServicio {
         private string IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private TripasDeGatoCliente.TripasDeGatoServicio.Profile OwnerField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private TripasDeGatoCliente.TripasDeGatoServicio.GameEnumsNodeStatus StatusField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -628,19 +609,6 @@ namespace TripasDeGatoCliente.TripasDeGatoServicio {
                 if ((object.ReferenceEquals(this.IdField, value) != true)) {
                     this.IdField = value;
                     this.RaisePropertyChanged("Id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public TripasDeGatoCliente.TripasDeGatoServicio.Profile Owner {
-            get {
-                return this.OwnerField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.OwnerField, value) != true)) {
-                    this.OwnerField = value;
-                    this.RaisePropertyChanged("Owner");
                 }
             }
         }
@@ -696,9 +664,9 @@ namespace TripasDeGatoCliente.TripasDeGatoServicio {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Point", Namespace="http://schemas.datacontract.org/2004/07/TripasService.Logic")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="TracePoint", Namespace="http://schemas.datacontract.org/2004/07/TripasService.Logic")]
     [System.SerializableAttribute()]
-    public partial class Point : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class TracePoint : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
@@ -929,10 +897,10 @@ namespace TripasDeGatoCliente.TripasDeGatoServicio {
         System.Threading.Tasks.Task<int> DeleteFriendAsync(int idProfile1, int idProfile2);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFriendsManager/GetFriends", ReplyAction="http://tempuri.org/IFriendsManager/GetFriendsResponse")]
-        TripasDeGatoCliente.TripasDeGatoServicio.Profile[] GetFriends(int idProfile);
+        System.Collections.Generic.List<TripasDeGatoCliente.TripasDeGatoServicio.Profile> GetFriends(int idProfile);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFriendsManager/GetFriends", ReplyAction="http://tempuri.org/IFriendsManager/GetFriendsResponse")]
-        System.Threading.Tasks.Task<TripasDeGatoCliente.TripasDeGatoServicio.Profile[]> GetFriendsAsync(int idProfile);
+        System.Threading.Tasks.Task<System.Collections.Generic.List<TripasDeGatoCliente.TripasDeGatoServicio.Profile>> GetFriendsAsync(int idProfile);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -978,11 +946,11 @@ namespace TripasDeGatoCliente.TripasDeGatoServicio {
             return base.Channel.DeleteFriendAsync(idProfile1, idProfile2);
         }
         
-        public TripasDeGatoCliente.TripasDeGatoServicio.Profile[] GetFriends(int idProfile) {
+        public System.Collections.Generic.List<TripasDeGatoCliente.TripasDeGatoServicio.Profile> GetFriends(int idProfile) {
             return base.Channel.GetFriends(idProfile);
         }
         
-        public System.Threading.Tasks.Task<TripasDeGatoCliente.TripasDeGatoServicio.Profile[]> GetFriendsAsync(int idProfile) {
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<TripasDeGatoCliente.TripasDeGatoServicio.Profile>> GetFriendsAsync(int idProfile) {
             return base.Channel.GetFriendsAsync(idProfile);
         }
     }
@@ -1213,10 +1181,10 @@ namespace TripasDeGatoCliente.TripasDeGatoServicio {
     public interface ILeaderboardManager {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILeaderboardManager/GetHighestScores", ReplyAction="http://tempuri.org/ILeaderboardManager/GetHighestScoresResponse")]
-        TripasDeGatoCliente.TripasDeGatoServicio.Profile[] GetHighestScores();
+        System.Collections.Generic.List<TripasDeGatoCliente.TripasDeGatoServicio.Profile> GetHighestScores();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILeaderboardManager/GetHighestScores", ReplyAction="http://tempuri.org/ILeaderboardManager/GetHighestScoresResponse")]
-        System.Threading.Tasks.Task<TripasDeGatoCliente.TripasDeGatoServicio.Profile[]> GetHighestScoresAsync();
+        System.Threading.Tasks.Task<System.Collections.Generic.List<TripasDeGatoCliente.TripasDeGatoServicio.Profile>> GetHighestScoresAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1246,11 +1214,11 @@ namespace TripasDeGatoCliente.TripasDeGatoServicio {
                 base(binding, remoteAddress) {
         }
         
-        public TripasDeGatoCliente.TripasDeGatoServicio.Profile[] GetHighestScores() {
+        public System.Collections.Generic.List<TripasDeGatoCliente.TripasDeGatoServicio.Profile> GetHighestScores() {
             return base.Channel.GetHighestScores();
         }
         
-        public System.Threading.Tasks.Task<TripasDeGatoCliente.TripasDeGatoServicio.Profile[]> GetHighestScoresAsync() {
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<TripasDeGatoCliente.TripasDeGatoServicio.Profile>> GetHighestScoresAsync() {
             return base.Channel.GetHighestScoresAsync();
         }
     }
@@ -1430,10 +1398,10 @@ namespace TripasDeGatoCliente.TripasDeGatoServicio {
     public interface ILobbyBrowser {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILobbyBrowser/GetAvailableLobbies", ReplyAction="http://tempuri.org/ILobbyBrowser/GetAvailableLobbiesResponse")]
-        TripasDeGatoCliente.TripasDeGatoServicio.Lobby[] GetAvailableLobbies();
+        System.Collections.Generic.List<TripasDeGatoCliente.TripasDeGatoServicio.Lobby> GetAvailableLobbies();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILobbyBrowser/GetAvailableLobbies", ReplyAction="http://tempuri.org/ILobbyBrowser/GetAvailableLobbiesResponse")]
-        System.Threading.Tasks.Task<TripasDeGatoCliente.TripasDeGatoServicio.Lobby[]> GetAvailableLobbiesAsync();
+        System.Threading.Tasks.Task<System.Collections.Generic.List<TripasDeGatoCliente.TripasDeGatoServicio.Lobby>> GetAvailableLobbiesAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILobbyBrowser/JoinLobby", ReplyAction="http://tempuri.org/ILobbyBrowser/JoinLobbyResponse")]
         bool JoinLobby(string code, TripasDeGatoCliente.TripasDeGatoServicio.Profile guest);
@@ -1481,11 +1449,11 @@ namespace TripasDeGatoCliente.TripasDeGatoServicio {
                 base(binding, remoteAddress) {
         }
         
-        public TripasDeGatoCliente.TripasDeGatoServicio.Lobby[] GetAvailableLobbies() {
+        public System.Collections.Generic.List<TripasDeGatoCliente.TripasDeGatoServicio.Lobby> GetAvailableLobbies() {
             return base.Channel.GetAvailableLobbies();
         }
         
-        public System.Threading.Tasks.Task<TripasDeGatoCliente.TripasDeGatoServicio.Lobby[]> GetAvailableLobbiesAsync() {
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<TripasDeGatoCliente.TripasDeGatoServicio.Lobby>> GetAvailableLobbiesAsync() {
             return base.Channel.GetAvailableLobbiesAsync();
         }
         

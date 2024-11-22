@@ -10,7 +10,7 @@
     <Grid>
 
         <Image Source="/Images/SceneCat.png" HorizontalAlignment="Left" Height="720" VerticalAlignment="Top" Width="1280" />
-        <Grid x:Name="gridCat" Visibility="Collapsed">
+        <Grid x:Name="gridCat">
             <Canvas x:Name="drawingCanvas" Margin="369,211,363,154" Background="Black" Opacity="0.48">
                 <Canvas.Clip>
                     <PathGeometry>

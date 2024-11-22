@@ -1,0 +1,17 @@
+﻿C:\TripasDeGatoCliente\UnitTestProject1\ValidationTest.cs
+C:\TripasDeGatoCliente\UnitTestProject1\Properties\AssemblyInfo.cs
+C:\TripasDeGatoCliente\packages\MSTest.TestAdapter.2.2.10\build\_common\es\Microsoft.TestPlatform.AdapterUtilities.resources.dll
+C:\TripasDeGatoCliente\packages\MSTest.TestAdapter.2.2.10\build\_common\es\Microsoft.TestPlatform.CoreUtilities.resources.dll
+C:\TripasDeGatoCliente\packages\MSTest.TestAdapter.2.2.10\build\_common\es\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.resources.dll
+C:\TripasDeGatoCliente\packages\MSTest.TestAdapter.2.2.10\build\_common\es\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.resources.dll
+C:\TripasDeGatoCliente\packages\MSTest.TestAdapter.2.2.10\build\_common\es\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+C:\TripasDeGatoCliente\packages\MSTest.TestAdapter.2.2.10\build\_common\es\Microsoft.VisualStudio.TestPlatform.TestFramework.resources.dll
+C:\TripasDeGatoCliente\packages\xunit.runner.visualstudio.2.8.2\build\net462\xunit.runner.visualstudio.testadapter.dll
+C:\TripasDeGatoCliente\packages\xunit.runner.visualstudio.2.8.2\build\net462\xunit.abstractions.dll
+C:\TripasDeGatoCliente\packages\xunit.runner.visualstudio.2.8.2\build\net462\xunit.runner.reporters.net452.dll
+C:\TripasDeGatoCliente\packages\xunit.runner.visualstudio.2.8.2\build\net462\xunit.runner.utility.net452.dll
+C:\TripasDeGatoCliente\packages\MSTest.TestAdapter.2.2.10\build\_common\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\TripasDeGatoCliente\packages\MSTest.TestAdapter.2.2.10\build\_common\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\TripasDeGatoCliente\packages\MSTest.TestAdapter.2.2.10\build\net46\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\TripasDeGatoCliente\packages\MSTest.TestAdapter.2.2.10\build\net46\Microsoft.TestPlatform.AdapterUtilities.dll
+C:\TripasDeGatoCliente\UnitTestProject1\packages.config
