@@ -33,7 +33,7 @@ namespace TripasDeGatoCliente.Views {
 
         private void InitializeFormValues() {
             // Rellenar ComboBox de nodos
-            cboxNode.ItemsSource = new List<int> { 2, 4, 6, 8, 10, 12, 14 }; // Ejemplo de nodos disponibles
+            cboxNode.ItemsSource = new List<int> { 8, 10, 12, 14, 16, 18, 20 }; // Ejemplo de nodos disponibles
             cboxNode.SelectedIndex = 0; // Selección predeterminada
             //Rellenar ComboBox de mapas
             cboxMap.ItemsSource = new List<String> { "Gato", "Perro", "Oso" };
