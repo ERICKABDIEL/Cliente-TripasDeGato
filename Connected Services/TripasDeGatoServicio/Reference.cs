@@ -579,6 +579,9 @@ namespace TripasDeGatoCliente.TripasDeGatoServicio {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ColorField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -597,6 +600,19 @@ namespace TripasDeGatoCliente.TripasDeGatoServicio {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Color {
+            get {
+                return this.ColorField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ColorField, value) != true)) {
+                    this.ColorField = value;
+                    this.RaisePropertyChanged("Color");
+                }
             }
         }
         
@@ -1497,6 +1513,18 @@ namespace TripasDeGatoCliente.TripasDeGatoServicio {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMatchManager/RegisterPlayerCallback", ReplyAction="http://tempuri.org/IMatchManager/RegisterPlayerCallbackResponse")]
         System.Threading.Tasks.Task<bool> RegisterPlayerCallbackAsync(string matchCode, string username);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMatchManager/GetNodes", ReplyAction="http://tempuri.org/IMatchManager/GetNodesResponse")]
+        System.Collections.Generic.List<TripasDeGatoCliente.TripasDeGatoServicio.Node> GetNodes(string matchCode);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMatchManager/GetNodes", ReplyAction="http://tempuri.org/IMatchManager/GetNodesResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<TripasDeGatoCliente.TripasDeGatoServicio.Node>> GetNodesAsync(string matchCode);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMatchManager/GetNodePairs", ReplyAction="http://tempuri.org/IMatchManager/GetNodePairsResponse")]
+        System.Collections.Generic.Dictionary<string, string> GetNodePairs(string matchCode);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMatchManager/GetNodePairs", ReplyAction="http://tempuri.org/IMatchManager/GetNodePairsResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.Dictionary<string, string>> GetNodePairsAsync(string matchCode);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1551,6 +1579,22 @@ namespace TripasDeGatoCliente.TripasDeGatoServicio {
         
         public System.Threading.Tasks.Task<bool> RegisterPlayerCallbackAsync(string matchCode, string username) {
             return base.Channel.RegisterPlayerCallbackAsync(matchCode, username);
+        }
+        
+        public System.Collections.Generic.List<TripasDeGatoCliente.TripasDeGatoServicio.Node> GetNodes(string matchCode) {
+            return base.Channel.GetNodes(matchCode);
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<TripasDeGatoCliente.TripasDeGatoServicio.Node>> GetNodesAsync(string matchCode) {
+            return base.Channel.GetNodesAsync(matchCode);
+        }
+        
+        public System.Collections.Generic.Dictionary<string, string> GetNodePairs(string matchCode) {
+            return base.Channel.GetNodePairs(matchCode);
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.Dictionary<string, string>> GetNodePairsAsync(string matchCode) {
+            return base.Channel.GetNodePairsAsync(matchCode);
         }
     }
 }

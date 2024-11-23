@@ -221,6 +221,9 @@
     <None Include="Connected Services\TripasDeGatoServicio\TripasDeGatoCliente.TripasDeGatoServicio.Lobby.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\TripasDeGatoServicio\TripasDeGatoCliente.TripasDeGatoServicio.Node.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\TripasDeGatoServicio\TripasDeGatoCliente.TripasDeGatoServicio.Profile.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>

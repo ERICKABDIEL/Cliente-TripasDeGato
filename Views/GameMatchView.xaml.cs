@@ -20,11 +20,12 @@ namespace TripasDeGatoCliente.Views {
         private double remainingTime;
         private string matchCode;
         private bool isConnected;
-        //NUEVO Y NECESARIO
         private MatchManagerClient matchManagerClient;
-        private bool isDrawing = false; // Controla si el jugador está dibujando
+        private bool isDrawing = false;
         private List<TripasDeGatoServicio.TracePoint> currentTracePoints = new List<TripasDeGatoServicio.TracePoint>();
         private Polyline currentLine;
+        private List<Node> nodes;
+        private Dictionary<string, string> nodePairs;
 
         public GameMatch(string gameCode) {
             InitializeComponent();
@@ -34,83 +35,133 @@ namespace TripasDeGatoCliente.Views {
 
             allTraces = new List<Polyline>();
 
-            // Asignar eventos para manejar el dibujo
             drawingCanvas.MouseDown += Canvas_MouseDown;
             drawingCanvas.MouseMove += Canvas_MouseMove;
             drawingCanvas.MouseUp += Canvas_MouseUp;
         }
 
         private async void InitializeMatch() {
+            try {
+                bool connected = matchManagerClient.RegisterPlayerCallback(matchCode, UserProfileSingleton.UserName);
 
-            bool connected = matchManagerClient.RegisterPlayerCallback(matchCode, UserProfileSingleton.UserName);
+                if (!connected) {
+                    DialogManager.ShowErrorMessageAlert("No se pudo conectar al lobby.");
+                } else {
+                    isConnected = true;
 
-            if (!connected) {
-                DialogManager.ShowErrorMessageAlert("No se pudo conectar al lobby.");
-            } else {
-                isConnected = true;
+                    nodes = await Task.Run(() => matchManagerClient.GetNodes(matchCode));
+                    nodePairs = await Task.Run(() => matchManagerClient.GetNodePairs(matchCode));
+
+                    DrawNodes();
+                }
+            } catch (Exception ex) {
+                DialogManager.ShowErrorMessageAlert($"Error al inicializar la partida: {ex.Message}");
             }
-
         }
 
         private void Canvas_MouseDown(object sender, MouseButtonEventArgs e) {
             isDrawing = true;
-
-            // Inicia una nueva lista de puntos
             currentTracePoints.Clear();
 
-            // Captura la posición inicial del mouse
             Point mousePosition = e.GetPosition(drawingCanvas);
-
-            // Agrega el punto inicial
             currentTracePoints.Add(new TripasDeGatoServicio.TracePoint { X = mousePosition.X, Y = mousePosition.Y });
 
-            // Inicia un nuevo Polyline para mostrar el trazo
             currentLine = new Polyline {
-                Stroke = Brushes.Blue, // Ejemplo de color
-                StrokeThickness = 5
+                Stroke = Brushes.Blue,
+                StrokeThickness = 2
             };
             drawingCanvas.Children.Add(currentLine);
-
-            // Dibuja el primer punto
             currentLine.Points.Add(mousePosition);
         }
 
         private void Canvas_MouseMove(object sender, MouseEventArgs e) {
             if (!isDrawing) return;
 
-            // Captura la posición del mouse en movimiento
             Point mousePosition = e.GetPosition(drawingCanvas);
+            var newPoint = new TripasDeGatoServicio.TracePoint { X = mousePosition.X, Y = mousePosition.Y };
 
-            // Agrega el punto actual a la lista
-            currentTracePoints.Add(new TripasDeGatoServicio.TracePoint { X = mousePosition.X, Y = mousePosition.Y });
+            if (IsCollisionDetected(newPoint)) {
+                isDrawing = false;
+                drawingCanvas.Children.Remove(currentLine);
+                DialogManager.ShowErrorMessageAlert("Parece que chocaste con algo, ¡perdiste!");
+                return;
+            }
 
-            // Actualiza el trazo visual
+            currentTracePoints.Add(newPoint);
             currentLine.Points.Add(mousePosition);
         }
 
         private void Canvas_MouseUp(object sender, MouseButtonEventArgs e) {
+            if (!isDrawing) return;
+
             isDrawing = false;
 
-            // Enviar el trazo al servidor
-            sendTrace(currentTracePoints);
+            if (currentTracePoints.Count > 1) {
+                allTraces.Add(currentLine);
+                SendTrace(currentTracePoints);
+            } else {
+                drawingCanvas.Children.Remove(currentLine);
+            }
         }
 
-        private void sendTrace(List<TracePoint> points) {
+        private bool IsCollisionDetected(TripasDeGatoServicio.TracePoint newPoint) {
+            foreach (var polyline in allTraces) {
+                for (int i = 1; i < polyline.Points.Count; i++) {
+                    Point start = polyline.Points[i - 1];
+                    Point end = polyline.Points[i];
+
+                    if (IsPointNearSegment(newPoint, start, end)) {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+        }
+
+        private bool IsPointNearSegment(TripasDeGatoServicio.TracePoint point, Point start, Point end) {
+            double distance = DistanceFromPointToSegment(point, start, end);
+            return distance < 5; // Ajustar el umbral según sea necesario
+        }
+
+        private double DistanceFromPointToSegment(TripasDeGatoServicio.TracePoint point, Point start, Point end) {
+            double px = point.X;
+            double py = point.Y;
+
+            double sx = start.X;
+            double sy = start.Y;
+            double ex = end.X;
+            double ey = end.Y;
+
+            double dx = ex - sx;
+            double dy = ey - sy;
+
+            double lengthSquared = dx * dx + dy * dy;
+
+            if (lengthSquared == 0) return Math.Sqrt((px - sx) * (px - sx) + (py - sy) * (py - sy));
+
+            double t = ((px - sx) * dx + (py - sy) * dy) / lengthSquared;
+            t = Math.Max(0, Math.Min(1, t));
+
+            double projX = sx + t * dx;
+            double projY = sy + t * dy;
+
+            return Math.Sqrt((px - projX) * (px - projX) + (py - projY) * (py - projY));
+        }
+
+        private void SendTrace(List<TracePoint> points) {
             if (!isConnected) return;
 
-            // Crear el objeto Trace
             var trace = new TripasDeGatoServicio.Trace {
                 Player = UserProfileSingleton.UserName,
                 TracePoints = points,
                 Timestamp = DateTime.Now,
-                Color = "Red" // Define el color del trazo (puedes personalizarlo)
+                Color = "Blue"
             };
 
             try {
-                // Enviar el trazo al servidor
                 matchManagerClient.RegisterTrace(matchCode, trace);
             } catch (Exception ex) {
-                // Manejar errores al enviar el trazo
                 DialogManager.ShowErrorMessageAlert($"Error al enviar el trazo: {ex.Message}");
             }
         }
@@ -120,24 +171,39 @@ namespace TripasDeGatoCliente.Views {
         }
 
         public void TraceReceived(Trace trace) {
-            // Crear un Polyline para representar el trazo
             var receivedLine = new Polyline {
-                Stroke = new SolidColorBrush((Color)ColorConverter.ConvertFromString(trace.Color)),
-                StrokeThickness = 2 // Puedes ajustar el grosor según sea necesario
+                Stroke = Brushes.Red,
+                StrokeThickness = 2
             };
 
-            // Convertir los puntos del trazo a puntos para el Polyline
             foreach (var point in trace.TracePoints) {
                 receivedLine.Points.Add(new Point(point.X, point.Y));
             }
 
-            // Agregar la línea al lienzo
             Application.Current.Dispatcher.Invoke(() => {
                 drawingCanvas.Children.Add(receivedLine);
             });
 
-            // Guardar la línea en la lista local de trazos (si lo necesitas)
             allTraces.Add(receivedLine);
+        }
+
+        private void DrawNodes() {
+            if (nodes == null) return;
+
+            foreach (var node in nodes) {
+                var ellipse = new Ellipse {
+                    Width = 10,
+                    Height = 10,
+                    Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString(node.Color)),
+                    Stroke = Brushes.Black,
+                    StrokeThickness = 1
+                };
+
+                Canvas.SetLeft(ellipse, node.X);
+                Canvas.SetTop(ellipse, node.Y);
+
+                Application.Current.Dispatcher.Invoke(() => drawingCanvas.Children.Add(ellipse));
+            }
         }
     }
 }
