@@ -516,6 +516,18 @@
   <wsdl:message name="IMatchManager_RegisterPlayerCallback_OutputMessage">
     <wsdl:part name="parameters" element="tns:RegisterPlayerCallbackResponse" />
   </wsdl:message>
+  <wsdl:message name="IMatchManager_GetNodes_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetNodes" />
+  </wsdl:message>
+  <wsdl:message name="IMatchManager_GetNodes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetNodesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMatchManager_GetNodePairs_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetNodePairs" />
+  </wsdl:message>
+  <wsdl:message name="IMatchManager_GetNodePairs_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetNodePairsResponse" />
+  </wsdl:message>
   <wsdl:message name="IMatchManager_MatchEnded_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:MatchEnded" />
   </wsdl:message>
@@ -688,6 +700,14 @@
     <wsdl:operation name="RegisterPlayerCallback">
       <wsdl:input wsaw:Action="http://tempuri.org/IMatchManager/RegisterPlayerCallback" message="tns:IMatchManager_RegisterPlayerCallback_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IMatchManager/RegisterPlayerCallbackResponse" message="tns:IMatchManager_RegisterPlayerCallback_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNodes">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMatchManager/GetNodes" message="tns:IMatchManager_GetNodes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMatchManager/GetNodesResponse" message="tns:IMatchManager_GetNodes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNodePairs">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMatchManager/GetNodePairs" message="tns:IMatchManager_GetNodePairs_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMatchManager/GetNodePairsResponse" message="tns:IMatchManager_GetNodePairs_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="MatchEnded">
       <wsdl:output wsaw:Action="http://tempuri.org/IMatchManager/MatchEnded" message="tns:IMatchManager_MatchEnded_OutputCallbackMessage" />
@@ -1058,6 +1078,24 @@
     </wsdl:operation>
     <wsdl:operation name="RegisterPlayerCallback">
       <soap12:operation soapAction="http://tempuri.org/IMatchManager/RegisterPlayerCallback" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNodes">
+      <soap12:operation soapAction="http://tempuri.org/IMatchManager/GetNodes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNodePairs">
+      <soap12:operation soapAction="http://tempuri.org/IMatchManager/GetNodePairs" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

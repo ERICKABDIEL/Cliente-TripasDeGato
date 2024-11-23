@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel;
@@ -33,9 +33,11 @@ namespace TripasDeGatoCliente.Views {
 
         private void InitializeFormValues() {
             // Rellenar ComboBox de nodos
-            cboxNode.ItemsSource = new List<int> { 2, 3, 4 }; // Ejemplo de nodos disponibles
+            cboxNode.ItemsSource = new List<int> { 2, 4, 6, 8, 10, 12, 14 }; // Ejemplo de nodos disponibles
             cboxNode.SelectedIndex = 0; // Selección predeterminada
-
+            //Rellenar ComboBox de mapas
+            cboxMap.ItemsSource = new List<String> { "Gato", "Perro", "Oso" };
+            cboxMap.SelectedIndex = 0;
             // Rellenar ComboBox de tiempos
             cboxTime.ItemsSource = new List<string> { "2:00 min", "5:00 min", "10:00 min" };
             cboxTime.SelectedIndex = 0; // Selección predeterminada
@@ -48,8 +50,8 @@ namespace TripasDeGatoCliente.Views {
                 return;
             }
 
-            if (cboxNode.SelectedItem == null || cboxTime.SelectedItem == null) {
-                MessageBox.Show("Por favor, seleccione los nodos y el tiempo para la partida.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            if (cboxNode.SelectedItem == null || cboxTime.SelectedItem == null || cboxMap.SelectedItem == null) {
+                MessageBox.Show("Por favor, seleccione los nodos, el mapa y el tiempo para la partida.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 

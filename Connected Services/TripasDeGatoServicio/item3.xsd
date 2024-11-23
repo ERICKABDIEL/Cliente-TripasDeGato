@@ -48,6 +48,7 @@
   <xs:element name="Trace" nillable="true" type="tns:Trace" />
   <xs:complexType name="Node">
     <xs:sequence>
+      <xs:element minOccurs="0" name="Color" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
       <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/TripasService.Utils" minOccurs="0" name="Status" type="q3:GameEnums.NodeStatus" />
       <xs:element minOccurs="0" name="X" type="xs:double" />
@@ -68,4 +69,10 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="TracePoint" nillable="true" type="tns:TracePoint" />
+  <xs:complexType name="ArrayOfNode">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Node" nillable="true" type="tns:Node" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfNode" nillable="true" type="tns:ArrayOfNode" />
 </xs:schema>
