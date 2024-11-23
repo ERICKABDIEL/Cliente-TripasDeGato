@@ -1535,9 +1535,6 @@ namespace TripasDeGatoCliente.TripasDeGatoServicio {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IMatchManager/TraceReceived")]
         void TraceReceived(TripasDeGatoCliente.TripasDeGatoServicio.Trace trace);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMatchManager/TurnChanged", ReplyAction="http://tempuri.org/IMatchManager/TurnChangedResponse")]
-        void TurnChanged(string currentPlayer);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
