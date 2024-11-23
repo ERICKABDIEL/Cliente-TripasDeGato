@@ -78,18 +78,40 @@ namespace TripasDeGatoCliente.Views {
             if (!isDrawing) return;
 
             Point mousePosition = e.GetPosition(drawingCanvas);
+
+            // Verificar si el punto está dentro del área permitida (según la geometría del clip)
+            if (!allowedAreaGeometry(mousePosition)) {
+                isDrawing = false; // Detener dibujo
+                drawingCanvas.Children.Remove(currentLine); // Remover línea actual
+                DialogManager.ShowErrorMessageAlert("El trazo está fuera del área permitida, intenta de nuevo.");
+                return;
+            }
+
+            // Crear un nuevo punto de trazo
             var newPoint = new TripasDeGatoServicio.TracePoint { X = mousePosition.X, Y = mousePosition.Y };
 
+            // Validar colisiones
             if (IsCollisionDetected(newPoint)) {
-                isDrawing = false;
-                drawingCanvas.Children.Remove(currentLine);
+                isDrawing = false; // Detener dibujo
+                drawingCanvas.Children.Remove(currentLine); // Remover línea actual
                 DialogManager.ShowErrorMessageAlert("Parece que chocaste con algo, ¡perdiste!");
                 return;
             }
 
+            // Si pasa las validaciones, agregar al trazo actual
             currentTracePoints.Add(newPoint);
-            currentLine.Points.Add(mousePosition);
+            currentLine.Points.Add(mousePosition); // Actualizar línea
         }
+
+        private bool allowedAreaGeometry(Point point) {
+            // Obtener la geometría del área permitida (clip del Canvas)
+            var geometry = drawingCanvas.Clip;
+            if (geometry != null) {
+                return geometry.FillContains(point);
+            }
+            return false; // Si no hay un clip definido, no se permite el trazo.
+        }
+
 
         private void Canvas_MouseUp(object sender, MouseButtonEventArgs e) {
             if (!isDrawing) return;
@@ -172,7 +194,7 @@ namespace TripasDeGatoCliente.Views {
 
         public void TraceReceived(Trace trace) {
             var receivedLine = new Polyline {
-                Stroke = new SolidColorBrush((Color)ColorConverter.ConvertFromString(trace.Color)),
+                Stroke = Brushes.Red,
                 StrokeThickness = 2
             };
 
