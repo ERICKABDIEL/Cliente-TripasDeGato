@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 using TripasDeGatoCliente.Logic;
@@ -19,6 +20,8 @@ namespace TripasDeGatoCliente.Views {
         private int totalTime = 30; // Tiempo total para el temporizador
         private double remainingTime;
         private string matchCode;
+        private LobbyBrowserClient lobbyBrowser;
+        private string lobbyCode;
         private bool isConnected;
         private MatchManagerClient matchManagerClient;
         private bool isDrawing = false;
@@ -85,6 +88,21 @@ namespace TripasDeGatoCliente.Views {
                 timeProgressBar.Foreground = Brushes.Gray; // Cambia el color a gris cuando el tiempo se acaba
 
             }
+        }
+
+        public async void InitializeLobby() {
+            Lobby lobby = await lobbyBrowser.GetLobbyByCodeAsync(lobbyCode);
+            if (IsUserHost(lobby)) {
+                labelPlayer1.Content = lobby.Players.ContainsKey("PlayerOne") ? lobby.Players["PlayerOne"].userName : "Esperando jugador...";
+                labelPlayer2.Content = lobby.Players.ContainsKey("PlayerTwo") ? lobby.Players["PlayerTwo"].userName : "Esperando jugador...";
+            } else {
+                labelPlayer1.Content = lobby.Players.ContainsKey("PlayerTwo") ? lobby.Players["PlayerTwo"].userName : "Esperando jugador...";
+                labelPlayer2.Content = lobby.Players.ContainsKey("PlayerOne") ? lobby.Players["PlayerOne"].userName : "Esperando jugador...";
+            }
+        }
+
+        private bool IsUserHost(Lobby lobby) {
+            return lobby.Players.TryGetValue("PlayerOne", out var host) && host.userName == UserProfileSingleton.UserName;
         }
 
         private void Canvas_MouseDown(object sender, MouseButtonEventArgs e) {
@@ -208,7 +226,7 @@ namespace TripasDeGatoCliente.Views {
                 //NotifyInfraction();
             }
         }
-       
+
         /*
         private void NotifyInfraction() {
             try {
