@@ -26,6 +26,7 @@ namespace TripasDeGatoCliente.Views {
         private Polyline currentLine;
         private List<Node> nodes;
         private Dictionary<string, string> nodePairs;
+        private Node startNode;
 
         public GameMatch(string gameCode) {
             InitializeComponent();
@@ -42,6 +43,7 @@ namespace TripasDeGatoCliente.Views {
 
         private async void InitializeMatch() {
             try {
+                // Registra el jugador y verifica la conexión
                 bool connected = matchManagerClient.RegisterPlayerCallback(matchCode, UserProfileSingleton.UserName);
 
                 if (!connected) {
@@ -49,10 +51,16 @@ namespace TripasDeGatoCliente.Views {
                 } else {
                     isConnected = true;
 
+                    // Obtiene los nodos y las parejas de nodos desde el servidor
                     nodes = await Task.Run(() => matchManagerClient.GetNodes(matchCode));
                     nodePairs = await Task.Run(() => matchManagerClient.GetNodePairs(matchCode));
 
-                    DrawNodes();
+                    if (nodes != null && nodes.Count > 0) {
+                        // Llama al método para dibujar los nodos en pantalla
+                        DrawNodes();
+                    } else {
+                        DialogManager.ShowErrorMessageAlert("No se encontraron nodos para esta partida.");
+                    }
                 }
             } catch (Exception ex) {
                 DialogManager.ShowErrorMessageAlert($"Error al inicializar la partida: {ex.Message}");
@@ -60,10 +68,16 @@ namespace TripasDeGatoCliente.Views {
         }
 
         private void Canvas_MouseDown(object sender, MouseButtonEventArgs e) {
+            Point mousePosition = e.GetPosition(drawingCanvas);
+
+            startNode = FindNodeNearPoint(mousePosition);
+            if (startNode == null) {
+                DialogManager.ShowErrorMessageAlert("Debes iniciar el trazo desde un nodo válido.");
+                return;
+            }
+
             isDrawing = true;
             currentTracePoints.Clear();
-
-            Point mousePosition = e.GetPosition(drawingCanvas);
             currentTracePoints.Add(new TripasDeGatoServicio.TracePoint { X = mousePosition.X, Y = mousePosition.Y });
 
             currentLine = new Polyline {
@@ -81,9 +95,7 @@ namespace TripasDeGatoCliente.Views {
             var newPoint = new TripasDeGatoServicio.TracePoint { X = mousePosition.X, Y = mousePosition.Y };
 
             if (IsCollisionDetected(newPoint)) {
-                isDrawing = false;
-                drawingCanvas.Children.Remove(currentLine);
-                DialogManager.ShowErrorMessageAlert("Parece que chocaste con algo, ¡perdiste!");
+                HandleInfraction("Parece que chocaste con algo, ¡perdiste!");
                 return;
             }
 
@@ -95,6 +107,15 @@ namespace TripasDeGatoCliente.Views {
             if (!isDrawing) return;
 
             isDrawing = false;
+            Point mousePosition = e.GetPosition(drawingCanvas);
+
+            Node endNode = FindNodeNearPoint(mousePosition);
+
+            if (endNode == null || !IsPair(startNode, endNode)) {
+                drawingCanvas.Children.Remove(currentLine);
+                DialogManager.ShowErrorMessageAlert("El trazo debe conectar dos nodos correspondientes.");
+                return;
+            }
 
             if (currentTracePoints.Count > 1) {
                 allTraces.Add(currentLine);
@@ -102,6 +123,16 @@ namespace TripasDeGatoCliente.Views {
             } else {
                 drawingCanvas.Children.Remove(currentLine);
             }
+        }
+
+        private Node FindNodeNearPoint(Point point) {
+            const double detectionRadius = 15;
+            return nodes.FirstOrDefault(node =>
+                Math.Sqrt(Math.Pow(node.X - point.X, 2) + Math.Pow(node.Y - point.Y, 2)) <= detectionRadius);
+        }
+
+        private bool IsPair(Node start, Node end) {
+            return nodePairs.ContainsKey(start.Id) && nodePairs[start.Id] == end.Id;
         }
 
         private bool IsCollisionDetected(TripasDeGatoServicio.TracePoint newPoint) {
@@ -161,10 +192,36 @@ namespace TripasDeGatoCliente.Views {
 
             try {
                 matchManagerClient.RegisterTrace(matchCode, trace);
+            } catch (CommunicationException) {
+                DialogManager.ShowErrorMessageAlert("Error de comunicación con el servidor al enviar el trazo.");
+            } catch (TimeoutException) {
+                DialogManager.ShowErrorMessageAlert("El servidor tardó demasiado en responder.");
             } catch (Exception ex) {
                 DialogManager.ShowErrorMessageAlert($"Error al enviar el trazo: {ex.Message}");
             }
         }
+
+        private void HandleInfraction(string message) {
+            isDrawing = false;
+            drawingCanvas.Children.Remove(currentLine);
+            DialogManager.ShowErrorMessageAlert(message);
+
+            if (isConnected) {
+                //NotifyInfraction();
+            }
+        }
+        /*
+        private void NotifyInfraction() {
+            try {
+                MatchManagerClient.NotifyInfraction(matchCode, UserProfileSingleton.UserName);
+            } catch (CommunicationException) {
+                DialogManager.ShowErrorMessageAlert("Error de comunicación al notificar la infracción.");
+            } catch (TimeoutException) {
+                DialogManager.ShowErrorMessageAlert("El servidor tardó demasiado en responder a la infracción.");
+            } catch (Exception ex) {
+                DialogManager.ShowErrorMessageAlert($"Error al notificar la infracción: {ex.Message}");
+            }
+        }*/
 
         public void MatchEnded(string matchCode) {
             throw new NotImplementedException();
@@ -190,7 +247,11 @@ namespace TripasDeGatoCliente.Views {
         private void DrawNodes() {
             if (nodes == null) return;
 
+            // Limpia el lienzo antes de dibujar nuevos nodos
+            Application.Current.Dispatcher.Invoke(() => drawingCanvas.Children.Clear());
+
             foreach (var node in nodes) {
+                // Representa cada nodo como un círculo en el lienzo
                 var ellipse = new Ellipse {
                     Width = 10,
                     Height = 10,
@@ -199,9 +260,11 @@ namespace TripasDeGatoCliente.Views {
                     StrokeThickness = 1
                 };
 
-                Canvas.SetLeft(ellipse, node.X);
-                Canvas.SetTop(ellipse, node.Y);
+                // Ajusta la posición del nodo en el lienzo
+                Canvas.SetLeft(ellipse, node.X - ellipse.Width / 2);
+                Canvas.SetTop(ellipse, node.Y - ellipse.Height / 2);
 
+                // Agrega el nodo al lienzo de forma segura
                 Application.Current.Dispatcher.Invoke(() => drawingCanvas.Children.Add(ellipse));
             }
         }
