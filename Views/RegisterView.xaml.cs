@@ -8,12 +8,9 @@ using TripasDeGatoCliente.Logic;
 using TripasDeGatoCliente.TripasDeGatoServicio;
 using static TripasDeGatoCliente.Logic.ConstantsManager;
 
-namespace TripasDeGatoCliente.Views
-{
-    public partial class RegisterView : Page
-    {
-        public RegisterView()
-        {
+namespace TripasDeGatoCliente.Views {
+    public partial class RegisterView : Page {
+        public RegisterView() {
             InitializeComponent();
         }
 
@@ -191,8 +188,7 @@ namespace TripasDeGatoCliente.Views
             return isValid;
         }
 
-        private void HighlightField(Control control)
-        {
+        private void HighlightField(Control control) {
             control.BorderBrush = Brushes.Red;
         }
 
@@ -218,15 +214,13 @@ namespace TripasDeGatoCliente.Views
             }
         }
 
-        private void BtnTogglePassword_Checked(object sender, RoutedEventArgs e)
-        {
+        private void BtnTogglePassword_Checked(object sender, RoutedEventArgs e) {
             txtPasswordVisible.Text = txtPassword.Password;
             txtPasswordVisible.Visibility = Visibility.Visible;
             txtPassword.Visibility = Visibility.Collapsed;
         }
 
-        private void BtnTogglePassword_Unchecked(object sender, RoutedEventArgs e)
-        {
+        private void BtnTogglePassword_Unchecked(object sender, RoutedEventArgs e) {
             txtPassword.Password = txtPasswordVisible.Text;
             txtPasswordVisible.Visibility = Visibility.Collapsed;
             txtPassword.Visibility = Visibility.Visible;
@@ -241,8 +235,7 @@ namespace TripasDeGatoCliente.Views
         }
 
 
-        private void ResetField(Control control)
-        {
+        private void ResetField(Control control) {
             control.BorderBrush = Brushes.White;
         }
 
@@ -256,7 +249,7 @@ namespace TripasDeGatoCliente.Views
                 lbInvalidUser.Visibility = Visibility.Collapsed;
             }
         }
-        
+
         private void TxtEmail_TextChanged(object sender, TextChangedEventArgs e) {
             string email = txtEmail.Text;
             if (!Validador.ValidateEmail(email)) {
@@ -274,27 +267,21 @@ namespace TripasDeGatoCliente.Views
             }
         }
 
-
-
-        private void BtnBack_Click(object sender, RoutedEventArgs e)
-        {
+        private void BtnBack_Click(object sender, RoutedEventArgs e) {
             GoToLoginView();
         }
-        
-        private void BtnBackValidate_Click(object sender, RoutedEventArgs e)
-        {
+
+        private void BtnBackValidate_Click(object sender, RoutedEventArgs e) {
             verificationGrid.Visibility = Visibility.Collapsed;
             txtEmail.Clear();
             txtName.Clear();
             txtPassword.Clear();
             txtPasswordVisible.Clear();
         }
-        
-        private void TxtValidationCode_TextChanged(object sender, TextChangedEventArgs e)
-        {
+
+        private void TxtValidationCode_TextChanged(object sender, TextChangedEventArgs e) {
             TextBox currentTextBox = sender as TextBox;
-            if (currentTextBox.Text.Length == 1)
-            {
+            if (currentTextBox.Text.Length == 1) {
                 if (currentTextBox == txtValidationCode1)
                     txtValidationCode2.Focus();
                 else if (currentTextBox == txtValidationCode2)

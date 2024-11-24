@@ -276,6 +276,7 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <Resource Include="Images\BackgroundProfile.png" />
     <Content Include="Videos\ViewWait.mp4">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

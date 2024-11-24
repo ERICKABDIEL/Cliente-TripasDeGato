@@ -59,7 +59,8 @@
                      HorizontalContentAlignment="Center" 
                      VerticalContentAlignment="Center" 
                      Height="28" 
-                     FontFamily="Cooper Black" />
+                     FontFamily="Cooper Black" 
+                     MaxLength="35" />
             <TextBox x:Name="txtName" 
                      FontSize="16" 
                      Background="{x:Null}" 
@@ -67,7 +68,10 @@
                      Height="28"
                      TextChanged="TxtName_TextChanged" 
                      BorderBrush="#FF432B1E" 
-                     FontFamily="Cooper Black" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                     FontFamily="Cooper Black" 
+                     HorizontalContentAlignment="Center" 
+                     VerticalContentAlignment="Center" 
+                     MaxLength="25"/>
             <StackPanel Grid.Row="5" Orientation="Vertical" Margin="0,0,0,10">
                 <Grid Grid.Row="3" Margin="0,0,0,10">
                     <PasswordBox x:Name="txtPassword"
@@ -81,7 +85,8 @@
                                  Margin="474,441,474,-441" 
                                  FontFamily="Cooper Black" 
                                  HorizontalContentAlignment="Center" 
-                                 VerticalContentAlignment="Center"/>
+                                 VerticalContentAlignment="Center" 
+                                 MaxLength="35"/>
                     <TextBox x:Name="txtPasswordVisible" 
                              FontSize="16" 
                              Background="{x:Null}" 
@@ -95,7 +100,8 @@
                              FontFamily="Cooper Black" 
                              HorizontalContentAlignment="Center"
                              VerticalContentAlignment="Center" 
-                             Visibility="Collapsed"/>
+                             Visibility="Collapsed" 
+                             MaxLength="35"/>
                     <ToggleButton x:Name="btnTogglePassword" 
                                   Content="👁" 
                                   Width="28" 

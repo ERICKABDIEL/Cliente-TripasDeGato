@@ -26,7 +26,7 @@
                              Margin="663,340,427,340" 
                              FontFamily="Cooper Black"
                              VerticalContentAlignment="Center" 
-                             HorizontalContentAlignment="Center"/>
+                             MaxLength="35"/>
                 <TextBox x:Name="txtPasswordVisible" 
                          FontSize="14" 
                          Background="{x:Null}"
@@ -36,9 +36,9 @@
                          Visibility="Collapsed"
                          IsReadOnly="False" 
                          Margin="663,340,427,340"
-                         VerticalContentAlignment="Center" 
-                         HorizontalContentAlignment="Center"
-                         FontFamily="Cooper Black" />
+                         VerticalContentAlignment="Center"
+                         FontFamily="Cooper Black" 
+                         MaxLength="35" />
                 <ToggleButton x:Name="btnTogglePassword" 
                               Content="👁" 
                               Width="27" 
@@ -211,7 +211,8 @@
                          BorderBrush="#FF432B1E"
                          FontFamily="Cooper Black" 
                          VerticalContentAlignment="Center" 
-                         HorizontalContentAlignment="Center"/>
+                         HorizontalContentAlignment="Center" 
+                         MaxLength="35"/>
                 <Label x:Name="lblPassword" 
                        Content="{x:Static p:Resources.lbPassword}" 
                        FontSize="18" 
@@ -505,7 +506,8 @@
                              Margin="138,110,138,148" 
                              FontFamily="Cooper Black" 
                              HorizontalContentAlignment="Center"
-                             VerticalContentAlignment="Center">
+                             VerticalContentAlignment="Center" 
+                             MaxLength="35">
                         <TextBox.Background>
                             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                                 <GradientStop Color="#FF98714A" Offset="1"/>
@@ -621,7 +623,8 @@
                                  Margin="104,90,108,177"
                                  FontSize="16" 
                                  HorizontalContentAlignment="Center" 
-                                 VerticalContentAlignment="Center"/>
+                                 VerticalContentAlignment="Center"
+                                 MaxLength="35"/>
                     <TextBox x:Name="txtNewPasswordVisible" 
                              Background="{x:Null}" 
                              Foreground="Black" 
@@ -631,7 +634,8 @@
                              Margin="104,90,108,189" 
                              FontSize="16" 
                              VerticalContentAlignment="Center"
-                             HorizontalContentAlignment="Center"/>
+                             HorizontalContentAlignment="Center" 
+                             MaxLength="35"/>
                     <ToggleButton x:Name="btnToggleNewPassword"
                                   Content="👁" 
                                   Width="35" 
@@ -649,7 +653,8 @@
                                  Margin="104,162,108,107"
                                  FontSize="16" 
                                  VerticalContentAlignment="Center" 
-                                 HorizontalContentAlignment="Center"/>
+                                 HorizontalContentAlignment="Center" 
+                                 MaxLength="35"/>
                     <TextBox x:Name="txtNewPasswordConfirmVisible"
                              Background="{x:Null}" 
                              Foreground="Black" 
@@ -657,7 +662,9 @@
                              BorderBrush="Black"
                              Visibility="Collapsed" 
                              Margin="104,162,108,116" 
-                             FontSize="16" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                             FontSize="16" HorizontalContentAlignment="Center" 
+                             VerticalContentAlignment="Center" 
+                             MaxLength="35"/>
                     <Label x:Name="lblNewPassword" 
                            Content="{x:Static p:Resources.lbEnterNewPassword}" 
                            Grid.Row="0"

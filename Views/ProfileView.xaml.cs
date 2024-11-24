@@ -70,12 +70,11 @@ namespace TripasDeGatoCliente.Views {
             }
         }
 
-
         private async void SaveProfile(string userName, string selectedLanguage, string selectedProfile) {
             try {
                 var service = new TripasDeGatoServicio.UserManagerClient();
                 int idProfile = UserProfileSingleton.IdProfile;
-                string newPic = selectedProfile ?? UserProfileSingleton.PicPath;  // Asigna la nueva foto seleccionada
+                string newPic = selectedProfile ?? UserProfileSingleton.PicPath;
                 int updateResult = await service.UpdateProfileAsync(idProfile, userName, newPic);
 
                 if (updateResult == ConstantsManager.Constants.SUCCES_OPERATION) {

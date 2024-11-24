@@ -8,7 +8,6 @@
       x:Class="TripasDeGatoCliente.Views.ProfileView"
       Width="1280" 
       Height="720" 
-      Background="Black"
       Foreground="{x:Null}">
 
     <Page.Resources>
@@ -63,6 +62,14 @@
             <RowDefinition Height="589*"/>
         </Grid.RowDefinitions>
 
+        <Image x:Name="imageLogo" 
+               Source="/Images/BackgroundProfile.png" 
+               HorizontalAlignment="Center" 
+               Height="720" 
+               VerticalAlignment="Top" 
+               Width="1280"
+               Grid.RowSpan="2"/>
+
         <Button x:Name="btnBack" 
                 Content="{x:Static p:Resources.globalBtnBack}" 
                 HorizontalAlignment="Left" 
@@ -70,14 +77,14 @@
                 Click="BtnBack_Click"
                 Width="150" 
                 Height="50" 
-                Margin="66,70,0,0" 
+                Margin="46,66,0,0" 
                 FontSize="18" 
-                FontWeight="Bold" BorderBrush="White">
+                FontWeight="Bold" 
+                BorderBrush="White">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0,1">
-                    <GradientStop Color="#FFFCF8D7"/>
-                    <GradientStop Color="Black" Offset="1"/>
-                    <GradientStop Color="#FF252520" Offset="0.901"/>
+                    <GradientStop Color="#FFDBB277"/>
+                    <GradientStop Color="#FF9A663F" Offset="1"/>
                 </LinearGradientBrush>
             </Button.Background>
             <Button.Style>
@@ -85,8 +92,8 @@
                     <Setter Property="Background">
                         <Setter.Value>
                             <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                                <GradientStop Color="White" Offset="0.0"/>
-                                <GradientStop Color="Black" Offset="1.0"/>
+                                <GradientStop Color="#FFDBB277" Offset="0.0"/>
+                                <GradientStop Color="#FF15031D" Offset="1.0"/>
                             </LinearGradientBrush>
                         </Setter.Value>
                     </Setter>
@@ -115,14 +122,14 @@
                             <Setter Property="Background">
                                 <Setter.Value>
                                     <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                                        <GradientStop Color="#FFFCF8D7" Offset="0.0"/>
-                                        <GradientStop Color="Black" Offset="1.0"/>
+                                        <GradientStop Color="#FFDBB277" Offset="0.0"/>
+                                        <GradientStop Color="#FF967A51" Offset="1.0"/>
                                     </LinearGradientBrush>
                                 </Setter.Value>
                             </Setter>
                             <Setter Property="Effect">
                                 <Setter.Value>
-                                    <DropShadowEffect Color="#FFFCF8D7" ShadowDepth="10" BlurRadius="15"/>
+                                    <DropShadowEffect Color="#FF99633D" ShadowDepth="10" BlurRadius="15"/>
                                 </Setter.Value>
                             </Setter>
                         </Trigger>
@@ -132,18 +139,18 @@
         </Button>
 
         <Image x:Name="imageProfile" 
-               Source="/Images/Profiles/ImageProfile2.png" 
+               Source="/Images/Profiles/ImageProfile1.png" 
                HorizontalAlignment="Left" 
-               Height="428" 
-               Margin="437,124,0,0" 
+               Height="296" 
+               Margin="500,38,0,0" 
                VerticalAlignment="Top" 
-               Width="410" Grid.RowSpan="2"/>
-
+               Width="316" 
+               Grid.Row="1"/>
 
         <Button x:Name="btnEdit" 
                 Content="{x:Static p:Resources.btnEdit}" 
                 HorizontalAlignment="Left" 
-                Margin="1068,476,0,0" 
+                Margin="705,455,0,0" 
                 VerticalAlignment="Top" 
                 Background="#FFFCF8D7" 
                 BorderBrush="White"
@@ -156,16 +163,16 @@
         <Button x:Name="btnSave" 
                 Content="{x:Static p:Resources.btnSave}" 
                 HorizontalAlignment="Left" 
-                Margin="1068,404,0,135" 
+                Margin="453,449,0,90" 
                 Background="#FFFCF8D7" 
                 BorderBrush="White" 
                 Grid.Row="1" 
                 FontFamily="Rockwell Extra Bold" 
                 Foreground="Black" 
-                Visibility="Collapsed" 
                 Click="BtnSave_Click"
                 IsEnabled="False"
-                Style="{StaticResource {x:Type Button}}"/>
+                Style="{StaticResource {x:Type Button}}"
+                Visibility="Collapsed"/>
 
         <Label x:Name="lbUserNameProfile" 
                Content="{x:Static p:Resources.lbUserName}" 
@@ -173,14 +180,14 @@
                VerticalAlignment="Top" 
                HorizontalContentAlignment="Center" 
                VerticalContentAlignment="Center" 
-               Margin="437,27,0,0" 
+               Margin="453,334,0,0" 
                Height="60" 
                Width="410" 
-               Foreground="#FFFCF6DB" 
+               Foreground="Black" 
                FontSize="24" 
                FontFamily="Rockwell Extra Bold" 
-               RenderTransformOrigin="0.5,0.5"/>
-
+               RenderTransformOrigin="0.5,0.5" 
+               Grid.Row="1"/>
 
         <Label x:Name="lbScoreProfile" 
                Content="{x:Static p:Resources.lbScore}" 
@@ -188,106 +195,122 @@
                VerticalAlignment="Top" 
                HorizontalContentAlignment="Center" 
                VerticalContentAlignment="Center" 
-               Margin="437,71,0,0" 
+               Margin="453,379,0,0" 
                Height="60" 
                Width="410" 
-               Foreground="#FFFCF6DB" 
+               Foreground="Black" 
                FontSize="16" 
-               FontFamily="Rockwell Extra Bold"/>
-
-        <Image x:Name="imageLogo" 
-               Source="/Images/LogoWhitoutBackground.png" 
-               HorizontalAlignment="Left" 
-               Height="312" 
-               Margin="969,59,0,0" 
-               VerticalAlignment="Top" 
-               Width="266" Grid.RowSpan="2"/>
+               FontFamily="Rockwell Extra Bold" Grid.Row="1"/>
 
         <Label x:Name="lbUserName"  
                Content="{x:Static p:Resources.lbUserName}" 
                HorizontalAlignment="Left" 
-               Margin="248,426,0,0" 
+               Margin="19,81,0,0" 
                Grid.Row="1" 
                VerticalAlignment="Top" 
-               Width="196" 
+               Width="365" 
                FontFamily="Rockwell Extra Bold" 
-               Foreground="#FFFCF6DB" 
-               FontSize="14"/>
+               Foreground="White" 
+               FontSize="20" Height="70" 
+               VerticalContentAlignment="Center" 
+               HorizontalContentAlignment="Center">
+            <Label.Background>
+                <ImageBrush ImageSource="/Images/BackgroundButton2.png"/>
+            </Label.Background>
+        </Label>
 
         <Label x:Name="lbLanguage" 
                Content="{x:Static p:Resources.lbLanguage}" 
                HorizontalAlignment="Left" 
-               Margin="338,485,0,0" 
+               Margin="15,233,0,0" 
                Grid.Row="1" 
                VerticalAlignment="Top" 
-               Width="96" 
+               Width="365" 
                FontFamily="Rockwell Extra Bold" 
-               Foreground="#FFFCF6DB" 
-               FontSize="14" 
-               Height="26"/>
+               Foreground="White" 
+               FontSize="20" 
+               Height="68" 
+               VerticalContentAlignment="Center" 
+               HorizontalContentAlignment="Center">
+            <Label.Background>
+                <ImageBrush ImageSource="/Images/BackgroundButton2.png"/>
+            </Label.Background>
+        </Label>
 
         <TextBox x:Name="txtUserName" 
-                 HorizontalAlignment="Center" 
-                 Margin="0,428,0,0" 
+                 HorizontalAlignment="Left" 
+                 Margin="13,151,0,0" 
                  Grid.Row="1" 
                  TextWrapping="Wrap"  
                  VerticalAlignment="Top" 
                  Width="382" 
-                 Height="30" 
-                 Foreground="#FFF6D08A" 
-                 Background="#FF5C5C5C" 
+                 Height="65" 
+                 Foreground="White" 
                  FontFamily="Rockwell Extra Bold" 
-                 FontSize="16" 
+                 FontSize="18" 
                  HorizontalContentAlignment="Center" 
                  VerticalContentAlignment="Center" 
-                 IsEnabled="False" />
+                 IsEnabled="False" 
+                 BorderBrush="{x:Null}" 
+                 MaxLength="35">
+            <TextBox.Background>
+                <ImageBrush ImageSource="/Images/BackgroundButton1.png"/>
+            </TextBox.Background>
+        </TextBox>
 
         <ComboBox x:Name="cboxLanguage" 
-                  HorizontalAlignment="Center" 
-                  Margin="0,483,0,0" 
+                  HorizontalAlignment="Left" 
+                  Margin="19,307,0,0" 
                   Grid.Row="1" 
                   VerticalAlignment="Top" 
-                  Width="382" 
-                  Background="#FF5C5C5C" 
-                  Height="30" 
-                  IsEnabled="False"/>
-        <Border x:Name="borderProfiles" BorderThickness="2" Width="600" Height="200" Margin="338,95,342,294" Grid.Row="1" Background="Black" Visibility="Collapsed">
-            <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                  Width="361" 
+                  Height="31" 
+                  IsEnabled="False">
+            <ComboBox.Background>
+                <ImageBrush/>
+            </ComboBox.Background>
+        </ComboBox>
+        
+        <Border x:Name="borderProfiles" BorderThickness="2" Margin="410,38,356,165" Grid.Row="1" Visibility="Collapsed">
+            <Border.Background>
+                <ImageBrush ImageSource="/Images/BackgroundValidation.png"/>
+            </Border.Background>
+            <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" Margin="103,64,97,64">
+                <StackPanel Orientation="Horizontal" Width="2290">
                     <ListBox x:Name="lsb_ProfilePics" 
-                                 ScrollViewer.HorizontalScrollBarVisibility="Auto" Width="580" 
-                                 Height="180" BorderThickness="0" Background="Transparent">
+                                 ScrollViewer.HorizontalScrollBarVisibility="Auto" Width="2232" 
+                                 Height="289" BorderThickness="0" Background="Transparent">
                         <ListBox.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <StackPanel Orientation="Horizontal"/>
                             </ItemsPanelTemplate>
                         </ListBox.ItemsPanel>
                         <ListBoxItem Tag="/Images/Profiles/ImageProfile1.png">
-                            <Image Source="/Images/Profiles/ImageProfile1.png" Width="100" Height="100"/>
+                            <Image Source="/Images/Profiles/ImageProfile1.png" Width="238" Height="222"/>
                         </ListBoxItem>
                         <ListBoxItem Tag="/Images/Profiles/ImageProfile2.png">
-                            <Image Source="/Images/Profiles/ImageProfile2.png" Width="100" Height="100"/>
+                            <Image Source="/Images/Profiles/ImageProfile2.png" Width="238" Height="222"/>
                         </ListBoxItem>
                         <ListBoxItem Tag="/Images/Profiles/ImageProfile3.png">
-                            <Image Source="/Images/Profiles/ImageProfile3.png" Width="100" Height="100"/>
+                            <Image Source="/Images/Profiles/ImageProfile3.png" Width="238" Height="222"/>
                         </ListBoxItem>
                         <ListBoxItem Tag="/Images/Profiles/ImageProfile4.png">
-                            <Image Source="/Images/Profiles/ImageProfile4.png" Width="100" Height="100"/>
+                            <Image Source="/Images/Profiles/ImageProfile4.png" Width="238" Height="222"/>
                         </ListBoxItem>
                         <ListBoxItem Tag="/Images/Profiles/ImageProfile5.png">
-                            <Image Source="/Images/Profiles/ImageProfile5.png" Width="100" Height="100"/>
+                            <Image Source="/Images/Profiles/ImageProfile5.png" Width="238" Height="222"/>
                         </ListBoxItem>
                         <ListBoxItem Tag="/Images/Profiles/ImageProfile6.png">
-                            <Image Source="/Images/Profiles/ImageProfile6.png" Width="100" Height="100"/>
+                            <Image Source="/Images/Profiles/ImageProfile6.png" Width="238" Height="222"/>
                         </ListBoxItem>
                         <ListBoxItem Tag="/Images/Profiles/ImageProfile7.png">
-                            <Image Source="/Images/Profiles/ImageProfile7.png" Width="100" Height="100"/>
+                            <Image Source="/Images/Profiles/ImageProfile7.png" Width="238" Height="222"/>
                         </ListBoxItem>
                         <ListBoxItem Tag="/Images/Profiles/ImageProfile8.png">
-                            <Image Source="/Images/Profiles/ImageProfile8.png" Width="100" Height="100"/>
+                            <Image Source="/Images/Profiles/ImageProfile8.png" Width="238" Height="222"/>
                         </ListBoxItem>
                         <ListBoxItem Tag="/Images/Profiles/ImageProfile9.png">
-                            <Image Source="/Images/Profiles/ImageProfile9.png" Width="100" Height="100"/>
+                            <Image Source="/Images/Profiles/ImageProfile9.png" Width="238" Height="222"/>
                         </ListBoxItem>
                     </ListBox>
                 </StackPanel>

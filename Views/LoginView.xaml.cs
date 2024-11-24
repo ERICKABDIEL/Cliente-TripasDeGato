@@ -97,13 +97,13 @@ namespace TripasDeGatoCliente.Views {
                 }
             } catch (EndpointNotFoundException endpointNotFoundException) {
                 logger.LogError(endpointNotFoundException);
-                DialogManager.ShowErrorMessageAlert("Error al verificar el estado del jugador: servicio no disponible.");
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogEndPointException);
             } catch (TimeoutException timeoutException) {
                 logger.LogError(timeoutException);
-                DialogManager.ShowErrorMessageAlert("Error al verificar el estado del jugador: tiempo de espera agotado.");
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogTimeOutException);
             } catch (CommunicationException communicationException) {
                 logger.LogError(communicationException);
-                DialogManager.ShowErrorMessageAlert("Error al verificar el estado del jugador: problema de comunicación.");
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
             }
 
             return false;

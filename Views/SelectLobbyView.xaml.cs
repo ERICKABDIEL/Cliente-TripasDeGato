@@ -13,40 +13,30 @@ namespace TripasDeGatoCliente.Views {
         private LobbyBrowserClient lobbyBrowser;
         private LobbyManagerClient lobbyManager;
 
-
         public SelectLobbyView() {
             InitializeComponent();
-            //ESTO HACÍA ANTES, NO FUNCIONA
-            //InstanceContext context = new InstanceContext(this);
-            //lobbyManager = new LobbyManagerClient(context);
             lobbyBrowser = new LobbyBrowserClient();
-
             LoadLobbiesAsync();
         }
 
         private Task LoadLobbiesAsync() {
             try {
-
                 var lobbies = lobbyBrowser.GetAvailableLobbies();
                 LobbyDataGrid.ItemsSource = lobbies;
             } catch (Exception ex) {
                 MessageBox.Show($"Error al cargar los lobbies: {ex.Message}");
             }
-
             return Task.CompletedTask;
         }
 
         private async void BtnJoinGame_Click(object sender, RoutedEventArgs e) {
-
             if (LobbyDataGrid.SelectedItem is Lobby selectedLobby) {
                 string lobbyCode = selectedLobby.Code;
                 Profile guest = new Profile {
                     idProfile = UserProfileSingleton.IdProfile,
                     userName = UserProfileSingleton.UserName
                 };
-
                 try {
-                    //Unirse como guest J2
                     bool joined = await lobbyBrowser.JoinLobbyAsync(lobbyCode, guest);
 
                     if (joined) {
@@ -63,7 +53,6 @@ namespace TripasDeGatoCliente.Views {
             }
         }
 
-
         private void BtnBack_Click(object sender, RoutedEventArgs e) {
             MenuView menuView = new MenuView();
             if (this.NavigationService != null) {
@@ -71,50 +60,20 @@ namespace TripasDeGatoCliente.Views {
             } else {
                 MessageBox.Show("Error: No se puede navegar al menu.");
             }
-        }
+        } 
+
         private async void BtnSearch_Click(object sender, RoutedEventArgs e) {
-            string searchCode = txtCodeLobby.Text.Trim(); // Obtener el texto ingresado en el TextBox
-
+            string searchCode = txtCodeLobby.Text.Trim();
             try {
-                var lobbies = await lobbyBrowser.GetAvailableLobbiesAsync(); // Obtener los lobbies de manera asincrónica
-
-                // Filtrar los lobbies según el código ingresado
+                var lobbies = await lobbyBrowser.GetAvailableLobbiesAsync();
                 var filteredLobbies = lobbies.Where(lobby => lobby.Code.Contains(searchCode)).ToList();
-
-                // Si no se encuentran lobbies, mostrar un mensaje
                 if (filteredLobbies.Count == 0) {
                     MessageBox.Show("No se encontraron lobbies con ese código.");
                 }
-
-                // Actualizar el DataGrid con los lobbies filtrados
                 LobbyDataGrid.ItemsSource = filteredLobbies;
             } catch (Exception ex) {
                 MessageBox.Show($"Error al buscar los lobbies: {ex.Message}");
             }
         }
-
-        //Nuevo
-        /*
-        public void GenerateGuestProfile() {
-            LoggerManager logger = new LoggerManager(this.GetType());
-
-            try {
-                string randomUsername = GuestProfile.RandomChooserUsername();
-                string randomAvatar = GuestProfile.RandomChooserAvatarIcon();
-                string codeMatch = txtCodeLobby.Text;
-                GuestProfileSingleton.Instance.CreateInstance(codeMatch);
-                SelectLobbyView selectLobbyView = new SelectLobbyView();
-                this.NavigationService.Navigate(selectLobbyView);
-            } catch (EndpointNotFoundException endpointException) {
-                logger.LogError(endpointException);
-                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogEndPointException);
-            } catch (TimeoutException timeoutException) {
-                logger.LogError(timeoutException);
-                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogTimeOutException);
-            } catch (CommunicationException communicationException) {
-                logger.LogError(communicationException);
-                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
-            }
-        }*/
     }
 }
