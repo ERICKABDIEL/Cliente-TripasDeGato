@@ -136,16 +136,15 @@ namespace TripasDeGatoCliente.Views {
                 lbPlayer1.Content = lobby.Players.ContainsKey("PlayerOne") ? lobby.Players["PlayerOne"].userName : "Esperando jugador...";
                 lbPlayer2.Content = lobby.Players.ContainsKey("PlayerTwo") ? lobby.Players["PlayerTwo"].userName : "Esperando jugador...";
                 imgProfile1.Source = new BitmapImage(new Uri(UserProfileSingleton.PicPath, UriKind.RelativeOrAbsolute));
-               // string ruta = userManager.GetPicPath(lobby.Players["PlayerTwo"].userName);
-                //imgProfile2.Source = new BitmapImage(new Uri(ruta, UriKind.RelativeOrAbsolute));
+
 
 
             } else {
                 lbPlayer1.Content = lobby.Players.ContainsKey("PlayerTwo") ? lobby.Players["PlayerTwo"].userName : "Esperando jugador...";
                 lbPlayer2.Content = lobby.Players.ContainsKey("PlayerOne") ? lobby.Players["PlayerOne"].userName : "Esperando jugador...";
                 imgProfile1.Source = new BitmapImage(new Uri(UserProfileSingleton.PicPath, UriKind.RelativeOrAbsolute));
-               // string ruta = userManager.GetPicPath(lobby.Players["PlayerTwo"].userName);
-               // imgProfile2.Source = new BitmapImage(new Uri(ruta, UriKind.RelativeOrAbsolute));
+                string ruta = userManager.GetPicPath(lobby.Players["PlayerTwo"].userName);
+                imgProfile2.Source = new BitmapImage(new Uri(ruta, UriKind.RelativeOrAbsolute));
                 btnKickPlayer.Visibility = Visibility.Collapsed;
                 btnInvitedFriend.Visibility = Visibility.Collapsed;
                 btnStartGame.Visibility = Visibility.Collapsed;
@@ -249,6 +248,8 @@ namespace TripasDeGatoCliente.Views {
         public void GuestJoinedCallback(string guestName) {
             Dispatcher.Invoke(() => {
                 lbPlayer2.Content = guestName;
+                string ruta = userManager.GetPicPath(guestName);
+                imgProfile2.Source = new BitmapImage(new Uri(ruta, UriKind.RelativeOrAbsolute));
             });
         }
 
@@ -338,12 +339,13 @@ namespace TripasDeGatoCliente.Views {
             LoggerManager logger = new LoggerManager(this.GetType());
             if (lstFriends.SelectedItem != null) {
                 string selectedFriendName = lstFriends.SelectedItem.ToString();
+                string friendName = selectedFriendName.Split('-')[0].Trim();
 
                 try {
-                        int result = await emailInvitationManager.SendInvitationAsync(selectedFriendName, lobbyCode);
+                        int result = await emailInvitationManager.SendInvitationAsync(friendName, lobbyCode);
 
                         if (result == Constants.SUCCES_OPERATION) {
-                            DialogManager.ShowSuccessMessageAlert(string.Format(Properties.Resources.dialogInvitationSent, selectedFriendName));
+                            DialogManager.ShowSuccessMessageAlert(string.Format(Properties.Resources.dialogInvitationSent, friendName));
                         } else {
                             DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogErrorSendingInvitation);
                         
