@@ -1525,6 +1525,18 @@ namespace TripasDeGatoCliente.TripasDeGatoServicio {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMatchManager/GetNodePairs", ReplyAction="http://tempuri.org/IMatchManager/GetNodePairsResponse")]
         System.Threading.Tasks.Task<System.Collections.Generic.Dictionary<string, string>> GetNodePairsAsync(string matchCode);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMatchManager/EndTurn", ReplyAction="http://tempuri.org/IMatchManager/EndTurnResponse")]
+        bool EndTurn(string matchCode, string userName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMatchManager/EndTurn", ReplyAction="http://tempuri.org/IMatchManager/EndTurnResponse")]
+        System.Threading.Tasks.Task<bool> EndTurnAsync(string matchCode, string userName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMatchManager/GetCurrentTurn", ReplyAction="http://tempuri.org/IMatchManager/GetCurrentTurnResponse")]
+        string GetCurrentTurn(string matchCode);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMatchManager/GetCurrentTurn", ReplyAction="http://tempuri.org/IMatchManager/GetCurrentTurnResponse")]
+        System.Threading.Tasks.Task<string> GetCurrentTurnAsync(string matchCode);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1535,6 +1547,12 @@ namespace TripasDeGatoCliente.TripasDeGatoServicio {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IMatchManager/TraceReceived")]
         void TraceReceived(TripasDeGatoCliente.TripasDeGatoServicio.Trace trace);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IMatchManager/NotifyYourTurn")]
+        void NotifyYourTurn();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMatchManager/NotifyNotYouTurn", ReplyAction="http://tempuri.org/IMatchManager/NotifyNotYouTurnResponse")]
+        void NotifyNotYouTurn();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1595,6 +1613,69 @@ namespace TripasDeGatoCliente.TripasDeGatoServicio {
         
         public System.Threading.Tasks.Task<System.Collections.Generic.Dictionary<string, string>> GetNodePairsAsync(string matchCode) {
             return base.Channel.GetNodePairsAsync(matchCode);
+        }
+        
+        public bool EndTurn(string matchCode, string userName) {
+            return base.Channel.EndTurn(matchCode, userName);
+        }
+        
+        public System.Threading.Tasks.Task<bool> EndTurnAsync(string matchCode, string userName) {
+            return base.Channel.EndTurnAsync(matchCode, userName);
+        }
+        
+        public string GetCurrentTurn(string matchCode) {
+            return base.Channel.GetCurrentTurn(matchCode);
+        }
+        
+        public System.Threading.Tasks.Task<string> GetCurrentTurnAsync(string matchCode) {
+            return base.Channel.GetCurrentTurnAsync(matchCode);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="TripasDeGatoServicio.IEmailInvitationManager")]
+    public interface IEmailInvitationManager {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEmailInvitationManager/SendInvitation", ReplyAction="http://tempuri.org/IEmailInvitationManager/SendInvitationResponse")]
+        int SendInvitation(string username, string code);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEmailInvitationManager/SendInvitation", ReplyAction="http://tempuri.org/IEmailInvitationManager/SendInvitationResponse")]
+        System.Threading.Tasks.Task<int> SendInvitationAsync(string username, string code);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IEmailInvitationManagerChannel : TripasDeGatoCliente.TripasDeGatoServicio.IEmailInvitationManager, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class EmailInvitationManagerClient : System.ServiceModel.ClientBase<TripasDeGatoCliente.TripasDeGatoServicio.IEmailInvitationManager>, TripasDeGatoCliente.TripasDeGatoServicio.IEmailInvitationManager {
+        
+        public EmailInvitationManagerClient() {
+        }
+        
+        public EmailInvitationManagerClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public EmailInvitationManagerClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public EmailInvitationManagerClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public EmailInvitationManagerClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        public int SendInvitation(string username, string code) {
+            return base.Channel.SendInvitation(username, code);
+        }
+        
+        public System.Threading.Tasks.Task<int> SendInvitationAsync(string username, string code) {
+            return base.Channel.SendInvitationAsync(username, code);
         }
     }
 }

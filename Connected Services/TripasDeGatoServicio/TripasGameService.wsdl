@@ -290,6 +290,35 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_IEmailInvitationManager_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <msf:WindowsTransportSecurity xmlns:msf="http://schemas.microsoft.com/ws/2006/05/framing/policy">
+                  <msf:ProtectionLevel>EncryptAndSign</msf:ProtectionLevel>
+                </msf:WindowsTransportSecurity>
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd0" namespace="http://tempuri.org/" />
@@ -528,11 +557,38 @@
   <wsdl:message name="IMatchManager_GetNodePairs_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetNodePairsResponse" />
   </wsdl:message>
+  <wsdl:message name="IMatchManager_EndTurn_InputMessage">
+    <wsdl:part name="parameters" element="tns:EndTurn" />
+  </wsdl:message>
+  <wsdl:message name="IMatchManager_EndTurn_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EndTurnResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMatchManager_GetCurrentTurn_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCurrentTurn" />
+  </wsdl:message>
+  <wsdl:message name="IMatchManager_GetCurrentTurn_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCurrentTurnResponse" />
+  </wsdl:message>
   <wsdl:message name="IMatchManager_MatchEnded_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:MatchEnded" />
   </wsdl:message>
   <wsdl:message name="IMatchManager_TraceReceived_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:TraceReceived" />
+  </wsdl:message>
+  <wsdl:message name="IMatchManager_NotifyYourTurn_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:NotifyYourTurn" />
+  </wsdl:message>
+  <wsdl:message name="IMatchManager_NotifyNotYouTurn_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:NotifyNotYouTurn" />
+  </wsdl:message>
+  <wsdl:message name="IMatchManager_NotifyNotYouTurn_InputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:NotifyNotYouTurnResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEmailInvitationManager_SendInvitation_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendInvitation" />
+  </wsdl:message>
+  <wsdl:message name="IEmailInvitationManager_SendInvitation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SendInvitationResponse" />
   </wsdl:message>
   <wsdl:portType name="IUserManager">
     <wsdl:operation name="CreateAccount">
@@ -709,11 +765,32 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IMatchManager/GetNodePairs" message="tns:IMatchManager_GetNodePairs_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IMatchManager/GetNodePairsResponse" message="tns:IMatchManager_GetNodePairs_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="EndTurn">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMatchManager/EndTurn" message="tns:IMatchManager_EndTurn_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMatchManager/EndTurnResponse" message="tns:IMatchManager_EndTurn_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrentTurn">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMatchManager/GetCurrentTurn" message="tns:IMatchManager_GetCurrentTurn_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMatchManager/GetCurrentTurnResponse" message="tns:IMatchManager_GetCurrentTurn_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="MatchEnded">
       <wsdl:output wsaw:Action="http://tempuri.org/IMatchManager/MatchEnded" message="tns:IMatchManager_MatchEnded_OutputCallbackMessage" />
     </wsdl:operation>
     <wsdl:operation name="TraceReceived">
       <wsdl:output wsaw:Action="http://tempuri.org/IMatchManager/TraceReceived" message="tns:IMatchManager_TraceReceived_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="NotifyYourTurn">
+      <wsdl:output wsaw:Action="http://tempuri.org/IMatchManager/NotifyYourTurn" message="tns:IMatchManager_NotifyYourTurn_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="NotifyNotYouTurn">
+      <wsdl:output wsaw:Action="http://tempuri.org/IMatchManager/NotifyNotYouTurn" message="tns:IMatchManager_NotifyNotYouTurn_OutputCallbackMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IMatchManager/NotifyNotYouTurnResponse" message="tns:IMatchManager_NotifyNotYouTurn_InputCallbackMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IEmailInvitationManager">
+    <wsdl:operation name="SendInvitation">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEmailInvitationManager/SendInvitation" message="tns:IEmailInvitationManager_SendInvitation_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEmailInvitationManager/SendInvitationResponse" message="tns:IEmailInvitationManager_SendInvitation_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IUserManager" type="tns:IUserManager">
@@ -1103,6 +1180,24 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="EndTurn">
+      <soap12:operation soapAction="http://tempuri.org/IMatchManager/EndTurn" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrentTurn">
+      <soap12:operation soapAction="http://tempuri.org/IMatchManager/GetCurrentTurn" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="MatchEnded">
       <soap12:operation soapAction="http://tempuri.org/IMatchManager/MatchEnded" style="document" />
       <wsdl:output>
@@ -1111,6 +1206,34 @@
     </wsdl:operation>
     <wsdl:operation name="TraceReceived">
       <soap12:operation soapAction="http://tempuri.org/IMatchManager/TraceReceived" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NotifyYourTurn">
+      <soap12:operation soapAction="http://tempuri.org/IMatchManager/NotifyYourTurn" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NotifyNotYouTurn">
+      <soap12:operation soapAction="http://tempuri.org/IMatchManager/NotifyNotYouTurn" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_IEmailInvitationManager" type="tns:IEmailInvitationManager">
+    <wsp:PolicyReference URI="#NetTcpBinding_IEmailInvitationManager_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="SendInvitation">
+      <soap12:operation soapAction="http://tempuri.org/IEmailInvitationManager/SendInvitation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>
@@ -1202,6 +1325,15 @@
       <soap12:address location="net.tcp://localhost:8081/MatchManager" />
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8081/MatchManager</wsa10:Address>
+        <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
+          <Upn>ERICK_ATZIN\abdie</Upn>
+        </Identity>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_IEmailInvitationManager" binding="tns:NetTcpBinding_IEmailInvitationManager">
+      <soap12:address location="net.tcp://localhost:8081/EmailInvitationManager" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:8081/EmailInvitationManager</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
           <Upn>ERICK_ATZIN\abdie</Upn>
         </Identity>
