@@ -69,7 +69,6 @@ namespace TripasDeGatoCliente.Views {
             this.NavigationService.Navigate(loginView);
         }
 
-
         private bool areElementsVisible = false;
 
         private async void BtnFriends_Click(object sender, RoutedEventArgs e) {
@@ -157,18 +156,6 @@ namespace TripasDeGatoCliente.Views {
                 HandleException(ex, logger);
             }
         }
-
-        private async Task ExecuteFriendAddition(int friendProfileId, string friendName) {
-            int userProfileId = UserProfileSingleton.IdProfile;
-            int result = await friendsManager.AddFriendAsync(userProfileId, friendProfileId);
-            if (result == Constants.SUCCES_OPERATION) {
-                DialogManager.ShowSuccessMessageAlert(string.Format(Properties.Resources.dialogAddFriendSuccessfully, friendName));
-                await LoadFriendsListAsync();
-            } else {
-                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogErrorAddingFriend);
-            }
-        }
-
         private void HandleException(Exception ex, LoggerManager logger) {
             if (ex is FaultException<ProfileNotFoundFault> faultEx) {
                 logger.LogError(faultEx);
@@ -184,6 +171,18 @@ namespace TripasDeGatoCliente.Views {
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
             }
         }
+
+        private async Task ExecuteFriendAddition(int friendProfileId, string friendName) {
+            int userProfileId = UserProfileSingleton.IdProfile;
+            int result = await friendsManager.AddFriendAsync(userProfileId, friendProfileId);
+            if (result == Constants.SUCCES_OPERATION) {
+                DialogManager.ShowSuccessMessageAlert(string.Format(Properties.Resources.dialogAddFriendSuccessfully, friendName));
+                await LoadFriendsListAsync();
+            } else {
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogErrorAddingFriend);
+            }
+        }
+
         //HASTA AQUI PARA AGREGAR AMIGO
 
         private async Task LoadFriendsListAsync() {

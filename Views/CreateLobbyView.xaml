@@ -14,14 +14,6 @@
                 <Border.Background>
                     <ImageBrush ImageSource="/Images/BackgroundLogin.png" Stretch="UniformToFill"/>
                 </Border.Background>
-                <Label x:Name="lblMapLobby_Copiar" 
-                    Content="Mapa:" 
-                    FontSize="14" 
-                    Foreground="Black" 
-                    Margin="0,0,1112,683" 
-                    FontFamily="Cooper Black"
-                    HorizontalContentAlignment="Center" 
-                    VerticalContentAlignment="Center"/>
             </Border>
 
             <Grid Grid.Row="3" Margin="0,0,0,10">
@@ -132,7 +124,8 @@
                          BorderBrush="#FF432B1E"
                          FontFamily="Cooper Black" 
                          VerticalContentAlignment="Center" 
-                         HorizontalContentAlignment="Center" MaxLength="20"/>
+                         HorizontalContentAlignment="Center"
+                         MaxLength="20"/>
                 <Label x:Name="lblNodeLobby" 
                     Content="Nodos:" 
                     FontSize="14" 

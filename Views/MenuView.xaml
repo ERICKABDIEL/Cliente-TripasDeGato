@@ -10,9 +10,7 @@
       Height="720" 
       Foreground="{x:Null}">
 
-    <!-- Recursos de la página -->
     <Page.Resources>
-        <!-- Estilo para los botones -->
         <Style TargetType="{x:Type Button}">
             <Setter Property="Foreground" Value="#6B4423"/>
             <Setter Property="Background" Value="#D8C3A5"/>
@@ -46,15 +44,13 @@
         </Style>
     </Page.Resources>
 
-    <!-- Grid principal -->
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="131*"/>
             <RowDefinition Height="589*"/>
         </Grid.RowDefinitions>
 
-        <!-- Botón Volver -->
-        <Image x:Name="imageLogo" 
+        <Image x:Name="imageBackground" 
                Source="/Images/BackgroundMenu.png" 
                HorizontalAlignment="Center" 
                Height="720" 
@@ -62,7 +58,6 @@
                Width="1280"
                Grid.RowSpan="2"/>
 
-        <!-- Botón Volver -->
         <Button x:Name="btnSignOut" 
                 Content="{x:Static p:Resources.btnSignOut}" 
                 HorizontalAlignment="Left" 
@@ -166,7 +161,6 @@
                 Click="BtnFriends_Click"
                 Grid.Row="1" Height="40"/>
 
-        <!-- Información del usuario -->
         <Label x:Name="lbUserName" 
                Content="{x:Static p:Resources.lbUserName}"
                HorizontalAlignment="Center" 
@@ -180,7 +174,6 @@
                FontSize="24" 
                FontFamily="Rockwell Extra Bold" Grid.Row="1"/>
 
-        <!-- Listado de amigos -->
         <ListBox x:Name="lstFriends" 
                  Width="200" 
                  Height="278" 
@@ -190,7 +183,9 @@
                  BorderBrush="#FF432B1E" 
                  Foreground="White" 
                  av:ItemsSource="{av:SampleData ItemCount=10}" 
-                 IsEnabled="False" Grid.Row="1" Visibility="Collapsed">
+                 IsEnabled="False" 
+                 Grid.Row="1" 
+                 Visibility="Collapsed">
             <ListBox.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="#FFCFBD8B"/>
@@ -199,7 +194,6 @@
             </ListBox.Background>
         </ListBox>
 
-        <!-- Botones de gestión de amigos -->
         <Button x:Name="btnRemoveFriend" 
                 Content="{x:Static p:Resources.btnRemoveFriend}" 
                 HorizontalAlignment="Left" 
@@ -211,8 +205,10 @@
                 Width="92" 
                 FontSize="12" 
                 IsEnabled="False"
-                Click="BtnRemoveFriend_Click" Grid.Row="1" Background="#FF432B1E" Visibility="Collapsed">
-        </Button>
+                Click="BtnRemoveFriend_Click" 
+                Grid.Row="1" 
+                Background="#FF432B1E"
+                Visibility="Collapsed"/>
 
         <Button x:Name="btnAddFriend" 
                 Content="{x:Static p:Resources.btnAddFriend}" 
@@ -223,9 +219,12 @@
                 Height="36" 
                 Width="92" 
                 FontSize="12" 
-                IsEnabled="False" Grid.Row="1" BorderBrush="#FF432B1E" Foreground="White" Background="#FF432B1E" Visibility="Collapsed">
-
-        </Button>
+                IsEnabled="False" 
+                Grid.Row="1" 
+                BorderBrush="#FF432B1E" 
+                Foreground="White" 
+                Background="#FF432B1E" 
+                Visibility="Collapsed"/>
 
         <TextBox x:Name="txtFriendName" 
                  Width="200" 
@@ -238,7 +237,10 @@
                  Foreground="White"
                  BorderBrush="#FFC9A97C" 
                  BorderThickness="2" 
-                 IsEnabled="False" Grid.Row="1" Visibility="Collapsed"/>
+                 IsEnabled="False" 
+                 Grid.Row="1"
+                 MaxLength="25" 
+                 Visibility="Collapsed"/>
 
         <Button x:Name="btnAdd" 
                 Content="{x:Static p:Resources.btnAdd}" 
@@ -251,7 +253,9 @@
                 Click="BtnAdd_Click" 
                 Height="34" 
                 Width="113" 
-                IsEnabled="False" Grid.Row="1" Background="#FF432B1E" Visibility="Collapsed">
-        </Button>
+                IsEnabled="False" 
+                Grid.Row="1"
+                Background="#FF432B1E" 
+                Visibility="Collapsed"/>
     </Grid>
 </Page>

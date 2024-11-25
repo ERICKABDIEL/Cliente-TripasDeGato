@@ -28,6 +28,8 @@ namespace TripasDeGatoCliente.Views {
         private List<Node> nodes;
         private Dictionary<string, string> nodePairs;
         private Node startNode;
+        private bool isPlayerTurn = false;
+
 
         public GameMatch(string gameCode) {
             InitializeComponent();
@@ -38,20 +40,35 @@ namespace TripasDeGatoCliente.Views {
             drawingCanvas.MouseDown += Canvas_MouseDown;
             drawingCanvas.MouseMove += Canvas_MouseMove;
             drawingCanvas.MouseUp += Canvas_MouseUp;
+            labelPlayer1.Content = UserProfileSingleton.UserName;
             StartTimer();
+        }
+        private async Task CheckCurrentTurn() {
+            try {
+                string currentTurn = await Task.Run(() => matchManagerClient.GetCurrentTurn(matchCode));
+
+                if (currentTurn == UserProfileSingleton.UserName) {
+                    NotifyYourTurn();
+                } else {
+                    NotifyNotYouTurn();
+                }
+            } catch (Exception ex) {
+                DialogManager.ShowErrorMessageAlert($"Error al obtener el turno: {ex.Message}");
+            }
         }
 
         private async void InitializeMatch() {
             try {
                 bool connected = matchManagerClient.RegisterPlayerCallback(matchCode, UserProfileSingleton.UserName);
                 if (!connected) {
-                    DialogManager.ShowErrorMessageAlert("No se pudo conectar al lobby.");
+                    DialogManager.ShowErrorMessageAlert("No se pudo conectar a la partida.");
                 } else {
                     isConnected = true;
                     nodes = await Task.Run(() => matchManagerClient.GetNodes(matchCode));
                     nodePairs = await Task.Run(() => matchManagerClient.GetNodePairs(matchCode));
                     if (nodes != null && nodes.Count > 0) {
                         DrawNodes();
+                        await CheckCurrentTurn();
                     } else {
                         DialogManager.ShowErrorMessageAlert("No se encontraron nodos para esta partida.");
                     }
@@ -76,13 +93,14 @@ namespace TripasDeGatoCliente.Views {
                 timeProgressBar.Value = (remainingTime / totalTime) * 100; // Actualiza la barra de progreso
                 if (remainingTime > totalTime * 0.5) {
                     timeProgressBar.Foreground = Brushes.Green; // Color verde al inicio
-                } else if (remainingTime > totalTime * 0.2) {
+                } else if (remainingTime > totalTime * 0.2) { 
                     timeProgressBar.Foreground = Brushes.Orange; // Color naranja cuando queda menos del 50%
                 } else {
                     timeProgressBar.Foreground = Brushes.Red; // Color rojo cuando queda menos del 20%
                 }
             } else {
                 timer.Stop(); // Detiene el temporizador cuando el tiempo llega a 0
+                // AQUI ES DONDE SEUSA EL ENDTURN PARA QUE SEGUN CAMBIE LOS TURNOS EN LOS CLIENTES matchManagerClient.EndTurn(matchCode, UserProfileSingleton.UserName);
                 timeProgressBar.Foreground = Brushes.Gray; // Cambia el color a gris cuando el tiempo se acaba
 
             }
@@ -104,6 +122,24 @@ namespace TripasDeGatoCliente.Views {
             };
             drawingCanvas.Children.Add(currentLine);
             currentLine.Points.Add(mousePosition);
+        }
+
+        public void NotifyYourTurn() {
+            drawingCanvas.IsEnabled = true;
+            isPlayerTurn= true;
+            labelTurn.Content = "¡Es tu turno!";
+            labelTurn.Foreground = Brushes.Green;
+            StartTimer(); // Reiniciar el temporizador
+        }
+
+        public void NotifyNotYouTurn() {
+            Application.Current.Dispatcher.Invoke(() => {
+                drawingCanvas.IsEnabled = false;
+                isPlayerTurn = false;
+                labelTurn.Content = "Aún no es tu turno";
+                labelTurn.Foreground = Brushes.Red;
+            });
+
         }
 
         private void Canvas_MouseMove(object sender, MouseEventArgs e) {
@@ -167,6 +203,7 @@ namespace TripasDeGatoCliente.Views {
             if (currentTracePoints.Count > 1) {
                 allTraces.Add(currentLine);
                 SendTrace(currentTracePoints);
+                NotifyNotYouTurn();
             } else {
                 drawingCanvas.Children.Remove(currentLine);
             }
@@ -205,23 +242,7 @@ namespace TripasDeGatoCliente.Views {
             isDrawing = false;
             drawingCanvas.Children.Remove(currentLine);
             DialogManager.ShowErrorMessageAlert(message);
-            if (isConnected) {
-                //NotifyInfraction();
-            }
         }
-
-        /*
-        private void NotifyInfraction() {
-            try {
-                MatchManagerClient.NotifyInfraction(matchCode, UserProfileSingleton.UserName);
-            } catch (CommunicationException) {
-                DialogManager.ShowErrorMessageAlert("Error de comunicación al notificar la infracción.");
-            } catch (TimeoutException) {
-                DialogManager.ShowErrorMessageAlert("El servidor tardó demasiado en responder a la infracción.");
-            } catch (Exception ex) {
-                DialogManager.ShowErrorMessageAlert($"Error al notificar la infracción: {ex.Message}");
-            }
-        }*/
 
         public void MatchEnded(string matchCode) {
             throw new NotImplementedException();
@@ -239,14 +260,14 @@ namespace TripasDeGatoCliente.Views {
                 drawingCanvas.Children.Add(receivedLine);
             });
             allTraces.Add(receivedLine);
+            isPlayerTurn = true;
+            NotifyYourTurn();
         }
 
         private void DrawNodes() {
             if (nodes == null) return;
-            // Limpia el lienzo antes de dibujar nuevos nodos
             Application.Current.Dispatcher.Invoke(() => drawingCanvas.Children.Clear());
             foreach (var node in nodes) {
-                // Representa cada nodo como un círculo en el lienzo
                 var ellipse = new Ellipse {
                     Width = 10,
                     Height = 10,
@@ -254,18 +275,15 @@ namespace TripasDeGatoCliente.Views {
                     Stroke = Brushes.Black,
                     StrokeThickness = 1
                 };
-                // Ajusta la posición del nodo en el lienzo
                 Canvas.SetLeft(ellipse, node.X - ellipse.Width / 2);
                 Canvas.SetTop(ellipse, node.Y - ellipse.Height / 2);
-                // Agrega el nodo al lienzo de forma segura
                 Application.Current.Dispatcher.Invoke(() => drawingCanvas.Children.Add(ellipse));
             }
         }
 
-        public void TurnChanged(string currentPlayer) {
-            Dispatcher.Invoke(() => {
-                MessageBox.Show($"Es el turno de: {currentPlayer}", "Cambio de turno");
-            });
-        }
+
+
+
+
     }
 }
