@@ -84,7 +84,9 @@ namespace TripasDeGatoCliente.Views {
             timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromMilliseconds(100); // Actualiza cada 100ms
             timer.Tick += Timer_Tick;
-            timer.Start();
+            if (isPlayerTurn) {
+                timer.Start();
+            }
         }
 
         private void Timer_Tick(object sender, EventArgs e) {
@@ -100,9 +102,8 @@ namespace TripasDeGatoCliente.Views {
                 }
             } else {
                 timer.Stop(); // Detiene el temporizador cuando el tiempo llega a 0
-                // AQUI ES DONDE SEUSA EL ENDTURN PARA QUE SEGUN CAMBIE LOS TURNOS EN LOS CLIENTES matchManagerClient.EndTurn(matchCode, UserProfileSingleton.UserName);
-                timeProgressBar.Foreground = Brushes.Gray; // Cambia el color a gris cuando el tiempo se acaba
-
+                matchManagerClient.EndTurnAsync(matchCode, UserProfileSingleton.UserName);
+                timeProgressBar.Foreground = Brushes.Gray;
             }
         }
 
@@ -125,23 +126,38 @@ namespace TripasDeGatoCliente.Views {
         }
 
         public void NotifyYourTurn() {
+            // Detener el temporizador previo, si existe
+            if (timer != null) {
+                timer.Stop(); // Detiene el temporizador existente
+                timer.Tick -= Timer_Tick; // Desvincula el evento anterior
+            }
+
+            // Reiniciar el tiempo y el temporizador
+            remainingTime = totalTime;
+            timeProgressBar.Value = 100;
+            timeProgressBar.Foreground = Brushes.Green;
+
             drawingCanvas.IsEnabled = true;
-            isPlayerTurn= true;
+            isPlayerTurn = true;
             labelTurn.Content = "¡Es tu turno!";
             labelTurn.Foreground = Brushes.Green;
-            StartTimer(); // Reiniciar el temporizador
+
+            StartTimer();
         }
 
         public void NotifyNotYouTurn() {
             Application.Current.Dispatcher.Invoke(() => {
-                drawingCanvas.IsEnabled = false;
+                if (timer != null) {
+                    timer.Stop(); // Detén el temporizador si no es el turno
+                    timer.Tick -= Timer_Tick;
+                }
+
+                drawingCanvas.IsEnabled = false; // Deshabilita la interacción del cliente
                 isPlayerTurn = false;
                 labelTurn.Content = "Aún no es tu turno";
                 labelTurn.Foreground = Brushes.Red;
             });
-
         }
-
         private void Canvas_MouseMove(object sender, MouseEventArgs e) {
             if (!isDrawing) return;
             Point mousePosition = e.GetPosition(drawingCanvas);
@@ -203,7 +219,7 @@ namespace TripasDeGatoCliente.Views {
             if (currentTracePoints.Count > 1) {
                 allTraces.Add(currentLine);
                 SendTrace(currentTracePoints);
-                NotifyNotYouTurn();
+                Task.Run(() => matchManagerClient.EndTurnAsync(matchCode, UserProfileSingleton.UserName));
             } else {
                 drawingCanvas.Children.Remove(currentLine);
             }
@@ -260,8 +276,6 @@ namespace TripasDeGatoCliente.Views {
                 drawingCanvas.Children.Add(receivedLine);
             });
             allTraces.Add(receivedLine);
-            isPlayerTurn = true;
-            NotifyYourTurn();
         }
 
         private void DrawNodes() {
