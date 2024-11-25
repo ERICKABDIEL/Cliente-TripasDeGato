@@ -88,6 +88,15 @@ namespace TripasDeGatoCliente.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Create.
+        /// </summary>
+        public static string btnCreate {
+            get {
+                return ResourceManager.GetString("btnCreate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Edit.
         /// </summary>
         public static string btnEdit {
@@ -111,6 +120,15 @@ namespace TripasDeGatoCliente.Properties {
         public static string btnGuest {
             get {
                 return ResourceManager.GetString("btnGuest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Invite.
+        /// </summary>
+        public static string btnInvited {
+            get {
+                return ResourceManager.GetString("btnInvited", resourceCulture);
             }
         }
         
@@ -210,6 +228,15 @@ namespace TripasDeGatoCliente.Properties {
         public static string btnSearch {
             get {
                 return ResourceManager.GetString("btnSearch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Send.
+        /// </summary>
+        public static string btnSend {
+            get {
+                return ResourceManager.GetString("btnSend", resourceCulture);
             }
         }
         
@@ -349,6 +376,15 @@ namespace TripasDeGatoCliente.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Could not connect to the lobby..
+        /// </summary>
+        public static string dialogConnectionError {
+            get {
+                return ResourceManager.GetString("dialogConnectionError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Connection error with the server.
         /// </summary>
         public static string dialogConnectionErrorWithServer {
@@ -372,6 +408,15 @@ namespace TripasDeGatoCliente.Properties {
         public static string dialogEndPointException {
             get {
                 return ResourceManager.GetString("dialogEndPointException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Please enter a name for the game..
+        /// </summary>
+        public static string dialogEnterGameNameError {
+            get {
+                return ResourceManager.GetString("dialogEnterGameNameError", resourceCulture);
             }
         }
         
@@ -475,6 +520,15 @@ namespace TripasDeGatoCliente.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a An error occurred while sending the invitation. Please try again later..
+        /// </summary>
+        public static string dialogErrorSendingInvitation {
+            get {
+                return ResourceManager.GetString("dialogErrorSendingInvitation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Error sending the recovery code.
         /// </summary>
         public static string dialogErrorSendingRecoveryCode {
@@ -520,11 +574,29 @@ namespace TripasDeGatoCliente.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a The host left the lobby..
+        /// </summary>
+        public static string dialogHostLeftLobby {
+            get {
+                return ResourceManager.GetString("dialogHostLeftLobby", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Invalid Email.
         /// </summary>
         public static string dialogInvalidEmail {
             get {
                 return ResourceManager.GetString("dialogInvalidEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Error: the guest profile or lobby code is invalid..
+        /// </summary>
+        public static string dialogInvalidGuestProfileOrLobbyCode {
+            get {
+                return ResourceManager.GetString("dialogInvalidGuestProfileOrLobbyCode", resourceCulture);
             }
         }
         
@@ -556,11 +628,65 @@ namespace TripasDeGatoCliente.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Invalid time selected..
+        /// </summary>
+        public static string dialogInvalidTimeSelected {
+            get {
+                return ResourceManager.GetString("dialogInvalidTimeSelected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Invalid verification code. Please try again.
         /// </summary>
         public static string dialogInvalidVerificationCode {
             get {
                 return ResourceManager.GetString("dialogInvalidVerificationCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a The invitation has been successfully sent to {0}..
+        /// </summary>
+        public static string dialogInvitationSent {
+            get {
+                return ResourceManager.GetString("dialogInvitationSent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Could not create the lobby. Please try again..
+        /// </summary>
+        public static string dialogLobbyCreationError {
+            get {
+                return ResourceManager.GetString("dialogLobbyCreationError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a You have been removed from the lobby..
+        /// </summary>
+        public static string dialogLobbyExit {
+            get {
+                return ResourceManager.GetString("dialogLobbyExit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Could not join the lobby. It might be full or unavailable..
+        /// </summary>
+        public static string dialogLobbyJoinError {
+            get {
+                return ResourceManager.GetString("dialogLobbyJoinError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a No lobbies found with that code..
+        /// </summary>
+        public static string dialogLobbyNotFound {
+            get {
+                return ResourceManager.GetString("dialogLobbyNotFound", resourceCulture);
             }
         }
         
@@ -664,6 +790,33 @@ namespace TripasDeGatoCliente.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Please select a friend before sending the invitation..
+        /// </summary>
+        public static string dialogSelectFriendToInvite {
+            get {
+                return ResourceManager.GetString("dialogSelectFriendToInvite", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Please select a lobby to join..
+        /// </summary>
+        public static string dialogSelectLobbyToJoin {
+            get {
+                return ResourceManager.GetString("dialogSelectLobbyToJoin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Please select the nodes, map, and time for the game..
+        /// </summary>
+        public static string dialogSelectNodesMapTimeError {
+            get {
+                return ResourceManager.GetString("dialogSelectNodesMapTimeError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Try again waiting time has expired. Please check your connection to the server..
         /// </summary>
         public static string dialogTimeOutException {
@@ -754,6 +907,15 @@ namespace TripasDeGatoCliente.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Waiting for player....
+        /// </summary>
+        public static string dialogWaitingForPlayer {
+            get {
+                return ResourceManager.GetString("dialogWaitingForPlayer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Wrong Data.
         /// </summary>
         public static string dialogWrongData {
@@ -799,11 +961,74 @@ namespace TripasDeGatoCliente.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Player 1.
+        /// </summary>
+        public static string globalLbPlayer1 {
+            get {
+                return ResourceManager.GetString("globalLbPlayer1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Player 2.
+        /// </summary>
+        public static string globalLbPlayer2 {
+            get {
+                return ResourceManager.GetString("globalLbPlayer2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a User.
         /// </summary>
         public static string globalLbUser {
             get {
                 return ResourceManager.GetString("globalLbUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Code.
+        /// </summary>
+        public static string headerCode {
+            get {
+                return ResourceManager.GetString("headerCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Name Game.
+        /// </summary>
+        public static string headerGameName {
+            get {
+                return ResourceManager.GetString("headerGameName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Nodes.
+        /// </summary>
+        public static string headerNodes {
+            get {
+                return ResourceManager.GetString("headerNodes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Players.
+        /// </summary>
+        public static string headerPlayers {
+            get {
+                return ResourceManager.GetString("headerPlayers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Code.
+        /// </summary>
+        public static string lbCode {
+            get {
+                return ResourceManager.GetString("lbCode", resourceCulture);
             }
         }
         
@@ -1038,6 +1263,33 @@ namespace TripasDeGatoCliente.Properties {
         public static string lbVerifyPassword {
             get {
                 return ResourceManager.GetString("lbVerifyPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Bear.
+        /// </summary>
+        public static string mapOptionBear {
+            get {
+                return ResourceManager.GetString("mapOptionBear", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Cat.
+        /// </summary>
+        public static string mapOptionCat {
+            get {
+                return ResourceManager.GetString("mapOptionCat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Dog.
+        /// </summary>
+        public static string mapOptionDog {
+            get {
+                return ResourceManager.GetString("mapOptionDog", resourceCulture);
             }
         }
         

@@ -11,7 +11,6 @@
       Background="Black">
 
     <Page.Resources>
-        <!-- Estilo para los elementos de la lista -->
         <Style x:Key="LeaderboardItemStyle" TargetType="ListViewItem">
             <Setter Property="Margin" Value="5"/>
             <Setter Property="Padding" Value="5"/>
@@ -25,16 +24,14 @@
     </Page.Resources>
 
     <Grid>
-        <!-- Fondo de la tabla de clasificación -->
         <Image Source="/Images/BackgroundLaderboard.png" 
                HorizontalAlignment="Center" 
                Height="720" 
                VerticalAlignment="Center" 
                Width="1280"/>
 
-        <!-- ListView para mostrar el ranking -->
         <ListView x:Name="LeaderboardListView" 
-                  Margin="502,326,416,114" 
+                  Margin="432,328,486,112" 
                   Background="{x:Null}"
                   BorderThickness="0" 
                   ItemContainerStyle="{StaticResource LeaderboardItemStyle}">

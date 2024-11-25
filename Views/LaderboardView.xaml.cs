@@ -41,7 +41,7 @@ namespace TripasDeGatoCliente.Views {
             if (this.NavigationService != null) {
                 this.NavigationService.Navigate(menuView);
             } else {
-                MessageBox.Show("Error: No se puede navegar al menu.");
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogNavigationError);
             }
         }
     }

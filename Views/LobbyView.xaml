@@ -6,11 +6,9 @@
       mc:Ignorable="av"
       x:Class="TripasDeGatoCliente.Views.LobbyView"
       Width="1280"
-      Height="720"
-      Background="Black">
+      Height="720">
 
     <Page.Resources>
-        <!-- Estilo para los botones -->
         <Style TargetType="Button">
             <Setter Property="FontFamily" Value="Georgia"/>
             <Setter Property="FontWeight" Value="Bold"/>
@@ -71,7 +69,10 @@
                 Content="{x:Static p:Resources.btnInviteFriend}" 
                 HorizontalAlignment="Left" 
                 Margin="1022,549,0,0" 
-                VerticalAlignment="Top" Width="144" Height="40"/>
+                VerticalAlignment="Top"
+                Width="144" 
+                Click="BtnInvitedFriend_Click"
+                Height="40"/>
 
         <Button x:Name="btnStartGame" 
                 Content="{x:Static p:Resources.btnStartGame}" 
@@ -87,20 +88,22 @@
                 HorizontalAlignment="Left" 
                 Margin="71,615,0,0" 
                 VerticalAlignment="Top" 
-                Height="40" Width="138"/>
+                Height="40"
+                Width="138"/>
 
         <TextBox x:Name="txtMessageInput" 
-         Background="#2F2F2F" 
-         Foreground="White" 
-         FontWeight="Bold" 
-         BorderBrush="White" 
-         BorderThickness="1" 
-         FontSize="20" 
-         MaxLength="100" 
-         Padding="5" 
-         Margin="341,615,393,65" />
+                 Background="#2F2F2F" 
+                 Foreground="White" 
+                 FontWeight="Bold" 
+                 BorderBrush="White" 
+                 BorderThickness="1" 
+                 FontSize="20" 
+                 MaxLength="100" 
+                 Padding="5" 
+                 Margin="341,615,393,65" />
 
-        <Button Content="Enviar" 
+        <Button x:Name="btnSend"
+                Content="{x:Static p:Resources.btnSend}" 
                 Width="79" 
                 Height="40" 
                 Background="#FFCAC3AF" 
@@ -110,7 +113,8 @@
                 Margin="901,615,0,0" 
                 VerticalAlignment="Top" 
                 Click="BtnSendMessage_Click"
-                BorderBrush="#FF4A3555" HorizontalAlignment="Left"/>
+                BorderBrush="#FF4A3555" 
+                HorizontalAlignment="Left"/>
 
         <Button x:Name="btnBack" 
                 Content="{x:Static p:Resources.globalBtnBack}" 
@@ -178,10 +182,80 @@
                 </Style>
             </Button.Style>
         </Button>
-        <Label x:Name="lbCode" Content="Label" HorizontalAlignment="Center" Margin="0,453,0,0" VerticalAlignment="Top" Foreground="Black" FontSize="36" Background="{x:Null}" Height="58" Width="441" HorizontalContentAlignment="Center" FontFamily="Rockwell Extra Bold"/>
-        <Image x:Name="imgProfile1" Source="/Images/Profiles/ImageProfile1.png" RenderTransformOrigin="0.5,0.5" Margin="999,320,91,190"/>
-        <Label x:Name="labelPlayer1" Content="Player 1" Foreground="Black" FontSize="16" FontFamily="Rockwell Extra Bold" HorizontalAlignment="Left" Margin="1022,242,0,449" HorizontalContentAlignment="Center" Width="144" VerticalContentAlignment="Center" />
-        <Label x:Name="labelPlayer2" Content="Player 2" Foreground="Black" FontSize="16" FontFamily="Rockwell Extra Bold" HorizontalAlignment="Left" Margin="65,242,0,449" HorizontalContentAlignment="Center" Width="137" VerticalAlignment="Center" VerticalContentAlignment="Center" />
-        <Image x:Name="imgProfile2" Source="/Images/Profiles/ImageProfile1.png" Margin="38,320,1052,190" />
+
+        <Label x:Name="lbCode"
+               Content="{x:Static p:Resources.lbCode}" 
+               HorizontalAlignment="Center"
+               Margin="0,453,0,0" 
+               VerticalAlignment="Top" 
+               Foreground="Black" 
+               FontSize="36" 
+               Background="{x:Null}"
+               Height="58" 
+               Width="441" 
+               HorizontalContentAlignment="Center"
+               FontFamily="Rockwell Extra Bold"/>
+        <Image x:Name="imgProfile1" 
+               Source="/Images/Profiles/ImageProfile1.png" 
+               RenderTransformOrigin="0.5,0.5" 
+               Margin="999,320,91,190"/>
+        <Label x:Name="lbPlayer1" 
+               Content="{x:Static p:Resources.globalLbPlayer1}" 
+               Foreground="Black" 
+               FontSize="16" 
+               FontFamily="Rockwell Extra Bold" 
+               HorizontalAlignment="Left" 
+               Margin="1022,242,0,449" 
+               HorizontalContentAlignment="Center"
+               Width="144"
+               VerticalContentAlignment="Center" />
+        <Label x:Name="lbPlayer2" 
+               Content="{x:Static p:Resources.globalLbPlayer2}"
+               Foreground="Black"
+               FontSize="16"
+               FontFamily="Rockwell Extra Bold"
+               HorizontalAlignment="Left" 
+               Margin="65,242,0,449" 
+               HorizontalContentAlignment="Center" 
+               Width="137" 
+               VerticalAlignment="Center" 
+               VerticalContentAlignment="Center" />
+        <Image x:Name="imgProfile2"
+               Source="/Images/Profiles/ImageProfile1.png" 
+               Margin="38,320,1052,190" />
+        <Grid x:Name="invitedFriendGrid" Visibility="Collapsed">
+            <ListBox x:Name="lstFriends" 
+                 Width="200" 
+                 Height="278" 
+                 HorizontalAlignment="Left" 
+                 Margin="774,251,0,0" 
+                 VerticalAlignment="Top" 
+                 BorderBrush="#FF432B1E" 
+                 Foreground="White" 
+                 av:ItemsSource="{av:SampleData ItemCount=10}" 
+                 IsEnabled="False" 
+                 Visibility="Visible">
+                <ListBox.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FFCFBD8B"/>
+                        <GradientStop Color="#FF68492C" Offset="0.996"/>
+                    </LinearGradientBrush>
+                </ListBox.Background>
+            </ListBox>
+            <Button x:Name="btnInvited" 
+                Content="{x:Static p:Resources.btnInvited}" 
+                HorizontalAlignment="Left" 
+                Margin="774,535,0,0" 
+                VerticalAlignment="Top" 
+                BorderBrush="#FF432B1E" 
+                Foreground="White" 
+                Height="48" 
+                Width="200" 
+                FontSize="12" 
+                IsEnabled="False"
+                Click="BtnInvited_Click" 
+                Background="#FF432B1E"/>
+        </Grid>
+
     </Grid>
 </Page>
