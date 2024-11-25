@@ -63,7 +63,7 @@
                     </Button.Style>
                 </Button>
                 <Button x:Name="btnCreateLobby" 
-                        Content="Crear"
+                        Content="{x:Static p:Resources.btnCreate}"
                         FontSize="16" 
                         Click="BtnCreateLobby_Click"
                         Margin="656,483,444,185" 
@@ -109,7 +109,7 @@
                     </Button.Style>
                 </Button>
                 <Label x:Name="lblNameLobby" 
-                       Content="Nombre de partida:" 
+                       Content="{x:Static p:Resources.lbGameName}" 
                        FontSize="14" 
                        Foreground="Black" 
                        Margin="422,318,675,355" 
@@ -127,7 +127,7 @@
                          HorizontalContentAlignment="Center"
                          MaxLength="20"/>
                 <Label x:Name="lblNodeLobby" 
-                    Content="Nodos:" 
+                    Content="{x:Static p:Resources.lbNodes}" 
                     FontSize="14" 
                     Foreground="Black" 
                     Margin="422,359,690,314" 
@@ -135,7 +135,7 @@
                     HorizontalContentAlignment="Center" 
                     VerticalContentAlignment="Center"/>
                 <Label x:Name="lblMapLobby" 
-                    Content="Mapa:" 
+                    Content="{x:Static p:Resources.lbMap}" 
                     FontSize="14" 
                     Foreground="Black" 
                     Margin="422,396,690,277" 
@@ -143,16 +143,30 @@
                     HorizontalContentAlignment="Center" 
                     VerticalContentAlignment="Center"/>
                 <Label x:Name="lblTimeLobby" 
-                    Content="Tiempo:" 
+                    Content="{x:Static p:Resources.lbDuration}" 
                     FontSize="14" 
                     Foreground="Black" 
                     Margin="422,433,690,240" 
                     FontFamily="Cooper Black"
                     HorizontalContentAlignment="Center" 
                     VerticalContentAlignment="Center"/>
-                <ComboBox x:Name="cboxNode" HorizontalAlignment="Left" Margin="595,367,0,0" VerticalAlignment="Top" Width="225"/>
-                <ComboBox x:Name="cboxMap" HorizontalAlignment="Left" Margin="595,406,0,0" VerticalAlignment="Top" Width="225"/>
-                <ComboBox x:Name="cboxTime" HorizontalAlignment="Left" Margin="595,441,0,0" VerticalAlignment="Top" Width="225" Background="#FFEFE4C4" BorderBrush="Black"/>
+                <ComboBox x:Name="cboxNode" 
+                          HorizontalAlignment="Left"
+                          Margin="595,367,0,0" 
+                          VerticalAlignment="Top"
+                          Width="225"/>
+                <ComboBox x:Name="cboxMap" 
+                          HorizontalAlignment="Left"
+                          Margin="595,406,0,0" 
+                          VerticalAlignment="Top" 
+                          Width="225"/>
+                <ComboBox x:Name="cboxTime" 
+                          HorizontalAlignment="Left"
+                          Margin="595,441,0,0" 
+                          VerticalAlignment="Top"
+                          Width="225"
+                          Background="#FFEFE4C4"
+                          BorderBrush="Black"/>
             </Grid>
         </Grid>
     </DockPanel>

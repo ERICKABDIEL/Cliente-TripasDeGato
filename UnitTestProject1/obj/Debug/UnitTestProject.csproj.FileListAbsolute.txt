@@ -67,3 +67,5 @@ C:\TripasDeGatoCliente\UnitTestProject1\obj\Debug\UnitTestProject.csproj.CoreCom
 C:\TripasDeGatoCliente\UnitTestProject1\obj\Debug\UnitTest.294DD5B1.Up2Date
 C:\TripasDeGatoCliente\UnitTestProject1\obj\Debug\UnitTestProject1.dll
 C:\TripasDeGatoCliente\UnitTestProject1\obj\Debug\UnitTestProject1.pdb
+C:\TripasDeGatoCliente\UnitTestProject1\bin\Debug\TripasDeGatoCliente.pdb
+C:\TripasDeGatoCliente\UnitTestProject1\bin\Debug\en-US\TripasDeGatoCliente.resources.dll

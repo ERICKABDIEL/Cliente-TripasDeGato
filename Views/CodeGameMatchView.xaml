@@ -124,7 +124,8 @@
                          BorderBrush="#FF432B1E"
                          FontFamily="Cooper Black" 
                          VerticalContentAlignment="Center" 
-                         HorizontalContentAlignment="Center" MaxLength="6"/>
+                         HorizontalContentAlignment="Center"
+                         MaxLength="6"/>
             </Grid>
             </Grid>
     </DockPanel>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using log4net.Repository.Hierarchy;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel;
@@ -20,16 +21,26 @@ namespace TripasDeGatoCliente.Views {
         }
 
         private Task LoadLobbiesAsync() {
+            LoggerManager logger = new LoggerManager(this.GetType());
+
             try {
                 var lobbies = lobbyBrowser.GetAvailableLobbies();
                 LobbyDataGrid.ItemsSource = lobbies;
-            } catch (Exception ex) {
-                MessageBox.Show($"Error al cargar los lobbies: {ex.Message}");
+            } catch (EndpointNotFoundException endpointNotFoundException) {
+                logger.LogError(endpointNotFoundException);
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogEndPointException);
+            } catch (TimeoutException timeoutException) {
+                logger.LogError(timeoutException);
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogTimeOutException);
+            } catch (CommunicationException communicationException) {
+                logger.LogError(communicationException);
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
             }
             return Task.CompletedTask;
         }
 
         private async void BtnJoinGame_Click(object sender, RoutedEventArgs e) {
+            LoggerManager logger = new LoggerManager(this.GetType());
             if (LobbyDataGrid.SelectedItem is Lobby selectedLobby) {
                 string lobbyCode = selectedLobby.Code;
                 Profile guest = new Profile {
@@ -43,13 +54,20 @@ namespace TripasDeGatoCliente.Views {
                         LobbyView lobbyView = new LobbyView(lobbyCode);
                         this.NavigationService.Navigate(lobbyView);
                     } else {
-                        MessageBox.Show("No se pudo unir al lobby. Puede que esté lleno o que ya no esté disponible.");
+                        DialogManager.ShowWarningMessageAlert(Properties.Resources.dialogLobbyJoinError);
                     }
-                } catch (Exception ex) {
-                    MessageBox.Show($"Error al intentar unirse al lobby: {ex.Message}");
+                } catch(EndpointNotFoundException endpointNotFoundException) {
+                    logger.LogError(endpointNotFoundException);
+                    DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogEndPointException);
+                } catch (TimeoutException timeoutException) {
+                    logger.LogError(timeoutException);
+                    DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogTimeOutException);
+                } catch (CommunicationException communicationException) {
+                    logger.LogError(communicationException);
+                    DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
                 }
             } else {
-                MessageBox.Show("Por favor, selecciona un lobby para unirte.");
+                DialogManager.ShowWarningMessageAlert(Properties.Resources.dialogSelectLobbyToJoin);
             }
         }
 
@@ -58,21 +76,29 @@ namespace TripasDeGatoCliente.Views {
             if (this.NavigationService != null) {
                 this.NavigationService.Navigate(menuView);
             } else {
-                MessageBox.Show("Error: No se puede navegar al menu.");
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogNavigationError);
             }
-        } 
+        }
 
         private async void BtnSearch_Click(object sender, RoutedEventArgs e) {
+            LoggerManager logger = new LoggerManager(this.GetType());
             string searchCode = txtCodeLobby.Text.Trim();
             try {
                 var lobbies = await lobbyBrowser.GetAvailableLobbiesAsync();
                 var filteredLobbies = lobbies.Where(lobby => lobby.Code.Contains(searchCode)).ToList();
                 if (filteredLobbies.Count == 0) {
-                    MessageBox.Show("No se encontraron lobbies con ese código.");
+                    DialogManager.ShowWarningMessageAlert(Properties.Resources.dialogLobbyNotFound);
                 }
                 LobbyDataGrid.ItemsSource = filteredLobbies;
-            } catch (Exception ex) {
-                MessageBox.Show($"Error al buscar los lobbies: {ex.Message}");
+            } catch (EndpointNotFoundException endpointNotFoundException) {
+                logger.LogError(endpointNotFoundException);
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogEndPointException);
+            } catch (TimeoutException timeoutException) {
+                logger.LogError(timeoutException);
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogTimeOutException);
+            } catch (CommunicationException communicationException) {
+                logger.LogError(communicationException);
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
             }
         }
     }
