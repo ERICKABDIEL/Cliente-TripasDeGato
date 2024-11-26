@@ -218,6 +218,9 @@
     <None Include="Connected Services\TripasDeGatoServicio\TripasDeGatoCliente.TripasDeGatoServicio.GameEnumsPlayerStatus.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\TripasDeGatoServicio\TripasDeGatoCliente.TripasDeGatoServicio.GameResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\TripasDeGatoServicio\TripasDeGatoCliente.TripasDeGatoServicio.Lobby.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>

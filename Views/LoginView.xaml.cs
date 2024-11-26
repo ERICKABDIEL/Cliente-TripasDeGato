@@ -59,7 +59,7 @@ namespace TripasDeGatoCliente.Views {
                     Profile profile = userManager.GetProfileByMail(email);
 
                     if (profile != null) {
-                        if (IsPlayerOnline(profile.idProfile)) {
+                        if (IsPlayerOnline(profile.IdProfile)) {
                             return false;
                         }
 

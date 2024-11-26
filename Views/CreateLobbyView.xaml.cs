@@ -84,8 +84,8 @@ namespace TripasDeGatoCliente.Views {
 
             try {
                 var owner = new Profile {
-                    idProfile = UserProfileSingleton.IdProfile,
-                    userName = UserProfileSingleton.UserName
+                    IdProfile = UserProfileSingleton.IdProfile,
+                    Username = UserProfileSingleton.UserName
                 };
 
                 // Llamada al método remoto

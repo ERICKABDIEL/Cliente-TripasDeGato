@@ -15,10 +15,10 @@ namespace TripasDeGatoCliente.Logic {
         public static UserProfileSingleton Instance => singlentonInstance;
 
         public void CreateInstance(Profile profile) {
-            IdProfile = profile.idProfile;
-            UserName = profile.userName;
-            Score = profile.score;
-            PicPath = profile.picturePath;
+            IdProfile = profile.IdProfile;
+            UserName = profile.Username;
+            Score = profile.Score;
+            PicPath = profile.PicturePath;
         }
 
         public void CreateGuestInstance() {

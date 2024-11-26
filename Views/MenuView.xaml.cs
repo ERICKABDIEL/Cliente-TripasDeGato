@@ -194,8 +194,8 @@ namespace TripasDeGatoCliente.Views {
                 var friendsWithStatus = new List<string>();
 
                 foreach (var friend in friendsList) {
-                    var status = await statusManager.GetPlayerStatusAsync(friend.idProfile);
-                    friendsWithStatus.Add($"{friend.userName} - {status}");
+                    var status = await statusManager.GetPlayerStatusAsync(friend.IdProfile);
+                    friendsWithStatus.Add($"{friend.Username} - {status}");
                 }
 
                 lstFriends.ItemsSource = friendsWithStatus;

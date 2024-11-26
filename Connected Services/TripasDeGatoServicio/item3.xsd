@@ -5,11 +5,11 @@
   <xs:import schemaLocation="http://localhost:8082/?xsd=xsd5" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
   <xs:complexType name="Profile">
     <xs:sequence>
-      <xs:element minOccurs="0" name="idProfile" type="xs:int" />
-      <xs:element minOccurs="0" name="picturePath" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="score" type="xs:int" />
+      <xs:element minOccurs="0" name="IdProfile" type="xs:int" />
+      <xs:element minOccurs="0" name="PicturePath" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Score" type="xs:int" />
+      <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
       <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/TripasService.Utils" minOccurs="0" name="status" type="q1:GameEnums.PlayerStatus" />
-      <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Profile" nillable="true" type="tns:Profile" />
@@ -75,4 +75,12 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfNode" nillable="true" type="tns:ArrayOfNode" />
+  <xs:complexType name="GameResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IsDraw" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsWinner" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Score" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GameResult" nillable="true" type="tns:GameResult" />
 </xs:schema>
