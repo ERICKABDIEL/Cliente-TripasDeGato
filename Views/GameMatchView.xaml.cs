@@ -140,8 +140,8 @@ namespace TripasDeGatoCliente.Views {
 
             drawingCanvas.IsEnabled = true;
             isPlayerTurn = true;
-            labelTurn.Content = "¡Es tu turno!";
-            labelTurn.Foreground = Brushes.Green;
+            labelMatchStatus.Content = "¡Es tu turno!";
+            labelMatchStatus.Foreground = Brushes.Green;
 
             StartTimer();
         }
@@ -155,8 +155,8 @@ namespace TripasDeGatoCliente.Views {
 
                 drawingCanvas.IsEnabled = false; 
                 isPlayerTurn = false;
-                labelTurn.Content = "Aún no es tu turno";
-                labelTurn.Foreground = Brushes.Red;
+                labelMatchStatus.Content = "Aún no es tu turno";
+                labelMatchStatus.Foreground = Brushes.Red;
             });
         }
 
@@ -249,7 +249,7 @@ namespace TripasDeGatoCliente.Views {
 
             Application.Current.Dispatcher.Invoke(async () => {
                 try {
-                    labelTurn.Visibility = Visibility.Collapsed;
+                    labelMatchStatus.Visibility = Visibility.Collapsed;
                     timer.Stop();
                     var result = await Task.Run(() => matchManagerClient.GetGameResult(matchCode, UserProfileSingleton.UserName));
                     if (result != null) {

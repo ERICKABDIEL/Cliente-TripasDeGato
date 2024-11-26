@@ -592,6 +592,15 @@ namespace TripasDeGatoCliente.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a The game name is invalid. Please choose a valid name..
+        /// </summary>
+        public static string dialogInvalidGameNameError {
+            get {
+                return ResourceManager.GetString("dialogInvalidGameNameError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Error: the guest profile or lobby code is invalid..
         /// </summary>
         public static string dialogInvalidGuestProfileOrLobbyCode {

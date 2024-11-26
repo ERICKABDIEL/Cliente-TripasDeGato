@@ -33,10 +33,8 @@ namespace TripasDeGatoCliente.Views {
         }
 
         private void InitializeFormValues() {
-            // Rellenar ComboBox de nodos
-            cboxNode.ItemsSource = new List<int> { 8, 10, 12, 14, 16, 18, 20 }; // Ejemplo de nodos disponibles
-            cboxNode.SelectedIndex = 0; // Selección predeterminada
-            //Rellenar ComboBox de mapas
+            cboxNode.ItemsSource = new List<int> { 8, 10, 12, 14, 16, 18, 20 }; 
+            cboxNode.SelectedIndex = 0; 
             cboxMap.ItemsSource = new List<String> {
                 Properties.Resources.mapOptionCat,
                 Properties.Resources.mapOptionDog,
@@ -44,17 +42,21 @@ namespace TripasDeGatoCliente.Views {
             };
 
             cboxMap.SelectedIndex = 0;
-            // Rellenar ComboBox de tiempos
             cboxTime.ItemsSource = new List<string> { "2:00 min", "5:00 min", "10:00 min" };
-            cboxTime.SelectedIndex = 0; // Selección predeterminada
+            cboxTime.SelectedIndex = 0; 
         }
 
         private async void BtnCreateLobby_Click(object sender, RoutedEventArgs e) {
             LoggerManager logger = new LoggerManager(this.GetType());
 
-            // Validar campos
             if (string.IsNullOrWhiteSpace(txtNameLobby.Text)) {
                 DialogManager.ShowWarningMessageAlert(Properties.Resources.dialogEnterGameNameError);
+                return;
+            }
+
+            string gameName = txtNameLobby.Text.Trim();
+            if (!Validador.ValidateGameName(gameName)) {
+                DialogManager.ShowWarningMessageAlert(Properties.Resources.dialogInvalidGameNameError); 
                 return;
             }
 
@@ -63,7 +65,6 @@ namespace TripasDeGatoCliente.Views {
                 return;
             }
 
-            string gameName = txtNameLobby.Text.Trim();
             int nodeCount = (int)cboxNode.SelectedItem;
             TimeSpan duration = TimeSpan.Zero;
 
@@ -88,11 +89,9 @@ namespace TripasDeGatoCliente.Views {
                     Username = UserProfileSingleton.UserName
                 };
 
-                // Llamada al método remoto
                 string lobbyCode = await lobbyBrowser.CreateLobbyAsync(gameName, nodeCount, owner, duration);
 
                 if (!string.IsNullOrEmpty(lobbyCode)) {
-                    // Navegar a LobbyView con el código generado
                     GoToLobbyView(lobbyCode);
                 } else {
                     DialogManager.ShowWarningMessageAlert(Properties.Resources.dialogLobbyCreationError);
@@ -108,6 +107,20 @@ namespace TripasDeGatoCliente.Views {
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
             }
         }
+        public void ValidationGameName() {
+                        if (string.IsNullOrWhiteSpace(txtNameLobby.Text)) {
+                DialogManager.ShowWarningMessageAlert(Properties.Resources.dialogEnterGameNameError);
+                return;
+            }
+
+            string gameName = txtNameLobby.Text.Trim();
+            if (!Validador.ValidateGameName(gameName)) {
+                DialogManager.ShowWarningMessageAlert(Properties.Resources.dialogInvalidGameNameError); 
+                return;
+            }
+        }
+
+
         private void BtnBack_Click(object sender, EventArgs e) {
             GoToMenuView();
         }

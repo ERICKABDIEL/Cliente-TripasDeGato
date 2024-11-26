@@ -21,19 +21,6 @@
                 </Canvas.Clip>
             </Canvas>
         </Grid>
-        <Grid x:Name="gridDog" Visibility="Collapsed">
-            <Image HorizontalAlignment="Left" 
-                   Height="720" Margin="292,0,0,0" 
-                   VerticalAlignment="Center" 
-                   Width="721" 
-                   Source="/Images/Scene/SceneDog.png"/>
-            <Canvas x:Name="drawingCanvaDogs" Margin="365,210,365,138" Background="Black" Opacity="0.48">
-                <Canvas.Clip>
-                    <PathGeometry Figures="M60,115 L60,116 L71,109 L78,114 L95,120 L110,130 L140,140 L170,146 L181,154 L195,151 L200,145 L250,130 L303,100 L430,101 L460,116 L480,130 L494,153 L500,201 L500,230 L485,304 L410,302 L411,257 L408,258 L393,272 L353,286 L263,295 L261,295 L261,303 L193,303 L193,285 L163,281 L161,303 L90,303 L90,280 L75,250 L64,193 L65,130"/>
-                </Canvas.Clip>
-            </Canvas>
-        </Grid>
-
 
         <Label x:Name="labelPlayer1" 
                Content="Player 1" 
@@ -56,7 +43,7 @@
                      HorizontalAlignment="Center"
                      VerticalAlignment="Top"
                      Margin="0,580,0,0"/>
-        <Label x:Name="labelTurn"
+        <Label x:Name="labelMatchStatus"
                Content="Turn" 
                HorizontalAlignment="Center"
                Margin="0,604,0,0" 
@@ -133,7 +120,17 @@
                 </Style>
             </Button.Style>
         </Button>
-        <Label x:Name="labelMatchResult" Content="Resultado" HorizontalAlignment="Left" Margin="129,260,0,0" VerticalAlignment="Top" FontSize="20"/>
-        <Label x:Name="labelScore" Content="puntuacion" HorizontalAlignment="Left" Margin="129,316,0,0" VerticalAlignment="Top" FontSize="20"/>
+        <Label x:Name="labelMatchResult" 
+               Content="Resultado" 
+               HorizontalAlignment="Left" 
+               Margin="129,260,0,0" 
+               VerticalAlignment="Top"
+               FontSize="20"/>
+        <Label x:Name="labelScore" 
+               Content="puntuacion" 
+               HorizontalAlignment="Left" 
+               Margin="129,316,0,0" 
+               VerticalAlignment="Top"
+               FontSize="20"/>
     </Grid>
 </Page>

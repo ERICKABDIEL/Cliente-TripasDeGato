@@ -294,6 +294,9 @@
   <data name="dialogInvalidEmail" xml:space="preserve">
     <value>Correo inválido</value>
   </data>
+  <data name="dialogInvalidGameNameError" xml:space="preserve">
+    <value>El nombre del juego no es válido. Por favor, elige un nombre válido.</value>
+  </data>
   <data name="dialogInvalidGuestProfileOrLobbyCode" xml:space="preserve">
     <value>Error: el perfil del invitado o el código del lobby no son válidos.</value>
   </data>
