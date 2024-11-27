@@ -19,7 +19,7 @@ namespace TripasDeGatoCliente.Views {
     public partial class GameMatch : Page, IMatchManagerCallback {
         private List<Polyline> allTraces;
         private DispatcherTimer timer;
-        private int totalTime = 15; 
+        private int totalTime = 15;
         private double remainingTime;
         private string matchCode;
         private bool isConnected;
@@ -130,7 +130,7 @@ namespace TripasDeGatoCliente.Views {
 
         public void NotifyYourTurn() {
             if (timer != null) {
-                timer.Stop(); 
+                timer.Stop();
                 timer.Tick -= Timer_Tick;
             }
 
@@ -149,11 +149,11 @@ namespace TripasDeGatoCliente.Views {
         public void NotifyNotYouTurn() {
             Application.Current.Dispatcher.Invoke(() => {
                 if (timer != null) {
-                    timer.Stop(); 
+                    timer.Stop();
                     timer.Tick -= Timer_Tick;
                 }
 
-                drawingCanvas.IsEnabled = false; 
+                drawingCanvas.IsEnabled = false;
                 isPlayerTurn = false;
                 labelMatchStatus.Content = "Aún no es tu turno";
                 labelMatchStatus.Foreground = Brushes.Red;
@@ -168,6 +168,11 @@ namespace TripasDeGatoCliente.Views {
 
             if (IsCollisionDetected(newPoint)) {
                 HandleInfraction("Parece que chocaste con algo, ¡perdiste!");
+                try {
+                    matchManagerClient.EndMatchAsync(matchCode);
+                } catch (Exception ex) {
+                    DialogManager.ShowErrorMessageAlert($"Error al finalizar la partida: {ex.Message}");
+                }
                 return;
             }
 
@@ -237,46 +242,11 @@ namespace TripasDeGatoCliente.Views {
                 Task.Run(() => matchManagerClient.EndTurnAsync(matchCode, UserProfileSingleton.UserName));
 
                 if (AreAllNodesConnected()) {
-                    matchManagerClient.EndMatch(matchCode);
+                    matchManagerClient.EndMatchAsync(matchCode);
                 }
             } else {
                 drawingCanvas.Children.Remove(currentLine);
             }
-        }
-
-        public void NotifyMatchEnded() {
-            LoggerManager logger = new LoggerManager(this.GetType());
-
-            Application.Current.Dispatcher.Invoke(async () => {
-                try {
-                    labelMatchStatus.Visibility = Visibility.Collapsed;
-                    timer.Stop();
-                    var result = await Task.Run(() => matchManagerClient.GetGameResult(matchCode, UserProfileSingleton.UserName));
-                    if (result != null) {
-                        string message = result.IsWinner
-                            ? "¡Felicidades! Eres el ganador."
-                            : result.IsDraw
-                                ? "Es un empate."
-                                : "No ganaste esta vez. ¡Suerte para la próxima!";
-                        labelMatchResult.Content = message;
-                        labelScore.Content = result.Score;
-                    } else {
-                        DialogManager.ShowErrorMessageAlert("No se pudo obtener el resultado final del juego.");
-                    }
-                } catch (EndpointNotFoundException endpointNotFoundException) {
-                    logger.LogError(endpointNotFoundException);
-                    DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogEndPointException);
-                } catch (TimeoutException timeoutException) {
-                    logger.LogError(timeoutException);
-                    DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogTimeOutException);
-                } catch (CommunicationException communicationException) {
-                    logger.LogError(communicationException);
-                    DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
-
-                } finally {
-                    ExitUseSinglenton();
-                }
-            });
         }
 
         private bool AreAllNodesConnected() {
@@ -327,10 +297,6 @@ namespace TripasDeGatoCliente.Views {
             DialogManager.ShowErrorMessageAlert(message);
         }
 
-        public void MatchEnded(string matchCode) {
-            throw new NotImplementedException();
-        }
-
         public void TraceReceived(Trace trace) {
             var receivedLine = new Polyline {
                 Stroke = Brushes.Red,
@@ -361,13 +327,13 @@ namespace TripasDeGatoCliente.Views {
                 Application.Current.Dispatcher.Invoke(() => drawingCanvas.Children.Add(ellipse));
             }
         }
-        
+
 
         //Qeuda pendiente el metodo para desconectarse de la partida
         private async void BtnBack_Click(object sender, RoutedEventArgs e) {
             LoggerManager logger = new LoggerManager(this.GetType());
             try {
-              //  await matchManagerClient.LeaveMatchAsync(matchCode, UserProfileSingleton.IdProfile);
+                //  await matchManagerClient.LeaveMatchAsync(matchCode, UserProfileSingleton.IdProfile);
                 ExitUseSinglenton();
             } catch (EndpointNotFoundException endpointNotFoundException) {
                 logger.LogError(endpointNotFoundException);
@@ -407,6 +373,43 @@ namespace TripasDeGatoCliente.Views {
             } else {
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogNavigationError);
             }
+        }
+
+        public void NotifyYouLost() {
+            DisableGameControls();
+            Application.Current.Dispatcher.Invoke(() => {
+                labelMatchStatus.Content = "You lost!";
+                labelMatchStatus.Foreground = Brushes.Red;
+                drawingCanvas.IsEnabled = false;
+                timer?.Stop();
+            });
+        }
+
+        public void NotifyYouWon() {
+            DisableGameControls();
+            Application.Current.Dispatcher.Invoke(() => {
+                labelMatchStatus.Content = "You won!";
+                labelMatchStatus.Foreground = Brushes.Green;
+                drawingCanvas.IsEnabled = false;
+                timer?.Stop();
+            });
+        }
+
+        public void NotifyDraw() {
+            DisableGameControls();
+            Application.Current.Dispatcher.Invoke(() => {
+                labelMatchStatus.Content = "Draw!";
+                labelMatchStatus.Foreground = Brushes.Orange;
+                drawingCanvas.IsEnabled = false;
+                timer?.Stop();
+            });
+        }
+
+        public void DisableGameControls() {
+            Application.Current.Dispatcher.Invoke(() => {
+                drawingCanvas.IsEnabled = false;
+                timer?.Stop();
+            });
         }
     }
 }
