@@ -90,25 +90,25 @@ namespace UnitTestProject {
             Assert.False(validationResult);
         }
 
-        // 4. Pruebas para validateCode
+        // 4. Pruebas para ValidateCode
         [Fact]
         public void ValidateCodeValidCodeReturnsTrue() {
             string code = "ABC123";
-            bool validationResult = Validador.validateCode(code);
+            bool validationResult = Validador.ValidateCode(code);
             Assert.True(validationResult);
         }
 
         [Fact]
         public void ValidateCodeInvalidCodeWithSpecialCharsReturnsFalse() {
             string code = "ABC@#1";
-            bool validationResult = Validador.validateCode(code);
+            bool validationResult = Validador.ValidateCode(code);
             Assert.False(validationResult);
         }
 
         [Fact]
         public void ValidateCodeTooLongCodeReturnsFalse() {
             string code = "ABCDEFG";
-            bool validationResult = Validador.validateCode(code);
+            bool validationResult = Validador.ValidateCode(code);
             Assert.False(validationResult);
         }
 

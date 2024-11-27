@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Linq;
 using System.Collections.Generic;
 using log4net.Repository.Hierarchy;
+using System.Runtime.CompilerServices;
 
 namespace TripasDeGatoCliente.Views {
     public partial class MenuView : Page {
@@ -152,22 +153,14 @@ namespace TripasDeGatoCliente.Views {
                 } else {
                     DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogProfileNotFound);
                 }
-            } catch (Exception ex) {
-                HandleException(ex, logger);
-            }
-        }
-        private void HandleException(Exception ex, LoggerManager logger) {
-            if (ex is FaultException<ProfileNotFoundFault> faultEx) {
-                logger.LogError(faultEx);
-                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogNotRetrievedProfile);
-            } else if (ex is EndpointNotFoundException) {
-                logger.LogError(ex);
+            }catch (EndpointNotFoundException endpointNotFoundException) {
+                logger.LogError(endpointNotFoundException);
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogEndPointException);
-            } else if (ex is TimeoutException) {
-                logger.LogError(ex);
+            } catch (TimeoutException timeoutException) {
+                logger.LogError(timeoutException);
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogTimeOutException);
-            } else if (ex is CommunicationException) {
-                logger.LogError(ex);
+            } catch (CommunicationException communicationException) {
+                logger.LogError(communicationException);
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
             }
         }
@@ -183,7 +176,6 @@ namespace TripasDeGatoCliente.Views {
             }
         }
 
-        //HASTA AQUI PARA AGREGAR AMIGO
 
         private async Task LoadFriendsListAsync() {
             LoggerManager logger = new LoggerManager(this.GetType());
@@ -194,8 +186,8 @@ namespace TripasDeGatoCliente.Views {
                 var friendsWithStatus = new List<string>();
 
                 foreach (var friend in friendsList) {
-                    var status = await statusManager.GetPlayerStatusAsync(friend.idProfile);
-                    friendsWithStatus.Add($"{friend.userName} - {status}");
+                    var status = await statusManager.GetPlayerStatusAsync(friend.IdProfile);
+                    friendsWithStatus.Add($"{friend.Username} - {status}");
                 }
 
                 lstFriends.ItemsSource = friendsWithStatus;

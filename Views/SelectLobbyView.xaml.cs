@@ -44,8 +44,8 @@ namespace TripasDeGatoCliente.Views {
             if (LobbyDataGrid.SelectedItem is Lobby selectedLobby) {
                 string lobbyCode = selectedLobby.Code;
                 Profile guest = new Profile {
-                    idProfile = UserProfileSingleton.IdProfile,
-                    userName = UserProfileSingleton.UserName
+                    IdProfile = UserProfileSingleton.IdProfile,
+                    Username = UserProfileSingleton.UserName
                 };
                 try {
                     bool joined = await lobbyBrowser.JoinLobbyAsync(lobbyCode, guest);

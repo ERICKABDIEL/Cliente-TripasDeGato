@@ -557,17 +557,44 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="MatchEnded">
+  <xs:element name="EndMatch">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="matchCode" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="EndMatchResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="EndMatchResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetGameResult">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="matchCode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetGameResultResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/TripasService.Logic" minOccurs="0" name="GetGameResultResult" nillable="true" type="q18:GameResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="NotifyMatchEnded">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
   <xs:element name="TraceReceived">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/TripasService.Logic" minOccurs="0" name="trace" nillable="true" type="q18:Trace" />
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/TripasService.Logic" minOccurs="0" name="trace" nillable="true" type="q19:Trace" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -577,11 +604,6 @@
     </xs:complexType>
   </xs:element>
   <xs:element name="NotifyNotYouTurn">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="NotifyNotYouTurnResponse">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>

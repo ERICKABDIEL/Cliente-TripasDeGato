@@ -59,7 +59,7 @@ namespace TripasDeGatoCliente.Views {
                     Profile profile = userManager.GetProfileByMail(email);
 
                     if (profile != null) {
-                        if (IsPlayerOnline(profile.idProfile)) {
+                        if (IsPlayerOnline(profile.IdProfile)) {
                             return false;
                         }
 
@@ -113,7 +113,6 @@ namespace TripasDeGatoCliente.Views {
         private void ObtainSingletonData(Profile profile) {
             UserProfileSingleton.Instance.CreateInstance(profile);
         }
-        //NUEVO
         private void SetPlayerOnlineStatus(int playerId) {
             LoggerManager logger = new LoggerManager(this.GetType());
 
