@@ -1,4 +1,5 @@
-﻿using System;
+﻿using log4net.Repository.Hierarchy;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Mail;
@@ -42,10 +43,10 @@ namespace TripasDeGatoCliente.Views {
             drawingCanvas.MouseDown += Canvas_MouseDown;
             drawingCanvas.MouseMove += Canvas_MouseMove;
             drawingCanvas.MouseUp += Canvas_MouseUp;
-            labelPlayer1.Content = UserProfileSingleton.UserName;
             StartTimer();
         }
         private async Task CheckCurrentTurn() {
+            LoggerManager logger = new LoggerManager(this.GetType());
             try {
                 string currentTurn = await Task.Run(() => matchManagerClient.GetCurrentTurn(matchCode));
 
@@ -54,12 +55,20 @@ namespace TripasDeGatoCliente.Views {
                 } else {
                     NotifyNotYourTurn();
                 }
-            } catch (Exception ex) {
-                DialogManager.ShowErrorMessageAlert($"Error al obtener el turno: {ex.Message}");
+            } catch (EndpointNotFoundException endpointNotFoundException) {
+                logger.LogError(endpointNotFoundException);
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogEndPointException);
+            } catch (TimeoutException timeoutException) {
+                logger.LogError(timeoutException);
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogTimeOutException);
+            } catch (CommunicationException communicationException) {
+                logger.LogError(communicationException);
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
             }
         }
 
         private async void InitializeMatch() {
+            LoggerManager logger = new LoggerManager(this.GetType());
             try {
                 bool connected = matchManagerClient.RegisterPlayerCallback(matchCode, UserProfileSingleton.UserName);
                 if (!connected) {
@@ -75,8 +84,15 @@ namespace TripasDeGatoCliente.Views {
                         DialogManager.ShowErrorMessageAlert("No se encontraron nodos para esta partida.");
                     }
                 }
-            } catch (Exception ex) {
-                DialogManager.ShowErrorMessageAlert($"Error al inicializar la partida: {ex.Message}");
+            } catch (EndpointNotFoundException endpointNotFoundException) {
+                logger.LogError(endpointNotFoundException);
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogEndPointException);
+            } catch (TimeoutException timeoutException) {
+                logger.LogError(timeoutException);
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogTimeOutException);
+            } catch (CommunicationException communicationException) {
+                logger.LogError(communicationException);
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
             }
         }
 
@@ -161,6 +177,8 @@ namespace TripasDeGatoCliente.Views {
         }
 
         private void Canvas_MouseMove(object sender, MouseEventArgs e) {
+            LoggerManager logger = new LoggerManager(this.GetType());
+
             if (!isDrawing) return;
 
             Point mousePosition = e.GetPosition(drawingCanvas);
@@ -170,8 +188,15 @@ namespace TripasDeGatoCliente.Views {
                 HandleInfraction("Parece que chocaste con algo, ¡perdiste!");
                 try {
                     matchManagerClient.EndMatchAsync(matchCode);
-                } catch (Exception ex) {
-                    DialogManager.ShowErrorMessageAlert($"Error al finalizar la partida: {ex.Message}");
+                } catch (EndpointNotFoundException endpointNotFoundException) {
+                    logger.LogError(endpointNotFoundException);
+                    DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogEndPointException);
+                } catch (TimeoutException timeoutException) {
+                    logger.LogError(timeoutException);
+                    DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogTimeOutException);
+                } catch (CommunicationException communicationException) {
+                    logger.LogError(communicationException);
+                    DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
                 }
                 return;
             }
@@ -190,7 +215,7 @@ namespace TripasDeGatoCliente.Views {
 
         private bool IsPointNearSegment(TripasDeGatoServicio.TracePoint point, Point start, Point end) {
             double distance = DistanceFromPointToSegment(point, start, end);
-            return distance < 5; // Ajustar el umbral según sea necesario
+            return distance < 5;
         }
 
         private bool IsCollisionDetected(TripasDeGatoServicio.TracePoint newPoint) {
@@ -273,6 +298,7 @@ namespace TripasDeGatoCliente.Views {
         }
 
         private void SendTrace(List<TracePoint> points) {
+            LoggerManager logger = new LoggerManager(this.GetType());
             if (!isConnected) return;
             var trace = new TripasDeGatoServicio.Trace {
                 Player = UserProfileSingleton.UserName,
@@ -282,12 +308,15 @@ namespace TripasDeGatoCliente.Views {
             };
             try {
                 matchManagerClient.RegisterTrace(matchCode, trace);
-            } catch (CommunicationException) {
-                DialogManager.ShowErrorMessageAlert("Error de comunicación con el servidor al enviar el trazo.");
-            } catch (TimeoutException) {
-                DialogManager.ShowErrorMessageAlert("El servidor tardó demasiado en responder.");
-            } catch (Exception ex) {
-                DialogManager.ShowErrorMessageAlert($"Error al enviar el trazo: {ex.Message}");
+            } catch (EndpointNotFoundException endpointNotFoundException) {
+                logger.LogError(endpointNotFoundException);
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogEndPointException);
+            } catch (TimeoutException timeoutException) {
+                logger.LogError(timeoutException);
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogTimeOutException);
+            } catch (CommunicationException communicationException) {
+                logger.LogError(communicationException);
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
             }
         }
 
@@ -334,7 +363,8 @@ namespace TripasDeGatoCliente.Views {
             LoggerManager logger = new LoggerManager(this.GetType());
             try {
                 if (isConnected) {
-                    await matchManagerClient.LeaveMatchAsync(matchCode, UserProfileSingleton.UserName);
+                   // await matchManagerClient.LeaveMatchAsync(matchCode, UserProfileSingleton.UserName);
+                    ExitUseSinglenton();
                 }
             } catch (EndpointNotFoundException endpointNotFoundException) {
                 logger.LogError(endpointNotFoundException);
@@ -358,6 +388,7 @@ namespace TripasDeGatoCliente.Views {
                 GoToLoginView();
             }
         }
+
         private void GoToMenuView() {
             MenuView menuView = new MenuView();
             if (this.NavigationService != null) {

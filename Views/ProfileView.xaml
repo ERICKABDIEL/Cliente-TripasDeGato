@@ -154,7 +154,7 @@
                 VerticalAlignment="Top" 
                 Background="#FFFCF8D7" 
                 BorderBrush="White"
-                Click="btnEdit_Click"
+                Click="BtnEdit_Click"
                 Grid.Row="1" 
                 Foreground="Black" 
                 FontFamily="Rockwell Extra Bold"
@@ -270,51 +270,53 @@
                 <ImageBrush/>
             </ComboBox.Background>
         </ComboBox>
-        
+
         <Border x:Name="borderProfiles" BorderThickness="2" Margin="410,38,356,165" Grid.Row="1" Visibility="Collapsed">
             <Border.Background>
                 <ImageBrush ImageSource="/Images/BackgroundValidation.png"/>
             </Border.Background>
-            <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" Margin="103,64,97,64">
-                <StackPanel Orientation="Horizontal" Width="2290">
-                    <ListBox x:Name="lsb_ProfilePics" 
-                                 ScrollViewer.HorizontalScrollBarVisibility="Auto" Width="2232" 
-                                 Height="289" BorderThickness="0" Background="Transparent">
-                        <ListBox.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <StackPanel Orientation="Horizontal"/>
-                            </ItemsPanelTemplate>
-                        </ListBox.ItemsPanel>
-                        <ListBoxItem Tag="/Images/Profiles/ImageProfile1.png">
-                            <Image Source="/Images/Profiles/ImageProfile1.png" Width="238" Height="222"/>
-                        </ListBoxItem>
-                        <ListBoxItem Tag="/Images/Profiles/ImageProfile2.png">
-                            <Image Source="/Images/Profiles/ImageProfile2.png" Width="238" Height="222"/>
-                        </ListBoxItem>
-                        <ListBoxItem Tag="/Images/Profiles/ImageProfile3.png">
-                            <Image Source="/Images/Profiles/ImageProfile3.png" Width="238" Height="222"/>
-                        </ListBoxItem>
-                        <ListBoxItem Tag="/Images/Profiles/ImageProfile4.png">
-                            <Image Source="/Images/Profiles/ImageProfile4.png" Width="238" Height="222"/>
-                        </ListBoxItem>
-                        <ListBoxItem Tag="/Images/Profiles/ImageProfile5.png">
-                            <Image Source="/Images/Profiles/ImageProfile5.png" Width="238" Height="222"/>
-                        </ListBoxItem>
-                        <ListBoxItem Tag="/Images/Profiles/ImageProfile6.png">
-                            <Image Source="/Images/Profiles/ImageProfile6.png" Width="238" Height="222"/>
-                        </ListBoxItem>
-                        <ListBoxItem Tag="/Images/Profiles/ImageProfile7.png">
-                            <Image Source="/Images/Profiles/ImageProfile7.png" Width="238" Height="222"/>
-                        </ListBoxItem>
-                        <ListBoxItem Tag="/Images/Profiles/ImageProfile8.png">
-                            <Image Source="/Images/Profiles/ImageProfile8.png" Width="238" Height="222"/>
-                        </ListBoxItem>
-                        <ListBoxItem Tag="/Images/Profiles/ImageProfile9.png">
-                            <Image Source="/Images/Profiles/ImageProfile9.png" Width="238" Height="222"/>
-                        </ListBoxItem>
-                    </ListBox>
-                </StackPanel>
-            </ScrollViewer>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <ListBox x:Name="lsb_ProfilePics" 
+                             ScrollViewer.HorizontalScrollBarVisibility="Auto" 
+                             Width="400" 
+                             Height="290" 
+                             BorderThickness="0" 
+                             SelectionChanged="ListProfilePics_SelectionChanged" 
+                             Background="Transparent">
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Horizontal"/>
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
+                    <ListBoxItem Tag="/Images/Profiles/ImageProfile1.png">
+                        <Image Source="/Images/Profiles/ImageProfile1.png" Width="238" Height="222"/>
+                    </ListBoxItem>
+                    <ListBoxItem Tag="/Images/Profiles/ImageProfile2.png">
+                        <Image Source="/Images/Profiles/ImageProfile2.png" Width="238" Height="222"/>
+                    </ListBoxItem>
+                    <ListBoxItem Tag="/Images/Profiles/ImageProfile3.png">
+                        <Image Source="/Images/Profiles/ImageProfile3.png" Width="238" Height="222"/>
+                    </ListBoxItem>
+                    <ListBoxItem Tag="/Images/Profiles/ImageProfile4.png">
+                        <Image Source="/Images/Profiles/ImageProfile4.png" Width="238" Height="222"/>
+                    </ListBoxItem>
+                    <ListBoxItem Tag="/Images/Profiles/ImageProfile5.png">
+                        <Image Source="/Images/Profiles/ImageProfile5.png" Width="238" Height="222"/>
+                    </ListBoxItem>
+                    <ListBoxItem Tag="/Images/Profiles/ImageProfile6.png">
+                        <Image Source="/Images/Profiles/ImageProfile6.png" Width="238" Height="222"/>
+                    </ListBoxItem>
+                    <ListBoxItem Tag="/Images/Profiles/ImageProfile7.png">
+                        <Image Source="/Images/Profiles/ImageProfile7.png" Width="238" Height="222"/>
+                    </ListBoxItem>
+                    <ListBoxItem Tag="/Images/Profiles/ImageProfile8.png">
+                        <Image Source="/Images/Profiles/ImageProfile8.png" Width="238" Height="222"/>
+                    </ListBoxItem>
+                    <ListBoxItem Tag="/Images/Profiles/ImageProfile9.png">
+                        <Image Source="/Images/Profiles/ImageProfile9.png" Width="238" Height="222"/>
+                    </ListBoxItem>
+                </ListBox>
+            </StackPanel>
         </Border>
     </Grid>
 </Page>

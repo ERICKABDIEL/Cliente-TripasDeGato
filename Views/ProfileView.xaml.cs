@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO.Packaging;
 using System.ServiceModel;
 using System.Windows;
 using System.Windows.Controls;
@@ -17,10 +18,12 @@ namespace TripasDeGatoCliente.Views {
             DisableEditing();
         }
 
+        private string selectedProfile = UserProfileSingleton.PicPath;
+
         private void LoadProfile() {
             lbUserNameProfile.Content = !string.IsNullOrEmpty(UserProfileSingleton.UserName) ? UserProfileSingleton.UserName : "Usuario desconocido";
             txtUserName.Text = UserProfileSingleton.UserName;
-            cboxLanguage.ItemsSource = new List<string> { "Español", "Inglés", "Francés" };
+            cboxLanguage.ItemsSource = new List<string> { "en-US", "es-MX" };
             if (!string.IsNullOrEmpty(UserProfileSingleton.PicPath)) {
                 imageProfile.Source = new BitmapImage(new Uri(UserProfileSingleton.PicPath, UriKind.RelativeOrAbsolute));
             }
@@ -47,7 +50,7 @@ namespace TripasDeGatoCliente.Views {
             btnSave.Visibility = Visibility.Collapsed;
         }
 
-        private void btnEdit_Click(object sender, RoutedEventArgs e) {
+        private void BtnEdit_Click(object sender, RoutedEventArgs e) {
             if (!isEditing) {
                 EnableEditing();
             }
@@ -58,16 +61,31 @@ namespace TripasDeGatoCliente.Views {
                 if (ValidateFields()) {
                     string userName = txtUserName.Text;
                     string selectedLanguage = cboxLanguage.SelectedItem?.ToString();
+                    if (string.IsNullOrEmpty(selectedLanguage)) {
+                        SaveProfile(userName, selectedLanguage, selectedProfile);
+                    } else {
+                        MessageBoxResult result = MessageBox.Show(
+                            Properties.Resources.dialogMessageLanguagechange,
+                            Properties.Resources.lbLanguageChange,
+                            MessageBoxButton.YesNo,
+                            MessageBoxImage.Question
+                        );
 
-                    var selectedListBoxItem = lsb_ProfilePics.SelectedItem as ListBoxItem;
-                    string selectedProfile = selectedListBoxItem?.Tag?.ToString();
+                        if (result == MessageBoxResult.Yes) {
+                            App.ChangeLanguage(selectedLanguage);
 
-                    SaveProfile(userName, selectedLanguage, selectedProfile);
+                            System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
+                            Application.Current.Shutdown();
+                        } else {
+                            SaveProfile(userName, selectedLanguage, selectedProfile);
+                        }
+                    }
                 } else {
                     DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogCompleteFieldsError);
                 }
             }
         }
+
 
         private async void SaveProfile(string userName, string selectedLanguage, string selectedProfile) {
             LoggerManager logger = new LoggerManager(this.GetType());
@@ -95,8 +113,17 @@ namespace TripasDeGatoCliente.Views {
             } catch (CommunicationException communicationException) {
                 logger.LogError(communicationException);
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
-            } 
+            }
         }
+        private void ListProfilePics_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+            if (lsb_ProfilePics.SelectedItem is ListBoxItem selectedItem) {
+                string selectedImage = selectedItem.Tag.ToString();
+                imageProfile.Source = new BitmapImage(new Uri(selectedImage, UriKind.Relative));
+                UserProfileSingleton.UpdateFotoRuta(selectedImage);
+                selectedProfile = selectedImage;
+            }
+        }
+
 
         private bool ValidateFields() {
             bool isValid = true;
@@ -109,6 +136,7 @@ namespace TripasDeGatoCliente.Views {
             }
             return isValid;
         }
+
 
         private void GoToMenuView() {
             MenuView menuView = new MenuView();

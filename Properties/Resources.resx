@@ -330,6 +330,9 @@
   <data name="dialogLobbyNotFound" xml:space="preserve">
     <value>No lobbies found with that code.</value>
   </data>
+  <data name="dialogMessageLanguagechange" xml:space="preserve">
+    <value>Do you want to change the language? This will restart the game.</value>
+  </data>
   <data name="dialogMissmatchesCredentials" xml:space="preserve">
     <value>Credentials do not match</value>
   </data>
@@ -482,6 +485,9 @@
   </data>
   <data name="lbLanguage" xml:space="preserve">
     <value>Language</value>
+  </data>
+  <data name="lbLanguageChange" xml:space="preserve">
+    <value>Language Change</value>
   </data>
   <data name="lbMap" xml:space="preserve">
     <value>Map:</value>
