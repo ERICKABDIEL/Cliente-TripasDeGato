@@ -1,4 +1,6 @@
-﻿using log4net.Repository.Hierarchy;
+
+using log4net.Repository.Hierarchy;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -368,16 +370,14 @@ namespace TripasDeGatoCliente.Views {
             } catch (EndpointNotFoundException endpointNotFoundException) {
                 logger.LogError(endpointNotFoundException);
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogEndPointException);
-                ExitUseSinglenton();
             } catch (TimeoutException timeoutException) {
                 logger.LogError(timeoutException);
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogTimeOutException);
-                ExitUseSinglenton();
             } catch (CommunicationException communicationException) {
                 logger.LogError(communicationException);
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
-                ExitUseSinglenton();
             }
+            ExitUseSinglenton();
         }
 
         private void ExitUseSinglenton() {
