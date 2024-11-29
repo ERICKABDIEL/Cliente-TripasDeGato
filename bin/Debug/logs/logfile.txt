@@ -529,3 +529,241 @@ Exception rethrown at [0]:
    en TripasDeGatoCliente.TripasDeGatoServicio.IStatusManager.SetPlayerStatus(Int32 idProfile, GameEnumsPlayerStatus status)
    en TripasDeGatoCliente.TripasDeGatoServicio.StatusManagerClient.SetPlayerStatus(Int32 idProfile, GameEnumsPlayerStatus status) en C:\TripasDeGatoCliente\Connected Services\TripasDeGatoServicio\Reference.cs:línea 1370
    en TripasDeGatoCliente.Views.MenuView.SetPlayerOfflineStatus(Int32 playerId) en C:\TripasDeGatoCliente\Views\MenuView.xaml.cs:línea 55
+2024-11-27 10:52:30,980 [1] ERROR TripasDeGatoCliente.Views.LoginView - System.TimeoutException: La operación de solicitud enviada a net.tcp://localhost:8081/UserManager no recibió una respuesta en el tiempo de espera configurado (00:01:00). El tiempo asignado a esta operación puede haber sido una parte de un tiempo de espera mayor. La razón puede ser que el servicio sigue procesando la operación o que no pudo enviar un mensaje de respuesta. Considere la posibilidad de aumentar el tiempo de espera de la operación (convirtiendo el canal/proxy en IContextChannel y estableciendo la propiedad OperationTimeout) y asegúrese de que el servicio pueda conectarse al cliente.
+
+Server stack trace: 
+   en System.ServiceModel.Dispatcher.DuplexChannelBinder.Request(Message message, TimeSpan timeout)
+   en System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   en System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   en System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   en System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   en System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   en TripasDeGatoCliente.TripasDeGatoServicio.IUserManager.VerifyLogin(String email, String password)
+   en TripasDeGatoCliente.TripasDeGatoServicio.UserManagerClient.VerifyLogin(String email, String password) en C:\TripasDeGatoCliente\Connected Services\TripasDeGatoServicio\Reference.cs:línea 851
+   en TripasDeGatoCliente.Views.LoginView.AuthenticateUser(String email, String hashedPassword) en C:\TripasDeGatoCliente\Views\LoginView.xaml.cs:línea 56
+2024-11-27 10:53:57,649 [1] ERROR TripasDeGatoCliente.Views.LoginView - System.ServiceModel.CommunicationException: Se anuló la conexión de socket. La causa puede ser un error en el procesamiento del mensaje, que se superó el tiempo de espera de recepción en el host remoto, o bien un problema de recursos de red subyacente. El tiempo de espera de socket local era '00:01:00'. ---> System.IO.IOException: Error de la operación de lectura, vea la excepción interna. ---> System.ServiceModel.CommunicationException: Se anuló la conexión de socket. La causa puede ser un error en el procesamiento del mensaje, que se superó el tiempo de espera de recepción en el host remoto, o bien un problema de recursos de red subyacente. El tiempo de espera de socket local era '00:01:00'. ---> System.Net.Sockets.SocketException: Se ha forzado la interrupción de una conexión existente por el host remoto
+   en System.Net.Sockets.Socket.Receive(Byte[] buffer, Int32 offset, Int32 size, SocketFlags socketFlags)
+   en System.ServiceModel.Channels.SocketConnection.ReadCore(Byte[] buffer, Int32 offset, Int32 size, TimeSpan timeout, Boolean closing)
+   --- Fin del seguimiento de la pila de la excepción interna ---
+   en System.ServiceModel.Channels.SocketConnection.ReadCore(Byte[] buffer, Int32 offset, Int32 size, TimeSpan timeout, Boolean closing)
+   en System.ServiceModel.Channels.SocketConnection.Read(Byte[] buffer, Int32 offset, Int32 size, TimeSpan timeout)
+   en System.ServiceModel.Channels.DelegatingConnection.Read(Byte[] buffer, Int32 offset, Int32 size, TimeSpan timeout)
+   en System.ServiceModel.Channels.ConnectionStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   en System.Net.FixedSizeReader.ReadPacket(Byte[] buffer, Int32 offset, Int32 count)
+   en System.Net.Security.NegotiateStream.StartFrameHeader(Byte[] buffer, Int32 offset, Int32 count, AsyncProtocolRequest asyncRequest)
+   en System.Net.Security.NegotiateStream.ProcessRead(Byte[] buffer, Int32 offset, Int32 count, AsyncProtocolRequest asyncRequest)
+   --- Fin del seguimiento de la pila de la excepción interna ---
+   en System.Net.Security.NegotiateStream.ProcessRead(Byte[] buffer, Int32 offset, Int32 count, AsyncProtocolRequest asyncRequest)
+   en System.Net.Security.NegotiateStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   en System.ServiceModel.Channels.StreamConnection.Read(Byte[] buffer, Int32 offset, Int32 size, TimeSpan timeout)
+   --- Fin del seguimiento de la pila de la excepción interna ---
+
+Server stack trace: 
+   en System.ServiceModel.Channels.StreamConnection.Read(Byte[] buffer, Int32 offset, Int32 size, TimeSpan timeout)
+   en System.ServiceModel.Channels.SessionConnectionReader.Receive(TimeSpan timeout)
+   en System.ServiceModel.Channels.SynchronizedMessageSource.Receive(TimeSpan timeout)
+   en System.ServiceModel.Channels.TransportDuplexSessionChannel.Receive(TimeSpan timeout)
+   en System.ServiceModel.Channels.TransportDuplexSessionChannel.TryReceive(TimeSpan timeout, Message& message)
+   en System.ServiceModel.Dispatcher.DuplexChannelBinder.Request(Message message, TimeSpan timeout)
+   en System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   en System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   en System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   en System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   en System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   en TripasDeGatoCliente.TripasDeGatoServicio.IUserManager.VerifyLogin(String email, String password)
+   en TripasDeGatoCliente.TripasDeGatoServicio.UserManagerClient.VerifyLogin(String email, String password) en C:\TripasDeGatoCliente\Connected Services\TripasDeGatoServicio\Reference.cs:línea 851
+   en TripasDeGatoCliente.Views.LoginView.AuthenticateUser(String email, String hashedPassword) en C:\TripasDeGatoCliente\Views\LoginView.xaml.cs:línea 56
+2024-11-28 12:36:05,139 [1] ERROR TripasDeGatoCliente.Views.LobbyView - System.ServiceModel.CommunicationObjectFaultedException: El objeto de comunicación, System.ServiceModel.Channels.ClientFramingDuplexSessionChannel, no se puede usar para la comunicación porque se encuentra en el estado Faulted.
+
+Server stack trace: 
+   en System.ServiceModel.Channels.CommunicationObject.ThrowIfDisposedOrNotOpen()
+   en System.ServiceModel.Channels.OutputChannel.BeginSend(Message message, TimeSpan timeout, AsyncCallback callback, Object state)
+   en System.ServiceModel.Dispatcher.DuplexChannelBinder.BeginSend(Message message, TimeSpan timeout, AsyncCallback callback, Object state)
+   en System.ServiceModel.Channels.ServiceChannel.SendAsyncResult.StartSend(Boolean completedSynchronously)
+   en System.ServiceModel.Channels.ServiceChannel.SendAsyncResult.FinishEnsureOpen(IAsyncResult result, Boolean completedSynchronously)
+   en System.ServiceModel.Channels.ServiceChannel.SendAsyncResult.StartEnsureOpen(Boolean completedSynchronously)
+   en System.ServiceModel.Channels.ServiceChannel.SendAsyncResult.FinishEnsureInteractiveInit(IAsyncResult result, Boolean completedSynchronously)
+   en System.ServiceModel.Channels.ServiceChannel.SendAsyncResult.StartEnsureInteractiveInit()
+   en System.ServiceModel.Channels.ServiceChannel.SendAsyncResult.Begin()
+   en System.ServiceModel.Channels.ServiceChannel.BeginCall(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, TimeSpan timeout, AsyncCallback callback, Object asyncState)
+   en System.ServiceModel.Channels.ServiceChannel.BeginCall(ServiceChannel channel, ProxyOperationRuntime operation, Object[] ins, AsyncCallback callback, Object asyncState)
+   en System.Threading.Tasks.TaskFactory`1.FromAsyncImpl[TArg1,TArg2,TArg3](Func`6 beginMethod, Func`2 endFunction, Action`1 endAction, TArg1 arg1, TArg2 arg2, TArg3 arg3, Object state, TaskCreationOptions creationOptions)
+   en System.ServiceModel.Channels.ServiceChannelProxy.TaskCreator.CreateTask(ServiceChannel channel, ProxyOperationRuntime operation, Object[] inputParameters)
+   en System.ServiceModel.Channels.ServiceChannelProxy.TaskCreator.CreateTask(ServiceChannel channel, IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   en System.ServiceModel.Channels.ServiceChannelProxy.InvokeTaskService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   en System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   en System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   en System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   en TripasDeGatoCliente.TripasDeGatoServicio.ILobbyManager.LeaveLobbyAsync(String code, Int32 playerId)
+   en TripasDeGatoCliente.TripasDeGatoServicio.LobbyManagerClient.LeaveLobbyAsync(String code, Int32 playerId) en C:\TripasDeGatoCliente\Connected Services\TripasDeGatoServicio\Reference.cs:línea 1392
+   en TripasDeGatoCliente.Views.LobbyView.<BtnBack_Click>d__17.MoveNext() en C:\TripasDeGatoCliente\Views\LobbyView.xaml.cs:línea 162
+2024-11-28 12:36:15,393 [1] ERROR TripasDeGatoCliente.MainWindow - System.ServiceModel.EndpointNotFoundException: No se pudo conectar a net.tcp://192.168.43.182:8081/StatusManager. La duración del intento de conexión fue de 00:00:02.9547528. Código de error TCP 10061: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión 192.168.43.182:8081.  ---> System.Net.Sockets.SocketException: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión 192.168.43.182:8081
+   en System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   en System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   en System.ServiceModel.Channels.SocketConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+   --- Fin del seguimiento de la pila de la excepción interna ---
+
+Server stack trace: 
+   en System.ServiceModel.Channels.SocketConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+   en System.ServiceModel.Channels.BufferedConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+   en System.ServiceModel.Channels.ConnectionPoolHelper.EstablishConnection(TimeSpan timeout)
+   en System.ServiceModel.Channels.ClientFramingDuplexSessionChannel.OnOpen(TimeSpan timeout)
+   en System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   en System.ServiceModel.Channels.ServiceChannel.OnOpen(TimeSpan timeout)
+   en System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   en System.ServiceModel.Channels.ServiceChannel.CallOpenOnce.System.ServiceModel.Channels.ServiceChannel.ICallOnce.Call(ServiceChannel channel, TimeSpan timeout)
+   en System.ServiceModel.Channels.ServiceChannel.CallOnceManager.CallOnce(TimeSpan timeout, CallOnceManager cascade)
+   en System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   en System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   en System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   en System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   en System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   en TripasDeGatoCliente.TripasDeGatoServicio.IStatusManager.SetPlayerStatus(Int32 idProfile, GameEnumsPlayerStatus status)
+   en TripasDeGatoCliente.TripasDeGatoServicio.StatusManagerClient.SetPlayerStatus(Int32 idProfile, GameEnumsPlayerStatus status) en C:\TripasDeGatoCliente\Connected Services\TripasDeGatoServicio\Reference.cs:línea 1293
+   en TripasDeGatoCliente.MainWindow.SetPlayerOfflineStatus(Int32 playerId) en C:\TripasDeGatoCliente\MainWindow.xaml.cs:línea 57
+2024-11-28 12:42:43,394 [1] ERROR TripasDeGatoCliente.Views.LobbyView - System.ServiceModel.CommunicationException: Se anuló la conexión de socket. La causa puede ser un error en el procesamiento del mensaje, que se superó el tiempo de espera de recepción en el host remoto, o bien un problema de recursos de red subyacente. El tiempo de espera de socket local era '00:01:00'. ---> System.Net.Sockets.SocketException: Se ha forzado la interrupción de una conexión existente por el host remoto
+   en System.ServiceModel.Channels.SocketConnection.HandleSendAsyncCompleted()
+   en System.ServiceModel.Channels.SocketConnection.BeginWrite(Byte[] buffer, Int32 offset, Int32 size, Boolean immediate, TimeSpan timeout, WaitCallback callback, Object state)
+   --- Fin del seguimiento de la pila de la excepción interna ---
+
+Server stack trace: 
+   en System.ServiceModel.Channels.SocketConnection.BeginWrite(Byte[] buffer, Int32 offset, Int32 size, Boolean immediate, TimeSpan timeout, WaitCallback callback, Object state)
+   en System.ServiceModel.Channels.BufferedConnection.BeginWrite(Byte[] buffer, Int32 offset, Int32 size, Boolean immediate, TimeSpan timeout, WaitCallback callback, Object state)
+   en System.ServiceModel.Channels.FramingDuplexSessionChannel.StartWritingBufferedMessage(Message message, ArraySegment`1 messageData, Boolean allowOutputBatching, TimeSpan timeout, WaitCallback callback, Object state)
+   en System.ServiceModel.Channels.TransportDuplexSessionChannel.SendAsyncResult.WriteCore()
+   en System.ServiceModel.Channels.TransportDuplexSessionChannel.SendAsyncResult..ctor(TransportDuplexSessionChannel channel, Message message, TimeSpan timeout, Boolean streamedOutput, AsyncCallback callback, Object state)
+   en System.ServiceModel.Channels.TransportDuplexSessionChannel.OnBeginSend(Message message, TimeSpan timeout, AsyncCallback callback, Object state)
+   en System.ServiceModel.Channels.OutputChannel.BeginSend(Message message, TimeSpan timeout, AsyncCallback callback, Object state)
+   en System.ServiceModel.Dispatcher.DuplexChannelBinder.BeginSend(Message message, TimeSpan timeout, AsyncCallback callback, Object state)
+   en System.ServiceModel.Channels.ServiceChannel.SendAsyncResult.StartSend(Boolean completedSynchronously)
+   en System.ServiceModel.Channels.ServiceChannel.SendAsyncResult.FinishEnsureOpen(IAsyncResult result, Boolean completedSynchronously)
+   en System.ServiceModel.Channels.ServiceChannel.SendAsyncResult.StartEnsureOpen(Boolean completedSynchronously)
+   en System.ServiceModel.Channels.ServiceChannel.SendAsyncResult.FinishEnsureInteractiveInit(IAsyncResult result, Boolean completedSynchronously)
+   en System.ServiceModel.Channels.ServiceChannel.SendAsyncResult.StartEnsureInteractiveInit()
+   en System.ServiceModel.Channels.ServiceChannel.SendAsyncResult.Begin()
+   en System.ServiceModel.Channels.ServiceChannel.BeginCall(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, TimeSpan timeout, AsyncCallback callback, Object asyncState)
+   en System.ServiceModel.Channels.ServiceChannel.BeginCall(ServiceChannel channel, ProxyOperationRuntime operation, Object[] ins, AsyncCallback callback, Object asyncState)
+   en System.Threading.Tasks.TaskFactory`1.FromAsyncImpl[TArg1,TArg2,TArg3](Func`6 beginMethod, Func`2 endFunction, Action`1 endAction, TArg1 arg1, TArg2 arg2, TArg3 arg3, Object state, TaskCreationOptions creationOptions)
+   en System.ServiceModel.Channels.ServiceChannelProxy.TaskCreator.CreateTask(ServiceChannel channel, ProxyOperationRuntime operation, Object[] inputParameters)
+   en System.ServiceModel.Channels.ServiceChannelProxy.TaskCreator.CreateTask(ServiceChannel channel, IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   en System.ServiceModel.Channels.ServiceChannelProxy.InvokeTaskService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   en System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   en System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   en System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   en TripasDeGatoCliente.TripasDeGatoServicio.IChatManager.LeaveChatAsync(String userName, String lobbyCode)
+   en TripasDeGatoCliente.TripasDeGatoServicio.ChatManagerClient.LeaveChatAsync(String userName, String lobbyCode) en C:\TripasDeGatoCliente\Connected Services\TripasDeGatoServicio\Reference.cs:línea 1053
+   en TripasDeGatoCliente.Views.LobbyView.<BtnBack_Click>d__17.MoveNext() en C:\TripasDeGatoCliente\Views\LobbyView.xaml.cs:línea 163
+2024-11-28 12:42:50,643 [1] ERROR TripasDeGatoCliente.Views.MenuView - System.ServiceModel.EndpointNotFoundException: No se pudo conectar a net.tcp://192.168.43.182:8081/StatusManager. La duración del intento de conexión fue de 00:00:02.7611870. Código de error TCP 10061: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión 192.168.43.182:8081.  ---> System.Net.Sockets.SocketException: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión 192.168.43.182:8081
+   en System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   en System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   en System.ServiceModel.Channels.SocketConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+   --- Fin del seguimiento de la pila de la excepción interna ---
+
+Server stack trace: 
+   en System.ServiceModel.Channels.SocketConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+   en System.ServiceModel.Channels.BufferedConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+   en System.ServiceModel.Channels.ConnectionPoolHelper.EstablishConnection(TimeSpan timeout)
+   en System.ServiceModel.Channels.ClientFramingDuplexSessionChannel.OnOpen(TimeSpan timeout)
+   en System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   en System.ServiceModel.Channels.ServiceChannel.OnOpen(TimeSpan timeout)
+   en System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   en System.ServiceModel.Channels.ServiceChannel.CallOpenOnce.System.ServiceModel.Channels.ServiceChannel.ICallOnce.Call(ServiceChannel channel, TimeSpan timeout)
+   en System.ServiceModel.Channels.ServiceChannel.CallOnceManager.CallOnce(TimeSpan timeout, CallOnceManager cascade)
+   en System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   en System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   en System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   en System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   en System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   en TripasDeGatoCliente.TripasDeGatoServicio.IStatusManager.SetPlayerStatus(Int32 idProfile, GameEnumsPlayerStatus status)
+   en TripasDeGatoCliente.TripasDeGatoServicio.StatusManagerClient.SetPlayerStatus(Int32 idProfile, GameEnumsPlayerStatus status) en C:\TripasDeGatoCliente\Connected Services\TripasDeGatoServicio\Reference.cs:línea 1293
+   en TripasDeGatoCliente.Views.MenuView.SetPlayerOfflineStatus(Int32 playerId) en C:\TripasDeGatoCliente\Views\MenuView.xaml.cs:línea 55
+2024-11-28 12:52:38,325 [1] ERROR TripasDeGatoCliente.Views.LoginView - System.ServiceModel.EndpointNotFoundException: No se pudo conectar a net.tcp://192.168.43.182:8081/UserManager. La duración del intento de conexión fue de 00:00:21.0421065. Código de error TCP 10060: Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de tiempo, o bien se produjo un error en la conexión establecida ya que el host conectado no ha podido responder 192.168.43.182:8081.  ---> System.Net.Sockets.SocketException: Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de tiempo, o bien se produjo un error en la conexión establecida ya que el host conectado no ha podido responder 192.168.43.182:8081
+   en System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   en System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   en System.ServiceModel.Channels.SocketConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+   --- Fin del seguimiento de la pila de la excepción interna ---
+
+Server stack trace: 
+   en System.ServiceModel.Channels.SocketConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+   en System.ServiceModel.Channels.BufferedConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+   en System.ServiceModel.Channels.ConnectionPoolHelper.EstablishConnection(TimeSpan timeout)
+   en System.ServiceModel.Channels.ClientFramingDuplexSessionChannel.OnOpen(TimeSpan timeout)
+   en System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   en System.ServiceModel.Channels.ServiceChannel.OnOpen(TimeSpan timeout)
+   en System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   en System.ServiceModel.Channels.ServiceChannel.CallOpenOnce.System.ServiceModel.Channels.ServiceChannel.ICallOnce.Call(ServiceChannel channel, TimeSpan timeout)
+   en System.ServiceModel.Channels.ServiceChannel.CallOnceManager.CallOnce(TimeSpan timeout, CallOnceManager cascade)
+   en System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   en System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   en System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   en System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   en System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   en TripasDeGatoCliente.TripasDeGatoServicio.IUserManager.VerifyLogin(String email, String password)
+   en TripasDeGatoCliente.TripasDeGatoServicio.UserManagerClient.VerifyLogin(String email, String password) en C:\TripasDeGatoCliente\Connected Services\TripasDeGatoServicio\Reference.cs:línea 851
+   en TripasDeGatoCliente.Views.LoginView.AuthenticateUser(String email, String hashedPassword) en C:\TripasDeGatoCliente\Views\LoginView.xaml.cs:línea 56
+2024-11-28 12:53:37,568 [1] ERROR TripasDeGatoCliente.Views.LoginView - System.ServiceModel.EndpointNotFoundException: No se pudo conectar a net.tcp://192.168.43.182:8081/UserManager. La duración del intento de conexión fue de 00:00:05.5786727. Código de error TCP 10061: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión 192.168.43.182:8081.  ---> System.Net.Sockets.SocketException: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión 192.168.43.182:8081
+   en System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   en System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   en System.ServiceModel.Channels.SocketConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+   --- Fin del seguimiento de la pila de la excepción interna ---
+
+Server stack trace: 
+   en System.ServiceModel.Channels.SocketConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+   en System.ServiceModel.Channels.BufferedConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+   en System.ServiceModel.Channels.ConnectionPoolHelper.EstablishConnection(TimeSpan timeout)
+   en System.ServiceModel.Channels.ClientFramingDuplexSessionChannel.OnOpen(TimeSpan timeout)
+   en System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   en System.ServiceModel.Channels.ServiceChannel.OnOpen(TimeSpan timeout)
+   en System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   en System.ServiceModel.Channels.ServiceChannel.CallOpenOnce.System.ServiceModel.Channels.ServiceChannel.ICallOnce.Call(ServiceChannel channel, TimeSpan timeout)
+   en System.ServiceModel.Channels.ServiceChannel.CallOnceManager.CallOnce(TimeSpan timeout, CallOnceManager cascade)
+   en System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   en System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   en System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   en System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   en System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   en TripasDeGatoCliente.TripasDeGatoServicio.IUserManager.VerifyLogin(String email, String password)
+   en TripasDeGatoCliente.TripasDeGatoServicio.UserManagerClient.VerifyLogin(String email, String password) en C:\TripasDeGatoCliente\Connected Services\TripasDeGatoServicio\Reference.cs:línea 851
+   en TripasDeGatoCliente.Views.LoginView.AuthenticateUser(String email, String hashedPassword) en C:\TripasDeGatoCliente\Views\LoginView.xaml.cs:línea 56
+2024-11-28 20:16:38,142 [1] ERROR TripasDeGatoCliente.MainWindow - System.ServiceModel.EndpointNotFoundException: No se pudo conectar a net.tcp://192.168.43.182:8081/StatusManager. La duración del intento de conexión fue de 00:00:21.0809179. Código de error TCP 10060: Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de tiempo, o bien se produjo un error en la conexión establecida ya que el host conectado no ha podido responder 192.168.43.182:8081.  ---> System.Net.Sockets.SocketException: Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de tiempo, o bien se produjo un error en la conexión establecida ya que el host conectado no ha podido responder 192.168.43.182:8081
+   en System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   en System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   en System.ServiceModel.Channels.SocketConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+   --- Fin del seguimiento de la pila de la excepción interna ---
+
+Server stack trace: 
+   en System.ServiceModel.Channels.SocketConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+   en System.ServiceModel.Channels.BufferedConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+   en System.ServiceModel.Channels.ConnectionPoolHelper.EstablishConnection(TimeSpan timeout)
+   en System.ServiceModel.Channels.ClientFramingDuplexSessionChannel.OnOpen(TimeSpan timeout)
+   en System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   en System.ServiceModel.Channels.ServiceChannel.OnOpen(TimeSpan timeout)
+   en System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   en System.ServiceModel.Channels.ServiceChannel.CallOpenOnce.System.ServiceModel.Channels.ServiceChannel.ICallOnce.Call(ServiceChannel channel, TimeSpan timeout)
+   en System.ServiceModel.Channels.ServiceChannel.CallOnceManager.CallOnce(TimeSpan timeout, CallOnceManager cascade)
+   en System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   en System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   en System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   en System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   en System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   en TripasDeGatoCliente.TripasDeGatoServicio.IStatusManager.SetPlayerStatus(Int32 idProfile, GameEnumsPlayerStatus status)
+   en TripasDeGatoCliente.TripasDeGatoServicio.StatusManagerClient.SetPlayerStatus(Int32 idProfile, GameEnumsPlayerStatus status) en C:\TripasDeGatoCliente\Connected Services\TripasDeGatoServicio\Reference.cs:línea 1293
+   en TripasDeGatoCliente.MainWindow.SetPlayerOfflineStatus(Int32 playerId) en C:\TripasDeGatoCliente\MainWindow.xaml.cs:línea 57

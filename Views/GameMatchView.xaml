@@ -120,17 +120,5 @@
                 </Style>
             </Button.Style>
         </Button>
-        <Label x:Name="labelMatchResult" 
-               Content="Resultado" 
-               HorizontalAlignment="Left" 
-               Margin="129,260,0,0" 
-               VerticalAlignment="Top"
-               FontSize="20"/>
-        <Label x:Name="labelScore" 
-               Content="puntuacion" 
-               HorizontalAlignment="Left" 
-               Margin="129,316,0,0" 
-               VerticalAlignment="Top"
-               FontSize="20"/>
     </Grid>
 </Page>

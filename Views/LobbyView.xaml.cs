@@ -144,7 +144,7 @@ namespace TripasDeGatoCliente.Views {
                 lbPlayer1.Content = lobby.Players.ContainsKey("PlayerTwo") ? lobby.Players["PlayerTwo"].Username : "Esperando jugador...";
                 lbPlayer2.Content = lobby.Players.ContainsKey("PlayerOne") ? lobby.Players["PlayerOne"].Username : "Esperando jugador...";
                 imgProfile1.Source = new BitmapImage(new Uri(UserProfileSingleton.PicPath, UriKind.RelativeOrAbsolute));
-                string ruta = userManager.GetPicPath(lobby.Players["PlayerTwo"].Username);
+                string ruta = userManager.GetPicPath(lobby.Players["PlayerOne"].Username);
                 imgProfile2.Source = new BitmapImage(new Uri(ruta, UriKind.RelativeOrAbsolute));
                 btnKickPlayer.Visibility = Visibility.Collapsed;
                 btnInvitedFriend.Visibility = Visibility.Collapsed;

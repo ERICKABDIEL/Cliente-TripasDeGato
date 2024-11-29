@@ -23,8 +23,6 @@ namespace TripasDeGatoCliente.Views {
                 string codeMatch = txtCodeLobby.Text;
 
                 UserProfileSingleton.Instance.CreateGuestInstance();
-
-                // CodeMatch = codeMatch;
             } catch (EndpointNotFoundException endpointException) {
                 logger.LogError(endpointException);
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogEndPointException);

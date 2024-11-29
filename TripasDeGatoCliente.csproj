@@ -218,9 +218,6 @@
     <None Include="Connected Services\TripasDeGatoServicio\TripasDeGatoCliente.TripasDeGatoServicio.GameEnumsPlayerStatus.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\TripasDeGatoServicio\TripasDeGatoCliente.TripasDeGatoServicio.GameResult.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
     <None Include="Connected Services\TripasDeGatoServicio\TripasDeGatoCliente.TripasDeGatoServicio.Lobby.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -241,14 +238,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Audio\" />
     <Folder Include="packages\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\BackgroundLeft.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\LogoWhitoutBackground.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Profiles\ImageProfile1.png" />
@@ -272,6 +265,7 @@
     <Resource Include="Images\Scene\SceneCat.png" />
     <Resource Include="Images\Scene\SceneDog.png" />
     <Resource Include="Images\Scene\SceneBear.png" />
+    <Resource Include="Images\BackgroundProfile.png" />
     <None Include="Connected Services\TripasDeGatoServicio\item.disco" />
     <None Include="Connected Services\TripasDeGatoServicio\configuration91.svcinfo" />
     <None Include="Connected Services\TripasDeGatoServicio\configuration.svcinfo" />
@@ -279,7 +273,6 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <Resource Include="Images\BackgroundProfile.png" />
     <Content Include="Videos\ViewWait.mp4">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
