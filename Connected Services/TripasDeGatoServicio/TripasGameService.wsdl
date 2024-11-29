@@ -575,6 +575,12 @@
   <wsdl:message name="IMatchManager_EndMatch_OutputMessage">
     <wsdl:part name="parameters" element="tns:EndMatchResponse" />
   </wsdl:message>
+  <wsdl:message name="IMatchManager_LeaveMatch_InputMessage">
+    <wsdl:part name="parameters" element="tns:LeaveMatch" />
+  </wsdl:message>
+  <wsdl:message name="IMatchManager_LeaveMatch_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LeaveMatchResponse" />
+  </wsdl:message>
   <wsdl:message name="IMatchManager_TraceReceived_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:TraceReceived" />
   </wsdl:message>
@@ -592,6 +598,9 @@
   </wsdl:message>
   <wsdl:message name="IMatchManager_NotifyDraw_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:NotifyDraw" />
+  </wsdl:message>
+  <wsdl:message name="IMatchManager_NotifyPlayerLeft_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:NotifyPlayerLeft" />
   </wsdl:message>
   <wsdl:message name="IEmailInvitationManager_SendInvitation_InputMessage">
     <wsdl:part name="parameters" element="tns:SendInvitation" />
@@ -786,6 +795,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IMatchManager/EndMatch" message="tns:IMatchManager_EndMatch_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IMatchManager/EndMatchResponse" message="tns:IMatchManager_EndMatch_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="LeaveMatch">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMatchManager/LeaveMatch" message="tns:IMatchManager_LeaveMatch_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMatchManager/LeaveMatchResponse" message="tns:IMatchManager_LeaveMatch_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="TraceReceived">
       <wsdl:output wsaw:Action="http://tempuri.org/IMatchManager/TraceReceived" message="tns:IMatchManager_TraceReceived_OutputCallbackMessage" />
     </wsdl:operation>
@@ -803,6 +816,9 @@
     </wsdl:operation>
     <wsdl:operation name="NotifyDraw">
       <wsdl:output wsaw:Action="http://tempuri.org/IMatchManager/NotifyDraw" message="tns:IMatchManager_NotifyDraw_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="NotifyPlayerLeft">
+      <wsdl:output wsaw:Action="http://tempuri.org/IMatchManager/NotifyPlayerLeft" message="tns:IMatchManager_NotifyPlayerLeft_OutputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IEmailInvitationManager">
@@ -1225,6 +1241,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="LeaveMatch">
+      <soap12:operation soapAction="http://tempuri.org/IMatchManager/LeaveMatch" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="TraceReceived">
       <soap12:operation soapAction="http://tempuri.org/IMatchManager/TraceReceived" style="document" />
       <wsdl:output>
@@ -1257,6 +1282,12 @@
     </wsdl:operation>
     <wsdl:operation name="NotifyDraw">
       <soap12:operation soapAction="http://tempuri.org/IMatchManager/NotifyDraw" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NotifyPlayerLeft">
+      <soap12:operation soapAction="http://tempuri.org/IMatchManager/NotifyPlayerLeft" style="document" />
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>

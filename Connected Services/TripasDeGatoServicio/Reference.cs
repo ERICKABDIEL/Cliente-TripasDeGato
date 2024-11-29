@@ -1543,6 +1543,12 @@ namespace TripasDeGatoCliente.TripasDeGatoServicio {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMatchManager/EndMatch", ReplyAction="http://tempuri.org/IMatchManager/EndMatchResponse")]
         System.Threading.Tasks.Task<bool> EndMatchAsync(string matchCode);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMatchManager/LeaveMatch", ReplyAction="http://tempuri.org/IMatchManager/LeaveMatchResponse")]
+        bool LeaveMatch(string matchCode, string username);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMatchManager/LeaveMatch", ReplyAction="http://tempuri.org/IMatchManager/LeaveMatchResponse")]
+        System.Threading.Tasks.Task<bool> LeaveMatchAsync(string matchCode, string username);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1565,6 +1571,9 @@ namespace TripasDeGatoCliente.TripasDeGatoServicio {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IMatchManager/NotifyDraw")]
         void NotifyDraw();
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IMatchManager/NotifyPlayerLeft")]
+        void NotifyPlayerLeft();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1649,6 +1658,14 @@ namespace TripasDeGatoCliente.TripasDeGatoServicio {
         
         public System.Threading.Tasks.Task<bool> EndMatchAsync(string matchCode) {
             return base.Channel.EndMatchAsync(matchCode);
+        }
+        
+        public bool LeaveMatch(string matchCode, string username) {
+            return base.Channel.LeaveMatch(matchCode, username);
+        }
+        
+        public System.Threading.Tasks.Task<bool> LeaveMatchAsync(string matchCode, string username) {
+            return base.Channel.LeaveMatchAsync(matchCode, username);
         }
     }
     

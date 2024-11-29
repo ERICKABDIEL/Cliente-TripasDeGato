@@ -358,12 +358,11 @@ namespace TripasDeGatoCliente.Views {
         }
 
 
-        //Qeuda pendiente el metodo para desconectarse de la partida
         private async void BtnBack_Click(object sender, RoutedEventArgs e) {
             LoggerManager logger = new LoggerManager(this.GetType());
             try {
                 if (isConnected) {
-                   // await matchManagerClient.LeaveMatchAsync(matchCode, UserProfileSingleton.UserName);
+                    await matchManagerClient.LeaveMatchAsync(matchCode, UserProfileSingleton.UserName);
                     ExitUseSinglenton();
                 }
             } catch (EndpointNotFoundException endpointNotFoundException) {
