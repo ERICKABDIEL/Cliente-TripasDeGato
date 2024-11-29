@@ -333,8 +333,9 @@ namespace TripasDeGatoCliente.Views {
         private async void BtnBack_Click(object sender, RoutedEventArgs e) {
             LoggerManager logger = new LoggerManager(this.GetType());
             try {
-                //  await matchManagerClient.LeaveMatchAsync(matchCode, UserProfileSingleton.IdProfile);
-                ExitUseSinglenton();
+                if (isConnected) {
+                    await matchManagerClient.LeaveMatchAsync(matchCode, UserProfileSingleton.UserName);
+                }
             } catch (EndpointNotFoundException endpointNotFoundException) {
                 logger.LogError(endpointNotFoundException);
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogEndPointException);
@@ -409,6 +410,16 @@ namespace TripasDeGatoCliente.Views {
             Application.Current.Dispatcher.Invoke(() => {
                 drawingCanvas.IsEnabled = false;
                 timer?.Stop();
+            });
+        }
+
+        public void NotifyPlayerLeft() {
+            DisableGameControls();
+            Dispatcher.Invoke(async () => {
+                await Task.Run(() =>
+            DialogManager.ShowWarningMessageAlert("Un jugador abandonó")
+                );
+                ExitUseSinglenton();
             });
         }
     }
