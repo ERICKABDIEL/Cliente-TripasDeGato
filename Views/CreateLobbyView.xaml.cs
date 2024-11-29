@@ -33,8 +33,8 @@ namespace TripasDeGatoCliente.Views {
         }
 
         private void InitializeFormValues() {
-            cboxNode.ItemsSource = new List<int> { 8, 10, 12, 14, 16, 18, 20 }; 
-            cboxNode.SelectedIndex = 0; 
+            cboxNode.ItemsSource = new List<int> { 8, 10, 12, 14, 16, 18, 20 };
+            cboxNode.SelectedIndex = 0;
             cboxMap.ItemsSource = new List<String> {
                 Properties.Resources.mapOptionCat,
                 Properties.Resources.mapOptionDog,
@@ -43,20 +43,14 @@ namespace TripasDeGatoCliente.Views {
 
             cboxMap.SelectedIndex = 0;
             cboxTime.ItemsSource = new List<string> { "2:00 min", "5:00 min", "10:00 min" };
-            cboxTime.SelectedIndex = 0; 
+            cboxTime.SelectedIndex = 0;
         }
 
         private async void BtnCreateLobby_Click(object sender, RoutedEventArgs e) {
             LoggerManager logger = new LoggerManager(this.GetType());
-
-            if (string.IsNullOrWhiteSpace(txtNameLobby.Text)) {
-                DialogManager.ShowWarningMessageAlert(Properties.Resources.dialogEnterGameNameError);
-                return;
-            }
-
             string gameName = txtNameLobby.Text.Trim();
-            if (!Validador.ValidateGameName(gameName)) {
-                DialogManager.ShowWarningMessageAlert(Properties.Resources.dialogInvalidGameNameError); 
+
+            if (!ValidationGameName(gameName)) {
                 return;
             }
 
@@ -107,17 +101,20 @@ namespace TripasDeGatoCliente.Views {
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
             }
         }
-        public void ValidationGameName() {
-                        if (string.IsNullOrWhiteSpace(txtNameLobby.Text)) {
+        public bool ValidationGameName(string gameName) {
+            bool result = false;
+            if (string.IsNullOrWhiteSpace(txtNameLobby.Text)) {
                 DialogManager.ShowWarningMessageAlert(Properties.Resources.dialogEnterGameNameError);
-                return;
+                return result;
             }
 
-            string gameName = txtNameLobby.Text.Trim();
             if (!Validador.ValidateGameName(gameName)) {
-                DialogManager.ShowWarningMessageAlert(Properties.Resources.dialogInvalidGameNameError); 
-                return;
+                DialogManager.ShowWarningMessageAlert(Properties.Resources.dialogInvalidGameNameError);
+                return result;
             }
+            result = true;
+            return result;
+                
         }
 
 

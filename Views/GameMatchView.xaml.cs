@@ -52,7 +52,7 @@ namespace TripasDeGatoCliente.Views {
                 if (currentTurn == UserProfileSingleton.UserName) {
                     NotifyYourTurn();
                 } else {
-                    NotifyNotYouTurn();
+                    NotifyNotYourTurn();
                 }
             } catch (Exception ex) {
                 DialogManager.ShowErrorMessageAlert($"Error al obtener el turno: {ex.Message}");
@@ -146,7 +146,7 @@ namespace TripasDeGatoCliente.Views {
             StartTimer();
         }
 
-        public void NotifyNotYouTurn() {
+        public void NotifyNotYourTurn() {
             Application.Current.Dispatcher.Invoke(() => {
                 if (timer != null) {
                     timer.Stop();

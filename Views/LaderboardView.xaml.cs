@@ -36,6 +36,7 @@ namespace TripasDeGatoCliente.Views {
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
             }
         }
+
         private void BtnBack_Click(object sender, RoutedEventArgs e) {
             MenuView menuView = new MenuView();
             if (this.NavigationService != null) {

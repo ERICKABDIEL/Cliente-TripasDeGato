@@ -59,7 +59,6 @@ namespace TripasDeGatoCliente.Views {
                     string userName = txtUserName.Text;
                     string selectedLanguage = cboxLanguage.SelectedItem?.ToString();
 
-                    // Obtén el ListBoxItem seleccionado y su Tag
                     var selectedListBoxItem = lsb_ProfilePics.SelectedItem as ListBoxItem;
                     string selectedProfile = selectedListBoxItem?.Tag?.ToString();
 
@@ -71,6 +70,7 @@ namespace TripasDeGatoCliente.Views {
         }
 
         private async void SaveProfile(string userName, string selectedLanguage, string selectedProfile) {
+            LoggerManager logger = new LoggerManager(this.GetType());
             try {
                 var service = new TripasDeGatoServicio.UserManagerClient();
                 int idProfile = UserProfileSingleton.IdProfile;
@@ -86,15 +86,16 @@ namespace TripasDeGatoCliente.Views {
                 } else {
                     DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogErrorSavingProfileData);
                 }
-            } catch (EndpointNotFoundException) {
-                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogConnectionErrorWithServer);
-            } catch (TimeoutException) {
-                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogRequestTimeout);
-            } catch (CommunicationException) {
-                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogCommunicationError);
-            } catch (Exception ex) {
-                DialogManager.ShowErrorMessageAlert(string.Format(Properties.Resources.dialogErrorSavingProfile, ex.Message));
-            }
+            } catch (EndpointNotFoundException endpointNotFoundException) {
+                logger.LogError(endpointNotFoundException);
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogEndPointException);
+            } catch (TimeoutException timeoutException) {
+                logger.LogError(timeoutException);
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogTimeOutException);
+            } catch (CommunicationException communicationException) {
+                logger.LogError(communicationException);
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
+            } 
         }
 
         private bool ValidateFields() {
