@@ -109,10 +109,10 @@ namespace TripasDeGatoCliente.TripasDeGatoServicio {
         private int ScoreField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string UsernameField;
+        private TripasDeGatoCliente.TripasDeGatoServicio.GameEnumsPlayerStatus StatusField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private TripasDeGatoCliente.TripasDeGatoServicio.GameEnumsPlayerStatus statusField;
+        private string UsernameField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -164,6 +164,19 @@ namespace TripasDeGatoCliente.TripasDeGatoServicio {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public TripasDeGatoCliente.TripasDeGatoServicio.GameEnumsPlayerStatus Status {
+            get {
+                return this.StatusField;
+            }
+            set {
+                if ((this.StatusField.Equals(value) != true)) {
+                    this.StatusField = value;
+                    this.RaisePropertyChanged("Status");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string Username {
             get {
                 return this.UsernameField;
@@ -172,19 +185,6 @@ namespace TripasDeGatoCliente.TripasDeGatoServicio {
                 if ((object.ReferenceEquals(this.UsernameField, value) != true)) {
                     this.UsernameField = value;
                     this.RaisePropertyChanged("Username");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public TripasDeGatoCliente.TripasDeGatoServicio.GameEnumsPlayerStatus status {
-            get {
-                return this.statusField;
-            }
-            set {
-                if ((this.statusField.Equals(value) != true)) {
-                    this.statusField = value;
-                    this.RaisePropertyChanged("status");
                 }
             }
         }
@@ -748,83 +748,6 @@ namespace TripasDeGatoCliente.TripasDeGatoServicio {
         
         [System.Runtime.Serialization.EnumMemberAttribute()]
         Occupied = 1,
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="GameResult", Namespace="http://schemas.datacontract.org/2004/07/TripasService.Logic")]
-    [System.SerializableAttribute()]
-    public partial class GameResult : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool IsDrawField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool IsWinnerField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int ScoreField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool IsDraw {
-            get {
-                return this.IsDrawField;
-            }
-            set {
-                if ((this.IsDrawField.Equals(value) != true)) {
-                    this.IsDrawField = value;
-                    this.RaisePropertyChanged("IsDraw");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool IsWinner {
-            get {
-                return this.IsWinnerField;
-            }
-            set {
-                if ((this.IsWinnerField.Equals(value) != true)) {
-                    this.IsWinnerField = value;
-                    this.RaisePropertyChanged("IsWinner");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Score {
-            get {
-                return this.ScoreField;
-            }
-            set {
-                if ((this.ScoreField.Equals(value) != true)) {
-                    this.ScoreField = value;
-                    this.RaisePropertyChanged("Score");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1620,19 +1543,10 @@ namespace TripasDeGatoCliente.TripasDeGatoServicio {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMatchManager/EndMatch", ReplyAction="http://tempuri.org/IMatchManager/EndMatchResponse")]
         System.Threading.Tasks.Task<bool> EndMatchAsync(string matchCode);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMatchManager/GetGameResult", ReplyAction="http://tempuri.org/IMatchManager/GetGameResultResponse")]
-        TripasDeGatoCliente.TripasDeGatoServicio.GameResult GetGameResult(string matchCode, string userName);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMatchManager/GetGameResult", ReplyAction="http://tempuri.org/IMatchManager/GetGameResultResponse")]
-        System.Threading.Tasks.Task<TripasDeGatoCliente.TripasDeGatoServicio.GameResult> GetGameResultAsync(string matchCode, string userName);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface IMatchManagerCallback {
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IMatchManager/NotifyMatchEnded")]
-        void NotifyMatchEnded();
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IMatchManager/TraceReceived")]
         void TraceReceived(TripasDeGatoCliente.TripasDeGatoServicio.Trace trace);
@@ -1640,8 +1554,17 @@ namespace TripasDeGatoCliente.TripasDeGatoServicio {
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IMatchManager/NotifyYourTurn")]
         void NotifyYourTurn();
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IMatchManager/NotifyNotYouTurn")]
-        void NotifyNotYouTurn();
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IMatchManager/NotifyNotYourTurn")]
+        void NotifyNotYourTurn();
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IMatchManager/NotifyYouLost")]
+        void NotifyYouLost();
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IMatchManager/NotifyYouWon")]
+        void NotifyYouWon();
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IMatchManager/NotifyDraw")]
+        void NotifyDraw();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1726,14 +1649,6 @@ namespace TripasDeGatoCliente.TripasDeGatoServicio {
         
         public System.Threading.Tasks.Task<bool> EndMatchAsync(string matchCode) {
             return base.Channel.EndMatchAsync(matchCode);
-        }
-        
-        public TripasDeGatoCliente.TripasDeGatoServicio.GameResult GetGameResult(string matchCode, string userName) {
-            return base.Channel.GetGameResult(matchCode, userName);
-        }
-        
-        public System.Threading.Tasks.Task<TripasDeGatoCliente.TripasDeGatoServicio.GameResult> GetGameResultAsync(string matchCode, string userName) {
-            return base.Channel.GetGameResultAsync(matchCode, userName);
         }
     }
     
