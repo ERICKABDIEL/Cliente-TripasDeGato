@@ -700,6 +700,15 @@ namespace TripasDeGatoCliente.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Do you want to change the language? This will restart the game..
+        /// </summary>
+        public static string dialogMessageLanguagechange {
+            get {
+                return ResourceManager.GetString("dialogMessageLanguagechange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Credentials do not match.
         /// </summary>
         public static string dialogMissmatchesCredentials {
@@ -1155,6 +1164,15 @@ namespace TripasDeGatoCliente.Properties {
         public static string lbLanguage {
             get {
                 return ResourceManager.GetString("lbLanguage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Language Change.
+        /// </summary>
+        public static string lbLanguageChange {
+            get {
+                return ResourceManager.GetString("lbLanguageChange", resourceCulture);
             }
         }
         
