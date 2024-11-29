@@ -126,6 +126,9 @@
   <data name="btnContinue" xml:space="preserve">
     <value>Continuar</value>
   </data>
+  <data name="btnCreate" xml:space="preserve">
+    <value>Crear</value>
+  </data>
   <data name="btnEdit" xml:space="preserve">
     <value>Editar</value>
   </data>
@@ -134,6 +137,9 @@
   </data>
   <data name="btnGuest" xml:space="preserve">
     <value>Invitado</value>
+  </data>
+  <data name="btnInvited" xml:space="preserve">
+    <value>Invitar</value>
   </data>
   <data name="btnInviteFriend" xml:space="preserve">
     <value>Invitar amigo</value>
@@ -167,6 +173,9 @@
   </data>
   <data name="btnSearch" xml:space="preserve">
     <value>Buscar</value>
+  </data>
+  <data name="btnSend" xml:space="preserve">
+    <value>Enviar</value>
   </data>
   <data name="btnSignIn" xml:space="preserve">
     <value>Registrarse</value>
@@ -213,6 +222,9 @@
   <data name="dialogComunicationException" xml:space="preserve">
     <value>Se ha producido un fallo para establecer la conexión al servidor. Cheque su conexión a internet e inténtelo de nuevo</value>
   </data>
+  <data name="dialogConnectionError" xml:space="preserve">
+    <value>No se pudo conectar al lobby.</value>
+  </data>
   <data name="dialogConnectionErrorWithServer" xml:space="preserve">
     <value>Error de conexión con el servidor</value>
   </data>
@@ -221,6 +233,9 @@
   </data>
   <data name="dialogEndPointException" xml:space="preserve">
     <value>Fallo al encontrar el punto de acceso. Por favor cheque la configuración al servidor e inténtelo de nuevo.</value>
+  </data>
+  <data name="dialogEnterGameNameError" xml:space="preserve">
+    <value>Por favor, ingrese un nombre para la partida.</value>
   </data>
   <data name="dialogErrorAddingFriend" xml:space="preserve">
     <value>Error al agregar el amigo. Intenta de nuevo</value>
@@ -255,6 +270,9 @@
   <data name="dialogErrorSavingProfileData" xml:space="preserve">
     <value>Hubo un error al guardar los datos del perfil</value>
   </data>
+  <data name="dialogErrorSendingInvitation" xml:space="preserve">
+    <value>Ocurrió un error al enviar la invitación. Por favor, inténtalo de nuevo más tarde.</value>
+  </data>
   <data name="dialogErrorSendingRecoveryCode" xml:space="preserve">
     <value>Error al enviar el código de recuperación</value>
   </data>
@@ -270,8 +288,17 @@
   <data name="dialogFriendshipDeleted" xml:space="preserve">
     <value>Amistad con '{0}' eliminada correctamente</value>
   </data>
+  <data name="dialogHostLeftLobby" xml:space="preserve">
+    <value>El anfitrión abandonó el lobby.</value>
+  </data>
   <data name="dialogInvalidEmail" xml:space="preserve">
     <value>Correo inválido</value>
+  </data>
+  <data name="dialogInvalidGameNameError" xml:space="preserve">
+    <value>El nombre del juego no es válido. Por favor, elige un nombre válido.</value>
+  </data>
+  <data name="dialogInvalidGuestProfileOrLobbyCode" xml:space="preserve">
+    <value>Error: el perfil del invitado o el código del lobby no son válidos.</value>
   </data>
   <data name="dialogInvalidName" xml:space="preserve">
     <value>Por favor, ingresa un nombre válido</value>
@@ -282,8 +309,26 @@
   <data name="dialogInvalidRecoveryCode" xml:space="preserve">
     <value>Código de recuperación inválido. Por favor, inténtelo de nuevo</value>
   </data>
+  <data name="dialogInvalidTimeSelected" xml:space="preserve">
+    <value>Tiempo seleccionado no válido.</value>
+  </data>
   <data name="dialogInvalidVerificationCode" xml:space="preserve">
     <value>Código de verificación inválido. Por favor, intente de nuevo</value>
+  </data>
+  <data name="dialogInvitationSent" xml:space="preserve">
+    <value>La invitación ha sido enviada exitosamente a {0}.</value>
+  </data>
+  <data name="dialogLobbyCreationError" xml:space="preserve">
+    <value>No se pudo crear el lobby. Inténtelo nuevamente.</value>
+  </data>
+  <data name="dialogLobbyExit" xml:space="preserve">
+    <value>Has sido eliminado del lobby.</value>
+  </data>
+  <data name="dialogLobbyJoinError" xml:space="preserve">
+    <value>No se pudo unir al lobby. Puede que esté lleno o que ya no esté disponible.</value>
+  </data>
+  <data name="dialogLobbyNotFound" xml:space="preserve">
+    <value>No se encontraron lobbies con ese código.</value>
   </data>
   <data name="dialogMissmatchesCredentials" xml:space="preserve">
     <value>Las credenciales no coinciden</value>
@@ -318,6 +363,15 @@
   <data name="dialogSelectFriendToDelete" xml:space="preserve">
     <value>Por favor, selecciona un amigo para eliminar</value>
   </data>
+  <data name="dialogSelectFriendToInvite" xml:space="preserve">
+    <value>Por favor, selecciona un amigo antes de enviar la invitación.</value>
+  </data>
+  <data name="dialogSelectLobbyToJoin" xml:space="preserve">
+    <value>Por favor, selecciona un lobby para unirte.</value>
+  </data>
+  <data name="dialogSelectNodesMapTimeError" xml:space="preserve">
+    <value>Por favor, seleccione los nodos, el mapa y el tiempo para la partida.</value>
+  </data>
   <data name="dialogTimeOutException" xml:space="preserve">
     <value>El tiempo de espera ha caducado, inténtelo de nuevo. Por favor cheque su conexión a internet.</value>
   </data>
@@ -348,6 +402,9 @@
   <data name="dialogVerificationCodeSent" xml:space="preserve">
     <value>Código de verificación enviado con éxito. Por favor, revise su correo electrónico</value>
   </data>
+  <data name="dialogWaitingForPlayer" xml:space="preserve">
+    <value>Esperando jugador...</value>
+  </data>
   <data name="dialogWrongData" xml:space="preserve">
     <value>Datos erróneos</value>
   </data>
@@ -363,8 +420,29 @@
   <data name="globalLbEnterCodeLobby" xml:space="preserve">
     <value>Código de sala</value>
   </data>
+  <data name="globalLbPlayer1" xml:space="preserve">
+    <value>Jugador 1</value>
+  </data>
+  <data name="globalLbPlayer2" xml:space="preserve">
+    <value>Jugador 2</value>
+  </data>
   <data name="globalLbUser" xml:space="preserve">
     <value>Usuario</value>
+  </data>
+  <data name="headerCode" xml:space="preserve">
+    <value>Código de sala</value>
+  </data>
+  <data name="headerGameName" xml:space="preserve">
+    <value>Nombre del juego</value>
+  </data>
+  <data name="headerNodes" xml:space="preserve">
+    <value>Nodos</value>
+  </data>
+  <data name="headerPlayers" xml:space="preserve">
+    <value>Jugadores</value>
+  </data>
+  <data name="lbCode" xml:space="preserve">
+    <value>Código</value>
   </data>
   <data name="lbConfirmPasswordSignIn" xml:space="preserve">
     <value>Confirmar contraseña</value>
@@ -443,6 +521,15 @@
   </data>
   <data name="lbVerifyPassword" xml:space="preserve">
     <value>Verifique su contraseña</value>
+  </data>
+  <data name="mapOptionBear" xml:space="preserve">
+    <value>Oso</value>
+  </data>
+  <data name="mapOptionCat" xml:space="preserve">
+    <value>Gato</value>
+  </data>
+  <data name="mapOptionDog" xml:space="preserve">
+    <value>Perro</value>
   </data>
   <data name="titleActionFailed" xml:space="preserve">
     <value>Acción fallida</value>

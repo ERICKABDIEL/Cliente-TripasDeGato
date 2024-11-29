@@ -75,12 +75,13 @@
                   HeadersVisibility="Column"
                   ColumnHeaderHeight="30" 
                   RowHeight="30" 
-                  BorderBrush="Black">
+                  BorderBrush="Black" 
+                  IsReadOnly="True">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Código" Binding="{Binding Code}" Width="*"/>
-                <DataGridTextColumn Header="Nombre del Juego" Binding="{Binding GameName}" Width="*"/>
-                <DataGridTextColumn Header="Nodos" Binding="{Binding NodeCount}" Width="*"/>
-                <DataGridTextColumn Header="Jugadores" Binding="{Binding Players.Count}" Width="*"/>
+                <DataGridTextColumn Header="{x:Static p:Resources.headerCode}" Binding="{Binding Code}" Width="*"/>
+                <DataGridTextColumn Header="{x:Static p:Resources.headerGameName}" Binding="{Binding GameName}" Width="*"/>
+                <DataGridTextColumn Header="{x:Static p:Resources.headerNodes}" Binding="{Binding NodeCount}" Width="*"/>
+                <DataGridTextColumn Header="{x:Static p:Resources.headerPlayers}" Binding="{Binding Players.Count}" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
 

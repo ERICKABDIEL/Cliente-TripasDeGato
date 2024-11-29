@@ -59,7 +59,7 @@ namespace TripasDeGatoCliente.Views {
                     Profile profile = userManager.GetProfileByMail(email);
 
                     if (profile != null) {
-                        if (IsPlayerOnline(profile.idProfile)) {
+                        if (IsPlayerOnline(profile.IdProfile)) {
                             return false;
                         }
 
@@ -113,7 +113,6 @@ namespace TripasDeGatoCliente.Views {
         private void ObtainSingletonData(Profile profile) {
             UserProfileSingleton.Instance.CreateInstance(profile);
         }
-        //NUEVO
         private void SetPlayerOnlineStatus(int playerId) {
             LoggerManager logger = new LoggerManager(this.GetType());
 
@@ -193,8 +192,8 @@ namespace TripasDeGatoCliente.Views {
 
                 if (result == Constants.SUCCES_OPERATION) {
                     userEmail = email;
-                    enterEmailGrid.Visibility = Visibility.Collapsed;
-                    recoveryGrid.Visibility = Visibility.Visible;
+                    gridEnterEmail.Visibility = Visibility.Collapsed;
+                    gridRecovery.Visibility = Visibility.Visible;
                     DialogManager.ShowSuccessMessageAlert(Properties.Resources.dialogRecoveryCodeHasBeenSent);
                 } else if (result == Constants.NO_DATA_MATCHES) {
                     DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogInvalidEmail);
@@ -214,7 +213,7 @@ namespace TripasDeGatoCliente.Views {
         }
 
         private void BtnBackEnterEmail_Click(object sender, RoutedEventArgs e) {
-            enterEmailGrid.Visibility = Visibility.Collapsed;
+            gridEnterEmail.Visibility = Visibility.Collapsed;
             txtEmail.Clear();
             txtPassword.Clear();
             txtPasswordVisible.Clear();
@@ -229,8 +228,8 @@ namespace TripasDeGatoCliente.Views {
                 bool isCodeValid = passwordRecovery.VerifyRecoveryCode(userEmail, enteredCode);
 
                 if (isCodeValid) {
-                    recoveryGrid.Visibility = Visibility.Collapsed;
-                    recoveryPasswordGrid.Visibility = Visibility.Visible;
+                    gridRecovery.Visibility = Visibility.Collapsed;
+                    gridRecoveryPassword.Visibility = Visibility.Visible;
                 } else {
                     DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogInvalidRecoveryCode);
                 }
@@ -276,7 +275,7 @@ namespace TripasDeGatoCliente.Views {
         }
 
         private void BtnBackValidate_Click(object sender, RoutedEventArgs e) {
-            recoveryGrid.Visibility = Visibility.Collapsed;
+            gridRecovery.Visibility = Visibility.Collapsed;
             txtEmail.Clear();
             txtPassword.Clear();
             txtPasswordVisible.Clear();
@@ -307,7 +306,7 @@ namespace TripasDeGatoCliente.Views {
                     DialogManager.ShowSuccessMessageAlert(Properties.Resources.dialogPasswordUpdatedSuccessfully);
                     txtNewPassword.Clear();
                     txtNewPasswordConfirm.Clear();
-                    recoveryPasswordGrid.Visibility = Visibility.Collapsed;
+                    gridRecoveryPassword.Visibility = Visibility.Collapsed;
                 } else {
                     DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogErrorUpdatingPassowrd);
                 }
@@ -368,7 +367,7 @@ namespace TripasDeGatoCliente.Views {
         }
 
         private void BtnBackRecovery_Click(object sender, RoutedEventArgs e) {
-            recoveryPasswordGrid.Visibility = Visibility.Collapsed;
+            gridRecoveryPassword.Visibility = Visibility.Collapsed;
             txtEmail.Clear();
             txtPassword.Clear();
             txtPasswordVisible.Clear();
@@ -391,7 +390,7 @@ namespace TripasDeGatoCliente.Views {
         }
 
         private void BtnRecoverPassword_Click(object sender, RoutedEventArgs e) {
-            enterEmailGrid.Visibility = Visibility.Visible;
+            gridEnterEmail.Visibility = Visibility.Visible;
         }
     }
 }

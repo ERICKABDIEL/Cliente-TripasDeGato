@@ -557,10 +557,17 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="MatchEnded">
+  <xs:element name="EndMatch">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="matchCode" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EndMatchResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="EndMatchResult" type="xs:boolean" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -576,12 +583,22 @@
       <xs:sequence />
     </xs:complexType>
   </xs:element>
-  <xs:element name="NotifyNotYouTurn">
+  <xs:element name="NotifyNotYourTurn">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>
   </xs:element>
-  <xs:element name="NotifyNotYouTurnResponse">
+  <xs:element name="NotifyYouLost">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="NotifyYouWon">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="NotifyDraw">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>

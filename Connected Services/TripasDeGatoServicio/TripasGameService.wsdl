@@ -569,8 +569,11 @@
   <wsdl:message name="IMatchManager_GetCurrentTurn_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetCurrentTurnResponse" />
   </wsdl:message>
-  <wsdl:message name="IMatchManager_MatchEnded_OutputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:MatchEnded" />
+  <wsdl:message name="IMatchManager_EndMatch_InputMessage">
+    <wsdl:part name="parameters" element="tns:EndMatch" />
+  </wsdl:message>
+  <wsdl:message name="IMatchManager_EndMatch_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EndMatchResponse" />
   </wsdl:message>
   <wsdl:message name="IMatchManager_TraceReceived_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:TraceReceived" />
@@ -578,11 +581,17 @@
   <wsdl:message name="IMatchManager_NotifyYourTurn_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:NotifyYourTurn" />
   </wsdl:message>
-  <wsdl:message name="IMatchManager_NotifyNotYouTurn_OutputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:NotifyNotYouTurn" />
+  <wsdl:message name="IMatchManager_NotifyNotYourTurn_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:NotifyNotYourTurn" />
   </wsdl:message>
-  <wsdl:message name="IMatchManager_NotifyNotYouTurn_InputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:NotifyNotYouTurnResponse" />
+  <wsdl:message name="IMatchManager_NotifyYouLost_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:NotifyYouLost" />
+  </wsdl:message>
+  <wsdl:message name="IMatchManager_NotifyYouWon_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:NotifyYouWon" />
+  </wsdl:message>
+  <wsdl:message name="IMatchManager_NotifyDraw_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:NotifyDraw" />
   </wsdl:message>
   <wsdl:message name="IEmailInvitationManager_SendInvitation_InputMessage">
     <wsdl:part name="parameters" element="tns:SendInvitation" />
@@ -773,8 +782,9 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IMatchManager/GetCurrentTurn" message="tns:IMatchManager_GetCurrentTurn_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IMatchManager/GetCurrentTurnResponse" message="tns:IMatchManager_GetCurrentTurn_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="MatchEnded">
-      <wsdl:output wsaw:Action="http://tempuri.org/IMatchManager/MatchEnded" message="tns:IMatchManager_MatchEnded_OutputCallbackMessage" />
+    <wsdl:operation name="EndMatch">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMatchManager/EndMatch" message="tns:IMatchManager_EndMatch_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMatchManager/EndMatchResponse" message="tns:IMatchManager_EndMatch_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="TraceReceived">
       <wsdl:output wsaw:Action="http://tempuri.org/IMatchManager/TraceReceived" message="tns:IMatchManager_TraceReceived_OutputCallbackMessage" />
@@ -782,9 +792,17 @@
     <wsdl:operation name="NotifyYourTurn">
       <wsdl:output wsaw:Action="http://tempuri.org/IMatchManager/NotifyYourTurn" message="tns:IMatchManager_NotifyYourTurn_OutputCallbackMessage" />
     </wsdl:operation>
-    <wsdl:operation name="NotifyNotYouTurn">
-      <wsdl:output wsaw:Action="http://tempuri.org/IMatchManager/NotifyNotYouTurn" message="tns:IMatchManager_NotifyNotYouTurn_OutputCallbackMessage" />
-      <wsdl:input wsaw:Action="http://tempuri.org/IMatchManager/NotifyNotYouTurnResponse" message="tns:IMatchManager_NotifyNotYouTurn_InputCallbackMessage" />
+    <wsdl:operation name="NotifyNotYourTurn">
+      <wsdl:output wsaw:Action="http://tempuri.org/IMatchManager/NotifyNotYourTurn" message="tns:IMatchManager_NotifyNotYourTurn_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="NotifyYouLost">
+      <wsdl:output wsaw:Action="http://tempuri.org/IMatchManager/NotifyYouLost" message="tns:IMatchManager_NotifyYouLost_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="NotifyYouWon">
+      <wsdl:output wsaw:Action="http://tempuri.org/IMatchManager/NotifyYouWon" message="tns:IMatchManager_NotifyYouWon_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="NotifyDraw">
+      <wsdl:output wsaw:Action="http://tempuri.org/IMatchManager/NotifyDraw" message="tns:IMatchManager_NotifyDraw_OutputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IEmailInvitationManager">
@@ -1198,8 +1216,11 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="MatchEnded">
-      <soap12:operation soapAction="http://tempuri.org/IMatchManager/MatchEnded" style="document" />
+    <wsdl:operation name="EndMatch">
+      <soap12:operation soapAction="http://tempuri.org/IMatchManager/EndMatch" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>
@@ -1216,11 +1237,26 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="NotifyNotYouTurn">
-      <soap12:operation soapAction="http://tempuri.org/IMatchManager/NotifyNotYouTurn" style="document" />
-      <wsdl:input>
+    <wsdl:operation name="NotifyNotYourTurn">
+      <soap12:operation soapAction="http://tempuri.org/IMatchManager/NotifyNotYourTurn" style="document" />
+      <wsdl:output>
         <soap12:body use="literal" />
-      </wsdl:input>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NotifyYouLost">
+      <soap12:operation soapAction="http://tempuri.org/IMatchManager/NotifyYouLost" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NotifyYouWon">
+      <soap12:operation soapAction="http://tempuri.org/IMatchManager/NotifyYouWon" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NotifyDraw">
+      <soap12:operation soapAction="http://tempuri.org/IMatchManager/NotifyDraw" style="document" />
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>

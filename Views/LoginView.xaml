@@ -195,7 +195,7 @@
                         <DropShadowEffect Color="Black" ShadowDepth="3" Opacity="0.7" BlurRadius="10" />
                     </TextBlock.Effect>
                 </TextBlock>
-                <Label x:Name="lblEmail" 
+                <Label x:Name="lbEmail" 
                        Content="{x:Static p:Resources.lbEmail}" 
                        FontSize="18" 
                        Foreground="Black" 
@@ -213,7 +213,7 @@
                          VerticalContentAlignment="Center" 
                          HorizontalContentAlignment="Center" 
                          MaxLength="35"/>
-                <Label x:Name="lblPassword" 
+                <Label x:Name="lbPassword" 
                        Content="{x:Static p:Resources.lbPassword}" 
                        FontSize="18" 
                        Foreground="Black"
@@ -245,7 +245,7 @@
                        VerticalContentAlignment="Center"
                        Height="38" 
                        Panel.ZIndex="2" Visibility="Collapsed"/>
-                <Grid x:Name="recoveryGrid" Width="558" Height="302" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="364,256,0,0" Visibility="Collapsed">
+                <Grid x:Name="gridRecovery" Width="558" Height="302" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="364,256,0,0" Visibility="Collapsed">
                     <Grid.Background>
                         <ImageBrush ImageSource="/Images/BackgroundValidation.png"/>
                     </Grid.Background>
@@ -494,7 +494,7 @@
                         </Button.Style>
                     </Button>
                 </Grid>
-                <Grid x:Name="enterEmailGrid" Width="558" Height="302" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="364,256,0,0" Visibility="Collapsed">
+                <Grid x:Name="gridEnterEmail" Width="558" Height="302" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="364,256,0,0" Visibility="Collapsed">
                     <Grid.Background>
                         <ImageBrush ImageSource="/Images/BackgroundValidation.png"/>
                     </Grid.Background>
@@ -611,7 +611,7 @@
                     </Button>
 
                 </Grid>
-                <Grid x:Name="recoveryPasswordGrid" Width="558" Height="302" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="364,256,0,0" Visibility="Collapsed">
+                <Grid x:Name="gridRecoveryPassword" Width="558" Height="302" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="364,256,0,0" Visibility="Collapsed">
                     <Grid.Background>
                         <ImageBrush ImageSource="/Images/BackgroundValidation.png"/>
                     </Grid.Background>
@@ -665,7 +665,7 @@
                              FontSize="16" HorizontalContentAlignment="Center" 
                              VerticalContentAlignment="Center" 
                              MaxLength="35"/>
-                    <Label x:Name="lblNewPassword" 
+                    <Label x:Name="lbNewPassword" 
                            Content="{x:Static p:Resources.lbEnterNewPassword}" 
                            Grid.Row="0"
                            FontSize="18" 
@@ -677,7 +677,7 @@
                            HorizontalContentAlignment="Center" 
                            VerticalContentAlignment="Center"
                            FontFamily="Cooper Black"/>
-                    <Label x:Name="lblVerifyPassword" 
+                    <Label x:Name="lbVerifyPassword" 
                            Content="{x:Static p:Resources.lbVerifyPassword}"
                            Grid.Row="0" 
                            FontSize="18" 

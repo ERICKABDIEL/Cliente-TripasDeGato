@@ -36,12 +36,13 @@ namespace TripasDeGatoCliente.Views {
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
             }
         }
+
         private void BtnBack_Click(object sender, RoutedEventArgs e) {
             MenuView menuView = new MenuView();
             if (this.NavigationService != null) {
                 this.NavigationService.Navigate(menuView);
             } else {
-                MessageBox.Show("Error: No se puede navegar al menu.");
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogNavigationError);
             }
         }
     }

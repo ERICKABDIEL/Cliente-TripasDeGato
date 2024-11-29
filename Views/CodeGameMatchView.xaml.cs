@@ -1,4 +1,5 @@
-﻿using System;
+﻿using log4net.Repository.Hierarchy;
+using System;
 using System.ServiceModel;
 using System.Threading.Tasks;
 using System.Windows;
@@ -22,8 +23,6 @@ namespace TripasDeGatoCliente.Views {
                 string codeMatch = txtCodeLobby.Text;
 
                 UserProfileSingleton.Instance.CreateGuestInstance();
-
-                // CodeMatch = codeMatch;
             } catch (EndpointNotFoundException endpointException) {
                 logger.LogError(endpointException);
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogEndPointException);
@@ -42,16 +41,17 @@ namespace TripasDeGatoCliente.Views {
         }
 
         public async void BtnLogin_Click(object sender, RoutedEventArgs e) {
+            LoggerManager logger = new LoggerManager(this.GetType());
             GenerateGuestProfile();
 
             try {
                 if (!string.IsNullOrEmpty(txtCodeLobby.Text)) {
                     string lobbyCode = txtCodeLobby.Text;
                     var guestProfile = new Profile {
-                        idProfile = UserProfileSingleton.IdProfile,
-                        userName = UserProfileSingleton.UserName,
-                        picturePath = UserProfileSingleton.PicPath,
-                        score = UserProfileSingleton.Score
+                        IdProfile = UserProfileSingleton.IdProfile,
+                        Username = UserProfileSingleton.UserName,
+                        PicturePath = UserProfileSingleton.PicPath,
+                        Score = UserProfileSingleton.Score
                     };
 
                     bool joined = await lobbyBrowser.JoinLobbyAsync(lobbyCode, guestProfile);
@@ -59,13 +59,21 @@ namespace TripasDeGatoCliente.Views {
                         LobbyView lobbyView = new LobbyView(lobbyCode);
                         this.NavigationService.Navigate(lobbyView);
                     } else {
-                        MessageBox.Show("No se pudo unir al lobby. Puede que esté lleno o que ya no esté disponible.");
+
+                        DialogManager.ShowWarningMessageAlert(Properties.Resources.dialogLobbyJoinError);
                     }
                 } else {
-                    MessageBox.Show("Error: el perfil del invitado o el código del lobby no son válidos.");
+                    DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogInvalidGuestProfileOrLobbyCode);
                 }
-            } catch (Exception ex) {
-                MessageBox.Show($"Error al intentar unirse al lobby: {ex.Message}");
+            } catch (EndpointNotFoundException endpointNotFoundException) {
+                logger.LogError(endpointNotFoundException);
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogEndPointException);
+            } catch (TimeoutException timeoutException) {
+                logger.LogError(timeoutException);
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogTimeOutException);
+            } catch (CommunicationException communicationException) {
+                logger.LogError(communicationException);
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
             }
         }
     }
