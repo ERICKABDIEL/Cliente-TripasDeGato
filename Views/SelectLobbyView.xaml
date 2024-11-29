@@ -75,7 +75,8 @@
                   HeadersVisibility="Column"
                   ColumnHeaderHeight="30" 
                   RowHeight="30" 
-                  BorderBrush="Black">
+                  BorderBrush="Black" 
+                  IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="{x:Static p:Resources.headerCode}" Binding="{Binding Code}" Width="*"/>
                 <DataGridTextColumn Header="{x:Static p:Resources.headerGameName}" Binding="{Binding GameName}" Width="*"/>
