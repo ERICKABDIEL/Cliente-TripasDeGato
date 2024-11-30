@@ -5,16 +5,23 @@ namespace TripasDeGatoCliente.Logic {
         private static readonly UserProfileSingleton singletonInstance = new UserProfileSingleton();
 
         public static int IdProfile { get; private set; }
+
         public static string UserName { get; private set; }
+
         public static int Score { get; private set; }
+
         public static string PicPath { get; private set; }
+
         public static int IdUser { get; private set; }
+
         public static string Password { get; private set; }
+
         public static string Mail { get; private set; }
 
-        // Nuevos atributos para lobby, chat y partida
         public static string LobbyCode { get; private set; } = "000000";
+
         public static string ChatCode { get; private set; } = "000000";
+
         public static string MatchCode { get; private set; } = "000000";
 
         public static UserProfileSingleton Instance => singletonInstance;
@@ -47,9 +54,11 @@ namespace TripasDeGatoCliente.Logic {
         public static void ResetLobbyCode() {
             LobbyCode = "000000";
         }
+
         public static void ResetChatCode() {
             LobbyCode = "000000";
         }
+
         public static void ResetMatchCode() {
             LobbyCode = "000000";
         }
@@ -63,11 +72,11 @@ namespace TripasDeGatoCliente.Logic {
         }
 
         public static void UpdateLobbyCode(string newCode) {
-           LobbyCode = newCode;
+            LobbyCode = newCode;
         }
 
         public static void UpdateChatCode(string newCode) {
-            ChatCode = newCode; 
+            ChatCode = newCode;
         }
 
         public static void UpdateMatchCode(string newCode) {

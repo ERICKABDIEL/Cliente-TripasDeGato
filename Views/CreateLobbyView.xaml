@@ -62,6 +62,7 @@
                         </Style>
                     </Button.Style>
                 </Button>
+
                 <Button x:Name="btnCreateLobby" 
                         Content="{x:Static p:Resources.btnCreate}"
                         FontSize="16" 
@@ -108,65 +109,41 @@
                         </Style>
                     </Button.Style>
                 </Button>
-                <Label x:Name="lblNameLobby" 
+
+                <Label x:Name="lbNameLobby" 
                        Content="{x:Static p:Resources.lbGameName}" 
                        FontSize="14" 
                        Foreground="Black" 
-                       Margin="422,318,675,355" 
+                       Margin="439,366,658,307" 
                        FontFamily="Cooper Black"
                        HorizontalContentAlignment="Center" 
                        VerticalContentAlignment="Center"/>
+
                 <TextBox x:Name="txtNameLobby" 
                          FontSize="14" 
                          Background="{x:Null}"
                          Foreground="Black"
-                         Margin="595,322,460,359"
+                         Margin="612,370,443,311"
                          BorderBrush="#FF432B1E"
                          FontFamily="Cooper Black" 
                          VerticalContentAlignment="Center" 
                          HorizontalContentAlignment="Center"
                          MaxLength="20"/>
-                <Label x:Name="lblNodeLobby" 
+
+                <Label x:Name="lbNodeLobby" 
                     Content="{x:Static p:Resources.lbNodes}" 
                     FontSize="14" 
                     Foreground="Black" 
-                    Margin="422,359,690,314" 
+                    Margin="439,407,673,266" 
                     FontFamily="Cooper Black"
                     HorizontalContentAlignment="Center" 
                     VerticalContentAlignment="Center"/>
-                <Label x:Name="lblMapLobby" 
-                    Content="{x:Static p:Resources.lbMap}" 
-                    FontSize="14" 
-                    Foreground="Black" 
-                    Margin="422,396,690,277" 
-                    FontFamily="Cooper Black"
-                    HorizontalContentAlignment="Center" 
-                    VerticalContentAlignment="Center"/>
-                <Label x:Name="lblTimeLobby" 
-                    Content="{x:Static p:Resources.lbDuration}" 
-                    FontSize="14" 
-                    Foreground="Black" 
-                    Margin="422,433,690,240" 
-                    FontFamily="Cooper Black"
-                    HorizontalContentAlignment="Center" 
-                    VerticalContentAlignment="Center"/>
+
                 <ComboBox x:Name="cboxNode" 
                           HorizontalAlignment="Left"
-                          Margin="595,367,0,0" 
+                          Margin="612,415,0,0" 
                           VerticalAlignment="Top"
                           Width="225"/>
-                <ComboBox x:Name="cboxMap" 
-                          HorizontalAlignment="Left"
-                          Margin="595,406,0,0" 
-                          VerticalAlignment="Top" 
-                          Width="225"/>
-                <ComboBox x:Name="cboxTime" 
-                          HorizontalAlignment="Left"
-                          Margin="595,441,0,0" 
-                          VerticalAlignment="Top"
-                          Width="225"
-                          Background="#FFEFE4C4"
-                          BorderBrush="Black"/>
             </Grid>
         </Grid>
     </DockPanel>

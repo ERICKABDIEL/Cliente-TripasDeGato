@@ -1,15 +1,15 @@
 ﻿using System;
-using System.ServiceModel;
 using System.Windows;
-using System.Windows.Controls;
+using System.ServiceModel;
 using System.Windows.Media;
+using System.Windows.Controls;
 using TripasDeGatoCliente.Logic;
 using TripasDeGatoCliente.TripasDeGatoServicio;
 using static TripasDeGatoCliente.Logic.ConstantsManager;
 
 namespace TripasDeGatoCliente.Views {
     public partial class LoginView : Page {
-        private string userEmail;
+        private string _userEmail;
         public LoginView() {
             InitializeComponent();
             UpdatePasswordVisibilityIcon();
@@ -17,20 +17,16 @@ namespace TripasDeGatoCliente.Views {
             txtPassword.PasswordChanged += TxtPassword_PasswordChanged;
         }
 
-
         private void BtnLogin_Click(object sender, RoutedEventArgs e) {
             ResetField(txtEmail);
             ResetField(txtPassword);
             ResetField(txtPasswordVisible);
-
             if (!VerifyFields()) {
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogWrongData);
                 return;
             }
-
             string email = txtEmail.Text;
             string password = Hasher.HashToSHA256(txtPassword.Password);
-
             if (AuthenticateUser(email, password)) {
                 SetPlayerOnlineStatus(UserProfileSingleton.IdProfile);
                 DisplayMainMenuView();
@@ -40,29 +36,23 @@ namespace TripasDeGatoCliente.Views {
         private bool VerifyFields() {
             bool emailValid = Validador.ValidateEmail(txtEmail.Text);
             bool passwordValid = Validador.ValidatePassword(txtPassword.Password);
-
             HighlightField(txtEmail, emailValid);
             HighlightField(txtPassword, passwordValid);
-
             return emailValid && passwordValid;
         }
 
         private bool AuthenticateUser(string email, string hashedPassword) {
             LoggerManager logger = new LoggerManager(this.GetType());
             bool isAuthenticated = false;
-
             try {
                 IUserManager userManager = new UserManagerClient();
                 int validationResult = userManager.VerifyLogin(email, hashedPassword);
-
                 if (validationResult == Constants.DATA_MATCHES) {
                     Profile profile = userManager.GetProfileByMail(email);
-
                     if (profile != null) {
                         if (IsPlayerOnline(profile.IdProfile)) {
                             return false;
                         }
-
                         ObtainSingletonData(profile);
                         isAuthenticated = true;
                     } else {
@@ -80,8 +70,10 @@ namespace TripasDeGatoCliente.Views {
             } catch (CommunicationException communicationException) {
                 logger.LogError(communicationException);
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
+            } catch (Exception exception) {
+                logger.LogError(exception);
+                DialogManager.ShowErrorMessageAlert(string.Format(Properties.Resources.dialogUnexpectedError, exception.Message));
             }
-
             return isAuthenticated;
         }
 
@@ -90,7 +82,6 @@ namespace TripasDeGatoCliente.Views {
             try {
                 IStatusManager statusManager = new StatusManagerClient();
                 var playerStatus = statusManager.GetPlayerStatus(idProfile);
-
                 if (playerStatus == GameEnumsPlayerStatus.Online) {
                     DialogManager.ShowWarningMessageAlert(Properties.Resources.dialogPlayerAlreadyOnline);
                     return true;
@@ -104,18 +95,19 @@ namespace TripasDeGatoCliente.Views {
             } catch (CommunicationException communicationException) {
                 logger.LogError(communicationException);
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
+            } catch (Exception exception) {
+                logger.LogError(exception);
+                DialogManager.ShowErrorMessageAlert(string.Format(Properties.Resources.dialogUnexpectedError, exception.Message));
             }
-
             return false;
         }
-
 
         private void ObtainSingletonData(Profile profile) {
             UserProfileSingleton.Instance.CreateInstance(profile);
         }
+
         private void SetPlayerOnlineStatus(int playerId) {
             LoggerManager logger = new LoggerManager(this.GetType());
-
             try {
                 IStatusManager statusManager = new StatusManagerClient();
                 statusManager.SetPlayerStatus(playerId, GameEnumsPlayerStatus.Online);
@@ -128,6 +120,9 @@ namespace TripasDeGatoCliente.Views {
             } catch (CommunicationException communicationException) {
                 logger.LogError(communicationException);
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
+            } catch (Exception exception) {
+                logger.LogError(exception);
+                DialogManager.ShowErrorMessageAlert(string.Format(Properties.Resources.dialogUnexpectedError, exception.Message));
             }
         }
 
@@ -148,7 +143,6 @@ namespace TripasDeGatoCliente.Views {
         private void TxtEmail_TextChanged(object sender, TextChangedEventArgs e) {
             string email = txtEmail.Text;
             bool isValid = Validador.ValidateEmail(email);
-
             HighlightField(txtEmail, isValid);
             lbInvalidEmail.Visibility = isValid ? Visibility.Collapsed : Visibility.Visible;
         }
@@ -156,7 +150,6 @@ namespace TripasDeGatoCliente.Views {
         private void TxtPassword_PasswordChanged(object sender, RoutedEventArgs e) {
             string password = txtPassword.Password;
             bool isValid = Validador.ValidatePassword(password);
-
             HighlightField(txtPassword, isValid);
             lbInvalidPassword.Visibility = isValid ? Visibility.Collapsed : Visibility.Visible;
             UpdatePasswordVisibilityIcon();
@@ -175,23 +168,19 @@ namespace TripasDeGatoCliente.Views {
         private void BtnContinue_Click(object sender, RoutedEventArgs e) {
             LoggerManager logger = new LoggerManager(this.GetType());
             string email = txtEmailRecovery.Text.Trim();
-
             if (string.IsNullOrWhiteSpace(email)) {
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogNullEmail);
                 return;
             }
-
             if (!Validador.ValidateEmail(email)) {
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogInvalidEmail);
                 return;
             }
-
             try {
                 IPasswordRecoveryManager passwordRecovery = new PasswordRecoveryManagerClient();
                 int result = passwordRecovery.SendRecoveryCode(email);
-
                 if (result == Constants.SUCCES_OPERATION) {
-                    userEmail = email;
+                    _userEmail = email;
                     gridEnterEmail.Visibility = Visibility.Collapsed;
                     gridRecovery.Visibility = Visibility.Visible;
                     DialogManager.ShowSuccessMessageAlert(Properties.Resources.dialogRecoveryCodeHasBeenSent);
@@ -209,6 +198,9 @@ namespace TripasDeGatoCliente.Views {
             } catch (CommunicationException ex) {
                 logger.LogError(ex);
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
+            } catch (Exception exception) {
+                logger.LogError(exception);
+                DialogManager.ShowErrorMessageAlert(string.Format(Properties.Resources.dialogUnexpectedError, exception.Message));
             }
         }
 
@@ -222,11 +214,9 @@ namespace TripasDeGatoCliente.Views {
         private void BtnValidate_Click(object sender, RoutedEventArgs e) {
             LoggerManager logger = new LoggerManager(this.GetType());
             string enteredCode = $"{txtValidationCode1.Text}{txtValidationCode2.Text}{txtValidationCode3.Text}{txtValidationCode4.Text}{txtValidationCode5.Text}{txtValidationCode6.Text}";
-
             try {
                 IPasswordRecoveryManager passwordRecovery = new PasswordRecoveryManagerClient();
-                bool isCodeValid = passwordRecovery.VerifyRecoveryCode(userEmail, enteredCode);
-
+                bool isCodeValid = passwordRecovery.VerifyRecoveryCode(_userEmail, enteredCode);
                 if (isCodeValid) {
                     gridRecovery.Visibility = Visibility.Collapsed;
                     gridRecoveryPassword.Visibility = Visibility.Visible;
@@ -242,21 +232,21 @@ namespace TripasDeGatoCliente.Views {
             } catch (CommunicationException communicationException) {
                 logger.LogError(communicationException);
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
+            } catch (Exception exception) {
+                logger.LogError(exception);
+                DialogManager.ShowErrorMessageAlert(string.Format(Properties.Resources.dialogUnexpectedError, exception.Message));
             }
         }
 
         private void BtnResendCode_Click(object sender, RoutedEventArgs e) {
             LoggerManager logger = new LoggerManager(this.GetType());
-
-            if (string.IsNullOrEmpty(userEmail)) {
+            if (string.IsNullOrEmpty(_userEmail)) {
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogNullEmail);
                 return;
             }
-
             try {
                 var emailVerificationProxy = new TripasDeGatoServicio.PasswordRecoveryManagerClient();
-                int result = emailVerificationProxy.SendRecoveryCode(userEmail);
-
+                int result = emailVerificationProxy.SendRecoveryCode(_userEmail);
                 if (result == Constants.SUCCES_OPERATION) {
                     DialogManager.ShowSuccessMessageAlert(Properties.Resources.dialogRecoveryCodeResent);
                 } else {
@@ -271,6 +261,9 @@ namespace TripasDeGatoCliente.Views {
             } catch (CommunicationException communicationException) {
                 logger.LogError(communicationException);
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
+            } catch (Exception exception) {
+                logger.LogError(exception);
+                DialogManager.ShowErrorMessageAlert(string.Format(Properties.Resources.dialogUnexpectedError, exception.Message));
             }
         }
 
@@ -283,25 +276,20 @@ namespace TripasDeGatoCliente.Views {
 
         private void BtnSavePassword_Click(object sender, RoutedEventArgs e) {
             LoggerManager logger = new LoggerManager(this.GetType());
-
             string newPassword = txtNewPassword.Password.Trim();
             string confirmPassword = txtNewPasswordConfirm.Password.Trim();
             string email = txtEmail.Text.Trim();
-
             if (newPassword != confirmPassword) {
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogMissmatchesCredentials);
                 return;
             }
-
             if (!IsValidPassword(newPassword)) {
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogInvalidPassword);
                 return;
             }
-
             try {
                 IPasswordRecoveryManager passwordRecovery = new PasswordRecoveryManagerClient();
-                int result = passwordRecovery.UpdatePassword(userEmail, Hasher.HashToSHA256(newPassword));
-
+                int result = passwordRecovery.UpdatePassword(_userEmail, Hasher.HashToSHA256(newPassword));
                 if (result == Constants.SUCCES_OPERATION) {
                     DialogManager.ShowSuccessMessageAlert(Properties.Resources.dialogPasswordUpdatedSuccessfully);
                     txtNewPassword.Clear();
@@ -319,6 +307,9 @@ namespace TripasDeGatoCliente.Views {
             } catch (CommunicationException communicationException) {
                 logger.LogError(communicationException);
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
+            } catch (Exception exception) {
+                logger.LogError(exception);
+                DialogManager.ShowErrorMessageAlert(string.Format(Properties.Resources.dialogUnexpectedError, exception.Message));
             }
         }
 
@@ -350,7 +341,6 @@ namespace TripasDeGatoCliente.Views {
             txtNewPasswordVisible.Text = txtNewPassword.Password;
             txtNewPasswordVisible.Visibility = Visibility.Visible;
             txtNewPassword.Visibility = Visibility.Collapsed;
-
             txtNewPasswordConfirmVisible.Text = txtNewPasswordConfirm.Password;
             txtNewPasswordConfirmVisible.Visibility = Visibility.Visible;
             txtNewPasswordConfirm.Visibility = Visibility.Collapsed;
@@ -360,7 +350,6 @@ namespace TripasDeGatoCliente.Views {
             txtNewPassword.Password = txtNewPasswordVisible.Text;
             txtNewPassword.Visibility = Visibility.Visible;
             txtNewPasswordVisible.Visibility = Visibility.Collapsed;
-
             txtNewPasswordConfirm.Password = txtNewPasswordConfirmVisible.Text;
             txtNewPasswordConfirm.Visibility = Visibility.Visible;
             txtNewPasswordConfirmVisible.Visibility = Visibility.Collapsed;

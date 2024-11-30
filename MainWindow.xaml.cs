@@ -1,9 +1,9 @@
 ﻿using System;
-using System.ServiceModel;
-using System.ServiceModel.Channels;
-using System.Windows;
 using log4net;
+using System.Windows;
+using System.ServiceModel;
 using TripasDeGatoCliente.Logic;
+using System.ServiceModel.Channels;
 using TripasDeGatoCliente.TripasDeGatoServicio;
 
 namespace TripasDeGatoCliente {
@@ -11,27 +11,24 @@ namespace TripasDeGatoCliente {
     /// Lógica de interacción para MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window {
-        private LobbyManagerClient lobbyManager;
-        private ChatManagerClient chatManager;
-        private MatchManagerClient matchManager;
+        private LobbyManagerClient _lobbyManager;
+        private ChatManagerClient _chatManager;
+        private MatchManagerClient _matchManager;
 
         public MainWindow() {
             InitializeComponent();
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             NavigationFrame.Navigate(new Views.LoginView());
             this.Closing += MainWindowClosing;
-
-            lobbyManager = new LobbyManagerClient(new InstanceContext(this));
-            chatManager = new ChatManagerClient(new InstanceContext(this));
-            matchManager = new MatchManagerClient(new InstanceContext(this));
+            _lobbyManager = new LobbyManagerClient(new InstanceContext(this));
+            _chatManager = new ChatManagerClient(new InstanceContext(this));
+            _matchManager = new MatchManagerClient(new InstanceContext(this));
         }
 
         private async void MainWindowClosing(object sender, System.ComponentModel.CancelEventArgs e) {
             try {
-                // Llamar a la lógica centralizada para cerrar todas las conexiones
                 await ConnectionManager.Instance.DisconnectAllAsync();
             } catch (Exception ex) {
-                // Manejo de errores genéricos
                 LoggerManager logger = new LoggerManager(this.GetType());
                 logger.LogError(ex);
                 DialogManager.ShowErrorMessageAlert("Error cerrando conexiones: " + ex.Message);
@@ -47,7 +44,6 @@ namespace TripasDeGatoCliente {
 
         private void SetPlayerOfflineStatus(int playerId) {
             LoggerManager logger = new LoggerManager(this.GetType());
-
             try {
                 IStatusManager statusManager = new StatusManagerClient();
                 statusManager.SetPlayerStatus(playerId, GameEnumsPlayerStatus.Offline);
@@ -60,9 +56,11 @@ namespace TripasDeGatoCliente {
             } catch (CommunicationException communicationException) {
                 logger.LogError(communicationException);
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
+            } catch (Exception exception) {
+                logger.LogError(exception);
+                DialogManager.ShowErrorMessageAlert(string.Format(Properties.Resources.dialogUnexpectedError, exception.Message));
             }
         }
-
 
         private void OnClosing() {
         }

@@ -264,8 +264,6 @@
     <Resource Include="Images\BackgroundButton1.png" />
     <Resource Include="Images\BackgroundButton2.png" />
     <Resource Include="Images\Scene\SceneCat.png" />
-    <Resource Include="Images\Scene\SceneDog.png" />
-    <Resource Include="Images\Scene\SceneBear.png" />
     <Resource Include="Images\BackgroundProfile.png" />
     <None Include="Connected Services\TripasDeGatoServicio\item.disco" />
     <None Include="Connected Services\TripasDeGatoServicio\configuration91.svcinfo" />
