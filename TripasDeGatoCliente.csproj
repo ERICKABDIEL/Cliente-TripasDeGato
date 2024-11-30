@@ -76,7 +76,7 @@
     <Compile Include="Logic\GuestProfileSinglenton.cs" />
     <Compile Include="Logic\Hasher.cs" />
     <Compile Include="Logic\LoggerManager.cs" />
-    <Compile Include="Logic\UserProfileSnglenton.cs" />
+    <Compile Include="Logic\UserProfileSingleton.cs" />
     <Compile Include="Logic\Validador.cs" />
     <Compile Include="Properties\Resources.es-MX.Designer.cs">
       <DependentUpon>Resources.es-MX.resx</DependentUpon>
@@ -97,8 +97,8 @@
     <Compile Include="Views\GameMatchView.xaml.cs">
       <DependentUpon>GameMatchView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\LaderboardView.xaml.cs">
-      <DependentUpon>LaderboardView.xaml</DependentUpon>
+    <Compile Include="Views\LeaderboardView.xaml.cs">
+      <DependentUpon>LeaderboardView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\LobbyView.xaml.cs">
       <DependentUpon>LobbyView.xaml</DependentUpon>
@@ -142,7 +142,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\LaderboardView.xaml">
+    <Page Include="Views\LeaderboardView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

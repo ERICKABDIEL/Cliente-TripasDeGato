@@ -360,12 +360,14 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="RemoveFromLobby">
+  <xs:element name="KickPlayer">
     <xs:complexType>
-      <xs:sequence />
+      <xs:sequence>
+        <xs:element minOccurs="0" name="code" nillable="true" type="xs:string" />
+      </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="RemoveFromLobbyResponse">
+  <xs:element name="KickedFromLobby">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>
@@ -375,17 +377,7 @@
       <xs:sequence />
     </xs:complexType>
   </xs:element>
-  <xs:element name="HostLeftCallbackResponse">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
   <xs:element name="GuestLeftCallback">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GuestLeftCallbackResponse">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>
@@ -399,17 +391,7 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GuestJoinedCallbackResponse">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
   <xs:element name="GameStarted">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GameStartedResponse">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>

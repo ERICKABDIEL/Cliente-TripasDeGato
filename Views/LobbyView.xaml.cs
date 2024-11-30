@@ -83,12 +83,10 @@ namespace TripasDeGatoCliente.Views {
             }
         }
 
-
         private async Task ConnectToLobbyAsync() {
             LoggerManager logger = new LoggerManager(this.GetType());
             try {
                 bool connected = await Task.Run(() => lobbyManager.ConnectPlayerToLobby(lobbyCode, UserProfileSingleton.IdProfile));
-
                 if (!connected) {
                     DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogConnectionError);
                     ExitUseSinglenton();
@@ -134,6 +132,8 @@ namespace TripasDeGatoCliente.Views {
 
         public async void InitializeLobby() {
             Lobby lobby = await lobbyBrowser.GetLobbyByCodeAsync(lobbyCode);
+            UserProfileSingleton.UpdateLobbyCode(lobbyCode);
+            UserProfileSingleton.UpdateChatCode(lobbyCode);
             if (IsUserHost(lobby)) {
                 lbPlayer1.Content = lobby.Players.ContainsKey("PlayerOne") ? lobby.Players["PlayerOne"].Username : "Esperando jugador...";
                 lbPlayer2.Content = lobby.Players.ContainsKey("PlayerTwo") ? lobby.Players["PlayerTwo"].Username : "Esperando jugador...";
@@ -179,6 +179,8 @@ namespace TripasDeGatoCliente.Views {
         }
 
         private void ExitUseSinglenton() {
+            UserProfileSingleton.ResetLobbyCode();
+            UserProfileSingleton.ResetChatCode();
             if (UserProfileSingleton.IdProfile < 100000) {
                 GoToMenuView();
             } else {
@@ -232,7 +234,7 @@ namespace TripasDeGatoCliente.Views {
         public void RemoveFromLobby() {
             Dispatcher.Invoke(() => {
                 DialogManager.ShowWarningMessageAlert(Properties.Resources.dialogLobbyExit);
-                GoToMenuView();
+                ExitUseSinglenton();
             });
         }
 
@@ -241,9 +243,10 @@ namespace TripasDeGatoCliente.Views {
                 await Task.Run(() =>
             DialogManager.ShowWarningMessageAlert(Properties.Resources.dialogHostLeftLobby)
                 );
-                GoToMenuView();
+                ExitUseSinglenton();
             });
         }
+
         public void GuestLeftCallback() {
             Dispatcher.Invoke(() => {
                 string waitingMessage = Properties.Resources.dialogWaitingForPlayer;
@@ -330,7 +333,6 @@ namespace TripasDeGatoCliente.Views {
             }
         }
 
-
         private async void BtnInvitedFriend_Click(object sender, RoutedEventArgs e) {
             areElementsVisible = !areElementsVisible;
             if (areElementsVisible) {
@@ -346,6 +348,7 @@ namespace TripasDeGatoCliente.Views {
                 btnInvitedFriend.Background = new SolidColorBrush(Color.FromArgb(100, 216, 195, 165));
             }
         }
+
         private async void BtnInvited_Click(object sender, RoutedEventArgs e) {
             LoggerManager logger = new LoggerManager(this.GetType());
             if (lstFriends.SelectedItem != null) {
@@ -374,6 +377,38 @@ namespace TripasDeGatoCliente.Views {
             } else {
                 DialogManager.ShowWarningMessageAlert(Properties.Resources.dialogSelectFriendToInvite);
             }
+        }
+
+        private async void BtnKickPlayer_Click(object sender, RoutedEventArgs e) {
+            LoggerManager logger = new LoggerManager(this.GetType());
+            MessageBoxResult result = MessageBox.Show(
+                "¿Estás seguro de que deseas expulsar al jugador del lobby?",
+                "Confirmar expulsión",
+                MessageBoxButton.YesNo,
+                MessageBoxImage.Question
+            );
+
+            if (result == MessageBoxResult.Yes) {
+                try {
+                    await Task.Run(() => lobbyManager.KickPlayer(lobbyCode));
+                } catch (EndpointNotFoundException endpointNotFoundException) {
+                    logger.LogError(endpointNotFoundException);
+                    DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogEndPointException);
+                } catch (TimeoutException timeoutException) {
+                    logger.LogError(timeoutException);
+                    DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogTimeOutException);
+                } catch (CommunicationException communicationException) {
+                    logger.LogError(communicationException);
+                    DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
+                }
+            }
+        }
+
+        public void KickedFromLobby() {
+            Dispatcher.Invoke(() => {
+                DialogManager.ShowWarningMessageAlert("Has sido expulsado del Lobby");
+                ExitUseSinglenton();
+            });
         }
 
 

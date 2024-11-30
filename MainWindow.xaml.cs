@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ServiceModel;
+using System.ServiceModel.Channels;
 using System.Windows;
 using log4net;
 using TripasDeGatoCliente.Logic;
@@ -12,6 +13,7 @@ namespace TripasDeGatoCliente {
     public partial class MainWindow : Window {
         private LobbyManagerClient lobbyManager;
         private ChatManagerClient chatManager;
+        private MatchManagerClient matchManager;
 
         public MainWindow() {
             InitializeComponent();
@@ -21,6 +23,7 @@ namespace TripasDeGatoCliente {
 
             lobbyManager = new LobbyManagerClient(new InstanceContext(this));
             chatManager = new ChatManagerClient(new InstanceContext(this));
+            matchManager = new MatchManagerClient(new InstanceContext(this));
         }
 
         private async void MainWindowClosing(object sender, System.ComponentModel.CancelEventArgs e) {
@@ -28,6 +31,19 @@ namespace TripasDeGatoCliente {
             try {
                 if (UserProfileSingleton.Instance != null && UserProfileSingleton.IdProfile != 0) {
                     SignOut();
+                    if (UserProfileSingleton.LobbyCode != "000000") {
+                        await lobbyManager.LeaveLobbyAsync(UserProfileSingleton.LobbyCode, UserProfileSingleton.IdProfile);
+                        UserProfileSingleton.ResetLobbyCode();
+                        if (UserProfileSingleton.ChatCode != "000000") {
+                            await chatManager.LeaveChatAsync(UserProfileSingleton.UserName, UserProfileSingleton.ChatCode);
+                            UserProfileSingleton.ResetChatCode();
+                            if (UserProfileSingleton.MatchCode != "000000") {
+                            await matchManager.LeaveMatchAsync(UserProfileSingleton.MatchCode, UserProfileSingleton.UserName);
+                                UserProfileSingleton.ResetMatchCode();
+                            }
+                        }
+                    
+                    }
                 } else {
                     OnClosing();
                 }
@@ -42,6 +58,7 @@ namespace TripasDeGatoCliente {
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
             }
         }
+
 
         private void SignOut() {
             int playerId = UserProfileSingleton.IdProfile;

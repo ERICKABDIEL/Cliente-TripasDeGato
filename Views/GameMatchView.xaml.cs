@@ -77,6 +77,7 @@ namespace TripasDeGatoCliente.Views {
                     DialogManager.ShowErrorMessageAlert("No se pudo conectar a la partida.");
                 } else {
                     isConnected = true;
+                    UserProfileSingleton.UpdateMatchCode(matchCode);
                     nodes = await Task.Run(() => matchManagerClient.GetNodes(matchCode));
                     nodePairs = await Task.Run(() => matchManagerClient.GetNodePairs(matchCode));
                     if (nodes != null && nodes.Count > 0) {
@@ -206,7 +207,7 @@ namespace TripasDeGatoCliente.Views {
             Node currentNode = FindNodeNearPoint(mousePosition);
             if (currentNode != null && currentNode != startNode) {
                 if (!IsPair(startNode, currentNode)) {
-                    HandleInfraction("Chocaste un nodo que no te pertenece, ¡Perdiste!");
+                    HandleInfraction("Chocaste un nodo que no te pertenece!");
                     return;
                 }
             }
@@ -381,6 +382,7 @@ namespace TripasDeGatoCliente.Views {
         }
 
         private void ExitUseSinglenton() {
+            UserProfileSingleton.ResetMatchCode();
             if (UserProfileSingleton.IdProfile < 100000) {
                 GoToMenuView();
             } else {

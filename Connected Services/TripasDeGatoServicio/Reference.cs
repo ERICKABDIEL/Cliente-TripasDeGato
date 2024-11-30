@@ -1335,24 +1335,30 @@ namespace TripasDeGatoCliente.TripasDeGatoServicio {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyManager/StartMatch")]
         System.Threading.Tasks.Task StartMatchAsync(string code);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyManager/KickPlayer")]
+        void KickPlayer(string code);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyManager/KickPlayer")]
+        System.Threading.Tasks.Task KickPlayerAsync(string code);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface ILobbyManagerCallback {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILobbyManager/RemoveFromLobby", ReplyAction="http://tempuri.org/ILobbyManager/RemoveFromLobbyResponse")]
-        void RemoveFromLobby();
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyManager/KickedFromLobby")]
+        void KickedFromLobby();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILobbyManager/HostLeftCallback", ReplyAction="http://tempuri.org/ILobbyManager/HostLeftCallbackResponse")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyManager/HostLeftCallback")]
         void HostLeftCallback();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILobbyManager/GuestLeftCallback", ReplyAction="http://tempuri.org/ILobbyManager/GuestLeftCallbackResponse")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyManager/GuestLeftCallback")]
         void GuestLeftCallback();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILobbyManager/GuestJoinedCallback", ReplyAction="http://tempuri.org/ILobbyManager/GuestJoinedCallbackResponse")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyManager/GuestJoinedCallback")]
         void GuestJoinedCallback(string guestName, string picturePath, int idProfile);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILobbyManager/GameStarted", ReplyAction="http://tempuri.org/ILobbyManager/GameStartedResponse")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyManager/GameStarted")]
         void GameStarted();
     }
     
@@ -1406,6 +1412,14 @@ namespace TripasDeGatoCliente.TripasDeGatoServicio {
         
         public System.Threading.Tasks.Task StartMatchAsync(string code) {
             return base.Channel.StartMatchAsync(code);
+        }
+        
+        public void KickPlayer(string code) {
+            base.Channel.KickPlayer(code);
+        }
+        
+        public System.Threading.Tasks.Task KickPlayerAsync(string code) {
+            return base.Channel.KickPlayerAsync(code);
         }
     }
     
