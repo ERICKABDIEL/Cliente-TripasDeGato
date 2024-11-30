@@ -250,10 +250,10 @@ namespace TripasDeGatoCliente.Views {
             });
         }
 
-        public void GuestJoinedCallback(string guestName) {
+        public void GuestJoinedCallback(string guestName, string picturePath) {
             Dispatcher.Invoke(() => {
                 lbPlayer2.Content = guestName;
-                string ruta = userManager.GetPicPath(guestName);
+                string ruta = picturePath;
                 imgProfile2.Source = new BitmapImage(new Uri(ruta, UriKind.RelativeOrAbsolute));
             });
         }
