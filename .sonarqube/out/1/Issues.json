@@ -12,34 +12,13 @@
       },
       "results": [
         {
-          "ruleId": "CS1998",
-          "level": "warning",
-          "message": "El método asincrónico carece de operadores \"await\" y se ejecutará de forma sincrónica. Puede usar el operador 'await' para esperar llamadas API que no sean de bloqueo o 'await Task.Run(...)' para hacer tareas enlazadas a la CPU en un subproceso en segundo plano.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/TripasDeGatoCliente/MainWindow.xaml.cs",
-                "region": {
-                  "startLine": 26,
-                  "startColumn": 28,
-                  "endLine": 26,
-                  "endColumn": 45
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
           "ruleId": "CS4014",
           "level": "warning",
           "message": "Como esta llamada no es 'awaited', la ejecución del método actual continuará antes de que se complete la llamada. Puede aplicar el operador 'await' al resultado de la llamada.",
           "locations": [
             {
               "resultFile": {
-                "uri": "file:///C:/TripasDeGatoCliente/Views/LaderboardView.xaml.cs",
+                "uri": "file:///C:/TripasDeGatoCliente/Views/LeaderboardView.xaml.cs",
                 "region": {
                   "startLine": 19,
                   "startColumn": 13,
@@ -62,9 +41,9 @@
               "resultFile": {
                 "uri": "file:///C:/TripasDeGatoCliente/Views/MenuView.xaml.cs",
                 "region": {
-                  "startLine": 31,
+                  "startLine": 32,
                   "startColumn": 28,
-                  "endLine": 31,
+                  "endLine": 32,
                   "endColumn": 48
                 }
               }
@@ -83,31 +62,10 @@
               "resultFile": {
                 "uri": "file:///C:/TripasDeGatoCliente/Views/MenuView.xaml.cs",
                 "region": {
-                  "startLine": 245,
+                  "startLine": 286,
                   "startColumn": 28,
-                  "endLine": 245,
+                  "endLine": 286,
                   "endColumn": 46
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "CS1998",
-          "level": "warning",
-          "message": "El método asincrónico carece de operadores \"await\" y se ejecutará de forma sincrónica. Puede usar el operador 'await' para esperar llamadas API que no sean de bloqueo o 'await Task.Run(...)' para hacer tareas enlazadas a la CPU en un subproceso en segundo plano.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/TripasDeGatoCliente/Views/GameMatchView.xaml.cs",
-                "region": {
-                  "startLine": 367,
-                  "startColumn": 28,
-                  "endLine": 367,
-                  "endColumn": 41
                 }
               }
             }
@@ -119,7 +77,7 @@
         {
           "ruleId": "CS0169",
           "level": "warning",
-          "message": "El campo 'SelectLobbyView.lobbyManager' nunca se usa",
+          "message": "El campo 'SelectLobbyView._lobbyManager' nunca se usa",
           "locations": [
             {
               "resultFile": {
@@ -128,7 +86,7 @@
                   "startLine": 15,
                   "startColumn": 36,
                   "endLine": 15,
-                  "endColumn": 48
+                  "endColumn": 49
                 }
               }
             }
@@ -146,52 +104,10 @@
               "resultFile": {
                 "uri": "file:///C:/TripasDeGatoCliente/Logic/ConstantsManager.cs",
                 "region": {
-                  "startLine": 9,
+                  "startLine": 8,
                   "startColumn": 20,
-                  "endLine": 9,
+                  "endLine": 8,
                   "endColumn": 36
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S125",
-          "level": "warning",
-          "message": "Remove this commented out code.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/TripasDeGatoCliente/Views/CodeGameMatchView.xaml.cs",
-                "region": {
-                  "startLine": 27,
-                  "startColumn": 17,
-                  "endLine": 27,
-                  "endColumn": 42
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S125",
-          "level": "warning",
-          "message": "Remove this commented out code.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/TripasDeGatoCliente/Views/GameMatchView.xaml.cs",
-                "region": {
-                  "startLine": 370,
-                  "startColumn": 15,
-                  "endLine": 370,
-                  "endColumn": 103
                 }
               }
             }
@@ -210,9 +126,9 @@
                 "uri": "file:///C:/TripasDeGatoCliente/Logic/DialogManager.cs",
                 "region": {
                   "startLine": 10,
-                  "startColumn": 25,
+                  "startColumn": 21,
                   "endLine": 10,
-                  "endColumn": 38
+                  "endColumn": 34
                 }
               }
             }
@@ -251,9 +167,9 @@
               "resultFile": {
                 "uri": "file:///C:/TripasDeGatoCliente/Logic/Hasher.cs",
                 "region": {
-                  "startLine": 7,
+                  "startLine": 6,
                   "startColumn": 20,
-                  "endLine": 7,
+                  "endLine": 6,
                   "endColumn": 26
                 }
               }
@@ -264,18 +180,39 @@
           }
         },
         {
-          "ruleId": "S4487",
+          "ruleId": "S1144",
           "level": "warning",
-          "message": "Remove this unread private field 'lobbyManager' or refactor the code to use its value.",
+          "message": "Remove the unused private method 'SignOut'.",
           "locations": [
             {
               "resultFile": {
                 "uri": "file:///C:/TripasDeGatoCliente/MainWindow.xaml.cs",
                 "region": {
-                  "startLine": 13,
-                  "startColumn": 36,
-                  "endLine": 13,
-                  "endColumn": 48
+                  "startLine": 39,
+                  "startColumn": 22,
+                  "endLine": 39,
+                  "endColumn": 29
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1144",
+          "level": "warning",
+          "message": "Remove the unused private method 'OnClosing'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/TripasDeGatoCliente/MainWindow.xaml.cs",
+                "region": {
+                  "startLine": 65,
+                  "startColumn": 22,
+                  "endLine": 65,
+                  "endColumn": 31
                 }
               }
             }
@@ -287,16 +224,16 @@
         {
           "ruleId": "S4487",
           "level": "warning",
-          "message": "Remove this unread private field 'chatManager' or refactor the code to use its value.",
+          "message": "Remove this unread private field '_lobbyManager' or refactor the code to use its value.",
           "locations": [
             {
               "resultFile": {
                 "uri": "file:///C:/TripasDeGatoCliente/MainWindow.xaml.cs",
                 "region": {
                   "startLine": 14,
-                  "startColumn": 35,
+                  "startColumn": 36,
                   "endLine": 14,
-                  "endColumn": 46
+                  "endColumn": 49
                 }
               }
             }
@@ -308,16 +245,37 @@
         {
           "ruleId": "S4487",
           "level": "warning",
-          "message": "Remove this unread private field 'lobbyBrowser' or refactor the code to use its value.",
+          "message": "Remove this unread private field '_chatManager' or refactor the code to use its value.",
           "locations": [
             {
               "resultFile": {
-                "uri": "file:///C:/TripasDeGatoCliente/Views/MenuView.xaml.cs",
+                "uri": "file:///C:/TripasDeGatoCliente/MainWindow.xaml.cs",
                 "region": {
-                  "startLine": 20,
+                  "startLine": 15,
+                  "startColumn": 35,
+                  "endLine": 15,
+                  "endColumn": 47
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S4487",
+          "level": "warning",
+          "message": "Remove this unread private field '_matchManager' or refactor the code to use its value.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/TripasDeGatoCliente/MainWindow.xaml.cs",
+                "region": {
+                  "startLine": 16,
                   "startColumn": 36,
-                  "endLine": 20,
-                  "endColumn": 48
+                  "endLine": 16,
+                  "endColumn": 49
                 }
               }
             }
@@ -329,16 +287,101 @@
         {
           "ruleId": "S1192",
           "level": "warning",
-          "message": "Define a constant instead of using this literal 'PlayerOne' 5 times.",
+          "message": "Define a constant instead of using this literal '000000' 6 times.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/TripasDeGatoCliente/Logic/UserProfileSingleton.cs",
+                "region": {
+                  "startLine": 21,
+                  "startColumn": 64,
+                  "endLine": 21,
+                  "endColumn": 72
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/TripasDeGatoCliente/Logic/UserProfileSingleton.cs",
+                "region": {
+                  "startLine": 23,
+                  "startColumn": 63,
+                  "endLine": 23,
+                  "endColumn": 71
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/TripasDeGatoCliente/Logic/UserProfileSingleton.cs",
+                "region": {
+                  "startLine": 25,
+                  "startColumn": 64,
+                  "endLine": 25,
+                  "endColumn": 72
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/TripasDeGatoCliente/Logic/UserProfileSingleton.cs",
+                "region": {
+                  "startLine": 55,
+                  "startColumn": 25,
+                  "endLine": 55,
+                  "endColumn": 33
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/TripasDeGatoCliente/Logic/UserProfileSingleton.cs",
+                "region": {
+                  "startLine": 59,
+                  "startColumn": 25,
+                  "endLine": 59,
+                  "endColumn": 33
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/TripasDeGatoCliente/Logic/UserProfileSingleton.cs",
+                "region": {
+                  "startLine": 63,
+                  "startColumn": 25,
+                  "endLine": 63,
+                  "endColumn": 33
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "0": null,
+              "1": null,
+              "2": null,
+              "3": null,
+              "4": null
+            }
+          }
+        },
+        {
+          "ruleId": "S1192",
+          "level": "warning",
+          "message": "Define a constant instead of using this literal 'PlayerOne' 6 times.",
           "locations": [
             {
               "resultFile": {
                 "uri": "file:///C:/TripasDeGatoCliente/Views/LobbyView.xaml.cs",
                 "region": {
-                  "startLine": 137,
-                  "startColumn": 63,
-                  "endLine": 137,
-                  "endColumn": 74
+                  "startLine": 155,
+                  "startColumn": 67,
+                  "endLine": 155,
+                  "endColumn": 78
                 }
               }
             }
@@ -348,10 +391,10 @@
               "physicalLocation": {
                 "uri": "file:///C:/TripasDeGatoCliente/Views/LobbyView.xaml.cs",
                 "region": {
-                  "startLine": 137,
-                  "startColumn": 92,
-                  "endLine": 137,
-                  "endColumn": 103
+                  "startLine": 155,
+                  "startColumn": 96,
+                  "endLine": 155,
+                  "endColumn": 107
                 }
               }
             },
@@ -359,10 +402,10 @@
               "physicalLocation": {
                 "uri": "file:///C:/TripasDeGatoCliente/Views/LobbyView.xaml.cs",
                 "region": {
-                  "startLine": 145,
-                  "startColumn": 63,
-                  "endLine": 145,
-                  "endColumn": 74
+                  "startLine": 161,
+                  "startColumn": 67,
+                  "endLine": 161,
+                  "endColumn": 78
                 }
               }
             },
@@ -370,10 +413,10 @@
               "physicalLocation": {
                 "uri": "file:///C:/TripasDeGatoCliente/Views/LobbyView.xaml.cs",
                 "region": {
-                  "startLine": 145,
-                  "startColumn": 92,
-                  "endLine": 145,
-                  "endColumn": 103
+                  "startLine": 161,
+                  "startColumn": 96,
+                  "endLine": 161,
+                  "endColumn": 107
                 }
               }
             },
@@ -381,9 +424,20 @@
               "physicalLocation": {
                 "uri": "file:///C:/TripasDeGatoCliente/Views/LobbyView.xaml.cs",
                 "region": {
-                  "startLine": 156,
+                  "startLine": 163,
+                  "startColumn": 73,
+                  "endLine": 163,
+                  "endColumn": 84
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/TripasDeGatoCliente/Views/LobbyView.xaml.cs",
+                "region": {
+                  "startLine": 185,
                   "startColumn": 46,
-                  "endLine": 156,
+                  "endLine": 185,
                   "endColumn": 57
                 }
               }
@@ -395,23 +449,24 @@
               "0": null,
               "1": null,
               "2": null,
-              "3": null
+              "3": null,
+              "4": null
             }
           }
         },
         {
           "ruleId": "S1192",
           "level": "warning",
-          "message": "Define a constant instead of using this literal 'Esperando jugador...' 4 times.",
+          "message": "Define a constant instead of using this literal 'PlayerTwo' 4 times.",
           "locations": [
             {
               "resultFile": {
                 "uri": "file:///C:/TripasDeGatoCliente/Views/LobbyView.xaml.cs",
                 "region": {
-                  "startLine": 137,
-                  "startColumn": 116,
-                  "endLine": 137,
-                  "endColumn": 138
+                  "startLine": 156,
+                  "startColumn": 67,
+                  "endLine": 156,
+                  "endColumn": 78
                 }
               }
             }
@@ -421,10 +476,10 @@
               "physicalLocation": {
                 "uri": "file:///C:/TripasDeGatoCliente/Views/LobbyView.xaml.cs",
                 "region": {
-                  "startLine": 138,
-                  "startColumn": 116,
-                  "endLine": 138,
-                  "endColumn": 138
+                  "startLine": 156,
+                  "startColumn": 96,
+                  "endLine": 156,
+                  "endColumn": 107
                 }
               }
             },
@@ -432,10 +487,10 @@
               "physicalLocation": {
                 "uri": "file:///C:/TripasDeGatoCliente/Views/LobbyView.xaml.cs",
                 "region": {
-                  "startLine": 144,
-                  "startColumn": 116,
-                  "endLine": 144,
-                  "endColumn": 138
+                  "startLine": 160,
+                  "startColumn": 67,
+                  "endLine": 160,
+                  "endColumn": 78
                 }
               }
             },
@@ -443,10 +498,10 @@
               "physicalLocation": {
                 "uri": "file:///C:/TripasDeGatoCliente/Views/LobbyView.xaml.cs",
                 "region": {
-                  "startLine": 145,
-                  "startColumn": 116,
-                  "endLine": 145,
-                  "endColumn": 138
+                  "startLine": 160,
+                  "startColumn": 96,
+                  "endLine": 160,
+                  "endColumn": 107
                 }
               }
             }
@@ -461,82 +516,51 @@
           }
         },
         {
-          "ruleId": "S1192",
+          "ruleId": "S4487",
           "level": "warning",
-          "message": "Define a constant instead of using this literal 'PlayerTwo' 5 times.",
+          "message": "Remove this unread private field '_lobbyBrowser' or refactor the code to use its value.",
           "locations": [
             {
               "resultFile": {
-                "uri": "file:///C:/TripasDeGatoCliente/Views/LobbyView.xaml.cs",
+                "uri": "file:///C:/TripasDeGatoCliente/Views/MenuView.xaml.cs",
                 "region": {
-                  "startLine": 138,
-                  "startColumn": 63,
-                  "endLine": 138,
-                  "endColumn": 74
-                }
-              }
-            }
-          ],
-          "relatedLocations": [
-            {
-              "physicalLocation": {
-                "uri": "file:///C:/TripasDeGatoCliente/Views/LobbyView.xaml.cs",
-                "region": {
-                  "startLine": 138,
-                  "startColumn": 92,
-                  "endLine": 138,
-                  "endColumn": 103
-                }
-              }
-            },
-            {
-              "physicalLocation": {
-                "uri": "file:///C:/TripasDeGatoCliente/Views/LobbyView.xaml.cs",
-                "region": {
-                  "startLine": 144,
-                  "startColumn": 63,
-                  "endLine": 144,
-                  "endColumn": 74
-                }
-              }
-            },
-            {
-              "physicalLocation": {
-                "uri": "file:///C:/TripasDeGatoCliente/Views/LobbyView.xaml.cs",
-                "region": {
-                  "startLine": 144,
-                  "startColumn": 92,
-                  "endLine": 144,
-                  "endColumn": 103
-                }
-              }
-            },
-            {
-              "physicalLocation": {
-                "uri": "file:///C:/TripasDeGatoCliente/Views/LobbyView.xaml.cs",
-                "region": {
-                  "startLine": 147,
-                  "startColumn": 68,
-                  "endLine": 147,
-                  "endColumn": 79
+                  "startLine": 20,
+                  "startColumn": 36,
+                  "endLine": 20,
+                  "endColumn": 49
                 }
               }
             }
           ],
           "properties": {
-            "warningLevel": 1,
-            "customProperties": {
-              "0": null,
-              "1": null,
-              "2": null,
-              "3": null
-            }
+            "warningLevel": 1
           }
         },
         {
           "ruleId": "S1144",
           "level": "warning",
-          "message": "Remove the unused private field 'lobbyManager'.",
+          "message": "Remove the unused private method 'UpdatePasswordVisibilityIcon'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/TripasDeGatoCliente/Views/RegisterView.xaml.cs",
+                "region": {
+                  "startLine": 271,
+                  "startColumn": 22,
+                  "endLine": 271,
+                  "endColumn": 50
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1144",
+          "level": "warning",
+          "message": "Remove the unused private field '_lobbyManager'.",
           "locations": [
             {
               "resultFile": {
@@ -545,7 +569,7 @@
                   "startLine": 15,
                   "startColumn": 9,
                   "endLine": 15,
-                  "endColumn": 49
+                  "endColumn": 50
                 }
               }
             }
@@ -576,27 +600,6 @@
           }
         },
         {
-          "ruleId": "S1144",
-          "level": "warning",
-          "message": "Remove the unused private method 'UpdatePasswordVisibilityIcon'.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/TripasDeGatoCliente/Views/RegisterView.xaml.cs",
-                "region": {
-                  "startLine": 229,
-                  "startColumn": 22,
-                  "endLine": 229,
-                  "endColumn": 50
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
           "ruleId": "S6444",
           "level": "warning",
           "message": "Pass a timeout to limit the execution time.",
@@ -605,9 +608,9 @@
               "resultFile": {
                 "uri": "file:///C:/TripasDeGatoCliente/Logic/Validador.cs",
                 "region": {
-                  "startLine": 31,
+                  "startLine": 25,
                   "startColumn": 38,
-                  "endLine": 31,
+                  "endLine": 25,
                   "endColumn": 80
                 }
               }
@@ -626,9 +629,9 @@
               "resultFile": {
                 "uri": "file:///C:/TripasDeGatoCliente/Logic/Validador.cs",
                 "region": {
-                  "startLine": 37,
+                  "startLine": 30,
                   "startColumn": 38,
-                  "endLine": 37,
+                  "endLine": 30,
                   "endColumn": 80
                 }
               }
@@ -647,52 +650,10 @@
               "resultFile": {
                 "uri": "file:///C:/TripasDeGatoCliente/Logic/Validador.cs",
                 "region": {
-                  "startLine": 60,
+                  "startLine": 55,
                   "startColumn": 34,
-                  "endLine": 60,
+                  "endLine": 55,
                   "endColumn": 77
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S6444",
-          "level": "warning",
-          "message": "Pass a timeout to limit the execution time.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/TripasDeGatoCliente/Logic/Validador.cs",
-                "region": {
-                  "startLine": 66,
-                  "startColumn": 35,
-                  "endLine": 66,
-                  "endColumn": 74
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S1481",
-          "level": "warning",
-          "message": "Remove the unused local variable 'codeMatch'.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/TripasDeGatoCliente/Views/CodeGameMatchView.xaml.cs",
-                "region": {
-                  "startLine": 23,
-                  "startColumn": 24,
-                  "endLine": 23,
-                  "endColumn": 33
                 }
               }
             }
@@ -710,9 +671,9 @@
               "resultFile": {
                 "uri": "file:///C:/TripasDeGatoCliente/Logic/Validador.cs",
                 "region": {
-                  "startLine": 45,
+                  "startLine": 37,
                   "startColumn": 17,
-                  "endLine": 45,
+                  "endLine": 37,
                   "endColumn": 19
                 }
               }
@@ -723,9 +684,9 @@
               "physicalLocation": {
                 "uri": "file:///C:/TripasDeGatoCliente/Logic/Validador.cs",
                 "region": {
-                  "startLine": 44,
+                  "startLine": 36,
                   "startColumn": 13,
-                  "endLine": 44,
+                  "endLine": 36,
                   "endColumn": 15
                 }
               }
@@ -747,10 +708,31 @@
               "resultFile": {
                 "uri": "file:///C:/TripasDeGatoCliente/Logic/Validador.cs",
                 "region": {
-                  "startLine": 74,
-                  "startColumn": 29,
-                  "endLine": 74,
-                  "endColumn": 77
+                  "startLine": 60,
+                  "startColumn": 35,
+                  "endLine": 60,
+                  "endColumn": 74
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1481",
+          "level": "warning",
+          "message": "Remove the unused local variable 'codeMatch'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/TripasDeGatoCliente/Views/CodeGameMatchView.xaml.cs",
+                "region": {
+                  "startLine": 22,
+                  "startColumn": 24,
+                  "endLine": 22,
+                  "endColumn": 33
                 }
               }
             }
@@ -768,10 +750,115 @@
               "resultFile": {
                 "uri": "file:///C:/TripasDeGatoCliente/Logic/Validador.cs",
                 "region": {
-                  "startLine": 47,
+                  "startLine": 39,
                   "startColumn": 29,
-                  "endLine": 47,
+                  "endLine": 39,
                   "endColumn": 40
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1116",
+          "level": "warning",
+          "message": "Remove this empty statement.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/TripasDeGatoCliente/Views/CreateLobbyView.xaml.cs",
+                "region": {
+                  "startLine": 45,
+                  "startColumn": 58,
+                  "endLine": 45,
+                  "endColumn": 59
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S6444",
+          "level": "warning",
+          "message": "Pass a timeout to limit the execution time.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/TripasDeGatoCliente/Logic/Validador.cs",
+                "region": {
+                  "startLine": 67,
+                  "startColumn": 29,
+                  "endLine": 67,
+                  "endColumn": 77
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2325",
+          "level": "warning",
+          "message": "Make 'CreateInstance' a static method.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/TripasDeGatoCliente/Logic/UserProfileSingleton.cs",
+                "region": {
+                  "startLine": 29,
+                  "startColumn": 21,
+                  "endLine": 29,
+                  "endColumn": 35
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2325",
+          "level": "warning",
+          "message": "Make 'CreateGuestInstance' a static method.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/TripasDeGatoCliente/Logic/UserProfileSingleton.cs",
+                "region": {
+                  "startLine": 36,
+                  "startColumn": 21,
+                  "endLine": 36,
+                  "endColumn": 40
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2325",
+          "level": "warning",
+          "message": "Make 'ResetInstance' a static method.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/TripasDeGatoCliente/Logic/UserProfileSingleton.cs",
+                "region": {
+                  "startLine": 44,
+                  "startColumn": 21,
+                  "endLine": 44,
+                  "endColumn": 34
                 }
               }
             }
@@ -789,73 +876,10 @@
               "resultFile": {
                 "uri": "file:///C:/TripasDeGatoCliente/MainWindow.xaml.cs",
                 "region": {
-                  "startLine": 70,
+                  "startLine": 65,
                   "startColumn": 22,
-                  "endLine": 70,
+                  "endLine": 65,
                   "endColumn": 31
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S2325",
-          "level": "warning",
-          "message": "Make 'CreateInstance' a static method.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/TripasDeGatoCliente/Logic/UserProfileSnglenton.cs",
-                "region": {
-                  "startLine": 17,
-                  "startColumn": 21,
-                  "endLine": 17,
-                  "endColumn": 35
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S2325",
-          "level": "warning",
-          "message": "Make 'ResetInstance' a static method.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/TripasDeGatoCliente/Logic/UserProfileSnglenton.cs",
-                "region": {
-                  "startLine": 32,
-                  "startColumn": 21,
-                  "endLine": 32,
-                  "endColumn": 34
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S2325",
-          "level": "warning",
-          "message": "Make 'CreateGuestInstance' a static method.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/TripasDeGatoCliente/Logic/UserProfileSnglenton.cs",
-                "region": {
-                  "startLine": 24,
-                  "startColumn": 21,
-                  "endLine": 24,
-                  "endColumn": 40
                 }
               }
             }
@@ -873,9 +897,9 @@
               "resultFile": {
                 "uri": "file:///C:/TripasDeGatoCliente/Logic/LoggerManager.cs",
                 "region": {
-                  "startLine": 16,
+                  "startLine": 13,
                   "startColumn": 21,
-                  "endLine": 16,
+                  "endLine": 13,
                   "endColumn": 30
                 }
               }
@@ -915,73 +939,10 @@
               "resultFile": {
                 "uri": "file:///C:/TripasDeGatoCliente/Logic/GuestProfileSinglenton.cs",
                 "region": {
-                  "startLine": 12,
+                  "startLine": 13,
                   "startColumn": 21,
-                  "endLine": 12,
+                  "endLine": 13,
                   "endColumn": 35
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S2325",
-          "level": "warning",
-          "message": "Make 'ObtainSingletonData' a static method.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/TripasDeGatoCliente/Views/LoginView.xaml.cs",
-                "region": {
-                  "startLine": 113,
-                  "startColumn": 22,
-                  "endLine": 113,
-                  "endColumn": 41
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S2325",
-          "level": "warning",
-          "message": "Make 'HighlightField' a static method.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/TripasDeGatoCliente/Views/LoginView.xaml.cs",
-                "region": {
-                  "startLine": 145,
-                  "startColumn": 22,
-                  "endLine": 145,
-                  "endColumn": 36
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S2325",
-          "level": "warning",
-          "message": "Make 'ResetField' a static method.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/TripasDeGatoCliente/Views/LoginView.xaml.cs",
-                "region": {
-                  "startLine": 166,
-                  "startColumn": 22,
-                  "endLine": 166,
-                  "endColumn": 32
                 }
               }
             }
@@ -999,9 +960,9 @@
               "resultFile": {
                 "uri": "file:///C:/TripasDeGatoCliente/Views/GameMatchView.xaml.cs",
                 "region": {
-                  "startLine": 62,
+                  "startLine": 72,
                   "startColumn": 23,
-                  "endLine": 62,
+                  "endLine": 72,
                   "endColumn": 27
                 }
               }
@@ -1020,31 +981,10 @@
               "resultFile": {
                 "uri": "file:///C:/TripasDeGatoCliente/Views/MenuView.xaml.cs",
                 "region": {
-                  "startLine": 31,
+                  "startLine": 32,
                   "startColumn": 23,
-                  "endLine": 31,
+                  "endLine": 32,
                   "endColumn": 27
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S1854",
-          "level": "warning",
-          "message": "Remove this useless assignment to local variable 'duration'.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/TripasDeGatoCliente/Views/CreateLobbyView.xaml.cs",
-                "region": {
-                  "startLine": 68,
-                  "startColumn": 22,
-                  "endLine": 68,
-                  "endColumn": 46
                 }
               }
             }
@@ -1062,9 +1002,9 @@
               "resultFile": {
                 "uri": "file:///C:/TripasDeGatoCliente/Views/LobbyView.xaml.cs",
                 "region": {
-                  "startLine": 50,
+                  "startLine": 53,
                   "startColumn": 23,
-                  "endLine": 50,
+                  "endLine": 53,
                   "endColumn": 27
                 }
               }
@@ -1083,10 +1023,10 @@
               "resultFile": {
                 "uri": "file:///C:/TripasDeGatoCliente/Views/GameMatchView.xaml.cs",
                 "region": {
-                  "startLine": 64,
+                  "startLine": 75,
                   "startColumn": 34,
-                  "endLine": 64,
-                  "endColumn": 117
+                  "endLine": 75,
+                  "endColumn": 119
                 }
               }
             }
@@ -1096,84 +1036,60 @@
           }
         },
         {
-          "ruleId": "S1117",
+          "ruleId": "S2325",
           "level": "warning",
-          "message": "Rename 'statusManager' which hides the field with the same name.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/TripasDeGatoCliente/Views/MenuView.xaml.cs",
-                "region": {
-                  "startLine": 54,
-                  "startColumn": 32,
-                  "endLine": 54,
-                  "endColumn": 45
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S3168",
-          "level": "warning",
-          "message": "Return 'Task' instead.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/TripasDeGatoCliente/Views/ProfileView.xaml.cs",
-                "region": {
-                  "startLine": 73,
-                  "startColumn": 23,
-                  "endLine": 73,
-                  "endColumn": 27
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S1172",
-          "level": "warning",
-          "message": "Remove this unused method parameter 'selectedLanguage'.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/TripasDeGatoCliente/Views/ProfileView.xaml.cs",
-                "region": {
-                  "startLine": 73,
-                  "startColumn": 57,
-                  "endLine": 73,
-                  "endColumn": 80
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1,
-            "customProperties": {
-              "IsRemovable": "True"
-            }
-          }
-        },
-        {
-          "ruleId": "S1481",
-          "level": "warning",
-          "message": "Remove the unused local variable 'email'.",
+          "message": "Make 'ObtainSingletonData' a static method.",
           "locations": [
             {
               "resultFile": {
                 "uri": "file:///C:/TripasDeGatoCliente/Views/LoginView.xaml.cs",
                 "region": {
-                  "startLine": 290,
-                  "startColumn": 20,
-                  "endLine": 290,
-                  "endColumn": 25
+                  "startLine": 105,
+                  "startColumn": 22,
+                  "endLine": 105,
+                  "endColumn": 41
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2325",
+          "level": "warning",
+          "message": "Make 'HighlightField' a static method.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/TripasDeGatoCliente/Views/LoginView.xaml.cs",
+                "region": {
+                  "startLine": 139,
+                  "startColumn": 22,
+                  "endLine": 139,
+                  "endColumn": 36
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2325",
+          "level": "warning",
+          "message": "Make 'ResetField' a static method.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/TripasDeGatoCliente/Views/LoginView.xaml.cs",
+                "region": {
+                  "startLine": 158,
+                  "startColumn": 22,
+                  "endLine": 158,
+                  "endColumn": 32
                 }
               }
             }
@@ -1191,9 +1107,9 @@
               "resultFile": {
                 "uri": "file:///C:/TripasDeGatoCliente/Views/MenuView.xaml.cs",
                 "region": {
-                  "startLine": 137,
+                  "startLine": 163,
                   "startColumn": 22,
-                  "endLine": 137,
+                  "endLine": 163,
                   "endColumn": 40
                 }
               }
@@ -1204,18 +1120,18 @@
           }
         },
         {
-          "ruleId": "S2325",
+          "ruleId": "S3168",
           "level": "warning",
-          "message": "Make 'IsValidPassword' a static method.",
+          "message": "Return 'Task' instead.",
           "locations": [
             {
               "resultFile": {
-                "uri": "file:///C:/TripasDeGatoCliente/Views/LoginView.xaml.cs",
+                "uri": "file:///C:/TripasDeGatoCliente/Views/LobbyView.xaml.cs",
                 "region": {
-                  "startLine": 342,
+                  "startLine": 148,
                   "startColumn": 22,
-                  "endLine": 342,
-                  "endColumn": 37
+                  "endLine": 148,
+                  "endColumn": 26
                 }
               }
             }
@@ -1233,9 +1149,9 @@
               "resultFile": {
                 "uri": "file:///C:/TripasDeGatoCliente/Views/GameMatchView.xaml.cs",
                 "region": {
-                  "startLine": 176,
+                  "startLine": 207,
                   "startColumn": 17,
-                  "endLine": 176,
+                  "endLine": 207,
                   "endColumn": 19
                 }
               }
@@ -1246,9 +1162,9 @@
               "physicalLocation": {
                 "uri": "file:///C:/TripasDeGatoCliente/Views/GameMatchView.xaml.cs",
                 "region": {
-                  "startLine": 175,
+                  "startLine": 206,
                   "startColumn": 13,
-                  "endLine": 175,
+                  "endLine": 206,
                   "endColumn": 15
                 }
               }
@@ -1262,69 +1178,6 @@
           }
         },
         {
-          "ruleId": "S3168",
-          "level": "warning",
-          "message": "Return 'Task' instead.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/TripasDeGatoCliente/Views/LobbyView.xaml.cs",
-                "region": {
-                  "startLine": 134,
-                  "startColumn": 22,
-                  "endLine": 134,
-                  "endColumn": 26
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S2325",
-          "level": "warning",
-          "message": "Make 'HighlightField' a static method.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/TripasDeGatoCliente/Views/RegisterView.xaml.cs",
-                "region": {
-                  "startLine": 191,
-                  "startColumn": 22,
-                  "endLine": 191,
-                  "endColumn": 36
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S1244",
-          "level": "warning",
-          "message": "Do not check floating point equality with exact values, use a range instead.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/TripasDeGatoCliente/Views/GameMatchView.xaml.cs",
-                "region": {
-                  "startLine": 214,
-                  "startColumn": 31,
-                  "endLine": 214,
-                  "endColumn": 33
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
           "ruleId": "S2325",
           "level": "warning",
           "message": "Make 'IsUserHost' a static method.",
@@ -1333,31 +1186,10 @@
               "resultFile": {
                 "uri": "file:///C:/TripasDeGatoCliente/Views/LobbyView.xaml.cs",
                 "region": {
-                  "startLine": 155,
+                  "startLine": 184,
                   "startColumn": 22,
-                  "endLine": 155,
+                  "endLine": 184,
                   "endColumn": 32
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S2325",
-          "level": "warning",
-          "message": "Make 'DistanceFromPointToSegment' a static method.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/TripasDeGatoCliente/Views/GameMatchView.xaml.cs",
-                "region": {
-                  "startLine": 204,
-                  "startColumn": 24,
-                  "endLine": 204,
-                  "endColumn": 50
                 }
               }
             }
@@ -1375,10 +1207,31 @@
               "resultFile": {
                 "uri": "file:///C:/TripasDeGatoCliente/Views/GameMatchView.xaml.cs",
                 "region": {
-                  "startLine": 192,
+                  "startLine": 222,
                   "startColumn": 38,
-                  "endLine": 192,
-                  "endColumn": 47
+                  "endLine": 222,
+                  "endColumn": 48
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S3168",
+          "level": "warning",
+          "message": "Return 'Task' instead.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/TripasDeGatoCliente/Views/ProfileView.xaml.cs",
+                "region": {
+                  "startLine": 86,
+                  "startColumn": 23,
+                  "endLine": 86,
+                  "endColumn": 27
                 }
               }
             }
@@ -1396,10 +1249,55 @@
               "resultFile": {
                 "uri": "file:///C:/TripasDeGatoCliente/Views/LobbyView.xaml.cs",
                 "region": {
-                  "startLine": 147,
+                  "startLine": 163,
+                  "startColumn": 35,
+                  "endLine": 163,
+                  "endColumn": 95
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1172",
+          "level": "warning",
+          "message": "Remove this unused method parameter 'selectedLanguage'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/TripasDeGatoCliente/Views/ProfileView.xaml.cs",
+                "region": {
+                  "startLine": 86,
+                  "startColumn": 57,
+                  "endLine": 86,
+                  "endColumn": 80
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "IsRemovable": "True"
+            }
+          }
+        },
+        {
+          "ruleId": "S1244",
+          "level": "warning",
+          "message": "Do not check floating point equality with exact values, use a range instead.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/TripasDeGatoCliente/Views/GameMatchView.xaml.cs",
+                "region": {
+                  "startLine": 244,
                   "startColumn": 31,
-                  "endLine": 147,
-                  "endColumn": 90
+                  "endLine": 244,
+                  "endColumn": 33
                 }
               }
             }
@@ -1411,146 +1309,16 @@
         {
           "ruleId": "S2325",
           "level": "warning",
-          "message": "Make 'ResetField' a static method.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/TripasDeGatoCliente/Views/RegisterView.xaml.cs",
-                "region": {
-                  "startLine": 238,
-                  "startColumn": 22,
-                  "endLine": 238,
-                  "endColumn": 32
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S3776",
-          "level": "warning",
-          "message": "Refactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.",
+          "message": "Make 'DistanceFromPointToSegment' a static method.",
           "locations": [
             {
               "resultFile": {
                 "uri": "file:///C:/TripasDeGatoCliente/Views/GameMatchView.xaml.cs",
                 "region": {
-                  "startLine": 247,
-                  "startColumn": 21,
-                  "endLine": 247,
-                  "endColumn": 37
-                }
-              }
-            }
-          ],
-          "relatedLocations": [
-            {
-              "physicalLocation": {
-                "uri": "file:///C:/TripasDeGatoCliente/Views/GameMatchView.xaml.cs",
-                "region": {
-                  "startLine": 255,
-                  "startColumn": 21,
-                  "endLine": 255,
-                  "endColumn": 23
-                }
-              }
-            },
-            {
-              "physicalLocation": {
-                "uri": "file:///C:/TripasDeGatoCliente/Views/GameMatchView.xaml.cs",
-                "region": {
-                  "startLine": 257,
-                  "startColumn": 29,
-                  "endLine": 257,
-                  "endColumn": 30
-                }
-              }
-            },
-            {
-              "physicalLocation": {
-                "uri": "file:///C:/TripasDeGatoCliente/Views/GameMatchView.xaml.cs",
-                "region": {
-                  "startLine": 259,
-                  "startColumn": 33,
-                  "endLine": 259,
-                  "endColumn": 34
-                }
-              }
-            },
-            {
-              "physicalLocation": {
-                "uri": "file:///C:/TripasDeGatoCliente/Views/GameMatchView.xaml.cs",
-                "region": {
-                  "startLine": 263,
-                  "startColumn": 23,
-                  "endLine": 263,
-                  "endColumn": 27
-                }
-              }
-            },
-            {
-              "physicalLocation": {
-                "uri": "file:///C:/TripasDeGatoCliente/Views/GameMatchView.xaml.cs",
-                "region": {
-                  "startLine": 266,
-                  "startColumn": 19,
-                  "endLine": 266,
-                  "endColumn": 24
-                }
-              }
-            },
-            {
-              "physicalLocation": {
-                "uri": "file:///C:/TripasDeGatoCliente/Views/GameMatchView.xaml.cs",
-                "region": {
-                  "startLine": 269,
-                  "startColumn": 19,
-                  "endLine": 269,
-                  "endColumn": 24
-                }
-              }
-            },
-            {
-              "physicalLocation": {
-                "uri": "file:///C:/TripasDeGatoCliente/Views/GameMatchView.xaml.cs",
-                "region": {
-                  "startLine": 272,
-                  "startColumn": 19,
-                  "endLine": 272,
-                  "endColumn": 24
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1,
-            "customProperties": {
-              "0": "+2 (incl 1 for nesting)",
-              "1": "+3 (incl 2 for nesting)",
-              "2": "+4 (incl 3 for nesting)",
-              "3": "+1",
-              "4": "+2 (incl 1 for nesting)",
-              "5": "+2 (incl 1 for nesting)",
-              "6": "+2 (incl 1 for nesting)"
-            }
-          }
-        },
-        {
-          "ruleId": "S3358",
-          "level": "warning",
-          "message": "Extract this nested ternary operation into an independent statement.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/TripasDeGatoCliente/Views/GameMatchView.xaml.cs",
-                "region": {
-                  "startLine": 258,
-                  "startColumn": 31,
-                  "endLine": 260,
-                  "endColumn": 82
+                  "startLine": 234,
+                  "startColumn": 24,
+                  "endLine": 234,
+                  "endColumn": 50
                 }
               }
             }
@@ -1568,16 +1336,161 @@
               "resultFile": {
                 "uri": "file:///C:/TripasDeGatoCliente/Views/GameMatchView.xaml.cs",
                 "region": {
-                  "startLine": 284,
-                  "startColumn": 46,
-                  "endLine": 284,
-                  "endColumn": 49
+                  "startLine": 276,
+                  "startColumn": 47,
+                  "endLine": 276,
+                  "endColumn": 50
                 }
               }
             }
           ],
           "properties": {
             "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S3776",
+          "level": "warning",
+          "message": "Refactor this method to reduce its Cognitive Complexity from 17 to the 15 allowed.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/TripasDeGatoCliente/Views/MenuView.xaml.cs",
+                "region": {
+                  "startLine": 249,
+                  "startColumn": 28,
+                  "endLine": 249,
+                  "endColumn": 49
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/TripasDeGatoCliente/Views/MenuView.xaml.cs",
+                "region": {
+                  "startLine": 251,
+                  "startColumn": 13,
+                  "endLine": 251,
+                  "endColumn": 15
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/TripasDeGatoCliente/Views/MenuView.xaml.cs",
+                "region": {
+                  "startLine": 256,
+                  "startColumn": 21,
+                  "endLine": 256,
+                  "endColumn": 23
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/TripasDeGatoCliente/Views/MenuView.xaml.cs",
+                "region": {
+                  "startLine": 259,
+                  "startColumn": 25,
+                  "endLine": 259,
+                  "endColumn": 27
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/TripasDeGatoCliente/Views/MenuView.xaml.cs",
+                "region": {
+                  "startLine": 262,
+                  "startColumn": 27,
+                  "endLine": 262,
+                  "endColumn": 31
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/TripasDeGatoCliente/Views/MenuView.xaml.cs",
+                "region": {
+                  "startLine": 265,
+                  "startColumn": 23,
+                  "endLine": 265,
+                  "endColumn": 27
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/TripasDeGatoCliente/Views/MenuView.xaml.cs",
+                "region": {
+                  "startLine": 268,
+                  "startColumn": 19,
+                  "endLine": 268,
+                  "endColumn": 24
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/TripasDeGatoCliente/Views/MenuView.xaml.cs",
+                "region": {
+                  "startLine": 271,
+                  "startColumn": 19,
+                  "endLine": 271,
+                  "endColumn": 24
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/TripasDeGatoCliente/Views/MenuView.xaml.cs",
+                "region": {
+                  "startLine": 274,
+                  "startColumn": 19,
+                  "endLine": 274,
+                  "endColumn": 24
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/TripasDeGatoCliente/Views/MenuView.xaml.cs",
+                "region": {
+                  "startLine": 277,
+                  "startColumn": 19,
+                  "endLine": 277,
+                  "endColumn": 24
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/TripasDeGatoCliente/Views/MenuView.xaml.cs",
+                "region": {
+                  "startLine": 281,
+                  "startColumn": 15,
+                  "endLine": 281,
+                  "endColumn": 19
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "0": "+1",
+              "1": "+2 (incl 1 for nesting)",
+              "2": "+3 (incl 2 for nesting)",
+              "3": "+1",
+              "4": "+1",
+              "5": "+2 (incl 1 for nesting)",
+              "6": "+2 (incl 1 for nesting)",
+              "7": "+2 (incl 1 for nesting)",
+              "8": "+2 (incl 1 for nesting)",
+              "9": "+1"
+            }
           }
         },
         {
@@ -1589,9 +1502,9 @@
               "resultFile": {
                 "uri": "file:///C:/TripasDeGatoCliente/Views/GameMatchView.xaml.cs",
                 "region": {
-                  "startLine": 301,
+                  "startLine": 293,
                   "startColumn": 26,
-                  "endLine": 301,
+                  "endLine": 293,
                   "endColumn": 40
                 }
               }
@@ -1604,16 +1517,16 @@
         {
           "ruleId": "S2325",
           "level": "warning",
-          "message": "Make 'MatchEnded' a static method.",
+          "message": "Make 'HighlightField' a static method.",
           "locations": [
             {
               "resultFile": {
-                "uri": "file:///C:/TripasDeGatoCliente/Views/GameMatchView.xaml.cs",
+                "uri": "file:///C:/TripasDeGatoCliente/Views/RegisterView.xaml.cs",
                 "region": {
-                  "startLine": 330,
-                  "startColumn": 21,
-                  "endLine": 330,
-                  "endColumn": 31
+                  "startLine": 233,
+                  "startColumn": 22,
+                  "endLine": 233,
+                  "endColumn": 36
                 }
               }
             }
@@ -1623,18 +1536,60 @@
           }
         },
         {
-          "ruleId": "S1117",
+          "ruleId": "S2325",
           "level": "warning",
-          "message": "Rename 'isConnected' which hides the field with the same name.",
+          "message": "Make 'IsValidPassword' a static method.",
           "locations": [
             {
               "resultFile": {
-                "uri": "file:///C:/TripasDeGatoCliente/Views/GameMatchView.xaml.cs",
+                "uri": "file:///C:/TripasDeGatoCliente/Views/LoginView.xaml.cs",
                 "region": {
-                  "startLine": 284,
+                  "startLine": 332,
                   "startColumn": 22,
-                  "endLine": 284,
-                  "endColumn": 33
+                  "endLine": 332,
+                  "endColumn": 37
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2325",
+          "level": "warning",
+          "message": "Make 'ResetField' a static method.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/TripasDeGatoCliente/Views/RegisterView.xaml.cs",
+                "region": {
+                  "startLine": 279,
+                  "startColumn": 22,
+                  "endLine": 279,
+                  "endColumn": 32
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1481",
+          "level": "warning",
+          "message": "Remove the unused local variable 'email'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/TripasDeGatoCliente/Views/LoginView.xaml.cs",
+                "region": {
+                  "startLine": 281,
+                  "startColumn": 20,
+                  "endLine": 281,
+                  "endColumn": 25
                 }
               }
             }
@@ -1705,14 +1660,14 @@
             ]
           }
         },
-        "S1117": {
-          "id": "S1117",
-          "shortDescription": "Local variables should not shadow class fields or properties",
-          "fullDescription": "Shadowing occurs when a local variable has the same name as a variable, field, or property in an outer scope.",
+        "S1116": {
+          "id": "S1116",
+          "shortDescription": "Empty statements should be removed",
+          "fullDescription": "Empty statements represented by a semicolon ; are statements that do not perform any operation. They are often the result of a typo or a misunderstanding of the language syntax. It is a good practice to remove empty statements since they don’t add value and lead to confusion and errors.",
           "defaultLevel": "warning",
-          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-1117",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-1116",
           "properties": {
-            "category": "Major Code Smell",
+            "category": "Minor Code Smell",
             "isEnabledByDefault": true,
             "tags": [
               "C#",
@@ -1823,23 +1778,6 @@
             ]
           }
         },
-        "S125": {
-          "id": "S125",
-          "shortDescription": "Sections of code should not be commented out",
-          "fullDescription": "Commented-out code distracts the focus from the actual executed code. It creates a noise that increases maintenance code. And because it is never executed, it quickly becomes out of date and invalid.",
-          "defaultLevel": "warning",
-          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-125",
-          "properties": {
-            "category": "Major Code Smell",
-            "isEnabledByDefault": true,
-            "tags": [
-              "C#",
-              "MainSourceScope",
-              "TestSourceScope",
-              "SonarWay"
-            ]
-          }
-        },
         "S1481": {
           "id": "S1481",
           "shortDescription": "Unused local variables should be removed",
@@ -1848,23 +1786,6 @@
           "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-1481",
           "properties": {
             "category": "Minor Code Smell",
-            "isEnabledByDefault": true,
-            "tags": [
-              "C#",
-              "MainSourceScope",
-              "TestSourceScope",
-              "SonarWay"
-            ]
-          }
-        },
-        "S1854": {
-          "id": "S1854",
-          "shortDescription": "Unused assignments should be removed",
-          "fullDescription": "Dead stores refer to assignments made to local variables that are subsequently never used or immediately overwritten. Such assignments are unnecessary and don’t contribute to the functionality or clarity of the code. They may even negatively impact performance. Removing them enhances code cleanliness and readability. Even if the unnecessary operations do not do any harm in terms of the program’s correctness, they are - at best - a waste of computing resources.",
-          "defaultLevel": "warning",
-          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-1854",
-          "properties": {
-            "category": "Major Code Smell",
             "isEnabledByDefault": true,
             "tags": [
               "C#",
@@ -1953,23 +1874,6 @@
             "tags": [
               "C#",
               "MainSourceScope",
-              "SonarWay"
-            ]
-          }
-        },
-        "S3358": {
-          "id": "S3358",
-          "shortDescription": "Ternary operators should not be nested",
-          "fullDescription": "Nested ternaries are hard to read and can make the order of operations complex to understand.",
-          "defaultLevel": "warning",
-          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-3358",
-          "properties": {
-            "category": "Major Code Smell",
-            "isEnabledByDefault": true,
-            "tags": [
-              "C#",
-              "MainSourceScope",
-              "TestSourceScope",
               "SonarWay"
             ]
           }

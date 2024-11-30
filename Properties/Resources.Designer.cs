@@ -583,6 +583,15 @@ namespace TripasDeGatoCliente.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a You touched a forbidden area! Your stroke will be invalidated..
+        /// </summary>
+        public static string dialogForbiddenAreaWarning {
+            get {
+                return ResourceManager.GetString("dialogForbiddenAreaWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Friendship with &apos;{0}&apos; deleted successfully.
         /// </summary>
         public static string dialogFriendshipDeleted {

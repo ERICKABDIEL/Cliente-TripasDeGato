@@ -1,15 +1,16 @@
-﻿C:\TripasDeGatoCliente\Logic\ConstantsManager.cs
+﻿C:\TripasDeGatoCliente\Logic\ConnectionManager.cs
+C:\TripasDeGatoCliente\Logic\ConstantsManager.cs
 C:\TripasDeGatoCliente\Logic\DialogManager.cs
 C:\TripasDeGatoCliente\Logic\GuestProfile.cs
 C:\TripasDeGatoCliente\Logic\GuestProfileSinglenton.cs
 C:\TripasDeGatoCliente\Logic\Hasher.cs
 C:\TripasDeGatoCliente\Logic\LoggerManager.cs
-C:\TripasDeGatoCliente\Logic\UserProfileSnglenton.cs
+C:\TripasDeGatoCliente\Logic\UserProfileSingleton.cs
 C:\TripasDeGatoCliente\Logic\Validador.cs
 C:\TripasDeGatoCliente\Views\CodeGameMatchView.xaml.cs
 C:\TripasDeGatoCliente\Views\CreateLobbyView.xaml.cs
 C:\TripasDeGatoCliente\Views\GameMatchView.xaml.cs
-C:\TripasDeGatoCliente\Views\LaderboardView.xaml.cs
+C:\TripasDeGatoCliente\Views\LeaderboardView.xaml.cs
 C:\TripasDeGatoCliente\Views\LobbyView.xaml.cs
 C:\TripasDeGatoCliente\Views\MenuView.xaml.cs
 C:\TripasDeGatoCliente\Views\ProfileView.xaml.cs
@@ -30,7 +31,6 @@ C:\TripasDeGatoCliente\Connected Services\TripasDeGatoServicio\item3.xsd
 C:\TripasDeGatoCliente\Connected Services\TripasDeGatoServicio\item4.xsd
 C:\TripasDeGatoCliente\Connected Services\TripasDeGatoServicio\item5.xsd
 C:\TripasDeGatoCliente\Connected Services\TripasDeGatoServicio\TripasDeGatoCliente.TripasDeGatoServicio.GameEnumsPlayerStatus.datasource
-C:\TripasDeGatoCliente\Connected Services\TripasDeGatoServicio\TripasDeGatoCliente.TripasDeGatoServicio.GameResult.datasource
 C:\TripasDeGatoCliente\Connected Services\TripasDeGatoServicio\TripasDeGatoCliente.TripasDeGatoServicio.Lobby.datasource
 C:\TripasDeGatoCliente\Connected Services\TripasDeGatoServicio\TripasDeGatoCliente.TripasDeGatoServicio.Node.datasource
 C:\TripasDeGatoCliente\Connected Services\TripasDeGatoServicio\TripasDeGatoCliente.TripasDeGatoServicio.Profile.datasource

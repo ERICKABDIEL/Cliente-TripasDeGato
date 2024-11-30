@@ -1,16 +1,17 @@
 ﻿C:\TripasDeGatoCliente\App.xaml
+C:\TripasDeGatoCliente\Logic\ConnectionManager.cs
 C:\TripasDeGatoCliente\Logic\ConstantsManager.cs
 C:\TripasDeGatoCliente\Logic\DialogManager.cs
 C:\TripasDeGatoCliente\Logic\GuestProfile.cs
 C:\TripasDeGatoCliente\Logic\GuestProfileSinglenton.cs
 C:\TripasDeGatoCliente\Logic\Hasher.cs
 C:\TripasDeGatoCliente\Logic\LoggerManager.cs
-C:\TripasDeGatoCliente\Logic\UserProfileSnglenton.cs
+C:\TripasDeGatoCliente\Logic\UserProfileSingleton.cs
 C:\TripasDeGatoCliente\Logic\Validador.cs
 C:\TripasDeGatoCliente\Views\CodeGameMatchView.xaml.cs
 C:\TripasDeGatoCliente\Views\CreateLobbyView.xaml.cs
 C:\TripasDeGatoCliente\Views\GameMatchView.xaml.cs
-C:\TripasDeGatoCliente\Views\LaderboardView.xaml.cs
+C:\TripasDeGatoCliente\Views\LeaderboardView.xaml.cs
 C:\TripasDeGatoCliente\Views\LobbyView.xaml.cs
 C:\TripasDeGatoCliente\Views\MenuView.xaml.cs
 C:\TripasDeGatoCliente\Views\ProfileView.xaml.cs
@@ -31,7 +32,6 @@ C:\TripasDeGatoCliente\Connected Services\TripasDeGatoServicio\item3.xsd
 C:\TripasDeGatoCliente\Connected Services\TripasDeGatoServicio\item4.xsd
 C:\TripasDeGatoCliente\Connected Services\TripasDeGatoServicio\item5.xsd
 C:\TripasDeGatoCliente\Connected Services\TripasDeGatoServicio\TripasDeGatoCliente.TripasDeGatoServicio.GameEnumsPlayerStatus.datasource
-C:\TripasDeGatoCliente\Connected Services\TripasDeGatoServicio\TripasDeGatoCliente.TripasDeGatoServicio.GameResult.datasource
 C:\TripasDeGatoCliente\Connected Services\TripasDeGatoServicio\TripasDeGatoCliente.TripasDeGatoServicio.Lobby.datasource
 C:\TripasDeGatoCliente\Connected Services\TripasDeGatoServicio\TripasDeGatoCliente.TripasDeGatoServicio.Node.datasource
 C:\TripasDeGatoCliente\Connected Services\TripasDeGatoServicio\TripasDeGatoCliente.TripasDeGatoServicio.Profile.datasource
@@ -47,7 +47,7 @@ C:\TripasDeGatoCliente\MainWindow.xaml
 C:\TripasDeGatoCliente\Views\CodeGameMatchView.xaml
 C:\TripasDeGatoCliente\Views\CreateLobbyView.xaml
 C:\TripasDeGatoCliente\Views\GameMatchView.xaml
-C:\TripasDeGatoCliente\Views\LaderboardView.xaml
+C:\TripasDeGatoCliente\Views\LeaderboardView.xaml
 C:\TripasDeGatoCliente\Views\LobbyView.xaml
 C:\TripasDeGatoCliente\Views\MenuView.xaml
 C:\TripasDeGatoCliente\Views\ProfileView.xaml
@@ -55,7 +55,6 @@ C:\TripasDeGatoCliente\Views\RegisterView.xaml
 C:\TripasDeGatoCliente\Views\LoginView.xaml
 C:\TripasDeGatoCliente\Views\SelectLobbyView.xaml
 C:\TripasDeGatoCliente\Images\BackgroundLeft.png
-C:\TripasDeGatoCliente\Images\LogoWhitoutBackground.png
 C:\TripasDeGatoCliente\Images\Profiles\ImageProfile1.png
 C:\TripasDeGatoCliente\Images\Profiles\ImageProfile2.png
 C:\TripasDeGatoCliente\Images\Profiles\ImageProfile3.png
@@ -75,6 +74,4 @@ C:\TripasDeGatoCliente\Images\BackgroundValidation.png
 C:\TripasDeGatoCliente\Images\BackgroundButton1.png
 C:\TripasDeGatoCliente\Images\BackgroundButton2.png
 C:\TripasDeGatoCliente\Images\Scene\SceneCat.png
-C:\TripasDeGatoCliente\Images\Scene\SceneDog.png
-C:\TripasDeGatoCliente\Images\Scene\SceneBear.png
 C:\TripasDeGatoCliente\Images\BackgroundProfile.png
