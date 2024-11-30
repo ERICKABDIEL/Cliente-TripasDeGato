@@ -841,3 +841,29 @@ Exception rethrown at [0]:
    en TripasDeGatoCliente.TripasDeGatoServicio.ILobbyManager.LeaveLobbyAsync(String code, Int32 playerId)
    en TripasDeGatoCliente.TripasDeGatoServicio.LobbyManagerClient.LeaveLobbyAsync(String code, Int32 playerId) en C:\TripasDeGatoCliente\Connected Services\TripasDeGatoServicio\Reference.cs:línea 1392
    en TripasDeGatoCliente.Views.LobbyView.<BtnBack_Click>d__17.MoveNext() en C:\TripasDeGatoCliente\Views\LobbyView.xaml.cs:línea 163
+2024-11-30 14:02:05,963 [1] ERROR TripasDeGatoCliente.Views.LoginView - System.ServiceModel.EndpointNotFoundException: No se pudo conectar a net.tcp://localhost:8081/UserManager. La duración del intento de conexión fue de 00:00:04.1202683. Código de error TCP 10061: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión 127.0.0.1:8081.  ---> System.Net.Sockets.SocketException: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión 127.0.0.1:8081
+   en System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   en System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   en System.ServiceModel.Channels.SocketConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+   --- Fin del seguimiento de la pila de la excepción interna ---
+
+Server stack trace: 
+   en System.ServiceModel.Channels.SocketConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+   en System.ServiceModel.Channels.BufferedConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+   en System.ServiceModel.Channels.ConnectionPoolHelper.EstablishConnection(TimeSpan timeout)
+   en System.ServiceModel.Channels.ClientFramingDuplexSessionChannel.OnOpen(TimeSpan timeout)
+   en System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   en System.ServiceModel.Channels.ServiceChannel.OnOpen(TimeSpan timeout)
+   en System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   en System.ServiceModel.Channels.ServiceChannel.CallOpenOnce.System.ServiceModel.Channels.ServiceChannel.ICallOnce.Call(ServiceChannel channel, TimeSpan timeout)
+   en System.ServiceModel.Channels.ServiceChannel.CallOnceManager.CallOnce(TimeSpan timeout, CallOnceManager cascade)
+   en System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   en System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   en System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   en System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   en System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   en TripasDeGatoCliente.TripasDeGatoServicio.IUserManager.VerifyLogin(String email, String password)
+   en TripasDeGatoCliente.TripasDeGatoServicio.UserManagerClient.VerifyLogin(String email, String password) en C:\TripasDeGatoCliente\Connected Services\TripasDeGatoServicio\Reference.cs:línea 851
+   en TripasDeGatoCliente.Views.LoginView.AuthenticateUser(String email, String hashedPassword) en C:\TripasDeGatoCliente\Views\LoginView.xaml.cs:línea 49

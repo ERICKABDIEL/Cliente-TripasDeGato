@@ -291,6 +291,9 @@
   <data name="dialogErrorUpdatingPlayerStatus" xml:space="preserve">
     <value>Error updating the player's status</value>
   </data>
+  <data name="dialogForbiddenAreaWarning" xml:space="preserve">
+    <value>You touched a forbidden area! Your stroke will be invalidated.</value>
+  </data>
   <data name="dialogFriendshipDeleted" xml:space="preserve">
     <value>Friendship with '{0}' deleted successfully</value>
   </data>

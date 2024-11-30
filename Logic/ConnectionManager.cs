@@ -12,10 +12,8 @@ namespace TripasDeGatoCliente.Logic {
         public ChatManagerClient ChatManager { get; private set; }
         public MatchManagerClient MatchManager { get; private set; }
 
-        // Constructor privado para prevenir instanciación directa
         private ConnectionManager() { }
 
-        // Métodos para inicializar las conexiones
         public void InitializeLobbyManager(InstanceContext context) {
             LobbyManager = new LobbyManagerClient(context);
         }
@@ -28,7 +26,6 @@ namespace TripasDeGatoCliente.Logic {
             MatchManager = new MatchManagerClient(context);
         }
 
-        // Método para cerrar todas las conexiones
         public async Task DisconnectAllAsync() {
             if (LobbyManager != null && UserProfileSingleton.LobbyCode != "000000") {
                 await LobbyManager.LeaveLobbyAsync(UserProfileSingleton.LobbyCode, UserProfileSingleton.IdProfile);
@@ -46,7 +43,6 @@ namespace TripasDeGatoCliente.Logic {
             }
         }
 
-        // Métodos para liberar instancias individuales
         public void ReleaseLobbyManager() {
             LobbyManager = null;
         }

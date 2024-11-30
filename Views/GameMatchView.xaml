@@ -10,12 +10,16 @@
       Width="1280" Height="720">
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="269*"/>
+            <RowDefinition Height="451*"/>
+        </Grid.RowDefinitions>
         <Image Source="/Images/SceneCat.png" 
-               HorizontalAlignment="Left"
+               HorizontalAlignment="Center"
                Height="720" 
                VerticalAlignment="Top"
-               Width="1280" />
-        <Grid x:Name="gridCat">
+               Width="1280" Grid.RowSpan="2" />
+        <Grid x:Name="gridCat" Grid.RowSpan="2">
             <Canvas x:Name="drawingCanvas" Margin="369,211,363,154" Background="Black" Opacity="0.48">
                 <Canvas.Clip>
                     <PathGeometry Figures="M200,1 L200,1 L210,2 L220,5 L225,6 L230,7 L233,8 L240,11 L242,11 L254,16 L257,21 L257,22 L268,40 L288,60 L320,79 L380,92 L430,91 L472,80 L478,105 L478,120 L478,140 L475,159 L535,218 L545,240 L540,260 L532,265 L529,270 L500,280 L480,280 L470,280 L410,265 L400,255 L395,258 L396,300 L402,310 L408,324 L405,335 L400,340 L380,346 L350,348 L330,345 L330,345 L300,325 L300,325 L270,285 L235,286 L234,295 L245,310 L245,320 L237,330 L220,337 L200,337 L180,332 L149,306 L135,278 L108,291 L104,305 L112,321 L104,338 L81,345 L55,345 L30,335 L13,310 L2,275 L2,250 L8,223 L18,205 L24,193 L22,153 L23,123 L35,90 L70,50 L90,30 L140,5 L156,0"/>
@@ -30,19 +34,19 @@
                      Foreground="Green"
                      HorizontalAlignment="Center"
                      VerticalAlignment="Top"
-                     Margin="0,580,0,0"/>
+                     Margin="0,311,0,0" Grid.Row="1"/>
 
         <Label x:Name="lbMatchStatus"
                Content="{x:Static p:Resources.lbTurn}" 
                HorizontalAlignment="Center"
-               Margin="0,604,0,0" 
+               Margin="0,335,0,0" 
                VerticalAlignment="Top" 
                FontSize="36" Width="488" 
                VerticalContentAlignment="Center" 
                HorizontalContentAlignment="Center" 
                Height="82" 
                Background="#FFEFE8CE"
-               FontFamily="Cooper Black"/>
+               FontFamily="Cooper Black" Grid.Row="1"/>
 
         <Button x:Name="btnBack" 
                 Content="{x:Static Properties:Resources.globalBtnBack}" 

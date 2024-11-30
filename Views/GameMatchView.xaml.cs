@@ -183,6 +183,11 @@ namespace TripasDeGatoCliente.Views {
             if (!_isDrawing) return;
             Point mousePosition = e.GetPosition(drawingCanvas);
             var newPoint = new TripasDeGatoServicio.TracePoint { X = mousePosition.X, Y = mousePosition.Y };
+            DrawingValidation drawingValidation = new DrawingValidation();
+            if (drawingValidation.IsPointInForbiddenArea(mousePosition)) {
+                HandleInfraction(Properties.Resources.dialogForbiddenAreaWarning);
+                return;
+            }
             if (IsCollisionDetected(newPoint)) {
                 HandleInfraction(Properties.Resources.dialogInfractionCollision);
                 try {

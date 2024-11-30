@@ -291,6 +291,9 @@
   <data name="dialogErrorUpdatingPlayerStatus" xml:space="preserve">
     <value>Error al actualizar el estado del jugador</value>
   </data>
+  <data name="dialogForbiddenAreaWarning" xml:space="preserve">
+    <value>¡Has tocado una zona prohibida! Tu trazo será anulado.</value>
+  </data>
   <data name="dialogFriendshipDeleted" xml:space="preserve">
     <value>Amistad con '{0}' eliminada correctamente</value>
   </data>

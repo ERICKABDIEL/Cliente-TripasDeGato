@@ -130,403 +130,548 @@ ComVisible 
 (77 
 $str77 (
 )77( )
-]77) *õ9
+]77) *‘5
 )C:\TripasDeGatoCliente\MainWindow.xaml.cs
-	namespace 	
-TripasDeGatoCliente
- 
-{ 
-public 
-
-partial 
-class 
-
-MainWindow #
-:$ %
-Window& ,
-{- .
-private 
-LobbyManagerClient "
-lobbyManager# /
-;/ 0
-private 
-ChatManagerClient !
-chatManager" -
-;- .
-public 
-
-MainWindow 
-( 
-) 
-{ 
-InitializeComponent 
-(  
-)  !
-;! "
-this 
-. !
-WindowStartupLocation &
-=' (!
-WindowStartupLocation) >
-.> ?
-CenterScreen? K
-;K L
-NavigationFrame 
-. 
-Navigate $
-($ %
-new% (
-Views) .
-.. /
-	LoginView/ 8
-(8 9
-)9 :
-): ;
-;; <
-this 
-. 
-Closing 
-+= 
-MainWindowClosing -
-;- .
-lobbyManager 
-= 
-new 
-LobbyManagerClient 1
-(1 2
-new2 5
-InstanceContext6 E
-(E F
-thisF J
-)J K
-)K L
-;L M
-chatManager 
-= 
-new 
-ChatManagerClient /
-(/ 0
-new0 3
-InstanceContext4 C
-(C D
-thisD H
-)H I
-)I J
-;J K
-} 	
-private 
-async 
-void 
-MainWindowClosing ,
-(, -
-object- 3
-sender4 :
-,: ;
-System< B
-.B C
-ComponentModelC Q
-.Q R
-CancelEventArgsR a
-eb c
-)c d
-{e f
-LoggerManager 
-logger  
-=! "
-new# &
-LoggerManager' 4
-(4 5
-this5 9
-.9 :
-GetType: A
-(A B
-)B C
-)C D
-;D E
-try 
-{ 
-if 
-(  
-UserProfileSingleton (
-.( )
-Instance) 1
-!=2 4
-null5 9
-&&: < 
-UserProfileSingleton= Q
-.Q R
-	IdProfileR [
-!=\ ^
-$num_ `
-)` a
-{b c
-SignOut 
-( 
-) 
-; 
-} 
-else 
-{ 
-	OnClosing   
-(   
-)   
-;    
-}!! 
-}"" 
-catch"" 
-("" %
-EndpointNotFoundException"" .%
-endpointNotFoundException""/ H
-)""H I
-{""J K
-logger## 
-.## 
-LogError## 
-(##  %
-endpointNotFoundException##  9
-)##9 :
-;##: ;
-DialogManager$$ 
-.$$ !
-ShowErrorMessageAlert$$ 3
-($$3 4
-
-Properties$$4 >
-.$$> ?
-	Resources$$? H
-.$$H I#
-dialogEndPointException$$I `
-)$$` a
-;$$a b
-}%% 
-catch%% 
-(%% 
-TimeoutException%% %
-timeoutException%%& 6
-)%%6 7
-{%%8 9
-logger&& 
-.&& 
-LogError&& 
-(&&  
-timeoutException&&  0
-)&&0 1
-;&&1 2
-DialogManager'' 
-.'' !
-ShowErrorMessageAlert'' 3
-(''3 4
-
-Properties''4 >
-.''> ?
-	Resources''? H
-.''H I"
-dialogTimeOutException''I _
-)''_ `
-;''` a
-}(( 
-catch(( 
-((( "
-CommunicationException(( +"
-communicationException((, B
-)((B C
-{((D E
-logger)) 
-.)) 
-LogError)) 
-())  "
-communicationException))  6
-)))6 7
-;))7 8
-DialogManager** 
-.** !
-ShowErrorMessageAlert** 3
-(**3 4
-
-Properties**4 >
-.**> ?
-	Resources**? H
-.**H I'
-dialogComunicationException**I d
-)**d e
-;**e f
-}++ 
-},, 	
-private.. 
-void.. 
-SignOut.. 
-(.. 
-).. 
-{..  
-int// 
-playerId// 
-=//  
-UserProfileSingleton// /
-./// 0
-	IdProfile//0 9
-;//9 :"
-SetPlayerOfflineStatus00 "
-(00" #
-playerId00# +
-)00+ ,
-;00, - 
-UserProfileSingleton11  
-.11  !
-Instance11! )
-.11) *
-ResetInstance11* 7
-(117 8
-)118 9
-;119 :
-}22 	
-private44 
-void44 "
-SetPlayerOfflineStatus44 +
-(44+ ,
-int44, /
-playerId440 8
-)448 9
-{44: ;
-LoggerManager55 
-logger55  
-=55! "
-new55# &
-LoggerManager55' 4
-(554 5
-this555 9
-.559 :
-GetType55: A
-(55A B
-)55B C
-)55C D
-;55D E
-try77 
-{77 
-IStatusManager88 
-statusManager88 ,
-=88- .
-new88/ 2
-StatusManagerClient883 F
-(88F G
-)88G H
-;88H I
-statusManager99 
-.99 
-SetPlayerStatus99 -
-(99- .
-playerId99. 6
-,996 7!
-GameEnumsPlayerStatus998 M
-.99M N
-Offline99N U
-)99U V
-;99V W
-}:: 
-catch:: 
-(:: %
-EndpointNotFoundException:: .%
-endpointNotFoundException::/ H
-)::H I
-{::J K
-logger;; 
-.;; 
-LogError;; 
-(;;  %
-endpointNotFoundException;;  9
-);;9 :
-;;;: ;
-DialogManager<< 
-.<< !
-ShowErrorMessageAlert<< 3
-(<<3 4
-
-Properties<<4 >
-.<<> ?
-	Resources<<? H
-.<<H I#
-dialogEndPointException<<I `
-)<<` a
-;<<a b
-}== 
-catch== 
-(== 
-TimeoutException== %
-timeoutException==& 6
-)==6 7
-{==8 9
-logger>> 
-.>> 
-LogError>> 
-(>>  
-timeoutException>>  0
-)>>0 1
-;>>1 2
-DialogManager?? 
-.?? !
-ShowErrorMessageAlert?? 3
-(??3 4
-
-Properties??4 >
-.??> ?
-	Resources??? H
-.??H I"
-dialogTimeOutException??I _
-)??_ `
-;??` a
-}@@ 
-catch@@ 
-(@@ "
-CommunicationException@@ +"
-communicationException@@, B
-)@@B C
-{@@D E
-loggerAA 
-.AA 
-LogErrorAA 
-(AA  "
-communicationExceptionAA  6
-)AA6 7
-;AA7 8
-DialogManagerBB 
-.BB !
-ShowErrorMessageAlertBB 3
-(BB3 4
-
-PropertiesBB4 >
-.BB> ?
-	ResourcesBB? H
-.BBH I'
-dialogComunicationExceptionBBI d
-)BBd e
-;BBe f
-}CC 
-}DD 	
-privateFF 
-voidFF 
-	OnClosingFF 
-(FF 
-)FF  
-{FF! "
-}GG 	
-}HH 
-}II á
-"C:\TripasDeGatoCliente\App.xaml.cs
 	namespace		 	
 TripasDeGatoCliente		
- 
-{
-
- 
-public 
+ 
+{		 
+public 
 
-partial 
-class 
-App 
-: 
-Application *
-{ 
-} 
-} ·[
+partial 
+class 
+
+MainWindow #
+:$ %
+Window& ,
+{- .
+private 
+LobbyManagerClient "
+_lobbyManager# 0
+;0 1
+private 
+ChatManagerClient !
+_chatManager" .
+;. /
+private 
+MatchManagerClient "
+_matchManager# 0
+;0 1
+public 
+
+MainWindow 
+( 
+) 
+{ 
+InitializeComponent 
+(  
+)  !
+;! "
+this 
+. !
+WindowStartupLocation &
+=' (!
+WindowStartupLocation) >
+.> ?
+CenterScreen? K
+;K L
+NavigationFrame 
+. 
+Navigate $
+($ %
+new% (
+Views) .
+.. /
+	LoginView/ 8
+(8 9
+)9 :
+): ;
+;; <
+this 
+. 
+Closing 
++= 
+MainWindowClosing -
+;- .
+_lobbyManager 
+= 
+new 
+LobbyManagerClient  2
+(2 3
+new3 6
+InstanceContext7 F
+(F G
+thisG K
+)K L
+)L M
+;M N
+_chatManager 
+= 
+new 
+ChatManagerClient 0
+(0 1
+new1 4
+InstanceContext5 D
+(D E
+thisE I
+)I J
+)J K
+;K L
+_matchManager 
+= 
+new 
+MatchManagerClient  2
+(2 3
+new3 6
+InstanceContext7 F
+(F G
+thisG K
+)K L
+)L M
+;M N
+} 	
+private 
+async 
+void 
+MainWindowClosing ,
+(, -
+object- 3
+sender4 :
+,: ;
+System< B
+.B C
+ComponentModelC Q
+.Q R
+CancelEventArgsR a
+eb c
+)c d
+{e f
+try 
+{ 
+await 
+ConnectionManager '
+.' (
+Instance( 0
+.0 1
+DisconnectAllAsync1 C
+(C D
+)D E
+;E F
+} 
+catch 
+( 
+	Exception 
+ex !
+)! "
+{# $
+LoggerManager   
+logger   $
+=  % &
+new  ' *
+LoggerManager  + 8
+(  8 9
+this  9 =
+.  = >
+GetType  > E
+(  E F
+)  F G
+)  G H
+;  H I
+logger!! 
+.!! 
+LogError!! 
+(!!  
+ex!!  "
+)!!" #
+;!!# $
+DialogManager"" 
+."" !
+ShowErrorMessageAlert"" 3
+(""3 4
+$str""4 Q
++""R S
+ex""T V
+.""V W
+Message""W ^
+)""^ _
+;""_ `
+}## 
+}$$ 	
+private'' 
+void'' 
+SignOut'' 
+('' 
+)'' 
+{''  
+int(( 
+playerId(( 
+=((  
+UserProfileSingleton(( /
+.((/ 0
+	IdProfile((0 9
+;((9 :"
+SetPlayerOfflineStatus)) "
+())" #
+playerId))# +
+)))+ ,
+;)), - 
+UserProfileSingleton**  
+.**  !
+Instance**! )
+.**) *
+ResetInstance*** 7
+(**7 8
+)**8 9
+;**9 :
+}++ 	
+private-- 
+void-- "
+SetPlayerOfflineStatus-- +
+(--+ ,
+int--, /
+playerId--0 8
+)--8 9
+{--: ;
+LoggerManager.. 
+logger..  
+=..! "
+new..# &
+LoggerManager..' 4
+(..4 5
+this..5 9
+...9 :
+GetType..: A
+(..A B
+)..B C
+)..C D
+;..D E
+try// 
+{// 
+IStatusManager00 
+statusManager00 ,
+=00- .
+new00/ 2
+StatusManagerClient003 F
+(00F G
+)00G H
+;00H I
+statusManager11 
+.11 
+SetPlayerStatus11 -
+(11- .
+playerId11. 6
+,116 7!
+GameEnumsPlayerStatus118 M
+.11M N
+Offline11N U
+)11U V
+;11V W
+}22 
+catch22 
+(22 %
+EndpointNotFoundException22 .%
+endpointNotFoundException22/ H
+)22H I
+{22J K
+logger33 
+.33 
+LogError33 
+(33  %
+endpointNotFoundException33  9
+)339 :
+;33: ;
+DialogManager44 
+.44 !
+ShowErrorMessageAlert44 3
+(443 4
+
+Properties444 >
+.44> ?
+	Resources44? H
+.44H I#
+dialogEndPointException44I `
+)44` a
+;44a b
+}55 
+catch55 
+(55 
+TimeoutException55 %
+timeoutException55& 6
+)556 7
+{558 9
+logger66 
+.66 
+LogError66 
+(66  
+timeoutException66  0
+)660 1
+;661 2
+DialogManager77 
+.77 !
+ShowErrorMessageAlert77 3
+(773 4
+
+Properties774 >
+.77> ?
+	Resources77? H
+.77H I"
+dialogTimeOutException77I _
+)77_ `
+;77` a
+}88 
+catch88 
+(88 "
+CommunicationException88 +"
+communicationException88, B
+)88B C
+{88D E
+logger99 
+.99 
+LogError99 
+(99  "
+communicationException99  6
+)996 7
+;997 8
+DialogManager:: 
+.:: !
+ShowErrorMessageAlert:: 3
+(::3 4
+
+Properties::4 >
+.::> ?
+	Resources::? H
+.::H I'
+dialogComunicationException::I d
+)::d e
+;::e f
+};; 
+catch;; 
+(;; 
+	Exception;; 
+	exception;; (
+);;( )
+{;;* +
+logger<< 
+.<< 
+LogError<< 
+(<<  
+	exception<<  )
+)<<) *
+;<<* +
+DialogManager== 
+.== !
+ShowErrorMessageAlert== 3
+(==3 4
+string==4 :
+.==: ;
+Format==; A
+(==A B
+
+Properties==B L
+.==L M
+	Resources==M V
+.==V W!
+dialogUnexpectedError==W l
+,==l m
+	exception==n w
+.==w x
+Message==x 
+)	== Ä
+)
+==Ä Å
+;
+==Å Ç
+}>> 
+}?? 	
+privateAA 
+voidAA 
+	OnClosingAA 
+(AA 
+)AA  
+{AA! "
+}BB 	
+}CC 
+}DD ª
+"C:\TripasDeGatoCliente\App.xaml.cs
+	namespace 	
+TripasDeGatoCliente
+ 
+{ 
+public 
+
+partial 
+class 
+App 
+: 
+Application *
+{ 
+	protected 
+override 
+void 
+	OnStartup  )
+() *
+StartupEventArgs* :
+e; <
+)< =
+{> ?
+base 
+. 
+	OnStartup 
+( 
+e 
+) 
+; 
+string 
+savedLanguage  
+=! "
+TripasDeGatoCliente# 6
+.6 7
+
+Properties7 A
+.A B
+SettingsB J
+.J K
+DefaultK R
+.R S
+LanguageS [
+;[ \
+if 
+( 
+string 
+. 
+IsNullOrEmpty $
+($ %
+savedLanguage% 2
+)2 3
+)3 4
+{5 6
+savedLanguage 
+= 
+CultureInfo  +
+.+ ,
+CurrentCulture, :
+.: ;
+Name; ?
+.? @
+
+StartsWith@ J
+(J K
+$strK O
+)O P
+?Q R
+$strS Z
+:[ \
+$str] d
+;d e
+TripasDeGatoCliente #
+.# $
+
+Properties$ .
+.. /
+Settings/ 7
+.7 8
+Default8 ?
+.? @
+Language@ H
+=I J
+savedLanguageK X
+;X Y
+TripasDeGatoCliente #
+.# $
+
+Properties$ .
+.. /
+Settings/ 7
+.7 8
+Default8 ?
+.? @
+Save@ D
+(D E
+)E F
+;F G
+} 
+ChangeLanguage 
+( 
+savedLanguage (
+)( )
+;) *
+} 	
+public   
+static   
+void   
+ChangeLanguage   )
+(  ) *
+string  * 0
+cultureCode  1 <
+)  < =
+{  > ?
+CultureInfo!! 
+culture!! 
+=!!  !
+new!!" %
+CultureInfo!!& 1
+(!!1 2
+cultureCode!!2 =
+)!!= >
+;!!> ?
+Thread"" 
+."" 
+CurrentThread""  
+.""  !
+CurrentCulture""! /
+=""0 1
+culture""2 9
+;""9 :
+Thread## 
+.## 
+CurrentThread##  
+.##  !
+CurrentUICulture##! 1
+=##2 3
+culture##4 ;
+;##; <
+TripasDeGatoCliente$$ 
+.$$  
+
+Properties$$  *
+.$$* +
+Settings$$+ 3
+.$$3 4
+Default$$4 ;
+.$$; <
+Reset$$< A
+($$A B
+)$$B C
+;$$C D
+TripasDeGatoCliente%% 
+.%%  
+
+Properties%%  *
+.%%* +
+Settings%%+ 3
+.%%3 4
+Default%%4 ;
+.%%; <
+Language%%< D
+=%%E F
+cultureCode%%G R
+;%%R S
+TripasDeGatoCliente&& 
+.&&  
+
+Properties&&  *
+.&&* +
+Settings&&+ 3
+.&&3 4
+Default&&4 ;
+.&&; <
+Save&&< @
+(&&@ A
+)&&A B
+;&&B C
+}'' 	
+}// 
+}00 ˜e
 4C:\TripasDeGatoCliente\Views\SelectLobbyView.xaml.cs
 	namespace 	
 TripasDeGatoCliente
@@ -543,13 +688,13 @@ PropertiesBB4 >
 Page+ /
 {0 1
 private 
-LobbyBrowserClient "
-lobbyBrowser# /
-;/ 0
+LobbyBrowserClient "
+_lobbyBrowser# 0
+;0 1
 private 
-LobbyManagerClient "
-lobbyManager# /
-;/ 0
+LobbyManagerClient "
+_lobbyManager# 0
+;0 1
 public 
 SelectLobbyView 
 ( 
@@ -558,14 +703,14 @@ PropertiesBB4 >
 InitializeComponent 
 (  
 )  !
-;! "
-lobbyBrowser 
-= 
-new 
-LobbyBrowserClient 1
-(1 2
-)2 3
-;3 4
+;! "
+_lobbyBrowser 
+= 
+new 
+LobbyBrowserClient  2
+(2 3
+)3 4
+;4 5
 LoadLobbiesAsync 
 ( 
 ) 
@@ -590,3299 +735,630 @@ PropertiesBB4 >
 )B C
 )C D
 ;D E
-try 
-{ 
-var 
-lobbies 
-= 
-lobbyBrowser *
-.* +
-GetAvailableLobbies+ >
-(> ?
-)? @
-;@ A
-LobbyDataGrid 
-. 
-ItemsSource )
-=* +
-lobbies, 3
-;3 4
-} 
-catch 
-( %
-EndpointNotFoundException .%
-endpointNotFoundException/ H
-)H I
-{J K
-logger 
-. 
-LogError 
-(  %
-endpointNotFoundException  9
-)9 :
-;: ;
-DialogManager 
-. !
-ShowErrorMessageAlert 3
-(3 4
+try 
+{ 
+var 
+lobbies 
+= 
+_lobbyBrowser +
+.+ ,
+GetAvailableLobbies, ?
+(? @
+)@ A
+;A B
+gridLobbyData 
+. 
+ItemsSource )
+=* +
+lobbies, 3
+;3 4
+} 
+catch 
+( %
+EndpointNotFoundException .%
+endpointNotFoundException/ H
+)H I
+{J K
+logger 
+. 
+LogError 
+(  %
+endpointNotFoundException  9
+)9 :
+;: ;
+DialogManager 
+. !
+ShowErrorMessageAlert 3
+(3 4
 
-Properties4 >
-.> ?
-	Resources? H
-.H I#
-dialogEndPointExceptionI `
-)` a
-;a b
-}   
-catch   
-(   
-TimeoutException   %
-timeoutException  & 6
-)  6 7
-{  8 9
-logger!! 
-.!! 
-LogError!! 
-(!!  
-timeoutException!!  0
-)!!0 1
-;!!1 2
-DialogManager"" 
-."" !
-ShowErrorMessageAlert"" 3
-(""3 4
+Properties4 >
+.> ?
+	Resources? H
+.H I#
+dialogEndPointExceptionI `
+)` a
+;a b
+} 
+catch 
+( 
+TimeoutException %
+timeoutException& 6
+)6 7
+{8 9
+logger   
+.   
+LogError   
+(    
+timeoutException    0
+)  0 1
+;  1 2
+DialogManager!! 
+.!! !
+ShowErrorMessageAlert!! 3
+(!!3 4
 
-Properties""4 >
-.""> ?
-	Resources""? H
-.""H I"
-dialogTimeOutException""I _
-)""_ `
-;""` a
-}## 
-catch## 
-(## "
-CommunicationException## +"
-communicationException##, B
-)##B C
-{##D E
-logger$$ 
-.$$ 
-LogError$$ 
-($$  "
-communicationException$$  6
-)$$6 7
-;$$7 8
-DialogManager%% 
-.%% !
-ShowErrorMessageAlert%% 3
-(%%3 4
+Properties!!4 >
+.!!> ?
+	Resources!!? H
+.!!H I"
+dialogTimeOutException!!I _
+)!!_ `
+;!!` a
+}"" 
+catch"" 
+("" "
+CommunicationException"" +"
+communicationException"", B
+)""B C
+{""D E
+logger## 
+.## 
+LogError## 
+(##  "
+communicationException##  6
+)##6 7
+;##7 8
+DialogManager$$ 
+.$$ !
+ShowErrorMessageAlert$$ 3
+($$3 4
 
-Properties%%4 >
-.%%> ?
-	Resources%%? H
-.%%H I'
-dialogComunicationException%%I d
-)%%d e
-;%%e f
-}&& 
-return'' 
-Task'' 
-.'' 
-CompletedTask'' %
-;''% &
-}(( 	
-private** 
-async** 
-void** 
-BtnJoinGame_Click** ,
-(**, -
-object**- 3
-sender**4 :
-,**: ;
-RoutedEventArgs**< K
-e**L M
-)**M N
-{**O P
-LoggerManager++ 
-logger++  
-=++! "
-new++# &
-LoggerManager++' 4
-(++4 5
-this++5 9
-.++9 :
-GetType++: A
-(++A B
-)++B C
-)++C D
-;++D E
-if,, 
-(,, 
-LobbyDataGrid,, 
-.,, 
-SelectedItem,, *
-is,,+ -
-Lobby,,. 3
-selectedLobby,,4 A
-),,A B
-{,,C D
-string-- 
-	lobbyCode--  
-=--! "
-selectedLobby--# 0
-.--0 1
-Code--1 5
-;--5 6
-Profile.. 
-guest.. 
-=.. 
-new..  #
-Profile..$ +
-{.., -
-	IdProfile// 
-=//  
-UserProfileSingleton//  4
-.//4 5
-	IdProfile//5 >
-,//> ?
-Username00 
-=00  
-UserProfileSingleton00 3
-.003 4
-UserName004 <
-}11 
-;11 
-try22 
-{22 
-bool33 
-joined33 
-=33  !
-await33" '
-lobbyBrowser33( 4
-.334 5
-JoinLobbyAsync335 C
-(33C D
-	lobbyCode33D M
-,33M N
-guest33O T
-)33T U
-;33U V
-if55 
-(55 
-joined55 
-)55 
-{55  !
-	LobbyView66 !
-	lobbyView66" +
-=66, -
-new66. 1
-	LobbyView662 ;
-(66; <
-	lobbyCode66< E
-)66E F
-;66F G
-this77 
-.77 
-NavigationService77 .
-.77. /
-Navigate77/ 7
-(777 8
-	lobbyView778 A
-)77A B
-;77B C
-}88 
-else88 
-{88 
-DialogManager99 %
-.99% &#
-ShowWarningMessageAlert99& =
-(99= >
+Properties$$4 >
+.$$> ?
+	Resources$$? H
+.$$H I'
+dialogComunicationException$$I d
+)$$d e
+;$$e f
+}%% 
+catch%% 
+(%% 
+	Exception%% 
+	exception%% (
+)%%( )
+{%%* +
+logger&& 
+.&& 
+LogError&& 
+(&&  
+	exception&&  )
+)&&) *
+;&&* +
+DialogManager'' 
+.'' !
+ShowErrorMessageAlert'' 3
+(''3 4
+string''4 :
+.'': ;
+Format''; A
+(''A B
 
-Properties99> H
-.99H I
-	Resources99I R
-.99R S 
-dialogLobbyJoinError99S g
-)99g h
-;99h i
-}:: 
-};; 
-catch;; 
-(;; %
-EndpointNotFoundException;; 1%
-endpointNotFoundException;;2 K
-);;K L
-{;;M N
-logger<< 
-.<< 
-LogError<< #
-(<<# $%
-endpointNotFoundException<<$ =
-)<<= >
-;<<> ?
-DialogManager== !
-.==! "!
-ShowErrorMessageAlert==" 7
-(==7 8
+Properties''B L
+.''L M
+	Resources''M V
+.''V W!
+dialogUnexpectedError''W l
+,''l m
+	exception''n w
+.''w x
+Message''x 
+)	'' Ä
+)
+''Ä Å
+;
+''Å Ç
+}(( 
+return)) 
+Task)) 
+.)) 
+CompletedTask)) %
+;))% &
+}** 	
+private,, 
+async,, 
+void,, 
+BtnJoinGame_Click,, ,
+(,,, -
+object,,- 3
+sender,,4 :
+,,,: ;
+RoutedEventArgs,,< K
+e,,L M
+),,M N
+{,,O P
+LoggerManager-- 
+logger--  
+=--! "
+new--# &
+LoggerManager--' 4
+(--4 5
+this--5 9
+.--9 :
+GetType--: A
+(--A B
+)--B C
+)--C D
+;--D E
+if.. 
+(.. 
+gridLobbyData.. 
+... 
+SelectedItem.. *
+is..+ -
+Lobby... 3
+selectedLobby..4 A
+)..A B
+{..C D
+string// 
+	lobbyCode//  
+=//! "
+selectedLobby//# 0
+.//0 1
+Code//1 5
+;//5 6
+Profile00 
+guest00 
+=00 
+new00  #
+Profile00$ +
+{00, -
+	IdProfile11 
+=11  
+UserProfileSingleton11  4
+.114 5
+	IdProfile115 >
+,11> ?
+Username22 
+=22  
+UserProfileSingleton22 3
+.223 4
+UserName224 <
+}33 
+;33 
+try44 
+{44 
+bool55 
+joined55 
+=55  !
+await55" '
+_lobbyBrowser55( 5
+.555 6
+JoinLobbyAsync556 D
+(55D E
+	lobbyCode55E N
+,55N O
+guest55P U
+)55U V
+;55V W
+if66 
+(66 
+joined66 
+)66 
+{66  !
+	LobbyView77 !
+	lobbyView77" +
+=77, -
+new77. 1
+	LobbyView772 ;
+(77; <
+	lobbyCode77< E
+)77E F
+;77F G
+this88 
+.88 
+NavigationService88 .
+.88. /
+Navigate88/ 7
+(887 8
+	lobbyView888 A
+)88A B
+;88B C
+}99 
+else99 
+{99 
+DialogManager:: %
+.::% &#
+ShowWarningMessageAlert::& =
+(::= >
 
-Properties==8 B
-.==B C
-	Resources==C L
-.==L M#
-dialogEndPointException==M d
-)==d e
-;==e f
-}>> 
-catch>> 
-(>> 
-TimeoutException>> )
-timeoutException>>* :
-)>>: ;
-{>>< =
-logger?? 
-.?? 
-LogError?? #
-(??# $
-timeoutException??$ 4
-)??4 5
-;??5 6
-DialogManager@@ !
-.@@! "!
-ShowErrorMessageAlert@@" 7
-(@@7 8
+Properties::> H
+.::H I
+	Resources::I R
+.::R S 
+dialogLobbyJoinError::S g
+)::g h
+;::h i
+};; 
+}<< 
+catch<< 
+(<< %
+EndpointNotFoundException<< 2%
+endpointNotFoundException<<3 L
+)<<L M
+{<<N O
+logger== 
+.== 
+LogError== #
+(==# $%
+endpointNotFoundException==$ =
+)=== >
+;==> ?
+DialogManager>> !
+.>>! "!
+ShowErrorMessageAlert>>" 7
+(>>7 8
 
-Properties@@8 B
-.@@B C
-	Resources@@C L
-.@@L M"
-dialogTimeOutException@@M c
-)@@c d
-;@@d e
-}AA 
-catchAA 
-(AA "
-CommunicationExceptionAA /"
-communicationExceptionAA0 F
-)AAF G
-{AAH I
-loggerBB 
-.BB 
-LogErrorBB #
-(BB# $"
-communicationExceptionBB$ :
-)BB: ;
-;BB; <
-DialogManagerCC !
-.CC! "!
-ShowErrorMessageAlertCC" 7
-(CC7 8
+Properties>>8 B
+.>>B C
+	Resources>>C L
+.>>L M#
+dialogEndPointException>>M d
+)>>d e
+;>>e f
+}?? 
+catch?? 
+(?? 
+TimeoutException?? )
+timeoutException??* :
+)??: ;
+{??< =
+logger@@ 
+.@@ 
+LogError@@ #
+(@@# $
+timeoutException@@$ 4
+)@@4 5
+;@@5 6
+DialogManagerAA !
+.AA! "!
+ShowErrorMessageAlertAA" 7
+(AA7 8
 
-PropertiesCC8 B
-.CCB C
-	ResourcesCCC L
-.CCL M'
-dialogComunicationExceptionCCM h
-)CCh i
-;CCi j
-}DD 
-}EE 
-elseEE 
-{EE 
-DialogManagerFF 
-.FF #
-ShowWarningMessageAlertFF 5
-(FF5 6
+PropertiesAA8 B
+.AAB C
+	ResourcesAAC L
+.AAL M"
+dialogTimeOutExceptionAAM c
+)AAc d
+;AAd e
+}BB 
+catchBB 
+(BB "
+CommunicationExceptionBB /"
+communicationExceptionBB0 F
+)BBF G
+{BBH I
+loggerCC 
+.CC 
+LogErrorCC #
+(CC# $"
+communicationExceptionCC$ :
+)CC: ;
+;CC; <
+DialogManagerDD !
+.DD! "!
+ShowErrorMessageAlertDD" 7
+(DD7 8
 
-PropertiesFF6 @
-.FF@ A
-	ResourcesFFA J
-.FFJ K#
-dialogSelectLobbyToJoinFFK b
-)FFb c
-;FFc d
-}GG 
-}HH 	
-privateJJ 
-voidJJ 
-BtnBack_ClickJJ "
-(JJ" #
-objectJJ# )
-senderJJ* 0
-,JJ0 1
-RoutedEventArgsJJ2 A
-eJJB C
-)JJC D
-{JJE F
-MenuViewKK 
-menuViewKK 
-=KK 
-newKK  #
-MenuViewKK$ ,
-(KK, -
-)KK- .
-;KK. /
-ifLL 
-(LL 
-thisLL 
-.LL 
-NavigationServiceLL &
-!=LL' )
-nullLL* .
-)LL. /
-{LL0 1
+PropertiesDD8 B
+.DDB C
+	ResourcesDDC L
+.DDL M'
+dialogComunicationExceptionDDM h
+)DDh i
+;DDi j
+}EE 
+}FF 
+elseFF 
+{FF 
+DialogManagerGG 
+.GG #
+ShowWarningMessageAlertGG 5
+(GG5 6
+
+PropertiesGG6 @
+.GG@ A
+	ResourcesGGA J
+.GGJ K#
+dialogSelectLobbyToJoinGGK b
+)GGb c
+;GGc d
+}HH 
+}II 	
+privateKK 
+voidKK 
+BtnBack_ClickKK "
+(KK" #
+objectKK# )
+senderKK* 0
+,KK0 1
+RoutedEventArgsKK2 A
+eKKB C
+)KKC D
+{KKE F
+MenuViewLL 
+menuViewLL 
+=LL 
+newLL  #
+MenuViewLL$ ,
+(LL, -
+)LL- .
+;LL. /
+ifMM 
+(MM 
 thisMM 
 .MM 
-NavigationServiceMM &
-.MM& '
-NavigateMM' /
-(MM/ 0
-menuViewMM0 8
-)MM8 9
-;MM9 :
-}NN 
-elseNN 
-{NN 
-DialogManagerOO 
-.OO !
-ShowErrorMessageAlertOO 3
-(OO3 4
+NavigationServiceMM &
+!=MM' )
+nullMM* .
+)MM. /
+{MM0 1
+thisNN 
+.NN 
+NavigationServiceNN &
+.NN& '
+NavigateNN' /
+(NN/ 0
+menuViewNN0 8
+)NN8 9
+;NN9 :
+}OO 
+elseOO 
+{OO 
+DialogManagerPP 
+.PP !
+ShowErrorMessageAlertPP 3
+(PP3 4
 
-PropertiesOO4 >
-.OO> ?
-	ResourcesOO? H
-.OOH I!
-dialogNavigationErrorOOI ^
-)OO^ _
-;OO_ `
-}PP 
-}QQ 	
-privateSS 
-asyncSS 
-voidSS 
-BtnSearch_ClickSS *
-(SS* +
-objectSS+ 1
-senderSS2 8
-,SS8 9
-RoutedEventArgsSS: I
-eSSJ K
-)SSK L
-{SSM N
-LoggerManagerTT 
-loggerTT  
-=TT! "
-newTT# &
-LoggerManagerTT' 4
-(TT4 5
-thisTT5 9
-.TT9 :
-GetTypeTT: A
-(TTA B
-)TTB C
-)TTC D
-;TTD E
-stringUU 
+PropertiesPP4 >
+.PP> ?
+	ResourcesPP? H
+.PPH I!
+dialogNavigationErrorPPI ^
+)PP^ _
+;PP_ `
+}QQ 
+}RR 	
+privateTT 
+asyncTT 
+voidTT 
+BtnSearch_ClickTT *
+(TT* +
+objectTT+ 1
+senderTT2 8
+,TT8 9
+RoutedEventArgsTT: I
+eTTJ K
+)TTK L
+{TTM N
+LoggerManagerUU 
+loggerUU  
+=UU! "
+newUU# &
+LoggerManagerUU' 4
+(UU4 5
+thisUU5 9
+.UU9 :
+GetTypeUU: A
+(UUA B
+)UUB C
+)UUC D
+;UUD E
+stringVV 
 
-searchCodeUU 
-=UU 
-txtCodeLobbyUU  ,
-.UU, -
-TextUU- 1
-.UU1 2
-TrimUU2 6
-(UU6 7
-)UU7 8
-;UU8 9
-tryVV 
-{VV 
-varWW 
-lobbiesWW 
-=WW 
-awaitWW #
-lobbyBrowserWW$ 0
-.WW0 1$
-GetAvailableLobbiesAsyncWW1 I
-(WWI J
-)WWJ K
-;WWK L
-varXX 
-filteredLobbiesXX #
-=XX$ %
-lobbiesXX& -
-.XX- .
-WhereXX. 3
-(XX3 4
-lobbyXX4 9
-=>XX: <
-lobbyXX= B
-.XXB C
-CodeXXC G
-.XXG H
-ContainsXXH P
-(XXP Q
-
-searchCodeXXQ [
-)XX[ \
-)XX\ ]
-.XX] ^
-ToListXX^ d
-(XXd e
-)XXe f
-;XXf g
-ifYY 
-(YY 
+searchCodeVV 
+=VV 
+txtCodeLobbyVV  ,
+.VV, -
+TextVV- 1
+.VV1 2
+TrimVV2 6
+(VV6 7
+)VV7 8
+;VV8 9
+tryWW 
+{WW 
+varXX 
+lobbiesXX 
+=XX 
+awaitXX #
+_lobbyBrowserXX$ 1
+.XX1 2$
+GetAvailableLobbiesAsyncXX2 J
+(XXJ K
+)XXK L
+;XXL M
+varYY 
 filteredLobbiesYY #
-.YY# $
-CountYY$ )
-==YY* ,
-$numYY- .
-)YY. /
-{YY0 1
-DialogManagerZZ !
-.ZZ! "#
-ShowWarningMessageAlertZZ" 9
-(ZZ9 :
+=YY$ %
+lobbiesYY& -
+.YY- .
+WhereYY. 3
+(YY3 4
+lobbyYY4 9
+=>YY: <
+lobbyYY= B
+.YYB C
+CodeYYC G
+.YYG H
+ContainsYYH P
+(YYP Q
 
-PropertiesZZ: D
-.ZZD E
-	ResourcesZZE N
-.ZZN O
-dialogLobbyNotFoundZZO b
-)ZZb c
-;ZZc d
-}[[ 
-LobbyDataGrid\\ 
-.\\ 
-ItemsSource\\ )
-=\\* +
-filteredLobbies\\, ;
-;\\; <
-}]] 
-catch]] 
-(]] %
-EndpointNotFoundException]] .%
-endpointNotFoundException]]/ H
-)]]H I
-{]]J K
-logger^^ 
-.^^ 
-LogError^^ 
-(^^  %
-endpointNotFoundException^^  9
-)^^9 :
-;^^: ;
-DialogManager__ 
-.__ !
-ShowErrorMessageAlert__ 3
-(__3 4
+searchCodeYYQ [
+)YY[ \
+)YY\ ]
+.YY] ^
+ToListYY^ d
+(YYd e
+)YYe f
+;YYf g
+ifZZ 
+(ZZ 
+filteredLobbiesZZ #
+.ZZ# $
+CountZZ$ )
+==ZZ* ,
+$numZZ- .
+)ZZ. /
+{ZZ0 1
+DialogManager[[ !
+.[[! "#
+ShowWarningMessageAlert[[" 9
+([[9 :
 
-Properties__4 >
-.__> ?
-	Resources__? H
-.__H I#
-dialogEndPointException__I `
-)__` a
-;__a b
-}`` 
-catch`` 
-(`` 
-TimeoutException`` %
-timeoutException``& 6
-)``6 7
-{``8 9
-loggeraa 
-.aa 
-LogErroraa 
-(aa  
-timeoutExceptionaa  0
-)aa0 1
-;aa1 2
-DialogManagerbb 
-.bb !
-ShowErrorMessageAlertbb 3
-(bb3 4
+Properties[[: D
+.[[D E
+	Resources[[E N
+.[[N O
+dialogLobbyNotFound[[O b
+)[[b c
+;[[c d
+}\\ 
+gridLobbyData]] 
+.]] 
+ItemsSource]] )
+=]]* +
+filteredLobbies]], ;
+;]]; <
+}^^ 
+catch^^ 
+(^^ %
+EndpointNotFoundException^^ .%
+endpointNotFoundException^^/ H
+)^^H I
+{^^J K
+logger__ 
+.__ 
+LogError__ 
+(__  %
+endpointNotFoundException__  9
+)__9 :
+;__: ;
+DialogManager`` 
+.`` !
+ShowErrorMessageAlert`` 3
+(``3 4
 
-Propertiesbb4 >
-.bb> ?
-	Resourcesbb? H
-.bbH I"
-dialogTimeOutExceptionbbI _
-)bb_ `
-;bb` a
-}cc 
-catchcc 
-(cc "
-CommunicationExceptioncc +"
-communicationExceptioncc, B
-)ccB C
-{ccD E
-loggerdd 
-.dd 
-LogErrordd 
-(dd  "
-communicationExceptiondd  6
-)dd6 7
-;dd7 8
-DialogManageree 
-.ee !
-ShowErrorMessageAlertee 3
-(ee3 4
-
-Propertiesee4 >
-.ee> ?
-	Resourcesee? H
-.eeH I'
-dialogComunicationExceptioneeI d
-)eed e
-;eee f
-}ff 
-}gg 	
-}hh 
-}ii Îä
--C:\TripasDeGatoCliente\Views\MenuView.xaml.cs
-	namespace 	
-TripasDeGatoCliente
- 
-. 
-Views #
-{$ %
-public 
-
-partial 
-class 
-MenuView !
-:" #
-Page$ (
-{) *
-private 
-UserManagerClient !
-userManager" -
-;- .
-private  
-FriendsManagerClient $
-friendsManager% 3
-;3 4
-private 
-StatusManagerClient #
-statusManager$ 1
-;1 2
-private 
-LobbyBrowserClient "
-lobbyBrowser# /
-;/ 0
-public 
-MenuView 
-( 
-) 
-{ 
-InitializeComponent 
-(  
-)  !
-;! "
-userManager 
-= 
-new 
-UserManagerClient /
-(/ 0
-)0 1
-;1 2
-friendsManager 
-= 
-new   
-FriendsManagerClient! 5
-(5 6
-)6 7
-;7 8
-statusManager 
-= 
-new 
-StatusManagerClient  3
-(3 4
-)4 5
-;5 6
-lobbyBrowser 
-= 
-new 
-LobbyBrowserClient 1
-(1 2
-)2 3
-;3 4 
-LoadUserProfileAsync  
-(  !
-)! "
-;" #
-} 	
-private 
-async 
-void  
-LoadUserProfileAsync /
-(/ 0
-)0 1
-{2 3
-if   
-(   
-!   
-string   
-.   
-IsNullOrEmpty   %
-(  % & 
-UserProfileSingleton  & :
-.  : ;
-UserName  ; C
-)  C D
-)  D E
-{  F G
-
-lbUserName!! 
-.!! 
-Content!! "
-=!!# $ 
-UserProfileSingleton!!% 9
-.!!9 :
-UserName!!: B
-;!!B C
-}"" 
-else"" 
-{"" 
-
-lbUserName## 
-.## 
-Content## "
-=### $
-
-Properties##% /
-.##/ 0
-	Resources##0 9
-.##9 :
-lbUnknownUser##: G
-;##G H
-}$$ 
-}%% 	
-private'' 
-void'' 
-BtnSignOut_Click'' %
-(''% &
-object''& ,
-sender''- 3
-,''3 4
-RoutedEventArgs''5 D
-e''E F
-)''F G
-{''H I
-SignOut(( 
-((( 
-)(( 
-;(( 
-NavigateToLoginView)) 
-())  
-)))  !
-;))! "
-}** 	
-private,, 
-void,, 
-SignOut,, 
-(,, 
-),, 
-{,,  
-int-- 
-playerId-- 
-=--  
-UserProfileSingleton-- /
-.--/ 0
-	IdProfile--0 9
-;--9 :"
-SetPlayerOfflineStatus.. "
-(.." #
-playerId..# +
-)..+ ,
-;.., - 
-UserProfileSingleton//  
-.//  !
-Instance//! )
-.//) *
-ResetInstance//* 7
-(//7 8
-)//8 9
-;//9 :
-}00 	
-private22 
-void22 "
-SetPlayerOfflineStatus22 +
-(22+ ,
-int22, /
-playerId220 8
-)228 9
-{22: ;
-LoggerManager33 
-logger33  
-=33! "
-new33# &
-LoggerManager33' 4
-(334 5
-this335 9
-.339 :
-GetType33: A
-(33A B
-)33B C
-)33C D
-;33D E
-try55 
-{55 
-IStatusManager66 
-statusManager66 ,
-=66- .
-new66/ 2
-StatusManagerClient663 F
-(66F G
-)66G H
-;66H I
-statusManager77 
-.77 
-SetPlayerStatus77 -
-(77- .
-playerId77. 6
-,776 7!
-GameEnumsPlayerStatus778 M
-.77M N
-Offline77N U
-)77U V
-;77V W
-}88 
-catch88 
-(88 %
-EndpointNotFoundException88 .%
-endpointNotFoundException88/ H
-)88H I
-{88J K
-logger99 
-.99 
-LogError99 
-(99  %
-endpointNotFoundException99  9
-)999 :
-;99: ;
-DialogManager:: 
-.:: !
-ShowErrorMessageAlert:: 3
-(::3 4
-
-Properties::4 >
-.::> ?
-	Resources::? H
-.::H I#
-dialogEndPointException::I `
-)::` a
-;::a b
-};; 
-catch;; 
-(;; 
-TimeoutException;; %
-timeoutException;;& 6
-);;6 7
-{;;8 9
-logger<< 
-.<< 
-LogError<< 
-(<<  
-timeoutException<<  0
-)<<0 1
-;<<1 2
-DialogManager== 
-.== !
-ShowErrorMessageAlert== 3
-(==3 4
-
-Properties==4 >
-.==> ?
-	Resources==? H
-.==H I"
-dialogTimeOutException==I _
-)==_ `
-;==` a
-}>> 
-catch>> 
-(>> "
-CommunicationException>> +"
-communicationException>>, B
-)>>B C
-{>>D E
-logger?? 
-.?? 
-LogError?? 
-(??  "
-communicationException??  6
-)??6 7
-;??7 8
-DialogManager@@ 
-.@@ !
-ShowErrorMessageAlert@@ 3
-(@@3 4
-
-Properties@@4 >
-.@@> ?
-	Resources@@? H
-.@@H I'
-dialogComunicationException@@I d
-)@@d e
-;@@e f
-}AA 
-}BB 	
-privateDD 
-voidDD 
-NavigateToLoginViewDD (
-(DD( )
-)DD) *
-{DD+ ,
-	LoginViewEE 
-	loginViewEE 
-=EE  !
-newEE" %
-	LoginViewEE& /
-(EE/ 0
-)EE0 1
-;EE1 2
-thisFF 
-.FF 
-NavigationServiceFF "
-.FF" #
-NavigateFF# +
-(FF+ ,
-	loginViewFF, 5
-)FF5 6
-;FF6 7
-}GG 	
-privateII 
-boolII 
-areElementsVisibleII '
-=II( )
-falseII* /
-;II/ 0
-privateKK 
-asyncKK 
-voidKK 
-BtnFriends_ClickKK +
-(KK+ ,
-objectKK, 2
-senderKK3 9
-,KK9 :
-RoutedEventArgsKK; J
-eKKK L
-)KKL M
-{KKN O
-areElementsVisibleLL 
-=LL  
-!LL! "
-areElementsVisibleLL" 4
-;LL4 5
-ifNN 
-(NN 
-areElementsVisibleNN "
-)NN" #
-{NN$ %
-
-lstFriendsOO 
-.OO 
-
-VisibilityOO %
-=OO& '
-
-VisibilityOO( 2
-.OO2 3
-VisibleOO3 :
-;OO: ;
-btnAddFriendPP 
-.PP 
-
-VisibilityPP '
-=PP( )
-
-VisibilityPP* 4
-.PP4 5
-VisiblePP5 <
-;PP< =
-btnRemoveFriendQQ 
-.QQ  
-
-VisibilityQQ  *
-=QQ+ ,
-
-VisibilityQQ- 7
-.QQ7 8
-VisibleQQ8 ?
-;QQ? @
-awaitRR  
-LoadFriendsListAsyncRR *
-(RR* +
-)RR+ ,
-;RR, -
-
-lstFriendsTT 
-.TT 
-	IsEnabledTT $
-=TT% &
-trueTT' +
-;TT+ ,
-btnAddFriendUU 
-.UU 
-	IsEnabledUU &
-=UU' (
-trueUU) -
-;UU- .
-btnRemoveFriendVV 
-.VV  
-	IsEnabledVV  )
-=VV* +
-trueVV, 0
-;VV0 1
-
-btnFriendsXX 
-.XX 
-
-BackgroundXX %
-=XX& '
-newXX( +
-SolidColorBrushXX, ;
-(XX; <
-ColorXX< A
-.XXA B
-FromArgbXXB J
-(XXJ K
-$numXXK M
-,XXM N
-$numXXO R
-,XXR S
-$numXXT W
-,XXW X
-$numXXY \
-)XX\ ]
-)XX] ^
-;XX^ _
-}YY 
-elseYY 
-{YY 
-
-lstFriendsZZ 
-.ZZ 
-
-VisibilityZZ %
-=ZZ& '
-
-VisibilityZZ( 2
-.ZZ2 3
-	CollapsedZZ3 <
-;ZZ< =
-btnAddFriend[[ 
-.[[ 
-
-Visibility[[ '
-=[[( )
-
-Visibility[[* 4
-.[[4 5
-	Collapsed[[5 >
-;[[> ?
-btnRemoveFriend\\ 
-.\\  
-
-Visibility\\  *
-=\\+ ,
-
-Visibility\\- 7
-.\\7 8
-	Collapsed\\8 A
-;\\A B
-txtFriendName]] 
-.]] 
-
-Visibility]] (
-=]]) *
-
-Visibility]]+ 5
-.]]5 6
-	Collapsed]]6 ?
-;]]? @
-btnAdd^^ 
-.^^ 
-
-Visibility^^ !
-=^^" #
-
-Visibility^^$ .
-.^^. /
-	Collapsed^^/ 8
-;^^8 9
-
-lstFriends`` 
-.`` 
-	IsEnabled`` $
-=``% &
-false``' ,
-;``, -
-btnAddFriendaa 
-.aa 
-	IsEnabledaa &
-=aa' (
-falseaa) .
-;aa. /
-btnRemoveFriendbb 
-.bb  
-	IsEnabledbb  )
-=bb* +
-falsebb, 1
+Properties``4 >
+.``> ?
+	Resources``? H
+.``H I#
+dialogEndPointException``I `
+)``` a
+;``a b
+}aa 
+catchaa 
+(aa 
+TimeoutExceptionaa %
+timeoutExceptionaa& 6
+)aa6 7
+{aa8 9
+loggerbb 
+.bb 
+LogErrorbb 
+(bb  
+timeoutExceptionbb  0
+)bb0 1
 ;bb1 2
-txtFriendNamecc 
-.cc 
-	IsEnabledcc '
-=cc( )
-falsecc* /
-;cc/ 0
-btnAdddd 
-.dd 
-	IsEnableddd  
-=dd! "
-falsedd# (
-;dd( )
+DialogManagercc 
+.cc !
+ShowErrorMessageAlertcc 3
+(cc3 4
 
-btnFriendsff 
-.ff 
+Propertiescc4 >
+.cc> ?
+	Resourcescc? H
+.ccH I"
+dialogTimeOutExceptionccI _
+)cc_ `
+;cc` a
+}dd 
+catchdd 
+(dd "
+CommunicationExceptiondd +"
+communicationExceptiondd, B
+)ddB C
+{ddD E
+loggeree 
+.ee 
+LogErroree 
+(ee  "
+communicationExceptionee  6
+)ee6 7
+;ee7 8
+DialogManagerff 
+.ff !
+ShowErrorMessageAlertff 3
+(ff3 4
 
-Backgroundff %
-=ff& '
-newff( +
-SolidColorBrushff, ;
-(ff; <
-Colorff< A
-.ffA B
-FromArgbffB J
-(ffJ K
-$numffK M
-,ffM N
-$numffO R
-,ffR S
-$numffT W
-,ffW X
-$numffY \
-)ff\ ]
-)ff] ^
-;ff^ _
-btnAddFriendgg 
-.gg 
+Propertiesff4 >
+.ff> ?
+	Resourcesff? H
+.ffH I'
+dialogComunicationExceptionffI d
+)ffd e
+;ffe f
+}gg 
+catchgg 
+(gg 
+	Exceptiongg 
+	exceptiongg (
+)gg( )
+{gg* +
+loggerhh 
+.hh 
+LogErrorhh 
+(hh  
+	exceptionhh  )
+)hh) *
+;hh* +
+DialogManagerii 
+.ii !
+ShowErrorMessageAlertii 3
+(ii3 4
+stringii4 :
+.ii: ;
+Formatii; A
+(iiA B
 
-Backgroundgg '
-=gg( )
-newgg* -
-SolidColorBrushgg. =
-(gg= >
-Colorgg> C
-.ggC D
-FromArgbggD L
-(ggL M
-$numggM P
-,ggP Q
-$numggR T
-,ggT U
-$numggV X
-,ggX Y
-$numggZ \
-)gg\ ]
-)gg] ^
-;gg^ _
-}hh 
-}ii 	
-privatekk 
-voidkk 
-BtnAddFriend_Clickkk '
-(kk' (
-objectkk( .
-senderkk/ 5
-,kk5 6
-RoutedEventArgskk7 F
-ekkG H
-)kkH I
-{kkJ K
-areElementsVisiblell 
-=ll  
-!ll! "
-areElementsVisiblell" 4
-;ll4 5
-ifnn 
-(nn 
-areElementsVisiblenn "
-)nn" #
-{nn$ %
-txtFriendNameoo 
-.oo 
-
-Visibilityoo (
-=oo) *
-
-Visibilityoo+ 5
-.oo5 6
-Visibleoo6 =
-;oo= >
-btnAddpp 
-.pp 
-
-Visibilitypp !
-=pp" #
-
-Visibilitypp$ .
-.pp. /
-Visiblepp/ 6
-;pp6 7
-txtFriendNameqq 
-.qq 
-	IsEnabledqq '
-=qq( )
-trueqq* .
-;qq. /
-btnAddrr 
-.rr 
-	IsEnabledrr  
-=rr! "
-truerr# '
-;rr' (
-btnAddFriendtt 
-.tt 
-
-Backgroundtt '
-=tt( )
-newtt* -
-SolidColorBrushtt. =
-(tt= >
-Colortt> C
-.ttC D
-FromArgbttD L
-(ttL M
-$numttM O
-,ttO P
-$numttQ S
-,ttS T
-$numttU W
-,ttW X
-$numttY [
-)tt[ \
-)tt\ ]
-;tt] ^
-}uu 
-elseuu 
-{uu 
-txtFriendNamevv 
-.vv 
-
-Visibilityvv (
-=vv) *
-
-Visibilityvv+ 5
-.vv5 6
-	Collapsedvv6 ?
-;vv? @
-btnAddww 
-.ww 
-
-Visibilityww !
-=ww" #
-
-Visibilityww$ .
-.ww. /
-	Collapsedww/ 8
-;ww8 9
-txtFriendNameyy 
-.yy 
-	IsEnabledyy '
-=yy( )
-falseyy* /
-;yy/ 0
-btnAddzz 
-.zz 
-	IsEnabledzz  
-=zz! "
-falsezz# (
-;zz( )
-btnAddFriend|| 
-.|| 
-
-Background|| '
-=||( )
-new||* -
-SolidColorBrush||. =
-(||= >
-Color||> C
-.||C D
-FromArgb||D L
-(||L M
-$num||M P
-,||P Q
-$num||R T
-,||T U
-$num||V X
-,||X Y
-$num||Z \
-)||\ ]
-)||] ^
-;||^ _
-}}} 
-}~~ 	
-private
-ÅÅ 
-async
-ÅÅ 
-void
-ÅÅ 
-BtnAdd_Click
-ÅÅ '
-(
-ÅÅ' (
-object
-ÅÅ( .
-sender
-ÅÅ/ 5
-,
-ÅÅ5 6
-RoutedEventArgs
-ÅÅ7 F
-e
-ÅÅG H
-)
-ÅÅH I
-{
-ÅÅJ K
-string
-ÇÇ 
-
-friendName
-ÇÇ 
-=
-ÇÇ 
-txtFriendName
-ÇÇ  -
-.
-ÇÇ- .
-Text
-ÇÇ. 2
-.
-ÇÇ2 3
-Trim
-ÇÇ3 7
-(
-ÇÇ7 8
-)
-ÇÇ8 9
-;
-ÇÇ9 :
-if
-ÉÉ 
-(
-ÉÉ  
-ValidateFriendName
-ÉÉ "
-(
-ÉÉ" #
-
-friendName
-ÉÉ# -
-)
-ÉÉ- .
-)
-ÉÉ. /
-{
-ÉÉ0 1
-await
-ÑÑ 
-	AddFriend
-ÑÑ 
-(
-ÑÑ  
-
-friendName
-ÑÑ  *
-)
-ÑÑ* +
-;
-ÑÑ+ ,
-}
-ÖÖ 
-txtFriendName
-ÜÜ 
-.
-ÜÜ 
-Clear
-ÜÜ 
-(
-ÜÜ  
-)
-ÜÜ  !
-;
-ÜÜ! "
-}
-áá 	
-private
-ââ 
-bool
-ââ  
-ValidateFriendName
-ââ '
-(
-ââ' (
-string
-ââ( .
-
-friendName
-ââ/ 9
-)
-ââ9 :
-{
-ââ; <
-if
-ää 
-(
-ää 
-string
-ää 
-.
-ää 
-IsNullOrEmpty
-ää $
-(
-ää$ %
-
-friendName
-ää% /
-)
-ää/ 0
-)
-ää0 1
-{
-ää2 3
-DialogManager
-ãã 
-.
-ãã #
-ShowErrorMessageAlert
-ãã 3
-(
-ãã3 4
-
-Properties
-ãã4 >
-.
-ãã> ?
-	Resources
-ãã? H
-.
-ããH I
-dialogInvalidName
-ããI Z
-)
-ããZ [
-;
-ãã[ \
-return
-åå 
-false
-åå 
-;
-åå 
-}
-çç 
-return
-éé 
-true
-éé 
-;
-éé 
-}
-èè 	
-private
-ëë 
-async
-ëë 
-Task
-ëë 
-	AddFriend
-ëë $
-(
-ëë$ %
-string
-ëë% +
-
-friendName
-ëë, 6
-)
-ëë6 7
-{
-ëë8 9
-LoggerManager
-íí 
-logger
-íí  
-=
-íí! "
-new
-íí# &
-LoggerManager
-íí' 4
-(
-íí4 5
-this
-íí5 9
-.
-íí9 :
-GetType
-íí: A
-(
-ííA B
-)
-ííB C
-)
-ííC D
-;
-ííD E
-try
-ìì 
-{
-ìì 
-int
-îî 
-friendProfileId
-îî #
-=
-îî$ %
-await
-îî& +
-userManager
-îî, 7
-.
-îî7 8
-GetProfileIdAsync
-îî8 I
-(
-îîI J
-
-friendName
-îîJ T
-)
-îîT U
-;
-îîU V
-if
-ïï 
-(
-ïï 
-friendProfileId
-ïï #
-==
-ïï$ &"
-UserProfileSingleton
-ïï' ;
-.
-ïï; <
-	IdProfile
-ïï< E
-)
-ïïE F
-{
-ïïG H
-DialogManager
-ññ !
-.
-ññ! "#
-ShowErrorMessageAlert
-ññ" 7
-(
-ññ7 8
-
-Properties
-ññ8 B
-.
-ññB C
-	Resources
-ññC L
-.
-ññL M)
-dialogCannotAddSelfAsFriend
-ññM h
-)
-ññh i
-;
-ññi j
-}
-óó 
-else
-óó 
-if
-óó 
-(
-óó 
-friendProfileId
-óó *
->
-óó+ ,
-$num
-óó- .
-)
-óó. /
-{
-óó0 1
-await
-òò #
-ExecuteFriendAddition
-òò /
-(
-òò/ 0
-friendProfileId
-òò0 ?
-,
-òò? @
-
-friendName
-òòA K
-)
-òòK L
-;
-òòL M
-}
-ôô 
-else
-ôô 
-{
-ôô 
-DialogManager
-öö !
-.
-öö! "#
-ShowErrorMessageAlert
-öö" 7
-(
-öö7 8
-
-Properties
-öö8 B
-.
-ööB C
-	Resources
-ööC L
-.
-ööL M#
-dialogProfileNotFound
-ööM b
-)
-ööb c
-;
-ööc d
-}
-õõ 
-}
-úú 
-catch
-úú 
-(
-úú '
-EndpointNotFoundException
-úú -'
-endpointNotFoundException
-úú. G
-)
-úúG H
-{
-úúI J
-logger
-ùù 
-.
-ùù 
-LogError
-ùù 
-(
-ùù  '
-endpointNotFoundException
-ùù  9
-)
-ùù9 :
-;
-ùù: ;
-DialogManager
-ûû 
-.
-ûû #
-ShowErrorMessageAlert
-ûû 3
-(
-ûû3 4
-
-Properties
-ûû4 >
-.
-ûû> ?
-	Resources
-ûû? H
-.
-ûûH I%
-dialogEndPointException
-ûûI `
-)
-ûû` a
-;
-ûûa b
-}
-üü 
-catch
-üü 
-(
-üü 
-TimeoutException
-üü %
-timeoutException
-üü& 6
-)
-üü6 7
-{
-üü8 9
-logger
-†† 
-.
-†† 
-LogError
-†† 
-(
-††  
-timeoutException
-††  0
-)
-††0 1
-;
-††1 2
-DialogManager
-°° 
-.
-°° #
-ShowErrorMessageAlert
-°° 3
-(
-°°3 4
-
-Properties
-°°4 >
-.
-°°> ?
-	Resources
-°°? H
-.
-°°H I$
-dialogTimeOutException
-°°I _
-)
-°°_ `
-;
-°°` a
-}
-¢¢ 
-catch
-¢¢ 
-(
-¢¢ $
-CommunicationException
-¢¢ +$
-communicationException
-¢¢, B
-)
-¢¢B C
-{
-¢¢D E
-logger
-££ 
-.
-££ 
-LogError
-££ 
-(
-££  $
-communicationException
-££  6
-)
-££6 7
-;
-££7 8
-DialogManager
-§§ 
-.
-§§ #
-ShowErrorMessageAlert
-§§ 3
-(
-§§3 4
-
-Properties
-§§4 >
-.
-§§> ?
-	Resources
-§§? H
-.
-§§H I)
-dialogComunicationException
-§§I d
-)
-§§d e
-;
-§§e f
-}
-•• 
-}
-¶¶ 	
-private
-®® 
-async
-®® 
-Task
-®® #
-ExecuteFriendAddition
-®® 0
-(
-®®0 1
-int
-®®1 4
-friendProfileId
-®®5 D
-,
-®®D E
-string
-®®F L
-
-friendName
-®®M W
-)
-®®W X
-{
-®®Y Z
-int
-©© 
-userProfileId
-©© 
-=
-©© "
-UserProfileSingleton
-©©  4
-.
-©©4 5
-	IdProfile
-©©5 >
-;
-©©> ?
-int
-™™ 
-result
-™™ 
-=
-™™ 
-await
-™™ 
-friendsManager
-™™ -
-.
-™™- .
-AddFriendAsync
-™™. <
-(
-™™< =
-userProfileId
-™™= J
-,
-™™J K
-friendProfileId
-™™L [
-)
-™™[ \
-;
-™™\ ]
-if
-´´ 
-(
-´´ 
-result
-´´ 
-==
-´´ 
-	Constants
-´´ #
-.
-´´# $
-SUCCES_OPERATION
-´´$ 4
-)
-´´4 5
-{
-´´6 7
-DialogManager
-¨¨ 
-.
-¨¨ %
-ShowSuccessMessageAlert
-¨¨ 5
-(
-¨¨5 6
-string
-¨¨6 <
-.
-¨¨< =
-Format
-¨¨= C
-(
-¨¨C D
-
-Properties
-¨¨D N
-.
-¨¨N O
-	Resources
-¨¨O X
-.
-¨¨X Y)
-dialogAddFriendSuccessfully
-¨¨Y t
-,
-¨¨t u
-
-friendName¨¨v Ä
-)¨¨Ä Å
-)¨¨Å Ç
-;¨¨Ç É
-await
-≠≠ "
-LoadFriendsListAsync
-≠≠ *
-(
-≠≠* +
-)
-≠≠+ ,
-;
-≠≠, -
-}
-ÆÆ 
-else
-ÆÆ 
-{
-ÆÆ 
-DialogManager
-ØØ 
-.
-ØØ #
-ShowErrorMessageAlert
-ØØ 3
-(
-ØØ3 4
-
-Properties
-ØØ4 >
-.
-ØØ> ?
-	Resources
-ØØ? H
-.
-ØØH I%
-dialogErrorAddingFriend
-ØØI `
-)
-ØØ` a
-;
-ØØa b
-}
-∞∞ 
-}
-±± 	
-private
-¥¥ 
-async
-¥¥ 
-Task
-¥¥ "
-LoadFriendsListAsync
-¥¥ /
-(
-¥¥/ 0
-)
-¥¥0 1
-{
-¥¥2 3
-LoggerManager
-µµ 
-logger
-µµ  
-=
-µµ! "
-new
-µµ# &
-LoggerManager
-µµ' 4
-(
-µµ4 5
-this
-µµ5 9
-.
-µµ9 :
-GetType
-µµ: A
-(
-µµA B
-)
-µµB C
-)
-µµC D
-;
-µµD E
-try
-∂∂ 
-{
-∂∂ 
-int
-∑∑ 
-userProfileId
-∑∑ !
-=
-∑∑" #"
-UserProfileSingleton
-∑∑$ 8
-.
-∑∑8 9
-	IdProfile
-∑∑9 B
-;
-∑∑B C
-var
-∏∏ 
-friendsList
-∏∏ 
-=
-∏∏  !
-await
-∏∏" '
-friendsManager
-∏∏( 6
-.
-∏∏6 7
-GetFriendsAsync
-∏∏7 F
-(
-∏∏F G
-userProfileId
-∏∏G T
-)
-∏∏T U
-;
-∏∏U V
-var
-∫∫ 
-friendsWithStatus
-∫∫ %
-=
-∫∫& '
-new
-∫∫( +
-List
-∫∫, 0
-<
-∫∫0 1
-string
-∫∫1 7
->
-∫∫7 8
-(
-∫∫8 9
-)
-∫∫9 :
-;
-∫∫: ;
-foreach
-ºº 
-(
-ºº 
-var
-ºº 
-friend
-ºº #
-in
-ºº$ &
-friendsList
-ºº' 2
-)
-ºº2 3
-{
-ºº4 5
-var
-ΩΩ 
-status
-ΩΩ 
-=
-ΩΩ  
-await
-ΩΩ! &
-statusManager
-ΩΩ' 4
-.
-ΩΩ4 5"
-GetPlayerStatusAsync
-ΩΩ5 I
-(
-ΩΩI J
-friend
-ΩΩJ P
-.
-ΩΩP Q
-	IdProfile
-ΩΩQ Z
-)
-ΩΩZ [
-;
-ΩΩ[ \
-friendsWithStatus
-ææ %
-.
-ææ% &
-Add
-ææ& )
-(
-ææ) *
-$"
-ææ* ,
-{
-ææ, -
-friend
-ææ- 3
-.
-ææ3 4
-Username
-ææ4 <
-}
-ææ< =
-$str
-ææ= @
-{
-ææ@ A
-status
-ææA G
-}
-ææG H
-"
-ææH I
-)
-ææI J
-;
-ææJ K
-}
-øø 
-
-lstFriends
-¡¡ 
-.
-¡¡ 
-ItemsSource
-¡¡ &
-=
-¡¡' (
-friendsWithStatus
-¡¡) :
-;
-¡¡: ;
-}
-¬¬ 
-catch
-¬¬ 
-(
-¬¬ '
-EndpointNotFoundException
-¬¬ .'
-endpointNotFoundException
-¬¬/ H
-)
-¬¬H I
-{
-¬¬J K
-logger
-√√ 
-.
-√√ 
-LogError
-√√ 
-(
-√√  '
-endpointNotFoundException
-√√  9
-)
-√√9 :
-;
-√√: ;
-DialogManager
-ƒƒ 
-.
-ƒƒ #
-ShowErrorMessageAlert
-ƒƒ 3
-(
-ƒƒ3 4
-
-Properties
-ƒƒ4 >
-.
-ƒƒ> ?
-	Resources
-ƒƒ? H
-.
-ƒƒH I%
-dialogEndPointException
-ƒƒI `
-)
-ƒƒ` a
-;
-ƒƒa b
-}
-≈≈ 
-catch
-≈≈ 
-(
-≈≈ 
-TimeoutException
-≈≈ %
-timeoutException
-≈≈& 6
-)
-≈≈6 7
-{
-≈≈8 9
-logger
-∆∆ 
-.
-∆∆ 
-LogError
-∆∆ 
-(
-∆∆  
-timeoutException
-∆∆  0
-)
-∆∆0 1
-;
-∆∆1 2
-DialogManager
-«« 
-.
-«« #
-ShowErrorMessageAlert
-«« 3
-(
-««3 4
-
-Properties
-««4 >
-.
-««> ?
-	Resources
-««? H
-.
-««H I$
-dialogTimeOutException
-««I _
-)
-««_ `
-;
-««` a
-}
-»» 
-catch
-»» 
-(
-»» $
-CommunicationException
-»» +$
-communicationException
-»», B
-)
-»»B C
-{
-»»D E
-logger
-…… 
-.
-…… 
-LogError
-…… 
-(
-……  $
-communicationException
-……  6
-)
-……6 7
-;
-……7 8
-DialogManager
-   
-.
-   #
-ShowErrorMessageAlert
-   3
-(
-  3 4
-
-Properties
-  4 >
-.
-  > ?
-	Resources
-  ? H
-.
-  H I)
-dialogComunicationException
-  I d
-)
-  d e
-;
-  e f
-}
-ÀÀ 
-}
-ÃÃ 	
-private
-œœ 
-async
-œœ 
-void
-œœ #
-BtnRemoveFriend_Click
-œœ 0
-(
-œœ0 1
-object
-œœ1 7
-sender
-œœ8 >
-,
-œœ> ?
-RoutedEventArgs
-œœ@ O
-e
-œœP Q
-)
-œœQ R
-{
-œœS T
-LoggerManager
-–– 
-logger
-––  
-=
-––! "
-new
-––# &
-LoggerManager
-––' 4
-(
-––4 5
-this
-––5 9
-.
-––9 :
-GetType
-––: A
-(
-––A B
-)
-––B C
-)
-––C D
-;
-––D E
-if
-—— 
-(
-—— 
-
-lstFriends
-—— 
-.
-—— 
-SelectedItem
-—— '
-!=
-——( *
-null
-——+ /
-)
-——/ 0
-{
-——1 2
-string
-““  
-selectedFriendName
-““ )
-=
-““* +
-
-lstFriends
-““, 6
-.
-““6 7
-SelectedItem
-““7 C
-.
-““C D
-ToString
-““D L
-(
-““L M
-)
-““M N
-;
-““N O
-string
-”” 
-
-friendName
-”” !
-=
-””" # 
-selectedFriendName
-””$ 6
-.
-””6 7
-Split
-””7 <
-(
-””< =
-$char
-””= @
-)
-””@ A
-[
-””A B
-$num
-””B C
-]
-””C D
-.
-””D E
-Trim
-””E I
-(
-””I J
-)
-””J K
-;
-””K L
-try
-’’ 
-{
-’’ 
-int
-÷÷ 
-friendProfileId
-÷÷ '
-=
-÷÷( )
-await
-÷÷* /
-userManager
-÷÷0 ;
-.
-÷÷; <
-GetProfileIdAsync
-÷÷< M
-(
-÷÷M N
-
-friendName
-÷÷N X
-)
-÷÷X Y
-;
-÷÷Y Z
-if
-ÿÿ 
-(
-ÿÿ 
-friendProfileId
-ÿÿ '
->
-ÿÿ( )
-$num
-ÿÿ* +
-)
-ÿÿ+ ,
-{
-ÿÿ- .
-int
-ŸŸ 
-userProfileId
-ŸŸ )
-=
-ŸŸ* +"
-UserProfileSingleton
-ŸŸ, @
-.
-ŸŸ@ A
-	IdProfile
-ŸŸA J
-;
-ŸŸJ K
-int
-⁄⁄ 
-result
-⁄⁄ "
-=
-⁄⁄# $
-await
-⁄⁄% *
-friendsManager
-⁄⁄+ 9
-.
-⁄⁄9 :
-DeleteFriendAsync
-⁄⁄: K
-(
-⁄⁄K L
-userProfileId
-⁄⁄L Y
-,
-⁄⁄Y Z
-friendProfileId
-⁄⁄[ j
-)
-⁄⁄j k
-;
-⁄⁄k l
-if
-‹‹ 
-(
-‹‹ 
-result
-‹‹ "
-==
-‹‹# %
-	Constants
-‹‹& /
-.
-‹‹/ 0
-SUCCES_OPERATION
-‹‹0 @
-)
-‹‹@ A
-{
-‹‹B C
-DialogManager
-›› )
-.
-››) *%
-ShowSuccessMessageAlert
-››* A
-(
-››A B
-string
-››B H
-.
-››H I
-Format
-››I O
-(
-››O P
-
-Properties
-››P Z
-.
-››Z [
-	Resources
-››[ d
-.
-››d e%
-dialogFriendshipDeleted
-››e |
-,
-››| }
-
-friendName››~ à
-)››à â
-)››â ä
-;››ä ã
-await
-ﬁﬁ !"
-LoadFriendsListAsync
-ﬁﬁ" 6
-(
-ﬁﬁ6 7
-)
-ﬁﬁ7 8
-;
-ﬁﬁ8 9
-}
-ﬂﬂ 
-else
-ﬂﬂ 
-{
-ﬂﬂ  
-DialogManager
-‡‡ )
-.
-‡‡) *#
-ShowErrorMessageAlert
-‡‡* ?
-(
-‡‡? @
-
-Properties
-‡‡@ J
-.
-‡‡J K
-	Resources
-‡‡K T
-.
-‡‡T U+
-dialogErrorDeletingFriendship
-‡‡U r
-)
-‡‡r s
-;
-‡‡s t
-}
-·· 
-}
-‚‚ 
-else
-‚‚ 
-{
-‚‚ 
-DialogManager
-„„ %
-.
-„„% &#
-ShowErrorMessageAlert
-„„& ;
-(
-„„; <
-
-Properties
-„„< F
-.
-„„F G
-	Resources
-„„G P
-.
-„„P Q'
-dialogNotRetrievedProfile
-„„Q j
-)
-„„j k
-;
-„„k l
-}
-‰‰ 
-}
-ÂÂ 
-catch
-ÂÂ 
-(
-ÂÂ '
-EndpointNotFoundException
-ÂÂ 2'
-endpointNotFoundException
-ÂÂ3 L
-)
-ÂÂL M
-{
-ÂÂN O
-logger
-ÊÊ 
-.
-ÊÊ 
-LogError
-ÊÊ #
-(
-ÊÊ# $'
-endpointNotFoundException
-ÊÊ$ =
-)
-ÊÊ= >
-;
-ÊÊ> ?
-DialogManager
-ÁÁ !
-.
-ÁÁ! "#
-ShowErrorMessageAlert
-ÁÁ" 7
-(
-ÁÁ7 8
-
-Properties
-ÁÁ8 B
-.
-ÁÁB C
-	Resources
-ÁÁC L
-.
-ÁÁL M%
-dialogEndPointException
-ÁÁM d
-)
-ÁÁd e
-;
-ÁÁe f
-}
-ËË 
-catch
-ËË 
-(
-ËË 
-TimeoutException
-ËË )
-timeoutException
-ËË* :
-)
-ËË: ;
-{
-ËË< =
-logger
-ÈÈ 
-.
-ÈÈ 
-LogError
-ÈÈ #
-(
-ÈÈ# $
-timeoutException
-ÈÈ$ 4
-)
-ÈÈ4 5
-;
-ÈÈ5 6
-DialogManager
-ÍÍ !
-.
-ÍÍ! "#
-ShowErrorMessageAlert
-ÍÍ" 7
-(
-ÍÍ7 8
-
-Properties
-ÍÍ8 B
-.
-ÍÍB C
-	Resources
-ÍÍC L
-.
-ÍÍL M$
-dialogTimeOutException
-ÍÍM c
-)
-ÍÍc d
-;
-ÍÍd e
-}
-ÎÎ 
-catch
-ÎÎ 
-(
-ÎÎ $
-CommunicationException
-ÎÎ /$
-communicationException
-ÎÎ0 F
-)
-ÎÎF G
-{
-ÎÎH I
-logger
-ÏÏ 
-.
-ÏÏ 
-LogError
-ÏÏ #
-(
-ÏÏ# $$
-communicationException
-ÏÏ$ :
-)
-ÏÏ: ;
-;
-ÏÏ; <
-DialogManager
-ÌÌ !
-.
-ÌÌ! "#
-ShowErrorMessageAlert
-ÌÌ" 7
-(
-ÌÌ7 8
-
-Properties
-ÌÌ8 B
-.
-ÌÌB C
-	Resources
-ÌÌC L
-.
-ÌÌL M)
-dialogComunicationException
-ÌÌM h
-)
-ÌÌh i
-;
-ÌÌi j
-}
-ÓÓ 
-}
-ÔÔ 
-else
-ÔÔ 
-{
-ÔÔ 
-DialogManager
- 
-.
- %
-ShowWarningMessageAlert
- 5
-(
-5 6
-
-Properties
-6 @
-.
-@ A
-	Resources
-A J
-.
-J K(
-dialogSelectFriendToDelete
-K e
-)
-e f
-;
-f g
-}
-ÒÒ 
-}
-ÚÚ 	
-private
-ıı 
-async
-ıı 
-void
-ıı  
-BtnStartGame_Click
-ıı -
-(
-ıı- .
-object
-ıı. 4
-sender
-ıı5 ;
-,
-ıı; <
-RoutedEventArgs
-ıı= L
-e
-ııM N
-)
-ııN O
-{
-ııP Q!
-GoToCreateLobbyView
-ˆˆ 
-(
-ˆˆ  
-)
-ˆˆ  !
-;
-ˆˆ! "
-}
-˜˜ 	
-private
-˘˘ 
-void
-˘˘ 
-BtnProfile_Click
-˘˘ %
-(
-˘˘% &
-object
-˘˘& ,
-sender
-˘˘- 3
-,
-˘˘3 4
-RoutedEventArgs
-˘˘5 D
-e
-˘˘E F
-)
-˘˘F G
-{
-˘˘H I
-GoToPerfilView
-˙˙ 
-(
-˙˙ 
-)
-˙˙ 
-;
-˙˙ 
-}
-˚˚ 	
-private
-˝˝ 
-void
-˝˝ !
-BtnLaderboard_Click
-˝˝ (
-(
-˝˝( )
-object
-˝˝) /
-sender
-˝˝0 6
-,
-˝˝6 7
-RoutedEventArgs
-˝˝8 G
-e
-˝˝H I
-)
-˝˝I J
-{
-˝˝K L 
-GoToLaderboardView
-˛˛ 
-(
-˛˛ 
-)
-˛˛  
-;
-˛˛  !
-}
-ˇˇ 	
-private
-ÅÅ 
-void
-ÅÅ 
-BtnJoinGame_Click
-ÅÅ &
-(
-ÅÅ& '
-object
-ÅÅ' -
-sender
-ÅÅ. 4
-,
-ÅÅ4 5
-RoutedEventArgs
-ÅÅ6 E
-e
-ÅÅF G
-)
-ÅÅG H
-{
-ÅÅI J!
-GoToSelectLobbyView
-ÇÇ 
-(
-ÇÇ  
-)
-ÇÇ  !
-;
-ÇÇ! "
-}
-ÉÉ 	
-private
-ÖÖ 
-void
-ÖÖ !
-GoToCreateLobbyView
-ÖÖ (
-(
-ÖÖ( )
-)
-ÖÖ) *
-{
-ÖÖ+ ,
-CreateLobbyView
-ÜÜ 
-lobbyConfig
-ÜÜ '
-=
-ÜÜ( )
-new
-ÜÜ* -
-CreateLobbyView
-ÜÜ. =
-(
-ÜÜ= >
-)
-ÜÜ> ?
-;
-ÜÜ? @
-if
-áá 
-(
-áá 
-this
-áá 
-.
-áá 
-NavigationService
-áá &
-!=
-áá' )
-null
-áá* .
-)
-áá. /
-{
-áá0 1
-this
-àà 
-.
-àà 
-NavigationService
-àà &
-.
-àà& '
-Navigate
-àà' /
-(
-àà/ 0
-lobbyConfig
-àà0 ;
-)
-àà; <
-;
-àà< =
-}
-ââ 
-else
-ââ 
-{
-ââ 
-DialogManager
-ää 
-.
-ää #
-ShowErrorMessageAlert
-ää 3
-(
-ää3 4
-
-Properties
-ää4 >
-.
-ää> ?
-	Resources
-ää? H
-.
-ääH I#
-dialogNavigationError
-ääI ^
-)
-ää^ _
-;
-ää_ `
-}
-ãã 
-}
-åå 	
-private
-éé 
-void
-éé 
-GoToPerfilView
-éé #
-(
-éé# $
-)
-éé$ %
-{
-éé& '
-ProfileView
-èè 
-profileView
-èè #
-=
-èè$ %
-new
-èè& )
-ProfileView
-èè* 5
-(
-èè5 6
-)
-èè6 7
-;
-èè7 8
-if
-êê 
-(
-êê 
-this
-êê 
-.
-êê 
-NavigationService
-êê &
-!=
-êê' )
-null
-êê* .
-)
-êê. /
-{
-êê0 1
-this
-ëë 
-.
-ëë 
-NavigationService
-ëë &
-.
-ëë& '
-Navigate
-ëë' /
-(
-ëë/ 0
-profileView
-ëë0 ;
-)
-ëë; <
-;
-ëë< =
-}
-íí 
-else
-íí 
-{
-íí 
-DialogManager
-ìì 
-.
-ìì #
-ShowErrorMessageAlert
-ìì 3
-(
-ìì3 4
-
-Properties
-ìì4 >
-.
-ìì> ?
-	Resources
-ìì? H
-.
-ììH I#
-dialogNavigationError
-ììI ^
-)
-ìì^ _
-;
-ìì_ `
-}
-îî 
-}
-ïï 	
-private
-óó 
-void
-óó  
-GoToLaderboardView
-óó '
-(
-óó' (
-)
-óó( )
-{
-óó* +
-
-Laderboard
-òò 
-laderboardView
-òò %
-=
-òò& '
-new
-òò( +
-
-Laderboard
-òò, 6
-(
-òò6 7
-)
-òò7 8
-;
-òò8 9
-if
-ôô 
-(
-ôô 
-this
-ôô 
-.
-ôô 
-NavigationService
-ôô &
-!=
-ôô' )
-null
-ôô* .
-)
-ôô. /
-{
-ôô0 1
-this
-öö 
-.
-öö 
-NavigationService
-öö &
-.
-öö& '
-Navigate
-öö' /
-(
-öö/ 0
-laderboardView
-öö0 >
-)
-öö> ?
-;
-öö? @
-}
-õõ 
-else
-õõ 
-{
-õõ 
-DialogManager
-úú 
-.
-úú #
-ShowErrorMessageAlert
-úú 3
-(
-úú3 4
-
-Properties
-úú4 >
-.
-úú> ?
-	Resources
-úú? H
-.
-úúH I#
-dialogNavigationError
-úúI ^
-)
-úú^ _
-;
-úú_ `
-}
-ùù 
-}
-ûû 	
-private
-üü 
-void
-üü !
-GoToSelectLobbyView
-üü (
-(
-üü( )
-)
-üü) *
-{
-üü+ ,
-SelectLobbyView
-†† 
-selectLobbyView
-†† +
-=
-††, -
-new
-††. 1
-SelectLobbyView
-††2 A
-(
-††A B
-)
-††B C
-;
-††C D
-if
-°° 
-(
-°° 
-this
-°° 
-.
-°° 
-NavigationService
-°° &
-!=
-°°' )
-null
-°°* .
-)
-°°. /
-{
-°°0 1
-this
-¢¢ 
-.
-¢¢ 
-NavigationService
-¢¢ &
-.
-¢¢& '
-Navigate
-¢¢' /
-(
-¢¢/ 0
-selectLobbyView
-¢¢0 ?
-)
-¢¢? @
-;
-¢¢@ A
-}
-££ 
-else
-££ 
-{
-££ 
-DialogManager
-§§ 
-.
-§§ #
-ShowErrorMessageAlert
-§§ 3
-(
-§§3 4
-
-Properties
-§§4 >
-.
-§§> ?
-	Resources
-§§? H
-.
-§§H I#
-dialogNavigationError
-§§I ^
-)
-§§^ _
-;
-§§_ `
-}
-•• 
-}
-¶¶ 	
-}
-®® 
-}©© ù¯
+PropertiesiiB L
+.iiL M
+	ResourcesiiM V
+.iiV W!
+dialogUnexpectedErroriiW l
+,iil m
+	exceptioniin w
+.iiw x
+Messageiix 
+)	ii Ä
+)
+iiÄ Å
+;
+iiÅ Ç
+}jj 
+}kk 	
+}ll 
+}mm üù
 .C:\TripasDeGatoCliente\Views\LoginView.xaml.cs
 	namespace
 
@@ -3909,9 +1385,10 @@ Properties
 Page% )
 {* +
 private 
-string 
-	userEmail  
-;  !
+string 
+
+_userEmail !
+;! "
 public 
 	LoginView 
 ( 
@@ -3938,3419 +1415,3907 @@ Properties
 TxtPassword_PasswordChanged+ F
 ;F G
 } 	
-private 
-void 
-BtnLogin_Click #
-(# $
-object$ *
-sender+ 1
-,1 2
-RoutedEventArgs3 B
-eC D
-)D E
-{F G
+private 
+void 
+BtnLogin_Click #
+(# $
+object$ *
+sender+ 1
+,1 2
+RoutedEventArgs3 B
+eC D
+)D E
+{F G
+
+ResetField 
+( 
+txtEmail 
+)  
+;  !
 
 ResetField 
-( 
-txtEmail 
-)  
-;  !
+( 
+txtPassword "
+)" #
+;# $
 
 ResetField 
-( 
-txtPassword "
-)" #
-;# $
+( 
+txtPasswordVisible )
+)) *
+;* +
+if 
+( 
+! 
+VerifyFields 
+( 
+) 
+)  
+{! "
+DialogManager 
+. !
+ShowErrorMessageAlert 3
+(3 4
 
-ResetField 
-( 
-txtPasswordVisible )
-)) *
-;* +
-if 
-( 
-! 
-VerifyFields 
-( 
-) 
-)  
-{! "
-DialogManager 
-. !
-ShowErrorMessageAlert 3
-(3 4
+Properties4 >
+.> ?
+	Resources? H
+.H I
+dialogWrongDataI X
+)X Y
+;Y Z
+return 
+; 
+} 
+string 
+email 
+= 
+txtEmail #
+.# $
+Text$ (
+;( )
+string 
+password 
+= 
+Hasher $
+.$ %
+HashToSHA256% 1
+(1 2
+txtPassword2 =
+.= >
+Password> F
+)F G
+;G H
+if 
+( 
+AuthenticateUser  
+(  !
+email! &
+,& '
+password( 0
+)0 1
+)1 2
+{3 4!
+SetPlayerOnlineStatus %
+(% & 
+UserProfileSingleton& :
+.: ;
+	IdProfile; D
+)D E
+;E F
+DisplayMainMenuView   #
+(  # $
+)  $ %
+;  % &
+}!! 
+}"" 	
+private$$ 
+bool$$ 
+VerifyFields$$ !
+($$! "
+)$$" #
+{$$$ %
+bool%% 
 
-Properties4 >
-.> ?
-	Resources? H
-.H I
-dialogWrongDataI X
-)X Y
-;Y Z
-return 
-; 
-} 
-string 
-email 
-= 
-txtEmail #
-.# $
-Text$ (
-;( )
-string   
-password   
-=   
-Hasher   $
-.  $ %
-HashToSHA256  % 1
-(  1 2
-txtPassword  2 =
-.  = >
-Password  > F
-)  F G
-;  G H
-if"" 
-("" 
-AuthenticateUser""  
-(""  !
-email""! &
-,""& '
-password""( 0
-)""0 1
-)""1 2
-{""3 4!
-SetPlayerOnlineStatus## %
-(##% & 
-UserProfileSingleton##& :
-.##: ;
-	IdProfile##; D
-)##D E
-;##E F
-DisplayMainMenuView$$ #
-($$# $
-)$$$ %
-;$$% &
-}%% 
-}&& 	
-private(( 
-bool(( 
-VerifyFields(( !
-(((! "
-)((" #
-{(($ %
-bool)) 
+emailValid%% 
+=%% 
+	Validador%% '
+.%%' (
+ValidateEmail%%( 5
+(%%5 6
+txtEmail%%6 >
+.%%> ?
+Text%%? C
+)%%C D
+;%%D E
+bool&& 
+passwordValid&& 
+=&&  
+	Validador&&! *
+.&&* +
+ValidatePassword&&+ ;
+(&&; <
+txtPassword&&< G
+.&&G H
+Password&&H P
+)&&P Q
+;&&Q R
+HighlightField'' 
+('' 
+txtEmail'' #
+,''# $
 
-emailValid)) 
-=)) 
-	Validador)) '
-.))' (
-ValidateEmail))( 5
-())5 6
-txtEmail))6 >
-.))> ?
-Text))? C
-)))C D
-;))D E
-bool** 
-passwordValid** 
-=**  
-	Validador**! *
-.*** +
-ValidatePassword**+ ;
-(**; <
-txtPassword**< G
-.**G H
-Password**H P
-)**P Q
-;**Q R
-HighlightField,, 
-(,, 
-txtEmail,, #
-,,,# $
+emailValid''% /
+)''/ 0
+;''0 1
+HighlightField(( 
+((( 
+txtPassword(( &
+,((& '
+passwordValid((( 5
+)((5 6
+;((6 7
+return)) 
 
-emailValid,,% /
-),,/ 0
-;,,0 1
-HighlightField-- 
-(-- 
-txtPassword-- &
-,--& '
-passwordValid--( 5
-)--5 6
-;--6 7
-return// 
+emailValid)) 
+&&))  
+passwordValid))! .
+;)). /
+}** 	
+private,, 
+bool,, 
+AuthenticateUser,, %
+(,,% &
+string,,& ,
+email,,- 2
+,,,2 3
+string,,4 :
+hashedPassword,,; I
+),,I J
+{,,K L
+LoggerManager-- 
+logger--  
+=--! "
+new--# &
+LoggerManager--' 4
+(--4 5
+this--5 9
+.--9 :
+GetType--: A
+(--A B
+)--B C
+)--C D
+;--D E
+bool.. 
+isAuthenticated..  
+=..! "
+false..# (
+;..( )
+try// 
+{// 
+IUserManager00 
+userManager00 (
+=00) *
+new00+ .
+UserManagerClient00/ @
+(00@ A
+)00A B
+;00B C
+int11 
+validationResult11 $
+=11% &
+userManager11' 2
+.112 3
+VerifyLogin113 >
+(11> ?
+email11? D
+,11D E
+hashedPassword11F T
+)11T U
+;11U V
+if22 
+(22 
+validationResult22 $
+==22% '
+	Constants22( 1
+.221 2
+DATA_MATCHES222 >
+)22> ?
+{22@ A
+Profile33 
+profile33 #
+=33$ %
+userManager33& 1
+.331 2
+GetProfileByMail332 B
+(33B C
+email33C H
+)33H I
+;33I J
+if44 
+(44 
+profile44 
+!=44  "
+null44# '
+)44' (
+{44) *
+if55 
+(55 
+IsPlayerOnline55 *
+(55* +
+profile55+ 2
+.552 3
+	IdProfile553 <
+)55< =
+)55= >
+{55? @
+return66 "
+false66# (
+;66( )
+}77 
+ObtainSingletonData88 +
+(88+ ,
+profile88, 3
+)883 4
+;884 5
+isAuthenticated99 '
+=99( )
+true99* .
+;99. /
+}:: 
+else:: 
+{:: 
+DialogManager;; %
+.;;% &!
+ShowErrorMessageAlert;;& ;
+(;;; <
 
-emailValid// 
-&&//  
-passwordValid//! .
-;//. /
-}00 	
-private22 
-bool22 
-AuthenticateUser22 %
-(22% &
-string22& ,
-email22- 2
-,222 3
-string224 :
-hashedPassword22; I
-)22I J
-{22K L
-LoggerManager33 
-logger33  
-=33! "
-new33# &
-LoggerManager33' 4
-(334 5
-this335 9
-.339 :
-GetType33: A
-(33A B
-)33B C
-)33C D
-;33D E
-bool44 
-isAuthenticated44  
-=44! "
-false44# (
-;44( )
-try66 
-{66 
-IUserManager77 
-userManager77 (
-=77) *
-new77+ .
-UserManagerClient77/ @
-(77@ A
-)77A B
-;77B C
-int88 
-validationResult88 $
-=88% &
-userManager88' 2
-.882 3
-VerifyLogin883 >
-(88> ?
-email88? D
-,88D E
-hashedPassword88F T
-)88T U
-;88U V
-if:: 
-(:: 
-validationResult:: $
-==::% '
-	Constants::( 1
-.::1 2
-DATA_MATCHES::2 >
-)::> ?
-{::@ A
-Profile;; 
-profile;; #
-=;;$ %
-userManager;;& 1
-.;;1 2
-GetProfileByMail;;2 B
-(;;B C
-email;;C H
-);;H I
-;;;I J
-if== 
-(== 
-profile== 
-!===  "
-null==# '
-)==' (
-{==) *
-if>> 
-(>> 
-IsPlayerOnline>> *
-(>>* +
-profile>>+ 2
-.>>2 3
-	IdProfile>>3 <
-)>>< =
-)>>= >
-{>>? @
-return?? "
-false??# (
-;??( )
-}@@ 
-ObtainSingletonDataBB +
-(BB+ ,
-profileBB, 3
-)BB3 4
-;BB4 5
-isAuthenticatedCC '
-=CC( )
-trueCC* .
-;CC. /
-}DD 
-elseDD 
-{DD 
-DialogManagerEE %
-.EE% &!
-ShowErrorMessageAlertEE& ;
-(EE; <
+Properties;;< F
+.;;F G
+	Resources;;G P
+.;;P Q%
+dialogNotRetrievedProfile;;Q j
+);;j k
+;;;k l
+}<< 
+}== 
+else== 
+{== 
+DialogManager>> !
+.>>! "!
+ShowErrorMessageAlert>>" 7
+(>>7 8
 
-PropertiesEE< F
-.EEF G
-	ResourcesEEG P
-.EEP Q%
-dialogNotRetrievedProfileEEQ j
-)EEj k
-;EEk l
-}FF 
-}GG 
-elseGG 
-{GG 
-DialogManagerHH !
-.HH! "!
-ShowErrorMessageAlertHH" 7
-(HH7 8
+Properties>>8 B
+.>>B C
+	Resources>>C L
+.>>L M(
+dialogMissmatchesCredentials>>M i
+)>>i j
+;>>j k
+}?? 
+}@@ 
+catch@@ 
+(@@ %
+EndpointNotFoundException@@ .%
+endpointNotFoundException@@/ H
+)@@H I
+{@@J K
+loggerAA 
+.AA 
+LogErrorAA 
+(AA  %
+endpointNotFoundExceptionAA  9
+)AA9 :
+;AA: ;
+DialogManagerBB 
+.BB !
+ShowErrorMessageAlertBB 3
+(BB3 4
 
-PropertiesHH8 B
-.HHB C
-	ResourcesHHC L
-.HHL M(
-dialogMissmatchesCredentialsHHM i
-)HHi j
-;HHj k
-}II 
-}JJ 
-catchJJ 
-(JJ %
-EndpointNotFoundExceptionJJ .%
-endpointNotFoundExceptionJJ/ H
-)JJH I
-{JJJ K
-loggerKK 
-.KK 
-LogErrorKK 
-(KK  %
-endpointNotFoundExceptionKK  9
-)KK9 :
-;KK: ;
-DialogManagerLL 
-.LL !
-ShowErrorMessageAlertLL 3
-(LL3 4
+PropertiesBB4 >
+.BB> ?
+	ResourcesBB? H
+.BBH I#
+dialogEndPointExceptionBBI `
+)BB` a
+;BBa b
+}CC 
+catchCC 
+(CC 
+TimeoutExceptionCC %
+timeoutExceptionCC& 6
+)CC6 7
+{CC8 9
+loggerDD 
+.DD 
+LogErrorDD 
+(DD  
+timeoutExceptionDD  0
+)DD0 1
+;DD1 2
+DialogManagerEE 
+.EE !
+ShowErrorMessageAlertEE 3
+(EE3 4
 
-PropertiesLL4 >
-.LL> ?
-	ResourcesLL? H
-.LLH I#
-dialogEndPointExceptionLLI `
-)LL` a
-;LLa b
-}MM 
-catchMM 
-(MM 
-TimeoutExceptionMM %
-timeoutExceptionMM& 6
-)MM6 7
-{MM8 9
-loggerNN 
-.NN 
-LogErrorNN 
-(NN  
-timeoutExceptionNN  0
-)NN0 1
-;NN1 2
-DialogManagerOO 
-.OO !
-ShowErrorMessageAlertOO 3
-(OO3 4
+PropertiesEE4 >
+.EE> ?
+	ResourcesEE? H
+.EEH I"
+dialogTimeOutExceptionEEI _
+)EE_ `
+;EE` a
+}FF 
+catchFF 
+(FF "
+CommunicationExceptionFF +"
+communicationExceptionFF, B
+)FFB C
+{FFD E
+loggerGG 
+.GG 
+LogErrorGG 
+(GG  "
+communicationExceptionGG  6
+)GG6 7
+;GG7 8
+DialogManagerHH 
+.HH !
+ShowErrorMessageAlertHH 3
+(HH3 4
 
-PropertiesOO4 >
-.OO> ?
-	ResourcesOO? H
-.OOH I"
-dialogTimeOutExceptionOOI _
-)OO_ `
-;OO` a
-}PP 
-catchPP 
-(PP "
-CommunicationExceptionPP +"
-communicationExceptionPP, B
-)PPB C
-{PPD E
-loggerQQ 
-.QQ 
-LogErrorQQ 
-(QQ  "
-communicationExceptionQQ  6
-)QQ6 7
-;QQ7 8
-DialogManagerRR 
-.RR !
-ShowErrorMessageAlertRR 3
-(RR3 4
+PropertiesHH4 >
+.HH> ?
+	ResourcesHH? H
+.HHH I'
+dialogComunicationExceptionHHI d
+)HHd e
+;HHe f
+}II 
+catchII 
+(II 
+	ExceptionII 
+	exceptionII (
+)II( )
+{II* +
+loggerJJ 
+.JJ 
+LogErrorJJ 
+(JJ  
+	exceptionJJ  )
+)JJ) *
+;JJ* +
+DialogManagerKK 
+.KK !
+ShowErrorMessageAlertKK 3
+(KK3 4
+stringKK4 :
+.KK: ;
+FormatKK; A
+(KKA B
 
-PropertiesRR4 >
-.RR> ?
-	ResourcesRR? H
-.RRH I'
-dialogComunicationExceptionRRI d
-)RRd e
-;RRe f
-}SS 
-returnUU 
-isAuthenticatedUU "
-;UU" #
-}VV 	
-privateXX 
-boolXX 
-IsPlayerOnlineXX #
-(XX# $
-intXX$ '
-	idProfileXX( 1
-)XX1 2
-{XX3 4
-LoggerManagerYY 
-loggerYY  
-=YY! "
-newYY# &
-LoggerManagerYY' 4
-(YY4 5
-thisYY5 9
-.YY9 :
-GetTypeYY: A
-(YYA B
-)YYB C
-)YYC D
-;YYD E
-tryZZ 
-{ZZ 
-IStatusManager[[ 
-statusManager[[ ,
-=[[- .
-new[[/ 2
-StatusManagerClient[[3 F
-([[F G
-)[[G H
-;[[H I
-var\\ 
-playerStatus\\  
-=\\! "
-statusManager\\# 0
-.\\0 1
-GetPlayerStatus\\1 @
-(\\@ A
-	idProfile\\A J
-)\\J K
-;\\K L
-if^^ 
-(^^ 
-playerStatus^^  
-==^^! #!
-GameEnumsPlayerStatus^^$ 9
-.^^9 :
-Online^^: @
-)^^@ A
-{^^B C
-DialogManager__ !
-.__! "#
-ShowWarningMessageAlert__" 9
-(__9 :
+PropertiesKKB L
+.KKL M
+	ResourcesKKM V
+.KKV W!
+dialogUnexpectedErrorKKW l
+,KKl m
+	exceptionKKn w
+.KKw x
+MessageKKx 
+)	KK Ä
+)
+KKÄ Å
+;
+KKÅ Ç
+}LL 
+returnMM 
+isAuthenticatedMM "
+;MM" #
+}NN 	
+privatePP 
+boolPP 
+IsPlayerOnlinePP #
+(PP# $
+intPP$ '
+	idProfilePP( 1
+)PP1 2
+{PP3 4
+LoggerManagerQQ 
+loggerQQ  
+=QQ! "
+newQQ# &
+LoggerManagerQQ' 4
+(QQ4 5
+thisQQ5 9
+.QQ9 :
+GetTypeQQ: A
+(QQA B
+)QQB C
+)QQC D
+;QQD E
+tryRR 
+{RR 
+IStatusManagerSS 
+statusManagerSS ,
+=SS- .
+newSS/ 2
+StatusManagerClientSS3 F
+(SSF G
+)SSG H
+;SSH I
+varTT 
+playerStatusTT  
+=TT! "
+statusManagerTT# 0
+.TT0 1
+GetPlayerStatusTT1 @
+(TT@ A
+	idProfileTTA J
+)TTJ K
+;TTK L
+ifUU 
+(UU 
+playerStatusUU  
+==UU! #!
+GameEnumsPlayerStatusUU$ 9
+.UU9 :
+OnlineUU: @
+)UU@ A
+{UUB C
+DialogManagerVV !
+.VV! "#
+ShowWarningMessageAlertVV" 9
+(VV9 :
 
-Properties__: D
-.__D E
-	Resources__E N
-.__N O%
-dialogPlayerAlreadyOnline__O h
-)__h i
-;__i j
-return`` 
-true`` 
-;``  
-}aa 
+PropertiesVV: D
+.VVD E
+	ResourcesVVE N
+.VVN O%
+dialogPlayerAlreadyOnlineVVO h
+)VVh i
+;VVi j
+returnWW 
+trueWW 
+;WW  
+}XX 
+}YY 
+catchYY 
+(YY %
+EndpointNotFoundExceptionYY .%
+endpointNotFoundExceptionYY/ H
+)YYH I
+{YYJ K
+loggerZZ 
+.ZZ 
+LogErrorZZ 
+(ZZ  %
+endpointNotFoundExceptionZZ  9
+)ZZ9 :
+;ZZ: ;
+DialogManager[[ 
+.[[ !
+ShowErrorMessageAlert[[ 3
+([[3 4
+
+Properties[[4 >
+.[[> ?
+	Resources[[? H
+.[[H I#
+dialogEndPointException[[I `
+)[[` a
+;[[a b
+}\\ 
+catch\\ 
+(\\ 
+TimeoutException\\ %
+timeoutException\\& 6
+)\\6 7
+{\\8 9
+logger]] 
+.]] 
+LogError]] 
+(]]  
+timeoutException]]  0
+)]]0 1
+;]]1 2
+DialogManager^^ 
+.^^ !
+ShowErrorMessageAlert^^ 3
+(^^3 4
+
+Properties^^4 >
+.^^> ?
+	Resources^^? H
+.^^H I"
+dialogTimeOutException^^I _
+)^^_ `
+;^^` a
+}__ 
+catch__ 
+(__ "
+CommunicationException__ +"
+communicationException__, B
+)__B C
+{__D E
+logger`` 
+.`` 
+LogError`` 
+(``  "
+communicationException``  6
+)``6 7
+;``7 8
+DialogManageraa 
+.aa !
+ShowErrorMessageAlertaa 3
+(aa3 4
+
+Propertiesaa4 >
+.aa> ?
+	Resourcesaa? H
+.aaH I'
+dialogComunicationExceptionaaI d
+)aad e
+;aae f
 }bb 
 catchbb 
-(bb %
-EndpointNotFoundExceptionbb .%
-endpointNotFoundExceptionbb/ H
-)bbH I
-{bbJ K
+(bb 
+	Exceptionbb 
+	exceptionbb (
+)bb( )
+{bb* +
 loggercc 
 .cc 
 LogErrorcc 
-(cc  %
-endpointNotFoundExceptioncc  9
-)cc9 :
-;cc: ;
+(cc  
+	exceptioncc  )
+)cc) *
+;cc* +
 DialogManagerdd 
 .dd !
 ShowErrorMessageAlertdd 3
-(dd3 4
+(dd3 4
+stringdd4 :
+.dd: ;
+Formatdd; A
+(ddA B
 
-Propertiesdd4 >
-.dd> ?
-	Resourcesdd? H
-.ddH I#
-dialogEndPointExceptionddI `
-)dd` a
-;dda b
-}ee 
-catchee 
-(ee 
-TimeoutExceptionee %
-timeoutExceptionee& 6
-)ee6 7
-{ee8 9
-loggerff 
-.ff 
-LogErrorff 
-(ff  
-timeoutExceptionff  0
-)ff0 1
-;ff1 2
-DialogManagergg 
-.gg !
-ShowErrorMessageAlertgg 3
-(gg3 4
+PropertiesddB L
+.ddL M
+	ResourcesddM V
+.ddV W!
+dialogUnexpectedErrorddW l
+,ddl m
+	exceptionddn w
+.ddw x
+Messageddx 
+)	dd Ä
+)
+ddÄ Å
+;
+ddÅ Ç
+}ee 
+returnff 
+falseff 
+;ff 
+}gg 	
+privateii 
+voidii 
+ObtainSingletonDataii (
+(ii( )
+Profileii) 0
+profileii1 8
+)ii8 9
+{ii: ; 
+UserProfileSingletonjj  
+.jj  !
+Instancejj! )
+.jj) *
+CreateInstancejj* 8
+(jj8 9
+profilejj9 @
+)jj@ A
+;jjA B
+}kk 	
+privatemm 
+voidmm !
+SetPlayerOnlineStatusmm *
+(mm* +
+intmm+ .
+playerIdmm/ 7
+)mm7 8
+{mm9 :
+LoggerManagernn 
+loggernn  
+=nn! "
+newnn# &
+LoggerManagernn' 4
+(nn4 5
+thisnn5 9
+.nn9 :
+GetTypenn: A
+(nnA B
+)nnB C
+)nnC D
+;nnD E
+tryoo 
+{oo 
+IStatusManagerpp 
+statusManagerpp ,
+=pp- .
+newpp/ 2
+StatusManagerClientpp3 F
+(ppF G
+)ppG H
+;ppH I
+statusManagerqq 
+.qq 
+SetPlayerStatusqq -
+(qq- .
+playerIdqq. 6
+,qq6 7!
+GameEnumsPlayerStatusqq8 M
+.qqM N
+OnlineqqN T
+)qqT U
+;qqU V
+}rr 
+catchrr 
+(rr %
+EndpointNotFoundExceptionrr .%
+endpointNotFoundExceptionrr/ H
+)rrH I
+{rrJ K
+loggerss 
+.ss 
+LogErrorss 
+(ss  %
+endpointNotFoundExceptionss  9
+)ss9 :
+;ss: ;
+DialogManagertt 
+.tt !
+ShowErrorMessageAlerttt 3
+(tt3 4
 
-Propertiesgg4 >
-.gg> ?
-	Resourcesgg? H
-.ggH I"
-dialogTimeOutExceptionggI _
-)gg_ `
-;gg` a
-}hh 
-catchhh 
-(hh "
-CommunicationExceptionhh +"
-communicationExceptionhh, B
-)hhB C
-{hhD E
-loggerii 
-.ii 
-LogErrorii 
-(ii  "
-communicationExceptionii  6
-)ii6 7
-;ii7 8
-DialogManagerjj 
-.jj !
-ShowErrorMessageAlertjj 3
-(jj3 4
+Propertiestt4 >
+.tt> ?
+	Resourcestt? H
+.ttH I#
+dialogEndPointExceptionttI `
+)tt` a
+;tta b
+}uu 
+catchuu 
+(uu 
+TimeoutExceptionuu %
+timeoutExceptionuu& 6
+)uu6 7
+{uu8 9
+loggervv 
+.vv 
+LogErrorvv 
+(vv  
+timeoutExceptionvv  0
+)vv0 1
+;vv1 2
+DialogManagerww 
+.ww !
+ShowErrorMessageAlertww 3
+(ww3 4
 
-Propertiesjj4 >
-.jj> ?
-	Resourcesjj? H
-.jjH I'
-dialogComunicationExceptionjjI d
-)jjd e
-;jje f
-}kk 
-returnmm 
-falsemm 
-;mm 
-}nn 	
-privateqq 
-voidqq 
-ObtainSingletonDataqq (
-(qq( )
-Profileqq) 0
-profileqq1 8
-)qq8 9
-{qq: ; 
-UserProfileSingletonrr  
-.rr  !
-Instancerr! )
-.rr) *
-CreateInstancerr* 8
-(rr8 9
-profilerr9 @
-)rr@ A
-;rrA B
-}ss 	
-privateuu 
-voiduu !
-SetPlayerOnlineStatusuu *
-(uu* +
-intuu+ .
-playerIduu/ 7
-)uu7 8
-{uu9 :
-LoggerManagervv 
-loggervv  
-=vv! "
-newvv# &
-LoggerManagervv' 4
-(vv4 5
-thisvv5 9
-.vv9 :
-GetTypevv: A
-(vvA B
-)vvB C
-)vvC D
-;vvD E
-tryxx 
-{xx 
-IStatusManageryy 
-statusManageryy ,
-=yy- .
-newyy/ 2
-StatusManagerClientyy3 F
-(yyF G
-)yyG H
-;yyH I
-statusManagerzz 
-.zz 
-SetPlayerStatuszz -
-(zz- .
-playerIdzz. 6
-,zz6 7!
-GameEnumsPlayerStatuszz8 M
-.zzM N
-OnlinezzN T
-)zzT U
-;zzU V
+Propertiesww4 >
+.ww> ?
+	Resourcesww? H
+.wwH I"
+dialogTimeOutExceptionwwI _
+)ww_ `
+;ww` a
+}xx 
+catchxx 
+(xx "
+CommunicationExceptionxx +"
+communicationExceptionxx, B
+)xxB C
+{xxD E
+loggeryy 
+.yy 
+LogErroryy 
+(yy  "
+communicationExceptionyy  6
+)yy6 7
+;yy7 8
+DialogManagerzz 
+.zz !
+ShowErrorMessageAlertzz 3
+(zz3 4
+
+Propertieszz4 >
+.zz> ?
+	Resourceszz? H
+.zzH I'
+dialogComunicationExceptionzzI d
+)zzd e
+;zze f
 }{{ 
 catch{{ 
-({{ %
-EndpointNotFoundException{{ .%
-endpointNotFoundException{{/ H
-){{H I
-{{{J K
+({{ 
+	Exception{{ 
+	exception{{ (
+){{( )
+{{{* +
 logger|| 
 .|| 
 LogError|| 
-(||  %
-endpointNotFoundException||  9
-)||9 :
-;||: ;
+(||  
+	exception||  )
+)||) *
+;||* +
 DialogManager}} 
 .}} !
 ShowErrorMessageAlert}} 3
-(}}3 4
+(}}3 4
+string}}4 :
+.}}: ;
+Format}}; A
+(}}A B
 
-Properties}}4 >
-.}}> ?
-	Resources}}? H
-.}}H I#
-dialogEndPointException}}I `
-)}}` a
-;}}a b
-}~~ 
-catch~~ 
-(~~ 
-TimeoutException~~ %
-timeoutException~~& 6
-)~~6 7
-{~~8 9
-logger 
-. 
-LogError 
-(  
-timeoutException  0
-)0 1
-;1 2
-DialogManager
-ÄÄ 
-.
-ÄÄ #
-ShowErrorMessageAlert
-ÄÄ 3
-(
-ÄÄ3 4
-
-Properties
-ÄÄ4 >
-.
-ÄÄ> ?
-	Resources
-ÄÄ? H
-.
-ÄÄH I$
-dialogTimeOutException
-ÄÄI _
+Properties}}B L
+.}}L M
+	Resources}}M V
+.}}V W!
+dialogUnexpectedError}}W l
+,}}l m
+	exception}}n w
+.}}w x
+Message}}x 
+)	}} Ä
 )
-ÄÄ_ `
+}}Ä Å
 ;
-ÄÄ` a
-}
-ÅÅ 
-catch
-ÅÅ 
-(
-ÅÅ $
-CommunicationException
-ÅÅ +$
-communicationException
-ÅÅ, B
-)
-ÅÅB C
-{
-ÅÅD E
-logger
-ÇÇ 
-.
-ÇÇ 
-LogError
-ÇÇ 
-(
-ÇÇ  $
-communicationException
-ÇÇ  6
-)
-ÇÇ6 7
-;
-ÇÇ7 8
-DialogManager
-ÉÉ 
-.
-ÉÉ #
-ShowErrorMessageAlert
-ÉÉ 3
-(
-ÉÉ3 4
-
-Properties
-ÉÉ4 >
-.
-ÉÉ> ?
-	Resources
-ÉÉ? H
-.
-ÉÉH I)
-dialogComunicationException
-ÉÉI d
-)
-ÉÉd e
-;
-ÉÉe f
-}
-ÑÑ 
-}
-ÖÖ 	
+}}Å Ç
+}~~ 
+} 	
 private
-áá 
+ÅÅ 
 void
-áá 
+ÅÅ 
 BtnGuest_Click
-áá #
+ÅÅ #
 (
-áá# $
+ÅÅ# $
 object
-áá$ *
+ÅÅ$ *
 sender
-áá+ 1
+ÅÅ+ 1
 ,
-áá1 2
+ÅÅ1 2
 RoutedEventArgs
-áá3 B
+ÅÅ3 B
 e
-ááC D
+ÅÅC D
 )
-ááD E
+ÅÅD E
 {
-ááF G
+ÅÅF G
 CodeGameMatch
-àà 
+ÇÇ 
 codeGameMatch
-àà '
+ÇÇ '
 =
-àà( )
+ÇÇ( )
 new
-àà* -
+ÇÇ* -
 CodeGameMatch
-àà. ;
+ÇÇ. ;
 (
-àà; <
+ÇÇ; <
 )
-àà< =
+ÇÇ< =
 ;
-àà= >
+ÇÇ= >
 this
-ââ 
+ÉÉ 
 .
-ââ 
+ÉÉ 
 NavigationService
-ââ "
+ÉÉ "
 .
-ââ" #
+ÉÉ" #
 Navigate
-ââ# +
+ÉÉ# +
 (
-ââ+ ,
+ÉÉ+ ,
 codeGameMatch
-ââ, 9
+ÉÉ, 9
 )
-ââ9 :
+ÉÉ9 :
 ;
-ââ: ;
+ÉÉ: ;
 }
-ää 	
+ÑÑ 	
 private
-åå 
+ÜÜ 
 void
-åå !
+ÜÜ !
 DisplayMainMenuView
-åå (
+ÜÜ (
 (
-åå( )
+ÜÜ( )
 )
-åå) *
+ÜÜ) *
 {
-åå+ ,
+ÜÜ+ ,
 MenuView
-çç 
+áá 
 menuView
-çç 
+áá 
 =
-çç 
+áá 
 new
-çç  #
+áá  #
 MenuView
-çç$ ,
+áá$ ,
 (
-çç, -
+áá, -
 )
-çç- .
+áá- .
 ;
-çç. /
+áá. /
 this
-éé 
+àà 
 .
-éé 
+àà 
 NavigationService
-éé "
+àà "
 .
-éé" #
+àà" #
 Navigate
-éé# +
+àà# +
 (
-éé+ ,
+àà+ ,
 menuView
-éé, 4
+àà, 4
 )
-éé4 5
+àà4 5
 ;
-éé5 6
+àà5 6
 }
-èè 	
+ââ 	
 private
-ëë 
+ãã 
 void
-ëë 
+ãã 
 HighlightField
-ëë #
+ãã #
 (
-ëë# $
+ãã# $
 Control
-ëë$ +
+ãã$ +
 control
-ëë, 3
+ãã, 3
 ,
-ëë3 4
+ãã3 4
 bool
-ëë5 9
+ãã5 9
 isValid
-ëë: A
+ãã: A
 )
-ëëA B
+ããA B
 {
-ëëC D
+ããC D
 control
-íí 
+åå 
 .
-íí 
+åå 
 BorderBrush
-íí 
+åå 
 =
-íí  !
+åå  !
 isValid
-íí" )
+åå" )
 ?
-íí* +
+åå* +
 Brushes
-íí, 3
+åå, 3
 .
-íí3 4
+åå3 4
 White
-íí4 9
+åå4 9
 :
-íí: ;
+åå: ;
 Brushes
-íí< C
+åå< C
 .
-ííC D
+ååC D
 Red
-ííD G
+ååD G
 ;
-ííG H
+ååG H
 }
-ìì 	
+çç 	
 private
-ïï 
+èè 
 void
-ïï "
+èè "
 TxtEmail_TextChanged
-ïï )
+èè )
 (
-ïï) *
+èè) *
 object
-ïï* 0
+èè* 0
 sender
-ïï1 7
+èè1 7
 ,
-ïï7 8"
+èè7 8"
 TextChangedEventArgs
-ïï9 M
+èè9 M
 e
-ïïN O
+èèN O
 )
-ïïO P
+èèO P
 {
-ïïQ R
+èèQ R
 string
-ññ 
+êê 
 email
-ññ 
+êê 
 =
-ññ 
+êê 
 txtEmail
-ññ #
+êê #
 .
-ññ# $
+êê# $
 Text
-ññ$ (
+êê$ (
 ;
-ññ( )
+êê( )
 bool
-óó 
+ëë 
 isValid
-óó 
+ëë 
 =
-óó 
+ëë 
 	Validador
-óó $
+ëë $
 .
-óó$ %
+ëë$ %
 ValidateEmail
-óó% 2
+ëë% 2
 (
-óó2 3
+ëë2 3
 email
-óó3 8
+ëë3 8
 )
-óó8 9
+ëë8 9
 ;
-óó9 :
+ëë9 :
+HighlightField
+íí 
+(
+íí 
+txtEmail
+íí #
+,
+íí# $
+isValid
+íí% ,
+)
+íí, -
+;
+íí- .
+lbInvalidEmail
+ìì 
+.
+ìì 
+
+Visibility
+ìì %
+=
+ìì& '
+isValid
+ìì( /
+?
+ìì0 1
+
+Visibility
+ìì2 <
+.
+ìì< =
+	Collapsed
+ìì= F
+:
+ììG H
+
+Visibility
+ììI S
+.
+ììS T
+Visible
+ììT [
+;
+ìì[ \
+}
+îî 	
+private
+ññ 
+void
+ññ )
+TxtPassword_PasswordChanged
+ññ 0
+(
+ññ0 1
+object
+ññ1 7
+sender
+ññ8 >
+,
+ññ> ?
+RoutedEventArgs
+ññ@ O
+e
+ññP Q
+)
+ññQ R
+{
+ññS T
+string
+óó 
+password
+óó 
+=
+óó 
+txtPassword
+óó )
+.
+óó) *
+Password
+óó* 2
+;
+óó2 3
+bool
+òò 
+isValid
+òò 
+=
+òò 
+	Validador
+òò $
+.
+òò$ %
+ValidatePassword
+òò% 5
+(
+òò5 6
+password
+òò6 >
+)
+òò> ?
+;
+òò? @
 HighlightField
 ôô 
 (
-ôô 
-txtEmail
-ôô #
-,
-ôô# $
-isValid
-ôô% ,
-)
-ôô, -
-;
-ôô- .
-lbInvalidEmail
-öö 
-.
-öö 
-
-Visibility
-öö %
-=
-öö& '
-isValid
-öö( /
-?
-öö0 1
-
-Visibility
-öö2 <
-.
-öö< =
-	Collapsed
-öö= F
-:
-ööG H
-
-Visibility
-ööI S
-.
-ööS T
-Visible
-ööT [
-;
-öö[ \
-}
-õõ 	
-private
-ùù 
-void
-ùù )
-TxtPassword_PasswordChanged
-ùù 0
-(
-ùù0 1
-object
-ùù1 7
-sender
-ùù8 >
-,
-ùù> ?
-RoutedEventArgs
-ùù@ O
-e
-ùùP Q
-)
-ùùQ R
-{
-ùùS T
-string
-ûû 
-password
-ûû 
-=
-ûû 
+ôô 
 txtPassword
-ûû )
-.
-ûû) *
-Password
-ûû* 2
-;
-ûû2 3
-bool
-üü 
-isValid
-üü 
-=
-üü 
-	Validador
-üü $
-.
-üü$ %
-ValidatePassword
-üü% 5
-(
-üü5 6
-password
-üü6 >
-)
-üü> ?
-;
-üü? @
-HighlightField
-°° 
-(
-°° 
-txtPassword
-°° &
+ôô &
 ,
-°°& '
+ôô& '
 isValid
-°°( /
+ôô( /
 )
-°°/ 0
+ôô/ 0
 ;
-°°0 1
+ôô0 1
 lbInvalidPassword
-¢¢ 
+öö 
 .
-¢¢ 
+öö 
 
 Visibility
-¢¢ (
+öö (
 =
-¢¢) *
+öö) *
 isValid
-¢¢+ 2
+öö+ 2
 ?
-¢¢3 4
+öö3 4
 
 Visibility
-¢¢5 ?
+öö5 ?
 .
-¢¢? @
+öö? @
 	Collapsed
-¢¢@ I
+öö@ I
 :
-¢¢J K
+ööJ K
 
 Visibility
-¢¢L V
+ööL V
 .
-¢¢V W
+ööV W
 Visible
-¢¢W ^
+ööW ^
 ;
-¢¢^ _*
+öö^ _*
 UpdatePasswordVisibilityIcon
-££ (
+õõ (
 (
-££( )
+õõ( )
 )
-££) *
+õõ) *
 ;
-££* +
+õõ* +
 }
-§§ 	
+úú 	
 private
-¶¶ 
+ûû 
 void
-¶¶ 
+ûû 
 
 ResetField
-¶¶ 
+ûû 
 (
-¶¶  
+ûû  
 Control
-¶¶  '
+ûû  '
 control
-¶¶( /
+ûû( /
 )
-¶¶/ 0
+ûû/ 0
 {
-¶¶1 2
+ûû1 2
 control
-ßß 
+üü 
 .
-ßß 
+üü 
 BorderBrush
-ßß 
+üü 
 =
-ßß  !
+üü  !
 Brushes
-ßß" )
+üü" )
 .
-ßß) *
+üü) *
 White
-ßß* /
+üü* /
 ;
-ßß/ 0
+üü/ 0
 }
-®® 	
+†† 	
 private
-™™ 
+¢¢ 
 void
-™™ 
+¢¢ 
 BtnSignIn_Click
-™™ $
+¢¢ $
 (
-™™$ %
+¢¢$ %
 object
-™™% +
+¢¢% +
 sender
-™™, 2
+¢¢, 2
 ,
-™™2 3
+¢¢2 3
 RoutedEventArgs
-™™4 C
+¢¢4 C
 e
-™™D E
+¢¢D E
 )
-™™E F
+¢¢E F
 {
-™™G H
+¢¢G H
 RegisterView
-´´ 
+££ 
 registerView
-´´ %
+££ %
 =
-´´& '
+££& '
 new
-´´( +
+££( +
 RegisterView
-´´, 8
+££, 8
 (
-´´8 9
+££8 9
 )
-´´9 :
+££9 :
 ;
-´´: ;
+££: ;
 this
-¨¨ 
+§§ 
 .
-¨¨ 
+§§ 
 NavigationService
-¨¨ "
+§§ "
 .
-¨¨" #
+§§" #
 Navigate
-¨¨# +
+§§# +
 (
-¨¨+ ,
+§§+ ,
 registerView
-¨¨, 8
+§§, 8
 )
-¨¨8 9
+§§8 9
 ;
-¨¨9 :
+§§9 :
 }
-≠≠ 	
+•• 	
 private
-∞∞ 
+®® 
 void
-∞∞ 
+®® 
 BtnContinue_Click
-∞∞ &
+®® &
 (
-∞∞& '
+®®& '
 object
-∞∞' -
+®®' -
 sender
-∞∞. 4
+®®. 4
 ,
-∞∞4 5
+®®4 5
 RoutedEventArgs
-∞∞6 E
+®®6 E
 e
-∞∞F G
+®®F G
 )
-∞∞G H
+®®G H
 {
-∞∞I J
+®®I J
 LoggerManager
-±± 
+©© 
 logger
-±±  
+©©  
 =
-±±! "
+©©! "
 new
-±±# &
+©©# &
 LoggerManager
-±±' 4
+©©' 4
 (
-±±4 5
+©©4 5
 this
-±±5 9
+©©5 9
 .
-±±9 :
+©©9 :
 GetType
-±±: A
+©©: A
 (
-±±A B
+©©A B
 )
-±±B C
+©©B C
 )
-±±C D
+©©C D
 ;
-±±D E
+©©D E
 string
-≤≤ 
+™™ 
 email
-≤≤ 
+™™ 
 =
-≤≤ 
+™™ 
 txtEmailRecovery
-≤≤ +
+™™ +
 .
-≤≤+ ,
+™™+ ,
 Text
-≤≤, 0
+™™, 0
 .
-≤≤0 1
+™™0 1
 Trim
-≤≤1 5
+™™1 5
 (
-≤≤5 6
+™™5 6
 )
-≤≤6 7
+™™6 7
 ;
-≤≤7 8
+™™7 8
 if
-¥¥ 
+´´ 
 (
-¥¥ 
+´´ 
 string
-¥¥ 
+´´ 
 .
-¥¥  
+´´  
 IsNullOrWhiteSpace
-¥¥ )
+´´ )
 (
-¥¥) *
+´´) *
 email
-¥¥* /
+´´* /
 )
-¥¥/ 0
+´´/ 0
 )
-¥¥0 1
+´´0 1
 {
-¥¥2 3
+´´2 3
 DialogManager
-µµ 
+¨¨ 
 .
-µµ #
+¨¨ #
 ShowErrorMessageAlert
-µµ 3
+¨¨ 3
 (
-µµ3 4
+¨¨3 4
 
 Properties
-µµ4 >
+¨¨4 >
 .
-µµ> ?
+¨¨> ?
 	Resources
-µµ? H
+¨¨? H
 .
-µµH I
+¨¨H I
 dialogNullEmail
-µµI X
+¨¨I X
 )
-µµX Y
+¨¨X Y
 ;
-µµY Z
+¨¨Y Z
 return
-∂∂ 
+≠≠ 
 ;
-∂∂ 
+≠≠ 
 }
-∑∑ 
+ÆÆ 
 if
-ππ 
+ØØ 
 (
-ππ 
+ØØ 
 !
-ππ 
+ØØ 
 	Validador
-ππ 
+ØØ 
 .
-ππ 
+ØØ 
 ValidateEmail
-ππ (
+ØØ (
 (
-ππ( )
+ØØ( )
 email
-ππ) .
+ØØ) .
 )
-ππ. /
+ØØ. /
 )
-ππ/ 0
+ØØ/ 0
 {
-ππ1 2
+ØØ1 2
 DialogManager
-∫∫ 
+∞∞ 
 .
-∫∫ #
+∞∞ #
 ShowErrorMessageAlert
-∫∫ 3
+∞∞ 3
 (
-∫∫3 4
+∞∞3 4
 
 Properties
-∫∫4 >
+∞∞4 >
 .
-∫∫> ?
+∞∞> ?
 	Resources
-∫∫? H
+∞∞? H
 .
-∫∫H I 
+∞∞H I 
 dialogInvalidEmail
-∫∫I [
+∞∞I [
 )
-∫∫[ \
+∞∞[ \
 ;
-∫∫\ ]
+∞∞\ ]
 return
-ªª 
+±± 
 ;
-ªª 
+±± 
 }
-ºº 
+≤≤ 
 try
-ææ 
+≥≥ 
 {
-ææ &
+≥≥ &
 IPasswordRecoveryManager
-øø (
+¥¥ (
 passwordRecovery
-øø) 9
+¥¥) 9
 =
-øø: ;
+¥¥: ;
 new
-øø< ?+
+¥¥< ?+
 PasswordRecoveryManagerClient
-øø@ ]
+¥¥@ ]
 (
-øø] ^
+¥¥] ^
 )
-øø^ _
+¥¥^ _
 ;
-øø_ `
+¥¥_ `
 int
-¿¿ 
+µµ 
 result
-¿¿ 
+µµ 
 =
-¿¿ 
+µµ 
 passwordRecovery
-¿¿ -
+µµ -
 .
-¿¿- .
+µµ- .
 SendRecoveryCode
-¿¿. >
+µµ. >
 (
-¿¿> ?
+µµ> ?
 email
-¿¿? D
+µµ? D
 )
-¿¿D E
+µµD E
 ;
-¿¿E F
+µµE F
 if
-¬¬ 
+∂∂ 
 (
-¬¬ 
+∂∂ 
 result
-¬¬ 
+∂∂ 
 ==
-¬¬ 
+∂∂ 
 	Constants
-¬¬ '
+∂∂ '
 .
-¬¬' (
+∂∂' (
 SUCCES_OPERATION
-¬¬( 8
+∂∂( 8
 )
-¬¬8 9
+∂∂8 9
 {
-¬¬: ;
-	userEmail
-√√ 
+∂∂: ;
+
+_userEmail
+∑∑ 
 =
-√√ 
+∑∑  
 email
-√√  %
+∑∑! &
 ;
-√√% &
-enterEmailGrid
-ƒƒ "
+∑∑& '
+gridEnterEmail
+∏∏ "
 .
-ƒƒ" #
+∏∏" #
 
 Visibility
-ƒƒ# -
+∏∏# -
 =
-ƒƒ. /
+∏∏. /
 
 Visibility
-ƒƒ0 :
+∏∏0 :
 .
-ƒƒ: ;
+∏∏: ;
 	Collapsed
-ƒƒ; D
+∏∏; D
 ;
-ƒƒD E
-recoveryGrid
-≈≈  
+∏∏D E
+gridRecovery
+ππ  
 .
-≈≈  !
+ππ  !
 
 Visibility
-≈≈! +
+ππ! +
 =
-≈≈, -
+ππ, -
 
 Visibility
-≈≈. 8
+ππ. 8
 .
-≈≈8 9
+ππ8 9
 Visible
-≈≈9 @
+ππ9 @
 ;
-≈≈@ A
+ππ@ A
 DialogManager
-∆∆ !
+∫∫ !
 .
-∆∆! "%
+∫∫! "%
 ShowSuccessMessageAlert
-∆∆" 9
+∫∫" 9
 (
-∆∆9 :
+∫∫9 :
 
 Properties
-∆∆: D
+∫∫: D
 .
-∆∆D E
+∫∫D E
 	Resources
-∆∆E N
+∫∫E N
 .
-∆∆N O+
+∫∫N O+
 dialogRecoveryCodeHasBeenSent
-∆∆O l
+∫∫O l
 )
-∆∆l m
+∫∫l m
 ;
-∆∆m n
+∫∫m n
 }
-«« 
+ªª 
 else
-«« 
+ªª 
 if
-«« 
+ªª 
 (
-«« 
+ªª 
 result
-«« !
+ªª !
 ==
-««" $
+ªª" $
 	Constants
-««% .
+ªª% .
 .
-««. /
+ªª. /
 NO_DATA_MATCHES
-««/ >
+ªª/ >
 )
-««> ?
+ªª> ?
 {
-««@ A
+ªª@ A
 DialogManager
-»» !
+ºº !
 .
-»»! "#
+ºº! "#
 ShowErrorMessageAlert
-»»" 7
+ºº" 7
 (
-»»7 8
+ºº7 8
 
 Properties
-»»8 B
+ºº8 B
 .
-»»B C
+ººB C
 	Resources
-»»C L
+ººC L
 .
-»»L M 
+ººL M 
 dialogInvalidEmail
-»»M _
+ººM _
 )
-»»_ `
+ºº_ `
 ;
-»»` a
+ºº` a
 }
-…… 
+ΩΩ 
 else
-…… 
+ΩΩ 
 {
-…… 
+ΩΩ 
 DialogManager
-   !
+ææ !
 .
-  ! "#
+ææ! "#
 ShowErrorMessageAlert
-  " 7
+ææ" 7
 (
-  7 8
+ææ7 8
 
 Properties
-  8 B
+ææ8 B
 .
-  B C
+ææB C
 	Resources
-  C L
+ææC L
 .
-  L M,
+ææL M,
 dialogErrorSendingRecoveryCode
-  M k
+ææM k
 )
-  k l
+ææk l
 ;
-  l m
+ææl m
 }
-ÀÀ 
+øø 
 }
-ÃÃ 
+¿¿ 
 catch
-ÃÃ 
+¿¿ 
 (
-ÃÃ '
+¿¿ '
 EndpointNotFoundException
-ÃÃ .
+¿¿ .
 ex
-ÃÃ/ 1
+¿¿/ 1
 )
-ÃÃ1 2
+¿¿1 2
 {
-ÃÃ3 4
+¿¿3 4
 logger
-ÕÕ 
+¡¡ 
 .
-ÕÕ 
+¡¡ 
 LogError
-ÕÕ 
+¡¡ 
 (
-ÕÕ  
+¡¡  
 ex
-ÕÕ  "
+¡¡  "
 )
-ÕÕ" #
+¡¡" #
 ;
-ÕÕ# $
+¡¡# $
 DialogManager
-ŒŒ 
+¬¬ 
 .
-ŒŒ #
+¬¬ #
 ShowErrorMessageAlert
-ŒŒ 3
+¬¬ 3
 (
-ŒŒ3 4
+¬¬3 4
 
 Properties
-ŒŒ4 >
+¬¬4 >
 .
-ŒŒ> ?
+¬¬> ?
 	Resources
-ŒŒ? H
+¬¬? H
 .
-ŒŒH I%
+¬¬H I%
 dialogEndPointException
-ŒŒI `
+¬¬I `
 )
-ŒŒ` a
+¬¬` a
 ;
-ŒŒa b
+¬¬a b
 }
-œœ 
+√√ 
 catch
-œœ 
+√√ 
 (
-œœ 
+√√ 
 TimeoutException
-œœ %
+√√ %
 ex
-œœ& (
+√√& (
 )
-œœ( )
+√√( )
 {
-œœ* +
+√√* +
 logger
-–– 
+ƒƒ 
 .
-–– 
+ƒƒ 
 LogError
-–– 
+ƒƒ 
 (
-––  
+ƒƒ  
 ex
-––  "
+ƒƒ  "
 )
-––" #
+ƒƒ" #
 ;
-––# $
+ƒƒ# $
 DialogManager
-—— 
+≈≈ 
 .
-—— #
+≈≈ #
 ShowErrorMessageAlert
-—— 3
+≈≈ 3
 (
-——3 4
+≈≈3 4
 
 Properties
-——4 >
+≈≈4 >
 .
-——> ?
+≈≈> ?
 	Resources
-——? H
+≈≈? H
 .
-——H I$
+≈≈H I$
 dialogTimeOutException
-——I _
+≈≈I _
 )
-——_ `
+≈≈_ `
 ;
-——` a
+≈≈` a
 }
-““ 
+∆∆ 
 catch
-““ 
+∆∆ 
 (
-““ $
+∆∆ $
 CommunicationException
-““ +
+∆∆ +
 ex
-““, .
+∆∆, .
 )
-““. /
+∆∆. /
 {
-““0 1
+∆∆0 1
 logger
-”” 
+«« 
 .
-”” 
+«« 
 LogError
-”” 
+«« 
 (
-””  
+««  
 ex
-””  "
+««  "
 )
-””" #
+««" #
 ;
-””# $
+««# $
 DialogManager
-‘‘ 
+»» 
 .
-‘‘ #
+»» #
 ShowErrorMessageAlert
-‘‘ 3
+»» 3
 (
-‘‘3 4
+»»3 4
 
 Properties
-‘‘4 >
+»»4 >
 .
-‘‘> ?
+»»> ?
 	Resources
-‘‘? H
+»»? H
 .
-‘‘H I)
+»»H I)
 dialogComunicationException
-‘‘I d
+»»I d
 )
-‘‘d e
+»»d e
 ;
-‘‘e f
+»»e f
 }
-’’ 
+…… 
+catch
+…… 
+(
+…… 
+	Exception
+…… 
+	exception
+…… (
+)
+……( )
+{
+……* +
+logger
+   
+.
+   
+LogError
+   
+(
+    
+	exception
+    )
+)
+  ) *
+;
+  * +
+DialogManager
+ÀÀ 
+.
+ÀÀ #
+ShowErrorMessageAlert
+ÀÀ 3
+(
+ÀÀ3 4
+string
+ÀÀ4 :
+.
+ÀÀ: ;
+Format
+ÀÀ; A
+(
+ÀÀA B
+
+Properties
+ÀÀB L
+.
+ÀÀL M
+	Resources
+ÀÀM V
+.
+ÀÀV W#
+dialogUnexpectedError
+ÀÀW l
+,
+ÀÀl m
+	exception
+ÀÀn w
+.
+ÀÀw x
+Message
+ÀÀx 
+)ÀÀ Ä
+)ÀÀÄ Å
+;ÀÀÅ Ç
 }
-÷÷ 	
+ÃÃ 
+}
+ÕÕ 	
 private
-ÿÿ 
+œœ 
 void
-ÿÿ %
+œœ %
 BtnBackEnterEmail_Click
-ÿÿ ,
+œœ ,
 (
-ÿÿ, -
+œœ, -
 object
-ÿÿ- 3
+œœ- 3
 sender
-ÿÿ4 :
+œœ4 :
 ,
-ÿÿ: ;
+œœ: ;
 RoutedEventArgs
-ÿÿ< K
+œœ< K
 e
-ÿÿL M
+œœL M
 )
-ÿÿM N
+œœM N
 {
-ÿÿO P
-enterEmailGrid
-ŸŸ 
+œœO P
+gridEnterEmail
+–– 
 .
-ŸŸ 
+–– 
 
 Visibility
-ŸŸ %
+–– %
 =
-ŸŸ& '
+––& '
 
 Visibility
-ŸŸ( 2
+––( 2
 .
-ŸŸ2 3
+––2 3
 	Collapsed
-ŸŸ3 <
+––3 <
 ;
-ŸŸ< =
+––< =
 txtEmail
-⁄⁄ 
+—— 
 .
-⁄⁄ 
+—— 
 Clear
-⁄⁄ 
+—— 
 (
-⁄⁄ 
+—— 
 )
-⁄⁄ 
+—— 
 ;
-⁄⁄ 
+—— 
 txtPassword
-€€ 
+““ 
 .
-€€ 
+““ 
 Clear
-€€ 
+““ 
 (
-€€ 
+““ 
 )
-€€ 
+““ 
 ;
-€€   
+““   
 txtPasswordVisible
-‹‹ 
+”” 
 .
-‹‹ 
+”” 
 Clear
-‹‹ $
+”” $
 (
-‹‹$ %
+””$ %
 )
-‹‹% &
+””% &
 ;
-‹‹& '
+””& '
 }
-›› 	
+‘‘ 	
 private
-ﬂﬂ 
+÷÷ 
 void
-ﬂﬂ 
+÷÷ 
 BtnValidate_Click
-ﬂﬂ &
+÷÷ &
 (
-ﬂﬂ& '
+÷÷& '
 object
-ﬂﬂ' -
+÷÷' -
 sender
-ﬂﬂ. 4
+÷÷. 4
 ,
-ﬂﬂ4 5
+÷÷4 5
 RoutedEventArgs
-ﬂﬂ6 E
+÷÷6 E
 e
-ﬂﬂF G
+÷÷F G
 )
-ﬂﬂG H
+÷÷G H
 {
-ﬂﬂI J
+÷÷I J
 LoggerManager
-‡‡ 
+◊◊ 
 logger
-‡‡  
+◊◊  
 =
-‡‡! "
+◊◊! "
 new
-‡‡# &
+◊◊# &
 LoggerManager
-‡‡' 4
+◊◊' 4
 (
-‡‡4 5
+◊◊4 5
 this
-‡‡5 9
+◊◊5 9
 .
-‡‡9 :
+◊◊9 :
 GetType
-‡‡: A
+◊◊: A
 (
-‡‡A B
+◊◊A B
 )
-‡‡B C
+◊◊B C
 )
-‡‡C D
+◊◊C D
 ;
-‡‡D E
+◊◊D E
 string
-·· 
+ÿÿ 
 enteredCode
-·· 
+ÿÿ 
 =
-··  
+ÿÿ  
 $"
-··! #
+ÿÿ! #
 {
-··# $ 
+ÿÿ# $ 
 txtValidationCode1
-··$ 6
+ÿÿ$ 6
 .
-··6 7
+ÿÿ6 7
 Text
-··7 ;
+ÿÿ7 ;
 }
-··; <
+ÿÿ; <
 {
-··< = 
+ÿÿ< = 
 txtValidationCode2
-··= O
+ÿÿ= O
 .
-··O P
+ÿÿO P
 Text
-··P T
+ÿÿP T
 }
-··T U
+ÿÿT U
 {
-··U V 
+ÿÿU V 
 txtValidationCode3
-··V h
+ÿÿV h
 .
-··h i
+ÿÿh i
 Text
-··i m
+ÿÿi m
 }
-··m n
+ÿÿm n
 {
-··n o!
-txtValidationCode4··o Å
-.··Å Ç
-Text··Ç Ü
-}··Ü á
-{··á à"
-txtValidationCode5··à ö
-.··ö õ
-Text··õ ü
-}··ü †
-{··† °"
-txtValidationCode6··° ≥
-.··≥ ¥
-Text··¥ ∏
-}··∏ π
-"··π ∫
-;··∫ ª
+ÿÿn o!
+txtValidationCode4ÿÿo Å
+.ÿÿÅ Ç
+TextÿÿÇ Ü
+}ÿÿÜ á
+{ÿÿá à"
+txtValidationCode5ÿÿà ö
+.ÿÿö õ
+Textÿÿõ ü
+}ÿÿü †
+{ÿÿ† °"
+txtValidationCode6ÿÿ° ≥
+.ÿÿ≥ ¥
+Textÿÿ¥ ∏
+}ÿÿ∏ π
+"ÿÿπ ∫
+;ÿÿ∫ ª
 try
-„„ 
+ŸŸ 
 {
-„„ &
+ŸŸ &
 IPasswordRecoveryManager
-‰‰ (
+⁄⁄ (
 passwordRecovery
-‰‰) 9
+⁄⁄) 9
 =
-‰‰: ;
+⁄⁄: ;
 new
-‰‰< ?+
+⁄⁄< ?+
 PasswordRecoveryManagerClient
-‰‰@ ]
+⁄⁄@ ]
 (
-‰‰] ^
+⁄⁄] ^
 )
-‰‰^ _
+⁄⁄^ _
 ;
-‰‰_ `
+⁄⁄_ `
 bool
-ÂÂ 
+€€ 
 isCodeValid
-ÂÂ  
+€€  
 =
-ÂÂ! "
+€€! "
 passwordRecovery
-ÂÂ# 3
+€€# 3
 .
-ÂÂ3 4 
+€€3 4 
 VerifyRecoveryCode
-ÂÂ4 F
+€€4 F
 (
-ÂÂF G
-	userEmail
-ÂÂG P
+€€F G
+
+_userEmail
+€€G Q
 ,
-ÂÂP Q
+€€Q R
 enteredCode
-ÂÂR ]
+€€S ^
 )
-ÂÂ] ^
+€€^ _
 ;
-ÂÂ^ _
+€€_ `
 if
-ÁÁ 
+‹‹ 
 (
-ÁÁ 
+‹‹ 
 isCodeValid
-ÁÁ 
+‹‹ 
 )
-ÁÁ  
+‹‹  
 {
-ÁÁ! "
-recoveryGrid
-ËË  
+‹‹! "
+gridRecovery
+››  
 .
-ËË  !
+››  !
 
 Visibility
-ËË! +
+››! +
 =
-ËË, -
+››, -
 
 Visibility
-ËË. 8
+››. 8
 .
-ËË8 9
+››8 9
 	Collapsed
-ËË9 B
+››9 B
 ;
-ËËB C"
-recoveryPasswordGrid
-ÈÈ (
+››B C"
+gridRecoveryPassword
+ﬁﬁ (
 .
-ÈÈ( )
+ﬁﬁ( )
 
 Visibility
-ÈÈ) 3
+ﬁﬁ) 3
 =
-ÈÈ4 5
+ﬁﬁ4 5
 
 Visibility
-ÈÈ6 @
+ﬁﬁ6 @
 .
-ÈÈ@ A
+ﬁﬁ@ A
 Visible
-ÈÈA H
+ﬁﬁA H
 ;
-ÈÈH I
+ﬁﬁH I
 }
-ÍÍ 
+ﬂﬂ 
 else
-ÍÍ 
+ﬂﬂ 
 {
-ÍÍ 
+ﬂﬂ 
 DialogManager
-ÎÎ !
+‡‡ !
 .
-ÎÎ! "#
+‡‡! "#
 ShowErrorMessageAlert
-ÎÎ" 7
+‡‡" 7
 (
-ÎÎ7 8
+‡‡7 8
 
 Properties
-ÎÎ8 B
+‡‡8 B
 .
-ÎÎB C
+‡‡B C
 	Resources
-ÎÎC L
+‡‡C L
 .
-ÎÎL M'
+‡‡L M'
 dialogInvalidRecoveryCode
-ÎÎM f
+‡‡M f
 )
-ÎÎf g
+‡‡f g
 ;
-ÎÎg h
+‡‡g h
 }
-ÏÏ 
+·· 
 }
-ÌÌ 
+‚‚ 
 catch
-ÌÌ 
+‚‚ 
 (
-ÌÌ '
+‚‚ '
 EndpointNotFoundException
-ÌÌ .'
+‚‚ .'
 endpointNotFoundException
-ÌÌ/ H
+‚‚/ H
 )
-ÌÌH I
+‚‚H I
 {
-ÌÌJ K
+‚‚J K
 logger
-ÓÓ 
+„„ 
 .
-ÓÓ 
+„„ 
 LogError
-ÓÓ 
+„„ 
 (
-ÓÓ  '
+„„  '
 endpointNotFoundException
-ÓÓ  9
+„„  9
 )
-ÓÓ9 :
+„„9 :
 ;
-ÓÓ: ;
+„„: ;
 DialogManager
-ÔÔ 
+‰‰ 
 .
-ÔÔ #
+‰‰ #
 ShowErrorMessageAlert
-ÔÔ 3
+‰‰ 3
 (
-ÔÔ3 4
+‰‰3 4
 
 Properties
-ÔÔ4 >
+‰‰4 >
 .
-ÔÔ> ?
+‰‰> ?
 	Resources
-ÔÔ? H
+‰‰? H
 .
-ÔÔH I%
+‰‰H I%
 dialogEndPointException
-ÔÔI `
+‰‰I `
 )
-ÔÔ` a
+‰‰` a
 ;
-ÔÔa b
+‰‰a b
 }
- 
+ÂÂ 
 catch
- 
+ÂÂ 
 (
- 
+ÂÂ 
 TimeoutException
- %
+ÂÂ %
 timeoutException
-& 6
+ÂÂ& 6
 )
-6 7
+ÂÂ6 7
 {
-8 9
+ÂÂ8 9
 logger
-ÒÒ 
+ÊÊ 
 .
-ÒÒ 
+ÊÊ 
 LogError
-ÒÒ 
+ÊÊ 
 (
-ÒÒ  
+ÊÊ  
 timeoutException
-ÒÒ  0
+ÊÊ  0
 )
-ÒÒ0 1
+ÊÊ0 1
 ;
-ÒÒ1 2
+ÊÊ1 2
 DialogManager
-ÚÚ 
+ÁÁ 
 .
-ÚÚ #
+ÁÁ #
 ShowErrorMessageAlert
-ÚÚ 3
+ÁÁ 3
 (
-ÚÚ3 4
+ÁÁ3 4
 
 Properties
-ÚÚ4 >
+ÁÁ4 >
 .
-ÚÚ> ?
+ÁÁ> ?
 	Resources
-ÚÚ? H
+ÁÁ? H
 .
-ÚÚH I$
+ÁÁH I$
 dialogTimeOutException
-ÚÚI _
+ÁÁI _
 )
-ÚÚ_ `
+ÁÁ_ `
 ;
-ÚÚ` a
+ÁÁ` a
 }
-ÛÛ 
+ËË 
 catch
-ÛÛ 
+ËË 
 (
-ÛÛ $
+ËË $
 CommunicationException
-ÛÛ +$
+ËË +$
 communicationException
-ÛÛ, B
+ËË, B
 )
-ÛÛB C
+ËËB C
 {
-ÛÛD E
+ËËD E
 logger
-ÙÙ 
+ÈÈ 
 .
-ÙÙ 
+ÈÈ 
 LogError
-ÙÙ 
+ÈÈ 
 (
-ÙÙ  $
+ÈÈ  $
 communicationException
-ÙÙ  6
+ÈÈ  6
 )
-ÙÙ6 7
+ÈÈ6 7
 ;
-ÙÙ7 8
+ÈÈ7 8
 DialogManager
-ıı 
+ÍÍ 
 .
-ıı #
+ÍÍ #
 ShowErrorMessageAlert
-ıı 3
+ÍÍ 3
 (
-ıı3 4
+ÍÍ3 4
 
 Properties
-ıı4 >
+ÍÍ4 >
 .
-ıı> ?
+ÍÍ> ?
 	Resources
-ıı? H
+ÍÍ? H
 .
-ııH I)
+ÍÍH I)
 dialogComunicationException
-ııI d
+ÍÍI d
 )
-ııd e
+ÍÍd e
 ;
-ııe f
+ÍÍe f
 }
-ˆˆ 
+ÎÎ 
+catch
+ÎÎ 
+(
+ÎÎ 
+	Exception
+ÎÎ 
+	exception
+ÎÎ (
+)
+ÎÎ( )
+{
+ÎÎ* +
+logger
+ÏÏ 
+.
+ÏÏ 
+LogError
+ÏÏ 
+(
+ÏÏ  
+	exception
+ÏÏ  )
+)
+ÏÏ) *
+;
+ÏÏ* +
+DialogManager
+ÌÌ 
+.
+ÌÌ #
+ShowErrorMessageAlert
+ÌÌ 3
+(
+ÌÌ3 4
+string
+ÌÌ4 :
+.
+ÌÌ: ;
+Format
+ÌÌ; A
+(
+ÌÌA B
+
+Properties
+ÌÌB L
+.
+ÌÌL M
+	Resources
+ÌÌM V
+.
+ÌÌV W#
+dialogUnexpectedError
+ÌÌW l
+,
+ÌÌl m
+	exception
+ÌÌn w
+.
+ÌÌw x
+Message
+ÌÌx 
+)ÌÌ Ä
+)ÌÌÄ Å
+;ÌÌÅ Ç
 }
-˜˜ 	
+ÓÓ 
+}
+ÔÔ 	
 private
-˘˘ 
+ÒÒ 
 void
-˘˘ !
+ÒÒ !
 BtnResendCode_Click
-˘˘ (
+ÒÒ (
 (
-˘˘( )
+ÒÒ( )
 object
-˘˘) /
+ÒÒ) /
 sender
-˘˘0 6
+ÒÒ0 6
 ,
-˘˘6 7
+ÒÒ6 7
 RoutedEventArgs
-˘˘8 G
+ÒÒ8 G
 e
-˘˘H I
+ÒÒH I
 )
-˘˘I J
+ÒÒI J
 {
-˘˘K L
+ÒÒK L
 LoggerManager
-˙˙ 
+ÚÚ 
 logger
-˙˙  
+ÚÚ  
 =
-˙˙! "
+ÚÚ! "
 new
-˙˙# &
+ÚÚ# &
 LoggerManager
-˙˙' 4
+ÚÚ' 4
 (
-˙˙4 5
+ÚÚ4 5
 this
-˙˙5 9
+ÚÚ5 9
 .
-˙˙9 :
+ÚÚ9 :
 GetType
-˙˙: A
+ÚÚ: A
 (
-˙˙A B
+ÚÚA B
 )
-˙˙B C
+ÚÚB C
 )
-˙˙C D
+ÚÚC D
 ;
-˙˙D E
+ÚÚD E
 if
-¸¸ 
+ÛÛ 
 (
-¸¸ 
+ÛÛ 
 string
-¸¸ 
+ÛÛ 
 .
-¸¸ 
+ÛÛ 
 IsNullOrEmpty
-¸¸ $
+ÛÛ $
 (
-¸¸$ %
-	userEmail
-¸¸% .
+ÛÛ$ %
+
+_userEmail
+ÛÛ% /
 )
-¸¸. /
+ÛÛ/ 0
 )
-¸¸/ 0
+ÛÛ0 1
 {
-¸¸1 2
+ÛÛ2 3
 DialogManager
-˝˝ 
+ÙÙ 
 .
-˝˝ #
+ÙÙ #
 ShowErrorMessageAlert
-˝˝ 3
+ÙÙ 3
 (
-˝˝3 4
+ÙÙ3 4
 
 Properties
-˝˝4 >
+ÙÙ4 >
 .
-˝˝> ?
+ÙÙ> ?
 	Resources
-˝˝? H
+ÙÙ? H
 .
-˝˝H I
+ÙÙH I
 dialogNullEmail
-˝˝I X
+ÙÙI X
 )
-˝˝X Y
+ÙÙX Y
 ;
-˝˝Y Z
+ÙÙY Z
 return
-˛˛ 
+ıı 
 ;
-˛˛ 
+ıı 
 }
-ˇˇ 
+ˆˆ 
 try
-ÅÅ 
+˜˜ 
 {
-ÅÅ 
+˜˜ 
 var
-ÇÇ $
+¯¯ $
 emailVerificationProxy
-ÇÇ *
+¯¯ *
 =
-ÇÇ+ ,
+¯¯+ ,
 new
-ÇÇ- 0"
+¯¯- 0"
 TripasDeGatoServicio
-ÇÇ1 E
+¯¯1 E
 .
-ÇÇE F+
+¯¯E F+
 PasswordRecoveryManagerClient
-ÇÇF c
+¯¯F c
 (
-ÇÇc d
+¯¯c d
 )
-ÇÇd e
+¯¯d e
 ;
-ÇÇe f
+¯¯e f
 int
-ÉÉ 
+˘˘ 
 result
-ÉÉ 
+˘˘ 
 =
-ÉÉ $
+˘˘ $
 emailVerificationProxy
-ÉÉ 3
+˘˘ 3
 .
-ÉÉ3 4
+˘˘3 4
 SendRecoveryCode
-ÉÉ4 D
+˘˘4 D
 (
-ÉÉD E
-	userEmail
-ÉÉE N
+˘˘D E
+
+_userEmail
+˘˘E O
 )
-ÉÉN O
+˘˘O P
 ;
-ÉÉO P
+˘˘P Q
 if
-ÖÖ 
+˙˙ 
 (
-ÖÖ 
+˙˙ 
 result
-ÖÖ 
+˙˙ 
 ==
-ÖÖ 
+˙˙ 
 	Constants
-ÖÖ '
+˙˙ '
 .
-ÖÖ' (
+˙˙' (
 SUCCES_OPERATION
-ÖÖ( 8
+˙˙( 8
 )
-ÖÖ8 9
+˙˙8 9
 {
-ÖÖ: ;
+˙˙: ;
 DialogManager
-ÜÜ !
+˚˚ !
 .
-ÜÜ! "%
+˚˚! "%
 ShowSuccessMessageAlert
-ÜÜ" 9
+˚˚" 9
 (
-ÜÜ9 :
+˚˚9 :
 
 Properties
-ÜÜ: D
+˚˚: D
 .
-ÜÜD E
+˚˚D E
 	Resources
-ÜÜE N
+˚˚E N
 .
-ÜÜN O&
+˚˚N O&
 dialogRecoveryCodeResent
-ÜÜO g
+˚˚O g
 )
-ÜÜg h
+˚˚g h
 ;
-ÜÜh i
+˚˚h i
 }
-áá 
+¸¸ 
 else
-áá 
+¸¸ 
 {
-áá 
+¸¸ 
 DialogManager
-àà !
+˝˝ !
 .
-àà! "#
+˝˝! "#
 ShowErrorMessageAlert
-àà" 7
+˝˝" 7
 (
-àà7 8
+˝˝7 8
 
 Properties
-àà8 B
+˝˝8 B
 .
-ààB C
+˝˝B C
 	Resources
-ààC L
+˝˝C L
 .
-ààL M.
+˝˝L M.
  dialogErrorResendingRecoveryCode
-ààM m
+˝˝M m
 )
-ààm n
+˝˝m n
 ;
-ààn o
+˝˝n o
 }
-ââ 
+˛˛ 
 }
-ää 
+ˇˇ 
 catch
-ää 
+ˇˇ 
 (
-ää '
+ˇˇ '
 EndpointNotFoundException
-ää .'
+ˇˇ .'
 endpointNotFoundException
-ää/ H
+ˇˇ/ H
 )
-ääH I
+ˇˇH I
 {
-ääJ K
+ˇˇJ K
 logger
-ãã 
+ÄÄ 
 .
-ãã 
+ÄÄ 
 LogError
-ãã 
+ÄÄ 
 (
-ãã  '
+ÄÄ  '
 endpointNotFoundException
-ãã  9
+ÄÄ  9
 )
-ãã9 :
+ÄÄ9 :
 ;
-ãã: ;
+ÄÄ: ;
 DialogManager
-åå 
+ÅÅ 
 .
-åå #
+ÅÅ #
 ShowErrorMessageAlert
-åå 3
+ÅÅ 3
 (
-åå3 4
+ÅÅ3 4
 
 Properties
-åå4 >
+ÅÅ4 >
 .
-åå> ?
+ÅÅ> ?
 	Resources
-åå? H
+ÅÅ? H
 .
-ååH I%
+ÅÅH I%
 dialogEndPointException
-ååI `
+ÅÅI `
 )
-åå` a
+ÅÅ` a
 ;
-ååa b
+ÅÅa b
 }
-çç 
+ÇÇ 
 catch
-çç 
+ÇÇ 
 (
-çç 
+ÇÇ 
 TimeoutException
-çç %
+ÇÇ %
 timeoutException
-çç& 6
+ÇÇ& 6
 )
-çç6 7
+ÇÇ6 7
 {
-çç8 9
+ÇÇ8 9
 logger
-éé 
+ÉÉ 
 .
-éé 
+ÉÉ 
 LogError
-éé 
+ÉÉ 
 (
-éé  
+ÉÉ  
 timeoutException
-éé  0
+ÉÉ  0
 )
-éé0 1
+ÉÉ0 1
 ;
-éé1 2
+ÉÉ1 2
 DialogManager
-èè 
+ÑÑ 
 .
-èè #
+ÑÑ #
 ShowErrorMessageAlert
-èè 3
+ÑÑ 3
 (
-èè3 4
+ÑÑ3 4
 
 Properties
-èè4 >
+ÑÑ4 >
 .
-èè> ?
+ÑÑ> ?
 	Resources
-èè? H
+ÑÑ? H
 .
-èèH I$
+ÑÑH I$
 dialogTimeOutException
-èèI _
+ÑÑI _
 )
-èè_ `
+ÑÑ_ `
 ;
-èè` a
+ÑÑ` a
 }
-êê 
+ÖÖ 
 catch
-êê 
+ÖÖ 
 (
-êê $
+ÖÖ $
 CommunicationException
-êê +$
+ÖÖ +$
 communicationException
-êê, B
+ÖÖ, B
 )
-êêB C
+ÖÖB C
 {
-êêD E
+ÖÖD E
 logger
-ëë 
+ÜÜ 
 .
-ëë 
+ÜÜ 
 LogError
-ëë 
+ÜÜ 
 (
-ëë  $
+ÜÜ  $
 communicationException
-ëë  6
+ÜÜ  6
 )
-ëë6 7
+ÜÜ6 7
 ;
-ëë7 8
+ÜÜ7 8
 DialogManager
-íí 
+áá 
 .
-íí #
+áá #
 ShowErrorMessageAlert
-íí 3
+áá 3
 (
-íí3 4
+áá3 4
 
 Properties
-íí4 >
+áá4 >
 .
-íí> ?
+áá> ?
 	Resources
-íí? H
+áá? H
 .
-ííH I)
+ááH I)
 dialogComunicationException
-ííI d
+ááI d
 )
-ííd e
+áád e
 ;
-ííe f
+ááe f
 }
-ìì 
+àà 
+catch
+àà 
+(
+àà 
+	Exception
+àà 
+	exception
+àà (
+)
+àà( )
+{
+àà* +
+logger
+ââ 
+.
+ââ 
+LogError
+ââ 
+(
+ââ  
+	exception
+ââ  )
+)
+ââ) *
+;
+ââ* +
+DialogManager
+ää 
+.
+ää #
+ShowErrorMessageAlert
+ää 3
+(
+ää3 4
+string
+ää4 :
+.
+ää: ;
+Format
+ää; A
+(
+ääA B
+
+Properties
+ääB L
+.
+ääL M
+	Resources
+ääM V
+.
+ääV W#
+dialogUnexpectedError
+ääW l
+,
+ääl m
+	exception
+ään w
+.
+ääw x
+Message
+ääx 
+)ää Ä
+)ääÄ Å
+;ääÅ Ç
 }
-îî 	
+ãã 
+}
+åå 	
 private
-ññ 
+éé 
 void
-ññ #
+éé #
 BtnBackValidate_Click
-ññ *
+éé *
 (
-ññ* +
+éé* +
 object
-ññ+ 1
+éé+ 1
 sender
-ññ2 8
+éé2 8
 ,
-ññ8 9
+éé8 9
 RoutedEventArgs
-ññ: I
+éé: I
 e
-ññJ K
+ééJ K
 )
-ññK L
+ééK L
 {
-ññM N
-recoveryGrid
-óó 
+ééM N
+gridRecovery
+èè 
 .
-óó 
+èè 
 
 Visibility
-óó #
+èè #
 =
-óó$ %
+èè$ %
 
 Visibility
-óó& 0
+èè& 0
 .
-óó0 1
+èè0 1
 	Collapsed
-óó1 :
+èè1 :
 ;
-óó: ;
+èè: ;
 txtEmail
-òò 
+êê 
 .
-òò 
+êê 
 Clear
-òò 
+êê 
 (
-òò 
+êê 
 )
-òò 
+êê 
 ;
-òò 
+êê 
 txtPassword
-ôô 
+ëë 
 .
-ôô 
+ëë 
 Clear
-ôô 
+ëë 
 (
-ôô 
+ëë 
 )
-ôô 
+ëë 
 ;
-ôô   
+ëë   
 txtPasswordVisible
-öö 
+íí 
 .
-öö 
+íí 
 Clear
-öö $
+íí $
 (
-öö$ %
+íí$ %
 )
-öö% &
+íí% &
 ;
-öö& '
+íí& '
 }
-õõ 	
+ìì 	
 private
-ùù 
+ïï 
 void
-ùù #
+ïï #
 BtnSavePassword_Click
-ùù *
+ïï *
 (
-ùù* +
+ïï* +
 object
-ùù+ 1
+ïï+ 1
 sender
-ùù2 8
+ïï2 8
 ,
-ùù8 9
+ïï8 9
 RoutedEventArgs
-ùù: I
+ïï: I
 e
-ùùJ K
+ïïJ K
 )
-ùùK L
+ïïK L
 {
-ùùM N
+ïïM N
 LoggerManager
-ûû 
+ññ 
 logger
-ûû  
+ññ  
 =
-ûû! "
+ññ! "
 new
-ûû# &
+ññ# &
 LoggerManager
-ûû' 4
+ññ' 4
 (
-ûû4 5
+ññ4 5
 this
-ûû5 9
+ññ5 9
 .
-ûû9 :
+ññ9 :
 GetType
-ûû: A
+ññ: A
 (
-ûûA B
+ññA B
 )
-ûûB C
+ññB C
 )
-ûûC D
+ññC D
 ;
-ûûD E
+ññD E
 string
-†† 
+óó 
 newPassword
-†† 
+óó 
 =
-††  
+óó  
 txtNewPassword
-††! /
+óó! /
 .
-††/ 0
+óó/ 0
 Password
-††0 8
+óó0 8
 .
-††8 9
+óó8 9
 Trim
-††9 =
+óó9 =
 (
-††= >
+óó= >
 )
-††> ?
+óó> ?
 ;
-††? @
+óó? @
 string
-°° 
+òò 
 confirmPassword
-°° "
+òò "
 =
-°°# $#
+òò# $#
 txtNewPasswordConfirm
-°°% :
+òò% :
 .
-°°: ;
+òò: ;
 Password
-°°; C
+òò; C
 .
-°°C D
+òòC D
 Trim
-°°D H
+òòD H
 (
-°°H I
+òòH I
 )
-°°I J
+òòI J
 ;
-°°J K
+òòJ K
 string
-¢¢ 
+ôô 
 email
-¢¢ 
+ôô 
 =
-¢¢ 
+ôô 
 txtEmail
-¢¢ #
+ôô #
 .
-¢¢# $
+ôô# $
 Text
-¢¢$ (
+ôô$ (
 .
-¢¢( )
+ôô( )
 Trim
-¢¢) -
+ôô) -
 (
-¢¢- .
+ôô- .
 )
-¢¢. /
+ôô. /
 ;
-¢¢/ 0
+ôô/ 0
 if
-§§ 
+öö 
 (
-§§ 
+öö 
 newPassword
-§§ 
+öö 
 !=
-§§ 
+öö 
 confirmPassword
-§§ .
+öö .
 )
-§§. /
+öö. /
 {
-§§0 1
+öö0 1
 DialogManager
-•• 
+õõ 
 .
-•• #
+õõ #
 ShowErrorMessageAlert
-•• 3
+õõ 3
 (
-••3 4
+õõ3 4
 
 Properties
-••4 >
+õõ4 >
 .
-••> ?
+õõ> ?
 	Resources
-••? H
+õõ? H
 .
-••H I*
+õõH I*
 dialogMissmatchesCredentials
-••I e
+õõI e
 )
-••e f
+õõe f
 ;
-••f g
+õõf g
 return
-¶¶ 
+úú 
 ;
-¶¶ 
+úú 
 }
-ßß 
+ùù 
 if
-©© 
+ûû 
 (
-©© 
+ûû 
 !
-©© 
+ûû 
 IsValidPassword
-©©  
+ûû  
 (
-©©  !
+ûû  !
 newPassword
-©©! ,
+ûû! ,
 )
-©©, -
+ûû, -
 )
-©©- .
+ûû- .
 {
-©©/ 0
+ûû/ 0
 DialogManager
-™™ 
+üü 
 .
-™™ #
+üü #
 ShowErrorMessageAlert
-™™ 3
+üü 3
 (
-™™3 4
+üü3 4
 
 Properties
-™™4 >
+üü4 >
 .
-™™> ?
+üü> ?
 	Resources
-™™? H
+üü? H
 .
-™™H I#
+üüH I#
 dialogInvalidPassword
-™™I ^
+üüI ^
 )
-™™^ _
+üü^ _
 ;
-™™_ `
+üü_ `
 return
-´´ 
+†† 
 ;
-´´ 
+†† 
 }
-¨¨ 
+°° 
 try
-ÆÆ 
+¢¢ 
 {
-ÆÆ &
+¢¢ &
 IPasswordRecoveryManager
-ØØ (
+££ (
 passwordRecovery
-ØØ) 9
+££) 9
 =
-ØØ: ;
+££: ;
 new
-ØØ< ?+
+££< ?+
 PasswordRecoveryManagerClient
-ØØ@ ]
+££@ ]
 (
-ØØ] ^
+££] ^
 )
-ØØ^ _
+££^ _
 ;
-ØØ_ `
+££_ `
 int
-∞∞ 
+§§ 
 result
-∞∞ 
+§§ 
 =
-∞∞ 
+§§ 
 passwordRecovery
-∞∞ -
+§§ -
 .
-∞∞- .
+§§- .
 UpdatePassword
-∞∞. <
+§§. <
 (
-∞∞< =
-	userEmail
-∞∞= F
+§§< =
+
+_userEmail
+§§= G
 ,
-∞∞F G
+§§G H
 Hasher
-∞∞H N
+§§I O
 .
-∞∞N O
+§§O P
 HashToSHA256
-∞∞O [
+§§P \
 (
-∞∞[ \
+§§\ ]
 newPassword
-∞∞\ g
+§§] h
 )
-∞∞g h
+§§h i
 )
-∞∞h i
+§§i j
 ;
-∞∞i j
+§§j k
 if
-≤≤ 
+•• 
 (
-≤≤ 
+•• 
 result
-≤≤ 
+•• 
 ==
-≤≤ 
+•• 
 	Constants
-≤≤ '
+•• '
 .
-≤≤' (
+••' (
 SUCCES_OPERATION
-≤≤( 8
+••( 8
 )
-≤≤8 9
+••8 9
 {
-≤≤: ;
+••: ;
 DialogManager
-≥≥ !
+¶¶ !
 .
-≥≥! "%
+¶¶! "%
 ShowSuccessMessageAlert
-≥≥" 9
+¶¶" 9
 (
-≥≥9 :
+¶¶9 :
 
 Properties
-≥≥: D
+¶¶: D
 .
-≥≥D E
+¶¶D E
 	Resources
-≥≥E N
+¶¶E N
 .
-≥≥N O/
+¶¶N O/
 !dialogPasswordUpdatedSuccessfully
-≥≥O p
+¶¶O p
 )
-≥≥p q
+¶¶p q
 ;
-≥≥q r
+¶¶q r
 txtNewPassword
-¥¥ "
+ßß "
 .
-¥¥" #
+ßß" #
 Clear
-¥¥# (
+ßß# (
 (
-¥¥( )
+ßß( )
 )
-¥¥) *
+ßß) *
 ;
-¥¥* +#
+ßß* +#
 txtNewPasswordConfirm
-µµ )
+®® )
 .
-µµ) *
+®®) *
 Clear
-µµ* /
+®®* /
 (
-µµ/ 0
+®®/ 0
 )
-µµ0 1
+®®0 1
 ;
-µµ1 2"
-recoveryPasswordGrid
-∂∂ (
+®®1 2"
+gridRecoveryPassword
+©© (
 .
-∂∂( )
+©©( )
 
 Visibility
-∂∂) 3
+©©) 3
 =
-∂∂4 5
+©©4 5
 
 Visibility
-∂∂6 @
+©©6 @
 .
-∂∂@ A
+©©@ A
 	Collapsed
-∂∂A J
+©©A J
 ;
-∂∂J K
+©©J K
 }
-∑∑ 
+™™ 
 else
-∑∑ 
+™™ 
 {
-∑∑ 
+™™ 
 DialogManager
-∏∏ !
+´´ !
 .
-∏∏! "#
+´´! "#
 ShowErrorMessageAlert
-∏∏" 7
+´´" 7
 (
-∏∏7 8
+´´7 8
 
 Properties
-∏∏8 B
+´´8 B
 .
-∏∏B C
+´´B C
 	Resources
-∏∏C L
+´´C L
 .
-∏∏L M)
+´´L M)
 dialogErrorUpdatingPassowrd
-∏∏M h
+´´M h
 )
-∏∏h i
+´´h i
 ;
-∏∏i j
+´´i j
 }
-ππ 
+¨¨ 
 }
-∫∫ 
+≠≠ 
 catch
-∫∫ 
+≠≠ 
 (
-∫∫ '
+≠≠ '
 EndpointNotFoundException
-∫∫ .'
+≠≠ .'
 endpointNotFoundException
-∫∫/ H
+≠≠/ H
 )
-∫∫H I
+≠≠H I
 {
-∫∫J K
+≠≠J K
 logger
-ªª 
+ÆÆ 
 .
-ªª 
+ÆÆ 
 LogError
-ªª 
+ÆÆ 
 (
-ªª  '
+ÆÆ  '
 endpointNotFoundException
-ªª  9
+ÆÆ  9
 )
-ªª9 :
+ÆÆ9 :
 ;
-ªª: ;
+ÆÆ: ;
 DialogManager
-ºº 
+ØØ 
 .
-ºº #
+ØØ #
 ShowErrorMessageAlert
-ºº 3
+ØØ 3
 (
-ºº3 4
+ØØ3 4
 
 Properties
-ºº4 >
+ØØ4 >
 .
-ºº> ?
+ØØ> ?
 	Resources
-ºº? H
+ØØ? H
 .
-ººH I%
+ØØH I%
 dialogEndPointException
-ººI `
+ØØI `
 )
-ºº` a
+ØØ` a
 ;
-ººa b
+ØØa b
 }
-ΩΩ 
+∞∞ 
 catch
-ΩΩ 
+∞∞ 
 (
-ΩΩ 
+∞∞ 
 TimeoutException
-ΩΩ %
+∞∞ %
 timeoutException
-ΩΩ& 6
+∞∞& 6
 )
-ΩΩ6 7
+∞∞6 7
 {
-ΩΩ8 9
+∞∞8 9
 logger
-ææ 
+±± 
 .
-ææ 
+±± 
 LogError
-ææ 
+±± 
 (
-ææ  
+±±  
 timeoutException
-ææ  0
+±±  0
 )
-ææ0 1
+±±0 1
 ;
-ææ1 2
+±±1 2
 DialogManager
-øø 
+≤≤ 
 .
-øø #
+≤≤ #
 ShowErrorMessageAlert
-øø 3
+≤≤ 3
 (
-øø3 4
+≤≤3 4
 
 Properties
-øø4 >
+≤≤4 >
 .
-øø> ?
+≤≤> ?
 	Resources
-øø? H
+≤≤? H
 .
-øøH I$
+≤≤H I$
 dialogTimeOutException
-øøI _
+≤≤I _
 )
-øø_ `
+≤≤_ `
 ;
-øø` a
+≤≤` a
 }
-¿¿ 
+≥≥ 
 catch
-¿¿ 
+≥≥ 
 (
-¿¿ $
+≥≥ $
 CommunicationException
-¿¿ +$
+≥≥ +$
 communicationException
-¿¿, B
+≥≥, B
 )
-¿¿B C
+≥≥B C
 {
-¿¿D E
+≥≥D E
 logger
-¡¡ 
+¥¥ 
 .
-¡¡ 
+¥¥ 
 LogError
-¡¡ 
+¥¥ 
 (
-¡¡  $
+¥¥  $
 communicationException
-¡¡  6
+¥¥  6
 )
-¡¡6 7
+¥¥6 7
 ;
-¡¡7 8
+¥¥7 8
 DialogManager
-¬¬ 
+µµ 
 .
-¬¬ #
+µµ #
 ShowErrorMessageAlert
-¬¬ 3
+µµ 3
 (
-¬¬3 4
+µµ3 4
 
 Properties
-¬¬4 >
+µµ4 >
 .
-¬¬> ?
+µµ> ?
 	Resources
-¬¬? H
+µµ? H
 .
-¬¬H I)
+µµH I)
 dialogComunicationException
-¬¬I d
+µµI d
 )
-¬¬d e
+µµd e
 ;
-¬¬e f
+µµe f
 }
-√√ 
-}
-ƒƒ 	
-private
-∆∆ 
-void
-∆∆ +
-TxtValidationCode_TextChanged
-∆∆ 2
+∂∂ 
+catch
+∂∂ 
 (
-∆∆2 3
-object
-∆∆3 9
-sender
-∆∆: @
-,
-∆∆@ A"
-TextChangedEventArgs
-∆∆B V
-e
-∆∆W X
+∂∂ 
+	Exception
+∂∂ 
+	exception
+∂∂ (
 )
-∆∆X Y
+∂∂( )
 {
-∆∆Z [
-TextBox
-«« 
-currentTextBox
-«« "
-=
-««# $
-sender
-««% +
-as
-««, .
-TextBox
-««/ 6
+∂∂* +
+logger
+∑∑ 
+.
+∑∑ 
+LogError
+∑∑ 
+(
+∑∑  
+	exception
+∑∑  )
+)
+∑∑) *
 ;
-««6 7
-if
-»» 
-(
-»» 
-currentTextBox
-»» 
+∑∑* +
+DialogManager
+∏∏ 
 .
-»» 
-Text
-»» #
-.
-»»# $
-Length
-»»$ *
-==
-»»+ -
-$num
-»». /
-)
-»»/ 0
-{
-»»1 2
-if
-…… 
+∏∏ #
+ShowErrorMessageAlert
+∏∏ 3
 (
-…… 
-currentTextBox
-…… "
-==
-……# % 
-txtValidationCode1
-……& 8
-)
-……8 9 
-txtValidationCode2
-   &
-.
-  & '
-Focus
-  ' ,
-(
-  , -
-)
-  - .
-;
-  . /
-else
-ÀÀ 
-if
-ÀÀ 
-(
-ÀÀ 
-currentTextBox
-ÀÀ '
-==
-ÀÀ( * 
-txtValidationCode2
-ÀÀ+ =
-)
-ÀÀ= > 
-txtValidationCode3
-ÃÃ &
-.
-ÃÃ& '
-Focus
-ÃÃ' ,
-(
-ÃÃ, -
-)
-ÃÃ- .
-;
-ÃÃ. /
-else
-ÕÕ 
-if
-ÕÕ 
-(
-ÕÕ 
-currentTextBox
-ÕÕ '
-==
-ÕÕ( * 
-txtValidationCode3
-ÕÕ+ =
-)
-ÕÕ= > 
-txtValidationCode4
-ŒŒ &
-.
-ŒŒ& '
-Focus
-ŒŒ' ,
-(
-ŒŒ, -
-)
-ŒŒ- .
-;
-ŒŒ. /
-else
-œœ 
-if
-œœ 
-(
-œœ 
-currentTextBox
-œœ '
-==
-œœ( * 
-txtValidationCode4
-œœ+ =
-)
-œœ= > 
-txtValidationCode5
-–– &
-.
-––& '
-Focus
-––' ,
-(
-––, -
-)
-––- .
-;
-––. /
-else
-—— 
-if
-—— 
-(
-—— 
-currentTextBox
-—— '
-==
-——( * 
-txtValidationCode5
-——+ =
-)
-——= > 
-txtValidationCode6
-““ &
-.
-““& '
-Focus
-““' ,
-(
-““, -
-)
-““- .
-;
-““. /
-}
-”” 
-}
-‘‘ 	
-private
-÷÷ 
-bool
-÷÷ 
-IsValidPassword
-÷÷ $
-(
-÷÷$ %
+∏∏3 4
 string
-÷÷% +
-password
-÷÷, 4
-)
-÷÷4 5
-{
-÷÷6 7
-bool
-◊◊ 
-isValid
-◊◊ 
-=
-◊◊ 
-true
-◊◊ 
-;
-◊◊  
-if
-ÿÿ 
-(
-ÿÿ 
-!
-ÿÿ 
-	Validador
-ÿÿ 
+∏∏4 :
 .
-ÿÿ 
-ValidatePassword
-ÿÿ +
+∏∏: ;
+Format
+∏∏; A
 (
-ÿÿ+ ,
-password
-ÿÿ, 4
-)
-ÿÿ4 5
-)
-ÿÿ5 6
-{
-ÿÿ7 8
-isValid
-ŸŸ 
-=
-ŸŸ 
-false
-ŸŸ 
-;
-ŸŸ  
-}
-⁄⁄ 
-return
-€€ 
-isValid
-€€ 
-;
-€€ 
-}
-‹‹ 	
-private
-ﬁﬁ 
-void
-ﬁﬁ *
-BtnToggleNewPassword_Checked
-ﬁﬁ 1
-(
-ﬁﬁ1 2
-object
-ﬁﬁ2 8
-sender
-ﬁﬁ9 ?
+∏∏A B
+
+Properties
+∏∏B L
+.
+∏∏L M
+	Resources
+∏∏M V
+.
+∏∏V W#
+dialogUnexpectedError
+∏∏W l
 ,
-ﬁﬁ? @
-RoutedEventArgs
-ﬁﬁA P
+∏∏l m
+	exception
+∏∏n w
+.
+∏∏w x
+Message
+∏∏x 
+)∏∏ Ä
+)∏∏Ä Å
+;∏∏Å Ç
+}
+ππ 
+}
+∫∫ 	
+private
+ºº 
+void
+ºº +
+TxtValidationCode_TextChanged
+ºº 2
+(
+ºº2 3
+object
+ºº3 9
+sender
+ºº: @
+,
+ºº@ A"
+TextChangedEventArgs
+ººB V
 e
-ﬁﬁQ R
+ººW X
 )
-ﬁﬁR S
+ººX Y
 {
-ﬁﬁT U#
-txtNewPasswordVisible
-ﬂﬂ !
-.
-ﬂﬂ! "
-Text
-ﬂﬂ" &
+ººZ [
+TextBox
+ΩΩ 
+currentTextBox
+ΩΩ "
 =
-ﬂﬂ' (
-txtNewPassword
-ﬂﬂ) 7
-.
-ﬂﬂ7 8
-Password
-ﬂﬂ8 @
+ΩΩ# $
+sender
+ΩΩ% +
+as
+ΩΩ, .
+TextBox
+ΩΩ/ 6
 ;
-ﬂﬂ@ A#
+ΩΩ6 7
+if
+ææ 
+(
+ææ 
+currentTextBox
+ææ 
+.
+ææ 
+Text
+ææ #
+.
+ææ# $
+Length
+ææ$ *
+==
+ææ+ -
+$num
+ææ. /
+)
+ææ/ 0
+{
+ææ1 2
+if
+øø 
+(
+øø 
+currentTextBox
+øø "
+==
+øø# % 
+txtValidationCode1
+øø& 8
+)
+øø8 9 
+txtValidationCode2
+¿¿ &
+.
+¿¿& '
+Focus
+¿¿' ,
+(
+¿¿, -
+)
+¿¿- .
+;
+¿¿. /
+else
+¡¡ 
+if
+¡¡ 
+(
+¡¡ 
+currentTextBox
+¡¡ '
+==
+¡¡( * 
+txtValidationCode2
+¡¡+ =
+)
+¡¡= > 
+txtValidationCode3
+¬¬ &
+.
+¬¬& '
+Focus
+¬¬' ,
+(
+¬¬, -
+)
+¬¬- .
+;
+¬¬. /
+else
+√√ 
+if
+√√ 
+(
+√√ 
+currentTextBox
+√√ '
+==
+√√( * 
+txtValidationCode3
+√√+ =
+)
+√√= > 
+txtValidationCode4
+ƒƒ &
+.
+ƒƒ& '
+Focus
+ƒƒ' ,
+(
+ƒƒ, -
+)
+ƒƒ- .
+;
+ƒƒ. /
+else
+≈≈ 
+if
+≈≈ 
+(
+≈≈ 
+currentTextBox
+≈≈ '
+==
+≈≈( * 
+txtValidationCode4
+≈≈+ =
+)
+≈≈= > 
+txtValidationCode5
+∆∆ &
+.
+∆∆& '
+Focus
+∆∆' ,
+(
+∆∆, -
+)
+∆∆- .
+;
+∆∆. /
+else
+«« 
+if
+«« 
+(
+«« 
+currentTextBox
+«« '
+==
+««( * 
+txtValidationCode5
+««+ =
+)
+««= > 
+txtValidationCode6
+»» &
+.
+»»& '
+Focus
+»»' ,
+(
+»», -
+)
+»»- .
+;
+»». /
+}
+…… 
+}
+   	
+private
+ÃÃ 
+bool
+ÃÃ 
+IsValidPassword
+ÃÃ $
+(
+ÃÃ$ %
+string
+ÃÃ% +
+password
+ÃÃ, 4
+)
+ÃÃ4 5
+{
+ÃÃ6 7
+bool
+ÕÕ 
+isValid
+ÕÕ 
+=
+ÕÕ 
+true
+ÕÕ 
+;
+ÕÕ  
+if
+ŒŒ 
+(
+ŒŒ 
+!
+ŒŒ 
+	Validador
+ŒŒ 
+.
+ŒŒ 
+ValidatePassword
+ŒŒ +
+(
+ŒŒ+ ,
+password
+ŒŒ, 4
+)
+ŒŒ4 5
+)
+ŒŒ5 6
+{
+ŒŒ7 8
+isValid
+œœ 
+=
+œœ 
+false
+œœ 
+;
+œœ  
+}
+–– 
+return
+—— 
+isValid
+—— 
+;
+—— 
+}
+““ 	
+private
+‘‘ 
+void
+‘‘ *
+BtnToggleNewPassword_Checked
+‘‘ 1
+(
+‘‘1 2
+object
+‘‘2 8
+sender
+‘‘9 ?
+,
+‘‘? @
+RoutedEventArgs
+‘‘A P
+e
+‘‘Q R
+)
+‘‘R S
+{
+‘‘T U#
+txtNewPasswordVisible
+’’ !
+.
+’’! "
+Text
+’’" &
+=
+’’' (
+txtNewPassword
+’’) 7
+.
+’’7 8
+Password
+’’8 @
+;
+’’@ A#
+txtNewPasswordVisible
+÷÷ !
+.
+÷÷! "
+
+Visibility
+÷÷" ,
+=
+÷÷- .
+
+Visibility
+÷÷/ 9
+.
+÷÷9 :
+Visible
+÷÷: A
+;
+÷÷A B
+txtNewPassword
+◊◊ 
+.
+◊◊ 
+
+Visibility
+◊◊ %
+=
+◊◊& '
+
+Visibility
+◊◊( 2
+.
+◊◊2 3
+	Collapsed
+◊◊3 <
+;
+◊◊< =*
+txtNewPasswordConfirmVisible
+ÿÿ (
+.
+ÿÿ( )
+Text
+ÿÿ) -
+=
+ÿÿ. /#
+txtNewPasswordConfirm
+ÿÿ0 E
+.
+ÿÿE F
+Password
+ÿÿF N
+;
+ÿÿN O*
+txtNewPasswordConfirmVisible
+ŸŸ (
+.
+ŸŸ( )
+
+Visibility
+ŸŸ) 3
+=
+ŸŸ4 5
+
+Visibility
+ŸŸ6 @
+.
+ŸŸ@ A
+Visible
+ŸŸA H
+;
+ŸŸH I#
+txtNewPasswordConfirm
+⁄⁄ !
+.
+⁄⁄! "
+
+Visibility
+⁄⁄" ,
+=
+⁄⁄- .
+
+Visibility
+⁄⁄/ 9
+.
+⁄⁄9 :
+	Collapsed
+⁄⁄: C
+;
+⁄⁄C D
+}
+€€ 	
+private
+›› 
+void
+›› ,
+BtnToggleNewPassword_Unchecked
+›› 3
+(
+››3 4
+object
+››4 :
+sender
+››; A
+,
+››A B
+RoutedEventArgs
+››C R
+e
+››S T
+)
+››T U
+{
+››V W
+txtNewPassword
+ﬁﬁ 
+.
+ﬁﬁ 
+Password
+ﬁﬁ #
+=
+ﬁﬁ$ %#
+txtNewPasswordVisible
+ﬁﬁ& ;
+.
+ﬁﬁ; <
+Text
+ﬁﬁ< @
+;
+ﬁﬁ@ A
+txtNewPassword
+ﬂﬂ 
+.
+ﬂﬂ 
+
+Visibility
+ﬂﬂ %
+=
+ﬂﬂ& '
+
+Visibility
+ﬂﬂ( 2
+.
+ﬂﬂ2 3
+Visible
+ﬂﬂ3 :
+;
+ﬂﬂ: ;#
 txtNewPasswordVisible
 ‡‡ !
 .
@@ -7364,1232 +5329,1374 @@ Visibility
 Visibility
 ‡‡/ 9
 .
-‡‡9 :
-Visible
-‡‡: A
-;
-‡‡A B
-txtNewPassword
-·· 
-.
-·· 
-
-Visibility
-·· %
-=
-··& '
-
-Visibility
-··( 2
-.
-··2 3
+‡‡9 :
 	Collapsed
-··3 <
+‡‡: C
 ;
-··< =*
+‡‡C D#
+txtNewPasswordConfirm
+·· !
+.
+··! "
+Password
+··" *
+=
+··+ ,*
+txtNewPasswordConfirmVisible
+··- I
+.
+··I J
+Text
+··J N
+;
+··N O#
+txtNewPasswordConfirm
+‚‚ !
+.
+‚‚! "
+
+Visibility
+‚‚" ,
+=
+‚‚- .
+
+Visibility
+‚‚/ 9
+.
+‚‚9 :
+Visible
+‚‚: A
+;
+‚‚A B*
 txtNewPasswordConfirmVisible
 „„ (
 .
-„„( )
-Text
-„„) -
+„„( )
+
+Visibility
+„„) 3
 =
-„„. /#
-txtNewPasswordConfirm
-„„0 E
-.
-„„E F
-Password
-„„F N
-;
-„„N O*
-txtNewPasswordConfirmVisible
-‰‰ (
-.
-‰‰( )
+„„4 5
 
 Visibility
-‰‰) 3
-=
-‰‰4 5
-
-Visibility
-‰‰6 @
+„„6 @
 .
-‰‰@ A
-Visible
-‰‰A H
-;
-‰‰H I#
-txtNewPasswordConfirm
-ÂÂ !
-.
-ÂÂ! "
-
-Visibility
-ÂÂ" ,
-=
-ÂÂ- .
-
-Visibility
-ÂÂ/ 9
-.
-ÂÂ9 :
+„„@ A
 	Collapsed
-ÂÂ: C
+„„A J
 ;
-ÂÂC D
+„„J K
 }
-ÊÊ 	
+‰‰ 	
 private
-ËË 
+ÊÊ 
 void
-ËË ,
-BtnToggleNewPassword_Unchecked
-ËË 3
-(
-ËË3 4
-object
-ËË4 :
-sender
-ËË; A
-,
-ËËA B
-RoutedEventArgs
-ËËC R
-e
-ËËS T
-)
-ËËT U
-{
-ËËV W
-txtNewPassword
-ÈÈ 
-.
-ÈÈ 
-Password
-ÈÈ #
-=
-ÈÈ$ %#
-txtNewPasswordVisible
-ÈÈ& ;
-.
-ÈÈ; <
-Text
-ÈÈ< @
-;
-ÈÈ@ A
-txtNewPassword
-ÍÍ 
-.
-ÍÍ 
-
-Visibility
-ÍÍ %
-=
-ÍÍ& '
-
-Visibility
-ÍÍ( 2
-.
-ÍÍ2 3
-Visible
-ÍÍ3 :
-;
-ÍÍ: ;#
-txtNewPasswordVisible
-ÎÎ !
-.
-ÎÎ! "
-
-Visibility
-ÎÎ" ,
-=
-ÎÎ- .
-
-Visibility
-ÎÎ/ 9
-.
-ÎÎ9 :
-	Collapsed
-ÎÎ: C
-;
-ÎÎC D#
-txtNewPasswordConfirm
-ÌÌ !
-.
-ÌÌ! "
-Password
-ÌÌ" *
-=
-ÌÌ+ ,*
-txtNewPasswordConfirmVisible
-ÌÌ- I
-.
-ÌÌI J
-Text
-ÌÌJ N
-;
-ÌÌN O#
-txtNewPasswordConfirm
-ÓÓ !
-.
-ÓÓ! "
-
-Visibility
-ÓÓ" ,
-=
-ÓÓ- .
-
-Visibility
-ÓÓ/ 9
-.
-ÓÓ9 :
-Visible
-ÓÓ: A
-;
-ÓÓA B*
-txtNewPasswordConfirmVisible
-ÔÔ (
-.
-ÔÔ( )
-
-Visibility
-ÔÔ) 3
-=
-ÔÔ4 5
-
-Visibility
-ÔÔ6 @
-.
-ÔÔ@ A
-	Collapsed
-ÔÔA J
-;
-ÔÔJ K
-}
- 	
-private
-ÚÚ 
-void
-ÚÚ #
+ÊÊ #
 BtnBackRecovery_Click
-ÚÚ *
+ÊÊ *
 (
-ÚÚ* +
+ÊÊ* +
 object
-ÚÚ+ 1
+ÊÊ+ 1
 sender
-ÚÚ2 8
+ÊÊ2 8
 ,
-ÚÚ8 9
+ÊÊ8 9
 RoutedEventArgs
-ÚÚ: I
+ÊÊ: I
 e
-ÚÚJ K
+ÊÊJ K
 )
-ÚÚK L
+ÊÊK L
 {
-ÚÚM N"
-recoveryPasswordGrid
-ÛÛ  
+ÊÊM N"
+gridRecoveryPassword
+ÁÁ  
 .
-ÛÛ  !
+ÁÁ  !
 
 Visibility
-ÛÛ! +
+ÁÁ! +
 =
-ÛÛ, -
+ÁÁ, -
 
 Visibility
-ÛÛ. 8
+ÁÁ. 8
 .
-ÛÛ8 9
+ÁÁ8 9
 	Collapsed
-ÛÛ9 B
+ÁÁ9 B
 ;
-ÛÛB C
+ÁÁB C
 txtEmail
-ÙÙ 
+ËË 
 .
-ÙÙ 
+ËË 
 Clear
-ÙÙ 
+ËË 
 (
-ÙÙ 
+ËË 
 )
-ÙÙ 
+ËË 
 ;
-ÙÙ 
+ËË 
 txtPassword
-ıı 
+ÈÈ 
 .
-ıı 
+ÈÈ 
 Clear
-ıı 
+ÈÈ 
 (
-ıı 
+ÈÈ 
 )
-ıı 
+ÈÈ 
 ;
-ıı   
+ÈÈ   
 txtPasswordVisible
-ˆˆ 
+ÍÍ 
 .
-ˆˆ 
+ÍÍ 
 Clear
-ˆˆ $
+ÍÍ $
 (
-ˆˆ$ %
+ÍÍ$ %
 )
-ˆˆ% &
+ÍÍ% &
 ;
-ˆˆ& '
+ÍÍ& '
+}
+ÎÎ 	
+private
+ÌÌ 
+void
+ÌÌ '
+BtnTogglePassword_Checked
+ÌÌ .
+(
+ÌÌ. /
+object
+ÌÌ/ 5
+sender
+ÌÌ6 <
+,
+ÌÌ< =
+RoutedEventArgs
+ÌÌ> M
+e
+ÌÌN O
+)
+ÌÌO P
+{
+ÌÌQ R 
+txtPasswordVisible
+ÓÓ 
+.
+ÓÓ 
+Text
+ÓÓ #
+=
+ÓÓ$ %
+txtPassword
+ÓÓ& 1
+.
+ÓÓ1 2
+Password
+ÓÓ2 :
+;
+ÓÓ: ; 
+txtPasswordVisible
+ÔÔ 
+.
+ÔÔ 
+
+Visibility
+ÔÔ )
+=
+ÔÔ* +
+
+Visibility
+ÔÔ, 6
+.
+ÔÔ6 7
+Visible
+ÔÔ7 >
+;
+ÔÔ> ?
+txtPassword
+ 
+.
+ 
+
+Visibility
+ "
+=
+# $
+
+Visibility
+% /
+.
+/ 0
+	Collapsed
+0 9
+;
+9 :
+}
+ÒÒ 	
+private
+ÛÛ 
+void
+ÛÛ )
+BtnTogglePassword_Unchecked
+ÛÛ 0
+(
+ÛÛ0 1
+object
+ÛÛ1 7
+sender
+ÛÛ8 >
+,
+ÛÛ> ?
+RoutedEventArgs
+ÛÛ@ O
+e
+ÛÛP Q
+)
+ÛÛQ R
+{
+ÛÛS T
+txtPassword
+ÙÙ 
+.
+ÙÙ 
+Password
+ÙÙ  
+=
+ÙÙ! " 
+txtPasswordVisible
+ÙÙ# 5
+.
+ÙÙ5 6
+Text
+ÙÙ6 :
+;
+ÙÙ: ; 
+txtPasswordVisible
+ıı 
+.
+ıı 
+
+Visibility
+ıı )
+=
+ıı* +
+
+Visibility
+ıı, 6
+.
+ıı6 7
+	Collapsed
+ıı7 @
+;
+ıı@ A
+txtPassword
+ˆˆ 
+.
+ˆˆ 
+
+Visibility
+ˆˆ "
+=
+ˆˆ# $
+
+Visibility
+ˆˆ% /
+.
+ˆˆ/ 0
+Visible
+ˆˆ0 7
+;
+ˆˆ7 8
 }
 ˜˜ 	
 private
 ˘˘ 
 void
-˘˘ '
-BtnTogglePassword_Checked
-˘˘ .
-(
-˘˘. /
-object
-˘˘/ 5
-sender
-˘˘6 <
-,
-˘˘< =
-RoutedEventArgs
-˘˘> M
-e
-˘˘N O
-)
-˘˘O P
-{
-˘˘Q R 
-txtPasswordVisible
-˙˙ 
-.
-˙˙ 
-Text
-˙˙ #
-=
-˙˙$ %
-txtPassword
-˙˙& 1
-.
-˙˙1 2
-Password
-˙˙2 :
-;
-˙˙: ; 
-txtPasswordVisible
-˚˚ 
-.
-˚˚ 
-
-Visibility
-˚˚ )
-=
-˚˚* +
-
-Visibility
-˚˚, 6
-.
-˚˚6 7
-Visible
-˚˚7 >
-;
-˚˚> ?
-txtPassword
-¸¸ 
-.
-¸¸ 
-
-Visibility
-¸¸ "
-=
-¸¸# $
-
-Visibility
-¸¸% /
-.
-¸¸/ 0
-	Collapsed
-¸¸0 9
-;
-¸¸9 :
-}
-˝˝ 	
-private
-ˇˇ 
-void
-ˇˇ )
-BtnTogglePassword_Unchecked
-ˇˇ 0
-(
-ˇˇ0 1
-object
-ˇˇ1 7
-sender
-ˇˇ8 >
-,
-ˇˇ> ?
-RoutedEventArgs
-ˇˇ@ O
-e
-ˇˇP Q
-)
-ˇˇQ R
-{
-ˇˇS T
-txtPassword
-ÄÄ 
-.
-ÄÄ 
-Password
-ÄÄ  
-=
-ÄÄ! " 
-txtPasswordVisible
-ÄÄ# 5
-.
-ÄÄ5 6
-Text
-ÄÄ6 :
-;
-ÄÄ: ; 
-txtPasswordVisible
-ÅÅ 
-.
-ÅÅ 
-
-Visibility
-ÅÅ )
-=
-ÅÅ* +
-
-Visibility
-ÅÅ, 6
-.
-ÅÅ6 7
-	Collapsed
-ÅÅ7 @
-;
-ÅÅ@ A
-txtPassword
-ÇÇ 
-.
-ÇÇ 
-
-Visibility
-ÇÇ "
-=
-ÇÇ# $
-
-Visibility
-ÇÇ% /
-.
-ÇÇ/ 0
-Visible
-ÇÇ0 7
-;
-ÇÇ7 8
-}
-ÉÉ 	
-private
-ÖÖ 
-void
-ÖÖ *
+˘˘ *
 UpdatePasswordVisibilityIcon
-ÖÖ 1
+˘˘ 1
 (
-ÖÖ1 2
+˘˘1 2
 )
-ÖÖ2 3
+˘˘2 3
 {
-ÖÖ4 5
+˘˘4 5
 btnTogglePassword
-ÜÜ 
+˙˙ 
 .
-ÜÜ 
+˙˙ 
 
 Visibility
-ÜÜ (
+˙˙ (
 =
-ÜÜ) *
+˙˙) *
 txtPassword
-ÜÜ+ 6
+˙˙+ 6
 .
-ÜÜ6 7
+˙˙6 7
 Password
-ÜÜ7 ?
+˙˙7 ?
 .
-ÜÜ? @
+˙˙? @
 Length
-ÜÜ@ F
+˙˙@ F
 >
-ÜÜG H
+˙˙G H
 $num
-ÜÜI J
+˙˙I J
 ?
-ÜÜK L
+˙˙K L
 
 Visibility
-ÜÜM W
+˙˙M W
 .
-ÜÜW X
+˙˙W X
 Visible
-ÜÜX _
+˙˙X _
 :
-ÜÜ` a
+˙˙` a
 
 Visibility
-ÜÜb l
+˙˙b l
 .
-ÜÜl m
+˙˙l m
 	Collapsed
-ÜÜm v
+˙˙m v
 ;
-ÜÜv w
+˙˙v w
 }
-áá 	
+˚˚ 	
 private
-ââ 
+˝˝ 
 void
-ââ &
+˝˝ &
 BtnRecoverPassword_Click
-ââ -
+˝˝ -
 (
-ââ- .
+˝˝- .
 object
-ââ. 4
+˝˝. 4
 sender
-ââ5 ;
+˝˝5 ;
 ,
-ââ; <
+˝˝; <
 RoutedEventArgs
-ââ= L
+˝˝= L
 e
-ââM N
+˝˝M N
 )
-ââN O
+˝˝N O
 {
-ââP Q
-enterEmailGrid
-ää 
+˝˝P Q
+gridEnterEmail
+˛˛ 
 .
-ää 
+˛˛ 
 
 Visibility
-ää %
+˛˛ %
 =
-ää& '
+˛˛& '
 
 Visibility
-ää( 2
+˛˛( 2
 .
-ää2 3
+˛˛2 3
 Visible
-ää3 :
+˛˛3 :
 ;
-ää: ;
+˛˛: ;
 }
-ãã 	
+ˇˇ 	
 }
-åå 
-}çç ˘a
+ÄÄ 
+}ÅÅ ÆÄ
 0C:\TripasDeGatoCliente\Views\ProfileView.xaml.cs
-	namespace
-
- 	
-TripasDeGatoCliente
-
-
+	namespace 	
+TripasDeGatoCliente
  
-.
-
- 
-Views
-
- #
-{
-
-$ %
-public 
+. 
+Views #
+{$ %
+public 
 
-partial 
-class 
-ProfileView $
-:% &
-Page' +
-{, -
-private 
-bool 
-	isEditing 
-=  
-false! &
-;& '
-public 
-ProfileView 
-( 
-) 
-{ 
-InitializeComponent 
-(  
-)  !
-;! "
-LoadProfile 
-( 
-) 
-; 
-DisableEditing 
-( 
-) 
-; 
-} 	
-private 
-void 
-LoadProfile  
-(  !
-)! "
-{# $
-lbUserNameProfile 
-. 
-Content %
-=& '
-!( )
-string) /
-./ 0
-IsNullOrEmpty0 =
-(= > 
-UserProfileSingleton> R
-.R S
-UserNameS [
-)[ \
-?] ^ 
-UserProfileSingleton_ s
-.s t
-UserNamet |
-:} ~
-$str	 î
+partial 
+class 
+ProfileView $
+:% &
+Page' +
+{, -
+private 
+bool 
+
+_isEditing 
+=  !
+false" '
+;' (
+private 
+string 
+_selectedProfile '
+=( ) 
+UserProfileSingleton* >
+.> ?
+PicPath? F
+;F G
+public 
+ProfileView 
+( 
+) 
+{ 
+InitializeComponent 
+(  
+)  !
+;! "
+LoadProfile 
+( 
+) 
+; 
+DisableEditing 
+( 
+) 
+; 
+} 	
+private 
+void 
+LoadProfile  
+(  !
+)! "
+{# $
+lbUserNameProfile 
+. 
+Content %
+=& '
+!( )
+string) /
+./ 0
+IsNullOrEmpty0 =
+(= > 
+UserProfileSingleton> R
+.R S
+UserNameS [
+)[ \
+?] ^ 
+UserProfileSingleton_ s
+.s t
+UserNamet |
+:} ~
+
+Properties	 â
+.
+â ä
+	Resources
+ä ì
+.
+ì î
+lbUnknownUser
+î °
 ;
-î ï
-txtUserName 
-. 
-Text 
-=  
-UserProfileSingleton 3
-.3 4
-UserName4 <
-;< =
-cboxLanguage 
-. 
-ItemsSource $
-=% &
-new' *
-List+ /
-</ 0
-string0 6
->6 7
-{8 9
-$str: C
-,C D
-$strE M
-,M N
-$strO X
-}Y Z
-;Z [
-if 
-( 
-! 
-string 
-. 
-IsNullOrEmpty %
-(% & 
-UserProfileSingleton& :
-.: ;
-PicPath; B
-)B C
-)C D
-{E F
-imageProfile 
-. 
-Source #
-=$ %
-new& )
-BitmapImage* 5
-(5 6
-new6 9
-Uri: =
-(= > 
-UserProfileSingleton> R
-.R S
-PicPathS Z
-,Z [
-UriKind\ c
-.c d
-RelativeOrAbsoluted v
-)v w
-)w x
-;x y
-} 
-lbScoreProfile 
-. 
-Content "
-=# $
-string% +
-.+ ,
-Format, 2
-(2 3
+° ¢
+txtUserName 
+. 
+Text 
+=  
+UserProfileSingleton 3
+.3 4
+UserName4 <
+;< =
+cboxLanguage 
+. 
+ItemsSource $
+=% &
+new' *
+List+ /
+</ 0
+string0 6
+>6 7
+{8 9
+$str: A
+,A B
+$strC J
+}K L
+;L M
+if 
+( 
+! 
+string 
+. 
+IsNullOrEmpty %
+(% & 
+UserProfileSingleton& :
+.: ;
+PicPath; B
+)B C
+)C D
+{E F
+imageProfile 
+. 
+Source #
+=$ %
+new& )
+BitmapImage* 5
+(5 6
+new6 9
+Uri: =
+(= > 
+UserProfileSingleton> R
+.R S
+PicPathS Z
+,Z [
+UriKind\ c
+.c d
+RelativeOrAbsoluted v
+)v w
+)w x
+;x y
+} 
+lbScoreProfile 
+. 
+Content "
+=# $
+string% +
+.+ ,
+Format, 2
+(2 3
 
-Properties3 =
-.= >
-	Resources> G
-.G H
-lbScoreH O
-,O P 
-UserProfileSingletonQ e
-.e f
-Scoref k
-)k l
-;l m
-} 	
-private 
-void 
-EnableEditing "
-(" #
-)# $
-{% &
-txtUserName 
-. 
-	IsEnabled !
-=" #
-true$ (
-;( )
-cboxLanguage   
-.   
-	IsEnabled   "
-=  # $
-true  % )
-;  ) *
-btnSave!! 
-.!! 
-	IsEnabled!! 
-=!! 
-true!!  $
-;!!$ %
-	isEditing"" 
-="" 
-true"" 
-;"" 
-borderProfiles## 
-.## 
-	IsEnabled## $
-=##% &
-true##' +
-;##+ ,
-borderProfiles$$ 
-.$$ 
+Properties3 =
+.= >
+	Resources> G
+.G H
+lbScoreH O
+,O P 
+UserProfileSingletonQ e
+.e f
+Scoref k
+)k l
+;l m
+} 	
+private   
+void   
+EnableEditing   "
+(  " #
+)  # $
+{  % &
+txtUserName!! 
+.!! 
+	IsEnabled!! !
+=!!" #
+true!!$ (
+;!!( )
+cboxLanguage"" 
+."" 
+	IsEnabled"" "
+=""# $
+true""% )
+;"") *
+btnSave## 
+.## 
+	IsEnabled## 
+=## 
+true##  $
+;##$ %
 
-Visibility$$ %
-=$$& '
+_isEditing$$ 
+=$$ 
+true$$ 
+;$$ 
+borderProfiles%% 
+.%% 
+	IsEnabled%% $
+=%%% &
+true%%' +
+;%%+ ,
+borderProfiles&& 
+.&& 
 
-Visibility$$( 2
-.$$2 3
-Visible$$3 :
-;$$: ;
-btnSave%% 
-.%% 
+Visibility&& %
+=&&& '
 
-Visibility%% 
-=%%  
+Visibility&&( 2
+.&&2 3
+Visible&&3 :
+;&&: ;
+btnSave'' 
+.'' 
 
-Visibility%%! +
-.%%+ ,
-Visible%%, 3
-;%%3 4
-}&& 	
-private(( 
-void(( 
-DisableEditing(( #
-(((# $
-)(($ %
-{((& '
-txtUserName)) 
-.)) 
-	IsEnabled)) !
-=))" #
-false))$ )
-;))) *
-cboxLanguage** 
-.** 
-	IsEnabled** "
-=**# $
-false**% *
-;*** +
-btnSave++ 
-.++ 
-	IsEnabled++ 
-=++ 
-false++  %
-;++% &
-	isEditing,, 
-=,, 
-false,, 
-;,, 
-borderProfiles-- 
-.-- 
-	IsEnabled-- $
-=--% &
-false--' ,
-;--, -
-borderProfiles.. 
-... 
+Visibility'' 
+=''  
 
-Visibility.. %
-=..& '
+Visibility''! +
+.''+ ,
+Visible'', 3
+;''3 4
+}(( 	
+private** 
+void** 
+DisableEditing** #
+(**# $
+)**$ %
+{**& '
+txtUserName++ 
+.++ 
+	IsEnabled++ !
+=++" #
+false++$ )
+;++) *
+cboxLanguage,, 
+.,, 
+	IsEnabled,, "
+=,,# $
+false,,% *
+;,,* +
+btnSave-- 
+.-- 
+	IsEnabled-- 
+=-- 
+false--  %
+;--% &
 
-Visibility..( 2
-...2 3
-	Collapsed..3 <
-;..< =
-btnSave// 
-.// 
+_isEditing.. 
+=.. 
+false.. 
+;.. 
+borderProfiles// 
+.// 
+	IsEnabled// $
+=//% &
+false//' ,
+;//, -
+borderProfiles00 
+.00 
 
-Visibility// 
-=//  
+Visibility00 %
+=00& '
 
-Visibility//! +
-.//+ ,
-	Collapsed//, 5
-;//5 6
-}00 	
-private22 
-void22 
-btnEdit_Click22 "
-(22" #
-object22# )
-sender22* 0
-,220 1
-RoutedEventArgs222 A
-e22B C
-)22C D
-{22E F
-if33 
-(33 
-!33 
-	isEditing33 
-)33 
-{33 
-EnableEditing44 
-(44 
-)44 
-;44  
-}55 
-}66 	
-private88 
-void88 
-BtnSave_Click88 "
-(88" #
-object88# )
-sender88* 0
-,880 1
-RoutedEventArgs882 A
-e88B C
-)88C D
-{88E F
-if99 
-(99 
-	isEditing99 
-)99 
-{99 
-if:: 
-(:: 
-ValidateFields:: "
-(::" #
-)::# $
-)::$ %
-{::& '
-string;; 
-userName;; #
-=;;$ %
-txtUserName;;& 1
-.;;1 2
-Text;;2 6
-;;;6 7
-string<< 
-selectedLanguage<< +
-=<<, -
-cboxLanguage<<. :
-.<<: ;
-SelectedItem<<; G
-?<<G H
-.<<H I
-ToString<<I Q
-(<<Q R
-)<<R S
-;<<S T
-var?? 
-selectedListBoxItem?? +
-=??, -
-lsb_ProfilePics??. =
-.??= >
-SelectedItem??> J
-as??K M
-ListBoxItem??N Y
-;??Y Z
-string@@ 
-selectedProfile@@ *
-=@@+ ,
-selectedListBoxItem@@- @
-?@@@ A
-.@@A B
-Tag@@B E
-?@@E F
-.@@F G
-ToString@@G O
-(@@O P
+Visibility00( 2
+.002 3
+	Collapsed003 <
+;00< =
+btnSave11 
+.11 
+
+Visibility11 
+=11  
+
+Visibility11! +
+.11+ ,
+	Collapsed11, 5
+;115 6
+}22 	
+private44 
+void44 
+BtnEdit_Click44 "
+(44" #
+object44# )
+sender44* 0
+,440 1
+RoutedEventArgs442 A
+e44B C
+)44C D
+{44E F
+if55 
+(55 
+!55 
+
+_isEditing55 
+)55 
+{55 
+EnableEditing66 
+(66 
+)66 
+;66  
+}77 
+}88 	
+private:: 
+void:: 
+BtnSave_Click:: "
+(::" #
+object::# )
+sender::* 0
+,::0 1
+RoutedEventArgs::2 A
+e::B C
+)::C D
+{::E F
+if;; 
+(;; 
+
+_isEditing;; 
+);; 
+{;; 
+if<< 
+(<< 
+ValidateFields<< "
+(<<" #
+)<<# $
+)<<$ %
+{<<& '
+string== 
+userName== #
+===$ %
+txtUserName==& 1
+.==1 2
+Text==2 6
+;==6 7
+string>> 
+selectedLanguage>> +
+=>>, -
+cboxLanguage>>. :
+.>>: ;
+SelectedItem>>; G
+?>>G H
+.>>H I
+ToString>>I Q
+(>>Q R
+)>>R S
+;>>S T
+if?? 
+(?? 
+string?? 
+.?? 
+IsNullOrEmpty?? ,
+(??, -
+selectedLanguage??- =
+)??= >
+)??> ?
+{??@ A
+SaveProfile@@ #
+(@@# $
+userName@@$ ,
+,@@, -
+selectedLanguage@@. >
+,@@> ?
+_selectedProfile@@@ P
 )@@P Q
-;@@Q R
-SaveProfileBB 
-(BB  
-userNameBB  (
-,BB( )
-selectedLanguageBB* :
-,BB: ;
-selectedProfileBB< K
-)BBK L
-;BBL M
-}CC 
-elseCC 
-{CC 
-DialogManagerDD !
-.DD! "!
-ShowErrorMessageAlertDD" 7
-(DD7 8
+;@@Q R
+}AA 
+elseAA 
+{AA 
+MessageBoxResultBB (
+resultBB) /
+=BB0 1
 
-PropertiesDD8 B
-.DDB C
-	ResourcesDDC L
-.DDL M%
-dialogCompleteFieldsErrorDDM f
-)DDf g
-;DDg h
-}EE 
-}FF 
-}GG 	
-privateII 
-asyncII 
-voidII 
-SaveProfileII &
-(II& '
-stringII' -
-userNameII. 6
-,II6 7
-stringII8 >
-selectedLanguageII? O
-,IIO P
-stringIIQ W
-selectedProfileIIX g
-)IIg h
-{IIi j
-tryJJ 
-{JJ 
-varKK 
-serviceKK 
-=KK 
-newKK ! 
-TripasDeGatoServicioKK" 6
-.KK6 7
-UserManagerClientKK7 H
-(KKH I
-)KKI J
-;KKJ K
-intLL 
-	idProfileLL 
-=LL  
-UserProfileSingletonLL  4
-.LL4 5
-	IdProfileLL5 >
-;LL> ?
-stringMM 
-newPicMM 
-=MM 
-selectedProfileMM  /
-??MM0 2 
-UserProfileSingletonMM3 G
-.MMG H
-PicPathMMH O
-;MMO P
-intNN 
-updateResultNN  
-=NN! "
-awaitNN# (
-serviceNN) 0
-.NN0 1
-UpdateProfileAsyncNN1 C
-(NNC D
-	idProfileNND M
-,NNM N
-userNameNNO W
-,NNW X
-newPicNNY _
-)NN_ `
-;NN` a
-ifPP 
-(PP 
-updateResultPP  
-==PP! #
-ConstantsManagerPP$ 4
-.PP4 5
-	ConstantsPP5 >
-.PP> ?
-SUCCES_OPERATIONPP? O
-)PPO P
-{PPQ R 
-UserProfileSingletonQQ (
-.QQ( )
-UpdateNombreQQ) 5
-(QQ5 6
-userNameQQ6 >
-)QQ> ?
-;QQ? @ 
-UserProfileSingletonRR (
-.RR( )
-UpdateFotoRutaRR) 7
-(RR7 8
-newPicRR8 >
-)RR> ?
-;RR? @
-LoadProfileSS 
-(SS  
-)SS  !
-;SS! "
-DialogManagerTT !
-.TT! "#
-ShowSuccessMessageAlertTT" 9
-(TT9 :
+MessageBoxBB2 <
+.BB< =
+ShowBB= A
+(BBA B
 
-PropertiesTT: D
-.TTD E
-	ResourcesTTE N
-.TTN O
-dialogChangesSavedTTO a
-)TTa b
-;TTb c
-DisableEditingUU "
-(UU" #
-)UU# $
-;UU$ %
-}VV 
-elseVV 
-{VV 
-DialogManagerWW !
-.WW! "!
-ShowErrorMessageAlertWW" 7
-(WW7 8
+PropertiesCC &
+.CC& '
+	ResourcesCC' 0
+.CC0 1'
+dialogMessageLanguagechangeCC1 L
+,CCL M
 
-PropertiesWW8 B
-.WWB C
-	ResourcesWWC L
-.WWL M(
-dialogErrorSavingProfileDataWWM i
-)WWi j
-;WWj k
-}XX 
-}YY 
-catchYY 
-(YY %
-EndpointNotFoundExceptionYY .
-)YY. /
-{YY0 1
-DialogManagerZZ 
-.ZZ !
-ShowErrorMessageAlertZZ 3
-(ZZ3 4
+PropertiesDD &
+.DD& '
+	ResourcesDD' 0
+.DD0 1
+lbLanguageChangeDD1 A
+,DDA B
+MessageBoxButtonEE ,
+.EE, -
+YesNoEE- 2
+,EE2 3
+MessageBoxImageFF +
+.FF+ ,
+QuestionFF, 4
+)GG 
+;GG 
+ifHH 
+(HH 
+resultHH "
+==HH# %
+MessageBoxResultHH& 6
+.HH6 7
+YesHH7 :
+)HH: ;
+{HH< =
+AppII 
+.II  
+ChangeLanguageII  .
+(II. /
+selectedLanguageII/ ?
+)II? @
+;II@ A
+SystemJJ "
+.JJ" #
+DiagnosticsJJ# .
+.JJ. /
+ProcessJJ/ 6
+.JJ6 7
+StartJJ7 <
+(JJ< =
+ApplicationJJ= H
+.JJH I
+ResourceAssemblyJJI Y
+.JJY Z
+LocationJJZ b
+)JJb c
+;JJc d
+ApplicationKK '
+.KK' (
+CurrentKK( /
+.KK/ 0
+ShutdownKK0 8
+(KK8 9
+)KK9 :
+;KK: ;
+}LL 
+elseLL 
+{LL  
+SaveProfileMM '
+(MM' (
+userNameMM( 0
+,MM0 1
+selectedLanguageMM2 B
+,MMB C
+_selectedProfileMMD T
+)MMT U
+;MMU V
+}NN 
+}OO 
+}PP 
+elsePP 
+{PP 
+DialogManagerQQ !
+.QQ! "!
+ShowErrorMessageAlertQQ" 7
+(QQ7 8
 
-PropertiesZZ4 >
-.ZZ> ?
-	ResourcesZZ? H
-.ZZH I+
-dialogConnectionErrorWithServerZZI h
-)ZZh i
-;ZZi j
-}[[ 
-catch[[ 
-([[ 
-TimeoutException[[ %
-)[[% &
-{[[' (
-DialogManager\\ 
-.\\ !
-ShowErrorMessageAlert\\ 3
-(\\3 4
+PropertiesQQ8 B
+.QQB C
+	ResourcesQQC L
+.QQL M%
+dialogCompleteFieldsErrorQQM f
+)QQf g
+;QQg h
+}RR 
+}SS 
+}TT 	
+privateVV 
+asyncVV 
+voidVV 
+SaveProfileVV &
+(VV& '
+stringVV' -
+userNameVV. 6
+,VV6 7
+stringVV8 >
+selectedLanguageVV? O
+,VVO P
+stringVVQ W
+selectedProfileVVX g
+)VVg h
+{VVi j
+LoggerManagerWW 
+loggerWW  
+=WW! "
+newWW# &
+LoggerManagerWW' 4
+(WW4 5
+thisWW5 9
+.WW9 :
+GetTypeWW: A
+(WWA B
+)WWB C
+)WWC D
+;WWD E
+tryXX 
+{XX 
+varYY 
+serviceYY 
+=YY 
+newYY ! 
+TripasDeGatoServicioYY" 6
+.YY6 7
+UserManagerClientYY7 H
+(YYH I
+)YYI J
+;YYJ K
+intZZ 
+	idProfileZZ 
+=ZZ  
+UserProfileSingletonZZ  4
+.ZZ4 5
+	IdProfileZZ5 >
+;ZZ> ?
+string[[ 
+newPic[[ 
+=[[ 
+selectedProfile[[  /
+??[[0 2 
+UserProfileSingleton[[3 G
+.[[G H
+PicPath[[H O
+;[[O P
+int\\ 
+updateResult\\  
+=\\! "
+await\\# (
+service\\) 0
+.\\0 1
+UpdateProfileAsync\\1 C
+(\\C D
+	idProfile\\D M
+,\\M N
+userName\\O W
+,\\W X
+newPic\\Y _
+)\\_ `
+;\\` a
+if]] 
+(]] 
+updateResult]]  
+==]]! #
+ConstantsManager]]$ 4
+.]]4 5
+	Constants]]5 >
+.]]> ?
+SUCCES_OPERATION]]? O
+)]]O P
+{]]Q R 
+UserProfileSingleton^^ (
+.^^( )
+UpdateNombre^^) 5
+(^^5 6
+userName^^6 >
+)^^> ?
+;^^? @ 
+UserProfileSingleton__ (
+.__( )
+UpdateFotoRuta__) 7
+(__7 8
+newPic__8 >
+)__> ?
+;__? @
+LoadProfile`` 
+(``  
+)``  !
+;``! "
+DialogManageraa !
+.aa! "#
+ShowSuccessMessageAlertaa" 9
+(aa9 :
 
-Properties\\4 >
-.\\> ?
-	Resources\\? H
-.\\H I 
-dialogRequestTimeout\\I ]
-)\\] ^
-;\\^ _
-}]] 
-catch]] 
-(]] "
-CommunicationException]] +
-)]]+ ,
-{]]- .
-DialogManager^^ 
-.^^ !
-ShowErrorMessageAlert^^ 3
-(^^3 4
+Propertiesaa: D
+.aaD E
+	ResourcesaaE N
+.aaN O
+dialogChangesSavedaaO a
+)aaa b
+;aab c
+DisableEditingbb "
+(bb" #
+)bb# $
+;bb$ %
+}cc 
+elsecc 
+{cc 
+DialogManagerdd !
+.dd! "!
+ShowErrorMessageAlertdd" 7
+(dd7 8
 
-Properties^^4 >
-.^^> ?
-	Resources^^? H
-.^^H I$
-dialogCommunicationError^^I a
-)^^a b
-;^^b c
-}__ 
-catch__ 
-(__ 
-	Exception__ 
-ex__ !
-)__! "
-{__# $
-DialogManager`` 
-.`` !
-ShowErrorMessageAlert`` 3
-(``3 4
-string``4 :
-.``: ;
-Format``; A
-(``A B
+Propertiesdd8 B
+.ddB C
+	ResourcesddC L
+.ddL M(
+dialogErrorSavingProfileDataddM i
+)ddi j
+;ddj k
+}ee 
+}ff 
+catchff 
+(ff %
+EndpointNotFoundExceptionff .%
+endpointNotFoundExceptionff/ H
+)ffH I
+{ffJ K
+loggergg 
+.gg 
+LogErrorgg 
+(gg  %
+endpointNotFoundExceptiongg  9
+)gg9 :
+;gg: ;
+DialogManagerhh 
+.hh !
+ShowErrorMessageAlerthh 3
+(hh3 4
 
-Properties``B L
-.``L M
-	Resources``M V
-.``V W$
-dialogErrorSavingProfile``W o
-,``o p
-ex``q s
-.``s t
-Message``t {
-)``{ |
-)``| }
-;``} ~
-}aa 
-}bb 	
-privatedd 
-booldd 
-ValidateFieldsdd #
-(dd# $
-)dd$ %
-{dd& '
-boolee 
-isValidee 
-=ee 
-trueee 
-;ee  
-ifgg 
-(gg 
-stringgg 
-.gg 
-IsNullOrWhiteSpacegg )
-(gg) *
-txtUserNamegg* 5
-.gg5 6
-Textgg6 :
-)gg: ;
-)gg; <
-{gg= >
-isValidhh 
-=hh 
-falsehh 
-;hh  
-txtUserNameii 
-.ii 
-BorderBrushii '
-=ii( )
-Systemii* 0
-.ii0 1
-Windowsii1 8
-.ii8 9
-Mediaii9 >
-.ii> ?
-Brushesii? F
-.iiF G
-RediiG J
-;iiJ K
-}jj 
-elsejj 
-{jj 
-txtUserNamekk 
-.kk 
-BorderBrushkk '
-=kk( )
-Systemkk* 0
-.kk0 1
-Windowskk1 8
-.kk8 9
-Mediakk9 >
-.kk> ?
-Brusheskk? F
-.kkF G
-WhitekkG L
-;kkL M
-}ll 
-returnmm 
-isValidmm 
-;mm 
-}nn 	
-privatepp 
-voidpp 
-GoToMenuViewpp !
-(pp! "
-)pp" #
-{pp$ %
-MenuViewqq 
-menuViewqq 
-=qq 
-newqq  #
-MenuViewqq$ ,
-(qq, -
-)qq- .
-;qq. /
-thisrr 
-.rr 
-NavigationServicerr "
-?rr" #
-.rr# $
-Navigaterr$ ,
-(rr, -
-menuViewrr- 5
-)rr5 6
-;rr6 7
+Propertieshh4 >
+.hh> ?
+	Resourceshh? H
+.hhH I#
+dialogEndPointExceptionhhI `
+)hh` a
+;hha b
+}ii 
+catchii 
+(ii 
+TimeoutExceptionii %
+timeoutExceptionii& 6
+)ii6 7
+{ii8 9
+loggerjj 
+.jj 
+LogErrorjj 
+(jj  
+timeoutExceptionjj  0
+)jj0 1
+;jj1 2
+DialogManagerkk 
+.kk !
+ShowErrorMessageAlertkk 3
+(kk3 4
+
+Propertieskk4 >
+.kk> ?
+	Resourceskk? H
+.kkH I"
+dialogTimeOutExceptionkkI _
+)kk_ `
+;kk` a
+}ll 
+catchll 
+(ll "
+CommunicationExceptionll +"
+communicationExceptionll, B
+)llB C
+{llD E
+loggermm 
+.mm 
+LogErrormm 
+(mm  "
+communicationExceptionmm  6
+)mm6 7
+;mm7 8
+DialogManagernn 
+.nn !
+ShowErrorMessageAlertnn 3
+(nn3 4
+
+Propertiesnn4 >
+.nn> ?
+	Resourcesnn? H
+.nnH I'
+dialogComunicationExceptionnnI d
+)nnd e
+;nne f
+}oo 
+catchoo 
+(oo 
+	Exceptionoo 
+	exceptionoo (
+)oo( )
+{oo* +
+loggerpp 
+.pp 
+LogErrorpp 
+(pp  
+	exceptionpp  )
+)pp) *
+;pp* +
+DialogManagerqq 
+.qq !
+ShowErrorMessageAlertqq 3
+(qq3 4
+stringqq4 :
+.qq: ;
+Formatqq; A
+(qqA B
+
+PropertiesqqB L
+.qqL M
+	ResourcesqqM V
+.qqV W!
+dialogUnexpectedErrorqqW l
+,qql m
+	exceptionqqn w
+.qqw x
+Messageqqx 
+)	qq Ä
+)
+qqÄ Å
+;
+qqÅ Ç
+}rr 
 }ss 	
 privateuu 
-voiduu 
-BtnBack_Clickuu "
-(uu" #
-objectuu# )
-senderuu* 0
-,uu0 1
-RoutedEventArgsuu2 A
-euuB C
-)uuC D
-{uuE F
-GoToMenuViewvv 
-(vv 
-)vv 
-;vv 
-}ww 	
-}xx 
-}yy ÒÉ
+voiduu ,
+ ListProfilePics_SelectionChangeduu 5
+(uu5 6
+objectuu6 <
+senderuu= C
+,uuC D%
+SelectionChangedEventArgsuuE ^
+euu_ `
+)uu` a
+{uub c
+ifvv 
+(vv 
+lstProfilePicsvv 
+.vv 
+SelectedItemvv +
+isvv, .
+ListBoxItemvv/ :
+selectedItemvv; G
+)vvG H
+{vvI J
+stringww 
+selectedImageww $
+=ww% &
+selectedItemww' 3
+.ww3 4
+Tagww4 7
+.ww7 8
+ToStringww8 @
+(ww@ A
+)wwA B
+;wwB C
+imageProfilexx 
+.xx 
+Sourcexx #
+=xx$ %
+newxx& )
+BitmapImagexx* 5
+(xx5 6
+newxx6 9
+Urixx: =
+(xx= >
+selectedImagexx> K
+,xxK L
+UriKindxxM T
+.xxT U
+RelativexxU ]
+)xx] ^
+)xx^ _
+;xx_ ` 
+UserProfileSingletonyy $
+.yy$ %
+UpdateFotoRutayy% 3
+(yy3 4
+selectedImageyy4 A
+)yyA B
+;yyB C
+_selectedProfilezz  
+=zz! "
+selectedImagezz# 0
+;zz0 1
+}{{ 
+}|| 	
+private~~ 
+bool~~ 
+ValidateFields~~ #
+(~~# $
+)~~$ %
+{~~& '
+bool 
+isValid 
+= 
+true 
+;  
+if
+ÄÄ 
+(
+ÄÄ 
+string
+ÄÄ 
+.
+ÄÄ  
+IsNullOrWhiteSpace
+ÄÄ )
+(
+ÄÄ) *
+txtUserName
+ÄÄ* 5
+.
+ÄÄ5 6
+Text
+ÄÄ6 :
+)
+ÄÄ: ;
+)
+ÄÄ; <
+{
+ÄÄ= >
+isValid
+ÅÅ 
+=
+ÅÅ 
+false
+ÅÅ 
+;
+ÅÅ  
+txtUserName
+ÇÇ 
+.
+ÇÇ 
+BorderBrush
+ÇÇ '
+=
+ÇÇ( )
+System
+ÇÇ* 0
+.
+ÇÇ0 1
+Windows
+ÇÇ1 8
+.
+ÇÇ8 9
+Media
+ÇÇ9 >
+.
+ÇÇ> ?
+Brushes
+ÇÇ? F
+.
+ÇÇF G
+Red
+ÇÇG J
+;
+ÇÇJ K
+}
+ÉÉ 
+else
+ÉÉ 
+{
+ÉÉ 
+txtUserName
+ÑÑ 
+.
+ÑÑ 
+BorderBrush
+ÑÑ '
+=
+ÑÑ( )
+System
+ÑÑ* 0
+.
+ÑÑ0 1
+Windows
+ÑÑ1 8
+.
+ÑÑ8 9
+Media
+ÑÑ9 >
+.
+ÑÑ> ?
+Brushes
+ÑÑ? F
+.
+ÑÑF G
+White
+ÑÑG L
+;
+ÑÑL M
+}
+ÖÖ 
+return
+ÜÜ 
+isValid
+ÜÜ 
+;
+ÜÜ 
+}
+áá 	
+private
+ââ 
+void
+ââ 
+GoToMenuView
+ââ !
+(
+ââ! "
+)
+ââ" #
+{
+ââ$ %
+MenuView
+ää 
+menuView
+ää 
+=
+ää 
+new
+ää  #
+MenuView
+ää$ ,
+(
+ää, -
+)
+ää- .
+;
+ää. /
+this
+ãã 
+.
+ãã 
+NavigationService
+ãã "
+?
+ãã" #
+.
+ãã# $
+Navigate
+ãã$ ,
+(
+ãã, -
+menuView
+ãã- 5
+)
+ãã5 6
+;
+ãã6 7
+}
+åå 	
+private
+éé 
+void
+éé 
+BtnBack_Click
+éé "
+(
+éé" #
+object
+éé# )
+sender
+éé* 0
+,
+éé0 1
+RoutedEventArgs
+éé2 A
+e
+ééB C
+)
+ééC D
+{
+ééE F
+GoToMenuView
+èè 
+(
+èè 
+)
+èè 
+;
+èè 
+}
+êê 	
+}
+ëë 
+}íí Ù€
 1C:\TripasDeGatoCliente\Views\RegisterView.xaml.cs
 	namespace 	
 TripasDeGatoCliente
@@ -8660,61 +6767,87 @@ Properties``B L
 .) *
 Password* 2
 ;2 3
-if 
-( 
-! 
-ValidateFields 
-(  
-email  %
-,% &
-username' /
-,/ 0
-password1 9
-)9 :
-): ;
-return< B
-;B C
-try 
-{ 
-if 
-( 
-! #
-VerifyEmailAvailability ,
-(, -
-email- 2
-)2 3
-)3 4
-return5 ;
-;; <
-if 
-( 
-! &
-VerifyUsernameAvailability /
-(/ 0
-username0 8
-)8 9
-)9 :
-return; A
-;A B 
-SendVerificationCode $
-($ %
-email% *
-)* +
-;+ ,
+if 
+( 
+! 
+ValidateFields 
+(  
+email  %
+,% &
+username' /
+,/ 0
+password1 9
+)9 :
+): ;
+return< B
+;B C
+try 
+{ 
+if 
+( 
+! #
+VerifyEmailAvailability ,
+(, -
+email- 2
+)2 3
+)3 4
+return5 ;
+;; <
+if 
+( 
+! &
+VerifyUsernameAvailability /
+(/ 0
+username0 8
+)8 9
+)9 :
+return; A
+;A B 
+SendVerificationCode $
+($ %
+email% *
+)* +
+;+ ,
+} 
+catch 
+( %
+EndpointNotFoundException .%
+endpointNotFoundException/ H
+)H I
+{J K
+logger 
+. 
+LogError 
+(  %
+endpointNotFoundException  9
+)9 :
+;: ;
+DialogManager 
+. !
+ShowErrorMessageAlert 3
+(3 4
+
+Properties4 >
+.> ?
+	Resources? H
+.H I#
+dialogEndPointExceptionI `
+)` a
+;a b
 } 
 catch 
-( %
-EndpointNotFoundException .%
-endpointNotFoundException/ H
-)H I
-{J K
+( 
+TimeoutException %
+timeoutException& 6
+)6 7
+{8 9
 logger 
 . 
 LogError 
-(  %
-endpointNotFoundException  9
-)9 :
-;: ;
+(  
+timeoutException  0
+)0 1
+;1 2
 DialogManager   
 .   !
 ShowErrorMessageAlert   3
@@ -8723,24 +6856,24 @@ Properties``B L
 Properties  4 >
 .  > ?
 	Resources  ? H
-.  H I#
-dialogEndPointException  I `
-)  ` a
-;  a b
+.  H I"
+dialogTimeOutException  I _
+)  _ `
+;  ` a
 }!! 
 catch!! 
-(!! 
-TimeoutException!! %
-timeoutException!!& 6
-)!!6 7
-{!!8 9
+(!! "
+CommunicationException!! +"
+communicationException!!, B
+)!!B C
+{!!D E
 logger"" 
 ."" 
 LogError"" 
-(""  
-timeoutException""  0
-)""0 1
-;""1 2
+(""  "
+communicationException""  6
+)""6 7
+;""7 8
 DialogManager## 
 .## !
 ShowErrorMessageAlert## 3
@@ -8749,770 +6882,926 @@ Properties  4 >
 Properties##4 >
 .##> ?
 	Resources##? H
-.##H I"
-dialogTimeOutException##I _
-)##_ `
-;##` a
+.##H I'
+dialogComunicationException##I d
+)##d e
+;##e f
 }$$ 
 catch$$ 
-($$ "
-CommunicationException$$ +"
-communicationException$$, B
-)$$B C
-{$$D E
+($$ 
+	Exception$$ 
+	exception$$ (
+)$$( )
+{$$* +
 logger%% 
 .%% 
 LogError%% 
-(%%  "
-communicationException%%  6
-)%%6 7
-;%%7 8
+(%%  
+	exception%%  )
+)%%) *
+;%%* +
 DialogManager&& 
 .&& !
 ShowErrorMessageAlert&& 3
-(&&3 4
+(&&3 4
+string&&4 :
+.&&: ;
+Format&&; A
+(&&A B
 
-Properties&&4 >
-.&&> ?
-	Resources&&? H
-.&&H I'
-dialogComunicationException&&I d
-)&&d e
-;&&e f
+Properties&&B L
+.&&L M
+	Resources&&M V
+.&&V W!
+dialogUnexpectedError&&W l
+,&&l m
+	exception&&n w
+.&&w x
+Message&&x 
+)	&& Ä
+)
+&&Ä Å
+;
+&&Å Ç
 }'' 
 }(( 	
-private)) 
-bool)) #
-VerifyEmailAvailability)) ,
-()), -
-string))- 3
-email))4 9
-)))9 :
-{)); <
-var** 
-	userProxy** 
-=** 
-new**  
-TripasDeGatoServicio**  4
-.**4 5
-UserManagerClient**5 F
-(**F G
-)**G H
-;**H I
-int++ 
-emailCheckResult++  
-=++! "
-	userProxy++# ,
-.++, -
-IsEmailRegistered++- >
-(++> ?
-email++? D
-)++D E
-;++E F
-if-- 
-(-- 
-emailCheckResult--  
-==--! #
-	Constants--$ -
-.--- .
-DATA_MATCHES--. :
-)--: ;
-{--< =
-DialogManager.. 
-... !
-ShowErrorMessageAlert.. 3
-(..3 4
+private** 
+bool** #
+VerifyEmailAvailability** ,
+(**, -
+string**- 3
+email**4 9
+)**9 :
+{**; <
+LoggerManager++ 
+logger++  
+=++! "
+new++# &
+LoggerManager++' 4
+(++4 5
+this++5 9
+.++9 :
+GetType++: A
+(++A B
+)++B C
+)++C D
+;++D E
+var,, 
+	userProxy,, 
+=,, 
+new,,  
+TripasDeGatoServicio,,  4
+.,,4 5
+UserManagerClient,,5 F
+(,,F G
+),,G H
+;,,H I
+bool-- 
+isEmailAvailable-- !
+=--" #
+true--$ (
+;--( )
+try.. 
+{.. 
+int// 
+emailCheckResult// $
+=//% &
+	userProxy//' 0
+.//0 1
+IsEmailRegistered//1 B
+(//B C
+email//C H
+)//H I
+;//I J
+if00 
+(00 
+emailCheckResult00 $
+==00% '
+	Constants00( 1
+.001 2
+DATA_MATCHES002 >
+)00> ?
+{00@ A
+DialogManager11 !
+.11! "!
+ShowErrorMessageAlert11" 7
+(117 8
 
-Properties..4 >
-...> ?
-	Resources..? H
-...H I
-dialogEmailInUse..I Y
-)..Y Z
-;..Z [
-HighlightField// 
-(// 
-txtEmail// '
-)//' (
-;//( )
-return00 
-false00 
-;00 
-}11 
-if33 
-(33 
-emailCheckResult33  
-==33! #
-	Constants33$ -
-.33- .
-ERROR_OPERATION33. =
-)33= >
-{33? @
-DialogManager44 
-.44 !
-ShowErrorMessageAlert44 3
-(443 4
+Properties118 B
+.11B C
+	Resources11C L
+.11L M
+dialogEmailInUse11M ]
+)11] ^
+;11^ _
+HighlightField22 "
+(22" #
+txtEmail22# +
+)22+ ,
+;22, -
+isEmailAvailable33 $
+=33% &
+false33' ,
+;33, -
+}44 
+else44 
+if44 
+(44 
+emailCheckResult44 +
+==44, .
+	Constants44/ 8
+.448 9
+ERROR_OPERATION449 H
+)44H I
+{44J K
+DialogManager55 !
+.55! "!
+ShowErrorMessageAlert55" 7
+(557 8
 
-Properties444 >
-.44> ?
-	Resources44? H
-.44H I$
-dialogErrorCheckingEmail44I a
-)44a b
-;44b c
-return55 
-false55 
-;55 
-}66 
-return88 
-true88 
-;88 
-}99 	
-private;; 
-bool;; &
-VerifyUsernameAvailability;; /
-(;;/ 0
-string;;0 6
-username;;7 ?
-);;? @
-{;;A B
-var<< 
-	userProxy<< 
-=<< 
-new<<  
-TripasDeGatoServicio<<  4
-.<<4 5
-UserManagerClient<<5 F
-(<<F G
-)<<G H
-;<<H I
-int== 
-usernameCheckResult== #
-===$ %
-	userProxy==& /
-.==/ 0
-IsNameRegistered==0 @
-(==@ A
-username==A I
-)==I J
-;==J K
-if?? 
-(?? 
-usernameCheckResult?? #
-==??$ &
-	Constants??' 0
-.??0 1
-DATA_MATCHES??1 =
-)??= >
-{??? @
-DialogManager@@ 
-.@@ !
-ShowErrorMessageAlert@@ 3
-(@@3 4
+Properties558 B
+.55B C
+	Resources55C L
+.55L M$
+dialogErrorCheckingEmail55M e
+)55e f
+;55f g
+isEmailAvailable66 $
+=66% &
+false66' ,
+;66, -
+}77 
+}88 
+catch88 
+(88 %
+EndpointNotFoundException88 .%
+endpointNotFoundException88/ H
+)88H I
+{88J K
+logger99 
+.99 
+LogError99 
+(99  %
+endpointNotFoundException99  9
+)999 :
+;99: ;
+DialogManager:: 
+.:: !
+ShowErrorMessageAlert:: 3
+(::3 4
 
-Properties@@4 >
-.@@> ?
-	Resources@@? H
-.@@H I
-dialogUserNameInUse@@I \
-)@@\ ]
-;@@] ^
-HighlightFieldAA 
-(AA 
-txtNameAA &
-)AA& '
-;AA' (
-returnBB 
-falseBB 
-;BB 
-}CC 
-ifEE 
-(EE 
-usernameCheckResultEE #
-==EE$ &
-	ConstantsEE' 0
-.EE0 1
-ERROR_OPERATIONEE1 @
-)EE@ A
-{EEB C
+Properties::4 >
+.::> ?
+	Resources::? H
+.::H I#
+dialogEndPointException::I `
+)::` a
+;::a b
+isEmailAvailable;;  
+=;;! "
+false;;# (
+;;;( )
+}<< 
+catch<< 
+(<< 
+TimeoutException<< %
+timeoutException<<& 6
+)<<6 7
+{<<8 9
+logger== 
+.== 
+LogError== 
+(==  
+timeoutException==  0
+)==0 1
+;==1 2
+DialogManager>> 
+.>> !
+ShowErrorMessageAlert>> 3
+(>>3 4
+
+Properties>>4 >
+.>>> ?
+	Resources>>? H
+.>>H I"
+dialogTimeOutException>>I _
+)>>_ `
+;>>` a
+isEmailAvailable??  
+=??! "
+false??# (
+;??( )
+}@@ 
+catch@@ 
+(@@ "
+CommunicationException@@ +"
+communicationException@@, B
+)@@B C
+{@@D E
+loggerAA 
+.AA 
+LogErrorAA 
+(AA  "
+communicationExceptionAA  6
+)AA6 7
+;AA7 8
+DialogManagerBB 
+.BB !
+ShowErrorMessageAlertBB 3
+(BB3 4
+
+PropertiesBB4 >
+.BB> ?
+	ResourcesBB? H
+.BBH I'
+dialogComunicationExceptionBBI d
+)BBd e
+;BBe f
+isEmailAvailableCC  
+=CC! "
+falseCC# (
+;CC( )
+}DD 
+catchDD 
+(DD 
+	ExceptionDD 
+	exceptionDD (
+)DD( )
+{DD* +
+loggerEE 
+.EE 
+LogErrorEE 
+(EE  
+	exceptionEE  )
+)EE) *
+;EE* +
 DialogManagerFF 
 .FF !
 ShowErrorMessageAlertFF 3
-(FF3 4
+(FF3 4
+stringFF4 :
+.FF: ;
+FormatFF; A
+(FFA B
 
-PropertiesFF4 >
-.FF> ?
-	ResourcesFF? H
-.FFH I'
-dialogErrorCheckingUserNameFFI d
-)FFd e
-;FFe f
-returnGG 
-falseGG 
-;GG 
+PropertiesFFB L
+.FFL M
+	ResourcesFFM V
+.FFV W!
+dialogUnexpectedErrorFFW l
+,FFl m
+	exceptionFFn w
+.FFw x
+MessageFFx 
+)	FF Ä
+)
+FFÄ Å
+;
+FFÅ Ç
+isEmailAvailableGG  
+=GG! "
+falseGG# (
+;GG( )
 }HH 
-returnJJ 
-trueJJ 
-;JJ 
-}KK 	
-privateMM 
-voidMM  
-SendVerificationCodeMM )
-(MM) *
-stringMM* 0
-emailMM1 6
-)MM6 7
-{MM8 9
-varNN "
-emailVerificationProxyNN &
-=NN' (
-newNN) , 
-TripasDeGatoServicioNN- A
-.NNA B*
-EmailVerificationManagerClientNNB `
-(NN` a
-)NNa b
-;NNb c
-intOO 
-resultOO 
-=OO "
-emailVerificationProxyOO /
-.OO/ 0(
-SendVerificationCodeRegisterOO0 L
-(OOL M
-emailOOM R
-)OOR S
-;OOS T
-ifQQ 
-(QQ 
-resultQQ 
-==QQ 
-	ConstantsQQ #
-.QQ# $
-SUCCES_OPERATIONQQ$ 4
-)QQ4 5
-{QQ6 7
-verificationGridRR  
-.RR  !
+returnII 
+isEmailAvailableII #
+;II# $
+}JJ 	
+privateLL 
+boolLL &
+VerifyUsernameAvailabilityLL /
+(LL/ 0
+stringLL0 6
+usernameLL7 ?
+)LL? @
+{LLA B
+LoggerManagerMM 
+loggerMM  
+=MM! "
+newMM# &
+LoggerManagerMM' 4
+(MM4 5
+thisMM5 9
+.MM9 :
+GetTypeMM: A
+(MMA B
+)MMB C
+)MMC D
+;MMD E
+varNN 
+	userProxyNN 
+=NN 
+newNN  
+TripasDeGatoServicioNN  4
+.NN4 5
+UserManagerClientNN5 F
+(NNF G
+)NNG H
+;NNH I
+boolOO 
+isUsernameAvailableOO $
+=OO% &
+trueOO' +
+;OO+ ,
+tryPP 
+{PP 
+intQQ 
+usernameCheckResultQQ '
+=QQ( )
+	userProxyQQ* 3
+.QQ3 4
+IsNameRegisteredQQ4 D
+(QQD E
+usernameQQE M
+)QQM N
+;QQN O
+ifRR 
+(RR 
+usernameCheckResultRR '
+==RR( *
+	ConstantsRR+ 4
+.RR4 5
+DATA_MATCHESRR5 A
+)RRA B
+{RRC D
+DialogManagerSS !
+.SS! "!
+ShowErrorMessageAlertSS" 7
+(SS7 8
 
-VisibilityRR! +
-=RR, -
+PropertiesSS8 B
+.SSB C
+	ResourcesSSC L
+.SSL M
+dialogUserNameInUseSSM `
+)SS` a
+;SSa b
+HighlightFieldTT "
+(TT" #
+txtNameTT# *
+)TT* +
+;TT+ ,
+isUsernameAvailableUU '
+=UU( )
+falseUU* /
+;UU/ 0
+}VV 
+elseVV 
+ifVV 
+(VV 
+usernameCheckResultVV .
+==VV/ 1
+	ConstantsVV2 ;
+.VV; <
+ERROR_OPERATIONVV< K
+)VVK L
+{VVM N
+DialogManagerWW !
+.WW! "!
+ShowErrorMessageAlertWW" 7
+(WW7 8
 
-VisibilityRR. 8
-.RR8 9
-VisibleRR9 @
-;RR@ A
-DialogManagerSS 
-.SS #
-ShowSuccessMessageAlertSS 5
-(SS5 6
+PropertiesWW8 B
+.WWB C
+	ResourcesWWC L
+.WWL M'
+dialogErrorCheckingUserNameWWM h
+)WWh i
+;WWi j
+isUsernameAvailableXX '
+=XX( )
+falseXX* /
+;XX/ 0
+}YY 
+}ZZ 
+catchZZ 
+(ZZ %
+EndpointNotFoundExceptionZZ .%
+endpointNotFoundExceptionZZ/ H
+)ZZH I
+{ZZJ K
+logger[[ 
+.[[ 
+LogError[[ 
+([[  %
+endpointNotFoundException[[  9
+)[[9 :
+;[[: ;
+DialogManager\\ 
+.\\ !
+ShowErrorMessageAlert\\ 3
+(\\3 4
 
-PropertiesSS6 @
-.SS@ A
-	ResourcesSSA J
-.SSJ K&
-dialogVerificationCodeSentSSK e
-)SSe f
-;SSf g
-}TT 
-elseTT 
-{TT 
-DialogManagerUU 
-.UU !
-ShowErrorMessageAlertUU 3
-(UU3 4
+Properties\\4 >
+.\\> ?
+	Resources\\? H
+.\\H I#
+dialogEndPointException\\I `
+)\\` a
+;\\a b
+isUsernameAvailable]] #
+=]]$ %
+false]]& +
+;]]+ ,
+}^^ 
+catch^^ 
+(^^ 
+TimeoutException^^ %
+timeoutException^^& 6
+)^^6 7
+{^^8 9
+logger__ 
+.__ 
+LogError__ 
+(__  
+timeoutException__  0
+)__0 1
+;__1 2
+DialogManager`` 
+.`` !
+ShowErrorMessageAlert`` 3
+(``3 4
 
-PropertiesUU4 >
-.UU> ?
-	ResourcesUU? H
-.UUH I.
-"dialogErrorSendingVerificationCodeUUI k
-)UUk l
-;UUl m
-}VV 
-}WW 	
-privateYY 
-voidYY 
-BtnResendCode_ClickYY (
-(YY( )
-objectYY) /
-senderYY0 6
-,YY6 7
-RoutedEventArgsYY8 G
-eYYH I
-)YYI J
-{YYK L
-LoggerManagerZZ 
-loggerZZ  
-=ZZ! "
-newZZ# &
-LoggerManagerZZ' 4
-(ZZ4 5
-thisZZ5 9
-.ZZ9 :
-GetTypeZZ: A
-(ZZA B
-)ZZB C
-)ZZC D
-;ZZD E
-try[[ 
-{[[ 
-var\\ "
-emailVerificationProxy\\ *
-=\\+ ,
-new\\- 0 
-TripasDeGatoServicio\\1 E
-.\\E F*
-EmailVerificationManagerClient\\F d
-(\\d e
-)\\e f
-;\\f g
-int]] 
-result]] 
-=]] "
-emailVerificationProxy]] 3
-.]]3 4(
-SendVerificationCodeRegister]]4 P
-(]]P Q
-txtEmail]]Q Y
-.]]Y Z
-Text]]Z ^
-)]]^ _
-;]]_ `
-if__ 
-(__ 
-result__ 
-==__ 
-	Constants__ '
-.__' (
-SUCCES_OPERATION__( 8
-)__8 9
-{__: ;
-DialogManager`` !
-.``! "#
-ShowSuccessMessageAlert``" 9
-(``9 :
+Properties``4 >
+.``> ?
+	Resources``? H
+.``H I"
+dialogTimeOutException``I _
+)``_ `
+;``` a
+isUsernameAvailableaa #
+=aa$ %
+falseaa& +
+;aa+ ,
+}bb 
+catchbb 
+(bb "
+CommunicationExceptionbb +"
+communicationExceptionbb, B
+)bbB C
+{bbD E
+loggercc 
+.cc 
+LogErrorcc 
+(cc  "
+communicationExceptioncc  6
+)cc6 7
+;cc7 8
+DialogManagerdd 
+.dd !
+ShowErrorMessageAlertdd 3
+(dd3 4
 
-Properties``: D
-.``D E
-	Resources``E N
-.``N O4
-(dialogVerificationCodeResentSuccessfully``O w
-)``w x
-;``x y
-}aa 
-elseaa 
-{aa 
-DialogManagerbb !
-.bb! "!
-ShowErrorMessageAlertbb" 7
-(bb7 8
+Propertiesdd4 >
+.dd> ?
+	Resourcesdd? H
+.ddH I'
+dialogComunicationExceptionddI d
+)ddd e
+;dde f
+isUsernameAvailableee #
+=ee$ %
+falseee& +
+;ee+ ,
+}ff 
+catchff 
+(ff 
+	Exceptionff 
+	exceptionff (
+)ff( )
+{ff* +
+loggergg 
+.gg 
+LogErrorgg 
+(gg  
+	exceptiongg  )
+)gg) *
+;gg* +
+DialogManagerhh 
+.hh !
+ShowErrorMessageAlerthh 3
+(hh3 4
+stringhh4 :
+.hh: ;
+Formathh; A
+(hhA B
 
-Propertiesbb8 B
-.bbB C
-	ResourcesbbC L
-.bbL M0
-$dialogErrorResendingVerificationCodebbM q
-)bbq r
-;bbr s
-}cc 
-}dd 
-catchdd 
-(dd %
-EndpointNotFoundExceptiondd .%
-endpointNotFoundExceptiondd/ H
-)ddH I
-{ddJ K
-loggeree 
-.ee 
-LogErroree 
-(ee  %
-endpointNotFoundExceptionee  9
-)ee9 :
-;ee: ;
-DialogManagerff 
-.ff !
-ShowErrorMessageAlertff 3
-(ff3 4
-
-Propertiesff4 >
-.ff> ?
-	Resourcesff? H
-.ffH I#
-dialogEndPointExceptionffI `
-)ff` a
-;ffa b
-}gg 
-catchgg 
-(gg 
-TimeoutExceptiongg %
-timeoutExceptiongg& 6
-)gg6 7
-{gg8 9
-loggerhh 
-.hh 
-LogErrorhh 
-(hh  
-timeoutExceptionhh  0
-)hh0 1
-;hh1 2
-DialogManagerii 
-.ii !
-ShowErrorMessageAlertii 3
-(ii3 4
-
-Propertiesii4 >
-.ii> ?
-	Resourcesii? H
-.iiH I"
-dialogTimeOutExceptioniiI _
-)ii_ `
-;ii` a
-}jj 
-catchjj 
-(jj "
-CommunicationExceptionjj +"
-communicationExceptionjj, B
-)jjB C
-{jjD E
-loggerkk 
-.kk 
-LogErrorkk 
-(kk  "
-communicationExceptionkk  6
-)kk6 7
-;kk7 8
-DialogManagerll 
-.ll !
-ShowErrorMessageAlertll 3
-(ll3 4
-
-Propertiesll4 >
-.ll> ?
-	Resourcesll? H
-.llH I'
-dialogComunicationExceptionllI d
-)lld e
-;lle f
-}mm 
-}nn 	
-privatepp 
-voidpp 
-BtnValidate_Clickpp &
-(pp& '
-objectpp' -
-senderpp. 4
-,pp4 5
-RoutedEventArgspp6 E
-eppF G
-)ppG H
-{ppI J
-LoggerManagerqq 
-loggerqq  
-=qq! "
-newqq# &
-LoggerManagerqq' 4
-(qq4 5
-thisqq5 9
-.qq9 :
-GetTypeqq: A
-(qqA B
-)qqB C
-)qqC D
-;qqD E
-stringrr 
-enteredCoderr 
-=rr  
-$"rr! #
-{rr# $
-txtValidationCode1rr$ 6
-.rr6 7
-Textrr7 ;
-}rr; <
-{rr< =
-txtValidationCode2rr= O
-.rrO P
-TextrrP T
-}rrT U
-{rrU V
-txtValidationCode3rrV h
-.rrh i
-Textrri m
-}rrm n
-{rrn o
-txtValidationCode4	rro Å
-.
-rrÅ Ç
-Text
-rrÇ Ü
-}
-rrÜ á
-{
-rrá à 
-txtValidationCode5
-rrà ö
-.
-rrö õ
-Text
-rrõ ü
-}
-rrü †
-{
-rr† ° 
-txtValidationCode6
-rr° ≥
-.
-rr≥ ¥
-Text
-rr¥ ∏
-}
-rr∏ π
-"
-rrπ ∫
-;
-rr∫ ª
-trytt 
-{tt 
-varuu "
-emailVerificationProxyuu *
-=uu+ ,
-newuu- 0 
-TripasDeGatoServiciouu1 E
-.uuE F*
-EmailVerificationManagerClientuuF d
-(uud e
-)uue f
-;uuf g
-boolvv 
-isCodeValidvv  
-=vv! ""
-emailVerificationProxyvv# 9
-.vv9 :
-
-VerifyCodevv: D
-(vvD E
-txtEmailvvE M
-.vvM N
-TextvvN R
-,vvR S
-enteredCodevvT _
-)vv_ `
-;vv` a
-ifxx 
-(xx 
-isCodeValidxx 
-)xx  
-{xx! "
-varyy 
-	userProxyyy !
-=yy" #
-newyy$ ' 
-TripasDeGatoServicioyy( <
-.yy< =
-UserManagerClientyy= N
-(yyN O
-)yyO P
-;yyP Q
-var{{ 
-newUser{{ 
-={{  !
-new{{" % 
-TripasDeGatoServicio{{& :
-.{{: ;
-	LoginUser{{; D
-{{{E F
-mail|| 
-=|| 
-txtEmail|| '
-.||' (
-Text||( ,
-,||, -
-password}}  
-=}}! "
-Hasher}}# )
-.}}) *
-HashToSHA256}}* 6
-(}}6 7
-txtPassword}}7 B
-.}}B C
-Password}}C K
-)}}K L
-}~~ 
-;~~ 
-var
-ÄÄ 
-
-newProfile
-ÄÄ "
-=
-ÄÄ# $
-new
-ÄÄ% ("
-TripasDeGatoServicio
-ÄÄ) =
-.
-ÄÄ= >
-Profile
-ÄÄ> E
-{
-ÄÄF G
-Username
-ÅÅ  
-=
-ÅÅ! "
-txtName
-ÅÅ# *
-.
-ÅÅ* +
-Text
-ÅÅ+ /
-,
-ÅÅ/ 0
-Score
-ÇÇ 
-=
-ÇÇ 
-	Constants
-ÇÇ  )
-.
-ÇÇ) *
-INITIAL_SCORE
-ÇÇ* 7
-,
-ÇÇ7 8
-PicturePath
-ÉÉ #
-=
-ÉÉ$ %
-$str
-ÉÉ& J
-}
-ÑÑ 
-;
-ÑÑ 
-int
-ÜÜ 
-accountResult
-ÜÜ %
-=
-ÜÜ& '
-	userProxy
-ÜÜ( 1
-.
-ÜÜ1 2
-CreateAccount
-ÜÜ2 ?
-(
-ÜÜ? @
-newUser
-ÜÜ@ G
-,
-ÜÜG H
-
-newProfile
-ÜÜI S
+PropertieshhB L
+.hhL M
+	ResourceshhM V
+.hhV W!
+dialogUnexpectedErrorhhW l
+,hhl m
+	exceptionhhn w
+.hhw x
+Messagehhx 
+)	hh Ä
 )
-ÜÜS T
+hhÄ Å
 ;
-ÜÜT U
-if
-àà 
-(
-àà 
-accountResult
-àà %
-==
-àà& (
-	Constants
-àà) 2
+hhÅ Ç
+isUsernameAvailableii #
+=ii$ %
+falseii& +
+;ii+ ,
+}jj 
+returnkk 
+isUsernameAvailablekk &
+;kk& '
+}ll 	
+privatenn 
+voidnn  
+SendVerificationCodenn )
+(nn) *
+stringnn* 0
+emailnn1 6
+)nn6 7
+{nn8 9
+LoggerManageroo 
+loggeroo  
+=oo! "
+newoo# &
+LoggerManageroo' 4
+(oo4 5
+thisoo5 9
+.oo9 :
+GetTypeoo: A
+(ooA B
+)ooB C
+)ooC D
+;ooD E
+trypp 
+{pp 
+varqq "
+emailVerificationProxyqq *
+=qq+ ,
+newqq- 0 
+TripasDeGatoServicioqq1 E
+.qqE F*
+EmailVerificationManagerClientqqF d
+(qqd e
+)qqe f
+;qqf g
+intrr 
+resultrr 
+=rr "
+emailVerificationProxyrr 3
+.rr3 4(
+SendVerificationCodeRegisterrr4 P
+(rrP Q
+emailrrQ V
+)rrV W
+;rrW X
+ifss 
+(ss 
+resultss 
+==ss 
+	Constantsss '
+.ss' (
+SUCCES_OPERATIONss( 8
+)ss8 9
+{ss: ;
+verificationGridtt $
+.tt$ %
+
+Visibilitytt% /
+=tt0 1
+
+Visibilitytt2 <
+.tt< =
+Visiblett= D
+;ttD E
+DialogManageruu !
+.uu! "#
+ShowSuccessMessageAlertuu" 9
+(uu9 :
+
+Propertiesuu: D
+.uuD E
+	ResourcesuuE N
+.uuN O&
+dialogVerificationCodeSentuuO i
+)uui j
+;uuj k
+}vv 
+elsevv 
+{vv 
+DialogManagerww !
+.ww! "!
+ShowErrorMessageAlertww" 7
+(ww7 8
+
+Propertiesww8 B
+.wwB C
+	ResourceswwC L
+.wwL M.
+"dialogErrorSendingVerificationCodewwM o
+)wwo p
+;wwp q
+}xx 
+}yy 
+catchyy 
+(yy %
+EndpointNotFoundExceptionyy .%
+endpointNotFoundExceptionyy/ H
+)yyH I
+{yyJ K
+loggerzz 
+.zz 
+LogErrorzz 
+(zz  %
+endpointNotFoundExceptionzz  9
+)zz9 :
+;zz: ;
+DialogManager{{ 
+.{{ !
+ShowErrorMessageAlert{{ 3
+({{3 4
+
+Properties{{4 >
+.{{> ?
+	Resources{{? H
+.{{H I#
+dialogEndPointException{{I `
+){{` a
+;{{a b
+}|| 
+catch|| 
+(|| 
+TimeoutException|| %
+timeoutException||& 6
+)||6 7
+{||8 9
+logger}} 
+.}} 
+LogError}} 
+(}}  
+timeoutException}}  0
+)}}0 1
+;}}1 2
+DialogManager~~ 
+.~~ !
+ShowErrorMessageAlert~~ 3
+(~~3 4
+
+Properties~~4 >
+.~~> ?
+	Resources~~? H
+.~~H I"
+dialogTimeOutException~~I _
+)~~_ `
+;~~` a
+} 
+catch 
+( "
+CommunicationException +"
+communicationException, B
+)B C
+{D E
+logger
+ÄÄ 
 .
-àà2 3
-SUCCES_OPERATION
-àà3 C
+ÄÄ 
+LogError
+ÄÄ 
+(
+ÄÄ  $
+communicationException
+ÄÄ  6
 )
-ààC D
-{
-ààE F
+ÄÄ6 7
+;
+ÄÄ7 8
 DialogManager
-ââ %
+ÅÅ 
 .
-ââ% &%
-ShowSuccessMessageAlert
-ââ& =
-(
-ââ= >
-
-Properties
-ââ> H
-.
-ââH I
-	Resources
-ââI R
-.
-ââR S-
-dialogAccountCreatedSuccesfully
-ââS r
-)
-ââr s
-;
-ââs t
-verificationGrid
-ää (
-.
-ää( )
-
-Visibility
-ää) 3
-=
-ää4 5
-
-Visibility
-ää6 @
-.
-ää@ A
-	Collapsed
-ääA J
-;
-ääJ K
-GoToLoginView
-ãã %
-(
-ãã% &
-)
-ãã& '
-;
-ãã' (
-}
-åå 
-else
-åå 
-{
-åå 
-DialogManager
-çç %
-.
-çç% &#
+ÅÅ #
 ShowErrorMessageAlert
-çç& ;
+ÅÅ 3
 (
-çç; <
+ÅÅ3 4
 
 Properties
-çç< F
+ÅÅ4 >
 .
-ççF G
+ÅÅ> ?
 	Resources
-ççG P
+ÅÅ? H
 .
-ççP Q(
-dialogAccountCreatedErrror
-ççQ k
+ÅÅH I)
+dialogComunicationException
+ÅÅI d
 )
-ççk l
+ÅÅd e
 ;
-ççl m
+ÅÅe f
 }
-éé 
+ÇÇ 
+catch
+ÇÇ 
+(
+ÇÇ 
+	Exception
+ÇÇ 
+	exception
+ÇÇ (
+)
+ÇÇ( )
+{
+ÇÇ* +
+logger
+ÉÉ 
+.
+ÉÉ 
+LogError
+ÉÉ 
+(
+ÉÉ  
+	exception
+ÉÉ  )
+)
+ÉÉ) *
+;
+ÉÉ* +
+DialogManager
+ÑÑ 
+.
+ÑÑ #
+ShowErrorMessageAlert
+ÑÑ 3
+(
+ÑÑ3 4
+string
+ÑÑ4 :
+.
+ÑÑ: ;
+Format
+ÑÑ; A
+(
+ÑÑA B
+
+Properties
+ÑÑB L
+.
+ÑÑL M
+	Resources
+ÑÑM V
+.
+ÑÑV W#
+dialogUnexpectedError
+ÑÑW l
+,
+ÑÑl m
+	exception
+ÑÑn w
+.
+ÑÑw x
+Message
+ÑÑx 
+)ÑÑ Ä
+)ÑÑÄ Å
+;ÑÑÅ Ç
+}
+ÖÖ 
+}
+ÜÜ 	
+private
+àà 
+void
+àà !
+BtnResendCode_Click
+àà (
+(
+àà( )
+object
+àà) /
+sender
+àà0 6
+,
+àà6 7
+RoutedEventArgs
+àà8 G
+e
+ààH I
+)
+ààI J
+{
+ààK L
+LoggerManager
+ââ 
+logger
+ââ  
+=
+ââ! "
+new
+ââ# &
+LoggerManager
+ââ' 4
+(
+ââ4 5
+this
+ââ5 9
+.
+ââ9 :
+GetType
+ââ: A
+(
+ââA B
+)
+ââB C
+)
+ââC D
+;
+ââD E
+try
+ää 
+{
+ää 
+var
+ãã $
+emailVerificationProxy
+ãã *
+=
+ãã+ ,
+new
+ãã- 0"
+TripasDeGatoServicio
+ãã1 E
+.
+ããE F,
+EmailVerificationManagerClient
+ããF d
+(
+ããd e
+)
+ããe f
+;
+ããf g
+int
+åå 
+result
+åå 
+=
+åå $
+emailVerificationProxy
+åå 3
+.
+åå3 4*
+SendVerificationCodeRegister
+åå4 P
+(
+ååP Q
+txtEmail
+ååQ Y
+.
+ååY Z
+Text
+ååZ ^
+)
+åå^ _
+;
+åå_ `
+if
+çç 
+(
+çç 
+result
+çç 
+==
+çç 
+	Constants
+çç '
+.
+çç' (
+SUCCES_OPERATION
+çç( 8
+)
+çç8 9
+{
+çç: ;
+DialogManager
+éé !
+.
+éé! "%
+ShowSuccessMessageAlert
+éé" 9
+(
+éé9 :
+
+Properties
+éé: D
+.
+ééD E
+	Resources
+ééE N
+.
+ééN O6
+(dialogVerificationCodeResentSuccessfully
+ééO w
+)
+ééw x
+;
+ééx y
 }
 èè 
 else
@@ -9535,13 +7824,13 @@ Properties
 	Resources
 êêC L
 .
-êêL M+
-dialogInvalidVerificationCode
-êêM j
+êêL M2
+$dialogErrorResendingVerificationCode
+êêM q
 )
-êêj k
+êêq r
 ;
-êêk l
+êêr s
 }
 ëë 
 }
@@ -9698,1763 +7987,2486 @@ Properties
 ;
 ööe f
 }
-õõ 
+õõ 
+catch
+õõ 
+(
+õõ 
+	Exception
+õõ 
+	exception
+õõ (
+)
+õõ( )
+{
+õõ* +
+logger
+úú 
+.
+úú 
+LogError
+úú 
+(
+úú  
+	exception
+úú  )
+)
+úú) *
+;
+úú* +
+DialogManager
+ùù 
+.
+ùù #
+ShowErrorMessageAlert
+ùù 3
+(
+ùù3 4
+string
+ùù4 :
+.
+ùù: ;
+Format
+ùù; A
+(
+ùùA B
+
+Properties
+ùùB L
+.
+ùùL M
+	Resources
+ùùM V
+.
+ùùV W#
+dialogUnexpectedError
+ùùW l
+,
+ùùl m
+	exception
+ùùn w
+.
+ùùw x
+Message
+ùùx 
+)ùù Ä
+)ùùÄ Å
+;ùùÅ Ç
 }
-úú 	
+ûû 
+}
+üü 	
 private
-ûû 
+°° 
+void
+°° 
+BtnValidate_Click
+°° &
+(
+°°& '
+object
+°°' -
+sender
+°°. 4
+,
+°°4 5
+RoutedEventArgs
+°°6 E
+e
+°°F G
+)
+°°G H
+{
+°°I J
+LoggerManager
+¢¢ 
+logger
+¢¢  
+=
+¢¢! "
+new
+¢¢# &
+LoggerManager
+¢¢' 4
+(
+¢¢4 5
+this
+¢¢5 9
+.
+¢¢9 :
+GetType
+¢¢: A
+(
+¢¢A B
+)
+¢¢B C
+)
+¢¢C D
+;
+¢¢D E
+string
+££ 
+enteredCode
+££ 
+=
+££  
+$"
+££! #
+{
+££# $ 
+txtValidationCode1
+££$ 6
+.
+££6 7
+Text
+££7 ;
+}
+££; <
+{
+££< = 
+txtValidationCode2
+££= O
+.
+££O P
+Text
+££P T
+}
+££T U
+{
+££U V 
+txtValidationCode3
+££V h
+.
+££h i
+Text
+££i m
+}
+££m n
+{
+££n o!
+txtValidationCode4££o Å
+.££Å Ç
+Text££Ç Ü
+}££Ü á
+{££á à"
+txtValidationCode5££à ö
+.££ö õ
+Text££õ ü
+}££ü †
+{££† °"
+txtValidationCode6££° ≥
+.££≥ ¥
+Text££¥ ∏
+}££∏ π
+"££π ∫
+;££∫ ª
+try
+§§ 
+{
+§§ 
+var
+•• $
+emailVerificationProxy
+•• *
+=
+••+ ,
+new
+••- 0"
+TripasDeGatoServicio
+••1 E
+.
+••E F,
+EmailVerificationManagerClient
+••F d
+(
+••d e
+)
+••e f
+;
+••f g
 bool
-ûû 
+¶¶ 
+isCodeValid
+¶¶  
+=
+¶¶! "$
+emailVerificationProxy
+¶¶# 9
+.
+¶¶9 :
+
+VerifyCode
+¶¶: D
+(
+¶¶D E
+txtEmail
+¶¶E M
+.
+¶¶M N
+Text
+¶¶N R
+,
+¶¶R S
+enteredCode
+¶¶T _
+)
+¶¶_ `
+;
+¶¶` a
+if
+ßß 
+(
+ßß 
+isCodeValid
+ßß 
+)
+ßß  
+{
+ßß! "
+var
+®® 
+	userProxy
+®® !
+=
+®®" #
+new
+®®$ '"
+TripasDeGatoServicio
+®®( <
+.
+®®< =
+UserManagerClient
+®®= N
+(
+®®N O
+)
+®®O P
+;
+®®P Q
+var
+©© 
+newUser
+©© 
+=
+©©  !
+new
+©©" %"
+TripasDeGatoServicio
+©©& :
+.
+©©: ;
+	LoginUser
+©©; D
+{
+©©E F
+mail
+™™ 
+=
+™™ 
+txtEmail
+™™ '
+.
+™™' (
+Text
+™™( ,
+,
+™™, -
+password
+´´  
+=
+´´! "
+Hasher
+´´# )
+.
+´´) *
+HashToSHA256
+´´* 6
+(
+´´6 7
+txtPassword
+´´7 B
+.
+´´B C
+Password
+´´C K
+)
+´´K L
+}
+¨¨ 
+;
+¨¨ 
+var
+≠≠ 
+
+newProfile
+≠≠ "
+=
+≠≠# $
+new
+≠≠% ("
+TripasDeGatoServicio
+≠≠) =
+.
+≠≠= >
+Profile
+≠≠> E
+{
+≠≠F G
+Username
+ÆÆ  
+=
+ÆÆ! "
+txtName
+ÆÆ# *
+.
+ÆÆ* +
+Text
+ÆÆ+ /
+,
+ÆÆ/ 0
+Score
+ØØ 
+=
+ØØ 
+	Constants
+ØØ  )
+.
+ØØ) *
+INITIAL_SCORE
+ØØ* 7
+,
+ØØ7 8
+PicturePath
+∞∞ #
+=
+∞∞$ %
+$str
+∞∞& J
+}
+±± 
+;
+±± 
+int
+≤≤ 
+accountResult
+≤≤ %
+=
+≤≤& '
+	userProxy
+≤≤( 1
+.
+≤≤1 2
+CreateAccount
+≤≤2 ?
+(
+≤≤? @
+newUser
+≤≤@ G
+,
+≤≤G H
+
+newProfile
+≤≤I S
+)
+≤≤S T
+;
+≤≤T U
+if
+≥≥ 
+(
+≥≥ 
+accountResult
+≥≥ %
+==
+≥≥& (
+	Constants
+≥≥) 2
+.
+≥≥2 3
+SUCCES_OPERATION
+≥≥3 C
+)
+≥≥C D
+{
+≥≥E F
+DialogManager
+¥¥ %
+.
+¥¥% &%
+ShowSuccessMessageAlert
+¥¥& =
+(
+¥¥= >
+
+Properties
+¥¥> H
+.
+¥¥H I
+	Resources
+¥¥I R
+.
+¥¥R S-
+dialogAccountCreatedSuccesfully
+¥¥S r
+)
+¥¥r s
+;
+¥¥s t
+verificationGrid
+µµ (
+.
+µµ( )
+
+Visibility
+µµ) 3
+=
+µµ4 5
+
+Visibility
+µµ6 @
+.
+µµ@ A
+	Collapsed
+µµA J
+;
+µµJ K
+GoToLoginView
+∂∂ %
+(
+∂∂% &
+)
+∂∂& '
+;
+∂∂' (
+}
+∑∑ 
+else
+∑∑ 
+{
+∑∑ 
+DialogManager
+∏∏ %
+.
+∏∏% &#
+ShowErrorMessageAlert
+∏∏& ;
+(
+∏∏; <
+
+Properties
+∏∏< F
+.
+∏∏F G
+	Resources
+∏∏G P
+.
+∏∏P Q(
+dialogAccountCreatedErrror
+∏∏Q k
+)
+∏∏k l
+;
+∏∏l m
+}
+ππ 
+}
+∫∫ 
+else
+∫∫ 
+{
+∫∫ 
+DialogManager
+ªª !
+.
+ªª! "#
+ShowErrorMessageAlert
+ªª" 7
+(
+ªª7 8
+
+Properties
+ªª8 B
+.
+ªªB C
+	Resources
+ªªC L
+.
+ªªL M+
+dialogInvalidVerificationCode
+ªªM j
+)
+ªªj k
+;
+ªªk l
+}
+ºº 
+}
+ΩΩ 
+catch
+ΩΩ 
+(
+ΩΩ '
+EndpointNotFoundException
+ΩΩ .'
+endpointNotFoundException
+ΩΩ/ H
+)
+ΩΩH I
+{
+ΩΩJ K
+logger
+ææ 
+.
+ææ 
+LogError
+ææ 
+(
+ææ  '
+endpointNotFoundException
+ææ  9
+)
+ææ9 :
+;
+ææ: ;
+DialogManager
+øø 
+.
+øø #
+ShowErrorMessageAlert
+øø 3
+(
+øø3 4
+
+Properties
+øø4 >
+.
+øø> ?
+	Resources
+øø? H
+.
+øøH I%
+dialogEndPointException
+øøI `
+)
+øø` a
+;
+øøa b
+}
+¿¿ 
+catch
+¿¿ 
+(
+¿¿ 
+TimeoutException
+¿¿ %
+timeoutException
+¿¿& 6
+)
+¿¿6 7
+{
+¿¿8 9
+logger
+¡¡ 
+.
+¡¡ 
+LogError
+¡¡ 
+(
+¡¡  
+timeoutException
+¡¡  0
+)
+¡¡0 1
+;
+¡¡1 2
+DialogManager
+¬¬ 
+.
+¬¬ #
+ShowErrorMessageAlert
+¬¬ 3
+(
+¬¬3 4
+
+Properties
+¬¬4 >
+.
+¬¬> ?
+	Resources
+¬¬? H
+.
+¬¬H I$
+dialogTimeOutException
+¬¬I _
+)
+¬¬_ `
+;
+¬¬` a
+}
+√√ 
+catch
+√√ 
+(
+√√ $
+CommunicationException
+√√ +$
+communicationException
+√√, B
+)
+√√B C
+{
+√√D E
+logger
+ƒƒ 
+.
+ƒƒ 
+LogError
+ƒƒ 
+(
+ƒƒ  $
+communicationException
+ƒƒ  6
+)
+ƒƒ6 7
+;
+ƒƒ7 8
+DialogManager
+≈≈ 
+.
+≈≈ #
+ShowErrorMessageAlert
+≈≈ 3
+(
+≈≈3 4
+
+Properties
+≈≈4 >
+.
+≈≈> ?
+	Resources
+≈≈? H
+.
+≈≈H I)
+dialogComunicationException
+≈≈I d
+)
+≈≈d e
+;
+≈≈e f
+}
+∆∆ 
+catch
+∆∆ 
+(
+∆∆ 
+	Exception
+∆∆ 
+	exception
+∆∆ (
+)
+∆∆( )
+{
+∆∆* +
+logger
+«« 
+.
+«« 
+LogError
+«« 
+(
+««  
+	exception
+««  )
+)
+««) *
+;
+««* +
+DialogManager
+»» 
+.
+»» #
+ShowErrorMessageAlert
+»» 3
+(
+»»3 4
+string
+»»4 :
+.
+»»: ;
+Format
+»»; A
+(
+»»A B
+
+Properties
+»»B L
+.
+»»L M
+	Resources
+»»M V
+.
+»»V W#
+dialogUnexpectedError
+»»W l
+,
+»»l m
+	exception
+»»n w
+.
+»»w x
+Message
+»»x 
+)»» Ä
+)»»Ä Å
+;»»Å Ç
+}
+…… 
+}
+   	
+private
+ÃÃ 
+bool
+ÃÃ 
 ValidateFields
-ûû #
+ÃÃ #
 (
-ûû# $
+ÃÃ# $
 string
-ûû$ *
+ÃÃ$ *
 email
-ûû+ 0
+ÃÃ+ 0
 ,
-ûû0 1
+ÃÃ0 1
 string
-ûû2 8
+ÃÃ2 8
 username
-ûû9 A
+ÃÃ9 A
 ,
-ûûA B
+ÃÃA B
 string
-ûûC I
+ÃÃC I
 password
-ûûJ R
+ÃÃJ R
 )
-ûûR S
+ÃÃR S
 {
-ûûT U
+ÃÃT U
 bool
-üü 
+ÕÕ 
 isValid
-üü 
+ÕÕ 
 =
-üü 
+ÕÕ 
 true
-üü 
+ÕÕ 
 ;
-üü  
+ÕÕ  
 if
-°° 
+ŒŒ 
 (
-°° 
+ŒŒ 
 !
-°° 
+ŒŒ 
 	Validador
-°° 
+ŒŒ 
 .
-°° 
+ŒŒ 
 ValidateEmail
-°° (
+ŒŒ (
 (
-°°( )
+ŒŒ( )
 email
-°°) .
+ŒŒ) .
 )
-°°. /
+ŒŒ. /
 )
-°°/ 0
+ŒŒ/ 0
 {
-°°1 2
+ŒŒ1 2
 HighlightField
-¢¢ 
+œœ 
 (
-¢¢ 
+œœ 
 txtEmail
-¢¢ '
+œœ '
 )
-¢¢' (
+œœ' (
 ;
-¢¢( )
+œœ( )
 lbInvalidEmail
-££ 
+–– 
 .
-££ 
+–– 
 
 Visibility
-££ )
+–– )
 =
-££* +
+––* +
 
 Visibility
-££, 6
+––, 6
 .
-££6 7
+––6 7
 Visible
-££7 >
+––7 >
 ;
-££> ?
+––> ?
 isValid
-§§ 
+—— 
 =
-§§ 
+—— 
 false
-§§ 
+—— 
 ;
-§§  
+——  
 }
-•• 
+““ 
 else
-•• 
+““ 
 {
-•• 
+““ 
 
 ResetField
-¶¶ 
+”” 
 (
-¶¶ 
+”” 
 txtEmail
-¶¶ #
+”” #
 )
-¶¶# $
+””# $
 ;
-¶¶$ %
+””$ %
 lbInvalidEmail
-ßß 
+‘‘ 
 .
-ßß 
+‘‘ 
 
 Visibility
-ßß )
+‘‘ )
 =
-ßß* +
+‘‘* +
 
 Visibility
-ßß, 6
+‘‘, 6
 .
-ßß6 7
+‘‘6 7
 	Collapsed
-ßß7 @
+‘‘7 @
 ;
-ßß@ A
+‘‘@ A
 }
-®® 
+’’ 
 if
-™™ 
+÷÷ 
 (
-™™ 
+÷÷ 
 !
-™™ 
+÷÷ 
 	Validador
-™™ 
+÷÷ 
 .
-™™ 
+÷÷ 
 ValidateUsername
-™™ +
+÷÷ +
 (
-™™+ ,
+÷÷+ ,
 username
-™™, 4
+÷÷, 4
 )
-™™4 5
+÷÷4 5
 )
-™™5 6
+÷÷5 6
 {
-™™7 8
+÷÷7 8
 HighlightField
-´´ 
+◊◊ 
 (
-´´ 
+◊◊ 
 txtName
-´´ &
+◊◊ &
 )
-´´& '
+◊◊& '
 ;
-´´' (
+◊◊' (
 lbInvalidUser
-¨¨ 
+ÿÿ 
 .
-¨¨ 
+ÿÿ 
 
 Visibility
-¨¨ (
+ÿÿ (
 =
-¨¨) *
+ÿÿ) *
 
 Visibility
-¨¨+ 5
+ÿÿ+ 5
 .
-¨¨5 6
+ÿÿ5 6
 Visible
-¨¨6 =
+ÿÿ6 =
 ;
-¨¨= >
+ÿÿ= >
 isValid
-≠≠ 
+ŸŸ 
 =
-≠≠ 
+ŸŸ 
 false
-≠≠ 
+ŸŸ 
 ;
-≠≠  
+ŸŸ  
 }
-ÆÆ 
+⁄⁄ 
 else
-ÆÆ 
+⁄⁄ 
 {
-ÆÆ 
+⁄⁄ 
 
 ResetField
-ØØ 
+€€ 
 (
-ØØ 
+€€ 
 txtName
-ØØ "
+€€ "
 )
-ØØ" #
+€€" #
 ;
-ØØ# $
+€€# $
 lbInvalidUser
-∞∞ 
+‹‹ 
 .
-∞∞ 
+‹‹ 
 
 Visibility
-∞∞ (
+‹‹ (
 =
-∞∞) *
+‹‹) *
 
 Visibility
-∞∞+ 5
+‹‹+ 5
 .
-∞∞5 6
+‹‹5 6
 	Collapsed
-∞∞6 ?
+‹‹6 ?
 ;
-∞∞? @
+‹‹? @
 }
-±± 
+›› 
 if
-≥≥ 
+ﬁﬁ 
 (
-≥≥ 
+ﬁﬁ 
 !
-≥≥ 
+ﬁﬁ 
 	Validador
-≥≥ 
+ﬁﬁ 
 .
-≥≥ 
+ﬁﬁ 
 ValidatePassword
-≥≥ +
+ﬁﬁ +
 (
-≥≥+ ,
+ﬁﬁ+ ,
 password
-≥≥, 4
+ﬁﬁ, 4
 )
-≥≥4 5
+ﬁﬁ4 5
 )
-≥≥5 6
+ﬁﬁ5 6
 {
-≥≥7 8
+ﬁﬁ7 8
 HighlightField
-¥¥ 
+ﬂﬂ 
 (
-¥¥ 
+ﬂﬂ 
 txtPassword
-¥¥ *
+ﬂﬂ *
 )
-¥¥* +
+ﬂﬂ* +
 ;
-¥¥+ ,
+ﬂﬂ+ ,
 lbInvalidPassword
-µµ !
+‡‡ !
 .
-µµ! "
+‡‡! "
 
 Visibility
-µµ" ,
+‡‡" ,
 =
-µµ- .
+‡‡- .
 
 Visibility
-µµ/ 9
+‡‡/ 9
 .
-µµ9 :
+‡‡9 :
 Visible
-µµ: A
+‡‡: A
 ;
-µµA B
+‡‡A B
 isValid
-∂∂ 
+·· 
 =
-∂∂ 
+·· 
 false
-∂∂ 
+·· 
 ;
-∂∂  
+··  
 }
-∑∑ 
+‚‚ 
 else
-∑∑ 
+‚‚ 
 {
-∑∑ 
+‚‚ 
 
 ResetField
-∏∏ 
+„„ 
 (
-∏∏ 
+„„ 
 txtPassword
-∏∏ &
+„„ &
 )
-∏∏& '
+„„& '
 ;
-∏∏' (
+„„' (
 lbInvalidPassword
-ππ !
+‰‰ !
 .
-ππ! "
+‰‰! "
 
 Visibility
-ππ" ,
+‰‰" ,
 =
-ππ- .
+‰‰- .
 
 Visibility
-ππ/ 9
+‰‰/ 9
 .
-ππ9 :
+‰‰9 :
 	Collapsed
-ππ: C
+‰‰: C
 ;
-ππC D
+‰‰C D
 }
-∫∫ 
+ÂÂ 
 return
-ºº 
+ÊÊ 
 isValid
-ºº 
+ÊÊ 
 ;
-ºº 
+ÊÊ 
 }
-ΩΩ 	
+ÁÁ 	
 private
-øø 
+ÈÈ 
 void
-øø 
+ÈÈ 
 HighlightField
-øø #
+ÈÈ #
 (
-øø# $
+ÈÈ# $
 Control
-øø$ +
+ÈÈ$ +
 control
-øø, 3
+ÈÈ, 3
 )
-øø3 4
+ÈÈ3 4
 {
-øø5 6
+ÈÈ5 6
 control
-¿¿ 
+ÍÍ 
 .
-¿¿ 
+ÍÍ 
 BorderBrush
-¿¿ 
+ÍÍ 
 =
-¿¿  !
+ÍÍ  !
 Brushes
-¿¿" )
+ÍÍ" )
 .
-¿¿) *
+ÍÍ) *
 Red
-¿¿* -
+ÍÍ* -
 ;
-¿¿- .
-}
-¡¡ 	
-private
-√√ 
-void
-√√ )
-TxtPassword_PasswordChanged
-√√ 0
-(
-√√0 1
-object
-√√1 7
-sender
-√√8 >
-,
-√√> ?
-RoutedEventArgs
-√√@ O
-e
-√√P Q
-)
-√√Q R
-{
-√√S T
-if
-ƒƒ 
-(
-ƒƒ 
-txtPassword
-ƒƒ 
-.
-ƒƒ 
-
-Visibility
-ƒƒ &
-==
-ƒƒ' )
-
-Visibility
-ƒƒ* 4
-.
-ƒƒ4 5
-Visible
-ƒƒ5 <
-)
-ƒƒ< =
-{
-ƒƒ> ?
-ValidatePassword
-≈≈  
-(
-≈≈  !
-txtPassword
-≈≈! ,
-.
-≈≈, -
-Password
-≈≈- 5
-)
-≈≈5 6
-;
-≈≈6 7
-}
-∆∆ 
-}
-«« 	
-private
-…… 
-void
-…… 0
-"TxtPasswordVisible_PasswordChanged
-…… 7
-(
-……7 8
-object
-……8 >
-sender
-……? E
-,
-……E F
-RoutedEventArgs
-……G V
-e
-……W X
-)
-……X Y
-{
-……Z [
-if
-   
-(
-    
-txtPasswordVisible
-   "
-.
-  " #
-
-Visibility
-  # -
-==
-  . 0
-
-Visibility
-  1 ;
-.
-  ; <
-Visible
-  < C
-)
-  C D
-{
-  E F
-ValidatePassword
-ÀÀ  
-(
-ÀÀ  ! 
-txtPasswordVisible
-ÀÀ! 3
-.
-ÀÀ3 4
-Text
-ÀÀ4 8
-)
-ÀÀ8 9
-;
-ÀÀ9 :
-}
-ÃÃ 
-}
-ÕÕ 	
-private
-œœ 
-void
-œœ 
-ValidatePassword
-œœ %
-(
-œœ% &
-string
-œœ& ,
-password
-œœ- 5
-)
-œœ5 6
-{
-œœ7 8
-if
-–– 
-(
-–– 
-!
-–– 
-	Validador
-–– 
-.
-–– 
-ValidatePassword
-–– +
-(
-––+ ,
-password
-––, 4
-)
-––4 5
-)
-––5 6
-{
-––7 8
-HighlightField
-—— 
-(
-—— 
-txtPassword
-—— *
-)
-——* +
-;
-——+ ,
-lbInvalidPassword
-““ !
-.
-““! "
-
-Visibility
-““" ,
-=
-““- .
-
-Visibility
-““/ 9
-.
-““9 :
-Visible
-““: A
-;
-““A B
-}
-”” 
-else
-”” 
-{
-”” 
-
-ResetField
-‘‘ 
-(
-‘‘ 
-txtPassword
-‘‘ &
-)
-‘‘& '
-;
-‘‘' (
-lbInvalidPassword
-’’ !
-.
-’’! "
-
-Visibility
-’’" ,
-=
-’’- .
-
-Visibility
-’’/ 9
-.
-’’9 :
-	Collapsed
-’’: C
-;
-’’C D
-}
-÷÷ 
-}
-◊◊ 	
-private
-ŸŸ 
-void
-ŸŸ '
-BtnTogglePassword_Checked
-ŸŸ .
-(
-ŸŸ. /
-object
-ŸŸ/ 5
-sender
-ŸŸ6 <
-,
-ŸŸ< =
-RoutedEventArgs
-ŸŸ> M
-e
-ŸŸN O
-)
-ŸŸO P
-{
-ŸŸQ R 
-txtPasswordVisible
-⁄⁄ 
-.
-⁄⁄ 
-Text
-⁄⁄ #
-=
-⁄⁄$ %
-txtPassword
-⁄⁄& 1
-.
-⁄⁄1 2
-Password
-⁄⁄2 :
-;
-⁄⁄: ; 
-txtPasswordVisible
-€€ 
-.
-€€ 
-
-Visibility
-€€ )
-=
-€€* +
-
-Visibility
-€€, 6
-.
-€€6 7
-Visible
-€€7 >
-;
-€€> ?
-txtPassword
-‹‹ 
-.
-‹‹ 
-
-Visibility
-‹‹ "
-=
-‹‹# $
-
-Visibility
-‹‹% /
-.
-‹‹/ 0
-	Collapsed
-‹‹0 9
-;
-‹‹9 :
-}
-›› 	
-private
-ﬂﬂ 
-void
-ﬂﬂ )
-BtnTogglePassword_Unchecked
-ﬂﬂ 0
-(
-ﬂﬂ0 1
-object
-ﬂﬂ1 7
-sender
-ﬂﬂ8 >
-,
-ﬂﬂ> ?
-RoutedEventArgs
-ﬂﬂ@ O
-e
-ﬂﬂP Q
-)
-ﬂﬂQ R
-{
-ﬂﬂS T
-txtPassword
-‡‡ 
-.
-‡‡ 
-Password
-‡‡  
-=
-‡‡! " 
-txtPasswordVisible
-‡‡# 5
-.
-‡‡5 6
-Text
-‡‡6 :
-;
-‡‡: ; 
-txtPasswordVisible
-·· 
-.
-·· 
-
-Visibility
-·· )
-=
-··* +
-
-Visibility
-··, 6
-.
-··6 7
-	Collapsed
-··7 @
-;
-··@ A
-txtPassword
-‚‚ 
-.
-‚‚ 
-
-Visibility
-‚‚ "
-=
-‚‚# $
-
-Visibility
-‚‚% /
-.
-‚‚/ 0
-Visible
-‚‚0 7
-;
-‚‚7 8
-}
-„„ 	
-private
-ÂÂ 
-void
-ÂÂ *
-UpdatePasswordVisibilityIcon
-ÂÂ 1
-(
-ÂÂ1 2
-)
-ÂÂ2 3
-{
-ÂÂ4 5
-if
-ÊÊ 
-(
-ÊÊ 
-!
-ÊÊ 
-string
-ÊÊ 
-.
-ÊÊ 
-IsNullOrEmpty
-ÊÊ %
-(
-ÊÊ% &
-txtPassword
-ÊÊ& 1
-.
-ÊÊ1 2
-Password
-ÊÊ2 :
-)
-ÊÊ: ;
-||
-ÊÊ< >
-!
-ÊÊ? @
-string
-ÊÊ@ F
-.
-ÊÊF G
-IsNullOrEmpty
-ÊÊG T
-(
-ÊÊT U 
-txtPasswordVisible
-ÊÊU g
-.
-ÊÊg h
-Text
-ÊÊh l
-)
-ÊÊl m
-)
-ÊÊm n
-{
-ÊÊo p
-btnTogglePassword
-ÁÁ !
-.
-ÁÁ! "
-
-Visibility
-ÁÁ" ,
-=
-ÁÁ- .
-
-Visibility
-ÁÁ/ 9
-.
-ÁÁ9 :
-Visible
-ÁÁ: A
-;
-ÁÁA B
-}
-ËË 
-else
-ËË 
-{
-ËË 
-btnTogglePassword
-ÈÈ !
-.
-ÈÈ! "
-
-Visibility
-ÈÈ" ,
-=
-ÈÈ- .
-
-Visibility
-ÈÈ/ 9
-.
-ÈÈ9 :
-	Collapsed
-ÈÈ: C
-;
-ÈÈC D
-}
-ÍÍ 
+ÍÍ- .
 }
 ÎÎ 	
 private
-ÓÓ 
+ÌÌ 
 void
-ÓÓ 
-
-ResetField
-ÓÓ 
+ÌÌ )
+TxtPassword_PasswordChanged
+ÌÌ 0
 (
-ÓÓ  
-Control
-ÓÓ  '
-control
-ÓÓ( /
-)
-ÓÓ/ 0
-{
-ÓÓ1 2
-control
-ÔÔ 
-.
-ÔÔ 
-BorderBrush
-ÔÔ 
-=
-ÔÔ  !
-Brushes
-ÔÔ" )
-.
-ÔÔ) *
-White
-ÔÔ* /
-;
-ÔÔ/ 0
-}
- 	
-private
-ÚÚ 
-void
-ÚÚ !
-TxtName_TextChanged
-ÚÚ (
-(
-ÚÚ( )
+ÌÌ0 1
 object
-ÚÚ) /
+ÌÌ1 7
 sender
-ÚÚ0 6
+ÌÌ8 >
 ,
-ÚÚ6 7"
-TextChangedEventArgs
-ÚÚ8 L
+ÌÌ> ?
+RoutedEventArgs
+ÌÌ@ O
 e
-ÚÚM N
+ÌÌP Q
 )
-ÚÚN O
+ÌÌQ R
 {
-ÚÚP Q
-string
-ÛÛ 
-username
-ÛÛ 
-=
-ÛÛ 
-txtName
-ÛÛ %
+ÌÌS T
+if
+ÓÓ 
+(
+ÓÓ 
+txtPassword
+ÓÓ 
 .
-ÛÛ% &
-Text
-ÛÛ& *
+ÓÓ 
+
+Visibility
+ÓÓ &
+==
+ÓÓ' )
+
+Visibility
+ÓÓ* 4
+.
+ÓÓ4 5
+Visible
+ÓÓ5 <
+)
+ÓÓ< =
+{
+ÓÓ> ?
+ValidatePassword
+ÔÔ  
+(
+ÔÔ  !
+txtPassword
+ÔÔ! ,
+.
+ÔÔ, -
+Password
+ÔÔ- 5
+)
+ÔÔ5 6
 ;
-ÛÛ* +
+ÔÔ6 7
+}
+ 
+}
+ÒÒ 	
+private
+ÛÛ 
+void
+ÛÛ 0
+"TxtPasswordVisible_PasswordChanged
+ÛÛ 7
+(
+ÛÛ7 8
+object
+ÛÛ8 >
+sender
+ÛÛ? E
+,
+ÛÛE F
+RoutedEventArgs
+ÛÛG V
+e
+ÛÛW X
+)
+ÛÛX Y
+{
+ÛÛZ [
 if
 ÙÙ 
 (
-ÙÙ 
-!
-ÙÙ 
-	Validador
-ÙÙ 
-.
-ÙÙ 
-ValidateUsername
-ÙÙ +
-(
-ÙÙ+ ,
-username
-ÙÙ, 4
-)
-ÙÙ4 5
-)
-ÙÙ5 6
-{
-ÙÙ7 8
-HighlightField
-ıı 
-(
-ıı 
-txtName
-ıı &
-)
-ıı& '
-;
-ıı' (
-lbInvalidUser
-ˆˆ 
-.
-ˆˆ 
-
-Visibility
-ˆˆ (
-=
-ˆˆ) *
-
-Visibility
-ˆˆ+ 5
-.
-ˆˆ5 6
-Visible
-ˆˆ6 =
-;
-ˆˆ= >
-}
-˜˜ 
-else
-˜˜ 
-{
-˜˜ 
-
-ResetField
-¯¯ 
-(
-¯¯ 
-txtName
-¯¯ "
-)
-¯¯" #
-;
-¯¯# $
-lbInvalidUser
-˘˘ 
-.
-˘˘ 
-
-Visibility
-˘˘ (
-=
-˘˘) *
-
-Visibility
-˘˘+ 5
-.
-˘˘5 6
-	Collapsed
-˘˘6 ?
-;
-˘˘? @
-}
-˙˙ 
-}
-˚˚ 	
-private
-˝˝ 
-void
-˝˝ "
-TxtEmail_TextChanged
-˝˝ )
-(
-˝˝) *
-object
-˝˝* 0
-sender
-˝˝1 7
-,
-˝˝7 8"
-TextChangedEventArgs
-˝˝9 M
-e
-˝˝N O
-)
-˝˝O P
-{
-˝˝Q R
-string
-˛˛ 
-email
-˛˛ 
-=
-˛˛ 
-txtEmail
-˛˛ #
-.
-˛˛# $
-Text
-˛˛$ (
-;
-˛˛( )
-if
-ˇˇ 
-(
-ˇˇ 
-!
-ˇˇ 
-	Validador
-ˇˇ 
-.
-ˇˇ 
-ValidateEmail
-ˇˇ (
-(
-ˇˇ( )
-email
-ˇˇ) .
-)
-ˇˇ. /
-)
-ˇˇ/ 0
-{
-ˇˇ1 2
-HighlightField
-ÄÄ 
-(
-ÄÄ 
-txtEmail
-ÄÄ '
-)
-ÄÄ' (
-;
-ÄÄ( )
-lbInvalidEmail
-ÅÅ 
-.
-ÅÅ 
-
-Visibility
-ÅÅ )
-=
-ÅÅ* +
-
-Visibility
-ÅÅ, 6
-.
-ÅÅ6 7
-Visible
-ÅÅ7 >
-;
-ÅÅ> ?
-}
-ÇÇ 
-else
-ÇÇ 
-{
-ÇÇ 
-
-ResetField
-ÉÉ 
-(
-ÉÉ 
-txtEmail
-ÉÉ #
-)
-ÉÉ# $
-;
-ÉÉ$ %
-lbInvalidEmail
-ÑÑ 
-.
-ÑÑ 
-
-Visibility
-ÑÑ )
-=
-ÑÑ* +
-
-Visibility
-ÑÑ, 6
-.
-ÑÑ6 7
-	Collapsed
-ÑÑ7 @
-;
-ÑÑ@ A
-}
-ÖÖ 
-}
-ÜÜ 	
-private
-àà 
-void
-àà 
-GoToLoginView
-àà "
-(
-àà" #
-)
-àà# $
-{
-àà% &
-if
-ââ 
-(
-ââ 
-this
-ââ 
-.
-ââ 
-NavigationService
-ââ &
-.
-ââ& '
-	CanGoBack
-ââ' 0
-)
-ââ0 1
-{
-ââ2 3
-this
-ää 
-.
-ää 
-NavigationService
-ää &
-.
-ää& '
-GoBack
-ää' -
-(
-ää- .
-)
-ää. /
-;
-ää/ 0
-}
-ãã 
-}
-åå 	
-private
-éé 
-void
-éé 
-BtnBack_Click
-éé "
-(
-éé" #
-object
-éé# )
-sender
-éé* 0
-,
-éé0 1
-RoutedEventArgs
-éé2 A
-e
-ééB C
-)
-ééC D
-{
-ééE F
-GoToLoginView
-èè 
-(
-èè 
-)
-èè 
-;
-èè 
-}
-êê 	
-private
-íí 
-void
-íí #
-BtnBackValidate_Click
-íí *
-(
-íí* +
-object
-íí+ 1
-sender
-íí2 8
-,
-íí8 9
-RoutedEventArgs
-íí: I
-e
-ííJ K
-)
-ííK L
-{
-ííM N
-verificationGrid
-ìì 
-.
-ìì 
-
-Visibility
-ìì '
-=
-ìì( )
-
-Visibility
-ìì* 4
-.
-ìì4 5
-	Collapsed
-ìì5 >
-;
-ìì> ?
-txtEmail
-îî 
-.
-îî 
-Clear
-îî 
-(
-îî 
-)
-îî 
-;
-îî 
-txtName
-ïï 
-.
-ïï 
-Clear
-ïï 
-(
-ïï 
-)
-ïï 
-;
-ïï 
-txtPassword
-ññ 
-.
-ññ 
-Clear
-ññ 
-(
-ññ 
-)
-ññ 
-;
-ññ   
+ÙÙ  
 txtPasswordVisible
-óó 
+ÙÙ "
 .
-óó 
-Clear
-óó $
-(
-óó$ %
-)
-óó% &
-;
-óó& '
-}
-òò 	
-private
-öö 
-void
-öö +
-TxtValidationCode_TextChanged
-öö 2
-(
-öö2 3
-object
-öö3 9
-sender
-öö: @
-,
-öö@ A"
-TextChangedEventArgs
-ööB V
-e
-ööW X
-)
-ööX Y
-{
-ööZ [
-TextBox
-õõ 
-currentTextBox
-õõ "
-=
-õõ# $
-sender
-õõ% +
-as
-õõ, .
-TextBox
-õõ/ 6
-;
-õõ6 7
-if
-úú 
-(
-úú 
-currentTextBox
-úú 
-.
-úú 
-Text
-úú #
-.
-úú# $
-Length
-úú$ *
-==
-úú+ -
-$num
-úú. /
-)
-úú/ 0
-{
-úú1 2
-if
-ùù 
-(
-ùù 
-currentTextBox
-ùù "
-==
-ùù# % 
-txtValidationCode1
-ùù& 8
-)
-ùù8 9 
-txtValidationCode2
-ûû &
-.
-ûû& '
-Focus
-ûû' ,
-(
-ûû, -
-)
-ûû- .
-;
-ûû. /
-else
-üü 
-if
-üü 
-(
-üü 
-currentTextBox
-üü '
-==
-üü( * 
-txtValidationCode2
-üü+ =
-)
-üü= > 
-txtValidationCode3
-†† &
-.
-††& '
-Focus
-††' ,
-(
-††, -
-)
-††- .
-;
-††. /
-else
-°° 
-if
-°° 
-(
-°° 
-currentTextBox
-°° '
-==
-°°( * 
-txtValidationCode3
-°°+ =
-)
-°°= > 
-txtValidationCode4
-¢¢ &
-.
-¢¢& '
-Focus
-¢¢' ,
-(
-¢¢, -
-)
-¢¢- .
-;
-¢¢. /
-else
-££ 
-if
-££ 
-(
-££ 
-currentTextBox
-££ '
-==
-££( * 
-txtValidationCode4
-££+ =
-)
-££= > 
-txtValidationCode5
-§§ &
-.
-§§& '
-Focus
-§§' ,
-(
-§§, -
-)
-§§- .
-;
-§§. /
-else
-•• 
-if
-•• 
-(
-•• 
-currentTextBox
-•• '
-==
-••( * 
-txtValidationCode5
-••+ =
-)
-••= > 
-txtValidationCode6
-¶¶ &
-.
-¶¶& '
-Focus
-¶¶' ,
-(
-¶¶, -
-)
-¶¶- .
-;
-¶¶. /
-}
-ßß 
-}
-®® 	
-}
-™™ 
-}´´ ÷Ú
-.C:\TripasDeGatoCliente\Views\LobbyView.xaml.cs
-	namespace 	
-TripasDeGatoCliente
- 
-. 
-Views #
-{$ %
-public 
-
-partial 
-class 
-	LobbyView "
-:# $
-Page% )
-,) * 
-IChatManagerCallback+ ?
-,? @!
-ILobbyManagerCallbackA V
-{W X
-private 
-ChatManagerClient !
-chatManager" -
-;- .
-private 
-LobbyManagerClient "
-lobbyManager# /
-;/ 0
-private 
-LobbyBrowserClient "
-lobbyBrowser# /
-;/ 0
-private 
-UserManagerClient !
-userManager" -
-;- .
-private 
-bool 
-isConnected  
-=! "
-false# (
-;( )
-private 
-string 
-	lobbyCode  
-;  !
-private  
-FriendsManagerClient $
-friendsManager% 3
-;3 4
-private 
-StatusManagerClient #
-statusManager$ 1
-;1 2
-private (
-EmailInvitationManagerClient ,"
-emailInvitationManager- C
-;C D
-private 
-bool 
-areElementsVisible '
-=( )
-false* /
-;/ 0
-public   
-	LobbyView   
-(   
-string   
-	lobbyCode    )
-)  ) *
-{  + ,
-InitializeComponent!! 
-(!!  
-)!!  !
-;!!! "
-this"" 
-."" 
-	lobbyCode"" 
-="" 
-	lobbyCode"" &
-;""& '
-lbCode## 
-.## 
-Content## 
-=## 
-	lobbyCode## &
-;##& '
-lobbyBrowser$$ 
-=$$ 
-new$$ 
-LobbyBrowserClient$$ 1
-($$1 2
-)$$2 3
-;$$3 4
-InitializeLobby%% 
-(%% 
-)%% 
-;%% 
-lobbyManager&& 
-=&& 
-new&& 
-LobbyManagerClient&& 1
-(&&1 2
-new&&2 5
-InstanceContext&&6 E
-(&&E F
-this&&F J
-)&&J K
-)&&K L
-;&&L M
-chatManager'' 
-='' 
-new'' 
-ChatManagerClient'' /
-(''/ 0
-new''0 3
-InstanceContext''4 C
-(''C D
-this''D H
-)''H I
-)''I J
-;''J K
-userManager(( 
-=(( 
-new(( 
-UserManagerClient(( /
-(((/ 0
-)((0 1
-;((1 2
-friendsManager)) 
-=)) 
-new))   
-FriendsManagerClient))! 5
-())5 6
-)))6 7
-;))7 8
-statusManager** 
-=** 
-new** 
-StatusManagerClient**  3
-(**3 4
-)**4 5
-;**5 6"
-emailInvitationManager++ "
-=++# $
-new++% ((
-EmailInvitationManagerClient++) E
-(++E F
-)++F G
-;++G H&
-InitializeConnectionsAsync,, &
-(,,& '
-),,' (
-;,,( )
-if-- 
-(-- 
-!-- 
-string-- 
-.-- 
-IsNullOrEmpty-- %
-(--% & 
-UserProfileSingleton--& :
-.--: ;
-PicPath--; B
-)--B C
-)--C D
-{--E F
-imgProfile1.. 
-... 
-Source.. "
-=..# $
-new..% (
-BitmapImage..) 4
-(..4 5
-new..5 8
-Uri..9 <
-(..< = 
-UserProfileSingleton..= Q
-...Q R
-PicPath..R Y
-,..Y Z
-UriKind..[ b
-...b c
-RelativeOrAbsolute..c u
-)..u v
-)..v w
-;..w x
-}// 
-}00 	
-private22 
-async22 
-void22 &
-InitializeConnectionsAsync22 5
-(225 6
-)226 7
-{228 9
-LoggerManager33 
-logger33  
-=33! "
-new33# &
-LoggerManager33' 4
-(334 5
-this335 9
-.339 :
-GetType33: A
-(33A B
-)33B C
-)33C D
-;33D E
-try44 
-{44 
-await55 
-InitializeChatAsync55 )
-(55) *
-)55* +
-;55+ ,
-await66 
-ConnectToLobbyAsync66 )
-(66) *
-)66* +
-;66+ ,
-}77 
-catch77 
-(77 %
-EndpointNotFoundException77 .%
-endpointNotFoundException77/ H
-)77H I
-{77J K
-logger88 
-.88 
-LogError88 
-(88  %
-endpointNotFoundException88  9
-)889 :
-;88: ;
-DialogManager99 
-.99 !
-ShowErrorMessageAlert99 3
-(993 4
+ÙÙ" #
 
-Properties994 >
-.99> ?
-	Resources99? H
-.99H I#
-dialogEndPointException99I `
-)99` a
-;99a b
-GoToMenuView:: 
-(:: 
-):: 
-;:: 
+Visibility
+ÙÙ# -
+==
+ÙÙ. 0
+
+Visibility
+ÙÙ1 ;
+.
+ÙÙ; <
+Visible
+ÙÙ< C
+)
+ÙÙC D
+{
+ÙÙE F
+ValidatePassword
+ıı  
+(
+ıı  ! 
+txtPasswordVisible
+ıı! 3
+.
+ıı3 4
+Text
+ıı4 8
+)
+ıı8 9
+;
+ıı9 :
+}
+ˆˆ 
+}
+˜˜ 	
+private
+˘˘ 
+void
+˘˘ 
+ValidatePassword
+˘˘ %
+(
+˘˘% &
+string
+˘˘& ,
+password
+˘˘- 5
+)
+˘˘5 6
+{
+˘˘7 8
+if
+˙˙ 
+(
+˙˙ 
+!
+˙˙ 
+	Validador
+˙˙ 
+.
+˙˙ 
+ValidatePassword
+˙˙ +
+(
+˙˙+ ,
+password
+˙˙, 4
+)
+˙˙4 5
+)
+˙˙5 6
+{
+˙˙7 8
+HighlightField
+˚˚ 
+(
+˚˚ 
+txtPassword
+˚˚ *
+)
+˚˚* +
+;
+˚˚+ ,
+lbInvalidPassword
+¸¸ !
+.
+¸¸! "
+
+Visibility
+¸¸" ,
+=
+¸¸- .
+
+Visibility
+¸¸/ 9
+.
+¸¸9 :
+Visible
+¸¸: A
+;
+¸¸A B
+}
+˝˝ 
+else
+˝˝ 
+{
+˝˝ 
+
+ResetField
+˛˛ 
+(
+˛˛ 
+txtPassword
+˛˛ &
+)
+˛˛& '
+;
+˛˛' (
+lbInvalidPassword
+ˇˇ !
+.
+ˇˇ! "
+
+Visibility
+ˇˇ" ,
+=
+ˇˇ- .
+
+Visibility
+ˇˇ/ 9
+.
+ˇˇ9 :
+	Collapsed
+ˇˇ: C
+;
+ˇˇC D
+}
+ÄÄ 
+}
+ÅÅ 	
+private
+ÉÉ 
+void
+ÉÉ '
+BtnTogglePassword_Checked
+ÉÉ .
+(
+ÉÉ. /
+object
+ÉÉ/ 5
+sender
+ÉÉ6 <
+,
+ÉÉ< =
+RoutedEventArgs
+ÉÉ> M
+e
+ÉÉN O
+)
+ÉÉO P
+{
+ÉÉQ R 
+txtPasswordVisible
+ÑÑ 
+.
+ÑÑ 
+Text
+ÑÑ #
+=
+ÑÑ$ %
+txtPassword
+ÑÑ& 1
+.
+ÑÑ1 2
+Password
+ÑÑ2 :
+;
+ÑÑ: ; 
+txtPasswordVisible
+ÖÖ 
+.
+ÖÖ 
+
+Visibility
+ÖÖ )
+=
+ÖÖ* +
+
+Visibility
+ÖÖ, 6
+.
+ÖÖ6 7
+Visible
+ÖÖ7 >
+;
+ÖÖ> ?
+txtPassword
+ÜÜ 
+.
+ÜÜ 
+
+Visibility
+ÜÜ "
+=
+ÜÜ# $
+
+Visibility
+ÜÜ% /
+.
+ÜÜ/ 0
+	Collapsed
+ÜÜ0 9
+;
+ÜÜ9 :
+}
+áá 	
+private
+ââ 
+void
+ââ )
+BtnTogglePassword_Unchecked
+ââ 0
+(
+ââ0 1
+object
+ââ1 7
+sender
+ââ8 >
+,
+ââ> ?
+RoutedEventArgs
+ââ@ O
+e
+ââP Q
+)
+ââQ R
+{
+ââS T
+txtPassword
+ää 
+.
+ää 
+Password
+ää  
+=
+ää! " 
+txtPasswordVisible
+ää# 5
+.
+ää5 6
+Text
+ää6 :
+;
+ää: ; 
+txtPasswordVisible
+ãã 
+.
+ãã 
+
+Visibility
+ãã )
+=
+ãã* +
+
+Visibility
+ãã, 6
+.
+ãã6 7
+	Collapsed
+ãã7 @
+;
+ãã@ A
+txtPassword
+åå 
+.
+åå 
+
+Visibility
+åå "
+=
+åå# $
+
+Visibility
+åå% /
+.
+åå/ 0
+Visible
+åå0 7
+;
+åå7 8
+}
+çç 	
+private
+èè 
+void
+èè *
+UpdatePasswordVisibilityIcon
+èè 1
+(
+èè1 2
+)
+èè2 3
+{
+èè4 5
+if
+êê 
+(
+êê 
+!
+êê 
+string
+êê 
+.
+êê 
+IsNullOrEmpty
+êê %
+(
+êê% &
+txtPassword
+êê& 1
+.
+êê1 2
+Password
+êê2 :
+)
+êê: ;
+||
+êê< >
+!
+êê? @
+string
+êê@ F
+.
+êêF G
+IsNullOrEmpty
+êêG T
+(
+êêT U 
+txtPasswordVisible
+êêU g
+.
+êêg h
+Text
+êêh l
+)
+êêl m
+)
+êêm n
+{
+êêo p
+btnTogglePassword
+ëë !
+.
+ëë! "
+
+Visibility
+ëë" ,
+=
+ëë- .
+
+Visibility
+ëë/ 9
+.
+ëë9 :
+Visible
+ëë: A
+;
+ëëA B
+}
+íí 
+else
+íí 
+{
+íí 
+btnTogglePassword
+ìì !
+.
+ìì! "
+
+Visibility
+ìì" ,
+=
+ìì- .
+
+Visibility
+ìì/ 9
+.
+ìì9 :
+	Collapsed
+ìì: C
+;
+ììC D
+}
+îî 
+}
+ïï 	
+private
+óó 
+void
+óó 
+
+ResetField
+óó 
+(
+óó  
+Control
+óó  '
+control
+óó( /
+)
+óó/ 0
+{
+óó1 2
+control
+òò 
+.
+òò 
+BorderBrush
+òò 
+=
+òò  !
+Brushes
+òò" )
+.
+òò) *
+White
+òò* /
+;
+òò/ 0
+}
+ôô 	
+private
+õõ 
+void
+õõ !
+TxtName_TextChanged
+õõ (
+(
+õõ( )
+object
+õõ) /
+sender
+õõ0 6
+,
+õõ6 7"
+TextChangedEventArgs
+õõ8 L
+e
+õõM N
+)
+õõN O
+{
+õõP Q
+string
+úú 
+username
+úú 
+=
+úú 
+txtName
+úú %
+.
+úú% &
+Text
+úú& *
+;
+úú* +
+if
+ùù 
+(
+ùù 
+!
+ùù 
+	Validador
+ùù 
+.
+ùù 
+ValidateUsername
+ùù +
+(
+ùù+ ,
+username
+ùù, 4
+)
+ùù4 5
+)
+ùù5 6
+{
+ùù7 8
+HighlightField
+ûû 
+(
+ûû 
+txtName
+ûû &
+)
+ûû& '
+;
+ûû' (
+lbInvalidUser
+üü 
+.
+üü 
+
+Visibility
+üü (
+=
+üü) *
+
+Visibility
+üü+ 5
+.
+üü5 6
+Visible
+üü6 =
+;
+üü= >
+}
+†† 
+else
+†† 
+{
+†† 
+
+ResetField
+°° 
+(
+°° 
+txtName
+°° "
+)
+°°" #
+;
+°°# $
+lbInvalidUser
+¢¢ 
+.
+¢¢ 
+
+Visibility
+¢¢ (
+=
+¢¢) *
+
+Visibility
+¢¢+ 5
+.
+¢¢5 6
+	Collapsed
+¢¢6 ?
+;
+¢¢? @
+}
+££ 
+}
+§§ 	
+private
+¶¶ 
+void
+¶¶ "
+TxtEmail_TextChanged
+¶¶ )
+(
+¶¶) *
+object
+¶¶* 0
+sender
+¶¶1 7
+,
+¶¶7 8"
+TextChangedEventArgs
+¶¶9 M
+e
+¶¶N O
+)
+¶¶O P
+{
+¶¶Q R
+string
+ßß 
+email
+ßß 
+=
+ßß 
+txtEmail
+ßß #
+.
+ßß# $
+Text
+ßß$ (
+;
+ßß( )
+if
+®® 
+(
+®® 
+!
+®® 
+	Validador
+®® 
+.
+®® 
+ValidateEmail
+®® (
+(
+®®( )
+email
+®®) .
+)
+®®. /
+)
+®®/ 0
+{
+®®1 2
+HighlightField
+©© 
+(
+©© 
+txtEmail
+©© '
+)
+©©' (
+;
+©©( )
+lbInvalidEmail
+™™ 
+.
+™™ 
+
+Visibility
+™™ )
+=
+™™* +
+
+Visibility
+™™, 6
+.
+™™6 7
+Visible
+™™7 >
+;
+™™> ?
+}
+´´ 
+else
+´´ 
+{
+´´ 
+
+ResetField
+¨¨ 
+(
+¨¨ 
+txtEmail
+¨¨ #
+)
+¨¨# $
+;
+¨¨$ %
+lbInvalidEmail
+≠≠ 
+.
+≠≠ 
+
+Visibility
+≠≠ )
+=
+≠≠* +
+
+Visibility
+≠≠, 6
+.
+≠≠6 7
+	Collapsed
+≠≠7 @
+;
+≠≠@ A
+}
+ÆÆ 
+}
+ØØ 	
+private
+±± 
+void
+±± 
+GoToLoginView
+±± "
+(
+±±" #
+)
+±±# $
+{
+±±% &
+if
+≤≤ 
+(
+≤≤ 
+this
+≤≤ 
+.
+≤≤ 
+NavigationService
+≤≤ &
+.
+≤≤& '
+	CanGoBack
+≤≤' 0
+)
+≤≤0 1
+{
+≤≤2 3
+this
+≥≥ 
+.
+≥≥ 
+NavigationService
+≥≥ &
+.
+≥≥& '
+GoBack
+≥≥' -
+(
+≥≥- .
+)
+≥≥. /
+;
+≥≥/ 0
+}
+¥¥ 
+}
+µµ 	
+private
+∑∑ 
+void
+∑∑ 
+BtnBack_Click
+∑∑ "
+(
+∑∑" #
+object
+∑∑# )
+sender
+∑∑* 0
+,
+∑∑0 1
+RoutedEventArgs
+∑∑2 A
+e
+∑∑B C
+)
+∑∑C D
+{
+∑∑E F
+GoToLoginView
+∏∏ 
+(
+∏∏ 
+)
+∏∏ 
+;
+∏∏ 
+}
+ππ 	
+private
+ªª 
+void
+ªª #
+BtnBackValidate_Click
+ªª *
+(
+ªª* +
+object
+ªª+ 1
+sender
+ªª2 8
+,
+ªª8 9
+RoutedEventArgs
+ªª: I
+e
+ªªJ K
+)
+ªªK L
+{
+ªªM N
+verificationGrid
+ºº 
+.
+ºº 
+
+Visibility
+ºº '
+=
+ºº( )
+
+Visibility
+ºº* 4
+.
+ºº4 5
+	Collapsed
+ºº5 >
+;
+ºº> ?
+txtEmail
+ΩΩ 
+.
+ΩΩ 
+Clear
+ΩΩ 
+(
+ΩΩ 
+)
+ΩΩ 
+;
+ΩΩ 
+txtName
+ææ 
+.
+ææ 
+Clear
+ææ 
+(
+ææ 
+)
+ææ 
+;
+ææ 
+txtPassword
+øø 
+.
+øø 
+Clear
+øø 
+(
+øø 
+)
+øø 
+;
+øø   
+txtPasswordVisible
+¿¿ 
+.
+¿¿ 
+Clear
+¿¿ $
+(
+¿¿$ %
+)
+¿¿% &
+;
+¿¿& '
+}
+¡¡ 	
+private
+√√ 
+void
+√√ +
+TxtValidationCode_TextChanged
+√√ 2
+(
+√√2 3
+object
+√√3 9
+sender
+√√: @
+,
+√√@ A"
+TextChangedEventArgs
+√√B V
+e
+√√W X
+)
+√√X Y
+{
+√√Z [
+TextBox
+ƒƒ 
+currentTextBox
+ƒƒ "
+=
+ƒƒ# $
+sender
+ƒƒ% +
+as
+ƒƒ, .
+TextBox
+ƒƒ/ 6
+;
+ƒƒ6 7
+if
+≈≈ 
+(
+≈≈ 
+currentTextBox
+≈≈ 
+.
+≈≈ 
+Text
+≈≈ #
+.
+≈≈# $
+Length
+≈≈$ *
+==
+≈≈+ -
+$num
+≈≈. /
+)
+≈≈/ 0
+{
+≈≈1 2
+if
+∆∆ 
+(
+∆∆ 
+currentTextBox
+∆∆ "
+==
+∆∆# % 
+txtValidationCode1
+∆∆& 8
+)
+∆∆8 9 
+txtValidationCode2
+«« &
+.
+««& '
+Focus
+««' ,
+(
+««, -
+)
+««- .
+;
+««. /
+else
+»» 
+if
+»» 
+(
+»» 
+currentTextBox
+»» '
+==
+»»( * 
+txtValidationCode2
+»»+ =
+)
+»»= > 
+txtValidationCode3
+…… &
+.
+……& '
+Focus
+……' ,
+(
+……, -
+)
+……- .
+;
+……. /
+else
+   
+if
+   
+(
+   
+currentTextBox
+   '
+==
+  ( * 
+txtValidationCode3
+  + =
+)
+  = > 
+txtValidationCode4
+ÀÀ &
+.
+ÀÀ& '
+Focus
+ÀÀ' ,
+(
+ÀÀ, -
+)
+ÀÀ- .
+;
+ÀÀ. /
+else
+ÃÃ 
+if
+ÃÃ 
+(
+ÃÃ 
+currentTextBox
+ÃÃ '
+==
+ÃÃ( * 
+txtValidationCode4
+ÃÃ+ =
+)
+ÃÃ= > 
+txtValidationCode5
+ÕÕ &
+.
+ÕÕ& '
+Focus
+ÕÕ' ,
+(
+ÕÕ, -
+)
+ÕÕ- .
+;
+ÕÕ. /
+else
+ŒŒ 
+if
+ŒŒ 
+(
+ŒŒ 
+currentTextBox
+ŒŒ '
+==
+ŒŒ( * 
+txtValidationCode5
+ŒŒ+ =
+)
+ŒŒ= > 
+txtValidationCode6
+œœ &
+.
+œœ& '
+Focus
+œœ' ,
+(
+œœ, -
+)
+œœ- .
+;
+œœ. /
+}
+–– 
+}
+—— 	
+}
+““ 
+}”” ˇ‰
+-C:\TripasDeGatoCliente\Views\MenuView.xaml.cs
+	namespace 	
+TripasDeGatoCliente
+ 
+. 
+Views #
+{$ %
+public 
+
+partial 
+class 
+MenuView !
+:" #
+Page$ (
+{) *
+private 
+UserManagerClient !
+_userManager" .
+;. /
+private  
+FriendsManagerClient $
+_friendsManager% 4
+;4 5
+private 
+StatusManagerClient #
+_statusManager$ 2
+;2 3
+private 
+LobbyBrowserClient "
+_lobbyBrowser# 0
+;0 1
+private 
+bool 
+_elementsVisible %
+=& '
+false( -
+;- .
+public 
+MenuView 
+( 
+) 
+{ 
+InitializeComponent 
+(  
+)  !
+;! "
+_userManager 
+= 
+new 
+UserManagerClient 0
+(0 1
+)1 2
+;2 3
+_friendsManager 
+= 
+new ! 
+FriendsManagerClient" 6
+(6 7
+)7 8
+;8 9
+_statusManager 
+= 
+new  
+StatusManagerClient! 4
+(4 5
+)5 6
+;6 7
+_lobbyBrowser 
+= 
+new 
+LobbyBrowserClient  2
+(2 3
+)3 4
+;4 5 
+LoadUserProfileAsync  
+(  !
+)! "
+;" #
+} 	
+private   
+async   
+void    
+LoadUserProfileAsync   /
+(  / 0
+)  0 1
+{  2 3
+if!! 
+(!! 
+!!! 
+string!! 
+.!! 
+IsNullOrEmpty!! %
+(!!% & 
+UserProfileSingleton!!& :
+.!!: ;
+UserName!!; C
+)!!C D
+)!!D E
+{!!F G
+
+lbUserName"" 
+."" 
+Content"" "
+=""# $ 
+UserProfileSingleton""% 9
+.""9 :
+UserName"": B
+;""B C
+}## 
+else## 
+{## 
+
+lbUserName$$ 
+.$$ 
+Content$$ "
+=$$# $
+
+Properties$$% /
+.$$/ 0
+	Resources$$0 9
+.$$9 :
+lbUnknownUser$$: G
+;$$G H
+}%% 
+}&& 	
+private(( 
+void(( 
+BtnSignOut_Click(( %
+(((% &
+object((& ,
+sender((- 3
+,((3 4
+RoutedEventArgs((5 D
+e((E F
+)((F G
+{((H I
+SignOut)) 
+()) 
+))) 
+;)) 
+NavigateToLoginView** 
+(**  
+)**  !
+;**! "
+}++ 	
+private-- 
+void-- 
+SignOut-- 
+(-- 
+)-- 
+{--  
+int.. 
+playerId.. 
+=..  
+UserProfileSingleton.. /
+.../ 0
+	IdProfile..0 9
+;..9 :"
+SetPlayerOfflineStatus// "
+(//" #
+playerId//# +
+)//+ ,
+;//, - 
+UserProfileSingleton00  
+.00  !
+Instance00! )
+.00) *
+ResetInstance00* 7
+(007 8
+)008 9
+;009 :
+}11 	
+private33 
+void33 "
+SetPlayerOfflineStatus33 +
+(33+ ,
+int33, /
+playerId330 8
+)338 9
+{33: ;
+LoggerManager44 
+logger44  
+=44! "
+new44# &
+LoggerManager44' 4
+(444 5
+this445 9
+.449 :
+GetType44: A
+(44A B
+)44B C
+)44C D
+;44D E
+try55 
+{55 
+IStatusManager66 
+statusManager66 ,
+=66- .
+new66/ 2
+StatusManagerClient663 F
+(66F G
+)66G H
+;66H I
+statusManager77 
+.77 
+SetPlayerStatus77 -
+(77- .
+playerId77. 6
+,776 7!
+GameEnumsPlayerStatus778 M
+.77M N
+Offline77N U
+)77U V
+;77V W
+}88 
+catch88 
+(88 %
+EndpointNotFoundException88 .%
+endpointNotFoundException88/ H
+)88H I
+{88J K
+logger99 
+.99 
+LogError99 
+(99  %
+endpointNotFoundException99  9
+)999 :
+;99: ;
+DialogManager:: 
+.:: !
+ShowErrorMessageAlert:: 3
+(::3 4
+
+Properties::4 >
+.::> ?
+	Resources::? H
+.::H I#
+dialogEndPointException::I `
+)::` a
+;::a b
 };; 
 catch;; 
 (;; 
@@ -11480,297 +10492,356 @@ Properties==4 >
 .==H I"
 dialogTimeOutException==I _
 )==_ `
-;==` a
-GoToMenuView>> 
-(>> 
-)>> 
-;>> 
-}?? 
-catch?? 
-(?? "
-CommunicationException?? +"
-communicationException??, B
-)??B C
-{??D E
-logger@@ 
-.@@ 
-LogError@@ 
-(@@  "
-communicationException@@  6
-)@@6 7
-;@@7 8
-DialogManagerAA 
-.AA !
-ShowErrorMessageAlertAA 3
-(AA3 4
+;==` a
+}>> 
+catch>> 
+(>> "
+CommunicationException>> +"
+communicationException>>, B
+)>>B C
+{>>D E
+logger?? 
+.?? 
+LogError?? 
+(??  "
+communicationException??  6
+)??6 7
+;??7 8
+DialogManager@@ 
+.@@ !
+ShowErrorMessageAlert@@ 3
+(@@3 4
 
-PropertiesAA4 >
-.AA> ?
-	ResourcesAA? H
-.AAH I'
-dialogComunicationExceptionAAI d
-)AAd e
-;AAe f
-GoToMenuViewBB 
-(BB 
-)BB 
-;BB 
-}CC 
-}DD 	
-privateFF 
-asyncFF 
-TaskFF 
-InitializeChatAsyncFF .
-(FF. /
-)FF/ 0
-{FF1 2
-LoggerManagerGG 
-loggerGG  
-=GG! "
-newGG# &
-LoggerManagerGG' 4
-(GG4 5
-thisGG5 9
-.GG9 :
-GetTypeGG: A
-(GGA B
-)GGB C
-)GGC D
-;GGD E
-tryHH 
-{HH 
-awaitII 
-chatManagerII !
-.II! "
-ConnectToChatAsyncII" 4
-(II4 5 
-UserProfileSingletonII5 I
-.III J
-UserNameIIJ R
-,IIR S
-	lobbyCodeIIT ]
-)II] ^
-;II^ _
-}JJ 
-catchJJ 
-(JJ %
-EndpointNotFoundExceptionJJ .%
-endpointNotFoundExceptionJJ/ H
-)JJH I
-{JJJ K
-loggerKK 
-.KK 
-LogErrorKK 
-(KK  %
-endpointNotFoundExceptionKK  9
-)KK9 :
-;KK: ;
-DialogManagerLL 
-.LL !
-ShowErrorMessageAlertLL 3
-(LL3 4
+Properties@@4 >
+.@@> ?
+	Resources@@? H
+.@@H I'
+dialogComunicationException@@I d
+)@@d e
+;@@e f
+}AA 
+catchAA 
+(AA 
+	ExceptionAA 
+	exceptionAA (
+)AA( )
+{AA* +
+loggerBB 
+.BB 
+LogErrorBB 
+(BB  
+	exceptionBB  )
+)BB) *
+;BB* +
+DialogManagerCC 
+.CC !
+ShowErrorMessageAlertCC 3
+(CC3 4
+stringCC4 :
+.CC: ;
+FormatCC; A
+(CCA B
 
-PropertiesLL4 >
-.LL> ?
-	ResourcesLL? H
-.LLH I#
-dialogEndPointExceptionLLI `
-)LL` a
-;LLa b
-}MM 
-catchMM 
-(MM 
-TimeoutExceptionMM %
-timeoutExceptionMM& 6
-)MM6 7
-{MM8 9
-loggerNN 
-.NN 
-LogErrorNN 
-(NN  
-timeoutExceptionNN  0
-)NN0 1
-;NN1 2
-DialogManagerOO 
-.OO !
-ShowErrorMessageAlertOO 3
-(OO3 4
-
-PropertiesOO4 >
-.OO> ?
-	ResourcesOO? H
-.OOH I"
-dialogTimeOutExceptionOOI _
-)OO_ `
-;OO` a
-}PP 
-catchPP 
-(PP "
-CommunicationExceptionPP +"
-communicationExceptionPP, B
-)PPB C
-{PPD E
-loggerQQ 
-.QQ 
-LogErrorQQ 
-(QQ  "
-communicationExceptionQQ  6
-)QQ6 7
-;QQ7 8
-DialogManagerRR 
-.RR !
-ShowErrorMessageAlertRR 3
-(RR3 4
-
-PropertiesRR4 >
-.RR> ?
-	ResourcesRR? H
-.RRH I'
-dialogComunicationExceptionRRI d
-)RRd e
-;RRe f
-}SS 
-}TT 	
-privateWW 
-asyncWW 
-TaskWW 
-ConnectToLobbyAsyncWW .
-(WW. /
-)WW/ 0
-{WW1 2
-LoggerManagerXX 
-loggerXX  
-=XX! "
-newXX# &
-LoggerManagerXX' 4
-(XX4 5
-thisXX5 9
-.XX9 :
-GetTypeXX: A
-(XXA B
-)XXB C
-)XXC D
-;XXD E
-tryYY 
-{YY 
-boolZZ 
-	connectedZZ 
-=ZZ  
-awaitZZ! &
-TaskZZ' +
-.ZZ+ ,
-RunZZ, /
-(ZZ/ 0
-(ZZ0 1
-)ZZ1 2
-=>ZZ3 5
-lobbyManagerZZ6 B
-.ZZB C 
-ConnectPlayerToLobbyZZC W
-(ZZW X
-	lobbyCodeZZX a
-,ZZa b 
-UserProfileSingletonZZc w
-.ZZw x
-	IdProfile	ZZx Å
+PropertiesCCB L
+.CCL M
+	ResourcesCCM V
+.CCV W!
+dialogUnexpectedErrorCCW l
+,CCl m
+	exceptionCCn w
+.CCw x
+MessageCCx 
+)	CC Ä
 )
-ZZÅ Ç
-)
-ZZÇ É
+CCÄ Å
 ;
-ZZÉ Ñ
-if\\ 
-(\\ 
-!\\ 
-	connected\\ 
-)\\ 
-{\\  !
-DialogManager]] !
-.]]! "!
-ShowErrorMessageAlert]]" 7
-(]]7 8
+CCÅ Ç
+}DD 
+}EE 	
+privateGG 
+voidGG 
+NavigateToLoginViewGG (
+(GG( )
+)GG) *
+{GG+ ,
+	LoginViewHH 
+	loginViewHH 
+=HH  !
+newHH" %
+	LoginViewHH& /
+(HH/ 0
+)HH0 1
+;HH1 2
+thisII 
+.II 
+NavigationServiceII "
+.II" #
+NavigateII# +
+(II+ ,
+	loginViewII, 5
+)II5 6
+;II6 7
+}JJ 	
+privateLL 
+asyncLL 
+voidLL 
+BtnFriends_ClickLL +
+(LL+ ,
+objectLL, 2
+senderLL3 9
+,LL9 :
+RoutedEventArgsLL; J
+eLLK L
+)LLL M
+{LLN O
+LoggerManagerMM 
+loggerMM  
+=MM! "
+newMM# &
+LoggerManagerMM' 4
+(MM4 5
+thisMM5 9
+.MM9 :
+GetTypeMM: A
+(MMA B
+)MMB C
+)MMC D
+;MMD E
+tryNN 
+{NN 
+_elementsVisibleOO  
+=OO! "
+!OO# $
+_elementsVisibleOO$ 4
+;OO4 5
+ifPP 
+(PP 
+_elementsVisiblePP $
+)PP$ %
+{PP& '
 
-Properties]]8 B
-.]]B C
-	Resources]]C L
-.]]L M!
-dialogConnectionError]]M b
-)]]b c
-;]]c d
-}^^ 
-else^^ 
-{^^ 
-isConnected__ 
-=__  !
-true__" &
-;__& '
-}`` 
-}aa 
-catchaa 
-(aa %
-EndpointNotFoundExceptionaa .%
-endpointNotFoundExceptionaa/ H
-)aaH I
-{aaJ K
-loggerbb 
-.bb 
-LogErrorbb 
-(bb  %
-endpointNotFoundExceptionbb  9
-)bb9 :
-;bb: ;
-DialogManagercc 
-.cc !
-ShowErrorMessageAlertcc 3
-(cc3 4
+lstFriendsQQ 
+.QQ 
 
-Propertiescc4 >
-.cc> ?
-	Resourcescc? H
-.ccH I#
-dialogEndPointExceptionccI `
-)cc` a
-;cca b
-}dd 
-catchdd 
-(dd 
-TimeoutExceptiondd %
-timeoutExceptiondd& 6
-)dd6 7
-{dd8 9
-loggeree 
-.ee 
-LogErroree 
-(ee  
-timeoutExceptionee  0
-)ee0 1
-;ee1 2
-DialogManagerff 
-.ff !
-ShowErrorMessageAlertff 3
-(ff3 4
+VisibilityQQ )
+=QQ* +
 
-Propertiesff4 >
-.ff> ?
-	Resourcesff? H
-.ffH I"
-dialogTimeOutExceptionffI _
-)ff_ `
-;ff` a
+VisibilityQQ, 6
+.QQ6 7
+VisibleQQ7 >
+;QQ> ?
+btnAddFriendRR  
+.RR  !
+
+VisibilityRR! +
+=RR, -
+
+VisibilityRR. 8
+.RR8 9
+VisibleRR9 @
+;RR@ A
+btnRemoveFriendSS #
+.SS# $
+
+VisibilitySS$ .
+=SS/ 0
+
+VisibilitySS1 ;
+.SS; <
+VisibleSS< C
+;SSC D
+awaitTT  
+LoadFriendsListAsyncTT .
+(TT. /
+)TT/ 0
+;TT0 1
+
+lstFriendsUU 
+.UU 
+	IsEnabledUU (
+=UU) *
+trueUU+ /
+;UU/ 0
+btnAddFriendVV  
+.VV  !
+	IsEnabledVV! *
+=VV+ ,
+trueVV- 1
+;VV1 2
+btnRemoveFriendWW #
+.WW# $
+	IsEnabledWW$ -
+=WW. /
+trueWW0 4
+;WW4 5
+
+btnFriendsXX 
+.XX 
+
+BackgroundXX )
+=XX* +
+newXX, /
+SolidColorBrushXX0 ?
+(XX? @
+ColorXX@ E
+.XXE F
+FromArgbXXF N
+(XXN O
+$numXXO Q
+,XXQ R
+$numXXS V
+,XXV W
+$numXXX [
+,XX[ \
+$numXX] `
+)XX` a
+)XXa b
+;XXb c
+}YY 
+elseYY 
+{YY 
+
+lstFriendsZZ 
+.ZZ 
+
+VisibilityZZ )
+=ZZ* +
+
+VisibilityZZ, 6
+.ZZ6 7
+	CollapsedZZ7 @
+;ZZ@ A
+btnAddFriend[[  
+.[[  !
+
+Visibility[[! +
+=[[, -
+
+Visibility[[. 8
+.[[8 9
+	Collapsed[[9 B
+;[[B C
+btnRemoveFriend\\ #
+.\\# $
+
+Visibility\\$ .
+=\\/ 0
+
+Visibility\\1 ;
+.\\; <
+	Collapsed\\< E
+;\\E F
+txtFriendName]] !
+.]]! "
+
+Visibility]]" ,
+=]]- .
+
+Visibility]]/ 9
+.]]9 :
+	Collapsed]]: C
+;]]C D
+btnAdd^^ 
+.^^ 
+
+Visibility^^ %
+=^^& '
+
+Visibility^^( 2
+.^^2 3
+	Collapsed^^3 <
+;^^< =
+
+lstFriends__ 
+.__ 
+	IsEnabled__ (
+=__) *
+false__+ 0
+;__0 1
+btnAddFriend``  
+.``  !
+	IsEnabled``! *
+=``+ ,
+false``- 2
+;``2 3
+btnRemoveFriendaa #
+.aa# $
+	IsEnabledaa$ -
+=aa. /
+falseaa0 5
+;aa5 6
+txtFriendNamebb !
+.bb! "
+	IsEnabledbb" +
+=bb, -
+falsebb. 3
+;bb3 4
+btnAddcc 
+.cc 
+	IsEnabledcc $
+=cc% &
+falsecc' ,
+;cc, -
+
+btnFriendsdd 
+.dd 
+
+Backgrounddd )
+=dd* +
+newdd, /
+SolidColorBrushdd0 ?
+(dd? @
+Colordd@ E
+.ddE F
+FromArgbddF N
+(ddN O
+$numddO Q
+,ddQ R
+$numddS V
+,ddV W
+$numddX [
+,dd[ \
+$numdd] `
+)dd` a
+)dda b
+;ddb c
+btnAddFriendee  
+.ee  !
+
+Backgroundee! +
+=ee, -
+newee. 1
+SolidColorBrushee2 A
+(eeA B
+ColoreeB G
+.eeG H
+FromArgbeeH P
+(eeP Q
+$numeeQ T
+,eeT U
+$numeeV X
+,eeX Y
+$numeeZ \
+,ee\ ]
+$numee^ `
+)ee` a
+)eea b
+;eeb c
+}ff 
 }gg 
 catchgg 
-(gg "
-CommunicationExceptiongg +"
-communicationExceptiongg, B
-)ggB C
-{ggD E
+(gg !
+TaskCanceledExceptiongg *!
+taskCanceledExceptiongg+ @
+)gg@ A
+{ggB C
 loggerhh 
 .hh 
 LogErrorhh 
-(hh  "
-communicationExceptionhh  6
-)hh6 7
-;hh7 8
+(hh  !
+taskCanceledExceptionhh  5
+)hh5 6
+;hh6 7
 DialogManagerii 
 .ii !
 ShowErrorMessageAlertii 3
@@ -11780,897 +10851,4719 @@ Propertiesii4 >
 .ii> ?
 	Resourcesii? H
 .iiH I'
-dialogComunicationExceptioniiI d
+dialogTaskCanceledExceptioniiI d
 )iid e
 ;iie f
-}jj 
-}kk 	
-privatemm 
-asyncmm 
-voidmm  
-BtnSendMessage_Clickmm /
-(mm/ 0
-objectmm0 6
-sendermm7 =
-,mm= >
-RoutedEventArgsmm? N
-emmO P
-)mmP Q
-{mmR S
-LoggerManagernn 
-loggernn  
-=nn! "
-newnn# &
-LoggerManagernn' 4
-(nn4 5
-thisnn5 9
-.nn9 :
-GetTypenn: A
-(nnA B
-)nnB C
-)nnC D
-;nnD E
-stringoo 
-messageTextoo 
-=oo  
-txtMessageInputoo! 0
-.oo0 1
-Textoo1 5
-.oo5 6
-Trimoo6 :
-(oo: ;
-)oo; <
-;oo< =
-ifpp 
-(pp 
-!pp 
-stringpp 
-.pp 
-IsNullOrEmptypp %
-(pp% &
-messageTextpp& 1
-)pp1 2
-)pp2 3
-{pp4 5
-varqq 
-messageqq 
-=qq 
-newqq !
-Messageqq" )
-{qq* +
-userNamerr 
-=rr  
-UserProfileSingletonrr 3
-.rr3 4
-UserNamerr4 <
-,rr< =
-chatMessagess 
-=ss  !
-messageTextss" -
-}tt 
-;tt 
-tryvv 
-{vv 
-awaitww 
-chatManagerww %
-.ww% &
-SendMessageAsyncww& 6
-(ww6 7 
-UserProfileSingletonww7 K
-.wwK L
-UserNamewwL T
-,wwT U
-messagewwV ]
-,ww] ^
-	lobbyCodeww_ h
-)wwh i
-;wwi j
-txtMessageInputxx #
-.xx# $
-Clearxx$ )
-(xx) *
-)xx* +
-;xx+ ,
-}yy 
-catchyy 
-(yy %
-EndpointNotFoundExceptionyy 2%
-endpointNotFoundExceptionyy3 L
-)yyL M
-{yyN O
-loggerzz 
-.zz 
-LogErrorzz #
-(zz# $%
-endpointNotFoundExceptionzz$ =
-)zz= >
-;zz> ?
-DialogManager{{ !
-.{{! "!
-ShowErrorMessageAlert{{" 7
-({{7 8
+}jj 
+catchjj 
+(jj %
+EndpointNotFoundExceptionjj .%
+endpointNotFoundExceptionjj/ H
+)jjH I
+{jjJ K
+loggerkk 
+.kk 
+LogErrorkk 
+(kk  %
+endpointNotFoundExceptionkk  9
+)kk9 :
+;kk: ;
+DialogManagerll 
+.ll !
+ShowErrorMessageAlertll 3
+(ll3 4
 
-Properties{{8 B
-.{{B C
-	Resources{{C L
-.{{L M#
-dialogEndPointException{{M d
-){{d e
-;{{e f
-}|| 
-catch|| 
-(|| 
-TimeoutException|| )
-timeoutException||* :
-)||: ;
-{||< =
-logger}} 
-.}} 
-LogError}} #
-(}}# $
-timeoutException}}$ 4
-)}}4 5
-;}}5 6
-DialogManager~~ !
-.~~! "!
-ShowErrorMessageAlert~~" 7
-(~~7 8
+Propertiesll4 >
+.ll> ?
+	Resourcesll? H
+.llH I#
+dialogEndPointExceptionllI `
+)ll` a
+;lla b
+}mm 
+catchmm 
+(mm 
+TimeoutExceptionmm %
+timeoutExceptionmm& 6
+)mm6 7
+{mm8 9
+loggernn 
+.nn 
+LogErrornn 
+(nn  
+timeoutExceptionnn  0
+)nn0 1
+;nn1 2
+DialogManageroo 
+.oo !
+ShowErrorMessageAlertoo 3
+(oo3 4
 
-Properties~~8 B
-.~~B C
-	Resources~~C L
-.~~L M"
-dialogTimeOutException~~M c
-)~~c d
-;~~d e
-} 
-catch 
-( "
-CommunicationException /"
-communicationException0 F
-)F G
-{H I
-logger
-ÄÄ 
-.
-ÄÄ 
-LogError
-ÄÄ #
-(
-ÄÄ# $$
-communicationException
-ÄÄ$ :
+Propertiesoo4 >
+.oo> ?
+	Resourcesoo? H
+.ooH I"
+dialogTimeOutExceptionooI _
+)oo_ `
+;oo` a
+}pp 
+catchpp 
+(pp "
+CommunicationExceptionpp +"
+communicationExceptionpp, B
+)ppB C
+{ppD E
+loggerqq 
+.qq 
+LogErrorqq 
+(qq  "
+communicationExceptionqq  6
+)qq6 7
+;qq7 8
+DialogManagerrr 
+.rr !
+ShowErrorMessageAlertrr 3
+(rr3 4
+
+Propertiesrr4 >
+.rr> ?
+	Resourcesrr? H
+.rrH I'
+dialogComunicationExceptionrrI d
+)rrd e
+;rre f
+}ss 
+catchss 
+(ss 
+	Exceptionss 
+	exceptionss (
+)ss( )
+{ss* +
+loggertt 
+.tt 
+LogErrortt 
+(tt  
+	exceptiontt  )
+)tt) *
+;tt* +
+DialogManageruu 
+.uu !
+ShowErrorMessageAlertuu 3
+(uu3 4
+stringuu4 :
+.uu: ;
+Formatuu; A
+(uuA B
+
+PropertiesuuB L
+.uuL M
+	ResourcesuuM V
+.uuV W!
+dialogUnexpectedErroruuW l
+,uul m
+	exceptionuun w
+.uuw x
+Messageuux 
+)	uu Ä
 )
-ÄÄ: ;
+uuÄ Å
 ;
-ÄÄ; <
-DialogManager
-ÅÅ !
+uuÅ Ç
+}vv 
+}ww 	
+privatezz 
+voidzz 
+BtnAddFriend_Clickzz '
+(zz' (
+objectzz( .
+senderzz/ 5
+,zz5 6
+RoutedEventArgszz7 F
+ezzG H
+)zzH I
+{zzJ K
+_elementsVisible{{ 
+={{ 
+!{{  
+_elementsVisible{{  0
+;{{0 1
+if|| 
+(|| 
+_elementsVisible||  
+)||  !
+{||" #
+txtFriendName}} 
+.}} 
+
+Visibility}} (
+=}}) *
+
+Visibility}}+ 5
+.}}5 6
+Visible}}6 =
+;}}= >
+btnAdd~~ 
+.~~ 
+
+Visibility~~ !
+=~~" #
+
+Visibility~~$ .
+.~~. /
+Visible~~/ 6
+;~~6 7
+txtFriendName 
+. 
+	IsEnabled '
+=( )
+true* .
+;. /
+btnAdd
+ÄÄ 
 .
-ÅÅ! "#
-ShowErrorMessageAlert
-ÅÅ" 7
+ÄÄ 
+	IsEnabled
+ÄÄ  
+=
+ÄÄ! "
+true
+ÄÄ# '
+;
+ÄÄ' (
+btnAddFriend
+ÅÅ 
+.
+ÅÅ 
+
+Background
+ÅÅ '
+=
+ÅÅ( )
+new
+ÅÅ* -
+SolidColorBrush
+ÅÅ. =
 (
-ÅÅ7 8
+ÅÅ= >
+Color
+ÅÅ> C
+.
+ÅÅC D
+FromArgb
+ÅÅD L
+(
+ÅÅL M
+$num
+ÅÅM O
+,
+ÅÅO P
+$num
+ÅÅQ S
+,
+ÅÅS T
+$num
+ÅÅU W
+,
+ÅÅW X
+$num
+ÅÅY [
+)
+ÅÅ[ \
+)
+ÅÅ\ ]
+;
+ÅÅ] ^
+}
+ÇÇ 
+else
+ÇÇ 
+{
+ÇÇ 
+txtFriendName
+ÉÉ 
+.
+ÉÉ 
+
+Visibility
+ÉÉ (
+=
+ÉÉ) *
+
+Visibility
+ÉÉ+ 5
+.
+ÉÉ5 6
+	Collapsed
+ÉÉ6 ?
+;
+ÉÉ? @
+btnAdd
+ÑÑ 
+.
+ÑÑ 
+
+Visibility
+ÑÑ !
+=
+ÑÑ" #
+
+Visibility
+ÑÑ$ .
+.
+ÑÑ. /
+	Collapsed
+ÑÑ/ 8
+;
+ÑÑ8 9
+txtFriendName
+ÖÖ 
+.
+ÖÖ 
+	IsEnabled
+ÖÖ '
+=
+ÖÖ( )
+false
+ÖÖ* /
+;
+ÖÖ/ 0
+btnAdd
+ÜÜ 
+.
+ÜÜ 
+	IsEnabled
+ÜÜ  
+=
+ÜÜ! "
+false
+ÜÜ# (
+;
+ÜÜ( )
+btnAddFriend
+áá 
+.
+áá 
+
+Background
+áá '
+=
+áá( )
+new
+áá* -
+SolidColorBrush
+áá. =
+(
+áá= >
+Color
+áá> C
+.
+ááC D
+FromArgb
+ááD L
+(
+ááL M
+$num
+ááM P
+,
+ááP Q
+$num
+ááR T
+,
+ááT U
+$num
+ááV X
+,
+ááX Y
+$num
+ááZ \
+)
+áá\ ]
+)
+áá] ^
+;
+áá^ _
+}
+àà 
+}
+ââ 	
+private
+ãã 
+async
+ãã 
+void
+ãã 
+BtnAdd_Click
+ãã '
+(
+ãã' (
+object
+ãã( .
+sender
+ãã/ 5
+,
+ãã5 6
+RoutedEventArgs
+ãã7 F
+e
+ããG H
+)
+ããH I
+{
+ããJ K
+LoggerManager
+åå 
+logger
+åå  
+=
+åå! "
+new
+åå# &
+LoggerManager
+åå' 4
+(
+åå4 5
+this
+åå5 9
+.
+åå9 :
+GetType
+åå: A
+(
+ååA B
+)
+ååB C
+)
+ååC D
+;
+ååD E
+string
+çç 
+
+friendName
+çç 
+=
+çç 
+txtFriendName
+çç  -
+.
+çç- .
+Text
+çç. 2
+.
+çç2 3
+Trim
+çç3 7
+(
+çç7 8
+)
+çç8 9
+;
+çç9 :
+try
+éé 
+{
+éé 
+if
+èè 
+(
+èè  
+ValidateFriendName
+èè &
+(
+èè& '
+
+friendName
+èè' 1
+)
+èè1 2
+)
+èè2 3
+{
+èè4 5
+await
+êê 
+	AddFriend
+êê #
+(
+êê# $
+
+friendName
+êê$ .
+)
+êê. /
+;
+êê/ 0
+}
+ëë 
+}
+íí 
+catch
+íí 
+(
+íí '
+EndpointNotFoundException
+íí .'
+endpointNotFoundException
+íí/ H
+)
+ííH I
+{
+ííJ K
+logger
+ìì 
+.
+ìì 
+LogError
+ìì 
+(
+ìì  '
+endpointNotFoundException
+ìì  9
+)
+ìì9 :
+;
+ìì: ;
+DialogManager
+îî 
+.
+îî #
+ShowErrorMessageAlert
+îî 3
+(
+îî3 4
 
 Properties
-ÅÅ8 B
+îî4 >
 .
-ÅÅB C
+îî> ?
 	Resources
-ÅÅC L
+îî? H
 .
-ÅÅL M)
-dialogComunicationException
-ÅÅM h
+îîH I%
+dialogEndPointException
+îîI `
 )
-ÅÅh i
+îî` a
 ;
-ÅÅi j
+îîa b
 }
-ÇÇ 
-}
-ÉÉ 
-}
-ÑÑ 	
-public
-ÜÜ 
-async
-ÜÜ 
-void
-ÜÜ 
-InitializeLobby
-ÜÜ )
+ïï 
+catch
+ïï 
 (
-ÜÜ) *
+ïï 
+TimeoutException
+ïï %
+timeoutException
+ïï& 6
 )
-ÜÜ* +
+ïï6 7
 {
-ÜÜ, -
-Lobby
-áá 
-lobby
-áá 
-=
-áá 
-await
-áá 
-lobbyBrowser
-áá  ,
+ïï8 9
+logger
+ññ 
 .
-áá, -!
-GetLobbyByCodeAsync
-áá- @
+ññ 
+LogError
+ññ 
 (
-áá@ A
-	lobbyCode
-ááA J
+ññ  
+timeoutException
+ññ  0
 )
-ááJ K
+ññ0 1
 ;
-ááK L
-if
-àà 
+ññ1 2
+DialogManager
+óó 
+.
+óó #
+ShowErrorMessageAlert
+óó 3
 (
-àà 
+óó3 4
+
+Properties
+óó4 >
+.
+óó> ?
+	Resources
+óó? H
+.
+óóH I$
+dialogTimeOutException
+óóI _
+)
+óó_ `
+;
+óó` a
+}
+òò 
+catch
+òò 
+(
+òò $
+CommunicationException
+òò +$
+communicationException
+òò, B
+)
+òòB C
+{
+òòD E
+logger
+ôô 
+.
+ôô 
+LogError
+ôô 
+(
+ôô  $
+communicationException
+ôô  6
+)
+ôô6 7
+;
+ôô7 8
+DialogManager
+öö 
+.
+öö #
+ShowErrorMessageAlert
+öö 3
+(
+öö3 4
+
+Properties
+öö4 >
+.
+öö> ?
+	Resources
+öö? H
+.
+ööH I)
+dialogComunicationException
+ööI d
+)
+ööd e
+;
+ööe f
+}
+õõ 
+catch
+õõ 
+(
+õõ 
+	Exception
+õõ 
+	exception
+õõ (
+)
+õõ( )
+{
+õõ* +
+logger
+úú 
+.
+úú 
+LogError
+úú 
+(
+úú  
+	exception
+úú  )
+)
+úú) *
+;
+úú* +
+DialogManager
+ùù 
+.
+ùù #
+ShowErrorMessageAlert
+ùù 3
+(
+ùù3 4
+string
+ùù4 :
+.
+ùù: ;
+Format
+ùù; A
+(
+ùùA B
+
+Properties
+ùùB L
+.
+ùùL M
+	Resources
+ùùM V
+.
+ùùV W#
+dialogUnexpectedError
+ùùW l
+,
+ùùl m
+	exception
+ùùn w
+.
+ùùw x
+Message
+ùùx 
+)ùù Ä
+)ùùÄ Å
+;ùùÅ Ç
+}
+ûû 
+finally
+ûû 
+{
+ûû 
+txtFriendName
+üü 
+.
+üü 
+Clear
+üü #
+(
+üü# $
+)
+üü$ %
+;
+üü% &
+}
+†† 
+}
+°° 	
+private
+££ 
+bool
+££  
+ValidateFriendName
+££ '
+(
+££' (
+string
+££( .
+
+friendName
+££/ 9
+)
+££9 :
+{
+££; <
+if
+§§ 
+(
+§§ 
+string
+§§ 
+.
+§§ 
+IsNullOrEmpty
+§§ $
+(
+§§$ %
+
+friendName
+§§% /
+)
+§§/ 0
+)
+§§0 1
+{
+§§2 3
+DialogManager
+•• 
+.
+•• #
+ShowErrorMessageAlert
+•• 3
+(
+••3 4
+
+Properties
+••4 >
+.
+••> ?
+	Resources
+••? H
+.
+••H I
+dialogInvalidName
+••I Z
+)
+••Z [
+;
+••[ \
+return
+¶¶ 
+false
+¶¶ 
+;
+¶¶ 
+}
+ßß 
+return
+®® 
+true
+®® 
+;
+®® 
+}
+©© 	
+private
+´´ 
+async
+´´ 
+Task
+´´ 
+	AddFriend
+´´ $
+(
+´´$ %
+string
+´´% +
+
+friendName
+´´, 6
+)
+´´6 7
+{
+´´8 9
+LoggerManager
+¨¨ 
+logger
+¨¨  
+=
+¨¨! "
+new
+¨¨# &
+LoggerManager
+¨¨' 4
+(
+¨¨4 5
+this
+¨¨5 9
+.
+¨¨9 :
+GetType
+¨¨: A
+(
+¨¨A B
+)
+¨¨B C
+)
+¨¨C D
+;
+¨¨D E
+try
+≠≠ 
+{
+≠≠ 
+int
+ÆÆ 
+friendProfileId
+ÆÆ #
+=
+ÆÆ$ %
+await
+ÆÆ& +
+_userManager
+ÆÆ, 8
+.
+ÆÆ8 9
+GetProfileIdAsync
+ÆÆ9 J
+(
+ÆÆJ K
+
+friendName
+ÆÆK U
+)
+ÆÆU V
+;
+ÆÆV W
+if
+ØØ 
+(
+ØØ 
+friendProfileId
+ØØ #
+==
+ØØ$ &"
+UserProfileSingleton
+ØØ' ;
+.
+ØØ; <
+	IdProfile
+ØØ< E
+)
+ØØE F
+{
+ØØG H
+DialogManager
+∞∞ !
+.
+∞∞! "#
+ShowErrorMessageAlert
+∞∞" 7
+(
+∞∞7 8
+
+Properties
+∞∞8 B
+.
+∞∞B C
+	Resources
+∞∞C L
+.
+∞∞L M)
+dialogCannotAddSelfAsFriend
+∞∞M h
+)
+∞∞h i
+;
+∞∞i j
+}
+±± 
+else
+±± 
+if
+±± 
+(
+±± 
+friendProfileId
+±± *
+>
+±±+ ,
+$num
+±±- .
+)
+±±. /
+{
+±±0 1
+await
+≤≤ #
+ExecuteFriendAddition
+≤≤ /
+(
+≤≤/ 0
+friendProfileId
+≤≤0 ?
+,
+≤≤? @
+
+friendName
+≤≤A K
+)
+≤≤K L
+;
+≤≤L M
+}
+≥≥ 
+else
+≥≥ 
+{
+≥≥ 
+DialogManager
+¥¥ !
+.
+¥¥! "#
+ShowErrorMessageAlert
+¥¥" 7
+(
+¥¥7 8
+
+Properties
+¥¥8 B
+.
+¥¥B C
+	Resources
+¥¥C L
+.
+¥¥L M#
+dialogProfileNotFound
+¥¥M b
+)
+¥¥b c
+;
+¥¥c d
+}
+µµ 
+}
+∂∂ 
+catch
+∂∂ 
+(
+∂∂ '
+EndpointNotFoundException
+∂∂ .'
+endpointNotFoundException
+∂∂/ H
+)
+∂∂H I
+{
+∂∂J K
+logger
+∑∑ 
+.
+∑∑ 
+LogError
+∑∑ 
+(
+∑∑  '
+endpointNotFoundException
+∑∑  9
+)
+∑∑9 :
+;
+∑∑: ;
+DialogManager
+∏∏ 
+.
+∏∏ #
+ShowErrorMessageAlert
+∏∏ 3
+(
+∏∏3 4
+
+Properties
+∏∏4 >
+.
+∏∏> ?
+	Resources
+∏∏? H
+.
+∏∏H I%
+dialogEndPointException
+∏∏I `
+)
+∏∏` a
+;
+∏∏a b
+}
+ππ 
+catch
+ππ 
+(
+ππ 
+TimeoutException
+ππ %
+timeoutException
+ππ& 6
+)
+ππ6 7
+{
+ππ8 9
+logger
+∫∫ 
+.
+∫∫ 
+LogError
+∫∫ 
+(
+∫∫  
+timeoutException
+∫∫  0
+)
+∫∫0 1
+;
+∫∫1 2
+DialogManager
+ªª 
+.
+ªª #
+ShowErrorMessageAlert
+ªª 3
+(
+ªª3 4
+
+Properties
+ªª4 >
+.
+ªª> ?
+	Resources
+ªª? H
+.
+ªªH I$
+dialogTimeOutException
+ªªI _
+)
+ªª_ `
+;
+ªª` a
+}
+ºº 
+catch
+ºº 
+(
+ºº $
+CommunicationException
+ºº +$
+communicationException
+ºº, B
+)
+ººB C
+{
+ººD E
+logger
+ΩΩ 
+.
+ΩΩ 
+LogError
+ΩΩ 
+(
+ΩΩ  $
+communicationException
+ΩΩ  6
+)
+ΩΩ6 7
+;
+ΩΩ7 8
+DialogManager
+ææ 
+.
+ææ #
+ShowErrorMessageAlert
+ææ 3
+(
+ææ3 4
+
+Properties
+ææ4 >
+.
+ææ> ?
+	Resources
+ææ? H
+.
+ææH I)
+dialogComunicationException
+ææI d
+)
+ææd e
+;
+ææe f
+}
+øø 
+catch
+øø 
+(
+øø 
+	Exception
+øø 
+	exception
+øø (
+)
+øø( )
+{
+øø* +
+logger
+¿¿ 
+.
+¿¿ 
+LogError
+¿¿ 
+(
+¿¿  
+	exception
+¿¿  )
+)
+¿¿) *
+;
+¿¿* +
+DialogManager
+¡¡ 
+.
+¡¡ #
+ShowErrorMessageAlert
+¡¡ 3
+(
+¡¡3 4
+string
+¡¡4 :
+.
+¡¡: ;
+Format
+¡¡; A
+(
+¡¡A B
+
+Properties
+¡¡B L
+.
+¡¡L M
+	Resources
+¡¡M V
+.
+¡¡V W#
+dialogUnexpectedError
+¡¡W l
+,
+¡¡l m
+	exception
+¡¡n w
+.
+¡¡w x
+Message
+¡¡x 
+)¡¡ Ä
+)¡¡Ä Å
+;¡¡Å Ç
+}
+¬¬ 
+}
+√√ 	
+private
+≈≈ 
+async
+≈≈ 
+Task
+≈≈ #
+ExecuteFriendAddition
+≈≈ 0
+(
+≈≈0 1
+int
+≈≈1 4
+friendProfileId
+≈≈5 D
+,
+≈≈D E
+string
+≈≈F L
+
+friendName
+≈≈M W
+)
+≈≈W X
+{
+≈≈Y Z
+LoggerManager
+∆∆ 
+logger
+∆∆  
+=
+∆∆! "
+new
+∆∆# &
+LoggerManager
+∆∆' 4
+(
+∆∆4 5
+this
+∆∆5 9
+.
+∆∆9 :
+GetType
+∆∆: A
+(
+∆∆A B
+)
+∆∆B C
+)
+∆∆C D
+;
+∆∆D E
+try
+«« 
+{
+«« 
+int
+»» 
+userProfileId
+»» !
+=
+»»" #"
+UserProfileSingleton
+»»$ 8
+.
+»»8 9
+	IdProfile
+»»9 B
+;
+»»B C
+int
+…… 
+result
+…… 
+=
+…… 
+await
+…… "
+_friendsManager
+……# 2
+.
+……2 3
+AddFriendAsync
+……3 A
+(
+……A B
+userProfileId
+……B O
+,
+……O P
+friendProfileId
+……Q `
+)
+……` a
+;
+……a b
+if
+   
+(
+   
+result
+   
+==
+   
+	Constants
+   '
+.
+  ' (
+SUCCES_OPERATION
+  ( 8
+)
+  8 9
+{
+  : ;
+DialogManager
+ÀÀ !
+.
+ÀÀ! "%
+ShowSuccessMessageAlert
+ÀÀ" 9
+(
+ÀÀ9 :
+string
+ÀÀ: @
+.
+ÀÀ@ A
+Format
+ÀÀA G
+(
+ÀÀG H
+
+Properties
+ÀÀH R
+.
+ÀÀR S
+	Resources
+ÀÀS \
+.
+ÀÀ\ ])
+dialogAddFriendSuccessfully
+ÀÀ] x
+,
+ÀÀx y
+
+friendNameÀÀz Ñ
+)ÀÀÑ Ö
+)ÀÀÖ Ü
+;ÀÀÜ á
+await
+ÃÃ "
+LoadFriendsListAsync
+ÃÃ .
+(
+ÃÃ. /
+)
+ÃÃ/ 0
+;
+ÃÃ0 1
+}
+ÕÕ 
+else
+ÕÕ 
+{
+ÕÕ 
+DialogManager
+ŒŒ !
+.
+ŒŒ! "#
+ShowErrorMessageAlert
+ŒŒ" 7
+(
+ŒŒ7 8
+
+Properties
+ŒŒ8 B
+.
+ŒŒB C
+	Resources
+ŒŒC L
+.
+ŒŒL M%
+dialogErrorAddingFriend
+ŒŒM d
+)
+ŒŒd e
+;
+ŒŒe f
+}
+œœ 
+}
+–– 
+catch
+–– 
+(
+–– '
+EndpointNotFoundException
+–– .'
+endpointNotFoundException
+––/ H
+)
+––H I
+{
+––J K
+logger
+—— 
+.
+—— 
+LogError
+—— 
+(
+——  '
+endpointNotFoundException
+——  9
+)
+——9 :
+;
+——: ;
+DialogManager
+““ 
+.
+““ #
+ShowErrorMessageAlert
+““ 3
+(
+““3 4
+
+Properties
+““4 >
+.
+““> ?
+	Resources
+““? H
+.
+““H I%
+dialogEndPointException
+““I `
+)
+““` a
+;
+““a b
+}
+”” 
+catch
+”” 
+(
+”” 
+TimeoutException
+”” %
+timeoutException
+””& 6
+)
+””6 7
+{
+””8 9
+logger
+‘‘ 
+.
+‘‘ 
+LogError
+‘‘ 
+(
+‘‘  
+timeoutException
+‘‘  0
+)
+‘‘0 1
+;
+‘‘1 2
+DialogManager
+’’ 
+.
+’’ #
+ShowErrorMessageAlert
+’’ 3
+(
+’’3 4
+
+Properties
+’’4 >
+.
+’’> ?
+	Resources
+’’? H
+.
+’’H I$
+dialogTimeOutException
+’’I _
+)
+’’_ `
+;
+’’` a
+}
+÷÷ 
+catch
+÷÷ 
+(
+÷÷ $
+CommunicationException
+÷÷ +$
+communicationException
+÷÷, B
+)
+÷÷B C
+{
+÷÷D E
+logger
+◊◊ 
+.
+◊◊ 
+LogError
+◊◊ 
+(
+◊◊  $
+communicationException
+◊◊  6
+)
+◊◊6 7
+;
+◊◊7 8
+DialogManager
+ÿÿ 
+.
+ÿÿ #
+ShowErrorMessageAlert
+ÿÿ 3
+(
+ÿÿ3 4
+
+Properties
+ÿÿ4 >
+.
+ÿÿ> ?
+	Resources
+ÿÿ? H
+.
+ÿÿH I)
+dialogComunicationException
+ÿÿI d
+)
+ÿÿd e
+;
+ÿÿe f
+}
+ŸŸ 
+catch
+ŸŸ 
+(
+ŸŸ 
+	Exception
+ŸŸ 
+	exception
+ŸŸ (
+)
+ŸŸ( )
+{
+ŸŸ* +
+logger
+⁄⁄ 
+.
+⁄⁄ 
+LogError
+⁄⁄ 
+(
+⁄⁄  
+	exception
+⁄⁄  )
+)
+⁄⁄) *
+;
+⁄⁄* +
+DialogManager
+€€ 
+.
+€€ #
+ShowErrorMessageAlert
+€€ 3
+(
+€€3 4
+string
+€€4 :
+.
+€€: ;
+Format
+€€; A
+(
+€€A B
+
+Properties
+€€B L
+.
+€€L M
+	Resources
+€€M V
+.
+€€V W#
+dialogUnexpectedError
+€€W l
+,
+€€l m
+	exception
+€€n w
+.
+€€w x
+Message
+€€x 
+)€€ Ä
+)€€Ä Å
+;€€Å Ç
+}
+‹‹ 
+}
+›› 	
+private
+ﬂﬂ 
+async
+ﬂﬂ 
+Task
+ﬂﬂ "
+LoadFriendsListAsync
+ﬂﬂ /
+(
+ﬂﬂ/ 0
+)
+ﬂﬂ0 1
+{
+ﬂﬂ2 3
+LoggerManager
+‡‡ 
+logger
+‡‡  
+=
+‡‡! "
+new
+‡‡# &
+LoggerManager
+‡‡' 4
+(
+‡‡4 5
+this
+‡‡5 9
+.
+‡‡9 :
+GetType
+‡‡: A
+(
+‡‡A B
+)
+‡‡B C
+)
+‡‡C D
+;
+‡‡D E
+try
+·· 
+{
+·· 
+int
+‚‚ 
+userProfileId
+‚‚ !
+=
+‚‚" #"
+UserProfileSingleton
+‚‚$ 8
+.
+‚‚8 9
+	IdProfile
+‚‚9 B
+;
+‚‚B C
+var
+„„ 
+friendsList
+„„ 
+=
+„„  !
+await
+„„" '
+_friendsManager
+„„( 7
+.
+„„7 8
+GetFriendsAsync
+„„8 G
+(
+„„G H
+userProfileId
+„„H U
+)
+„„U V
+;
+„„V W
+var
+‰‰ 
+friendsWithStatus
+‰‰ %
+=
+‰‰& '
+new
+‰‰( +
+List
+‰‰, 0
+<
+‰‰0 1
+string
+‰‰1 7
+>
+‰‰7 8
+(
+‰‰8 9
+)
+‰‰9 :
+;
+‰‰: ;
+foreach
+ÂÂ 
+(
+ÂÂ 
+var
+ÂÂ 
+friend
+ÂÂ #
+in
+ÂÂ$ &
+friendsList
+ÂÂ' 2
+)
+ÂÂ2 3
+{
+ÂÂ4 5
+var
+ÊÊ 
+status
+ÊÊ 
+=
+ÊÊ  
+await
+ÊÊ! &
+_statusManager
+ÊÊ' 5
+.
+ÊÊ5 6"
+GetPlayerStatusAsync
+ÊÊ6 J
+(
+ÊÊJ K
+friend
+ÊÊK Q
+.
+ÊÊQ R
+	IdProfile
+ÊÊR [
+)
+ÊÊ[ \
+;
+ÊÊ\ ]
+friendsWithStatus
+ÁÁ %
+.
+ÁÁ% &
+Add
+ÁÁ& )
+(
+ÁÁ) *
+$"
+ÁÁ* ,
+{
+ÁÁ, -
+friend
+ÁÁ- 3
+.
+ÁÁ3 4
+Username
+ÁÁ4 <
+}
+ÁÁ< =
+$str
+ÁÁ= @
+{
+ÁÁ@ A
+status
+ÁÁA G
+}
+ÁÁG H
+"
+ÁÁH I
+)
+ÁÁI J
+;
+ÁÁJ K
+}
+ËË 
+
+lstFriends
+ÈÈ 
+.
+ÈÈ 
+ItemsSource
+ÈÈ &
+=
+ÈÈ' (
+friendsWithStatus
+ÈÈ) :
+;
+ÈÈ: ;
+}
+ÍÍ 
+catch
+ÍÍ 
+(
+ÍÍ '
+EndpointNotFoundException
+ÍÍ .'
+endpointNotFoundException
+ÍÍ/ H
+)
+ÍÍH I
+{
+ÍÍJ K
+logger
+ÎÎ 
+.
+ÎÎ 
+LogError
+ÎÎ 
+(
+ÎÎ  '
+endpointNotFoundException
+ÎÎ  9
+)
+ÎÎ9 :
+;
+ÎÎ: ;
+DialogManager
+ÏÏ 
+.
+ÏÏ #
+ShowErrorMessageAlert
+ÏÏ 3
+(
+ÏÏ3 4
+
+Properties
+ÏÏ4 >
+.
+ÏÏ> ?
+	Resources
+ÏÏ? H
+.
+ÏÏH I%
+dialogEndPointException
+ÏÏI `
+)
+ÏÏ` a
+;
+ÏÏa b
+}
+ÌÌ 
+catch
+ÌÌ 
+(
+ÌÌ 
+TimeoutException
+ÌÌ %
+timeoutException
+ÌÌ& 6
+)
+ÌÌ6 7
+{
+ÌÌ8 9
+logger
+ÓÓ 
+.
+ÓÓ 
+LogError
+ÓÓ 
+(
+ÓÓ  
+timeoutException
+ÓÓ  0
+)
+ÓÓ0 1
+;
+ÓÓ1 2
+DialogManager
+ÔÔ 
+.
+ÔÔ #
+ShowErrorMessageAlert
+ÔÔ 3
+(
+ÔÔ3 4
+
+Properties
+ÔÔ4 >
+.
+ÔÔ> ?
+	Resources
+ÔÔ? H
+.
+ÔÔH I$
+dialogTimeOutException
+ÔÔI _
+)
+ÔÔ_ `
+;
+ÔÔ` a
+}
+ 
+catch
+ 
+(
+ $
+CommunicationException
+ +$
+communicationException
+, B
+)
+B C
+{
+D E
+logger
+ÒÒ 
+.
+ÒÒ 
+LogError
+ÒÒ 
+(
+ÒÒ  $
+communicationException
+ÒÒ  6
+)
+ÒÒ6 7
+;
+ÒÒ7 8
+DialogManager
+ÚÚ 
+.
+ÚÚ #
+ShowErrorMessageAlert
+ÚÚ 3
+(
+ÚÚ3 4
+
+Properties
+ÚÚ4 >
+.
+ÚÚ> ?
+	Resources
+ÚÚ? H
+.
+ÚÚH I)
+dialogComunicationException
+ÚÚI d
+)
+ÚÚd e
+;
+ÚÚe f
+}
+ÛÛ 
+catch
+ÛÛ 
+(
+ÛÛ 
+	Exception
+ÛÛ 
+	exception
+ÛÛ (
+)
+ÛÛ( )
+{
+ÛÛ* +
+logger
+ÙÙ 
+.
+ÙÙ 
+LogError
+ÙÙ 
+(
+ÙÙ  
+	exception
+ÙÙ  )
+)
+ÙÙ) *
+;
+ÙÙ* +
+DialogManager
+ıı 
+.
+ıı #
+ShowErrorMessageAlert
+ıı 3
+(
+ıı3 4
+string
+ıı4 :
+.
+ıı: ;
+Format
+ıı; A
+(
+ııA B
+
+Properties
+ııB L
+.
+ııL M
+	Resources
+ııM V
+.
+ııV W#
+dialogUnexpectedError
+ııW l
+,
+ııl m
+	exception
+ıın w
+.
+ııw x
+Message
+ııx 
+)ıı Ä
+)ııÄ Å
+;ııÅ Ç
+}
+ˆˆ 
+}
+˜˜ 	
+private
+˘˘ 
+async
+˘˘ 
+void
+˘˘ #
+BtnRemoveFriend_Click
+˘˘ 0
+(
+˘˘0 1
+object
+˘˘1 7
+sender
+˘˘8 >
+,
+˘˘> ?
+RoutedEventArgs
+˘˘@ O
+e
+˘˘P Q
+)
+˘˘Q R
+{
+˘˘S T
+LoggerManager
+˙˙ 
+logger
+˙˙  
+=
+˙˙! "
+new
+˙˙# &
+LoggerManager
+˙˙' 4
+(
+˙˙4 5
+this
+˙˙5 9
+.
+˙˙9 :
+GetType
+˙˙: A
+(
+˙˙A B
+)
+˙˙B C
+)
+˙˙C D
+;
+˙˙D E
+if
+˚˚ 
+(
+˚˚ 
+
+lstFriends
+˚˚ 
+.
+˚˚ 
+SelectedItem
+˚˚ '
+!=
+˚˚( *
+null
+˚˚+ /
+)
+˚˚/ 0
+{
+˚˚1 2
+string
+¸¸  
+selectedFriendName
+¸¸ )
+=
+¸¸* +
+
+lstFriends
+¸¸, 6
+.
+¸¸6 7
+SelectedItem
+¸¸7 C
+.
+¸¸C D
+ToString
+¸¸D L
+(
+¸¸L M
+)
+¸¸M N
+;
+¸¸N O
+string
+˝˝ 
+
+friendName
+˝˝ !
+=
+˝˝" # 
+selectedFriendName
+˝˝$ 6
+.
+˝˝6 7
+Split
+˝˝7 <
+(
+˝˝< =
+$char
+˝˝= @
+)
+˝˝@ A
+[
+˝˝A B
+$num
+˝˝B C
+]
+˝˝C D
+.
+˝˝D E
+Trim
+˝˝E I
+(
+˝˝I J
+)
+˝˝J K
+;
+˝˝K L
+try
+˛˛ 
+{
+˛˛ 
+int
+ˇˇ 
+friendProfileId
+ˇˇ '
+=
+ˇˇ( )
+await
+ˇˇ* /
+_userManager
+ˇˇ0 <
+.
+ˇˇ< =
+GetProfileIdAsync
+ˇˇ= N
+(
+ˇˇN O
+
+friendName
+ˇˇO Y
+)
+ˇˇY Z
+;
+ˇˇZ [
+if
+ÄÄ 
+(
+ÄÄ 
+friendProfileId
+ÄÄ '
+>
+ÄÄ( )
+$num
+ÄÄ* +
+)
+ÄÄ+ ,
+{
+ÄÄ- .
+int
+ÅÅ 
+userProfileId
+ÅÅ )
+=
+ÅÅ* +"
+UserProfileSingleton
+ÅÅ, @
+.
+ÅÅ@ A
+	IdProfile
+ÅÅA J
+;
+ÅÅJ K
+int
+ÇÇ 
+result
+ÇÇ "
+=
+ÇÇ# $
+await
+ÇÇ% *
+_friendsManager
+ÇÇ+ :
+.
+ÇÇ: ;
+DeleteFriendAsync
+ÇÇ; L
+(
+ÇÇL M
+userProfileId
+ÇÇM Z
+,
+ÇÇZ [
+friendProfileId
+ÇÇ\ k
+)
+ÇÇk l
+;
+ÇÇl m
+if
+ÉÉ 
+(
+ÉÉ 
+result
+ÉÉ "
+==
+ÉÉ# %
+	Constants
+ÉÉ& /
+.
+ÉÉ/ 0
+SUCCES_OPERATION
+ÉÉ0 @
+)
+ÉÉ@ A
+{
+ÉÉB C
+DialogManager
+ÑÑ )
+.
+ÑÑ) *%
+ShowSuccessMessageAlert
+ÑÑ* A
+(
+ÑÑA B
+string
+ÑÑB H
+.
+ÑÑH I
+Format
+ÑÑI O
+(
+ÑÑO P
+
+Properties
+ÑÑP Z
+.
+ÑÑZ [
+	Resources
+ÑÑ[ d
+.
+ÑÑd e%
+dialogFriendshipDeleted
+ÑÑe |
+,
+ÑÑ| }
+
+friendNameÑÑ~ à
+)ÑÑà â
+)ÑÑâ ä
+;ÑÑä ã
+await
+ÖÖ !"
+LoadFriendsListAsync
+ÖÖ" 6
+(
+ÖÖ6 7
+)
+ÖÖ7 8
+;
+ÖÖ8 9
+}
+ÜÜ 
+else
+ÜÜ 
+{
+ÜÜ  
+DialogManager
+áá )
+.
+áá) *#
+ShowErrorMessageAlert
+áá* ?
+(
+áá? @
+
+Properties
+áá@ J
+.
+ááJ K
+	Resources
+ááK T
+.
+ááT U+
+dialogErrorDeletingFriendship
+ááU r
+)
+áár s
+;
+áás t
+}
+àà 
+}
+ââ 
+else
+ââ 
+{
+ââ 
+DialogManager
+ää %
+.
+ää% &#
+ShowErrorMessageAlert
+ää& ;
+(
+ää; <
+
+Properties
+ää< F
+.
+ääF G
+	Resources
+ääG P
+.
+ääP Q'
+dialogNotRetrievedProfile
+ääQ j
+)
+ääj k
+;
+ääk l
+}
+ãã 
+}
+åå 
+catch
+åå 
+(
+åå '
+EndpointNotFoundException
+åå 2'
+endpointNotFoundException
+åå3 L
+)
+ååL M
+{
+ååN O
+logger
+çç 
+.
+çç 
+LogError
+çç #
+(
+çç# $'
+endpointNotFoundException
+çç$ =
+)
+çç= >
+;
+çç> ?
+DialogManager
+éé !
+.
+éé! "#
+ShowErrorMessageAlert
+éé" 7
+(
+éé7 8
+
+Properties
+éé8 B
+.
+ééB C
+	Resources
+ééC L
+.
+ééL M%
+dialogEndPointException
+ééM d
+)
+ééd e
+;
+éée f
+}
+èè 
+catch
+èè 
+(
+èè 
+TimeoutException
+èè )
+timeoutException
+èè* :
+)
+èè: ;
+{
+èè< =
+logger
+êê 
+.
+êê 
+LogError
+êê #
+(
+êê# $
+timeoutException
+êê$ 4
+)
+êê4 5
+;
+êê5 6
+DialogManager
+ëë !
+.
+ëë! "#
+ShowErrorMessageAlert
+ëë" 7
+(
+ëë7 8
+
+Properties
+ëë8 B
+.
+ëëB C
+	Resources
+ëëC L
+.
+ëëL M$
+dialogTimeOutException
+ëëM c
+)
+ëëc d
+;
+ëëd e
+}
+íí 
+catch
+íí 
+(
+íí $
+CommunicationException
+íí /$
+communicationException
+íí0 F
+)
+ííF G
+{
+ííH I
+logger
+ìì 
+.
+ìì 
+LogError
+ìì #
+(
+ìì# $$
+communicationException
+ìì$ :
+)
+ìì: ;
+;
+ìì; <
+DialogManager
+îî !
+.
+îî! "#
+ShowErrorMessageAlert
+îî" 7
+(
+îî7 8
+
+Properties
+îî8 B
+.
+îîB C
+	Resources
+îîC L
+.
+îîL M)
+dialogComunicationException
+îîM h
+)
+îîh i
+;
+îîi j
+}
+ïï 
+catch
+ïï 
+(
+ïï 
+	Exception
+ïï "
+	exception
+ïï# ,
+)
+ïï, -
+{
+ïï. /
+logger
+ññ 
+.
+ññ 
+LogError
+ññ #
+(
+ññ# $
+	exception
+ññ$ -
+)
+ññ- .
+;
+ññ. /
+DialogManager
+óó !
+.
+óó! "#
+ShowErrorMessageAlert
+óó" 7
+(
+óó7 8
+string
+óó8 >
+.
+óó> ?
+Format
+óó? E
+(
+óóE F
+
+Properties
+óóF P
+.
+óóP Q
+	Resources
+óóQ Z
+.
+óóZ [#
+dialogUnexpectedError
+óó[ p
+,
+óóp q
+	exception
+óór {
+.
+óó{ |
+Messageóó| É
+)óóÉ Ñ
+)óóÑ Ö
+;óóÖ Ü
+}
+òò 
+}
+ôô 
+else
+ôô 
+{
+ôô 
+DialogManager
+öö 
+.
+öö %
+ShowWarningMessageAlert
+öö 5
+(
+öö5 6
+
+Properties
+öö6 @
+.
+öö@ A
+	Resources
+ööA J
+.
+ööJ K(
+dialogSelectFriendToDelete
+ööK e
+)
+ööe f
+;
+ööf g
+}
+õõ 
+}
+úú 	
+private
+ûû 
+async
+ûû 
+void
+ûû  
+BtnStartGame_Click
+ûû -
+(
+ûû- .
+object
+ûû. 4
+sender
+ûû5 ;
+,
+ûû; <
+RoutedEventArgs
+ûû= L
+e
+ûûM N
+)
+ûûN O
+{
+ûûP Q!
+GoToCreateLobbyView
+üü 
+(
+üü  
+)
+üü  !
+;
+üü! "
+}
+†† 	
+private
+¢¢ 
+void
+¢¢ 
+BtnProfile_Click
+¢¢ %
+(
+¢¢% &
+object
+¢¢& ,
+sender
+¢¢- 3
+,
+¢¢3 4
+RoutedEventArgs
+¢¢5 D
+e
+¢¢E F
+)
+¢¢F G
+{
+¢¢H I
+GoToPerfilView
+££ 
+(
+££ 
+)
+££ 
+;
+££ 
+}
+§§ 	
+private
+¶¶ 
+void
+¶¶ !
+BtnLaderboard_Click
+¶¶ (
+(
+¶¶( )
+object
+¶¶) /
+sender
+¶¶0 6
+,
+¶¶6 7
+RoutedEventArgs
+¶¶8 G
+e
+¶¶H I
+)
+¶¶I J
+{
+¶¶K L 
+GoToLaderboardView
+ßß 
+(
+ßß 
+)
+ßß  
+;
+ßß  !
+}
+®® 	
+private
+™™ 
+void
+™™ 
+BtnJoinGame_Click
+™™ &
+(
+™™& '
+object
+™™' -
+sender
+™™. 4
+,
+™™4 5
+RoutedEventArgs
+™™6 E
+e
+™™F G
+)
+™™G H
+{
+™™I J!
+GoToSelectLobbyView
+´´ 
+(
+´´  
+)
+´´  !
+;
+´´! "
+}
+¨¨ 	
+private
+ÆÆ 
+void
+ÆÆ !
+GoToCreateLobbyView
+ÆÆ (
+(
+ÆÆ( )
+)
+ÆÆ) *
+{
+ÆÆ+ ,
+CreateLobbyView
+ØØ 
+lobbyConfig
+ØØ '
+=
+ØØ( )
+new
+ØØ* -
+CreateLobbyView
+ØØ. =
+(
+ØØ= >
+)
+ØØ> ?
+;
+ØØ? @
+if
+∞∞ 
+(
+∞∞ 
+this
+∞∞ 
+.
+∞∞ 
+NavigationService
+∞∞ &
+!=
+∞∞' )
+null
+∞∞* .
+)
+∞∞. /
+{
+∞∞0 1
+this
+±± 
+.
+±± 
+NavigationService
+±± &
+.
+±±& '
+Navigate
+±±' /
+(
+±±/ 0
+lobbyConfig
+±±0 ;
+)
+±±; <
+;
+±±< =
+}
+≤≤ 
+else
+≤≤ 
+{
+≤≤ 
+DialogManager
+≥≥ 
+.
+≥≥ #
+ShowErrorMessageAlert
+≥≥ 3
+(
+≥≥3 4
+
+Properties
+≥≥4 >
+.
+≥≥> ?
+	Resources
+≥≥? H
+.
+≥≥H I#
+dialogNavigationError
+≥≥I ^
+)
+≥≥^ _
+;
+≥≥_ `
+}
+¥¥ 
+}
+µµ 	
+private
+∑∑ 
+void
+∑∑ 
+GoToPerfilView
+∑∑ #
+(
+∑∑# $
+)
+∑∑$ %
+{
+∑∑& '
+ProfileView
+∏∏ 
+profileView
+∏∏ #
+=
+∏∏$ %
+new
+∏∏& )
+ProfileView
+∏∏* 5
+(
+∏∏5 6
+)
+∏∏6 7
+;
+∏∏7 8
+if
+ππ 
+(
+ππ 
+this
+ππ 
+.
+ππ 
+NavigationService
+ππ &
+!=
+ππ' )
+null
+ππ* .
+)
+ππ. /
+{
+ππ0 1
+this
+∫∫ 
+.
+∫∫ 
+NavigationService
+∫∫ &
+.
+∫∫& '
+Navigate
+∫∫' /
+(
+∫∫/ 0
+profileView
+∫∫0 ;
+)
+∫∫; <
+;
+∫∫< =
+}
+ªª 
+else
+ªª 
+{
+ªª 
+DialogManager
+ºº 
+.
+ºº #
+ShowErrorMessageAlert
+ºº 3
+(
+ºº3 4
+
+Properties
+ºº4 >
+.
+ºº> ?
+	Resources
+ºº? H
+.
+ººH I#
+dialogNavigationError
+ººI ^
+)
+ºº^ _
+;
+ºº_ `
+}
+ΩΩ 
+}
+ææ 	
+private
+¿¿ 
+void
+¿¿  
+GoToLaderboardView
+¿¿ '
+(
+¿¿' (
+)
+¿¿( )
+{
+¿¿* +
+
+Laderboard
+¡¡ 
+laderboardView
+¡¡ %
+=
+¡¡& '
+new
+¡¡( +
+
+Laderboard
+¡¡, 6
+(
+¡¡6 7
+)
+¡¡7 8
+;
+¡¡8 9
+if
+¬¬ 
+(
+¬¬ 
+this
+¬¬ 
+.
+¬¬ 
+NavigationService
+¬¬ &
+!=
+¬¬' )
+null
+¬¬* .
+)
+¬¬. /
+{
+¬¬0 1
+this
+√√ 
+.
+√√ 
+NavigationService
+√√ &
+.
+√√& '
+Navigate
+√√' /
+(
+√√/ 0
+laderboardView
+√√0 >
+)
+√√> ?
+;
+√√? @
+}
+ƒƒ 
+else
+ƒƒ 
+{
+ƒƒ 
+DialogManager
+≈≈ 
+.
+≈≈ #
+ShowErrorMessageAlert
+≈≈ 3
+(
+≈≈3 4
+
+Properties
+≈≈4 >
+.
+≈≈> ?
+	Resources
+≈≈? H
+.
+≈≈H I#
+dialogNavigationError
+≈≈I ^
+)
+≈≈^ _
+;
+≈≈_ `
+}
+∆∆ 
+}
+«« 	
+private
+…… 
+void
+…… !
+GoToSelectLobbyView
+…… (
+(
+……( )
+)
+……) *
+{
+……+ ,
+SelectLobbyView
+   
+selectLobbyView
+   +
+=
+  , -
+new
+  . 1
+SelectLobbyView
+  2 A
+(
+  A B
+)
+  B C
+;
+  C D
+if
+ÀÀ 
+(
+ÀÀ 
+this
+ÀÀ 
+.
+ÀÀ 
+NavigationService
+ÀÀ &
+!=
+ÀÀ' )
+null
+ÀÀ* .
+)
+ÀÀ. /
+{
+ÀÀ0 1
+this
+ÃÃ 
+.
+ÃÃ 
+NavigationService
+ÃÃ &
+.
+ÃÃ& '
+Navigate
+ÃÃ' /
+(
+ÃÃ/ 0
+selectLobbyView
+ÃÃ0 ?
+)
+ÃÃ? @
+;
+ÃÃ@ A
+}
+ÕÕ 
+else
+ÕÕ 
+{
+ÕÕ 
+DialogManager
+ŒŒ 
+.
+ŒŒ #
+ShowErrorMessageAlert
+ŒŒ 3
+(
+ŒŒ3 4
+
+Properties
+ŒŒ4 >
+.
+ŒŒ> ?
+	Resources
+ŒŒ? H
+.
+ŒŒH I#
+dialogNavigationError
+ŒŒI ^
+)
+ŒŒ^ _
+;
+ŒŒ_ `
+}
+œœ 
+}
+–– 	
+}
+—— 
+}““ ∏Ö
+.C:\TripasDeGatoCliente\Views\LobbyView.xaml.cs
+	namespace 	
+TripasDeGatoCliente
+ 
+. 
+Views #
+{$ %
+public 
+
+partial 
+class 
+	LobbyView "
+:# $
+Page% )
+,) * 
+IChatManagerCallback+ ?
+,? @!
+ILobbyManagerCallbackA V
+{W X
+private 
+ChatManagerClient !
+_chatManager" .
+;. /
+private 
+LobbyManagerClient "
+_lobbyManager# 0
+;0 1
+private 
+LobbyBrowserClient "
+_lobbyBrowser# 0
+;0 1
+private 
+UserManagerClient !
+_userManager" .
+;. /
+private 
+bool 
+_isConnected !
+=" #
+false$ )
+;) *
+private 
+string 
+
+_lobbyCode !
+;! "
+private  
+FriendsManagerClient $
+_friendsManager% 4
+;4 5
+private 
+StatusManagerClient #
+_statusManager$ 2
+;2 3
+private (
+EmailInvitationManagerClient ,#
+_emailInvitationManager- D
+;D E
+private 
+bool 
+_elementsVisible %
+=& '
+false( -
+;- .
+public   
+	LobbyView   
+(   
+string   
+	lobbyCode    )
+)  ) *
+{  + ,
+InitializeComponent!! 
+(!!  
+)!!  !
+;!!! "
+this"" 
+."" 
+
+_lobbyCode"" 
+="" 
+	lobbyCode"" '
+;""' (
+lbCode## 
+.## 
+Content## 
+=## 
+	lobbyCode## &
+;##& '
+_lobbyBrowser$$ 
+=$$ 
+new$$ 
+LobbyBrowserClient$$  2
+($$2 3
+)$$3 4
+;$$4 5
+InitializeLobby%% 
+(%% 
+)%% 
+;%% 
+InstanceContext&& 
+context&& #
+=&&$ %
+new&&& )
+InstanceContext&&* 9
+(&&9 :
+this&&: >
+)&&> ?
+;&&? @
+_lobbyManager'' 
+='' 
+new'' 
+LobbyManagerClient''  2
+(''2 3
+context''3 :
+)'': ;
+;''; <
+_chatManager(( 
+=(( 
+new(( 
+ChatManagerClient(( 0
+(((0 1
+context((1 8
+)((8 9
+;((9 :
+ConnectionManager)) 
+.)) 
+Instance)) &
+.))& '"
+InitializeLobbyManager))' =
+())= >
+context))> E
+)))E F
+;))F G
+ConnectionManager** 
+.** 
+Instance** &
+.**& '!
+InitializeChatManager**' <
+(**< =
+context**= D
+)**D E
+;**E F
+_userManager++ 
+=++ 
+new++ 
+UserManagerClient++ 0
+(++0 1
+)++1 2
+;++2 3
+_friendsManager,, 
+=,, 
+new,, ! 
+FriendsManagerClient,," 6
+(,,6 7
+),,7 8
+;,,8 9
+_statusManager-- 
+=-- 
+new--  
+StatusManagerClient--! 4
+(--4 5
+)--5 6
+;--6 7#
+_emailInvitationManager.. #
+=..$ %
+new..& )(
+EmailInvitationManagerClient..* F
+(..F G
+)..G H
+;..H I&
+InitializeConnectionsAsync// &
+(//& '
+)//' (
+;//( )
+if00 
+(00 
+!00 
+string00 
+.00 
+IsNullOrEmpty00 %
+(00% & 
+UserProfileSingleton00& :
+.00: ;
+PicPath00; B
+)00B C
+)00C D
+{00E F
+imageProfile111 
+.11 
+Source11 $
+=11% &
+new11' *
+BitmapImage11+ 6
+(116 7
+new117 :
+Uri11; >
+(11> ? 
+UserProfileSingleton11? S
+.11S T
+PicPath11T [
+,11[ \
+UriKind11] d
+.11d e
+RelativeOrAbsolute11e w
+)11w x
+)11x y
+;11y z
+}22 
+}33 	
+private55 
+async55 
+void55 &
+InitializeConnectionsAsync55 5
+(555 6
+)556 7
+{558 9
+LoggerManager66 
+logger66  
+=66! "
+new66# &
+LoggerManager66' 4
+(664 5
+this665 9
+.669 :
+GetType66: A
+(66A B
+)66B C
+)66C D
+;66D E
+try77 
+{77 
+await88 
+InitializeChatAsync88 )
+(88) *
+)88* +
+;88+ ,
+await99 
+ConnectToLobbyAsync99 )
+(99) *
+)99* +
+;99+ ,
+}:: 
+catch:: 
+(:: %
+EndpointNotFoundException:: .%
+endpointNotFoundException::/ H
+)::H I
+{::J K
+logger;; 
+.;; 
+LogError;; 
+(;;  %
+endpointNotFoundException;;  9
+);;9 :
+;;;: ;
+DialogManager<< 
+.<< !
+ShowErrorMessageAlert<< 3
+(<<3 4
+
+Properties<<4 >
+.<<> ?
+	Resources<<? H
+.<<H I#
+dialogEndPointException<<I `
+)<<` a
+;<<a b
+ExitUseSinglenton== !
+(==! "
+)==" #
+;==# $
+}>> 
+catch>> 
+(>> 
+TimeoutException>> %
+timeoutException>>& 6
+)>>6 7
+{>>8 9
+logger?? 
+.?? 
+LogError?? 
+(??  
+timeoutException??  0
+)??0 1
+;??1 2
+DialogManager@@ 
+.@@ !
+ShowErrorMessageAlert@@ 3
+(@@3 4
+
+Properties@@4 >
+.@@> ?
+	Resources@@? H
+.@@H I"
+dialogTimeOutException@@I _
+)@@_ `
+;@@` a
+ExitUseSinglentonAA !
+(AA! "
+)AA" #
+;AA# $
+}BB 
+catchBB 
+(BB "
+CommunicationExceptionBB +"
+communicationExceptionBB, B
+)BBB C
+{BBD E
+loggerCC 
+.CC 
+LogErrorCC 
+(CC  "
+communicationExceptionCC  6
+)CC6 7
+;CC7 8
+DialogManagerDD 
+.DD !
+ShowErrorMessageAlertDD 3
+(DD3 4
+
+PropertiesDD4 >
+.DD> ?
+	ResourcesDD? H
+.DDH I'
+dialogComunicationExceptionDDI d
+)DDd e
+;DDe f
+ExitUseSinglentonEE !
+(EE! "
+)EE" #
+;EE# $
+}FF 
+catchFF 
+(FF 
+	ExceptionFF 
+	exceptionFF (
+)FF( )
+{FF* +
+loggerGG 
+.GG 
+LogErrorGG 
+(GG  
+	exceptionGG  )
+)GG) *
+;GG* +
+DialogManagerHH 
+.HH !
+ShowErrorMessageAlertHH 3
+(HH3 4
+stringHH4 :
+.HH: ;
+FormatHH; A
+(HHA B
+
+PropertiesHHB L
+.HHL M
+	ResourcesHHM V
+.HHV W!
+dialogUnexpectedErrorHHW l
+,HHl m
+	exceptionHHn w
+.HHw x
+MessageHHx 
+)	HH Ä
+)
+HHÄ Å
+;
+HHÅ Ç
+ExitUseSinglentonII !
+(II! "
+)II" #
+;II# $
+}JJ 
+}KK 	
+privateMM 
+asyncMM 
+TaskMM 
+InitializeChatAsyncMM .
+(MM. /
+)MM/ 0
+{MM1 2
+LoggerManagerNN 
+loggerNN  
+=NN! "
+newNN# &
+LoggerManagerNN' 4
+(NN4 5
+thisNN5 9
+.NN9 :
+GetTypeNN: A
+(NNA B
+)NNB C
+)NNC D
+;NND E
+tryOO 
+{OO 
+awaitPP 
+_chatManagerPP "
+.PP" #
+ConnectToChatAsyncPP# 5
+(PP5 6 
+UserProfileSingletonPP6 J
+.PPJ K
+UserNamePPK S
+,PPS T
+
+_lobbyCodePPU _
+)PP_ `
+;PP` a
+}QQ 
+catchQQ 
+(QQ %
+EndpointNotFoundExceptionQQ .%
+endpointNotFoundExceptionQQ/ H
+)QQH I
+{QQJ K
+loggerRR 
+.RR 
+LogErrorRR 
+(RR  %
+endpointNotFoundExceptionRR  9
+)RR9 :
+;RR: ;
+DialogManagerSS 
+.SS !
+ShowErrorMessageAlertSS 3
+(SS3 4
+
+PropertiesSS4 >
+.SS> ?
+	ResourcesSS? H
+.SSH I#
+dialogEndPointExceptionSSI `
+)SS` a
+;SSa b
+}TT 
+catchTT 
+(TT 
+TimeoutExceptionTT %
+timeoutExceptionTT& 6
+)TT6 7
+{TT8 9
+loggerUU 
+.UU 
+LogErrorUU 
+(UU  
+timeoutExceptionUU  0
+)UU0 1
+;UU1 2
+DialogManagerVV 
+.VV !
+ShowErrorMessageAlertVV 3
+(VV3 4
+
+PropertiesVV4 >
+.VV> ?
+	ResourcesVV? H
+.VVH I"
+dialogTimeOutExceptionVVI _
+)VV_ `
+;VV` a
+}WW 
+catchWW 
+(WW "
+CommunicationExceptionWW +"
+communicationExceptionWW, B
+)WWB C
+{WWD E
+loggerXX 
+.XX 
+LogErrorXX 
+(XX  "
+communicationExceptionXX  6
+)XX6 7
+;XX7 8
+DialogManagerYY 
+.YY !
+ShowErrorMessageAlertYY 3
+(YY3 4
+
+PropertiesYY4 >
+.YY> ?
+	ResourcesYY? H
+.YYH I'
+dialogComunicationExceptionYYI d
+)YYd e
+;YYe f
+}ZZ 
+catchZZ 
+(ZZ 
+	ExceptionZZ 
+	exceptionZZ (
+)ZZ( )
+{ZZ* +
+logger[[ 
+.[[ 
+LogError[[ 
+([[  
+	exception[[  )
+)[[) *
+;[[* +
+DialogManager\\ 
+.\\ !
+ShowErrorMessageAlert\\ 3
+(\\3 4
+string\\4 :
+.\\: ;
+Format\\; A
+(\\A B
+
+Properties\\B L
+.\\L M
+	Resources\\M V
+.\\V W!
+dialogUnexpectedError\\W l
+,\\l m
+	exception\\n w
+.\\w x
+Message\\x 
+)	\\ Ä
+)
+\\Ä Å
+;
+\\Å Ç
+}]] 
+}^^ 	
+private`` 
+async`` 
+Task`` 
+ConnectToLobbyAsync`` .
+(``. /
+)``/ 0
+{``1 2
+LoggerManageraa 
+loggeraa  
+=aa! "
+newaa# &
+LoggerManageraa' 4
+(aa4 5
+thisaa5 9
+.aa9 :
+GetTypeaa: A
+(aaA B
+)aaB C
+)aaC D
+;aaD E
+trybb 
+{bb 
+boolcc 
+	connectedcc 
+=cc  
+awaitcc! &
+Taskcc' +
+.cc+ ,
+Runcc, /
+(cc/ 0
+(cc0 1
+)cc1 2
+=>cc3 5
+_lobbyManagercc6 C
+.ccC D 
+ConnectPlayerToLobbyccD X
+(ccX Y
+
+_lobbyCodeccY c
+,ccc d 
+UserProfileSingletoncce y
+.ccy z
+	IdProfile	ccz É
+)
+ccÉ Ñ
+)
+ccÑ Ö
+;
+ccÖ Ü
+ifdd 
+(dd 
+!dd 
+	connecteddd 
+)dd 
+{dd  !
+DialogManageree !
+.ee! "!
+ShowErrorMessageAlertee" 7
+(ee7 8
+
+Propertiesee8 B
+.eeB C
+	ResourceseeC L
+.eeL M!
+dialogConnectionErroreeM b
+)eeb c
+;eec d
+ExitUseSinglentonff %
+(ff% &
+)ff& '
+;ff' (
+}gg 
+elsegg 
+{gg 
+_isConnectedhh  
+=hh! "
+truehh# '
+;hh' (
+}ii 
+}jj 
+catchjj 
+(jj %
+EndpointNotFoundExceptionjj .%
+endpointNotFoundExceptionjj/ H
+)jjH I
+{jjJ K
+loggerkk 
+.kk 
+LogErrorkk 
+(kk  %
+endpointNotFoundExceptionkk  9
+)kk9 :
+;kk: ;
+DialogManagerll 
+.ll !
+ShowErrorMessageAlertll 3
+(ll3 4
+
+Propertiesll4 >
+.ll> ?
+	Resourcesll? H
+.llH I#
+dialogEndPointExceptionllI `
+)ll` a
+;lla b
+}mm 
+catchmm 
+(mm 
+TimeoutExceptionmm %
+timeoutExceptionmm& 6
+)mm6 7
+{mm8 9
+loggernn 
+.nn 
+LogErrornn 
+(nn  
+timeoutExceptionnn  0
+)nn0 1
+;nn1 2
+DialogManageroo 
+.oo !
+ShowErrorMessageAlertoo 3
+(oo3 4
+
+Propertiesoo4 >
+.oo> ?
+	Resourcesoo? H
+.ooH I"
+dialogTimeOutExceptionooI _
+)oo_ `
+;oo` a
+}pp 
+catchpp 
+(pp "
+CommunicationExceptionpp +"
+communicationExceptionpp, B
+)ppB C
+{ppD E
+loggerqq 
+.qq 
+LogErrorqq 
+(qq  "
+communicationExceptionqq  6
+)qq6 7
+;qq7 8
+DialogManagerrr 
+.rr !
+ShowErrorMessageAlertrr 3
+(rr3 4
+
+Propertiesrr4 >
+.rr> ?
+	Resourcesrr? H
+.rrH I'
+dialogComunicationExceptionrrI d
+)rrd e
+;rre f
+}ss 
+catchss 
+(ss 
+	Exceptionss 
+	exceptionss (
+)ss( )
+{ss* +
+loggertt 
+.tt 
+LogErrortt 
+(tt  
+	exceptiontt  )
+)tt) *
+;tt* +
+DialogManageruu 
+.uu !
+ShowErrorMessageAlertuu 3
+(uu3 4
+stringuu4 :
+.uu: ;
+Formatuu; A
+(uuA B
+
+PropertiesuuB L
+.uuL M
+	ResourcesuuM V
+.uuV W!
+dialogUnexpectedErroruuW l
+,uul m
+	exceptionuun w
+.uuw x
+Messageuux 
+)	uu Ä
+)
+uuÄ Å
+;
+uuÅ Ç
+}vv 
+}ww 	
+privateyy 
+asyncyy 
+voidyy  
+BtnSendMessage_Clickyy /
+(yy/ 0
+objectyy0 6
+senderyy7 =
+,yy= >
+RoutedEventArgsyy? N
+eyyO P
+)yyP Q
+{yyR S
+LoggerManagerzz 
+loggerzz  
+=zz! "
+newzz# &
+LoggerManagerzz' 4
+(zz4 5
+thiszz5 9
+.zz9 :
+GetTypezz: A
+(zzA B
+)zzB C
+)zzC D
+;zzD E
+string{{ 
+messageText{{ 
+={{  
+txtMessageInput{{! 0
+.{{0 1
+Text{{1 5
+.{{5 6
+Trim{{6 :
+({{: ;
+){{; <
+;{{< =
+if|| 
+(|| 
+!|| 
+string|| 
+.|| 
+IsNullOrEmpty|| %
+(||% &
+messageText||& 1
+)||1 2
+)||2 3
+{||4 5
+var}} 
+message}} 
+=}} 
+new}} !
+Message}}" )
+{}}* +
+userName~~ 
+=~~  
+UserProfileSingleton~~ 3
+.~~3 4
+UserName~~4 <
+,~~< =
+chatMessage 
+=  !
+messageText" -
+}
+ÄÄ 
+;
+ÄÄ 
+try
+ÅÅ 
+{
+ÅÅ 
+await
+ÇÇ 
+_chatManager
+ÇÇ &
+.
+ÇÇ& '
+SendMessageAsync
+ÇÇ' 7
+(
+ÇÇ7 8"
+UserProfileSingleton
+ÇÇ8 L
+.
+ÇÇL M
+UserName
+ÇÇM U
+,
+ÇÇU V
+message
+ÇÇW ^
+,
+ÇÇ^ _
+
+_lobbyCode
+ÇÇ` j
+)
+ÇÇj k
+;
+ÇÇk l
+txtMessageInput
+ÉÉ #
+.
+ÉÉ# $
+Clear
+ÉÉ$ )
+(
+ÉÉ) *
+)
+ÉÉ* +
+;
+ÉÉ+ ,
+}
+ÑÑ 
+catch
+ÑÑ 
+(
+ÑÑ '
+EndpointNotFoundException
+ÑÑ 2'
+endpointNotFoundException
+ÑÑ3 L
+)
+ÑÑL M
+{
+ÑÑN O
+logger
+ÖÖ 
+.
+ÖÖ 
+LogError
+ÖÖ #
+(
+ÖÖ# $'
+endpointNotFoundException
+ÖÖ$ =
+)
+ÖÖ= >
+;
+ÖÖ> ?
+DialogManager
+ÜÜ !
+.
+ÜÜ! "#
+ShowErrorMessageAlert
+ÜÜ" 7
+(
+ÜÜ7 8
+
+Properties
+ÜÜ8 B
+.
+ÜÜB C
+	Resources
+ÜÜC L
+.
+ÜÜL M%
+dialogEndPointException
+ÜÜM d
+)
+ÜÜd e
+;
+ÜÜe f
+}
+áá 
+catch
+áá 
+(
+áá 
+TimeoutException
+áá )
+timeoutException
+áá* :
+)
+áá: ;
+{
+áá< =
+logger
+àà 
+.
+àà 
+LogError
+àà #
+(
+àà# $
+timeoutException
+àà$ 4
+)
+àà4 5
+;
+àà5 6
+DialogManager
+ââ !
+.
+ââ! "#
+ShowErrorMessageAlert
+ââ" 7
+(
+ââ7 8
+
+Properties
+ââ8 B
+.
+ââB C
+	Resources
+ââC L
+.
+ââL M$
+dialogTimeOutException
+ââM c
+)
+ââc d
+;
+ââd e
+}
+ää 
+catch
+ää 
+(
+ää $
+CommunicationException
+ää /$
+communicationException
+ää0 F
+)
+ääF G
+{
+ääH I
+logger
+ãã 
+.
+ãã 
+LogError
+ãã #
+(
+ãã# $$
+communicationException
+ãã$ :
+)
+ãã: ;
+;
+ãã; <
+DialogManager
+åå !
+.
+åå! "#
+ShowErrorMessageAlert
+åå" 7
+(
+åå7 8
+
+Properties
+åå8 B
+.
+ååB C
+	Resources
+ååC L
+.
+ååL M)
+dialogComunicationException
+ååM h
+)
+ååh i
+;
+ååi j
+}
+çç 
+catch
+çç 
+(
+çç 
+	Exception
+çç "
+	exception
+çç# ,
+)
+çç, -
+{
+çç. /
+logger
+éé 
+.
+éé 
+LogError
+éé #
+(
+éé# $
+	exception
+éé$ -
+)
+éé- .
+;
+éé. /
+DialogManager
+èè !
+.
+èè! "#
+ShowErrorMessageAlert
+èè" 7
+(
+èè7 8
+string
+èè8 >
+.
+èè> ?
+Format
+èè? E
+(
+èèE F
+
+Properties
+èèF P
+.
+èèP Q
+	Resources
+èèQ Z
+.
+èèZ [#
+dialogUnexpectedError
+èè[ p
+,
+èèp q
+	exception
+èèr {
+.
+èè{ |
+Messageèè| É
+)èèÉ Ñ
+)èèÑ Ö
+;èèÖ Ü
+}
+êê 
+}
+ëë 
+}
+íí 	
+public
+îî 
+async
+îî 
+void
+îî 
+InitializeLobby
+îî )
+(
+îî) *
+)
+îî* +
+{
+îî, -
+LoggerManager
+ïï 
+logger
+ïï  
+=
+ïï! "
+new
+ïï# &
+LoggerManager
+ïï' 4
+(
+ïï4 5
+this
+ïï5 9
+.
+ïï9 :
+GetType
+ïï: A
+(
+ïïA B
+)
+ïïB C
+)
+ïïC D
+;
+ïïD E
+try
+ññ 
+{
+ññ 
+Lobby
+óó 
+lobby
+óó 
+=
+óó 
+await
+óó #
+_lobbyBrowser
+óó$ 1
+.
+óó1 2!
+GetLobbyByCodeAsync
+óó2 E
+(
+óóE F
+
+_lobbyCode
+óóF P
+)
+óóP Q
+;
+óóQ R"
+UserProfileSingleton
+òò $
+.
+òò$ %
+UpdateLobbyCode
+òò% 4
+(
+òò4 5
+
+_lobbyCode
+òò5 ?
+)
+òò? @
+;
+òò@ A"
+UserProfileSingleton
+ôô $
+.
+ôô$ %
+UpdateChatCode
+ôô% 3
+(
+ôô3 4
+
+_lobbyCode
+ôô4 >
+)
+ôô> ?
+;
+ôô? @
+if
+öö 
+(
+öö 
 
 IsUserHost
-àà 
+öö 
 (
-àà 
+öö 
 lobby
-àà  
+öö $
 )
-àà  !
+öö$ %
 )
-àà! "
+öö% &
 {
-àà# $
+öö' (
 	lbPlayer1
-ââ 
+õõ 
 .
-ââ 
+õõ 
 Content
-ââ !
+õõ %
 =
-ââ" #
+õõ& '
 lobby
-ââ$ )
+õõ( -
 .
-ââ) *
+õõ- .
 Players
-ââ* 1
+õõ. 5
 .
-ââ1 2
+õõ5 6
 ContainsKey
-ââ2 =
+õõ6 A
 (
-ââ= >
+õõA B
 $str
-ââ> I
+õõB M
 )
-ââI J
+õõM N
 ?
-ââK L
+õõO P
 lobby
-ââM R
+õõQ V
 .
-ââR S
+õõV W
 Players
-ââS Z
+õõW ^
 [
-ââZ [
+õõ^ _
 $str
-ââ[ f
+õõ_ j
 ]
-ââf g
+õõj k
 .
-ââg h
+õõk l
 Username
-ââh p
+õõl t
 :
-ââq r
-$strââs â
-;âââ ä
+õõu v
+
+Propertiesõõw Å
+.õõÅ Ç
+	ResourcesõõÇ ã
+.õõã å"
+lbWaitingForPlayerõõå û
+;õõû ü
 	lbPlayer2
-ää 
+úú 
 .
-ää 
+úú 
 Content
-ää !
+úú %
 =
-ää" #
+úú& '
 lobby
-ää$ )
+úú( -
 .
-ää) *
+úú- .
 Players
-ää* 1
+úú. 5
 .
-ää1 2
+úú5 6
 ContainsKey
-ää2 =
+úú6 A
 (
-ää= >
+úúA B
 $str
-ää> I
+úúB M
 )
-ääI J
+úúM N
 ?
-ääK L
+úúO P
 lobby
-ääM R
+úúQ V
 .
-ääR S
+úúV W
 Players
-ääS Z
+úúW ^
 [
-ääZ [
+úú^ _
 $str
-ää[ f
+úú_ j
 ]
-ääf g
+úúj k
 .
-ääg h
+úúk l
 Username
-ääh p
+úúl t
 :
-ääq r
-$strääs â
-;ääâ ä
-imgProfile1
-ãã 
+úúu v
+
+Propertiesúúw Å
+.úúÅ Ç
+	ResourcesúúÇ ã
+.úúã å"
+lbWaitingForPlayerúúå û
+;úúû ü
+imageProfile1
+ùù !
 .
-ãã 
+ùù! "
 Source
-ãã "
+ùù" (
 =
-ãã# $
+ùù) *
 new
-ãã% (
+ùù+ .
 BitmapImage
-ãã) 4
+ùù/ :
 (
-ãã4 5
+ùù: ;
 new
-ãã5 8
+ùù; >
 Uri
-ãã9 <
+ùù? B
 (
-ãã< ="
+ùùB C"
 UserProfileSingleton
-ãã= Q
+ùùC W
 .
-ããQ R
+ùùW X
 PicPath
-ããR Y
+ùùX _
 ,
-ããY Z
+ùù_ `
 UriKind
-ãã[ b
+ùùa h
 .
-ããb c 
+ùùh i 
 RelativeOrAbsolute
-ããc u
+ùùi {
 )
-ããu v
+ùù{ |
 )
-ããv w
+ùù| }
 ;
-ããw x
+ùù} ~
+imageProfile2
+ûû !
+.
+ûû! "
+Source
+ûû" (
+=
+ûû) *
+null
+ûû+ /
+;
+ûû/ 0
 }
-èè 
+üü 
 else
-èè 
+üü 
 {
-èè 
+üü 
 	lbPlayer1
-êê 
+†† 
 .
-êê 
+†† 
 Content
-êê !
+†† %
 =
-êê" #
+††& '
 lobby
-êê$ )
+††( -
 .
-êê) *
+††- .
 Players
-êê* 1
+††. 5
 .
-êê1 2
+††5 6
 ContainsKey
-êê2 =
+††6 A
 (
-êê= >
+††A B
 $str
-êê> I
+††B M
 )
-êêI J
+††M N
 ?
-êêK L
+††O P
 lobby
-êêM R
+††Q V
 .
-êêR S
+††V W
 Players
-êêS Z
+††W ^
 [
-êêZ [
+††^ _
 $str
-êê[ f
+††_ j
 ]
-êêf g
+††j k
 .
-êêg h
+††k l
 Username
-êêh p
+††l t
 :
-êêq r
-$strêês â
-;êêâ ä
+††u v
+
+Properties††w Å
+.††Å Ç
+	Resources††Ç ã
+.††ã å"
+lbWaitingForPlayer††å û
+;††û ü
 	lbPlayer2
-ëë 
+°° 
 .
-ëë 
+°° 
 Content
-ëë !
+°° %
 =
-ëë" #
+°°& '
 lobby
-ëë$ )
+°°( -
 .
-ëë) *
+°°- .
 Players
-ëë* 1
+°°. 5
 .
-ëë1 2
+°°5 6
 ContainsKey
-ëë2 =
+°°6 A
 (
-ëë= >
+°°A B
 $str
-ëë> I
+°°B M
 )
-ëëI J
+°°M N
 ?
-ëëK L
+°°O P
 lobby
-ëëM R
+°°Q V
 .
-ëëR S
+°°V W
 Players
-ëëS Z
+°°W ^
 [
-ëëZ [
+°°^ _
 $str
-ëë[ f
+°°_ j
 ]
-ëëf g
+°°j k
 .
-ëëg h
+°°k l
 Username
-ëëh p
+°°l t
 :
-ëëq r
-$strëës â
-;ëëâ ä
-imgProfile1
-íí 
+°°u v
+
+Properties°°w Å
+.°°Å Ç
+	Resources°°Ç ã
+.°°ã å"
+lbWaitingForPlayer°°å û
+;°°û ü
+imageProfile1
+¢¢ !
 .
-íí 
+¢¢! "
 Source
-íí "
+¢¢" (
 =
-íí# $
+¢¢) *
 new
-íí% (
+¢¢+ .
 BitmapImage
-íí) 4
+¢¢/ :
 (
-íí4 5
+¢¢: ;
 new
-íí5 8
+¢¢; >
 Uri
-íí9 <
+¢¢? B
 (
-íí< ="
+¢¢B C"
 UserProfileSingleton
-íí= Q
+¢¢C W
 .
-ííQ R
+¢¢W X
 PicPath
-ííR Y
+¢¢X _
 ,
-ííY Z
+¢¢_ `
 UriKind
-íí[ b
+¢¢a h
 .
-ííb c 
+¢¢h i 
 RelativeOrAbsolute
-ííc u
+¢¢i {
 )
-ííu v
+¢¢{ |
 )
-íív w
+¢¢| }
 ;
-ííw x
+¢¢} ~
 string
-ìì 
+££ 
 ruta
-ìì 
+££ 
 =
-ìì 
-userManager
-ìì )
+££  !
+_userManager
+££" .
 .
-ìì) *
+££. /
 
 GetPicPath
-ìì* 4
+££/ 9
 (
-ìì4 5
+££9 :
 lobby
-ìì5 :
+££: ?
 .
-ìì: ;
+££? @
 Players
-ìì; B
+££@ G
 [
-ììB C
+££G H
 $str
-ììC N
+££H S
 ]
-ììN O
+££S T
 .
-ììO P
+££T U
 Username
-ììP X
+££U ]
 )
-ììX Y
+££] ^
 ;
-ììY Z
-imgProfile2
-îî 
+££^ _
+imageProfile2
+§§ !
 .
-îî 
+§§! "
 Source
-îî "
+§§" (
 =
-îî# $
+§§) *
 new
-îî% (
+§§+ .
 BitmapImage
-îî) 4
+§§/ :
 (
-îî4 5
+§§: ;
 new
-îî5 8
+§§; >
 Uri
-îî9 <
+§§? B
 (
-îî< =
+§§B C
 ruta
-îî= A
+§§C G
 ,
-îîA B
+§§G H
 UriKind
-îîC J
+§§I P
 .
-îîJ K 
+§§P Q 
 RelativeOrAbsolute
-îîK ]
+§§Q c
 )
-îî] ^
+§§c d
 )
-îî^ _
+§§d e
 ;
-îî_ `
+§§e f
 btnKickPlayer
-ïï 
+•• !
 .
-ïï 
+••! "
 
 Visibility
-ïï (
+••" ,
 =
-ïï) *
+••- .
 
 Visibility
-ïï+ 5
+••/ 9
 .
-ïï5 6
+••9 :
 	Collapsed
-ïï6 ?
+••: C
 ;
-ïï? @
+••C D
 btnInvitedFriend
-ññ  
+¶¶ $
 .
-ññ  !
+¶¶$ %
 
 Visibility
-ññ! +
+¶¶% /
 =
-ññ, -
+¶¶0 1
 
 Visibility
-ññ. 8
+¶¶2 <
 .
-ññ8 9
+¶¶< =
 	Collapsed
-ññ9 B
+¶¶= F
 ;
-ññB C
+¶¶F G
 btnStartGame
-óó 
+ßß  
 .
-óó 
+ßß  !
 
 Visibility
-óó '
+ßß! +
 =
-óó( )
+ßß, -
 
 Visibility
-óó* 4
+ßß. 8
 .
-óó4 5
+ßß8 9
 	Collapsed
-óó5 >
+ßß9 B
 ;
-óó> ?
+ßßB C
 }
-òò 
-}
-ôô 	
-private
-õõ 
-bool
-õõ 
-
-IsUserHost
-õõ 
-(
-õõ  
-Lobby
-õõ  %
-lobby
-õõ& +
-)
-õõ+ ,
-{
-õõ- .
-return
-úú 
-lobby
-úú 
-.
-úú 
-Players
-úú  
-.
-úú  !
-TryGetValue
-úú! ,
-(
-úú, -
-$str
-úú- 8
-,
-úú8 9
-out
-úú: =
-var
-úú> A
-host
-úúB F
-)
-úúF G
-&&
-úúH J
-host
-úúK O
-.
-úúO P
-Username
-úúP X
-==
-úúY ["
-UserProfileSingleton
-úú\ p
-.
-úúp q
-UserName
-úúq y
-;
-úúy z
-}
-ùù 	
-private
-üü 
-async
-üü 
-void
-üü 
-BtnBack_Click
-üü (
-(
-üü( )
-object
-üü) /
-sender
-üü0 6
-,
-üü6 7
-RoutedEventArgs
-üü8 G
-e
-üüH I
-)
-üüI J
-{
-üüK L
-LoggerManager
-†† 
-logger
-††  
-=
-††! "
-new
-††# &
-LoggerManager
-††' 4
-(
-††4 5
-this
-††5 9
-.
-††9 :
-GetType
-††: A
-(
-††A B
-)
-††B C
-)
-††C D
-;
-††D E
-try
-°° 
-{
-°° 
-await
-¢¢ 
-lobbyManager
-¢¢ "
-.
-¢¢" #
-LeaveLobbyAsync
-¢¢# 2
-(
-¢¢2 3
-	lobbyCode
-¢¢3 <
-,
-¢¢< ="
-UserProfileSingleton
-¢¢> R
-.
-¢¢R S
-	IdProfile
-¢¢S \
-)
-¢¢\ ]
-;
-¢¢] ^
-await
-££ 
-chatManager
-££ !
-.
-££! "
-LeaveChatAsync
-££" 0
-(
-££0 1"
-UserProfileSingleton
-££1 E
-.
-££E F
-UserName
-££F N
-,
-££N O
-	lobbyCode
-££P Y
-)
-££Y Z
-;
-££Z [
-ExitUseSinglenton
-§§ !
-(
-§§! "
-)
-§§" #
-;
-§§# $
-}
-•• 
-catch
-•• 
-(
-•• '
-EndpointNotFoundException
-•• .'
-endpointNotFoundException
-••/ H
-)
-••H I
-{
-••J K
-logger
-¶¶ 
-.
-¶¶ 
-LogError
-¶¶ 
-(
-¶¶  '
-endpointNotFoundException
-¶¶  9
-)
-¶¶9 :
-;
-¶¶: ;
-DialogManager
-ßß 
-.
-ßß #
-ShowErrorMessageAlert
-ßß 3
-(
-ßß3 4
-
-Properties
-ßß4 >
-.
-ßß> ?
-	Resources
-ßß? H
-.
-ßßH I%
-dialogEndPointException
-ßßI `
-)
-ßß` a
-;
-ßßa b
-ExitUseSinglenton
-®® !
-(
-®®! "
-)
-®®" #
-;
-®®# $
+®® 
 }
 ©© 
 catch
 ©© 
 (
-©© 
-TimeoutException
-©© %
-timeoutException
-©©& 6
+©© '
+EndpointNotFoundException
+©© .'
+endpointNotFoundException
+©©/ H
 )
-©©6 7
+©©H I
 {
-©©8 9
+©©J K
 logger
 ™™ 
 .
@@ -12678,13 +15571,13 @@ Properties
 LogError
 ™™ 
 (
-™™  
-timeoutException
-™™  0
+™™  '
+endpointNotFoundException
+™™  9
 )
-™™0 1
+™™9 :
 ;
-™™1 2
+™™: ;
 DialogManager
 ´´ 
 .
@@ -12701,138 +15594,246 @@ Properties
 	Resources
 ´´? H
 .
-´´H I$
-dialogTimeOutException
-´´I _
+´´H I%
+dialogEndPointException
+´´I `
 )
-´´_ `
+´´` a
 ;
-´´` a
-ExitUseSinglenton
-¨¨ !
-(
-¨¨! "
-)
-¨¨" #
-;
-¨¨# $
+´´a b
 }
-≠≠ 
+¨¨ 
 catch
-≠≠ 
+¨¨ 
 (
-≠≠ $
-CommunicationException
-≠≠ +$
-communicationException
-≠≠, B
+¨¨ 
+TimeoutException
+¨¨ %
+timeoutException
+¨¨& 6
 )
-≠≠B C
+¨¨6 7
 {
-≠≠D E
+¨¨8 9
 logger
-ÆÆ 
+≠≠ 
 .
-ÆÆ 
+≠≠ 
 LogError
-ÆÆ 
+≠≠ 
 (
-ÆÆ  $
-communicationException
-ÆÆ  6
+≠≠  
+timeoutException
+≠≠  0
 )
-ÆÆ6 7
+≠≠0 1
 ;
-ÆÆ7 8
+≠≠1 2
 DialogManager
-ØØ 
+ÆÆ 
 .
-ØØ #
+ÆÆ #
 ShowErrorMessageAlert
-ØØ 3
+ÆÆ 3
 (
-ØØ3 4
+ÆÆ3 4
 
 Properties
-ØØ4 >
+ÆÆ4 >
 .
-ØØ> ?
+ÆÆ> ?
 	Resources
-ØØ? H
+ÆÆ? H
 .
-ØØH I)
+ÆÆH I$
+dialogTimeOutException
+ÆÆI _
+)
+ÆÆ_ `
+;
+ÆÆ` a
+}
+ØØ 
+catch
+ØØ 
+(
+ØØ $
+CommunicationException
+ØØ +$
+communicationException
+ØØ, B
+)
+ØØB C
+{
+ØØD E
+logger
+∞∞ 
+.
+∞∞ 
+LogError
+∞∞ 
+(
+∞∞  $
+communicationException
+∞∞  6
+)
+∞∞6 7
+;
+∞∞7 8
+DialogManager
+±± 
+.
+±± #
+ShowErrorMessageAlert
+±± 3
+(
+±±3 4
+
+Properties
+±±4 >
+.
+±±> ?
+	Resources
+±±? H
+.
+±±H I)
 dialogComunicationException
-ØØI d
+±±I d
 )
-ØØd e
+±±d e
 ;
-ØØe f
-ExitUseSinglenton
-∞∞ !
-(
-∞∞! "
-)
-∞∞" #
-;
-∞∞# $
+±±e f
 }
-±± 
-}
-≤≤ 	
-private
-¥¥ 
-void
-¥¥ 
-ExitUseSinglenton
-¥¥ &
+≤≤ 
+catch
+≤≤ 
 (
-¥¥& '
+≤≤ 
+	Exception
+≤≤ 
+	exception
+≤≤ (
 )
-¥¥' (
+≤≤( )
 {
-¥¥) *
-if
-µµ 
-(
-µµ "
-UserProfileSingleton
-µµ $
+≤≤* +
+logger
+≥≥ 
 .
-µµ$ %
-	IdProfile
-µµ% .
-<
-µµ/ 0
-$num
-µµ1 7
-)
-µµ7 8
-{
-µµ9 :
-GoToMenuView
-∂∂ 
+≥≥ 
+LogError
+≥≥ 
 (
-∂∂ 
+≥≥  
+	exception
+≥≥  )
 )
-∂∂ 
+≥≥) *
 ;
-∂∂ 
-}
-∑∑ 
-else
-∑∑ 
-{
-∑∑ 
-GoToLoginView
-∏∏ 
+≥≥* +
+DialogManager
+¥¥ 
+.
+¥¥ #
+ShowErrorMessageAlert
+¥¥ 3
 (
-∏∏ 
-)
-∏∏ 
-;
-∏∏  
+¥¥3 4
+string
+¥¥4 :
+.
+¥¥: ;
+Format
+¥¥; A
+(
+¥¥A B
+
+Properties
+¥¥B L
+.
+¥¥L M
+	Resources
+¥¥M V
+.
+¥¥V W#
+dialogUnexpectedError
+¥¥W l
+,
+¥¥l m
+	exception
+¥¥n w
+.
+¥¥w x
+Message
+¥¥x 
+)¥¥ Ä
+)¥¥Ä Å
+;¥¥Å Ç
 }
-ππ 
+µµ 
+}
+∂∂ 	
+private
+∏∏ 
+bool
+∏∏ 
+
+IsUserHost
+∏∏ 
+(
+∏∏  
+Lobby
+∏∏  %
+lobby
+∏∏& +
+)
+∏∏+ ,
+{
+∏∏- .
+return
+ππ 
+lobby
+ππ 
+.
+ππ 
+Players
+ππ  
+.
+ππ  !
+TryGetValue
+ππ! ,
+(
+ππ, -
+$str
+ππ- 8
+,
+ππ8 9
+out
+ππ: =
+var
+ππ> A
+host
+ππB F
+)
+ππF G
+&&
+ππH J
+host
+ππK O
+.
+ππO P
+Username
+ππP X
+==
+ππY ["
+UserProfileSingleton
+ππ\ p
+.
+ππp q
+UserName
+ππq y
+;
+ππy z
 }
 ∫∫ 	
 private
@@ -12840,25 +15841,25 @@ Properties
 async
 ºº 
 void
-ºº 
-	OnClosing
-ºº $
+ºº 
+BtnBack_Click
+ºº (
 (
-ºº$ %
+ºº( )
 object
-ºº% +
+ºº) /
 sender
-ºº, 2
+ºº0 6
 ,
-ºº2 3
-CancelEventArgs
-ºº4 C
+ºº6 7
+RoutedEventArgs
+ºº8 G
 e
-ººD E
+ººH I
 )
-ººE F
+ººI J
 {
-ººG H
+ººK L
 LoggerManager
 ΩΩ 
 logger
@@ -12884,2271 +15885,3718 @@ Properties
 )
 ΩΩC D
 ;
-ΩΩD E
-if
-ææ 
-(
-ææ 
-isConnected
-ææ 
-)
-ææ 
-{
-ææ 
+ΩΩD E
 try
-øø 
+ææ 
 {
-øø 
+ææ 
 await
-¿¿ 
-Task
-¿¿ 
+øø 
+_lobbyManager
+øø #
 .
-¿¿ 
-Run
-¿¿ "
+øø# $
+LeaveLobbyAsync
+øø$ 3
 (
-¿¿" #
-(
-¿¿# $
+øø3 4
+
+_lobbyCode
+øø4 >
+,
+øø> ?"
+UserProfileSingleton
+øø@ T
+.
+øøT U
+	IdProfile
+øøU ^
 )
-¿¿$ %
-=>
-¿¿& (
-lobbyManager
-¡¡  
+øø^ _
+;
+øø_ `
+await
+¿¿ 
+_chatManager
+¿¿ "
 .
-¡¡  !
+¿¿" #
+LeaveChatAsync
+¿¿# 1
+(
+¿¿1 2"
+UserProfileSingleton
+¿¿2 F
+.
+¿¿F G
+UserName
+¿¿G O
+,
+¿¿O P
+
+_lobbyCode
+¿¿Q [
+)
+¿¿[ \
+;
+¿¿\ ]
+ExitUseSinglenton
+¡¡ !
+(
+¡¡! "
+)
+¡¡" #
+;
+¡¡# $
+}
+¬¬ 
+catch
+¬¬ 
+(
+¬¬ '
+EndpointNotFoundException
+¬¬ .'
+endpointNotFoundException
+¬¬/ H
+)
+¬¬H I
+{
+¬¬J K
+logger
+√√ 
+.
+√√ 
+LogError
+√√ 
+(
+√√  '
+endpointNotFoundException
+√√  9
+)
+√√9 :
+;
+√√: ;
+DialogManager
+ƒƒ 
+.
+ƒƒ #
+ShowErrorMessageAlert
+ƒƒ 3
+(
+ƒƒ3 4
+
+Properties
+ƒƒ4 >
+.
+ƒƒ> ?
+	Resources
+ƒƒ? H
+.
+ƒƒH I%
+dialogEndPointException
+ƒƒI `
+)
+ƒƒ` a
+;
+ƒƒa b
+ExitUseSinglenton
+≈≈ !
+(
+≈≈! "
+)
+≈≈" #
+;
+≈≈# $
+}
+∆∆ 
+catch
+∆∆ 
+(
+∆∆ 
+TimeoutException
+∆∆ %
+timeoutException
+∆∆& 6
+)
+∆∆6 7
+{
+∆∆8 9
+logger
+«« 
+.
+«« 
+LogError
+«« 
+(
+««  
+timeoutException
+««  0
+)
+««0 1
+;
+««1 2
+DialogManager
+»» 
+.
+»» #
+ShowErrorMessageAlert
+»» 3
+(
+»»3 4
+
+Properties
+»»4 >
+.
+»»> ?
+	Resources
+»»? H
+.
+»»H I$
+dialogTimeOutException
+»»I _
+)
+»»_ `
+;
+»»` a
+ExitUseSinglenton
+…… !
+(
+……! "
+)
+……" #
+;
+……# $
+}
+   
+catch
+   
+(
+   $
+CommunicationException
+   +$
+communicationException
+  , B
+)
+  B C
+{
+  D E
+logger
+ÀÀ 
+.
+ÀÀ 
+LogError
+ÀÀ 
+(
+ÀÀ  $
+communicationException
+ÀÀ  6
+)
+ÀÀ6 7
+;
+ÀÀ7 8
+DialogManager
+ÃÃ 
+.
+ÃÃ #
+ShowErrorMessageAlert
+ÃÃ 3
+(
+ÃÃ3 4
+
+Properties
+ÃÃ4 >
+.
+ÃÃ> ?
+	Resources
+ÃÃ? H
+.
+ÃÃH I)
+dialogComunicationException
+ÃÃI d
+)
+ÃÃd e
+;
+ÃÃe f
+ExitUseSinglenton
+ÕÕ !
+(
+ÕÕ! "
+)
+ÕÕ" #
+;
+ÕÕ# $
+}
+ŒŒ 
+catch
+ŒŒ 
+(
+ŒŒ 
+	Exception
+ŒŒ 
+	exception
+ŒŒ (
+)
+ŒŒ( )
+{
+ŒŒ* +
+logger
+œœ 
+.
+œœ 
+LogError
+œœ 
+(
+œœ  
+	exception
+œœ  )
+)
+œœ) *
+;
+œœ* +
+DialogManager
+–– 
+.
+–– #
+ShowErrorMessageAlert
+–– 3
+(
+––3 4
+string
+––4 :
+.
+––: ;
+Format
+––; A
+(
+––A B
+
+Properties
+––B L
+.
+––L M
+	Resources
+––M V
+.
+––V W#
+dialogUnexpectedError
+––W l
+,
+––l m
+	exception
+––n w
+.
+––w x
+Message
+––x 
+)–– Ä
+)––Ä Å
+;––Å Ç
+ExitUseSinglenton
+—— !
+(
+——! "
+)
+——" #
+;
+——# $
+}
+““ 
+}
+”” 	
+private
+’’ 
+void
+’’ 
+ExitUseSinglenton
+’’ &
+(
+’’& '
+)
+’’' (
+{
+’’) *"
+UserProfileSingleton
+÷÷  
+.
+÷÷  !
+ResetLobbyCode
+÷÷! /
+(
+÷÷/ 0
+)
+÷÷0 1
+;
+÷÷1 2"
+UserProfileSingleton
+◊◊  
+.
+◊◊  !
+ResetChatCode
+◊◊! .
+(
+◊◊. /
+)
+◊◊/ 0
+;
+◊◊0 1
+if
+ÿÿ 
+(
+ÿÿ "
+UserProfileSingleton
+ÿÿ $
+.
+ÿÿ$ %
+	IdProfile
+ÿÿ% .
+<
+ÿÿ/ 0
+$num
+ÿÿ1 7
+)
+ÿÿ7 8
+{
+ÿÿ9 :
+GoToMenuView
+ŸŸ 
+(
+ŸŸ 
+)
+ŸŸ 
+;
+ŸŸ 
+}
+⁄⁄ 
+else
+⁄⁄ 
+{
+⁄⁄ 
+GoToLoginView
+€€ 
+(
+€€ 
+)
+€€ 
+;
+€€  
+}
+‹‹ 
+}
+›› 	
+private
+ﬂﬂ 
+async
+ﬂﬂ 
+void
+ﬂﬂ 
+	OnClosing
+ﬂﬂ $
+(
+ﬂﬂ$ %
+object
+ﬂﬂ% +
+sender
+ﬂﬂ, 2
+,
+ﬂﬂ2 3
+CancelEventArgs
+ﬂﬂ4 C
+e
+ﬂﬂD E
+)
+ﬂﬂE F
+{
+ﬂﬂG H
+LoggerManager
+‡‡ 
+logger
+‡‡  
+=
+‡‡! "
+new
+‡‡# &
+LoggerManager
+‡‡' 4
+(
+‡‡4 5
+this
+‡‡5 9
+.
+‡‡9 :
+GetType
+‡‡: A
+(
+‡‡A B
+)
+‡‡B C
+)
+‡‡C D
+;
+‡‡D E
+if
+·· 
+(
+·· 
+_isConnected
+·· 
+)
+·· 
+{
+·· 
+try
+‚‚ 
+{
+‚‚ 
+await
+„„ 
+Task
+„„ 
+.
+„„ 
+Run
+„„ "
+(
+„„" #
+(
+„„# $
+)
+„„$ %
+=>
+„„& (
+_lobbyManager
+‰‰ !
+.
+‰‰! "
 
 LeaveLobby
-¡¡! +
+‰‰" ,
 (
-¡¡+ ,
-	lobbyCode
-¡¡, 5
+‰‰, -
+
+_lobbyCode
+‰‰- 7
 ,
-¡¡5 6"
+‰‰7 8"
 UserProfileSingleton
-¡¡7 K
+‰‰9 M
 .
-¡¡K L
+‰‰M N
 	IdProfile
-¡¡L U
+‰‰N W
 )
-¡¡U V
+‰‰W X
 )
-¡¡V W
+‰‰X Y
 ;
-¡¡W X
+‰‰Y Z
 }
-¬¬ 
+ÂÂ 
 catch
-¬¬ 
+ÂÂ 
 (
-¬¬ '
+ÂÂ '
 EndpointNotFoundException
-¬¬ 2'
+ÂÂ 2'
 endpointNotFoundException
-¬¬3 L
+ÂÂ3 L
 )
-¬¬L M
+ÂÂL M
 {
-¬¬N O
+ÂÂN O
 logger
-√√ 
+ÊÊ 
 .
-√√ 
+ÊÊ 
 LogError
-√√ #
+ÊÊ #
 (
-√√# $'
+ÊÊ# $'
 endpointNotFoundException
-√√$ =
+ÊÊ$ =
 )
-√√= >
+ÊÊ= >
 ;
-√√> ?
+ÊÊ> ?
 DialogManager
-ƒƒ !
+ÁÁ !
 .
-ƒƒ! "#
+ÁÁ! "#
 ShowErrorMessageAlert
-ƒƒ" 7
+ÁÁ" 7
 (
-ƒƒ7 8
+ÁÁ7 8
 
 Properties
-ƒƒ8 B
+ÁÁ8 B
 .
-ƒƒB C
+ÁÁB C
 	Resources
-ƒƒC L
+ÁÁC L
 .
-ƒƒL M%
+ÁÁL M%
 dialogEndPointException
-ƒƒM d
+ÁÁM d
 )
-ƒƒd e
+ÁÁd e
 ;
-ƒƒe f
+ÁÁe f
 }
-≈≈ 
+ËË 
 catch
-≈≈ 
+ËË 
 (
-≈≈ 
+ËË 
 TimeoutException
-≈≈ )
+ËË )
 timeoutException
-≈≈* :
+ËË* :
 )
-≈≈: ;
+ËË: ;
 {
-≈≈< =
+ËË< =
 logger
-∆∆ 
+ÈÈ 
 .
-∆∆ 
+ÈÈ 
 LogError
-∆∆ #
+ÈÈ #
 (
-∆∆# $
+ÈÈ# $
 timeoutException
-∆∆$ 4
+ÈÈ$ 4
 )
-∆∆4 5
+ÈÈ4 5
 ;
-∆∆5 6
+ÈÈ5 6
 DialogManager
-«« !
+ÍÍ !
 .
-««! "#
+ÍÍ! "#
 ShowErrorMessageAlert
-««" 7
+ÍÍ" 7
 (
-««7 8
+ÍÍ7 8
 
 Properties
-««8 B
+ÍÍ8 B
 .
-««B C
+ÍÍB C
 	Resources
-««C L
+ÍÍC L
 .
-««L M$
+ÍÍL M$
 dialogTimeOutException
-««M c
+ÍÍM c
 )
-««c d
+ÍÍc d
 ;
-««d e
+ÍÍd e
 }
-»» 
+ÎÎ 
 catch
-»» 
+ÎÎ 
 (
-»» $
+ÎÎ $
 CommunicationException
-»» /$
+ÎÎ /$
 communicationException
-»»0 F
+ÎÎ0 F
 )
-»»F G
+ÎÎF G
 {
-»»H I
+ÎÎH I
 logger
-…… 
+ÏÏ 
 .
-…… 
+ÏÏ 
 LogError
-…… #
+ÏÏ #
 (
-……# $$
+ÏÏ# $$
 communicationException
-……$ :
+ÏÏ$ :
 )
-……: ;
+ÏÏ: ;
 ;
-……; <
+ÏÏ; <
 DialogManager
-   !
+ÌÌ !
 .
-  ! "#
+ÌÌ! "#
 ShowErrorMessageAlert
-  " 7
+ÌÌ" 7
 (
-  7 8
+ÌÌ7 8
 
 Properties
-  8 B
+ÌÌ8 B
 .
-  B C
+ÌÌB C
 	Resources
-  C L
+ÌÌC L
 .
-  L M)
+ÌÌL M)
 dialogComunicationException
-  M h
+ÌÌM h
 )
-  h i
+ÌÌh i
 ;
-  i j
+ÌÌi j
 }
-ÀÀ 
+ÓÓ 
+catch
+ÓÓ 
+(
+ÓÓ 
+	Exception
+ÓÓ "
+	exception
+ÓÓ# ,
+)
+ÓÓ, -
+{
+ÓÓ. /
+logger
+ÔÔ 
+.
+ÔÔ 
+LogError
+ÔÔ #
+(
+ÔÔ# $
+	exception
+ÔÔ$ -
+)
+ÔÔ- .
+;
+ÔÔ. /
+DialogManager
+ !
+.
+! "#
+ShowErrorMessageAlert
+" 7
+(
+7 8
+string
+8 >
+.
+> ?
+Format
+? E
+(
+E F
+
+Properties
+F P
+.
+P Q
+	Resources
+Q Z
+.
+Z [#
+dialogUnexpectedError
+[ p
+,
+p q
+	exception
+r {
+.
+{ |
+Message| É
+)É Ñ
+)Ñ Ö
+;Ö Ü
 }
-ÃÃ 
+ÒÒ 
 }
-ÕÕ 	
+ÚÚ 
+}
+ÛÛ 	
 private
-œœ 
+ıı 
 void
-œœ 
+ıı 
 ScrollToBottom
-œœ #
+ıı #
 (
-œœ# $
+ıı# $
 )
-œœ$ %
+ıı$ %
 {
-œœ& '
+ıı& '
 var
-–– 
+ˆˆ 
 scrollViewer
-–– 
+ˆˆ 
 =
-–– 
+ˆˆ 
 VisualTreeHelper
-–– /
+ˆˆ /
 .
-––/ 0
+ˆˆ/ 0
 	GetParent
-––0 9
+ˆˆ0 9
 (
-––9 :
+ˆˆ9 :
 ChatMessagesPanel
-––: K
+ˆˆ: K
 )
-––K L
+ˆˆK L
 as
-––M O
+ˆˆM O
 ScrollViewer
-––P \
+ˆˆP \
 ;
-––\ ]
+ˆˆ\ ]
 scrollViewer
-—— 
+˜˜ 
 ?
-—— 
+˜˜ 
 .
-—— 
+˜˜ 
 ScrollToEnd
-—— %
+˜˜ %
 (
-——% &
+˜˜% &
 )
-——& '
+˜˜& '
 ;
-——' (
+˜˜' (
 }
-““ 	
+¯¯ 	
 private
-‘‘ 
+˙˙ 
 void
-‘‘ 
+˙˙ 
 GoToMenuView
-‘‘ !
+˙˙ !
 (
-‘‘! "
+˙˙! "
 )
-‘‘" #
+˙˙" #
 {
-‘‘$ %
+˙˙$ %
 MenuView
-’’ 
+˚˚ 
 menuView
-’’ 
+˚˚ 
 =
-’’ 
+˚˚ 
 new
-’’  #
+˚˚  #
 MenuView
-’’$ ,
+˚˚$ ,
 (
-’’, -
+˚˚, -
 )
-’’- .
+˚˚- .
 ;
-’’. /
+˚˚. /
 if
-÷÷ 
+¸¸ 
 (
-÷÷ 
+¸¸ 
 this
-÷÷ 
+¸¸ 
 .
-÷÷ 
+¸¸ 
 NavigationService
-÷÷ &
+¸¸ &
 !=
-÷÷' )
+¸¸' )
 null
-÷÷* .
+¸¸* .
 )
-÷÷. /
+¸¸. /
 {
-÷÷0 1
+¸¸0 1
 this
-◊◊ 
+˝˝ 
 .
-◊◊ 
+˝˝ 
 NavigationService
-◊◊ &
+˝˝ &
 .
-◊◊& '
+˝˝& '
 Navigate
-◊◊' /
+˝˝' /
 (
-◊◊/ 0
+˝˝/ 0
 menuView
-◊◊0 8
-)
-◊◊8 9
-;
-◊◊9 :
-}
-ÿÿ 
-else
-ÿÿ 
-{
-ÿÿ 
-DialogManager
-ŸŸ 
-.
-ŸŸ #
-ShowErrorMessageAlert
-ŸŸ 3
-(
-ŸŸ3 4
-
-Properties
-ŸŸ4 >
-.
-ŸŸ> ?
-	Resources
-ŸŸ? H
-.
-ŸŸH I#
-dialogNavigationError
-ŸŸI ^
-)
-ŸŸ^ _
-;
-ŸŸ_ `
-}
-⁄⁄ 
-}
-€€ 	
-private
-›› 
-void
-›› 
-GoToLoginView
-›› "
-(
-››" #
-)
-››# $
-{
-››% &
-	LoginView
-ﬁﬁ 
-	loginView
-ﬁﬁ 
-=
-ﬁﬁ  !
-new
-ﬁﬁ" %
-	LoginView
-ﬁﬁ& /
-(
-ﬁﬁ/ 0
-)
-ﬁﬁ0 1
-;
-ﬁﬁ1 2
-if
-ﬂﬂ 
-(
-ﬂﬂ 
-this
-ﬂﬂ 
-.
-ﬂﬂ 
-NavigationService
-ﬂﬂ &
-!=
-ﬂﬂ' )
-null
-ﬂﬂ* .
-)
-ﬂﬂ. /
-{
-ﬂﬂ0 1
-this
-‡‡ 
-.
-‡‡ 
-NavigationService
-‡‡ &
-.
-‡‡& '
-Navigate
-‡‡' /
-(
-‡‡/ 0
-	loginView
-‡‡0 9
-)
-‡‡9 :
-;
-‡‡: ;
-}
-·· 
-else
-·· 
-{
-·· 
-DialogManager
-‚‚ 
-.
-‚‚ #
-ShowErrorMessageAlert
-‚‚ 3
-(
-‚‚3 4
-
-Properties
-‚‚4 >
-.
-‚‚> ?
-	Resources
-‚‚? H
-.
-‚‚H I#
-dialogNavigationError
-‚‚I ^
-)
-‚‚^ _
-;
-‚‚_ `
-}
-„„ 
-}
-‰‰ 	
-public
-ÁÁ 
-void
-ÁÁ 
-RemoveFromLobby
-ÁÁ #
-(
-ÁÁ# $
-)
-ÁÁ$ %
-{
-ÁÁ& '
-
-Dispatcher
-ËË 
-.
-ËË 
-Invoke
-ËË 
-(
-ËË 
-(
-ËË 
-)
-ËË  
-=>
-ËË! #
-{
-ËË$ %
-DialogManager
-ÈÈ 
-.
-ÈÈ %
-ShowWarningMessageAlert
-ÈÈ 5
-(
-ÈÈ5 6
-
-Properties
-ÈÈ6 @
-.
-ÈÈ@ A
-	Resources
-ÈÈA J
-.
-ÈÈJ K
-dialogLobbyExit
-ÈÈK Z
-)
-ÈÈZ [
-;
-ÈÈ[ \
-GoToMenuView
-ÍÍ 
-(
-ÍÍ 
-)
-ÍÍ 
-;
-ÍÍ 
-}
-ÎÎ 
-)
-ÎÎ 
-;
-ÎÎ 
-}
-ÏÏ 	
-public
-ÓÓ 
-void
-ÓÓ 
-HostLeftCallback
-ÓÓ $
-(
-ÓÓ$ %
-)
-ÓÓ% &
-{
-ÓÓ' (
-
-Dispatcher
-ÔÔ 
-.
-ÔÔ 
-Invoke
-ÔÔ 
-(
-ÔÔ 
-async
-ÔÔ #
-(
-ÔÔ$ %
-)
-ÔÔ% &
-=>
-ÔÔ' )
-{
-ÔÔ* +
-await
- 
-Task
- 
-.
- 
-Run
- 
-(
- 
-(
-  
-)
-  !
-=>
-" $
-DialogManager
-ÒÒ 
-.
-ÒÒ %
-ShowWarningMessageAlert
-ÒÒ 1
-(
-ÒÒ1 2
-
-Properties
-ÒÒ2 <
-.
-ÒÒ< =
-	Resources
-ÒÒ= F
-.
-ÒÒF G!
-dialogHostLeftLobby
-ÒÒG Z
-)
-ÒÒZ [
-)
-ÚÚ 
-;
-ÚÚ 
-GoToMenuView
-ÛÛ 
-(
-ÛÛ 
-)
-ÛÛ 
-;
-ÛÛ 
-}
-ÙÙ 
-)
-ÙÙ 
-;
-ÙÙ 
-}
-ıı 	
-public
-ˆˆ 
-void
-ˆˆ 
-GuestLeftCallback
-ˆˆ %
-(
-ˆˆ% &
-)
-ˆˆ& '
-{
-ˆˆ( )
-
-Dispatcher
-˜˜ 
-.
-˜˜ 
-Invoke
-˜˜ 
-(
-˜˜ 
-(
-˜˜ 
-)
-˜˜  
-=>
-˜˜! #
-{
-˜˜$ %
-string
-¯¯ 
-waitingMessage
-¯¯ %
-=
-¯¯& '
-
-Properties
-¯¯( 2
-.
-¯¯2 3
-	Resources
-¯¯3 <
-.
-¯¯< =$
-dialogWaitingForPlayer
-¯¯= S
-;
-¯¯S T
-	lbPlayer2
-˘˘ 
-.
-˘˘ 
-Content
-˘˘ !
-=
-˘˘" #
-waitingMessage
-˘˘$ 2
-;
-˘˘2 3
-}
-˙˙ 
-)
-˙˙ 
-;
-˙˙ 
-}
-˚˚ 	
-public
-˝˝ 
-void
-˝˝ !
-GuestJoinedCallback
-˝˝ '
-(
-˝˝' (
-string
-˝˝( .
-	guestName
-˝˝/ 8
+˝˝0 8
 )
 ˝˝8 9
-{
-˝˝: ;
-
-Dispatcher
-˛˛ 
-.
-˛˛ 
-Invoke
-˛˛ 
-(
-˛˛ 
-(
-˛˛ 
-)
-˛˛  
-=>
-˛˛! #
-{
-˛˛$ %
-	lbPlayer2
-ˇˇ 
-.
-ˇˇ 
-Content
-ˇˇ !
-=
-ˇˇ" #
-	guestName
-ˇˇ$ -
 ;
-ˇˇ- .
-string
-ÄÄ 
-ruta
-ÄÄ 
-=
-ÄÄ 
-userManager
-ÄÄ )
-.
-ÄÄ) *
-
-GetPicPath
-ÄÄ* 4
-(
-ÄÄ4 5
-	guestName
-ÄÄ5 >
-)
-ÄÄ> ?
-;
-ÄÄ? @
-imgProfile2
-ÅÅ 
-.
-ÅÅ 
-Source
-ÅÅ "
-=
-ÅÅ# $
-new
-ÅÅ% (
-BitmapImage
-ÅÅ) 4
-(
-ÅÅ4 5
-new
-ÅÅ5 8
-Uri
-ÅÅ9 <
-(
-ÅÅ< =
-ruta
-ÅÅ= A
-,
-ÅÅA B
-UriKind
-ÅÅC J
-.
-ÅÅJ K 
-RelativeOrAbsolute
-ÅÅK ]
-)
-ÅÅ] ^
-)
-ÅÅ^ _
-;
-ÅÅ_ `
+˝˝9 :
 }
-ÇÇ 
+˛˛ 
+else
+˛˛ 
+{
+˛˛ 
+DialogManager
+ˇˇ 
+.
+ˇˇ #
+ShowErrorMessageAlert
+ˇˇ 3
+(
+ˇˇ3 4
+
+Properties
+ˇˇ4 >
+.
+ˇˇ> ?
+	Resources
+ˇˇ? H
+.
+ˇˇH I#
+dialogNavigationError
+ˇˇI ^
 )
-ÇÇ 
+ˇˇ^ _
 ;
-ÇÇ 
+ˇˇ_ `
 }
-ÉÉ 	
+ÄÄ 
+}
+ÅÅ 	
 private
-ÖÖ 
+ÉÉ 
 void
-ÖÖ  
-BtnStartGame_Click
-ÖÖ '
+ÉÉ 
+GoToLoginView
+ÉÉ "
 (
-ÖÖ' (
-object
-ÖÖ( .
-sender
-ÖÖ/ 5
-,
-ÖÖ5 6
-RoutedEventArgs
-ÖÖ7 F
-e
-ÖÖG H
+ÉÉ" #
 )
-ÖÖH I
+ÉÉ# $
 {
-ÖÖJ K
-lobbyManager
-ÜÜ 
-.
-ÜÜ 
-
-StartMatch
-ÜÜ #
+ÉÉ% &
+	LoginView
+ÑÑ 
+	loginView
+ÑÑ 
+=
+ÑÑ  !
+new
+ÑÑ" %
+	LoginView
+ÑÑ& /
 (
-ÜÜ# $
-	lobbyCode
-ÜÜ$ -
+ÑÑ/ 0
 )
-ÜÜ- .
+ÑÑ0 1
 ;
-ÜÜ. /
-}
-áá 	
-public
-ââ 
-void
-ââ 
-BroadcastMessage
-ââ $
+ÑÑ1 2
+if
+ÖÖ 
 (
-ââ$ %
-Message
-ââ% ,
-message
-ââ- 4
+ÖÖ 
+this
+ÖÖ 
+.
+ÖÖ 
+NavigationService
+ÖÖ &
+!=
+ÖÖ' )
+null
+ÖÖ* .
 )
-ââ4 5
+ÖÖ. /
 {
-ââ6 7
-Application
-ää 
+ÖÖ0 1
+this
+ÜÜ 
 .
-ää 
-Current
-ää 
+ÜÜ 
+NavigationService
+ÜÜ &
 .
-ää  
+ÜÜ& '
+Navigate
+ÜÜ' /
+(
+ÜÜ/ 0
+	loginView
+ÜÜ0 9
+)
+ÜÜ9 :
+;
+ÜÜ: ;
+}
+áá 
+else
+áá 
+{
+áá 
+DialogManager
+àà 
+.
+àà #
+ShowErrorMessageAlert
+àà 3
+(
+àà3 4
+
+Properties
+àà4 >
+.
+àà> ?
+	Resources
+àà? H
+.
+ààH I#
+dialogNavigationError
+ààI ^
+)
+àà^ _
+;
+àà_ `
+}
+ââ 
+}
+ää 	
+public
+çç 
+void
+çç 
+RemoveFromLobby
+çç #
+(
+çç# $
+)
+çç$ %
+{
+çç& '
 
 Dispatcher
-ää  *
+éé 
 .
-ää* +
+éé 
 Invoke
-ää+ 1
+éé 
 (
-ää1 2
+éé 
 (
-ää2 3
+éé 
 )
-ää3 4
+éé  
 =>
-ää5 7
+éé! #
 {
-ää8 9
-Border
-ãã 
-messageContainer
-ãã '
-=
-ãã( )
-new
-ãã* -
-Border
-ãã. 4
-{
-ãã5 6
+éé$ %
+DialogManager
+èè 
+.
+èè %
+ShowWarningMessageAlert
+èè 5
+(
+èè5 6
 
-Background
-åå 
-=
-åå  
-new
-åå! $
-SolidColorBrush
-åå% 4
-(
-åå4 5
-Colors
-åå5 ;
+Properties
+èè6 @
 .
-åå; <
-White
-åå< A
-)
-ååA B
-,
-ååB C
-BorderThickness
-çç #
-=
-çç$ %
-new
-çç& )
-	Thickness
-çç* 3
-(
-çç3 4
-$num
-çç4 5
-)
-çç5 6
-,
-çç6 7
-Padding
-éé 
-=
-éé 
-new
-éé !
-	Thickness
-éé" +
-(
-éé+ ,
-$num
-éé, .
-)
-éé. /
-,
-éé/ 0
-Margin
-èè 
-=
-èè 
-new
-èè  
-	Thickness
-èè! *
-(
-èè* +
-$num
-èè+ -
-,
-èè- .
-$num
-èè/ 0
-,
-èè0 1
-$num
-èè2 4
-,
-èè4 5
-$num
-èè6 7
-)
-èè7 8
-,
-èè8 9!
-HorizontalAlignment
-êê '
-=
-êê( )
-message
-êê* 1
+èè@ A
+	Resources
+èèA J
 .
-êê1 2
-userName
-êê2 :
-==
-êê; ="
-UserProfileSingleton
-êê> R
-.
-êêR S
-UserName
-êêS [
-?
-êê\ ]!
-HorizontalAlignment
-êê^ q
-.
-êêq r
-Right
-êêr w
-:
-êêx y"
-HorizontalAlignmentêêz ç
-.êêç é
-Leftêêé í
-}
-ëë 
+èèJ K
+dialogLobbyExit
+èèK Z
+)
+èèZ [
 ;
-ëë 
-	TextBlock
-ìì 
-messageBlock
-ìì &
-=
-ìì' (
-new
-ìì) ,
-	TextBlock
-ìì- 6
-{
-ìì7 8
-Text
-îî 
-=
-îî 
-$"
-îî 
-{
-îî 
-message
-îî %
-.
-îî% &
-chatMessage
-îî& 1
+èè[ \
+ExitUseSinglenton
+êê !
+(
+êê! "
+)
+êê" #
+;
+êê# $
 }
-îî1 2
-$str
-îî2 3
-{
-îî3 4
-DateTime
-îî4 <
-.
-îî< =
-Now
-îî= @
-:
-îî@ A
-$str
-îîA F
+ëë 
+)
+ëë 
+;
+ëë 
 }
-îîF G
-"
-îîG H
-,
-îîH I
+íí 	
+public
+îî 
+void
+îî 
+HostLeftCallback
+îî $
+(
+îî$ %
+)
+îî% &
+{
+îî' (
 
-Foreground
-ïï 
-=
-ïï  
-new
-ïï! $
-SolidColorBrush
-ïï% 4
-(
-ïï4 5
-Colors
-ïï5 ;
+Dispatcher
+ïï 
 .
-ïï; <
-Black
-ïï< A
+ïï 
+Invoke
+ïï 
+(
+ïï 
+async
+ïï #
+(
+ïï$ %
 )
-ïïA B
-,
-ïïB C
-FontSize
-ññ 
-=
-ññ 
-$num
-ññ !
-,
-ññ! "
+ïï% &
+=>
+ïï' )
+{
+ïï* +
+await
+ññ 
+Task
+ññ 
+.
+ññ 
+Run
+ññ 
+(
+ññ 
+(
+ññ  
+)
+ññ  !
+=>
+ññ" $
+DialogManager
+óó 
+.
+óó %
+ShowWarningMessageAlert
+óó 1
+(
+óó1 2
 
-FontWeight
-óó 
-=
-óó  
-FontWeights
-óó! ,
+Properties
+óó2 <
 .
-óó, -
-Bold
-óó- 1
-,
-óó1 2
-TextWrapping
-òò  
-=
-òò! "
-TextWrapping
-òò# /
+óó< =
+	Resources
+óó= F
 .
-òò/ 0
-Wrap
-òò0 4
-,
-òò4 5
-MaxWidth
-ôô 
-=
-ôô 
-$num
-ôô "
-}
-öö 
-;
-öö 
-messageContainer
-úú  
-.
-úú  !
-Child
-úú! &
-=
-úú' (
-messageBlock
-úú) 5
-;
-úú5 6
-ChatMessagesPanel
-ùù !
-.
-ùù! "
-Children
-ùù" *
-.
-ùù* +
-Add
-ùù+ .
-(
-ùù. /
-messageContainer
-ùù/ ?
+óóF G!
+dialogHostLeftLobby
+óóG Z
 )
-ùù? @
+óóZ [
+)
+òò 
 ;
-ùù@ A
-ScrollToBottom
-ûû 
+òò 
+ExitUseSinglenton
+ôô !
+(
+ôô! "
+)
+ôô" #
+;
+ôô# $
+}
+öö 
+)
+öö 
+;
+öö 
+}
+õõ 	
+public
+ùù 
+void
+ùù 
+GuestLeftCallback
+ùù %
+(
+ùù% &
+)
+ùù& '
+{
+ùù( )
+
+Dispatcher
+ûû 
+.
+ûû 
+Invoke
+ûû 
+(
+ûû 
 (
 ûû 
 )
-ûû  
+ûû  
+=>
+ûû! #
+{
+ûû$ %
+string
+üü 
+waitingMessage
+üü %
+=
+üü& '
+
+Properties
+üü( 2
+.
+üü2 3
+	Resources
+üü3 <
+.
+üü< =$
+dialogWaitingForPlayer
+üü= S
 ;
-ûû  !
+üüS T
+	lbPlayer2
+†† 
+.
+†† 
+Content
+†† !
+=
+††" #
+waitingMessage
+††$ 2
+;
+††2 3
+imageProfile2
+°° 
+.
+°° 
+Source
+°° $
+=
+°°% &
+null
+°°' +
+;
+°°+ ,
 }
-üü 
+¢¢ 
 )
-üü 
+¢¢ 
 ;
-üü 
+¢¢ 
 }
-†† 	
+££ 	
 public
-¢¢ 
+•• 
 void
-¢¢ 
-GameStarted
-¢¢ 
+•• !
+GuestJoinedCallback
+•• '
 (
-¢¢  
+••' (
+string
+••( .
+	guestName
+••/ 8
+,
+••8 9
+string
+••: @
+picturePath
+••A L
+,
+••L M
+int
+••N Q
+	idProfile
+••R [
 )
-¢¢  !
+••[ \
 {
-¢¢" #
-GoToGameMatch
-££ 
-(
-££ 
-)
-££ 
-;
-££ 
-}
-§§ 	
-private
-¶¶ 
-void
-¶¶ 
-GoToGameMatch
-¶¶ "
-(
-¶¶" #
-)
-¶¶# $
-{
-¶¶% &
-Application
-ßß 
-.
-ßß 
-Current
-ßß 
-.
-ßß  
+••] ^
 
 Dispatcher
-ßß  *
+¶¶ 
 .
-ßß* +
+¶¶ 
 Invoke
-ßß+ 1
+¶¶ 
 (
-ßß1 2
+¶¶ 
 (
-ßß2 3
+¶¶ 
 )
-ßß3 4
+¶¶  
 =>
-ßß5 7
+¶¶! #
 {
-ßß8 9
-var
-®® 
-	gameMatch
+¶¶$ %
+	lbPlayer2
+ßß 
+.
+ßß 
+Content
+ßß !
+=
+ßß" #
+	guestName
+ßß$ -
+;
+ßß- .
+if
+®® 
+(
+®® 
+	idProfile
 ®® 
-=
-®® 
-new
-®®  #
-	GameMatch
-®®$ -
-(
-®®- .
-	lobbyCode
-®®. 7
-)
-®®7 8
-;
-®®8 9
-NavigationService
-©© !
-?
-©©! "
-.
-©©" #
-Navigate
-©©# +
-(
-©©+ ,
-	gameMatch
-©©, 5
-)
-©©5 6
-;
-©©6 7
-}
-™™ 
-)
-™™ 
-;
-™™ 
-}
-´´ 	
-private
-≠≠ 
-async
-≠≠ 
-Task
-≠≠ "
-LoadFriendsListAsync
-≠≠ /
-(
-≠≠/ 0
-)
-≠≠0 1
-{
-≠≠2 3
-LoggerManager
-ÆÆ 
-logger
-ÆÆ  
-=
-ÆÆ! "
-new
-ÆÆ# &
-LoggerManager
-ÆÆ' 4
-(
-ÆÆ4 5
-this
-ÆÆ5 9
-.
-ÆÆ9 :
-GetType
-ÆÆ: A
-(
-ÆÆA B
-)
-ÆÆB C
-)
-ÆÆC D
-;
-ÆÆD E
-try
-ØØ 
-{
-ØØ 
-int
-∞∞ 
-userProfileId
-∞∞ !
-=
-∞∞" #"
-UserProfileSingleton
-∞∞$ 8
-.
-∞∞8 9
-	IdProfile
-∞∞9 B
-;
-∞∞B C
-var
-±± 
-friendsList
-±± 
-=
-±±  !
-await
-±±" '
-friendsManager
-±±( 6
-.
-±±6 7
-GetFriendsAsync
-±±7 F
-(
-±±F G
-userProfileId
-±±G T
-)
-±±T U
-;
-±±U V
-var
-≥≥ 
-friendsWithStatus
-≥≥ %
-=
-≥≥& '
-new
-≥≥( +
-List
-≥≥, 0
 <
-≥≥0 1
+®® 
+$num
+®®  &
+)
+®®& '
+{
+®®( )
 string
-≥≥1 7
->
-≥≥7 8
-(
-≥≥8 9
-)
-≥≥9 :
-;
-≥≥: ;
-foreach
-µµ 
-(
-µµ 
-var
-µµ 
-friend
-µµ #
-in
-µµ$ &
-friendsList
-µµ' 2
-)
-µµ2 3
-{
-µµ4 5
-var
-∂∂ 
-status
-∂∂ 
+©© 
+ruta
+©© 
 =
-∂∂  
-await
-∂∂! &
-statusManager
-∂∂' 4
+©©  !
+_userManager
+©©" .
 .
-∂∂4 5"
-GetPlayerStatusAsync
-∂∂5 I
-(
-∂∂I J
-friend
-∂∂J P
-.
-∂∂P Q
-	IdProfile
-∂∂Q Z
-)
-∂∂Z [
-;
-∂∂[ \
-friendsWithStatus
-∑∑ %
-.
-∑∑% &
-Add
-∑∑& )
-(
-∑∑) *
-$"
-∑∑* ,
-{
-∑∑, -
-friend
-∑∑- 3
-.
-∑∑3 4
-Username
-∑∑4 <
-}
-∑∑< =
-$str
-∑∑= @
-{
-∑∑@ A
-status
-∑∑A G
-}
-∑∑G H
-"
-∑∑H I
-)
-∑∑I J
-;
-∑∑J K
-}
-∏∏ 
+©©. /
 
-lstFriends
-ππ 
+GetPicPath
+©©/ 9
+(
+©©9 :
+	guestName
+©©: C
+)
+©©C D
+;
+©©D E
+imageProfile2
+™™ !
 .
-ππ 
-ItemsSource
-ππ &
+™™! "
+Source
+™™" (
 =
-ππ' (
-friendsWithStatus
-ππ) :
-;
-ππ: ;
-}
-∫∫ 
-catch
-∫∫ 
+™™) *
+new
+™™+ .
+BitmapImage
+™™/ :
 (
-∫∫ '
-EndpointNotFoundException
-∫∫ .'
-endpointNotFoundException
-∫∫/ H
-)
-∫∫H I
-{
-∫∫J K
-logger
-ªª 
-.
-ªª 
-LogError
-ªª 
+™™: ;
+new
+™™; >
+Uri
+™™? B
 (
-ªª  '
-endpointNotFoundException
-ªª  9
-)
-ªª9 :
-;
-ªª: ;
-DialogManager
-ºº 
-.
-ºº #
-ShowErrorMessageAlert
-ºº 3
-(
-ºº3 4
-
-Properties
-ºº4 >
-.
-ºº> ?
-	Resources
-ºº? H
-.
-ººH I%
-dialogEndPointException
-ººI `
-)
-ºº` a
-;
-ººa b
-}
-ΩΩ 
-catch
-ΩΩ 
-(
-ΩΩ 
-TimeoutException
-ΩΩ %
-timeoutException
-ΩΩ& 6
-)
-ΩΩ6 7
-{
-ΩΩ8 9
-logger
-ææ 
-.
-ææ 
-LogError
-ææ 
-(
-ææ  
-timeoutException
-ææ  0
-)
-ææ0 1
-;
-ææ1 2
-DialogManager
-øø 
-.
-øø #
-ShowErrorMessageAlert
-øø 3
-(
-øø3 4
-
-Properties
-øø4 >
-.
-øø> ?
-	Resources
-øø? H
-.
-øøH I$
-dialogTimeOutException
-øøI _
-)
-øø_ `
-;
-øø` a
-}
-¿¿ 
-catch
-¿¿ 
-(
-¿¿ $
-CommunicationException
-¿¿ +$
-communicationException
-¿¿, B
-)
-¿¿B C
-{
-¿¿D E
-logger
-¡¡ 
-.
-¡¡ 
-LogError
-¡¡ 
-(
-¡¡  $
-communicationException
-¡¡  6
-)
-¡¡6 7
-;
-¡¡7 8
-DialogManager
-¬¬ 
-.
-¬¬ #
-ShowErrorMessageAlert
-¬¬ 3
-(
-¬¬3 4
-
-Properties
-¬¬4 >
-.
-¬¬> ?
-	Resources
-¬¬? H
-.
-¬¬H I)
-dialogComunicationException
-¬¬I d
-)
-¬¬d e
-;
-¬¬e f
-}
-√√ 
-}
-ƒƒ 	
-private
-«« 
-async
-«« 
-void
-«« $
-BtnInvitedFriend_Click
-«« 1
-(
-««1 2
-object
-««2 8
-sender
-««9 ?
+™™B C
+ruta
+™™C G
 ,
-««? @
+™™G H
+UriKind
+™™I P
+.
+™™P Q 
+RelativeOrAbsolute
+™™Q c
+)
+™™c d
+)
+™™d e
+;
+™™e f
+}
+´´ 
+else
+´´ 
+{
+´´ 
+string
+¨¨ 
+ruta
+¨¨ 
+=
+¨¨  !
+picturePath
+¨¨" -
+;
+¨¨- .
+imageProfile2
+≠≠ !
+.
+≠≠! "
+Source
+≠≠" (
+=
+≠≠) *
+new
+≠≠+ .
+BitmapImage
+≠≠/ :
+(
+≠≠: ;
+new
+≠≠; >
+Uri
+≠≠? B
+(
+≠≠B C
+ruta
+≠≠C G
+,
+≠≠G H
+UriKind
+≠≠I P
+.
+≠≠P Q 
+RelativeOrAbsolute
+≠≠Q c
+)
+≠≠c d
+)
+≠≠d e
+;
+≠≠e f
+}
+ÆÆ 
+}
+ØØ 
+)
+ØØ 
+;
+ØØ 
+}
+∞∞ 	
+private
+≤≤ 
+void
+≤≤  
+BtnStartGame_Click
+≤≤ '
+(
+≤≤' (
+object
+≤≤( .
+sender
+≤≤/ 5
+,
+≤≤5 6
 RoutedEventArgs
-««A P
+≤≤7 F
 e
-««Q R
+≤≤G H
 )
-««R S
+≤≤H I
 {
-««T U 
-areElementsVisible
-»» 
-=
-»»  
-!
-»»! " 
-areElementsVisible
-»»" 4
-;
-»»4 5
-if
-…… 
+≤≤J K
+_lobbyManager
+≥≥ 
+.
+≥≥ 
+
+StartMatch
+≥≥ $
 (
-……  
-areElementsVisible
-…… "
+≥≥$ %
+
+_lobbyCode
+≥≥% /
 )
-……" #
+≥≥/ 0
+;
+≥≥0 1
+}
+¥¥ 	
+public
+∂∂ 
+void
+∂∂ 
+BroadcastMessage
+∂∂ $
+(
+∂∂$ %
+Message
+∂∂% ,
+message
+∂∂- 4
+)
+∂∂4 5
 {
-……$ %
-invitedFriendGrid
-   !
+∂∂6 7
+Application
+∑∑ 
 .
-  ! "
-
-Visibility
-  " ,
-=
-  - .
-
-Visibility
-  / 9
+∑∑ 
+Current
+∑∑ 
 .
-  9 :
-Visible
-  : A
-;
-  A B
+∑∑  
 
-lstFriends
-ÀÀ 
+Dispatcher
+∑∑  *
 .
-ÀÀ 
-	IsEnabled
-ÀÀ $
-=
-ÀÀ% &
-true
-ÀÀ' +
-;
-ÀÀ+ ,
-
-btnInvited
-ÃÃ 
-.
-ÃÃ 
-	IsEnabled
-ÃÃ $
-=
-ÃÃ% &
-true
-ÃÃ' +
-;
-ÃÃ+ ,
-await
-ÕÕ "
-LoadFriendsListAsync
-ÕÕ *
+∑∑* +
+Invoke
+∑∑+ 1
 (
-ÕÕ* +
+∑∑1 2
+(
+∑∑2 3
 )
-ÕÕ+ ,
-;
-ÕÕ, -
-btnInvitedFriend
-ŒŒ  
-.
-ŒŒ  !
+∑∑3 4
+=>
+∑∑5 7
+{
+∑∑8 9
+Border
+∏∏ 
+messageContainer
+∏∏ '
+=
+∏∏( )
+new
+∏∏* -
+Border
+∏∏. 4
+{
+∏∏5 6
 
 Background
-ŒŒ! +
+ππ 
 =
-ŒŒ, -
+ππ  
 new
-ŒŒ. 1
+ππ! $
 SolidColorBrush
-ŒŒ2 A
+ππ% 4
 (
-ŒŒA B
+ππ4 5
 Colors
-ŒŒB H
+ππ5 ;
 .
-ŒŒH I
-Green
-ŒŒI N
+ππ; <
+White
+ππ< A
 )
-ŒŒN O
-;
-ŒŒO P
-}
-œœ 
-else
-œœ 
-{
-œœ 
-invitedFriendGrid
-–– !
-.
-––! "
-
-Visibility
-––" ,
+ππA B
+,
+ππB C
+BorderThickness
+∫∫ #
 =
-––- .
-
-Visibility
-––/ 9
+∫∫$ %
+new
+∫∫& )
+	Thickness
+∫∫* 3
+(
+∫∫3 4
+$num
+∫∫4 5
+)
+∫∫5 6
+,
+∫∫6 7
+Padding
+ªª 
+=
+ªª 
+new
+ªª !
+	Thickness
+ªª" +
+(
+ªª+ ,
+$num
+ªª, .
+)
+ªª. /
+,
+ªª/ 0
+Margin
+ºº 
+=
+ºº 
+new
+ºº  
+	Thickness
+ºº! *
+(
+ºº* +
+$num
+ºº+ -
+,
+ºº- .
+$num
+ºº/ 0
+,
+ºº0 1
+$num
+ºº2 4
+,
+ºº4 5
+$num
+ºº6 7
+)
+ºº7 8
+,
+ºº8 9!
+HorizontalAlignment
+ΩΩ '
+=
+ΩΩ( )
+message
+ΩΩ* 1
 .
-––9 :
-	Collapsed
-––: C
+ΩΩ1 2
+userName
+ΩΩ2 :
+==
+ΩΩ; ="
+UserProfileSingleton
+ΩΩ> R
+.
+ΩΩR S
+UserName
+ΩΩS [
+?
+ΩΩ\ ]!
+HorizontalAlignment
+ΩΩ^ q
+.
+ΩΩq r
+Right
+ΩΩr w
+:
+ΩΩx y"
+HorizontalAlignmentΩΩz ç
+.ΩΩç é
+LeftΩΩé í
+}
+ææ 
 ;
-––C D
+ææ 
+	TextBlock
+øø 
+messageBlock
+øø &
+=
+øø' (
+new
+øø) ,
+	TextBlock
+øø- 6
+{
+øø7 8
+Text
+¿¿ 
+=
+¿¿ 
+$"
+¿¿ 
+{
+¿¿ 
+message
+¿¿ %
+.
+¿¿% &
+chatMessage
+¿¿& 1
+}
+¿¿1 2
+$str
+¿¿2 3
+{
+¿¿3 4
+DateTime
+¿¿4 <
+.
+¿¿< =
+Now
+¿¿= @
+:
+¿¿@ A
+$str
+¿¿A F
+}
+¿¿F G
+"
+¿¿G H
+,
+¿¿H I
+
+Foreground
+¡¡ 
+=
+¡¡  
+new
+¡¡! $
+SolidColorBrush
+¡¡% 4
+(
+¡¡4 5
+Colors
+¡¡5 ;
+.
+¡¡; <
+Black
+¡¡< A
+)
+¡¡A B
+,
+¡¡B C
+FontSize
+¬¬ 
+=
+¬¬ 
+$num
+¬¬ !
+,
+¬¬! "
+
+FontWeight
+√√ 
+=
+√√  
+FontWeights
+√√! ,
+.
+√√, -
+Bold
+√√- 1
+,
+√√1 2
+TextWrapping
+ƒƒ  
+=
+ƒƒ! "
+TextWrapping
+ƒƒ# /
+.
+ƒƒ/ 0
+Wrap
+ƒƒ0 4
+,
+ƒƒ4 5
+MaxWidth
+≈≈ 
+=
+≈≈ 
+$num
+≈≈ "
+}
+∆∆ 
+;
+∆∆ 
+messageContainer
+««  
+.
+««  !
+Child
+««! &
+=
+««' (
+messageBlock
+««) 5
+;
+««5 6
+ChatMessagesPanel
+»» !
+.
+»»! "
+Children
+»»" *
+.
+»»* +
+Add
+»»+ .
+(
+»». /
+messageContainer
+»»/ ?
+)
+»»? @
+;
+»»@ A
+ScrollToBottom
+…… 
+(
+…… 
+)
+……  
+;
+……  !
+}
+   
+)
+   
+;
+   
+}
+ÀÀ 	
+public
+ÕÕ 
+void
+ÕÕ 
+GameStarted
+ÕÕ 
+(
+ÕÕ  
+)
+ÕÕ  !
+{
+ÕÕ" #
+GoToGameMatch
+ŒŒ 
+(
+ŒŒ 
+)
+ŒŒ 
+;
+ŒŒ 
+}
+œœ 	
+private
+—— 
+void
+—— 
+GoToGameMatch
+—— "
+(
+——" #
+)
+——# $
+{
+——% &
+Application
+““ 
+.
+““ 
+Current
+““ 
+.
+““  
+
+Dispatcher
+““  *
+.
+““* +
+Invoke
+““+ 1
+(
+““1 2
+(
+““2 3
+)
+““3 4
+=>
+““5 7
+{
+““8 9
+var
+”” 
+	gameMatch
+”” 
+=
+”” 
+new
+””  #
+	GameMatch
+””$ -
+(
+””- .
+
+_lobbyCode
+””. 8
+)
+””8 9
+;
+””9 :
+NavigationService
+‘‘ !
+?
+‘‘! "
+.
+‘‘" #
+Navigate
+‘‘# +
+(
+‘‘+ ,
+	gameMatch
+‘‘, 5
+)
+‘‘5 6
+;
+‘‘6 7
+}
+’’ 
+)
+’’ 
+;
+’’ 
+}
+÷÷ 	
+private
+ÿÿ 
+async
+ÿÿ 
+Task
+ÿÿ "
+LoadFriendsListAsync
+ÿÿ /
+(
+ÿÿ/ 0
+)
+ÿÿ0 1
+{
+ÿÿ2 3
+LoggerManager
+ŸŸ 
+logger
+ŸŸ  
+=
+ŸŸ! "
+new
+ŸŸ# &
+LoggerManager
+ŸŸ' 4
+(
+ŸŸ4 5
+this
+ŸŸ5 9
+.
+ŸŸ9 :
+GetType
+ŸŸ: A
+(
+ŸŸA B
+)
+ŸŸB C
+)
+ŸŸC D
+;
+ŸŸD E
+try
+⁄⁄ 
+{
+⁄⁄ 
+int
+€€ 
+userProfileId
+€€ !
+=
+€€" #"
+UserProfileSingleton
+€€$ 8
+.
+€€8 9
+	IdProfile
+€€9 B
+;
+€€B C
+var
+‹‹ 
+friendsList
+‹‹ 
+=
+‹‹  !
+await
+‹‹" '
+_friendsManager
+‹‹( 7
+.
+‹‹7 8
+GetFriendsAsync
+‹‹8 G
+(
+‹‹G H
+userProfileId
+‹‹H U
+)
+‹‹U V
+;
+‹‹V W
+var
+›› 
+friendsWithStatus
+›› %
+=
+››& '
+new
+››( +
+List
+››, 0
+<
+››0 1
+string
+››1 7
+>
+››7 8
+(
+››8 9
+)
+››9 :
+;
+››: ;
+foreach
+ﬁﬁ 
+(
+ﬁﬁ 
+var
+ﬁﬁ 
+friend
+ﬁﬁ #
+in
+ﬁﬁ$ &
+friendsList
+ﬁﬁ' 2
+)
+ﬁﬁ2 3
+{
+ﬁﬁ4 5
+var
+ﬂﬂ 
+status
+ﬂﬂ 
+=
+ﬂﬂ  
+await
+ﬂﬂ! &
+_statusManager
+ﬂﬂ' 5
+.
+ﬂﬂ5 6"
+GetPlayerStatusAsync
+ﬂﬂ6 J
+(
+ﬂﬂJ K
+friend
+ﬂﬂK Q
+.
+ﬂﬂQ R
+	IdProfile
+ﬂﬂR [
+)
+ﬂﬂ[ \
+;
+ﬂﬂ\ ]
+friendsWithStatus
+‡‡ %
+.
+‡‡% &
+Add
+‡‡& )
+(
+‡‡) *
+$"
+‡‡* ,
+{
+‡‡, -
+friend
+‡‡- 3
+.
+‡‡3 4
+Username
+‡‡4 <
+}
+‡‡< =
+$str
+‡‡= @
+{
+‡‡@ A
+status
+‡‡A G
+}
+‡‡G H
+"
+‡‡H I
+)
+‡‡I J
+;
+‡‡J K
+}
+·· 
 
 lstFriends
-—— 
+‚‚ 
 .
-—— 
-	IsEnabled
-—— $
+‚‚ 
+ItemsSource
+‚‚ &
 =
-——% &
-false
-——' ,
+‚‚' (
+friendsWithStatus
+‚‚) :
 ;
-——, -
+‚‚: ;
+}
+„„ 
+catch
+„„ 
+(
+„„ '
+EndpointNotFoundException
+„„ .'
+endpointNotFoundException
+„„/ H
+)
+„„H I
+{
+„„J K
+logger
+‰‰ 
+.
+‰‰ 
+LogError
+‰‰ 
+(
+‰‰  '
+endpointNotFoundException
+‰‰  9
+)
+‰‰9 :
+;
+‰‰: ;
+DialogManager
+ÂÂ 
+.
+ÂÂ #
+ShowErrorMessageAlert
+ÂÂ 3
+(
+ÂÂ3 4
+
+Properties
+ÂÂ4 >
+.
+ÂÂ> ?
+	Resources
+ÂÂ? H
+.
+ÂÂH I%
+dialogEndPointException
+ÂÂI `
+)
+ÂÂ` a
+;
+ÂÂa b
+}
+ÊÊ 
+catch
+ÊÊ 
+(
+ÊÊ 
+TimeoutException
+ÊÊ %
+timeoutException
+ÊÊ& 6
+)
+ÊÊ6 7
+{
+ÊÊ8 9
+logger
+ÁÁ 
+.
+ÁÁ 
+LogError
+ÁÁ 
+(
+ÁÁ  
+timeoutException
+ÁÁ  0
+)
+ÁÁ0 1
+;
+ÁÁ1 2
+DialogManager
+ËË 
+.
+ËË #
+ShowErrorMessageAlert
+ËË 3
+(
+ËË3 4
+
+Properties
+ËË4 >
+.
+ËË> ?
+	Resources
+ËË? H
+.
+ËËH I$
+dialogTimeOutException
+ËËI _
+)
+ËË_ `
+;
+ËË` a
+}
+ÈÈ 
+catch
+ÈÈ 
+(
+ÈÈ $
+CommunicationException
+ÈÈ +$
+communicationException
+ÈÈ, B
+)
+ÈÈB C
+{
+ÈÈD E
+logger
+ÍÍ 
+.
+ÍÍ 
+LogError
+ÍÍ 
+(
+ÍÍ  $
+communicationException
+ÍÍ  6
+)
+ÍÍ6 7
+;
+ÍÍ7 8
+DialogManager
+ÎÎ 
+.
+ÎÎ #
+ShowErrorMessageAlert
+ÎÎ 3
+(
+ÎÎ3 4
+
+Properties
+ÎÎ4 >
+.
+ÎÎ> ?
+	Resources
+ÎÎ? H
+.
+ÎÎH I)
+dialogComunicationException
+ÎÎI d
+)
+ÎÎd e
+;
+ÎÎe f
+}
+ÏÏ 
+catch
+ÏÏ 
+(
+ÏÏ 
+	Exception
+ÏÏ 
+	exception
+ÏÏ (
+)
+ÏÏ( )
+{
+ÏÏ* +
+logger
+ÌÌ 
+.
+ÌÌ 
+LogError
+ÌÌ 
+(
+ÌÌ  
+	exception
+ÌÌ  )
+)
+ÌÌ) *
+;
+ÌÌ* +
+DialogManager
+ÓÓ 
+.
+ÓÓ #
+ShowErrorMessageAlert
+ÓÓ 3
+(
+ÓÓ3 4
+string
+ÓÓ4 :
+.
+ÓÓ: ;
+Format
+ÓÓ; A
+(
+ÓÓA B
+
+Properties
+ÓÓB L
+.
+ÓÓL M
+	Resources
+ÓÓM V
+.
+ÓÓV W#
+dialogUnexpectedError
+ÓÓW l
+,
+ÓÓl m
+	exception
+ÓÓn w
+.
+ÓÓw x
+Message
+ÓÓx 
+)ÓÓ Ä
+)ÓÓÄ Å
+;ÓÓÅ Ç
+}
+ÔÔ 
+}
+ 	
+private
+ÚÚ 
+async
+ÚÚ 
+void
+ÚÚ $
+BtnInvitedFriend_Click
+ÚÚ 1
+(
+ÚÚ1 2
+object
+ÚÚ2 8
+sender
+ÚÚ9 ?
+,
+ÚÚ? @
+RoutedEventArgs
+ÚÚA P
+e
+ÚÚQ R
+)
+ÚÚR S
+{
+ÚÚT U
+LoggerManager
+ÛÛ 
+logger
+ÛÛ  
+=
+ÛÛ! "
+new
+ÛÛ# &
+LoggerManager
+ÛÛ' 4
+(
+ÛÛ4 5
+this
+ÛÛ5 9
+.
+ÛÛ9 :
+GetType
+ÛÛ: A
+(
+ÛÛA B
+)
+ÛÛB C
+)
+ÛÛC D
+;
+ÛÛD E
+try
+ÙÙ 
+{
+ÙÙ 
+_elementsVisible
+ıı  
+=
+ıı! "
+!
+ıı# $
+_elementsVisible
+ıı$ 4
+;
+ıı4 5
+if
+ˆˆ 
+(
+ˆˆ 
+_elementsVisible
+ˆˆ $
+)
+ˆˆ$ %
+{
+ˆˆ& '
+gridInvitedFriend
+˜˜ %
+.
+˜˜% &
+
+Visibility
+˜˜& 0
+=
+˜˜1 2
+
+Visibility
+˜˜3 =
+.
+˜˜= >
+Visible
+˜˜> E
+;
+˜˜E F
+
+lstFriends
+¯¯ 
+.
+¯¯ 
+	IsEnabled
+¯¯ (
+=
+¯¯) *
+true
+¯¯+ /
+;
+¯¯/ 0
 
 btnInvited
-““ 
+˘˘ 
 .
-““ 
+˘˘ 
 	IsEnabled
-““ $
+˘˘ (
 =
-““% &
-false
-““' ,
+˘˘) *
+true
+˘˘+ /
 ;
-““, -
+˘˘/ 0
+await
+˙˙ "
+LoadFriendsListAsync
+˙˙ .
+(
+˙˙. /
+)
+˙˙/ 0
+;
+˙˙0 1
 btnInvitedFriend
-””  
+˚˚ $
 .
-””  !
+˚˚$ %
 
 Background
-””! +
+˚˚% /
 =
-””, -
+˚˚0 1
 new
-””. 1
+˚˚2 5
 SolidColorBrush
-””2 A
+˚˚6 E
 (
-””A B
-Color
-””B G
+˚˚E F
+Colors
+˚˚F L
 .
-””G H
-FromArgb
-””H P
-(
-””P Q
-$num
-””Q T
-,
-””T U
-$num
-””V Y
-,
-””Y Z
-$num
-””[ ^
-,
-””^ _
-$num
-””` c
+˚˚L M
+Green
+˚˚M R
 )
-””c d
-)
-””d e
+˚˚R S
 ;
-””e f
+˚˚S T
 }
-‘‘ 
-}
-’’ 	
-private
-÷÷ 
-async
-÷÷ 
-void
-÷÷ 
-BtnInvited_Click
-÷÷ +
-(
-÷÷+ ,
-object
-÷÷, 2
-sender
-÷÷3 9
-,
-÷÷9 :
-RoutedEventArgs
-÷÷; J
-e
-÷÷K L
-)
-÷÷L M
+¸¸ 
+else
+¸¸ 
 {
-÷÷N O
-LoggerManager
-◊◊ 
-logger
-◊◊  
+¸¸ 
+gridInvitedFriend
+˝˝ %
+.
+˝˝% &
+
+Visibility
+˝˝& 0
 =
-◊◊! "
+˝˝1 2
+
+Visibility
+˝˝3 =
+.
+˝˝= >
+	Collapsed
+˝˝> G
+;
+˝˝G H
+
+lstFriends
+˛˛ 
+.
+˛˛ 
+	IsEnabled
+˛˛ (
+=
+˛˛) *
+false
+˛˛+ 0
+;
+˛˛0 1
+
+btnInvited
+ˇˇ 
+.
+ˇˇ 
+	IsEnabled
+ˇˇ (
+=
+ˇˇ) *
+false
+ˇˇ+ 0
+;
+ˇˇ0 1
+btnInvitedFriend
+ÄÄ $
+.
+ÄÄ$ %
+
+Background
+ÄÄ% /
+=
+ÄÄ0 1
 new
-◊◊# &
-LoggerManager
-◊◊' 4
+ÄÄ2 5
+SolidColorBrush
+ÄÄ6 E
 (
-◊◊4 5
-this
-◊◊5 9
+ÄÄE F
+Color
+ÄÄF K
 .
-◊◊9 :
-GetType
-◊◊: A
+ÄÄK L
+FromArgb
+ÄÄL T
 (
-◊◊A B
-)
-◊◊B C
-)
-◊◊C D
-;
-◊◊D E
-if
-ÿÿ 
-(
-ÿÿ 
-
-lstFriends
-ÿÿ 
-.
-ÿÿ 
-SelectedItem
-ÿÿ '
-!=
-ÿÿ( *
-null
-ÿÿ+ /
-)
-ÿÿ/ 0
-{
-ÿÿ1 2
-string
-ŸŸ  
-selectedFriendName
-ŸŸ )
-=
-ŸŸ* +
-
-lstFriends
-ŸŸ, 6
-.
-ŸŸ6 7
-SelectedItem
-ŸŸ7 C
-.
-ŸŸC D
-ToString
-ŸŸD L
-(
-ŸŸL M
-)
-ŸŸM N
-;
-ŸŸN O
-string
-⁄⁄ 
-
-friendName
-⁄⁄ !
-=
-⁄⁄" # 
-selectedFriendName
-⁄⁄$ 6
-.
-⁄⁄6 7
-Split
-⁄⁄7 <
-(
-⁄⁄< =
-$char
-⁄⁄= @
-)
-⁄⁄@ A
-[
-⁄⁄A B
+ÄÄT U
 $num
-⁄⁄B C
-]
-⁄⁄C D
-.
-⁄⁄D E
-Trim
-⁄⁄E I
-(
-⁄⁄I J
+ÄÄU X
+,
+ÄÄX Y
+$num
+ÄÄZ ]
+,
+ÄÄ] ^
+$num
+ÄÄ_ b
+,
+ÄÄb c
+$num
+ÄÄd g
 )
-⁄⁄J K
+ÄÄg h
+)
+ÄÄh i
 ;
-⁄⁄K L
-try
-‹‹ 
-{
-‹‹ 
-int
-›› 
-result
-›› 
-=
-››  
-await
-››! &$
-emailInvitationManager
-››' =
-.
-››= >!
-SendInvitationAsync
-››> Q
+ÄÄi j
+}
+ÅÅ 
+}
+ÇÇ 
+catch
+ÇÇ 
 (
-››Q R
+ÇÇ '
+EndpointNotFoundException
+ÇÇ .'
+endpointNotFoundException
+ÇÇ/ H
+)
+ÇÇH I
+{
+ÇÇJ K
+logger
+ÉÉ 
+.
+ÉÉ 
+LogError
+ÉÉ 
+(
+ÉÉ  '
+endpointNotFoundException
+ÉÉ  9
+)
+ÉÉ9 :
+;
+ÉÉ: ;
+DialogManager
+ÑÑ 
+.
+ÑÑ #
+ShowErrorMessageAlert
+ÑÑ 3
+(
+ÑÑ3 4
+
+Properties
+ÑÑ4 >
+.
+ÑÑ> ?
+	Resources
+ÑÑ? H
+.
+ÑÑH I%
+dialogEndPointException
+ÑÑI `
+)
+ÑÑ` a
+;
+ÑÑa b
+}
+ÖÖ 
+catch
+ÖÖ 
+(
+ÖÖ 
+TimeoutException
+ÖÖ %
+timeoutException
+ÖÖ& 6
+)
+ÖÖ6 7
+{
+ÖÖ8 9
+logger
+ÜÜ 
+.
+ÜÜ 
+LogError
+ÜÜ 
+(
+ÜÜ  
+timeoutException
+ÜÜ  0
+)
+ÜÜ0 1
+;
+ÜÜ1 2
+DialogManager
+áá 
+.
+áá #
+ShowErrorMessageAlert
+áá 3
+(
+áá3 4
+
+Properties
+áá4 >
+.
+áá> ?
+	Resources
+áá? H
+.
+ááH I$
+dialogTimeOutException
+ááI _
+)
+áá_ `
+;
+áá` a
+}
+àà 
+catch
+àà 
+(
+àà $
+CommunicationException
+àà +$
+communicationException
+àà, B
+)
+ààB C
+{
+ààD E
+logger
+ââ 
+.
+ââ 
+LogError
+ââ 
+(
+ââ  $
+communicationException
+ââ  6
+)
+ââ6 7
+;
+ââ7 8
+DialogManager
+ää 
+.
+ää #
+ShowErrorMessageAlert
+ää 3
+(
+ää3 4
+
+Properties
+ää4 >
+.
+ää> ?
+	Resources
+ää? H
+.
+ääH I)
+dialogComunicationException
+ääI d
+)
+ääd e
+;
+ääe f
+}
+ãã 
+catch
+ãã 
+(
+ãã 
+	Exception
+ãã 
+	exception
+ãã (
+)
+ãã( )
+{
+ãã* +
+logger
+åå 
+.
+åå 
+LogError
+åå 
+(
+åå  
+	exception
+åå  )
+)
+åå) *
+;
+åå* +
+DialogManager
+çç 
+.
+çç #
+ShowErrorMessageAlert
+çç 3
+(
+çç3 4
+string
+çç4 :
+.
+çç: ;
+Format
+çç; A
+(
+ççA B
+
+Properties
+ççB L
+.
+ççL M
+	Resources
+ççM V
+.
+ççV W#
+dialogUnexpectedError
+ççW l
+,
+ççl m
+	exception
+ççn w
+.
+ççw x
+Message
+ççx 
+)çç Ä
+)ççÄ Å
+;ççÅ Ç
+}
+éé 
+}
+èè 	
+private
+ëë 
+async
+ëë 
+void
+ëë 
+BtnInvited_Click
+ëë +
+(
+ëë+ ,
+object
+ëë, 2
+sender
+ëë3 9
+,
+ëë9 :
+RoutedEventArgs
+ëë; J
+e
+ëëK L
+)
+ëëL M
+{
+ëëN O
+LoggerManager
+íí 
+logger
+íí  
+=
+íí! "
+new
+íí# &
+LoggerManager
+íí' 4
+(
+íí4 5
+this
+íí5 9
+.
+íí9 :
+GetType
+íí: A
+(
+ííA B
+)
+ííB C
+)
+ííC D
+;
+ííD E
+if
+ìì 
+(
+ìì 
+
+lstFriends
+ìì 
+.
+ìì 
+SelectedItem
+ìì '
+!=
+ìì( *
+null
+ìì+ /
+)
+ìì/ 0
+{
+ìì1 2
+string
+îî  
+selectedFriendName
+îî )
+=
+îî* +
+
+lstFriends
+îî, 6
+.
+îî6 7
+SelectedItem
+îî7 C
+.
+îîC D
+ToString
+îîD L
+(
+îîL M
+)
+îîM N
+;
+îîN O
+string
+ïï 
 
 friendName
-››R \
-,
-››\ ]
-	lobbyCode
-››^ g
-)
-››g h
-;
-››h i
-if
-ﬂﬂ 
+ïï !
+=
+ïï" # 
+selectedFriendName
+ïï$ 6
+.
+ïï6 7
+Split
+ïï7 <
 (
-ﬂﬂ 
+ïï< =
+$char
+ïï= @
+)
+ïï@ A
+[
+ïïA B
+$num
+ïïB C
+]
+ïïC D
+.
+ïïD E
+Trim
+ïïE I
+(
+ïïI J
+)
+ïïJ K
+;
+ïïK L
+try
+ññ 
+{
+ññ 
+int
+óó 
 result
-ﬂﬂ 
-==
-ﬂﬂ !
-	Constants
-ﬂﬂ" +
+óó 
+=
+óó  
+await
+óó! &%
+_emailInvitationManager
+óó' >
 .
-ﬂﬂ+ ,
-SUCCES_OPERATION
-ﬂﬂ, <
-)
-ﬂﬂ< =
-{
-ﬂﬂ> ?
-DialogManager
-‡‡ %
-.
-‡‡% &%
-ShowSuccessMessageAlert
-‡‡& =
+óó> ?!
+SendInvitationAsync
+óó? R
 (
-‡‡= >
-string
-‡‡> D
-.
-‡‡D E
-Format
-‡‡E K
-(
-‡‡K L
+óóR S
 
-Properties
-‡‡L V
-.
-‡‡V W
-	Resources
-‡‡W `
-.
-‡‡` a"
-dialogInvitationSent
-‡‡a u
+friendName
+óóS ]
 ,
-‡‡u v
+óó] ^
 
-friendName‡‡w Å
-)‡‡Å Ç
-)‡‡Ç É
-;‡‡É Ñ
-}
-·· 
-else
-·· 
-{
-·· 
-DialogManager
-‚‚ %
-.
-‚‚% &#
-ShowErrorMessageAlert
-‚‚& ;
+_lobbyCode
+óó_ i
+)
+óói j
+;
+óój k
+if
+òò 
 (
-‚‚; <
+òò 
+result
+òò 
+==
+òò !
+	Constants
+òò" +
+.
+òò+ ,
+SUCCES_OPERATION
+òò, <
+)
+òò< =
+{
+òò> ?
+DialogManager
+ôô %
+.
+ôô% &%
+ShowSuccessMessageAlert
+ôô& =
+(
+ôô= >
+string
+ôô> D
+.
+ôôD E
+Format
+ôôE K
+(
+ôôK L
 
 Properties
-‚‚< F
+ôôL V
 .
-‚‚F G
+ôôV W
 	Resources
-‚‚G P
+ôôW `
 .
-‚‚P Q*
+ôô` a"
+dialogInvitationSent
+ôôa u
+,
+ôôu v
+
+friendNameôôw Å
+)ôôÅ Ç
+)ôôÇ É
+;ôôÉ Ñ
+}
+öö 
+else
+öö 
+{
+öö 
+DialogManager
+õõ %
+.
+õõ% &#
+ShowErrorMessageAlert
+õõ& ;
+(
+õõ; <
+
+Properties
+õõ< F
+.
+õõF G
+	Resources
+õõG P
+.
+õõP Q*
 dialogErrorSendingInvitation
-‚‚Q m
+õõQ m
 )
-‚‚m n
+õõm n
 ;
-‚‚n o
+õõn o
 }
-‰‰ 
+úú 
 }
-ÂÂ 
+ùù 
 catch
-ÂÂ 
+ùù 
 (
-ÂÂ '
+ùù '
 EndpointNotFoundException
-ÂÂ 2'
+ùù 2'
 endpointNotFoundException
-ÂÂ3 L
+ùù3 L
 )
-ÂÂL M
+ùùL M
 {
-ÂÂN O
+ùùN O
 logger
-ÊÊ 
+ûû 
 .
-ÊÊ 
+ûû 
 LogError
-ÊÊ #
+ûû #
 (
-ÊÊ# $'
+ûû# $'
 endpointNotFoundException
-ÊÊ$ =
+ûû$ =
 )
-ÊÊ= >
+ûû= >
 ;
-ÊÊ> ?
+ûû> ?
 DialogManager
-ÁÁ !
+üü !
 .
-ÁÁ! "#
+üü! "#
 ShowErrorMessageAlert
-ÁÁ" 7
+üü" 7
 (
-ÁÁ7 8
+üü7 8
 
 Properties
-ÁÁ8 B
+üü8 B
 .
-ÁÁB C
+üüB C
 	Resources
-ÁÁC L
+üüC L
 .
-ÁÁL M%
+üüL M%
 dialogEndPointException
-ÁÁM d
+üüM d
 )
-ÁÁd e
+üüd e
 ;
-ÁÁe f
+üüe f
 }
-ËË 
+†† 
 catch
-ËË 
+†† 
 (
-ËË 
+†† 
 TimeoutException
-ËË )
+†† )
 timeoutException
-ËË* :
+††* :
 )
-ËË: ;
+††: ;
 {
-ËË< =
+††< =
 logger
-ÈÈ 
+°° 
 .
-ÈÈ 
+°° 
 LogError
-ÈÈ #
+°° #
 (
-ÈÈ# $
+°°# $
 timeoutException
-ÈÈ$ 4
+°°$ 4
 )
-ÈÈ4 5
+°°4 5
 ;
-ÈÈ5 6
+°°5 6
 DialogManager
-ÍÍ !
+¢¢ !
 .
-ÍÍ! "#
+¢¢! "#
 ShowErrorMessageAlert
-ÍÍ" 7
+¢¢" 7
 (
-ÍÍ7 8
+¢¢7 8
 
 Properties
-ÍÍ8 B
+¢¢8 B
 .
-ÍÍB C
+¢¢B C
 	Resources
-ÍÍC L
+¢¢C L
 .
-ÍÍL M$
+¢¢L M$
 dialogTimeOutException
-ÍÍM c
+¢¢M c
 )
-ÍÍc d
+¢¢c d
 ;
-ÍÍd e
+¢¢d e
 }
-ÎÎ 
+££ 
 catch
-ÎÎ 
+££ 
 (
-ÎÎ $
+££ $
 CommunicationException
-ÎÎ /$
+££ /$
 communicationException
-ÎÎ0 F
+££0 F
 )
-ÎÎF G
+££F G
 {
-ÎÎH I
+££H I
 logger
-ÏÏ 
+§§ 
 .
-ÏÏ 
+§§ 
 LogError
-ÏÏ #
+§§ #
 (
-ÏÏ# $$
+§§# $$
 communicationException
-ÏÏ$ :
+§§$ :
 )
-ÏÏ: ;
+§§: ;
 ;
-ÏÏ; <
+§§; <
 DialogManager
-ÌÌ !
+•• !
 .
-ÌÌ! "#
+••! "#
 ShowErrorMessageAlert
-ÌÌ" 7
+••" 7
 (
-ÌÌ7 8
+••7 8
 
 Properties
-ÌÌ8 B
+••8 B
 .
-ÌÌB C
+••B C
 	Resources
-ÌÌC L
+••C L
 .
-ÌÌL M)
+••L M)
 dialogComunicationException
-ÌÌM h
+••M h
 )
-ÌÌh i
+••h i
 ;
-ÌÌi j
+••i j
 }
-ÓÓ 
-}
-ÔÔ 
-else
-ÔÔ 
-{
-ÔÔ 
-DialogManager
- 
-.
- %
-ShowWarningMessageAlert
- 5
+¶¶ 
+catch
+¶¶ 
 (
-5 6
+¶¶ 
+	Exception
+¶¶ "
+	exception
+¶¶# ,
+)
+¶¶, -
+{
+¶¶. /
+logger
+ßß 
+.
+ßß 
+LogError
+ßß #
+(
+ßß# $
+	exception
+ßß$ -
+)
+ßß- .
+;
+ßß. /
+DialogManager
+®® !
+.
+®®! "#
+ShowErrorMessageAlert
+®®" 7
+(
+®®7 8
+string
+®®8 >
+.
+®®> ?
+Format
+®®? E
+(
+®®E F
 
 Properties
-6 @
+®®F P
 .
-@ A
+®®P Q
 	Resources
-A J
+®®Q Z
 .
-J K(
+®®Z [#
+dialogUnexpectedError
+®®[ p
+,
+®®p q
+	exception
+®®r {
+.
+®®{ |
+Message®®| É
+)®®É Ñ
+)®®Ñ Ö
+;®®Ö Ü
+}
+©© 
+}
+™™ 
+else
+™™ 
+{
+™™ 
+DialogManager
+´´ 
+.
+´´ %
+ShowWarningMessageAlert
+´´ 5
+(
+´´5 6
+
+Properties
+´´6 @
+.
+´´@ A
+	Resources
+´´A J
+.
+´´J K(
 dialogSelectFriendToInvite
-K e
+´´K e
 )
-e f
+´´e f
 ;
-f g
+´´f g
 }
-ÒÒ 
+¨¨ 
 }
-ÚÚ 	
+≠≠ 	
+private
+ØØ 
+async
+ØØ 
+void
+ØØ !
+BtnKickPlayer_Click
+ØØ .
+(
+ØØ. /
+object
+ØØ/ 5
+sender
+ØØ6 <
+,
+ØØ< =
+RoutedEventArgs
+ØØ> M
+e
+ØØN O
+)
+ØØO P
+{
+ØØQ R
+LoggerManager
+∞∞ 
+logger
+∞∞  
+=
+∞∞! "
+new
+∞∞# &
+LoggerManager
+∞∞' 4
+(
+∞∞4 5
+this
+∞∞5 9
+.
+∞∞9 :
+GetType
+∞∞: A
+(
+∞∞A B
+)
+∞∞B C
+)
+∞∞C D
+;
+∞∞D E
+MessageBoxResult
+±± 
+result
+±± #
+=
+±±$ %
+
+MessageBox
+±±& 0
+.
+±±0 1
+Show
+±±1 5
+(
+±±5 6
+
+Properties
+≤≤ 
+.
+≤≤ 
+	Resources
+≤≤ $
+.
+≤≤$ %%
+dialogConfirmKickPlayer
+≤≤% <
+,
+≤≤< =
+
+Properties
+≥≥ 
+.
+≥≥ 
+	Resources
+≥≥ $
+.
+≥≥$ %
+titleConfirmKick
+≥≥% 5
+,
+≥≥5 6
+MessageBoxButton
+¥¥  
+.
+¥¥  !
+YesNo
+¥¥! &
+,
+¥¥& '
+MessageBoxImage
+µµ 
+.
+µµ  
+Question
+µµ  (
+)
+∂∂ 
+;
+∂∂ 
+if
+∑∑ 
+(
+∑∑ 
+result
+∑∑ 
+==
+∑∑ 
+MessageBoxResult
+∑∑ *
+.
+∑∑* +
+Yes
+∑∑+ .
+)
+∑∑. /
+{
+∑∑0 1
+try
+∏∏ 
+{
+∏∏ 
+await
+ππ 
+Task
+ππ 
+.
+ππ 
+Run
+ππ "
+(
+ππ" #
+(
+ππ# $
+)
+ππ$ %
+=>
+ππ& (
+_lobbyManager
+ππ) 6
+.
+ππ6 7
+
+KickPlayer
+ππ7 A
+(
+ππA B
+
+_lobbyCode
+ππB L
+)
+ππL M
+)
+ππM N
+;
+ππN O
 }
-ıı 
-}ˆˆ Ì!
-3C:\TripasDeGatoCliente\Views\LaderboardView.xaml.cs
+∫∫ 
+catch
+∫∫ 
+(
+∫∫ '
+EndpointNotFoundException
+∫∫ 2'
+endpointNotFoundException
+∫∫3 L
+)
+∫∫L M
+{
+∫∫N O
+logger
+ªª 
+.
+ªª 
+LogError
+ªª #
+(
+ªª# $'
+endpointNotFoundException
+ªª$ =
+)
+ªª= >
+;
+ªª> ?
+DialogManager
+ºº !
+.
+ºº! "#
+ShowErrorMessageAlert
+ºº" 7
+(
+ºº7 8
+
+Properties
+ºº8 B
+.
+ººB C
+	Resources
+ººC L
+.
+ººL M%
+dialogEndPointException
+ººM d
+)
+ººd e
+;
+ººe f
+}
+ΩΩ 
+catch
+ΩΩ 
+(
+ΩΩ 
+TimeoutException
+ΩΩ )
+timeoutException
+ΩΩ* :
+)
+ΩΩ: ;
+{
+ΩΩ< =
+logger
+ææ 
+.
+ææ 
+LogError
+ææ #
+(
+ææ# $
+timeoutException
+ææ$ 4
+)
+ææ4 5
+;
+ææ5 6
+DialogManager
+øø !
+.
+øø! "#
+ShowErrorMessageAlert
+øø" 7
+(
+øø7 8
+
+Properties
+øø8 B
+.
+øøB C
+	Resources
+øøC L
+.
+øøL M$
+dialogTimeOutException
+øøM c
+)
+øøc d
+;
+øød e
+}
+¿¿ 
+catch
+¿¿ 
+(
+¿¿ $
+CommunicationException
+¿¿ /$
+communicationException
+¿¿0 F
+)
+¿¿F G
+{
+¿¿H I
+logger
+¡¡ 
+.
+¡¡ 
+LogError
+¡¡ #
+(
+¡¡# $$
+communicationException
+¡¡$ :
+)
+¡¡: ;
+;
+¡¡; <
+DialogManager
+¬¬ !
+.
+¬¬! "#
+ShowErrorMessageAlert
+¬¬" 7
+(
+¬¬7 8
+
+Properties
+¬¬8 B
+.
+¬¬B C
+	Resources
+¬¬C L
+.
+¬¬L M)
+dialogComunicationException
+¬¬M h
+)
+¬¬h i
+;
+¬¬i j
+}
+√√ 
+catch
+√√ 
+(
+√√ 
+	Exception
+√√ "
+	exception
+√√# ,
+)
+√√, -
+{
+√√. /
+logger
+ƒƒ 
+.
+ƒƒ 
+LogError
+ƒƒ #
+(
+ƒƒ# $
+	exception
+ƒƒ$ -
+)
+ƒƒ- .
+;
+ƒƒ. /
+DialogManager
+≈≈ !
+.
+≈≈! "#
+ShowErrorMessageAlert
+≈≈" 7
+(
+≈≈7 8
+string
+≈≈8 >
+.
+≈≈> ?
+Format
+≈≈? E
+(
+≈≈E F
+
+Properties
+≈≈F P
+.
+≈≈P Q
+	Resources
+≈≈Q Z
+.
+≈≈Z [#
+dialogUnexpectedError
+≈≈[ p
+,
+≈≈p q
+	exception
+≈≈r {
+.
+≈≈{ |
+Message≈≈| É
+)≈≈É Ñ
+)≈≈Ñ Ö
+;≈≈Ö Ü
+}
+∆∆ 
+}
+«« 
+}
+»» 	
+public
+   
+void
+   
+KickedFromLobby
+   #
+(
+  # $
+)
+  $ %
+{
+  & '
+
+Dispatcher
+ÀÀ 
+.
+ÀÀ 
+Invoke
+ÀÀ 
+(
+ÀÀ 
+(
+ÀÀ 
+)
+ÀÀ  
+=>
+ÀÀ! #
+{
+ÀÀ$ %
+DialogManager
+ÃÃ 
+.
+ÃÃ %
+ShowWarningMessageAlert
+ÃÃ 5
+(
+ÃÃ5 6
+
+Properties
+ÃÃ6 @
+.
+ÃÃ@ A
+	Resources
+ÃÃA J
+.
+ÃÃJ K#
+dialogKickedFromLobby
+ÃÃK `
+)
+ÃÃ` a
+;
+ÃÃa b
+ExitUseSinglenton
+ÕÕ !
+(
+ÕÕ! "
+)
+ÕÕ" #
+;
+ÕÕ# $
+}
+ŒŒ 
+)
+ŒŒ 
+;
+ŒŒ 
+}
+œœ 	
+}
+–– 
+}—— ¯&
+4C:\TripasDeGatoCliente\Views\LeaderboardView.xaml.cs
 	namespace 	
 TripasDeGatoCliente
  
@@ -15165,9 +19613,9 @@ Laderboard #
 Page& *
 {+ ,
 private $
-LeaderboardManagerClient ($
-leaderboardManagerClient) A
-;A B
+LeaderboardManagerClient (%
+_leaderboardManagerClient) B
+;B C
 public 
 
 Laderboard 
@@ -15177,14 +19625,14 @@ Laderboard 
 InitializeComponent 
 (  
 )  !
-;! "$
-leaderboardManagerClient $
-=% &
-new' *$
-LeaderboardManagerClient+ C
-(C D
-)D E
-;E F$
+;! "%
+_leaderboardManagerClient %
+=& '
+new( +$
+LeaderboardManagerClient, D
+(D E
+)E F
+;F G$
 LoadLeaderboardDataAsync $
 ($ %
 )% &
@@ -15219,268 +19667,864 @@ Laderboard 
 highestScores +
 =, -
 (. /
-await/ 4$
-leaderboardManagerClient5 M
-.M N!
-GetHighestScoresAsyncN c
-(c d
-)d e
+await/ 4%
+_leaderboardManagerClient5 N
+.N O!
+GetHighestScoresAsyncO d
+(d e
 )e f
-.f g
-ToListg m
-(m n
-)n o
-;o p
-LeaderboardListView #
-.# $
-ItemsSource$ /
-=0 1
-highestScores2 ?
-;? @
-} 
-catch 
-( %
-EndpointNotFoundException .%
-endpointNotFoundException/ H
-)H I
-{J K
-logger 
-. 
-LogError 
-(  %
-endpointNotFoundException  9
-)9 :
-;: ;
-DialogManager 
-. !
-ShowErrorMessageAlert 3
-(3 4
+)f g
+.g h
+ToListh n
+(n o
+)o p
+;p q
+lstViewLeaderboard "
+." #
+ItemsSource# .
+=/ 0
+highestScores1 >
+;> ?
+} 
+catch 
+( %
+EndpointNotFoundException .%
+endpointNotFoundException/ H
+)H I
+{J K
+logger 
+. 
+LogError 
+(  %
+endpointNotFoundException  9
+)9 :
+;: ;
+DialogManager 
+. !
+ShowErrorMessageAlert 3
+(3 4
 
-Properties4 >
-.> ?
-	Resources? H
-.H I#
-dialogEndPointExceptionI `
-)` a
-;a b
-} 
-catch 
-( 
-TimeoutException %
-timeoutException& 6
-)6 7
-{8 9
-logger   
-.   
-LogError   
-(    
-timeoutException    0
-)  0 1
-;  1 2
-DialogManager!! 
-.!! !
-ShowErrorMessageAlert!! 3
-(!!3 4
+Properties4 >
+.> ?
+	Resources? H
+.H I#
+dialogEndPointExceptionI `
+)` a
+;a b
+} 
+catch 
+( 
+TimeoutException %
+timeoutException& 6
+)6 7
+{8 9
+logger 
+. 
+LogError 
+(  
+timeoutException  0
+)0 1
+;1 2
+DialogManager   
+.   !
+ShowErrorMessageAlert   3
+(  3 4
 
-Properties!!4 >
-.!!> ?
-	Resources!!? H
-.!!H I"
-dialogTimeOutException!!I _
-)!!_ `
-;!!` a
-}"" 
-catch"" 
-("" "
-CommunicationException"" +"
-communicationException"", B
-)""B C
-{""D E
-logger## 
-.## 
-LogError## 
-(##  "
-communicationException##  6
-)##6 7
-;##7 8
-DialogManager$$ 
-.$$ !
-ShowErrorMessageAlert$$ 3
-($$3 4
+Properties  4 >
+.  > ?
+	Resources  ? H
+.  H I"
+dialogTimeOutException  I _
+)  _ `
+;  ` a
+}!! 
+catch!! 
+(!! "
+CommunicationException!! +"
+communicationException!!, B
+)!!B C
+{!!D E
+logger"" 
+."" 
+LogError"" 
+(""  "
+communicationException""  6
+)""6 7
+;""7 8
+DialogManager## 
+.## !
+ShowErrorMessageAlert## 3
+(##3 4
 
-Properties$$4 >
-.$$> ?
-	Resources$$? H
-.$$H I'
-dialogComunicationException$$I d
-)$$d e
-;$$e f
-}%% 
-}&& 	
-private'' 
-void'' 
-BtnBack_Click'' "
-(''" #
-object''# )
-sender''* 0
-,''0 1
-RoutedEventArgs''2 A
-e''B C
-)''C D
-{''E F
-MenuView(( 
-menuView(( 
-=(( 
-new((  #
-MenuView(($ ,
-(((, -
-)((- .
-;((. /
-if)) 
-()) 
-this)) 
-.)) 
-NavigationService)) &
-!=))' )
-null))* .
-))). /
-{))0 1
-this** 
-.** 
-NavigationService** &
-.**& '
-Navigate**' /
-(**/ 0
-menuView**0 8
-)**8 9
-;**9 :
-}++ 
-else++ 
-{++ 
-DialogManager,, 
-.,, !
-ShowErrorMessageAlert,, 3
-(,,3 4
+Properties##4 >
+.##> ?
+	Resources##? H
+.##H I'
+dialogComunicationException##I d
+)##d e
+;##e f
+}$$ 
+catch$$ 
+($$ 
+	Exception$$ 
+	exception$$ (
+)$$( )
+{$$* +
+logger%% 
+.%% 
+LogError%% 
+(%%  
+	exception%%  )
+)%%) *
+;%%* +
+DialogManager&& 
+.&& !
+ShowErrorMessageAlert&& 3
+(&&3 4
+string&&4 :
+.&&: ;
+Format&&; A
+(&&A B
 
-Properties,,4 >
-.,,> ?
-	Resources,,? H
-.,,H I!
-dialogNavigationError,,I ^
-),,^ _
-;,,_ `
-}-- 
-}.. 	
-}// 
-}00 úÚ
-2C:\TripasDeGatoCliente\Views\GameMatchView.xaml.cs
-	namespace 	
-TripasDeGatoCliente
+Properties&&B L
+.&&L M
+	Resources&&M V
+.&&V W!
+dialogUnexpectedError&&W l
+,&&l m
+	exception&&n w
+.&&w x
+Message&&x 
+)	&& Ä
+)
+&&Ä Å
+;
+&&Å Ç
+}'' 
+}(( 	
+private** 
+void** 
+BtnBack_Click** "
+(**" #
+object**# )
+sender*** 0
+,**0 1
+RoutedEventArgs**2 A
+e**B C
+)**C D
+{**E F
+MenuView++ 
+menuView++ 
+=++ 
+new++  #
+MenuView++$ ,
+(++, -
+)++- .
+;++. /
+if,, 
+(,, 
+this,, 
+.,, 
+NavigationService,, &
+!=,,' )
+null,,* .
+),,. /
+{,,0 1
+this-- 
+.-- 
+NavigationService-- &
+.--& '
+Navigate--' /
+(--/ 0
+menuView--0 8
+)--8 9
+;--9 :
+}.. 
+else.. 
+{.. 
+DialogManager// 
+.// !
+ShowErrorMessageAlert// 3
+(//3 4
+
+Properties//4 >
+.//> ?
+	Resources//? H
+.//H I!
+dialogNavigationError//I ^
+)//^ _
+;//_ `
+}00 
+}11 	
+}22 
+}33 æP
+4C:\TripasDeGatoCliente\Views\CreateLobbyView.xaml.cs
+	namespace 	
+TripasDeGatoCliente
  
-. 
-Views #
-{$ %
-public 
+. 
+Views #
+{$ %
+public 
 
-partial 
-class 
-	GameMatch "
-:# $
-Page% )
-,) *!
-IMatchManagerCallback+ @
-{A B
-private 
-List 
-< 
-Polyline 
-> 
-	allTraces (
-;( )
-private 
-DispatcherTimer 
-timer  %
-;% &
-private 
-int 
-	totalTime 
-= 
-$num  "
-;" #
-private 
-double 
-remainingTime $
-;$ %
+partial 
+class 
+CreateLobbyView (
+:) *
+Page+ /
+{0 1
+private 
+LobbyBrowserClient "
+_lobbyBrowser# 0
+;0 1
+public 
+CreateLobbyView 
+( 
+)  
+{! "
+InitializeComponent 
+(  
+)  !
+;! " 
+InitializeFormValues  
+(  !
+)! "
+;" #
+_lobbyBrowser 
+= 
+new 
+LobbyBrowserClient  2
+(2 3
+)3 4
+;4 5
+} 	
+private 
+void  
+InitializeFormValues )
+() *
+)* +
+{, -
+cboxNode 
+. 
+ItemsSource  
+=! "
+new# &
+List' +
+<+ ,
+int, /
+>/ 0
+{1 2
+$num3 4
+,4 5
+$num6 8
+,8 9
+$num: <
+,< =
+$num> @
+,@ A
+$numB D
+,D E
+$numF H
+,H I
+$numJ L
+}M N
+;N O
+cboxNode 
+. 
+SelectedIndex "
+=# $
+$num% &
+;& '
+}   	
+private"" 
+async"" 
+void""  
+BtnCreateLobby_Click"" /
+(""/ 0
+object""0 6
+sender""7 =
+,""= >
+RoutedEventArgs""? N
+e""O P
+)""P Q
+{""R S
+LoggerManager## 
+logger##  
+=##! "
+new### &
+LoggerManager##' 4
+(##4 5
+this##5 9
+.##9 :
+GetType##: A
+(##A B
+)##B C
+)##C D
+;##D E
+string$$ 
+gameName$$ 
+=$$ 
+txtNameLobby$$ *
+.$$* +
+Text$$+ /
+.$$/ 0
+Trim$$0 4
+($$4 5
+)$$5 6
+;$$6 7
+if%% 
+(%% 
+!%% 
+ValidationGameName%% #
+(%%# $
+gameName%%$ ,
+)%%, -
+)%%- .
+{%%/ 0
+return&& 
+;&& 
+}'' 
+if(( 
+((( 
+cboxNode(( 
+.(( 
+SelectedItem(( %
+==((& (
+null(() -
+)((- .
+{((/ 0
+DialogManager)) 
+.)) #
+ShowWarningMessageAlert)) 5
+())5 6
+
+Properties))6 @
+.))@ A
+	Resources))A J
+.))J K"
+dialogSelectNodesError))K a
+)))a b
+;))b c
+return** 
+;** 
+}++ 
+int,, 
+	nodeCount,, 
+=,, 
+(,, 
+int,,  
+),,  !
+cboxNode,,! )
+.,,) *
+SelectedItem,,* 6
+;,,6 7
+TimeSpan-- 
+duration-- 
+=-- 
+TimeSpan--  (
+.--( )
+FromMinutes--) 4
+(--4 5
+$num--5 6
+)--6 7
+;--7 8
+;--9 :
+try.. 
+{.. 
+var// 
+owner// 
+=// 
+new// 
+Profile//  '
+{//( )
+	IdProfile00 
+=00  
+UserProfileSingleton00  4
+.004 5
+	IdProfile005 >
+,00> ?
+Username11 
+=11  
+UserProfileSingleton11 3
+.113 4
+UserName114 <
+}22 
+;22 
+string33 
+	lobbyCode33  
+=33! "
+await33# (
+_lobbyBrowser33) 6
+.336 7
+CreateLobbyAsync337 G
+(33G H
+gameName33H P
+,33P Q
+	nodeCount33R [
+,33[ \
+owner33] b
+,33b c
+duration33d l
+)33l m
+;33m n
+if44 
+(44 
+!44 
+string44 
+.44 
+IsNullOrEmpty44 )
+(44) *
+	lobbyCode44* 3
+)443 4
+)444 5
+{446 7
+GoToLobbyView55 !
+(55! "
+	lobbyCode55" +
+)55+ ,
+;55, -
+}66 
+else66 
+{66 
+DialogManager77 !
+.77! "#
+ShowWarningMessageAlert77" 9
+(779 :
+
+Properties77: D
+.77D E
+	Resources77E N
+.77N O$
+dialogLobbyCreationError77O g
+)77g h
+;77h i
+}88 
+}99 
+catch99 
+(99 %
+EndpointNotFoundException99 .%
+endpointNotFoundException99/ H
+)99H I
+{99J K
+logger:: 
+.:: 
+LogError:: 
+(::  %
+endpointNotFoundException::  9
+)::9 :
+;::: ;
+DialogManager;; 
+.;; !
+ShowErrorMessageAlert;; 3
+(;;3 4
+
+Properties;;4 >
+.;;> ?
+	Resources;;? H
+.;;H I#
+dialogEndPointException;;I `
+);;` a
+;;;a b
+}<< 
+catch<< 
+(<< 
+TimeoutException<< %
+timeoutException<<& 6
+)<<6 7
+{<<8 9
+logger== 
+.== 
+LogError== 
+(==  
+timeoutException==  0
+)==0 1
+;==1 2
+DialogManager>> 
+.>> !
+ShowErrorMessageAlert>> 3
+(>>3 4
+
+Properties>>4 >
+.>>> ?
+	Resources>>? H
+.>>H I"
+dialogTimeOutException>>I _
+)>>_ `
+;>>` a
+}?? 
+catch?? 
+(?? "
+CommunicationException?? +"
+communicationException??, B
+)??B C
+{??D E
+logger@@ 
+.@@ 
+LogError@@ 
+(@@  "
+communicationException@@  6
+)@@6 7
+;@@7 8
+DialogManagerAA 
+.AA !
+ShowErrorMessageAlertAA 3
+(AA3 4
+
+PropertiesAA4 >
+.AA> ?
+	ResourcesAA? H
+.AAH I'
+dialogComunicationExceptionAAI d
+)AAd e
+;AAe f
+}BB 
+catchBB 
+(BB 
+	ExceptionBB 
+	exceptionBB (
+)BB( )
+{BB* +
+loggerCC 
+.CC 
+LogErrorCC 
+(CC  
+	exceptionCC  )
+)CC) *
+;CC* +
+DialogManagerDD 
+.DD !
+ShowErrorMessageAlertDD 3
+(DD3 4
+stringDD4 :
+.DD: ;
+FormatDD; A
+(DDA B
+
+PropertiesDDB L
+.DDL M
+	ResourcesDDM V
+.DDV W!
+dialogUnexpectedErrorDDW l
+,DDl m
+	exceptionDDn w
+.DDw x
+MessageDDx 
+)	DD Ä
+)
+DDÄ Å
+;
+DDÅ Ç
+}EE 
+}FF 	
+publicHH 
+boolHH 
+ValidationGameNameHH &
+(HH& '
+stringHH' -
+gameNameHH. 6
+)HH6 7
+{HH8 9
+boolII 
+resultII 
+=II 
+falseII 
+;II  
+ifJJ 
+(JJ 
+stringJJ 
+.JJ 
+IsNullOrWhiteSpaceJJ )
+(JJ) *
+txtNameLobbyJJ* 6
+.JJ6 7
+TextJJ7 ;
+)JJ; <
+)JJ< =
+{JJ> ?
+DialogManagerKK 
+.KK #
+ShowWarningMessageAlertKK 5
+(KK5 6
+
+PropertiesKK6 @
+.KK@ A
+	ResourcesKKA J
+.KKJ K$
+dialogEnterGameNameErrorKKK c
+)KKc d
+;KKd e
+returnLL 
+resultLL 
+;LL 
+}MM 
+ifNN 
+(NN 
+!NN 
+	ValidadorNN 
+.NN 
+ValidateGameNameNN +
+(NN+ ,
+gameNameNN, 4
+)NN4 5
+)NN5 6
+{NN7 8
+DialogManagerOO 
+.OO #
+ShowWarningMessageAlertOO 5
+(OO5 6
+
+PropertiesOO6 @
+.OO@ A
+	ResourcesOOA J
+.OOJ K&
+dialogInvalidGameNameErrorOOK e
+)OOe f
+;OOf g
+returnPP 
+resultPP 
+;PP 
+}QQ 
+resultRR 
+=RR 
+trueRR 
+;RR 
+returnSS 
+resultSS 
+;SS 
+}TT 	
+privateVV 
+voidVV 
+BtnBack_ClickVV "
+(VV" #
+objectVV# )
+senderVV* 0
+,VV0 1
+	EventArgsVV2 ;
+eVV< =
+)VV= >
+{VV? @
+GoToMenuViewWW 
+(WW 
+)WW 
+;WW 
+}XX 	
+privateZZ 
+voidZZ 
+GoToLobbyViewZZ "
+(ZZ" #
+stringZZ# )
+	lobbyCodeZZ* 3
+)ZZ3 4
+{ZZ5 6
+	LobbyView[[ 
+	lobbyView[[ 
+=[[  !
+new[[" %
+	LobbyView[[& /
+([[/ 0
+	lobbyCode[[0 9
+)[[9 :
+;[[: ;
+if\\ 
+(\\ 
+this\\ 
+.\\ 
+NavigationService\\ &
+!=\\' )
+null\\* .
+)\\. /
+{\\0 1
+this]] 
+.]] 
+NavigationService]] &
+.]]& '
+Navigate]]' /
+(]]/ 0
+	lobbyView]]0 9
+)]]9 :
+;]]: ;
+}^^ 
+else^^ 
+{^^ 
+DialogManager__ 
+.__ !
+ShowErrorMessageAlert__ 3
+(__3 4
+
+Properties__4 >
+.__> ?
+	Resources__? H
+.__H I!
+dialogNavigationError__I ^
+)__^ _
+;___ `
+}`` 
+}aa 	
+privatecc 
+voidcc 
+GoToMenuViewcc !
+(cc! "
+)cc" #
+{cc$ %
+MenuViewdd 
+menuViewdd 
+=dd 
+newdd  #
+MenuViewdd$ ,
+(dd, -
+)dd- .
+;dd. /
+ifee 
+(ee 
+thisee 
+.ee 
+NavigationServiceee &
+!=ee' )
+nullee* .
+)ee. /
+{ee0 1
+thisff 
+.ff 
+NavigationServiceff &
+.ff& '
+Navigateff' /
+(ff/ 0
+menuViewff0 8
+)ff8 9
+;ff9 :
+}gg 
+elsegg 
+{gg 
+DialogManagerhh 
+.hh !
+ShowErrorMessageAlerthh 3
+(hh3 4
+
+Propertieshh4 >
+.hh> ?
+	Resourceshh? H
+.hhH I!
+dialogNavigationErrorhhI ^
+)hh^ _
+;hh_ `
+}ii 
+}jj 	
+}kk 
+}ll éÃ
+2C:\TripasDeGatoCliente\Views\GameMatchView.xaml.cs
+	namespace 	
+TripasDeGatoCliente
+ 
+. 
+Views #
+{$ %
+public 
+
+partial 
+class 
+	GameMatch "
+:# $
+Page% )
+,) *!
+IMatchManagerCallback+ @
+{A B
+private 
+List 
+< 
+Polyline 
+> 
+
+_allTraces )
+;) *
+private 
+DispatcherTimer 
+_timer  &
+;& '
+private 
+int 
+
+_totalTime 
+=  
+$num! #
+;# $
 private 
-string 
-	matchCode  
-;  !
-private 
-bool 
-isConnected  
-;  !
-private 
-MatchManagerClient "
-matchManagerClient# 5
-;5 6
-private 
-bool 
-	isDrawing 
-=  
-false! &
-;& '
+double 
+_remainingTime %
+;% &
+private 
+string 
+
+_matchCode !
+;! "
+private 
+bool 
+_isConnected !
+;! "
+private 
+MatchManagerClient "
+_matchManagerClient# 6
+;6 7
 private 
-List 
-<  
-TripasDeGatoServicio )
-.) *
+bool 
 
-TracePoint* 4
->4 5
-currentTracePoints6 H
-=I J
-newK N
-ListO S
-<S T 
-TripasDeGatoServicioT h
-.h i
+_isDrawing 
+=  !
+false" '
+;' (
+private 
+List 
+<  
+TripasDeGatoServicio )
+.) *
 
-TracePointi s
->s t
-(t u
-)u v
-;v w
-private 
-Polyline 
-currentLine $
-;$ %
-private 
-List 
-< 
-Node 
-> 
-nodes  
-;  !
-private 
+TracePoint* 4
+>4 5
+_currentTracePoints6 I
+=J K
+newL O
+ListP T
+<T U 
+TripasDeGatoServicioU i
+.i j
 
-Dictionary 
-< 
-string !
-,! "
-string# )
->) *
-	nodePairs+ 4
-;4 5
-private   
-Node   
-	startNode   
-;   
+TracePointj t
+>t u
+(u v
+)v w
+;w x
+private 
+Polyline 
+_currentLine %
+;% &
+private 
+List 
+< 
+Node 
+> 
+nodes  
+;  !
+private   
+
+Dictionary   
+<   
+string   !
+,  ! "
+string  # )
+>  ) *
+
+_nodePairs  + 5
+;  5 6
 private!! 
-bool!! 
-isPlayerTurn!! !
-=!!" #
-false!!$ )
-;!!) *
+Node!! 
+
+_startNode!! 
+;!!  
+private"" 
+bool"" 
+_isPlayerTurn"" "
+=""# $
+false""% *
+;""* +
 public$$ 
 	GameMatch$$ 
 ($$ 
@@ -15493,37 +20537,39 @@ Dictionary 
 )%%  !
 ;%%! "
 this&& 
-.&& 
-	matchCode&& 
-=&& 
-gameCode&& %
-;&&% &
-matchManagerClient'' 
-=''  
-new''! $
-MatchManagerClient''% 7
-(''7 8
-new''8 ;
-InstanceContext''< K
-(''K L
-this''L P
-)''P Q
+.&& 
+
+_matchCode&& 
+=&& 
+gameCode&& &
+;&&& '
+_matchManagerClient'' 
+=''  !
+new''" %
+MatchManagerClient''& 8
+(''8 9
+new''9 <
+InstanceContext''= L
+(''L M
+this''M Q
 )''Q R
-;''R S
+)''R S
+;''S T
 InitializeMatch(( 
 ((( 
 )(( 
-;(( 
-	allTraces)) 
-=)) 
-new)) 
-List))  
-<))  !
-Polyline))! )
->))) *
-())* +
-)))+ ,
-;)), -
+;(( 
+
+_allTraces)) 
+=)) 
+new)) 
+List)) !
+<))! "
+Polyline))" *
+>))* +
+())+ ,
+))), -
+;))- .
 drawingCanvas** 
 .** 
 	MouseDown** #
@@ -15541,49 +20587,55 @@ Dictionary 
 MouseUp,, !
 +=,," $
 Canvas_MouseUp,,% 3
-;,,3 4
-labelPlayer1-- 
-.-- 
-Content--  
-=--! " 
-UserProfileSingleton--# 7
-.--7 8
-UserName--8 @
-;--@ A
+;,,3 4
 
-StartTimer.. 
-(.. 
-).. 
-;.. 
-}// 	
+StartTimer-- 
+(-- 
+)-- 
+;-- 
+}.. 	
 private00 
 async00 
 Task00 
 CheckCurrentTurn00 +
 (00+ ,
 )00, -
-{00. /
-try11 
-{11 
-string22 
-currentTurn22 "
-=22# $
-await22% *
-Task22+ /
-.22/ 0
-Run220 3
-(223 4
-(224 5
-)225 6
-=>227 9
-matchManagerClient22: L
-.22L M
-GetCurrentTurn22M [
-(22[ \
-	matchCode22\ e
-)22e f
-)22f g
-;22g h
+{00. /
+LoggerManager11 
+logger11  
+=11! "
+new11# &
+LoggerManager11' 4
+(114 5
+this115 9
+.119 :
+GetType11: A
+(11A B
+)11B C
+)11C D
+;11D E
+try22 
+{22 
+string33 
+currentTurn33 "
+=33# $
+await33% *
+Task33+ /
+.33/ 0
+Run330 3
+(333 4
+(334 5
+)335 6
+=>337 9
+_matchManagerClient33: M
+.33M N
+GetCurrentTurn33N \
+(33\ ]
+
+_matchCode33] g
+)33g h
+)33h i
+;33i j
 if44 
 (44 
 currentTurn44 
@@ -15599,2852 +20651,3283 @@ StartTimer.. 
 ;55$ %
 }66 
 else66 
-{66 
-NotifyNotYouTurn77 $
-(77$ %
-)77% &
-;77& '
+{66 
+NotifyNotYourTurn77 %
+(77% &
+)77& '
+;77' (
 }88 
 }99 
 catch99 
-(99 
-	Exception99 
-ex99 !
-)99! "
-{99# $
-DialogManager:: 
-.:: !
-ShowErrorMessageAlert:: 3
-(::3 4
-$"::4 6
-$str::6 Q
-{::Q R
-ex::R T
-.::T U
-Message::U \
-}::\ ]
-"::] ^
-)::^ _
-;::_ `
-};; 
-}<< 	
-private>> 
-async>> 
-void>> 
-InitializeMatch>> *
-(>>* +
-)>>+ ,
-{>>- .
-try?? 
-{?? 
-bool@@ 
-	connected@@ 
-=@@  
-matchManagerClient@@! 3
-.@@3 4"
-RegisterPlayerCallback@@4 J
-(@@J K
-	matchCode@@K T
-,@@T U 
-UserProfileSingleton@@V j
-.@@j k
-UserName@@k s
-)@@s t
-;@@t u
-ifAA 
-(AA 
-!AA 
-	connectedAA 
-)AA 
-{AA  !
-DialogManagerBB !
-.BB! "!
-ShowErrorMessageAlertBB" 7
-(BB7 8
-$strBB8 [
-)BB[ \
-;BB\ ]
-}CC 
-elseCC 
-{CC 
-isConnectedDD 
-=DD  !
-trueDD" &
-;DD& '
-nodesEE 
-=EE 
-awaitEE !
-TaskEE" &
-.EE& '
-RunEE' *
-(EE* +
-(EE+ ,
-)EE, -
-=>EE. 0
-matchManagerClientEE1 C
-.EEC D
-GetNodesEED L
-(EEL M
-	matchCodeEEM V
-)EEV W
-)EEW X
-;EEX Y
-	nodePairsFF 
-=FF 
-awaitFF  %
-TaskFF& *
-.FF* +
-RunFF+ .
-(FF. /
-(FF/ 0
-)FF0 1
-=>FF2 4
-matchManagerClientFF5 G
-.FFG H
-GetNodePairsFFH T
-(FFT U
-	matchCodeFFU ^
-)FF^ _
-)FF_ `
-;FF` a
-ifGG 
-(GG 
-nodesGG 
-!=GG  
-nullGG! %
-&&GG& (
-nodesGG) .
-.GG. /
-CountGG/ 4
->GG5 6
-$numGG7 8
-)GG8 9
-{GG: ;
-	DrawNodesHH !
-(HH! "
-)HH" #
-;HH# $
-awaitII 
-CheckCurrentTurnII .
-(II. /
-)II/ 0
-;II0 1
-}JJ 
-elseJJ 
-{JJ 
-DialogManagerKK %
-.KK% &!
-ShowErrorMessageAlertKK& ;
-(KK; <
-$strKK< h
-)KKh i
-;KKi j
-}LL 
-}MM 
-}NN 
-catchNN 
-(NN 
-	ExceptionNN 
-exNN !
-)NN! "
-{NN# $
-DialogManagerOO 
-.OO !
-ShowErrorMessageAlertOO 3
-(OO3 4
-$"OO4 6
-$strOO6 W
-{OOW X
-exOOX Z
-.OOZ [
-MessageOO[ b
-}OOb c
-"OOc d
-)OOd e
-;OOe f
-}PP 
-}QQ 	
-privateSS 
-voidSS 
+(99 %
+EndpointNotFoundException99 .%
+endpointNotFoundException99/ H
+)99H I
+{99J K
+logger:: 
+.:: 
+LogError:: 
+(::  %
+endpointNotFoundException::  9
+)::9 :
+;::: ;
+DialogManager;; 
+.;; !
+ShowErrorMessageAlert;; 3
+(;;3 4
 
-StartTimerSS 
-(SS  
-)SS  !
-{SS" #
-remainingTimeTT 
-=TT 
-	totalTimeTT %
-;TT% &
-timeProgressBarUU 
-.UU 
-ValueUU !
-=UU" #
-$numUU$ '
-;UU' (
-timerVV 
-=VV 
-newVV 
-DispatcherTimerVV '
-(VV' (
-)VV( )
-;VV) *
-timerWW 
-.WW 
-IntervalWW 
-=WW 
-TimeSpanWW %
-.WW% &
-FromMillisecondsWW& 6
-(WW6 7
-$numWW7 :
-)WW: ;
-;WW; <
-timerXX 
-.XX 
-TickXX 
-+=XX 
+Properties;;4 >
+.;;> ?
+	Resources;;? H
+.;;H I#
+dialogEndPointException;;I `
+);;` a
+;;;a b
+}<< 
+catch<< 
+(<< 
+TimeoutException<< %
+timeoutException<<& 6
+)<<6 7
+{<<8 9
+logger== 
+.== 
+LogError== 
+(==  
+timeoutException==  0
+)==0 1
+;==1 2
+DialogManager>> 
+.>> !
+ShowErrorMessageAlert>> 3
+(>>3 4
 
-Timer_TickXX $
-;XX$ %
-ifYY 
-(YY 
-isPlayerTurnYY 
-)YY 
-{YY 
-timerZZ 
-.ZZ 
-StartZZ 
-(ZZ 
-)ZZ 
-;ZZ 
-}[[ 
-}\\ 	
-private^^ 
-void^^ 
+Properties>>4 >
+.>>> ?
+	Resources>>? H
+.>>H I"
+dialogTimeOutException>>I _
+)>>_ `
+;>>` a
+}?? 
+catch?? 
+(?? "
+CommunicationException?? +"
+communicationException??, B
+)??B C
+{??D E
+logger@@ 
+.@@ 
+LogError@@ 
+(@@  "
+communicationException@@  6
+)@@6 7
+;@@7 8
+DialogManagerAA 
+.AA !
+ShowErrorMessageAlertAA 3
+(AA3 4
 
-Timer_Tick^^ 
-(^^  
-object^^  &
-sender^^' -
-,^^- .
-	EventArgs^^/ 8
-e^^9 :
-)^^: ;
-{^^< =
-if__ 
-(__ 
-remainingTime__ 
->__ 
-$num__  !
-)__! "
-{__# $
-remainingTime`` 
--=``  
-$num``! $
-;``$ %
-timeProgressBaraa 
-.aa  
-Valueaa  %
-=aa& '
-(aa( )
-remainingTimeaa) 6
-/aa7 8
-	totalTimeaa9 B
-)aaB C
-*aaD E
-$numaaF I
-;aaI J
-ifbb 
-(bb 
-remainingTimebb !
->bb" #
-	totalTimebb$ -
-*bb. /
-$numbb0 3
-)bb3 4
-{bb5 6
-timeProgressBarcc #
-.cc# $
+PropertiesAA4 >
+.AA> ?
+	ResourcesAA? H
+.AAH I'
+dialogComunicationExceptionAAI d
+)AAd e
+;AAe f
+}BB 
+catchBB 
+(BB 
+	ExceptionBB 
+	exceptionBB (
+)BB( )
+{BB* +
+loggerCC 
+.CC 
+LogErrorCC 
+(CC  
+	exceptionCC  )
+)CC) *
+;CC* +
+DialogManagerDD 
+.DD !
+ShowErrorMessageAlertDD 3
+(DD3 4
+stringDD4 :
+.DD: ;
+FormatDD; A
+(DDA B
 
-Foregroundcc$ .
-=cc/ 0
-Brushescc1 8
-.cc8 9
-Greencc9 >
-;cc> ?
-}dd 
-elsedd 
-ifdd 
-(dd 
-remainingTimedd (
->dd) *
-	totalTimedd+ 4
-*dd5 6
-$numdd7 :
-)dd: ;
-{dd< =
-timeProgressBaree #
-.ee# $
-
-Foregroundee$ .
-=ee/ 0
-Brushesee1 8
-.ee8 9
-Orangeee9 ?
-;ee? @
-}ff 
-elseff 
-{ff 
-timeProgressBargg #
-.gg# $
-
-Foregroundgg$ .
-=gg/ 0
-Brushesgg1 8
-.gg8 9
-Redgg9 <
-;gg< =
-}hh 
-}ii 
-elseii 
-{ii 
-timerjj 
-.jj 
-Stopjj 
-(jj 
-)jj 
-;jj 
-drawingCanvaskk 
-.kk 
-Childrenkk &
-.kk& '
-Removekk' -
-(kk- .
-currentLinekk. 9
-)kk9 :
-;kk: ;
-matchManagerClientll "
-.ll" #
-EndTurnAsyncll# /
-(ll/ 0
-	matchCodell0 9
-,ll9 : 
-UserProfileSingletonll; O
-.llO P
-UserNamellP X
-)llX Y
-;llY Z
-timeProgressBarmm 
-.mm  
-
-Foregroundmm  *
-=mm+ ,
-Brushesmm- 4
-.mm4 5
-Graymm5 9
-;mm9 :
-}nn 
-}oo 	
-privateqq 
-voidqq 
-Canvas_MouseDownqq %
-(qq% &
-objectqq& ,
-senderqq- 3
-,qq3 4 
-MouseButtonEventArgsqq5 I
-eqqJ K
-)qqK L
-{qqM N
-Pointrr 
-mousePositionrr 
-=rr  !
-err" #
-.rr# $
-GetPositionrr$ /
-(rr/ 0
-drawingCanvasrr0 =
-)rr= >
-;rr> ?
-	startNodess 
-=ss 
-FindNodeNearPointss )
-(ss) *
-mousePositionss* 7
-)ss7 8
-;ss8 9
-iftt 
-(tt 
-	startNodett 
-==tt 
-nulltt !
-)tt! "
-{tt# $
-DialogManageruu 
-.uu !
-ShowErrorMessageAlertuu 3
-(uu3 4
-$struu4 b
-)uub c
-;uuc d
-returnvv 
-;vv 
-}ww 
-	isDrawingxx 
-=xx 
-truexx 
-;xx 
-currentTracePointsyy 
-.yy 
-Clearyy $
-(yy$ %
-)yy% &
-;yy& '
-currentTracePointszz 
-.zz 
-Addzz "
-(zz" #
-newzz# & 
-TripasDeGatoServiciozz' ;
-.zz; <
-
-TracePointzz< F
-{zzG H
-XzzI J
-=zzK L
-mousePositionzzM Z
-.zzZ [
-Xzz[ \
-,zz\ ]
-Yzz^ _
-=zz` a
-mousePositionzzb o
-.zzo p
-Yzzp q
-}zzr s
-)zzs t
-;zzt u
-currentLine{{ 
-={{ 
-new{{ 
-Polyline{{ &
-{{{' (
-Stroke|| 
-=|| 
-Brushes||  
-.||  !
-Blue||! %
-,||% &
-StrokeThickness}} 
-=}}  !
-$num}}" #
-}~~ 
-;~~ 
-drawingCanvas 
-. 
-Children "
-." #
-Add# &
-(& '
-currentLine' 2
-)2 3
-;3 4
-currentLine
-ÄÄ 
-.
-ÄÄ 
-Points
-ÄÄ 
-.
-ÄÄ 
-Add
-ÄÄ "
-(
-ÄÄ" #
-mousePosition
-ÄÄ# 0
+PropertiesDDB L
+.DDL M
+	ResourcesDDM V
+.DDV W!
+dialogUnexpectedErrorDDW l
+,DDl m
+	exceptionDDn w
+.DDw x
+MessageDDx 
+)	DD Ä
 )
-ÄÄ0 1
+DDÄ Å
 ;
-ÄÄ1 2
-}
-ÅÅ 	
-public
-ÉÉ 
-void
-ÉÉ 
-NotifyYourTurn
-ÉÉ "
-(
-ÉÉ" #
+DDÅ Ç
+}EE 
+}FF 	
+privateHH 
+asyncHH 
+voidHH 
+InitializeMatchHH *
+(HH* +
+)HH+ ,
+{HH- .
+LoggerManagerII 
+loggerII  
+=II! "
+newII# &
+LoggerManagerII' 4
+(II4 5
+thisII5 9
+.II9 :
+GetTypeII: A
+(IIA B
+)IIB C
+)IIC D
+;IID E
+tryJJ 
+{JJ 
+boolKK 
+	connectedKK 
+=KK  
+_matchManagerClientKK! 4
+.KK4 5"
+RegisterPlayerCallbackKK5 K
+(KKK L
+
+_matchCodeKKL V
+,KKV W 
+UserProfileSingletonKKX l
+.KKl m
+UserNameKKm u
+)KKu v
+;KKv w
+ifLL 
+(LL 
+!LL 
+	connectedLL 
+)LL 
+{LL  !
+DialogManagerMM !
+.MM! "!
+ShowErrorMessageAlertMM" 7
+(MM7 8
+
+PropertiesMM8 B
+.MMB C
+	ResourcesMMC L
+.MML M"
+dialogConnectionFailedMMM c
+)MMc d
+;MMd e
+}NN 
+elseNN 
+{NN 
+_isConnectedOO  
+=OO! "
+trueOO# '
+;OO' ( 
+UserProfileSingletonPP (
+.PP( )
+UpdateMatchCodePP) 8
+(PP8 9
+
+_matchCodePP9 C
+)PPC D
+;PPD E
+nodesQQ 
+=QQ 
+awaitQQ !
+TaskQQ" &
+.QQ& '
+RunQQ' *
+(QQ* +
+(QQ+ ,
+)QQ, -
+=>QQ. 0
+_matchManagerClientQQ1 D
+.QQD E
+GetNodesQQE M
+(QQM N
+
+_matchCodeQQN X
+)QQX Y
+)QQY Z
+;QQZ [
+
+_nodePairsRR 
+=RR  
+awaitRR! &
+TaskRR' +
+.RR+ ,
+RunRR, /
+(RR/ 0
+(RR0 1
+)RR1 2
+=>RR3 5
+_matchManagerClientRR6 I
+.RRI J
+GetNodePairsRRJ V
+(RRV W
+
+_matchCodeRRW a
+)RRa b
+)RRb c
+;RRc d
+ifSS 
+(SS 
+nodesSS 
+!=SS  
+nullSS! %
+&&SS& (
+nodesSS) .
+.SS. /
+CountSS/ 4
+>SS5 6
+$numSS7 8
+)SS8 9
+{SS: ;
+	DrawNodesTT !
+(TT! "
+)TT" #
+;TT# $
+awaitUU 
+CheckCurrentTurnUU .
+(UU. /
+)UU/ 0
+;UU0 1
+}VV 
+elseVV 
+{VV 
+DialogManagerWW %
+.WW% &!
+ShowErrorMessageAlertWW& ;
+(WW; <
+
+PropertiesWW< F
+.WWF G
+	ResourcesWWG P
+.WWP Q
+dialogNodesNotFoundWWQ d
+)WWd e
+;WWe f
+}XX 
+}YY 
+}ZZ 
+catchZZ 
+(ZZ %
+EndpointNotFoundExceptionZZ .%
+endpointNotFoundExceptionZZ/ H
+)ZZH I
+{ZZJ K
+logger[[ 
+.[[ 
+LogError[[ 
+([[  %
+endpointNotFoundException[[  9
+)[[9 :
+;[[: ;
+DialogManager\\ 
+.\\ !
+ShowErrorMessageAlert\\ 3
+(\\3 4
+
+Properties\\4 >
+.\\> ?
+	Resources\\? H
+.\\H I#
+dialogEndPointException\\I `
+)\\` a
+;\\a b
+}]] 
+catch]] 
+(]] 
+TimeoutException]] %
+timeoutException]]& 6
+)]]6 7
+{]]8 9
+logger^^ 
+.^^ 
+LogError^^ 
+(^^  
+timeoutException^^  0
+)^^0 1
+;^^1 2
+DialogManager__ 
+.__ !
+ShowErrorMessageAlert__ 3
+(__3 4
+
+Properties__4 >
+.__> ?
+	Resources__? H
+.__H I"
+dialogTimeOutException__I _
+)___ `
+;__` a
+}`` 
+catch`` 
+(`` "
+CommunicationException`` +"
+communicationException``, B
+)``B C
+{``D E
+loggeraa 
+.aa 
+LogErroraa 
+(aa  "
+communicationExceptionaa  6
+)aa6 7
+;aa7 8
+DialogManagerbb 
+.bb !
+ShowErrorMessageAlertbb 3
+(bb3 4
+
+Propertiesbb4 >
+.bb> ?
+	Resourcesbb? H
+.bbH I'
+dialogComunicationExceptionbbI d
+)bbd e
+;bbe f
+}cc 
+catchcc 
+(cc 
+	Exceptioncc 
+	exceptioncc (
+)cc( )
+{cc* +
+loggerdd 
+.dd 
+LogErrordd 
+(dd  
+	exceptiondd  )
+)dd) *
+;dd* +
+DialogManageree 
+.ee !
+ShowErrorMessageAlertee 3
+(ee3 4
+stringee4 :
+.ee: ;
+Formatee; A
+(eeA B
+
+PropertieseeB L
+.eeL M
+	ResourceseeM V
+.eeV W!
+dialogUnexpectedErroreeW l
+,eel m
+	exceptioneen w
+.eew x
+Messageeex 
+)	ee Ä
 )
-ÉÉ# $
-{
-ÉÉ% &
-if
-ÑÑ 
-(
-ÑÑ 
-timer
-ÑÑ 
-!=
-ÑÑ 
-null
-ÑÑ 
-)
-ÑÑ 
-{
-ÑÑ  
-timer
-ÖÖ 
+eeÄ Å
+;
+eeÅ Ç
+}ff 
+}gg 	
+privateii 
+voidii 
+
+StartTimerii 
+(ii  
+)ii  !
+{ii" #
+_remainingTimejj 
+=jj 
+
+_totalTimejj '
+;jj' (
+progressBarTimerkk 
+.kk 
+Valuekk "
+=kk# $
+$numkk% (
+;kk( )
+_timerll 
+=ll 
+newll 
+DispatcherTimerll (
+(ll( )
+)ll) *
+;ll* +
+_timermm 
+.mm 
+Intervalmm 
+=mm 
+TimeSpanmm &
+.mm& '
+FromMillisecondsmm' 7
+(mm7 8
+$nummm8 ;
+)mm; <
+;mm< =
+_timernn 
+.nn 
+Ticknn 
++=nn 
+
+Timer_Ticknn %
+;nn% &
+ifoo 
+(oo 
+_isPlayerTurnoo 
+)oo 
+{oo  
+_timerpp 
+.pp 
+Startpp 
+(pp 
+)pp 
+;pp 
+}qq 
+}rr 	
+privatett 
+voidtt 
+
+Timer_Ticktt 
+(tt  
+objecttt  &
+sendertt' -
+,tt- .
+	EventArgstt/ 8
+ett9 :
+)tt: ;
+{tt< =
+ifuu 
+(uu 
+_remainingTimeuu 
+>uu  
+$numuu! "
+)uu" #
+{uu$ %
+_remainingTimevv 
+-=vv !
+$numvv" %
+;vv% &
+progressBarTimerww  
+.ww  !
+Valueww! &
+=ww' (
+(ww) *
+_remainingTimeww* 8
+/ww9 :
+
+_totalTimeww; E
+)wwE F
+*wwG H
+$numwwI L
+;wwL M
+ifxx 
+(xx 
+_remainingTimexx "
+>xx# $
+
+_totalTimexx% /
+*xx0 1
+$numxx2 5
+)xx5 6
+{xx7 8
+progressBarTimeryy $
+.yy$ %
+
+Foregroundyy% /
+=yy0 1
+Brushesyy2 9
+.yy9 :
+Greenyy: ?
+;yy? @
+}zz 
+elsezz 
+ifzz 
+(zz 
+_remainingTimezz )
+>zz* +
+
+_totalTimezz, 6
+*zz7 8
+$numzz9 <
+)zz< =
+{zz> ?
+progressBarTimer{{ $
+.{{$ %
+
+Foreground{{% /
+={{0 1
+Brushes{{2 9
+.{{9 :
+Orange{{: @
+;{{@ A
+}|| 
+else|| 
+{|| 
+progressBarTimer}} $
+.}}$ %
+
+Foreground}}% /
+=}}0 1
+Brushes}}2 9
+.}}9 :
+Red}}: =
+;}}= >
+}~~ 
+} 
+else 
+{ 
+_timer
+ÄÄ 
 .
-ÖÖ 
+ÄÄ 
 Stop
-ÖÖ 
+ÄÄ 
 (
-ÖÖ 
+ÄÄ 
 )
-ÖÖ 
+ÄÄ 
 ;
-ÖÖ 
-timer
-ÜÜ 
+ÄÄ 
+drawingCanvas
+ÅÅ 
 .
-ÜÜ 
+ÅÅ 
+Children
+ÅÅ &
+.
+ÅÅ& '
+Remove
+ÅÅ' -
+(
+ÅÅ- .
+_currentLine
+ÅÅ. :
+)
+ÅÅ: ;
+;
+ÅÅ; <!
+_matchManagerClient
+ÇÇ #
+.
+ÇÇ# $
+EndTurnAsync
+ÇÇ$ 0
+(
+ÇÇ0 1
+
+_matchCode
+ÇÇ1 ;
+,
+ÇÇ; <"
+UserProfileSingleton
+ÇÇ= Q
+.
+ÇÇQ R
+UserName
+ÇÇR Z
+)
+ÇÇZ [
+;
+ÇÇ[ \
+progressBarTimer
+ÉÉ  
+.
+ÉÉ  !
+
+Foreground
+ÉÉ! +
+=
+ÉÉ, -
+Brushes
+ÉÉ. 5
+.
+ÉÉ5 6
+Gray
+ÉÉ6 :
+;
+ÉÉ: ;
+}
+ÑÑ 
+}
+ÖÖ 	
+private
+áá 
+void
+áá 
+Canvas_MouseDown
+áá %
+(
+áá% &
+object
+áá& ,
+sender
+áá- 3
+,
+áá3 4"
+MouseButtonEventArgs
+áá5 I
+e
+ááJ K
+)
+ááK L
+{
+ááM N
+Point
+àà 
+mousePosition
+àà 
+=
+àà  !
+e
+àà" #
+.
+àà# $
+GetPosition
+àà$ /
+(
+àà/ 0
+drawingCanvas
+àà0 =
+)
+àà= >
+;
+àà> ?
+
+_startNode
+ââ 
+=
+ââ 
+FindNodeNearPoint
+ââ *
+(
+ââ* +
+mousePosition
+ââ+ 8
+)
+ââ8 9
+;
+ââ9 :
+if
+ää 
+(
+ää 
+
+_startNode
+ää 
+==
+ää 
+null
+ää "
+)
+ää" #
+{
+ää$ %
+DialogManager
+ãã 
+.
+ãã #
+ShowErrorMessageAlert
+ãã 3
+(
+ãã3 4
+
+Properties
+ãã4 >
+.
+ãã> ?
+	Resources
+ãã? H
+.
+ããH I$
+dialogInvalidStartNode
+ããI _
+)
+ãã_ `
+;
+ãã` a
+return
+åå 
+;
+åå 
+}
+çç 
+
+_isDrawing
+éé 
+=
+éé 
+true
+éé 
+;
+éé !
+_currentTracePoints
+èè 
+.
+èè  
+Clear
+èè  %
+(
+èè% &
+)
+èè& '
+;
+èè' (!
+_currentTracePoints
+êê 
+.
+êê  
+Add
+êê  #
+(
+êê# $
+new
+êê$ '"
+TripasDeGatoServicio
+êê( <
+.
+êê< =
+
+TracePoint
+êê= G
+{
+êêH I
+X
+êêJ K
+=
+êêL M
+mousePosition
+êêN [
+.
+êê[ \
+X
+êê\ ]
+,
+êê] ^
+Y
+êê_ `
+=
+êêa b
+mousePosition
+êêc p
+.
+êêp q
+Y
+êêq r
+}
+êês t
+)
+êêt u
+;
+êêu v
+_currentLine
+ëë 
+=
+ëë 
+new
+ëë 
+Polyline
+ëë '
+{
+ëë( )
+Stroke
+íí 
+=
+íí 
+Brushes
+íí  
+.
+íí  !
+Blue
+íí! %
+,
+íí% &
+StrokeThickness
+ìì 
+=
+ìì  !
+$num
+ìì" #
+}
+îî 
+;
+îî 
+drawingCanvas
+ïï 
+.
+ïï 
+Children
+ïï "
+.
+ïï" #
+Add
+ïï# &
+(
+ïï& '
+_currentLine
+ïï' 3
+)
+ïï3 4
+;
+ïï4 5
+_currentLine
+ññ 
+.
+ññ 
+Points
+ññ 
+.
+ññ  
+Add
+ññ  #
+(
+ññ# $
+mousePosition
+ññ$ 1
+)
+ññ1 2
+;
+ññ2 3
+}
+óó 	
+public
+ôô 
+void
+ôô 
+NotifyYourTurn
+ôô "
+(
+ôô" #
+)
+ôô# $
+{
+ôô% &
+if
+öö 
+(
+öö 
+_timer
+öö 
+!=
+öö 
+null
+öö 
+)
+öö 
+{
+öö  !
+_timer
+õõ 
+.
+õõ 
+Stop
+õõ 
+(
+õõ 
+)
+õõ 
+;
+õõ 
+_timer
+úú 
+.
+úú 
 Tick
-ÜÜ 
+úú 
 -=
-ÜÜ 
+úú 
 
 Timer_Tick
-ÜÜ (
+úú )
 ;
-ÜÜ( )
+úú) *
 }
-áá 
-remainingTime
-ââ 
+ùù 
+_remainingTime
+ûû 
 =
-ââ 
-	totalTime
-ââ %
+ûû 
+
+_totalTime
+ûû '
 ;
-ââ% &
-timeProgressBar
-ää 
+ûû' (
+progressBarTimer
+üü 
 .
-ää 
+üü 
 Value
-ää !
+üü "
 =
-ää" #
+üü# $
 $num
-ää$ '
+üü% (
 ;
-ää' (
-timeProgressBar
-ãã 
+üü( )
+progressBarTimer
+†† 
 .
-ãã 
+†† 
 
 Foreground
-ãã &
+†† '
 =
-ãã' (
+††( )
 Brushes
-ãã) 0
+††* 1
 .
-ãã0 1
+††1 2
 Green
-ãã1 6
+††2 7
 ;
-ãã6 7
+††7 8
 drawingCanvas
-çç 
+°° 
 .
-çç 
+°° 
 	IsEnabled
-çç #
+°° #
 =
-çç$ %
+°°$ %
 true
-çç& *
+°°& *
 ;
-çç* +
-isPlayerTurn
-éé 
+°°* +
+_isPlayerTurn
+¢¢ 
 =
-éé 
+¢¢ 
 true
-éé 
+¢¢  
 ;
-éé  
-	labelTurn
-èè 
+¢¢  !
+lbMatchStatus
+££ 
 .
-èè 
+££ 
 Content
-èè 
+££ !
 =
-èè 
-$str
-èè  /
-;
-èè/ 0
-	labelTurn
-êê 
+££" #
+
+Properties
+££$ .
 .
-êê 
+££. /
+	Resources
+££/ 8
+.
+££8 9#
+lbMatchStatusYourTurn
+££9 N
+;
+££N O
+lbMatchStatus
+§§ 
+.
+§§ 
 
 Foreground
-êê  
+§§ $
 =
-êê! "
+§§% &
 Brushes
-êê# *
+§§' .
 .
-êê* +
+§§. /
 Green
-êê+ 0
+§§/ 4
 ;
-êê0 1
+§§4 5
 
 StartTimer
-íí 
+•• 
 (
-íí 
+•• 
 )
-íí 
+•• 
 ;
-íí 
+•• 
 }
-ìì 	
+¶¶ 	
 public
-ïï 
+®® 
 void
-ïï 
-NotifyNotYouTurn
-ïï $
+®® 
+NotifyNotYourTurn
+®® %
 (
-ïï$ %
+®®% &
 )
-ïï% &
+®®& '
 {
-ïï' (
+®®( )
 Application
-ññ 
+©© 
 .
-ññ 
+©© 
 Current
-ññ 
+©© 
 .
-ññ  
+©©  
 
 Dispatcher
-ññ  *
+©©  *
 .
-ññ* +
+©©* +
 Invoke
-ññ+ 1
+©©+ 1
 (
-ññ1 2
+©©1 2
 (
-ññ2 3
+©©2 3
 )
-ññ3 4
+©©3 4
 =>
-ññ5 7
+©©5 7
 {
-ññ8 9
+©©8 9
 if
-óó 
+™™ 
 (
-óó 
-timer
-óó 
+™™ 
+_timer
+™™ 
 !=
-óó 
+™™ 
 null
-óó !
+™™ "
 )
-óó! "
+™™" #
 {
-óó# $
-timer
-òò 
+™™$ %
+_timer
+´´ 
 .
-òò 
+´´ 
 Stop
-òò 
+´´ 
 (
-òò 
+´´  
 )
-òò  
+´´  !
 ;
-òò  !
-timer
-ôô 
+´´! "
+_timer
+¨¨ 
 .
-ôô 
+¨¨ 
 Tick
-ôô 
+¨¨ 
 -=
-ôô !
+¨¨  "
 
 Timer_Tick
-ôô" ,
+¨¨# -
 ;
-ôô, -
+¨¨- .
 }
-öö 
+≠≠ 
 drawingCanvas
-úú 
+ÆÆ 
 .
-úú 
+ÆÆ 
 	IsEnabled
-úú '
+ÆÆ '
 =
-úú( )
+ÆÆ( )
 false
-úú* /
+ÆÆ* /
 ;
-úú/ 0
-isPlayerTurn
-ùù 
+ÆÆ/ 0
+_isPlayerTurn
+ØØ 
 =
-ùù 
+ØØ 
 false
-ùù $
+ØØ  %
 ;
-ùù$ %
-	labelTurn
-ûû 
+ØØ% &
+lbMatchStatus
+∞∞ 
 .
-ûû 
+∞∞ 
 Content
-ûû !
+∞∞ %
 =
-ûû" #
-$str
-ûû$ 8
-;
-ûû8 9
-	labelTurn
-üü 
+∞∞& '
+
+Properties
+∞∞( 2
 .
-üü 
+∞∞2 3
+	Resources
+∞∞3 <
+.
+∞∞< =&
+lbMatchStatusNotYourTurn
+∞∞= U
+;
+∞∞U V
+lbMatchStatus
+±± 
+.
+±± 
 
 Foreground
-üü $
+±± (
 =
-üü% &
+±±) *
 Brushes
-üü' .
+±±+ 2
 .
-üü. /
+±±2 3
 Red
-üü/ 2
+±±3 6
 ;
-üü2 3
+±±6 7
 }
-†† 
+≤≤ 
 )
-†† 
+≤≤ 
 ;
-†† 
+≤≤ 
 }
-°° 	
+≥≥ 	
 private
-££ 
+µµ 
 void
-££ 
+µµ 
 Canvas_MouseMove
-££ %
+µµ %
 (
-££% &
+µµ% &
 object
-££& ,
+µµ& ,
 sender
-££- 3
+µµ- 3
 ,
-££3 4
+µµ3 4
 MouseEventArgs
-££5 C
+µµ5 C
 e
-££D E
+µµD E
 )
-££E F
+µµE F
 {
-££G H
-if
-§§ 
-(
-§§ 
-!
-§§ 
-	isDrawing
-§§ 
-)
-§§ 
-return
-§§ "
-;
-§§" #
-Point
-¶¶ 
-mousePosition
-¶¶ 
-=
-¶¶  !
-e
-¶¶" #
-.
-¶¶# $
-GetPosition
-¶¶$ /
-(
-¶¶/ 0
-drawingCanvas
-¶¶0 =
-)
-¶¶= >
-;
-¶¶> ?
-var
-ßß 
-newPoint
-ßß 
-=
-ßß 
-new
-ßß "
-TripasDeGatoServicio
-ßß 3
-.
-ßß3 4
-
-TracePoint
-ßß4 >
-{
-ßß? @
-X
-ßßA B
-=
-ßßC D
-mousePosition
-ßßE R
-.
-ßßR S
-X
-ßßS T
-,
-ßßT U
-Y
-ßßV W
-=
-ßßX Y
-mousePosition
-ßßZ g
-.
-ßßg h
-Y
-ßßh i
-}
-ßßj k
-;
-ßßk l
-if
-©© 
-(
-©© !
-IsCollisionDetected
-©© #
-(
-©©# $
-newPoint
-©©$ ,
-)
-©©, -
-)
-©©- .
-{
-©©/ 0
-HandleInfraction
-™™  
-(
-™™  !
-$str
-™™! K
-)
-™™K L
-;
-™™L M
-return
-´´ 
-;
-´´ 
-}
-¨¨ 
-Node
-ÆÆ 
-currentNode
-ÆÆ 
-=
-ÆÆ 
-FindNodeNearPoint
-ÆÆ 0
-(
-ÆÆ0 1
-mousePosition
-ÆÆ1 >
-)
-ÆÆ> ?
-;
-ÆÆ? @
-if
-ØØ 
-(
-ØØ 
-currentNode
-ØØ 
-!=
-ØØ 
-null
-ØØ #
-&&
-ØØ$ &
-currentNode
-ØØ' 2
-!=
-ØØ3 5
-	startNode
-ØØ6 ?
-)
-ØØ? @
-{
-ØØA B
-if
-∞∞ 
-(
-∞∞ 
-!
-∞∞ 
-IsPair
-∞∞ 
-(
-∞∞ 
-	startNode
-∞∞ %
-,
-∞∞% &
-currentNode
-∞∞' 2
-)
-∞∞2 3
-)
-∞∞3 4
-{
-∞∞5 6
-HandleInfraction
-±± $
-(
-±±$ %
-$str
-±±% W
-)
-±±W X
-;
-±±X Y
-return
-≤≤ 
-;
-≤≤ 
-}
-≥≥ 
-}
-¥¥  
-currentTracePoints
-∂∂ 
-.
-∂∂ 
-Add
-∂∂ "
-(
-∂∂" #
-newPoint
-∂∂# +
-)
-∂∂+ ,
-;
-∂∂, -
-currentLine
-∑∑ 
-.
-∑∑ 
-Points
-∑∑ 
-.
-∑∑ 
-Add
-∑∑ "
-(
-∑∑" #
-mousePosition
-∑∑# 0
-)
-∑∑0 1
-;
-∑∑1 2
-}
-∏∏ 	
-private
-∫∫ 
-bool
-∫∫  
-IsPointNearSegment
-∫∫ '
-(
-∫∫' ("
-TripasDeGatoServicio
-∫∫( <
-.
-∫∫< =
-
-TracePoint
-∫∫= G
-point
-∫∫H M
-,
-∫∫M N
-Point
-∫∫O T
-start
-∫∫U Z
-,
-∫∫Z [
-Point
-∫∫\ a
-end
-∫∫b e
-)
-∫∫e f
-{
-∫∫g h
-double
-ªª 
-distance
-ªª 
-=
-ªª (
-DistanceFromPointToSegment
-ªª 8
-(
-ªª8 9
-point
-ªª9 >
-,
-ªª> ?
-start
-ªª@ E
-,
-ªªE F
-end
-ªªG J
-)
-ªªJ K
-;
-ªªK L
-return
-ºº 
-distance
-ºº 
-<
-ºº 
-$num
-ºº 
-;
-ºº  
-}
-ΩΩ 	
-private
-øø 
-bool
-øø !
-IsCollisionDetected
-øø (
-(
-øø( )"
-TripasDeGatoServicio
-øø) =
-.
-øø= >
-
-TracePoint
-øø> H
-newPoint
-øøI Q
-)
-øøQ R
-{
-øøS T
-foreach
-¿¿ 
-(
-¿¿ 
-var
-¿¿ 
-polyline
-¿¿ !
-in
-¿¿" $
-	allTraces
-¿¿% .
-)
-¿¿. /
-{
-¿¿0 1
-for
-¡¡ 
-(
-¡¡ 
-int
-¡¡ 
-i
-¡¡ 
-=
-¡¡ 
-$num
-¡¡ 
-;
-¡¡ 
-i
-¡¡  !
-<
-¡¡" #
-polyline
-¡¡$ ,
-.
-¡¡, -
-Points
-¡¡- 3
-.
-¡¡3 4
-Count
-¡¡4 9
-;
-¡¡9 :
-i
-¡¡; <
-++
-¡¡< >
-)
-¡¡> ?
-{
-¡¡@ A
-Point
-¬¬ 
-start
-¬¬ 
-=
-¬¬  !
-polyline
-¬¬" *
-.
-¬¬* +
-Points
-¬¬+ 1
-[
-¬¬1 2
-i
-¬¬2 3
--
-¬¬4 5
-$num
-¬¬6 7
-]
-¬¬7 8
-;
-¬¬8 9
-Point
-√√ 
-end
-√√ 
-=
-√√ 
-polyline
-√√  (
-.
-√√( )
-Points
-√√) /
-[
-√√/ 0
-i
-√√0 1
-]
-√√1 2
-;
-√√2 3
-if
-ƒƒ 
-(
-ƒƒ  
-IsPointNearSegment
-ƒƒ *
-(
-ƒƒ* +
-newPoint
-ƒƒ+ 3
-,
-ƒƒ3 4
-start
-ƒƒ5 :
-,
-ƒƒ: ;
-end
-ƒƒ< ?
-)
-ƒƒ? @
-)
-ƒƒ@ A
-{
-ƒƒB C
-return
-≈≈ 
-true
-≈≈ #
-;
-≈≈# $
-}
-∆∆ 
-}
-«« 
-}
-»» 
-return
-…… 
-false
-…… 
-;
-…… 
-}
-   	
-private
-ÃÃ 
-double
-ÃÃ (
-DistanceFromPointToSegment
-ÃÃ 1
-(
-ÃÃ1 2"
-TripasDeGatoServicio
-ÃÃ2 F
-.
-ÃÃF G
-
-TracePoint
-ÃÃG Q
-point
-ÃÃR W
-,
-ÃÃW X
-Point
-ÃÃY ^
-start
-ÃÃ_ d
-,
-ÃÃd e
-Point
-ÃÃf k
-end
-ÃÃl o
-)
-ÃÃo p
-{
-ÃÃq r
-double
-ÕÕ 
-px
-ÕÕ 
-=
-ÕÕ 
-point
-ÕÕ 
-.
-ÕÕ 
-X
-ÕÕ 
-;
-ÕÕ  
-double
-ŒŒ 
-py
-ŒŒ 
-=
-ŒŒ 
-point
-ŒŒ 
-.
-ŒŒ 
-Y
-ŒŒ 
-;
-ŒŒ  
-double
-œœ 
-sx
-œœ 
-=
-œœ 
-start
-œœ 
-.
-œœ 
-X
-œœ 
-;
-œœ  
-double
-–– 
-sy
-–– 
-=
-–– 
-start
-–– 
-.
-–– 
-Y
-–– 
-;
-––  
-double
-—— 
-ex
-—— 
-=
-—— 
-end
-—— 
-.
-—— 
-X
-—— 
-;
-—— 
-double
-““ 
-ey
-““ 
-=
-““ 
-end
-““ 
-.
-““ 
-Y
-““ 
-;
-““ 
-double
-”” 
-dx
-”” 
-=
-”” 
-ex
-”” 
--
-”” 
-sx
-”” 
-;
-””  
-double
-‘‘ 
-dy
-‘‘ 
-=
-‘‘ 
-ey
-‘‘ 
--
-‘‘ 
-sy
-‘‘ 
-;
-‘‘  
-double
-’’ 
-lengthSquared
-’’  
-=
-’’! "
-dx
-’’# %
-*
-’’& '
-dx
-’’( *
-+
-’’+ ,
-dy
-’’- /
-*
-’’0 1
-dy
-’’2 4
-;
-’’4 5
-if
-÷÷ 
-(
-÷÷ 
-lengthSquared
-÷÷ 
-==
-÷÷  
-$num
-÷÷! "
-)
-÷÷" #
-return
-÷÷$ *
-Math
-÷÷+ /
-.
-÷÷/ 0
-Sqrt
-÷÷0 4
-(
-÷÷4 5
-(
-÷÷5 6
-px
-÷÷6 8
--
-÷÷9 :
-sx
-÷÷; =
-)
-÷÷= >
-*
-÷÷? @
-(
-÷÷A B
-px
-÷÷B D
--
-÷÷E F
-sx
-÷÷G I
-)
-÷÷I J
-+
-÷÷K L
-(
-÷÷M N
-py
-÷÷N P
--
-÷÷Q R
-sy
-÷÷S U
-)
-÷÷U V
-*
-÷÷W X
-(
-÷÷Y Z
-py
-÷÷Z \
--
-÷÷] ^
-sy
-÷÷_ a
-)
-÷÷a b
-)
-÷÷b c
-;
-÷÷c d
-double
-◊◊ 
-t
-◊◊ 
-=
-◊◊ 
-(
-◊◊ 
-(
-◊◊ 
-px
-◊◊ 
--
-◊◊ 
-sx
-◊◊  
-)
-◊◊  !
-*
-◊◊" #
-dx
-◊◊$ &
-+
-◊◊' (
-(
-◊◊) *
-py
-◊◊* ,
--
-◊◊- .
-sy
-◊◊/ 1
-)
-◊◊1 2
-*
-◊◊3 4
-dy
-◊◊5 7
-)
-◊◊7 8
-/
-◊◊9 :
-lengthSquared
-◊◊; H
-;
-◊◊H I
-t
-ÿÿ 
-=
-ÿÿ 
-Math
-ÿÿ 
-.
-ÿÿ 
-Max
-ÿÿ 
-(
-ÿÿ 
-$num
-ÿÿ 
-,
-ÿÿ 
-Math
-ÿÿ  
-.
-ÿÿ  !
-Min
-ÿÿ! $
-(
-ÿÿ$ %
-$num
-ÿÿ% &
-,
-ÿÿ& '
-t
-ÿÿ( )
-)
-ÿÿ) *
-)
-ÿÿ* +
-;
-ÿÿ+ ,
-double
-ŸŸ 
-projX
-ŸŸ 
-=
-ŸŸ 
-sx
-ŸŸ 
-+
-ŸŸ 
-t
-ŸŸ  !
-*
-ŸŸ" #
-dx
-ŸŸ$ &
-;
-ŸŸ& '
-double
-⁄⁄ 
-projY
-⁄⁄ 
-=
-⁄⁄ 
-sy
-⁄⁄ 
-+
-⁄⁄ 
-t
-⁄⁄  !
-*
-⁄⁄" #
-dy
-⁄⁄$ &
-;
-⁄⁄& '
-return
-€€ 
-Math
-€€ 
-.
-€€ 
-Sqrt
-€€ 
-(
-€€ 
-(
-€€ 
-px
-€€  
--
-€€! "
-projX
-€€# (
-)
-€€( )
-*
-€€* +
-(
-€€, -
-px
-€€- /
--
-€€0 1
-projX
-€€2 7
-)
-€€7 8
-+
-€€9 :
-(
-€€; <
-py
-€€< >
--
-€€? @
-projY
-€€A F
-)
-€€F G
-*
-€€H I
-(
-€€J K
-py
-€€K M
--
-€€N O
-projY
-€€P U
-)
-€€U V
-)
-€€V W
-;
-€€W X
-}
-‹‹ 	
-private
-ﬁﬁ 
-void
-ﬁﬁ 
-Canvas_MouseUp
-ﬁﬁ #
-(
-ﬁﬁ# $
-object
-ﬁﬁ$ *
-sender
-ﬁﬁ+ 1
-,
-ﬁﬁ1 2"
-MouseButtonEventArgs
-ﬁﬁ3 G
-e
-ﬁﬁH I
-)
-ﬁﬁI J
-{
-ﬁﬁK L
-if
-ﬂﬂ 
-(
-ﬂﬂ 
-!
-ﬂﬂ 
-	isDrawing
-ﬂﬂ 
-)
-ﬂﬂ 
-return
-ﬂﬂ "
-;
-ﬂﬂ" #
-	isDrawing
-‡‡ 
-=
-‡‡ 
-false
-‡‡ 
-;
-‡‡ 
-Point
-·· 
-mousePosition
-·· 
-=
-··  !
-e
-··" #
-.
-··# $
-GetPosition
-··$ /
-(
-··/ 0
-drawingCanvas
-··0 =
-)
-··= >
-;
-··> ?
-Node
-‚‚ 
-endNode
-‚‚ 
-=
-‚‚ 
-FindNodeNearPoint
-‚‚ ,
-(
-‚‚, -
-mousePosition
-‚‚- :
-)
-‚‚: ;
-;
-‚‚; <
-if
-‰‰ 
-(
-‰‰ 
-endNode
-‰‰ 
-==
-‰‰ 
-null
-‰‰ 
-||
-‰‰  "
-!
-‰‰# $
-IsPair
-‰‰$ *
-(
-‰‰* +
-	startNode
-‰‰+ 4
-,
-‰‰4 5
-endNode
-‰‰6 =
-)
-‰‰= >
-)
-‰‰> ?
-{
-‰‰@ A
-drawingCanvas
-ÂÂ 
-.
-ÂÂ 
-Children
-ÂÂ &
-.
-ÂÂ& '
-Remove
-ÂÂ' -
-(
-ÂÂ- .
-currentLine
-ÂÂ. 9
-)
-ÂÂ9 :
-;
-ÂÂ: ;
-DialogManager
-ÊÊ 
-.
-ÊÊ #
-ShowErrorMessageAlert
-ÊÊ 3
-(
-ÊÊ3 4
-$str
-ÊÊ4 h
-)
-ÊÊh i
-;
-ÊÊi j
-return
-ÁÁ 
-;
-ÁÁ 
-}
-ËË 
-if
-ÍÍ 
-(
-ÍÍ  
-currentTracePoints
-ÍÍ "
-.
-ÍÍ" #
-Count
-ÍÍ# (
->
-ÍÍ) *
-$num
-ÍÍ+ ,
-)
-ÍÍ, -
-{
-ÍÍ. /
-	allTraces
-ÎÎ 
-.
-ÎÎ 
-Add
-ÎÎ 
-(
-ÎÎ 
-currentLine
-ÎÎ )
-)
-ÎÎ) *
-;
-ÎÎ* +
-	SendTrace
-ÏÏ 
-(
-ÏÏ  
-currentTracePoints
-ÏÏ ,
-)
-ÏÏ, -
-;
-ÏÏ- .
-Task
-ÌÌ 
-.
-ÌÌ 
-Run
-ÌÌ 
-(
-ÌÌ 
-(
-ÌÌ 
-)
-ÌÌ 
-=>
-ÌÌ  
-matchManagerClient
-ÌÌ 1
-.
-ÌÌ1 2
-EndTurnAsync
-ÌÌ2 >
-(
-ÌÌ> ?
-	matchCode
-ÌÌ? H
-,
-ÌÌH I"
-UserProfileSingleton
-ÌÌJ ^
-.
-ÌÌ^ _
-UserName
-ÌÌ_ g
-)
-ÌÌg h
-)
-ÌÌh i
-;
-ÌÌi j
-if
-ÔÔ 
-(
-ÔÔ "
-AreAllNodesConnected
-ÔÔ (
-(
-ÔÔ( )
-)
-ÔÔ) *
-)
-ÔÔ* +
-{
-ÔÔ, - 
-matchManagerClient
- &
-.
-& '
-EndMatch
-' /
-(
-/ 0
-	matchCode
-0 9
-)
-9 :
-;
-: ;
-}
-ÒÒ 
-}
-ÚÚ 
-else
-ÚÚ 
-{
-ÚÚ 
-drawingCanvas
-ÛÛ 
-.
-ÛÛ 
-Children
-ÛÛ &
-.
-ÛÛ& '
-Remove
-ÛÛ' -
-(
-ÛÛ- .
-currentLine
-ÛÛ. 9
-)
-ÛÛ9 :
-;
-ÛÛ: ;
-}
-ÙÙ 
-}
-ıı 	
-public
-˜˜ 
-void
-˜˜ 
-NotifyMatchEnded
-˜˜ $
-(
-˜˜$ %
-)
-˜˜% &
-{
-˜˜' (
+µµG H
 LoggerManager
-¯¯ 
+∂∂ 
 logger
-¯¯  
+∂∂  
 =
-¯¯! "
+∂∂! "
 new
-¯¯# &
+∂∂# &
 LoggerManager
-¯¯' 4
+∂∂' 4
 (
-¯¯4 5
+∂∂4 5
 this
-¯¯5 9
+∂∂5 9
 .
-¯¯9 :
+∂∂9 :
 GetType
-¯¯: A
+∂∂: A
 (
-¯¯A B
+∂∂A B
 )
-¯¯B C
+∂∂B C
 )
-¯¯C D
+∂∂C D
 ;
-¯¯D E
-Application
-˙˙ 
-.
-˙˙ 
-Current
-˙˙ 
-.
-˙˙  
-
-Dispatcher
-˙˙  *
-.
-˙˙* +
-Invoke
-˙˙+ 1
-(
-˙˙1 2
-async
-˙˙2 7
-(
-˙˙8 9
-)
-˙˙9 :
-=>
-˙˙; =
-{
-˙˙> ?
-try
-˚˚ 
-{
-˚˚ 
-	labelTurn
-¸¸ 
-.
-¸¸ 
-
-Visibility
-¸¸ (
-=
-¸¸) *
-
-Visibility
-¸¸+ 5
-.
-¸¸5 6
-	Collapsed
-¸¸6 ?
-;
-¸¸? @
-timer
-˝˝ 
-.
-˝˝ 
-Stop
-˝˝ 
-(
-˝˝ 
-)
-˝˝  
-;
-˝˝  !
-var
-˛˛ 
-result
-˛˛ 
-=
-˛˛  
-await
-˛˛! &
-Task
-˛˛' +
-.
-˛˛+ ,
-Run
-˛˛, /
-(
-˛˛/ 0
-(
-˛˛0 1
-)
-˛˛1 2
-=>
-˛˛3 5 
-matchManagerClient
-˛˛6 H
-.
-˛˛H I
-GetGameResult
-˛˛I V
-(
-˛˛V W
-	matchCode
-˛˛W `
-,
-˛˛` a"
-UserProfileSingleton
-˛˛b v
-.
-˛˛v w
-UserName
-˛˛w 
-)˛˛ Ä
-)˛˛Ä Å
-;˛˛Å Ç
+∂∂D E
 if
-ˇˇ 
+∑∑ 
 (
-ˇˇ 
-result
-ˇˇ 
-!=
-ˇˇ !
-null
-ˇˇ" &
-)
-ˇˇ& '
-{
-ˇˇ( )
-string
-ÄÄ 
-message
-ÄÄ &
-=
-ÄÄ' (
-result
-ÄÄ) /
-.
-ÄÄ/ 0
-IsWinner
-ÄÄ0 8
-?
-ÅÅ 
-$str
-ÅÅ >
-:
-ÇÇ 
-result
-ÇÇ $
-.
-ÇÇ$ %
-IsDraw
-ÇÇ% +
-?
-ÉÉ  !
-$str
-ÉÉ" 1
-:
-ÑÑ  !
-$str
-ÑÑ" Q
-;
-ÑÑQ R
-labelMatchResult
-ÖÖ (
-.
-ÖÖ( )
-Content
-ÖÖ) 0
-=
-ÖÖ1 2
-message
-ÖÖ3 :
-;
-ÖÖ: ;
-
-labelScore
-ÜÜ "
-.
-ÜÜ" #
-Content
-ÜÜ# *
-=
-ÜÜ+ ,
-result
-ÜÜ- 3
-.
-ÜÜ3 4
-Score
-ÜÜ4 9
-;
-ÜÜ9 :
-}
-áá 
-else
-áá 
-{
-áá 
-DialogManager
-àà %
-.
-àà% &#
-ShowErrorMessageAlert
-àà& ;
-(
-àà; <
-$str
-àà< n
-)
-ààn o
-;
-àào p
-}
-ââ 
-}
-ää 
-catch
-ää 
-(
-ää '
-EndpointNotFoundException
-ää 2'
-endpointNotFoundException
-ää3 L
-)
-ääL M
-{
-ääN O
-logger
-ãã 
-.
-ãã 
-LogError
-ãã #
-(
-ãã# $'
-endpointNotFoundException
-ãã$ =
-)
-ãã= >
-;
-ãã> ?
-DialogManager
-åå !
-.
-åå! "#
-ShowErrorMessageAlert
-åå" 7
-(
-åå7 8
-
-Properties
-åå8 B
-.
-ååB C
-	Resources
-ååC L
-.
-ååL M%
-dialogEndPointException
-ååM d
-)
-ååd e
-;
-ååe f
-}
-çç 
-catch
-çç 
-(
-çç 
-TimeoutException
-çç )
-timeoutException
-çç* :
-)
-çç: ;
-{
-çç< =
-logger
-éé 
-.
-éé 
-LogError
-éé #
-(
-éé# $
-timeoutException
-éé$ 4
-)
-éé4 5
-;
-éé5 6
-DialogManager
-èè !
-.
-èè! "#
-ShowErrorMessageAlert
-èè" 7
-(
-èè7 8
-
-Properties
-èè8 B
-.
-èèB C
-	Resources
-èèC L
-.
-èèL M$
-dialogTimeOutException
-èèM c
-)
-èèc d
-;
-èèd e
-}
-êê 
-catch
-êê 
-(
-êê $
-CommunicationException
-êê /$
-communicationException
-êê0 F
-)
-êêF G
-{
-êêH I
-logger
-ëë 
-.
-ëë 
-LogError
-ëë #
-(
-ëë# $$
-communicationException
-ëë$ :
-)
-ëë: ;
-;
-ëë; <
-DialogManager
-íí !
-.
-íí! "#
-ShowErrorMessageAlert
-íí" 7
-(
-íí7 8
-
-Properties
-íí8 B
-.
-ííB C
-	Resources
-ííC L
-.
-ííL M)
-dialogComunicationException
-ííM h
-)
-ííh i
-;
-ííi j
-}
-îî 
-finally
-îî 
-{
-îî 
-ExitUseSinglenton
-ïï %
-(
-ïï% &
-)
-ïï& '
-;
-ïï' (
-}
-ññ 
-}
-óó 
-)
-óó 
-;
-óó 
-}
-òò 	
-private
-öö 
-bool
-öö "
-AreAllNodesConnected
-öö )
-(
-öö) *
-)
-öö* +
-{
-öö, -
-foreach
-õõ 
-(
-õõ 
-var
-õõ 
-pair
-õõ 
-in
-õõ  
-	nodePairs
-õõ! *
-)
-õõ* +
-{
-õõ, -
-bool
-úú 
-isConnected
-úú  
-=
-úú! "
-	allTraces
-úú# ,
-.
-úú, -
-Any
-úú- 0
-(
-úú0 1
-trace
-úú1 6
-=>
-úú7 9
-trace
-ùù 
-.
-ùù 
-Points
-ùù  
-.
-ùù  !
-Any
-ùù! $
-(
-ùù$ %
-point
-ùù% *
-=>
-ùù+ -
-FindNodeNearPoint
-ùù. ?
-(
-ùù? @
-point
-ùù@ E
-)
-ùùE F
-is
-ùùG I
-Node
-ùùJ N
-start
-ùùO T
-&&
-ùùU W
-start
-ùùX ]
-.
-ùù] ^
-Id
-ùù^ `
-==
-ùùa c
-pair
-ùùd h
-.
-ùùh i
-Key
-ùùi l
-)
-ùùl m
-&&
-ùùn p
-trace
-ûû 
-.
-ûû 
-Points
-ûû  
-.
-ûû  !
-Any
-ûû! $
-(
-ûû$ %
-point
-ûû% *
-=>
-ûû+ -
-FindNodeNearPoint
-ûû. ?
-(
-ûû? @
-point
-ûû@ E
-)
-ûûE F
-is
-ûûG I
-Node
-ûûJ N
-end
-ûûO R
-&&
-ûûS U
-end
-ûûV Y
-.
-ûûY Z
-Id
-ûûZ \
-==
-ûû] _
-pair
-ûû` d
-.
-ûûd e
-Value
-ûûe j
-)
-ûûj k
-)
-üü 
-;
-üü 
-if
-†† 
-(
-†† 
+∑∑ 
 !
-†† 
-isConnected
-††  
+∑∑ 
+
+_isDrawing
+∑∑ 
 )
-††  !
-{
-††" #
+∑∑ 
 return
-°° 
-false
-°°  
+∑∑ #
 ;
-°°  !
-}
-¢¢ 
-}
-££ 
-return
-§§ 
-true
-§§ 
-;
-§§ 
-}
-•• 	
-private
-ßß 
-bool
-ßß 
-IsPair
-ßß 
-(
-ßß 
-Node
-ßß  
-start
-ßß! &
-,
-ßß& '
-Node
-ßß( ,
-end
-ßß- 0
-)
-ßß0 1
-{
-ßß2 3
-return
-®® 
-	nodePairs
-®® 
-.
-®® 
-ContainsKey
-®® (
-(
-®®( )
-start
-®®) .
-.
-®®. /
-Id
-®®/ 1
-)
-®®1 2
-&&
-®®3 5
-	nodePairs
-®®6 ?
-[
-®®? @
-start
-®®@ E
-.
-®®E F
-Id
-®®F H
-]
-®®H I
-==
-®®J L
-end
-®®M P
-.
-®®P Q
-Id
-®®Q S
-;
-®®S T
-}
-©© 	
-private
-´´ 
-Node
-´´ 
-FindNodeNearPoint
-´´ &
-(
-´´& '
+∑∑# $
 Point
-´´' ,
-point
-´´- 2
-)
-´´2 3
-{
-´´4 5
-const
-¨¨ 
-double
-¨¨ 
-detectionRadius
-¨¨ (
+∏∏ 
+mousePosition
+∏∏ 
 =
-¨¨) *
-$num
-¨¨+ -
+∏∏  !
+e
+∏∏" #
+.
+∏∏# $
+GetPosition
+∏∏$ /
+(
+∏∏/ 0
+drawingCanvas
+∏∏0 =
+)
+∏∏= >
 ;
-¨¨- .
-return
-≠≠ 
-nodes
-≠≠ 
+∏∏> ?
+var
+ππ 
+newPoint
+ππ 
+=
+ππ 
+new
+ππ "
+TripasDeGatoServicio
+ππ 3
 .
-≠≠ 
-FirstOrDefault
-≠≠ '
-(
-≠≠' (
-node
-≠≠( ,
-=>
-≠≠- /
-Math
-ÆÆ 
-.
-ÆÆ 
-Sqrt
-ÆÆ 
-(
-ÆÆ 
-Math
-ÆÆ 
-.
-ÆÆ 
-Pow
-ÆÆ "
-(
-ÆÆ" #
-node
-ÆÆ# '
-.
-ÆÆ' (
-X
-ÆÆ( )
--
-ÆÆ* +
-point
-ÆÆ, 1
-.
-ÆÆ1 2
-X
-ÆÆ2 3
-,
-ÆÆ3 4
-$num
-ÆÆ5 6
-)
-ÆÆ6 7
-+
-ÆÆ8 9
-Math
-ÆÆ: >
-.
-ÆÆ> ?
-Pow
-ÆÆ? B
-(
-ÆÆB C
-node
-ÆÆC G
-.
-ÆÆG H
-Y
-ÆÆH I
--
-ÆÆJ K
-point
-ÆÆL Q
-.
-ÆÆQ R
-Y
-ÆÆR S
-,
-ÆÆS T
-$num
-ÆÆU V
-)
-ÆÆV W
-)
-ÆÆW X
-<=
-ÆÆY [
-detectionRadius
-ÆÆ\ k
-)
-ÆÆk l
-;
-ÆÆl m
-}
-ØØ 	
-private
-±± 
-void
-±± 
-	SendTrace
-±± 
-(
-±± 
-List
-±± #
-<
-±±# $
+ππ3 4
 
 TracePoint
-±±$ .
->
-±±. /
-points
-±±0 6
-)
-±±6 7
+ππ4 >
 {
-±±8 9
+ππ? @
+X
+ππA B
+=
+ππC D
+mousePosition
+ππE R
+.
+ππR S
+X
+ππS T
+,
+ππT U
+Y
+ππV W
+=
+ππX Y
+mousePosition
+ππZ g
+.
+ππg h
+Y
+ππh i
+}
+ππj k
+;
+ππk l
 if
-≤≤ 
+∫∫ 
 (
-≤≤ 
-!
-≤≤ 
-isConnected
-≤≤ 
+∫∫ !
+IsCollisionDetected
+∫∫ #
+(
+∫∫# $
+newPoint
+∫∫$ ,
 )
-≤≤ 
-return
-≤≤ $
-;
-≤≤$ %
-var
-≥≥ 
-trace
-≥≥ 
-=
-≥≥ 
-new
-≥≥ "
-TripasDeGatoServicio
-≥≥ 0
-.
-≥≥0 1
-Trace
-≥≥1 6
+∫∫, -
+)
+∫∫- .
 {
-≥≥7 8
-Player
-¥¥ 
-=
-¥¥ "
-UserProfileSingleton
-¥¥ -
+∫∫/ 0
+HandleInfraction
+ªª  
+(
+ªª  !
+
+Properties
+ªª! +
 .
-¥¥- .
-UserName
-¥¥. 6
-,
-¥¥6 7
-TracePoints
-µµ 
-=
-µµ 
-points
-µµ $
-,
-µµ$ %
-	Timestamp
-∂∂ 
-=
-∂∂ 
-DateTime
-∂∂ $
+ªª+ ,
+	Resources
+ªª, 5
 .
-∂∂$ %
-Now
-∂∂% (
-,
-∂∂( )
-Color
-∑∑ 
-=
-∑∑ 
-$str
-∑∑ 
-}
-∏∏ 
+ªª5 6'
+dialogInfractionCollision
+ªª6 O
+)
+ªªO P
 ;
-∏∏ 
+ªªP Q
 try
-ππ 
+ºº 
 {
-ππ  
-matchManagerClient
-∫∫ "
+ºº !
+_matchManagerClient
+ΩΩ '
 .
-∫∫" #
-RegisterTrace
-∫∫# 0
+ΩΩ' (
+EndMatchAsync
+ΩΩ( 5
 (
-∫∫0 1
-	matchCode
-∫∫1 :
-,
-∫∫: ;
-trace
-∫∫< A
+ΩΩ5 6
+
+_matchCode
+ΩΩ6 @
 )
-∫∫A B
+ΩΩ@ A
 ;
-∫∫B C
+ΩΩA B
 }
-ªª 
+ææ 
 catch
-ªª 
+ææ 
 (
-ªª $
-CommunicationException
-ªª +
+ææ '
+EndpointNotFoundException
+ææ 2'
+endpointNotFoundException
+ææ3 L
 )
-ªª+ ,
+ææL M
 {
-ªª- .
+ææN O
+logger
+øø 
+.
+øø 
+LogError
+øø #
+(
+øø# $'
+endpointNotFoundException
+øø$ =
+)
+øø= >
+;
+øø> ?
+DialogManager
+¿¿ !
+.
+¿¿! "#
+ShowErrorMessageAlert
+¿¿" 7
+(
+¿¿7 8
+
+Properties
+¿¿8 B
+.
+¿¿B C
+	Resources
+¿¿C L
+.
+¿¿L M%
+dialogEndPointException
+¿¿M d
+)
+¿¿d e
+;
+¿¿e f
+}
+¡¡ 
+catch
+¡¡ 
+(
+¡¡ 
+TimeoutException
+¡¡ )
+timeoutException
+¡¡* :
+)
+¡¡: ;
+{
+¡¡< =
+logger
+¬¬ 
+.
+¬¬ 
+LogError
+¬¬ #
+(
+¬¬# $
+timeoutException
+¬¬$ 4
+)
+¬¬4 5
+;
+¬¬5 6
+DialogManager
+√√ !
+.
+√√! "#
+ShowErrorMessageAlert
+√√" 7
+(
+√√7 8
+
+Properties
+√√8 B
+.
+√√B C
+	Resources
+√√C L
+.
+√√L M$
+dialogTimeOutException
+√√M c
+)
+√√c d
+;
+√√d e
+}
+ƒƒ 
+catch
+ƒƒ 
+(
+ƒƒ $
+CommunicationException
+ƒƒ /$
+communicationException
+ƒƒ0 F
+)
+ƒƒF G
+{
+ƒƒH I
+logger
+≈≈ 
+.
+≈≈ 
+LogError
+≈≈ #
+(
+≈≈# $$
+communicationException
+≈≈$ :
+)
+≈≈: ;
+;
+≈≈; <
+DialogManager
+∆∆ !
+.
+∆∆! "#
+ShowErrorMessageAlert
+∆∆" 7
+(
+∆∆7 8
+
+Properties
+∆∆8 B
+.
+∆∆B C
+	Resources
+∆∆C L
+.
+∆∆L M)
+dialogComunicationException
+∆∆M h
+)
+∆∆h i
+;
+∆∆i j
+}
+«« 
+catch
+«« 
+(
+«« 
+	Exception
+«« "
+	exception
+««# ,
+)
+««, -
+{
+««. /
+logger
+»» 
+.
+»» 
+LogError
+»» #
+(
+»»# $
+	exception
+»»$ -
+)
+»»- .
+;
+»». /
+DialogManager
+…… !
+.
+……! "#
+ShowErrorMessageAlert
+……" 7
+(
+……7 8
+string
+……8 >
+.
+……> ?
+Format
+……? E
+(
+……E F
+
+Properties
+……F P
+.
+……P Q
+	Resources
+……Q Z
+.
+……Z [#
+dialogUnexpectedError
+……[ p
+,
+……p q
+	exception
+……r {
+.
+……{ |
+Message……| É
+)……É Ñ
+)……Ñ Ö
+;……Ö Ü
+}
+   
+return
+ÀÀ 
+;
+ÀÀ 
+}
+ÃÃ 
+Node
+ÕÕ 
+currentNode
+ÕÕ 
+=
+ÕÕ 
+FindNodeNearPoint
+ÕÕ 0
+(
+ÕÕ0 1
+mousePosition
+ÕÕ1 >
+)
+ÕÕ> ?
+;
+ÕÕ? @
+if
+ŒŒ 
+(
+ŒŒ 
+currentNode
+ŒŒ 
+!=
+ŒŒ 
+null
+ŒŒ #
+&&
+ŒŒ$ &
+currentNode
+ŒŒ' 2
+!=
+ŒŒ3 5
+
+_startNode
+ŒŒ6 @
+)
+ŒŒ@ A
+{
+ŒŒB C
+if
+œœ 
+(
+œœ 
+!
+œœ 
+IsPair
+œœ 
+(
+œœ 
+
+_startNode
+œœ &
+,
+œœ& '
+currentNode
+œœ( 3
+)
+œœ3 4
+)
+œœ4 5
+{
+œœ6 7
+HandleInfraction
+–– $
+(
+––$ %
+
+Properties
+––% /
+.
+––/ 0
+	Resources
+––0 9
+.
+––9 :)
+dialogInfractionInvalidNode
+––: U
+)
+––U V
+;
+––V W
+return
+—— 
+;
+—— 
+}
+““ 
+}
+”” !
+_currentTracePoints
+‘‘ 
+.
+‘‘  
+Add
+‘‘  #
+(
+‘‘# $
+newPoint
+‘‘$ ,
+)
+‘‘, -
+;
+‘‘- .
+_currentLine
+’’ 
+.
+’’ 
+Points
+’’ 
+.
+’’  
+Add
+’’  #
+(
+’’# $
+mousePosition
+’’$ 1
+)
+’’1 2
+;
+’’2 3
+}
+÷÷ 	
+private
+ÿÿ 
+bool
+ÿÿ  
+IsPointNearSegment
+ÿÿ '
+(
+ÿÿ' ("
+TripasDeGatoServicio
+ÿÿ( <
+.
+ÿÿ< =
+
+TracePoint
+ÿÿ= G
+point
+ÿÿH M
+,
+ÿÿM N
+Point
+ÿÿO T
+start
+ÿÿU Z
+,
+ÿÿZ [
+Point
+ÿÿ\ a
+end
+ÿÿb e
+)
+ÿÿe f
+{
+ÿÿg h
+double
+ŸŸ 
+distance
+ŸŸ 
+=
+ŸŸ (
+DistanceFromPointToSegment
+ŸŸ 8
+(
+ŸŸ8 9
+point
+ŸŸ9 >
+,
+ŸŸ> ?
+start
+ŸŸ@ E
+,
+ŸŸE F
+end
+ŸŸG J
+)
+ŸŸJ K
+;
+ŸŸK L
+return
+⁄⁄ 
+distance
+⁄⁄ 
+<
+⁄⁄ 
+$num
+⁄⁄ 
+;
+⁄⁄  
+}
+€€ 	
+private
+›› 
+bool
+›› !
+IsCollisionDetected
+›› (
+(
+››( )"
+TripasDeGatoServicio
+››) =
+.
+››= >
+
+TracePoint
+››> H
+newPoint
+››I Q
+)
+››Q R
+{
+››S T
+foreach
+ﬁﬁ 
+(
+ﬁﬁ 
+var
+ﬁﬁ 
+polyline
+ﬁﬁ !
+in
+ﬁﬁ" $
+
+_allTraces
+ﬁﬁ% /
+)
+ﬁﬁ/ 0
+{
+ﬁﬁ1 2
+for
+ﬂﬂ 
+(
+ﬂﬂ 
+int
+ﬂﬂ 
+i
+ﬂﬂ 
+=
+ﬂﬂ 
+$num
+ﬂﬂ 
+;
+ﬂﬂ 
+i
+ﬂﬂ  !
+<
+ﬂﬂ" #
+polyline
+ﬂﬂ$ ,
+.
+ﬂﬂ, -
+Points
+ﬂﬂ- 3
+.
+ﬂﬂ3 4
+Count
+ﬂﬂ4 9
+;
+ﬂﬂ9 :
+i
+ﬂﬂ; <
+++
+ﬂﬂ< >
+)
+ﬂﬂ> ?
+{
+ﬂﬂ@ A
+Point
+‡‡ 
+start
+‡‡ 
+=
+‡‡  !
+polyline
+‡‡" *
+.
+‡‡* +
+Points
+‡‡+ 1
+[
+‡‡1 2
+i
+‡‡2 3
+-
+‡‡4 5
+$num
+‡‡6 7
+]
+‡‡7 8
+;
+‡‡8 9
+Point
+·· 
+end
+·· 
+=
+·· 
+polyline
+··  (
+.
+··( )
+Points
+··) /
+[
+··/ 0
+i
+··0 1
+]
+··1 2
+;
+··2 3
+if
+‚‚ 
+(
+‚‚  
+IsPointNearSegment
+‚‚ *
+(
+‚‚* +
+newPoint
+‚‚+ 3
+,
+‚‚3 4
+start
+‚‚5 :
+,
+‚‚: ;
+end
+‚‚< ?
+)
+‚‚? @
+)
+‚‚@ A
+{
+‚‚B C
+return
+„„ 
+true
+„„ #
+;
+„„# $
+}
+‰‰ 
+}
+ÂÂ 
+}
+ÊÊ 
+return
+ÁÁ 
+false
+ÁÁ 
+;
+ÁÁ 
+}
+ËË 	
+private
+ÍÍ 
+double
+ÍÍ (
+DistanceFromPointToSegment
+ÍÍ 1
+(
+ÍÍ1 2"
+TripasDeGatoServicio
+ÍÍ2 F
+.
+ÍÍF G
+
+TracePoint
+ÍÍG Q
+point
+ÍÍR W
+,
+ÍÍW X
+Point
+ÍÍY ^
+start
+ÍÍ_ d
+,
+ÍÍd e
+Point
+ÍÍf k
+end
+ÍÍl o
+)
+ÍÍo p
+{
+ÍÍq r
+double
+ÎÎ 
+px
+ÎÎ 
+=
+ÎÎ 
+point
+ÎÎ 
+.
+ÎÎ 
+X
+ÎÎ 
+;
+ÎÎ  
+double
+ÏÏ 
+py
+ÏÏ 
+=
+ÏÏ 
+point
+ÏÏ 
+.
+ÏÏ 
+Y
+ÏÏ 
+;
+ÏÏ  
+double
+ÌÌ 
+sx
+ÌÌ 
+=
+ÌÌ 
+start
+ÌÌ 
+.
+ÌÌ 
+X
+ÌÌ 
+;
+ÌÌ  
+double
+ÓÓ 
+sy
+ÓÓ 
+=
+ÓÓ 
+start
+ÓÓ 
+.
+ÓÓ 
+Y
+ÓÓ 
+;
+ÓÓ  
+double
+ÔÔ 
+ex
+ÔÔ 
+=
+ÔÔ 
+end
+ÔÔ 
+.
+ÔÔ 
+X
+ÔÔ 
+;
+ÔÔ 
+double
+ 
+ey
+ 
+=
+ 
+end
+ 
+.
+ 
+Y
+ 
+;
+ 
+double
+ÒÒ 
+dx
+ÒÒ 
+=
+ÒÒ 
+ex
+ÒÒ 
+-
+ÒÒ 
+sx
+ÒÒ 
+;
+ÒÒ  
+double
+ÚÚ 
+dy
+ÚÚ 
+=
+ÚÚ 
+ey
+ÚÚ 
+-
+ÚÚ 
+sy
+ÚÚ 
+;
+ÚÚ  
+double
+ÛÛ 
+lengthSquared
+ÛÛ  
+=
+ÛÛ! "
+dx
+ÛÛ# %
+*
+ÛÛ& '
+dx
+ÛÛ( *
++
+ÛÛ+ ,
+dy
+ÛÛ- /
+*
+ÛÛ0 1
+dy
+ÛÛ2 4
+;
+ÛÛ4 5
+if
+ÙÙ 
+(
+ÙÙ 
+lengthSquared
+ÙÙ 
+==
+ÙÙ  
+$num
+ÙÙ! "
+)
+ÙÙ" #
+return
+ÙÙ$ *
+Math
+ÙÙ+ /
+.
+ÙÙ/ 0
+Sqrt
+ÙÙ0 4
+(
+ÙÙ4 5
+(
+ÙÙ5 6
+px
+ÙÙ6 8
+-
+ÙÙ9 :
+sx
+ÙÙ; =
+)
+ÙÙ= >
+*
+ÙÙ? @
+(
+ÙÙA B
+px
+ÙÙB D
+-
+ÙÙE F
+sx
+ÙÙG I
+)
+ÙÙI J
++
+ÙÙK L
+(
+ÙÙM N
+py
+ÙÙN P
+-
+ÙÙQ R
+sy
+ÙÙS U
+)
+ÙÙU V
+*
+ÙÙW X
+(
+ÙÙY Z
+py
+ÙÙZ \
+-
+ÙÙ] ^
+sy
+ÙÙ_ a
+)
+ÙÙa b
+)
+ÙÙb c
+;
+ÙÙc d
+double
+ıı 
+t
+ıı 
+=
+ıı 
+(
+ıı 
+(
+ıı 
+px
+ıı 
+-
+ıı 
+sx
+ıı  
+)
+ıı  !
+*
+ıı" #
+dx
+ıı$ &
++
+ıı' (
+(
+ıı) *
+py
+ıı* ,
+-
+ıı- .
+sy
+ıı/ 1
+)
+ıı1 2
+*
+ıı3 4
+dy
+ıı5 7
+)
+ıı7 8
+/
+ıı9 :
+lengthSquared
+ıı; H
+;
+ııH I
+t
+ˆˆ 
+=
+ˆˆ 
+Math
+ˆˆ 
+.
+ˆˆ 
+Max
+ˆˆ 
+(
+ˆˆ 
+$num
+ˆˆ 
+,
+ˆˆ 
+Math
+ˆˆ  
+.
+ˆˆ  !
+Min
+ˆˆ! $
+(
+ˆˆ$ %
+$num
+ˆˆ% &
+,
+ˆˆ& '
+t
+ˆˆ( )
+)
+ˆˆ) *
+)
+ˆˆ* +
+;
+ˆˆ+ ,
+double
+˜˜ 
+projX
+˜˜ 
+=
+˜˜ 
+sx
+˜˜ 
++
+˜˜ 
+t
+˜˜  !
+*
+˜˜" #
+dx
+˜˜$ &
+;
+˜˜& '
+double
+¯¯ 
+projY
+¯¯ 
+=
+¯¯ 
+sy
+¯¯ 
++
+¯¯ 
+t
+¯¯  !
+*
+¯¯" #
+dy
+¯¯$ &
+;
+¯¯& '
+return
+˘˘ 
+Math
+˘˘ 
+.
+˘˘ 
+Sqrt
+˘˘ 
+(
+˘˘ 
+(
+˘˘ 
+px
+˘˘  
+-
+˘˘! "
+projX
+˘˘# (
+)
+˘˘( )
+*
+˘˘* +
+(
+˘˘, -
+px
+˘˘- /
+-
+˘˘0 1
+projX
+˘˘2 7
+)
+˘˘7 8
++
+˘˘9 :
+(
+˘˘; <
+py
+˘˘< >
+-
+˘˘? @
+projY
+˘˘A F
+)
+˘˘F G
+*
+˘˘H I
+(
+˘˘J K
+py
+˘˘K M
+-
+˘˘N O
+projY
+˘˘P U
+)
+˘˘U V
+)
+˘˘V W
+;
+˘˘W X
+}
+˙˙ 	
+private
+¸¸ 
+void
+¸¸ 
+Canvas_MouseUp
+¸¸ #
+(
+¸¸# $
+object
+¸¸$ *
+sender
+¸¸+ 1
+,
+¸¸1 2"
+MouseButtonEventArgs
+¸¸3 G
+e
+¸¸H I
+)
+¸¸I J
+{
+¸¸K L
+if
+˝˝ 
+(
+˝˝ 
+!
+˝˝ 
+
+_isDrawing
+˝˝ 
+)
+˝˝ 
+return
+˝˝ #
+;
+˝˝# $
+
+_isDrawing
+˛˛ 
+=
+˛˛ 
+false
+˛˛ 
+;
+˛˛ 
+Point
+ˇˇ 
+mousePosition
+ˇˇ 
+=
+ˇˇ  !
+e
+ˇˇ" #
+.
+ˇˇ# $
+GetPosition
+ˇˇ$ /
+(
+ˇˇ/ 0
+drawingCanvas
+ˇˇ0 =
+)
+ˇˇ= >
+;
+ˇˇ> ?
+Node
+ÄÄ 
+endNode
+ÄÄ 
+=
+ÄÄ 
+FindNodeNearPoint
+ÄÄ ,
+(
+ÄÄ, -
+mousePosition
+ÄÄ- :
+)
+ÄÄ: ;
+;
+ÄÄ; <
+if
+ÅÅ 
+(
+ÅÅ 
+endNode
+ÅÅ 
+==
+ÅÅ 
+null
+ÅÅ 
+||
+ÅÅ  "
+!
+ÅÅ# $
+IsPair
+ÅÅ$ *
+(
+ÅÅ* +
+
+_startNode
+ÅÅ+ 5
+,
+ÅÅ5 6
+endNode
+ÅÅ7 >
+)
+ÅÅ> ?
+)
+ÅÅ? @
+{
+ÅÅA B
+drawingCanvas
+ÇÇ 
+.
+ÇÇ 
+Children
+ÇÇ &
+.
+ÇÇ& '
+Remove
+ÇÇ' -
+(
+ÇÇ- .
+_currentLine
+ÇÇ. :
+)
+ÇÇ: ;
+;
+ÇÇ; <
+DialogManager
+ÉÉ 
+.
+ÉÉ #
+ShowErrorMessageAlert
+ÉÉ 3
+(
+ÉÉ3 4
+
+Properties
+ÉÉ4 >
+.
+ÉÉ> ?
+	Resources
+ÉÉ? H
+.
+ÉÉH I)
+dialogTraceMustConnectNodes
+ÉÉI d
+)
+ÉÉd e
+;
+ÉÉe f
+return
+ÑÑ 
+;
+ÑÑ 
+}
+ÖÖ 
+if
+ÜÜ 
+(
+ÜÜ !
+_currentTracePoints
+ÜÜ #
+.
+ÜÜ# $
+Count
+ÜÜ$ )
+>
+ÜÜ* +
+$num
+ÜÜ, -
+)
+ÜÜ- .
+{
+ÜÜ/ 0
+
+_allTraces
+áá 
+.
+áá 
+Add
+áá 
+(
+áá 
+_currentLine
+áá +
+)
+áá+ ,
+;
+áá, -
+	SendTrace
+àà 
+(
+àà !
+_currentTracePoints
+àà -
+)
+àà- .
+;
+àà. /
+Task
+ââ 
+.
+ââ 
+Run
+ââ 
+(
+ââ 
+(
+ââ 
+)
+ââ 
+=>
+ââ !
+_matchManagerClient
+ââ 2
+.
+ââ2 3
+EndTurnAsync
+ââ3 ?
+(
+ââ? @
+
+_matchCode
+ââ@ J
+,
+ââJ K"
+UserProfileSingleton
+ââL `
+.
+ââ` a
+UserName
+ââa i
+)
+ââi j
+)
+ââj k
+;
+ââk l
+if
+ää 
+(
+ää "
+AreAllNodesConnected
+ää (
+(
+ää( )
+)
+ää) *
+)
+ää* +
+{
+ää, -!
+_matchManagerClient
+ãã '
+.
+ãã' (
+EndMatchAsync
+ãã( 5
+(
+ãã5 6
+
+_matchCode
+ãã6 @
+)
+ãã@ A
+;
+ããA B
+}
+åå 
+}
+çç 
+else
+çç 
+{
+çç 
+drawingCanvas
+éé 
+.
+éé 
+Children
+éé &
+.
+éé& '
+Remove
+éé' -
+(
+éé- .
+_currentLine
+éé. :
+)
+éé: ;
+;
+éé; <
+}
+èè 
+}
+êê 	
+private
+íí 
+bool
+íí "
+AreAllNodesConnected
+íí )
+(
+íí) *
+)
+íí* +
+{
+íí, -
+foreach
+ìì 
+(
+ìì 
+var
+ìì 
+pair
+ìì 
+in
+ìì  
+
+_nodePairs
+ìì! +
+)
+ìì+ ,
+{
+ìì- .
+bool
+îî 
+isConnected
+îî  
+=
+îî! "
+
+_allTraces
+îî# -
+.
+îî- .
+Any
+îî. 1
+(
+îî1 2
+trace
+îî2 7
+=>
+îî8 :
+trace
+ïï 
+.
+ïï 
+Points
+ïï  
+.
+ïï  !
+Any
+ïï! $
+(
+ïï$ %
+point
+ïï% *
+=>
+ïï+ -
+FindNodeNearPoint
+ïï. ?
+(
+ïï? @
+point
+ïï@ E
+)
+ïïE F
+is
+ïïG I
+Node
+ïïJ N
+start
+ïïO T
+&&
+ïïU W
+start
+ïïX ]
+.
+ïï] ^
+Id
+ïï^ `
+==
+ïïa c
+pair
+ïïd h
+.
+ïïh i
+Key
+ïïi l
+)
+ïïl m
+&&
+ïïn p
+trace
+ññ 
+.
+ññ 
+Points
+ññ  
+.
+ññ  !
+Any
+ññ! $
+(
+ññ$ %
+point
+ññ% *
+=>
+ññ+ -
+FindNodeNearPoint
+ññ. ?
+(
+ññ? @
+point
+ññ@ E
+)
+ññE F
+is
+ññG I
+Node
+ññJ N
+end
+ññO R
+&&
+ññS U
+end
+ññV Y
+.
+ññY Z
+Id
+ññZ \
+==
+ññ] _
+pair
+ññ` d
+.
+ññd e
+Value
+ññe j
+)
+ññj k
+)
+óó 
+;
+óó 
+if
+òò 
+(
+òò 
+!
+òò 
+isConnected
+òò  
+)
+òò  !
+{
+òò" #
+return
+ôô 
+false
+ôô  
+;
+ôô  !
+}
+öö 
+}
+õõ 
+return
+úú 
+true
+úú 
+;
+úú 
+}
+ùù 	
+private
+üü 
+bool
+üü 
+IsPair
+üü 
+(
+üü 
+Node
+üü  
+start
+üü! &
+,
+üü& '
+Node
+üü( ,
+end
+üü- 0
+)
+üü0 1
+{
+üü2 3
+return
+†† 
+
+_nodePairs
+†† 
+.
+†† 
+ContainsKey
+†† )
+(
+††) *
+start
+††* /
+.
+††/ 0
+Id
+††0 2
+)
+††2 3
+&&
+††4 6
+
+_nodePairs
+††7 A
+[
+††A B
+start
+††B G
+.
+††G H
+Id
+††H J
+]
+††J K
+==
+††L N
+end
+††O R
+.
+††R S
+Id
+††S U
+;
+††U V
+}
+°° 	
+private
+££ 
+Node
+££ 
+FindNodeNearPoint
+££ &
+(
+££& '
+Point
+££' ,
+point
+££- 2
+)
+££2 3
+{
+££4 5
+const
+§§ 
+double
+§§ 
+detectionRadius
+§§ (
+=
+§§) *
+$num
+§§+ -
+;
+§§- .
+return
+•• 
+nodes
+•• 
+.
+•• 
+FirstOrDefault
+•• '
+(
+••' (
+node
+••( ,
+=>
+••- /
+Math
+¶¶ 
+.
+¶¶ 
+Sqrt
+¶¶ 
+(
+¶¶ 
+Math
+¶¶ 
+.
+¶¶ 
+Pow
+¶¶ "
+(
+¶¶" #
+node
+¶¶# '
+.
+¶¶' (
+X
+¶¶( )
+-
+¶¶* +
+point
+¶¶, 1
+.
+¶¶1 2
+X
+¶¶2 3
+,
+¶¶3 4
+$num
+¶¶5 6
+)
+¶¶6 7
++
+¶¶8 9
+Math
+¶¶: >
+.
+¶¶> ?
+Pow
+¶¶? B
+(
+¶¶B C
+node
+¶¶C G
+.
+¶¶G H
+Y
+¶¶H I
+-
+¶¶J K
+point
+¶¶L Q
+.
+¶¶Q R
+Y
+¶¶R S
+,
+¶¶S T
+$num
+¶¶U V
+)
+¶¶V W
+)
+¶¶W X
+<=
+¶¶Y [
+detectionRadius
+¶¶\ k
+)
+¶¶k l
+;
+¶¶l m
+}
+ßß 	
+private
+©© 
+void
+©© 
+	SendTrace
+©© 
+(
+©© 
+List
+©© #
+<
+©©# $
+
+TracePoint
+©©$ .
+>
+©©. /
+points
+©©0 6
+)
+©©6 7
+{
+©©8 9
+LoggerManager
+™™ 
+logger
+™™  
+=
+™™! "
+new
+™™# &
+LoggerManager
+™™' 4
+(
+™™4 5
+this
+™™5 9
+.
+™™9 :
+GetType
+™™: A
+(
+™™A B
+)
+™™B C
+)
+™™C D
+;
+™™D E
+if
+´´ 
+(
+´´ 
+!
+´´ 
+_isConnected
+´´ 
+)
+´´ 
+return
+´´ %
+;
+´´% &
+var
+¨¨ 
+trace
+¨¨ 
+=
+¨¨ 
+new
+¨¨ "
+TripasDeGatoServicio
+¨¨ 0
+.
+¨¨0 1
+Trace
+¨¨1 6
+{
+¨¨7 8
+Player
+≠≠ 
+=
+≠≠ "
+UserProfileSingleton
+≠≠ -
+.
+≠≠- .
+UserName
+≠≠. 6
+,
+≠≠6 7
+TracePoints
+ÆÆ 
+=
+ÆÆ 
+points
+ÆÆ $
+,
+ÆÆ$ %
+	Timestamp
+ØØ 
+=
+ØØ 
+DateTime
+ØØ $
+.
+ØØ$ %
+Now
+ØØ% (
+,
+ØØ( )
+Color
+∞∞ 
+=
+∞∞ 
+$str
+∞∞ 
+}
+±± 
+;
+±± 
+try
+≤≤ 
+{
+≤≤ !
+_matchManagerClient
+≥≥ #
+.
+≥≥# $
+RegisterTrace
+≥≥$ 1
+(
+≥≥1 2
+
+_matchCode
+≥≥2 <
+,
+≥≥< =
+trace
+≥≥> C
+)
+≥≥C D
+;
+≥≥D E
+}
+¥¥ 
+catch
+¥¥ 
+(
+¥¥ '
+EndpointNotFoundException
+¥¥ .'
+endpointNotFoundException
+¥¥/ H
+)
+¥¥H I
+{
+¥¥J K
+logger
+µµ 
+.
+µµ 
+LogError
+µµ 
+(
+µµ  '
+endpointNotFoundException
+µµ  9
+)
+µµ9 :
+;
+µµ: ;
+DialogManager
+∂∂ 
+.
+∂∂ #
+ShowErrorMessageAlert
+∂∂ 3
+(
+∂∂3 4
+
+Properties
+∂∂4 >
+.
+∂∂> ?
+	Resources
+∂∂? H
+.
+∂∂H I%
+dialogEndPointException
+∂∂I `
+)
+∂∂` a
+;
+∂∂a b
+}
+∑∑ 
+catch
+∑∑ 
+(
+∑∑ 
+TimeoutException
+∑∑ %
+timeoutException
+∑∑& 6
+)
+∑∑6 7
+{
+∑∑8 9
+logger
+∏∏ 
+.
+∏∏ 
+LogError
+∏∏ 
+(
+∏∏  
+timeoutException
+∏∏  0
+)
+∏∏0 1
+;
+∏∏1 2
+DialogManager
+ππ 
+.
+ππ #
+ShowErrorMessageAlert
+ππ 3
+(
+ππ3 4
+
+Properties
+ππ4 >
+.
+ππ> ?
+	Resources
+ππ? H
+.
+ππH I$
+dialogTimeOutException
+ππI _
+)
+ππ_ `
+;
+ππ` a
+}
+∫∫ 
+catch
+∫∫ 
+(
+∫∫ $
+CommunicationException
+∫∫ +$
+communicationException
+∫∫, B
+)
+∫∫B C
+{
+∫∫D E
+logger
+ªª 
+.
+ªª 
+LogError
+ªª 
+(
+ªª  $
+communicationException
+ªª  6
+)
+ªª6 7
+;
+ªª7 8
 DialogManager
 ºº 
 .
@@ -18452,1739 +23935,1727 @@ TracePoint
 ShowErrorMessageAlert
 ºº 3
 (
-ºº3 4
-$str
-ºº4 o
+ºº3 4
+
+Properties
+ºº4 >
+.
+ºº> ?
+	Resources
+ºº? H
+.
+ººH I)
+dialogComunicationException
+ººI d
 )
-ººo p
+ººd e
 ;
-ººp q
+ººe f
 }
 ΩΩ 
 catch
 ΩΩ 
 (
-ΩΩ 
-TimeoutException
-ΩΩ %
-)
-ΩΩ% &
-{
-ΩΩ' (
-DialogManager
-ææ 
-.
-ææ #
-ShowErrorMessageAlert
-ææ 3
-(
-ææ3 4
-$str
-ææ4 _
-)
-ææ_ `
-;
-ææ` a
-}
-øø 
-catch
-øø 
-(
-øø 
+ΩΩ 
 	Exception
-øø 
-ex
-øø !
+ΩΩ 
+	exception
+ΩΩ (
 )
-øø! "
+ΩΩ( )
 {
-øø# $
+ΩΩ* +
+logger
+ææ 
+.
+ææ 
+LogError
+ææ 
+(
+ææ  
+	exception
+ææ  )
+)
+ææ) *
+;
+ææ* +
 DialogManager
-¿¿ 
+øø 
 .
-¿¿ #
+øø #
 ShowErrorMessageAlert
-¿¿ 3
+øø 3
 (
-¿¿3 4
-$"
-¿¿4 6
-$str
-¿¿6 P
-{
-¿¿P Q
-ex
-¿¿Q S
-.
-¿¿S T
-Message
-¿¿T [
-}
-¿¿[ \
-"
-¿¿\ ]
-)
-¿¿] ^
-;
-¿¿^ _
-}
-¡¡ 
-}
-¬¬ 	
-private
-ƒƒ 
-void
-ƒƒ 
-HandleInfraction
-ƒƒ %
-(
-ƒƒ% &
+øø3 4
 string
-ƒƒ& ,
+øø4 :
+.
+øø: ;
+Format
+øø; A
+(
+øøA B
+
+Properties
+øøB L
+.
+øøL M
+	Resources
+øøM V
+.
+øøV W#
+dialogUnexpectedError
+øøW l
+,
+øøl m
+	exception
+øøn w
+.
+øøw x
+Message
+øøx 
+)øø Ä
+)øøÄ Å
+;øøÅ Ç
+}
+¿¿ 
+}
+¡¡ 	
+private
+√√ 
+void
+√√ 
+HandleInfraction
+√√ %
+(
+√√% &
+string
+√√& ,
 message
-ƒƒ- 4
+√√- 4
 )
-ƒƒ4 5
+√√4 5
 {
-ƒƒ6 7
-	isDrawing
-≈≈ 
+√√6 7
+
+_isDrawing
+ƒƒ 
 =
-≈≈ 
+ƒƒ 
 false
-≈≈ 
+ƒƒ 
 ;
-≈≈ 
+ƒƒ 
 drawingCanvas
+≈≈ 
+.
+≈≈ 
+Children
+≈≈ "
+.
+≈≈" #
+Remove
+≈≈# )
+(
+≈≈) *
+_currentLine
+≈≈* 6
+)
+≈≈6 7
+;
+≈≈7 8
+DialogManager
 ∆∆ 
 .
-∆∆ 
-Children
-∆∆ "
-.
-∆∆" #
-Remove
-∆∆# )
-(
-∆∆) *
-currentLine
-∆∆* 5
-)
-∆∆5 6
-;
-∆∆6 7
-DialogManager
-«« 
-.
-«« #
+∆∆ #
 ShowErrorMessageAlert
-«« /
+∆∆ /
 (
-««/ 0
+∆∆/ 0
 message
-««0 7
+∆∆0 7
 )
-««7 8
+∆∆7 8
 ;
-««8 9
+∆∆8 9
 }
-»» 	
+«« 	
 public
-   
+…… 
 void
-   
-
-MatchEnded
-   
-(
-   
-string
-   %
-	matchCode
-  & /
-)
-  / 0
-{
-  1 2
-throw
-ÀÀ 
-new
-ÀÀ %
-NotImplementedException
-ÀÀ -
-(
-ÀÀ- .
-)
-ÀÀ. /
-;
-ÀÀ/ 0
-}
-ÃÃ 	
-public
-ŒŒ 
-void
-ŒŒ 
+…… 
 TraceReceived
-ŒŒ !
+…… !
 (
-ŒŒ! "
+……! "
 Trace
-ŒŒ" '
+……" '
 trace
-ŒŒ( -
+……( -
 )
-ŒŒ- .
+……- .
 {
-ŒŒ/ 0
+……/ 0
 var
-œœ 
+   
+receivedLine
+   
+=
+   
+new
+   "
+Polyline
+  # +
+{
+  , -
+Stroke
+ÀÀ 
+=
+ÀÀ 
+Brushes
+ÀÀ  
+.
+ÀÀ  !
+Red
+ÀÀ! $
+,
+ÀÀ$ %
+StrokeThickness
+ÃÃ 
+=
+ÃÃ  !
+$num
+ÃÃ" #
+}
+ÕÕ 
+;
+ÕÕ 
+foreach
+ŒŒ 
+(
+ŒŒ 
+var
+ŒŒ 
+point
+ŒŒ 
+in
+ŒŒ !
+trace
+ŒŒ" '
+.
+ŒŒ' (
+TracePoints
+ŒŒ( 3
+)
+ŒŒ3 4
+{
+ŒŒ5 6
 receivedLine
 œœ 
-=
-œœ 
-new
-œœ "
-Polyline
-œœ# +
-{
-œœ, -
-Stroke
-–– 
-=
-–– 
-Brushes
-––  
 .
-––  !
-Red
-––! $
-,
-––$ %
-StrokeThickness
-—— 
-=
-——  !
-$num
-——" #
-}
-““ 
-;
-““ 
-foreach
-”” 
-(
-”” 
-var
-”” 
-point
-”” 
-in
-”” !
-trace
-””" '
-.
-””' (
-TracePoints
-””( 3
-)
-””3 4
-{
-””5 6
-receivedLine
-‘‘ 
-.
-‘‘ 
+œœ 
 Points
-‘‘ #
+œœ #
 .
-‘‘# $
+œœ# $
 Add
-‘‘$ '
+œœ$ '
 (
-‘‘' (
+œœ' (
 new
-‘‘( +
+œœ( +
 Point
-‘‘, 1
+œœ, 1
 (
-‘‘1 2
+œœ1 2
 point
-‘‘2 7
+œœ2 7
 .
-‘‘7 8
+œœ7 8
 X
-‘‘8 9
+œœ8 9
 ,
-‘‘9 :
+œœ9 :
 point
-‘‘; @
+œœ; @
 .
-‘‘@ A
+œœ@ A
 Y
-‘‘A B
+œœA B
 )
-‘‘B C
+œœB C
 )
-‘‘C D
+œœC D
 ;
-‘‘D E
+œœD E
 }
-’’ 
+–– 
 Application
-÷÷ 
+—— 
 .
-÷÷ 
+—— 
 Current
-÷÷ 
+—— 
 .
-÷÷  
+——  
 
 Dispatcher
-÷÷  *
+——  *
 .
-÷÷* +
+——* +
 Invoke
-÷÷+ 1
+——+ 1
 (
-÷÷1 2
+——1 2
 (
-÷÷2 3
+——2 3
 )
-÷÷3 4
+——3 4
 =>
-÷÷5 7
+——5 7
 {
-÷÷8 9
+——8 9
 drawingCanvas
-◊◊ 
+““ 
 .
-◊◊ 
+““ 
 Children
-◊◊ &
+““ &
 .
-◊◊& '
+““& '
 Add
-◊◊' *
+““' *
 (
-◊◊* +
+““* +
 receivedLine
-◊◊+ 7
+““+ 7
 )
-◊◊7 8
+““7 8
 ;
-◊◊8 9
+““8 9
 }
-ÿÿ 
+”” 
 )
-ÿÿ 
+”” 
 ;
-ÿÿ 
-	allTraces
-ŸŸ 
+”” 
+
+_allTraces
+‘‘ 
 .
-ŸŸ 
+‘‘ 
 Add
-ŸŸ 
+‘‘ 
 (
-ŸŸ 
+‘‘ 
 receivedLine
-ŸŸ &
+‘‘ '
 )
-ŸŸ& '
+‘‘' (
 ;
-ŸŸ' (
+‘‘( )
 }
-⁄⁄ 	
+’’ 	
 private
-‹‹ 
+◊◊ 
 void
-‹‹ 
+◊◊ 
 	DrawNodes
-‹‹ 
+◊◊ 
 (
-‹‹ 
+◊◊ 
 )
-‹‹  
+◊◊  
 {
-‹‹! "
+◊◊! "
 if
-›› 
+ÿÿ 
 (
-›› 
+ÿÿ 
 nodes
-›› 
+ÿÿ 
 ==
-›› 
+ÿÿ 
 null
-›› 
+ÿÿ 
 )
-›› 
+ÿÿ 
 return
-›› %
+ÿÿ %
 ;
-››% &
+ÿÿ% &
 Application
-ﬁﬁ 
+ŸŸ 
 .
-ﬁﬁ 
+ŸŸ 
 Current
-ﬁﬁ 
+ŸŸ 
 .
-ﬁﬁ  
+ŸŸ  
 
 Dispatcher
-ﬁﬁ  *
+ŸŸ  *
 .
-ﬁﬁ* +
+ŸŸ* +
 Invoke
-ﬁﬁ+ 1
+ŸŸ+ 1
 (
-ﬁﬁ1 2
+ŸŸ1 2
 (
-ﬁﬁ2 3
+ŸŸ2 3
 )
-ﬁﬁ3 4
+ŸŸ3 4
 =>
-ﬁﬁ5 7
+ŸŸ5 7
 drawingCanvas
-ﬁﬁ8 E
+ŸŸ8 E
 .
-ﬁﬁE F
+ŸŸE F
 Children
-ﬁﬁF N
+ŸŸF N
 .
-ﬁﬁN O
+ŸŸN O
 Clear
-ﬁﬁO T
+ŸŸO T
 (
-ﬁﬁT U
+ŸŸT U
 )
-ﬁﬁU V
+ŸŸU V
 )
-ﬁﬁV W
+ŸŸV W
 ;
-ﬁﬁW X
+ŸŸW X
 foreach
-ﬂﬂ 
+⁄⁄ 
 (
-ﬂﬂ 
+⁄⁄ 
 var
-ﬂﬂ 
+⁄⁄ 
 node
-ﬂﬂ 
+⁄⁄ 
 in
-ﬂﬂ  
+⁄⁄  
 nodes
-ﬂﬂ! &
+⁄⁄! &
 )
-ﬂﬂ& '
+⁄⁄& '
 {
-ﬂﬂ( )
+⁄⁄( )
 var
-‡‡ 
+€€ 
 ellipse
-‡‡ 
+€€ 
 =
-‡‡ 
+€€ 
 new
-‡‡ !
+€€ !
 Ellipse
-‡‡" )
+€€" )
 {
-‡‡* +
+€€* +
 Width
-·· 
+‹‹ 
 =
-·· 
+‹‹ 
 $num
-·· 
+‹‹ 
 ,
-·· 
+‹‹ 
 Height
-‚‚ 
+›› 
 =
-‚‚ 
+›› 
 $num
-‚‚ 
+›› 
 ,
-‚‚  
+››  
 Fill
-„„ 
+ﬁﬁ 
 =
-„„ 
+ﬁﬁ 
 new
-„„ 
+ﬁﬁ 
 SolidColorBrush
-„„ .
+ﬁﬁ .
 (
-„„. /
+ﬁﬁ. /
 (
-„„/ 0
+ﬁﬁ/ 0
 Color
-„„0 5
+ﬁﬁ0 5
 )
-„„5 6
+ﬁﬁ5 6
 ColorConverter
-„„6 D
+ﬁﬁ6 D
 .
-„„D E
+ﬁﬁD E
 ConvertFromString
-„„E V
+ﬁﬁE V
 (
-„„V W
+ﬁﬁV W
 node
-„„W [
+ﬁﬁW [
 .
-„„[ \
+ﬁﬁ[ \
 Color
-„„\ a
+ﬁﬁ\ a
 )
-„„a b
+ﬁﬁa b
 )
-„„b c
+ﬁﬁb c
 ,
-„„c d
+ﬁﬁc d
 Stroke
-‰‰ 
+ﬂﬂ 
 =
-‰‰ 
+ﬂﬂ 
 Brushes
-‰‰ $
+ﬂﬂ $
 .
-‰‰$ %
+ﬂﬂ$ %
 Black
-‰‰% *
+ﬂﬂ% *
 ,
-‰‰* +
+ﬂﬂ* +
 StrokeThickness
-ÂÂ #
+‡‡ #
 =
-ÂÂ$ %
+‡‡$ %
 $num
-ÂÂ& '
+‡‡& '
 }
-ÊÊ 
+·· 
 ;
-ÊÊ 
+·· 
 Canvas
-ÁÁ 
+‚‚ 
 .
-ÁÁ 
+‚‚ 
 SetLeft
-ÁÁ 
+‚‚ 
 (
-ÁÁ 
+‚‚ 
 ellipse
-ÁÁ &
+‚‚ &
 ,
-ÁÁ& '
+‚‚& '
 node
-ÁÁ( ,
+‚‚( ,
 .
-ÁÁ, -
+‚‚, -
 X
-ÁÁ- .
+‚‚- .
 -
-ÁÁ/ 0
+‚‚/ 0
 ellipse
-ÁÁ1 8
+‚‚1 8
 .
-ÁÁ8 9
+‚‚8 9
 Width
-ÁÁ9 >
+‚‚9 >
 /
-ÁÁ? @
+‚‚? @
 $num
-ÁÁA B
+‚‚A B
 )
-ÁÁB C
+‚‚B C
 ;
-ÁÁC D
+‚‚C D
 Canvas
-ËË 
+„„ 
 .
-ËË 
+„„ 
 SetTop
-ËË 
+„„ 
 (
-ËË 
+„„ 
 ellipse
-ËË %
+„„ %
 ,
-ËË% &
+„„% &
 node
-ËË' +
+„„' +
 .
-ËË+ ,
+„„+ ,
 Y
-ËË, -
+„„, -
 -
-ËË. /
+„„. /
 ellipse
-ËË0 7
+„„0 7
 .
-ËË7 8
+„„7 8
 Height
-ËË8 >
+„„8 >
 /
-ËË? @
+„„? @
 $num
-ËËA B
+„„A B
 )
-ËËB C
+„„B C
 ;
-ËËC D
+„„C D
 Application
-ÈÈ 
+‰‰ 
 .
-ÈÈ 
+‰‰ 
 Current
-ÈÈ #
+‰‰ #
 .
-ÈÈ# $
+‰‰# $
 
 Dispatcher
-ÈÈ$ .
+‰‰$ .
 .
-ÈÈ. /
+‰‰. /
 Invoke
-ÈÈ/ 5
+‰‰/ 5
 (
-ÈÈ5 6
+‰‰5 6
 (
-ÈÈ6 7
+‰‰6 7
 )
-ÈÈ7 8
+‰‰7 8
 =>
-ÈÈ9 ;
+‰‰9 ;
 drawingCanvas
-ÈÈ< I
+‰‰< I
 .
-ÈÈI J
+‰‰I J
 Children
-ÈÈJ R
+‰‰J R
 .
-ÈÈR S
+‰‰R S
 Add
-ÈÈS V
+‰‰S V
 (
-ÈÈV W
+‰‰V W
 ellipse
-ÈÈW ^
+‰‰W ^
 )
-ÈÈ^ _
+‰‰^ _
 )
-ÈÈ_ `
+‰‰_ `
 ;
-ÈÈ` a
+‰‰` a
 }
-ÍÍ 
+ÂÂ 
 }
-ÎÎ 	
+ÊÊ 	
 private
-ÔÔ 
+ÈÈ 
 async
-ÔÔ 
+ÈÈ 
 void
-ÔÔ 
+ÈÈ 
 BtnBack_Click
-ÔÔ (
+ÈÈ (
 (
-ÔÔ( )
+ÈÈ( )
 object
-ÔÔ) /
+ÈÈ) /
 sender
-ÔÔ0 6
+ÈÈ0 6
 ,
-ÔÔ6 7
+ÈÈ6 7
 RoutedEventArgs
-ÔÔ8 G
+ÈÈ8 G
 e
-ÔÔH I
+ÈÈH I
 )
-ÔÔI J
+ÈÈI J
 {
-ÔÔK L
+ÈÈK L
 LoggerManager
- 
+ÍÍ 
 logger
-  
+ÍÍ  
 =
-! "
+ÍÍ! "
 new
-# &
+ÍÍ# &
 LoggerManager
-' 4
+ÍÍ' 4
 (
-4 5
+ÍÍ4 5
 this
-5 9
+ÍÍ5 9
 .
-9 :
+ÍÍ9 :
 GetType
-: A
+ÍÍ: A
 (
-A B
+ÍÍA B
 )
-B C
+ÍÍB C
 )
-C D
+ÍÍC D
 ;
-D E
+ÍÍD E
 try
-ÒÒ 
+ÎÎ 
 {
-ÒÒ 
-ExitUseSinglenton
-ÛÛ !
-(
-ÛÛ! "
-)
-ÛÛ" #
-;
-ÛÛ# $
-}
-ÙÙ 
-catch
-ÙÙ 
-(
-ÙÙ '
-EndpointNotFoundException
-ÙÙ .'
-endpointNotFoundException
-ÙÙ/ H
-)
-ÙÙH I
-{
-ÙÙJ K
-logger
-ıı 
-.
-ıı 
-LogError
-ıı 
-(
-ıı  '
-endpointNotFoundException
-ıı  9
-)
-ıı9 :
-;
-ıı: ;
-DialogManager
-ˆˆ 
-.
-ˆˆ #
-ShowErrorMessageAlert
-ˆˆ 3
-(
-ˆˆ3 4
-
-Properties
-ˆˆ4 >
-.
-ˆˆ> ?
-	Resources
-ˆˆ? H
-.
-ˆˆH I%
-dialogEndPointException
-ˆˆI `
-)
-ˆˆ` a
-;
-ˆˆa b
-ExitUseSinglenton
-˜˜ !
-(
-˜˜! "
-)
-˜˜" #
-;
-˜˜# $
-}
-¯¯ 
-catch
-¯¯ 
-(
-¯¯ 
-TimeoutException
-¯¯ %
-timeoutException
-¯¯& 6
-)
-¯¯6 7
-{
-¯¯8 9
-logger
-˘˘ 
-.
-˘˘ 
-LogError
-˘˘ 
-(
-˘˘  
-timeoutException
-˘˘  0
-)
-˘˘0 1
-;
-˘˘1 2
-DialogManager
-˙˙ 
-.
-˙˙ #
-ShowErrorMessageAlert
-˙˙ 3
-(
-˙˙3 4
-
-Properties
-˙˙4 >
-.
-˙˙> ?
-	Resources
-˙˙? H
-.
-˙˙H I$
-dialogTimeOutException
-˙˙I _
-)
-˙˙_ `
-;
-˙˙` a
-ExitUseSinglenton
-˚˚ !
-(
-˚˚! "
-)
-˚˚" #
-;
-˚˚# $
-}
-¸¸ 
-catch
-¸¸ 
-(
-¸¸ $
-CommunicationException
-¸¸ +$
-communicationException
-¸¸, B
-)
-¸¸B C
-{
-¸¸D E
-logger
-˝˝ 
-.
-˝˝ 
-LogError
-˝˝ 
-(
-˝˝  $
-communicationException
-˝˝  6
-)
-˝˝6 7
-;
-˝˝7 8
-DialogManager
-˛˛ 
-.
-˛˛ #
-ShowErrorMessageAlert
-˛˛ 3
-(
-˛˛3 4
-
-Properties
-˛˛4 >
-.
-˛˛> ?
-	Resources
-˛˛? H
-.
-˛˛H I)
-dialogComunicationException
-˛˛I d
-)
-˛˛d e
-;
-˛˛e f
-ExitUseSinglenton
-ˇˇ !
-(
-ˇˇ! "
-)
-ˇˇ" #
-;
-ˇˇ# $
-}
-ÄÄ 
-}
-ÅÅ 	
-private
-ÉÉ 
-void
-ÉÉ 
-ExitUseSinglenton
-ÉÉ &
-(
-ÉÉ& '
-)
-ÉÉ' (
-{
-ÉÉ) *
+ÎÎ 
 if
-ÑÑ 
+ÏÏ 
 (
-ÑÑ "
+ÏÏ 
+_isConnected
+ÏÏ  
+)
+ÏÏ  !
+{
+ÏÏ" #
+await
+ÌÌ !
+_matchManagerClient
+ÌÌ -
+.
+ÌÌ- .
+LeaveMatchAsync
+ÌÌ. =
+(
+ÌÌ= >
+
+_matchCode
+ÌÌ> H
+,
+ÌÌH I"
 UserProfileSingleton
-ÑÑ $
+ÌÌJ ^
 .
-ÑÑ$ %
-	IdProfile
-ÑÑ% .
-<
-ÑÑ/ 0
-$num
-ÑÑ1 7
+ÌÌ^ _
+UserName
+ÌÌ_ g
 )
-ÑÑ7 8
-{
-ÑÑ9 :
-GoToMenuView
-ÖÖ 
-(
-ÖÖ 
-)
-ÖÖ 
+ÌÌg h
 ;
-ÖÖ 
-}
-ÜÜ 
-else
-ÜÜ 
-{
-ÜÜ 
-GoToLoginView
-áá 
+ÌÌh i
+ExitUseSinglenton
+ÓÓ %
 (
-áá 
+ÓÓ% &
 )
-áá 
+ÓÓ& '
 ;
-áá  
+ÓÓ' (
 }
-àà 
+ÔÔ 
 }
-ââ 	
+ 
+catch
+ 
+(
+ '
+EndpointNotFoundException
+ .'
+endpointNotFoundException
+/ H
+)
+H I
+{
+J K
+logger
+ÒÒ 
+.
+ÒÒ 
+LogError
+ÒÒ 
+(
+ÒÒ  '
+endpointNotFoundException
+ÒÒ  9
+)
+ÒÒ9 :
+;
+ÒÒ: ;
+DialogManager
+ÚÚ 
+.
+ÚÚ #
+ShowErrorMessageAlert
+ÚÚ 3
+(
+ÚÚ3 4
+
+Properties
+ÚÚ4 >
+.
+ÚÚ> ?
+	Resources
+ÚÚ? H
+.
+ÚÚH I%
+dialogEndPointException
+ÚÚI `
+)
+ÚÚ` a
+;
+ÚÚa b
+}
+ÛÛ 
+catch
+ÛÛ 
+(
+ÛÛ 
+TimeoutException
+ÛÛ %
+timeoutException
+ÛÛ& 6
+)
+ÛÛ6 7
+{
+ÛÛ8 9
+logger
+ÙÙ 
+.
+ÙÙ 
+LogError
+ÙÙ 
+(
+ÙÙ  
+timeoutException
+ÙÙ  0
+)
+ÙÙ0 1
+;
+ÙÙ1 2
+DialogManager
+ıı 
+.
+ıı #
+ShowErrorMessageAlert
+ıı 3
+(
+ıı3 4
+
+Properties
+ıı4 >
+.
+ıı> ?
+	Resources
+ıı? H
+.
+ııH I$
+dialogTimeOutException
+ııI _
+)
+ıı_ `
+;
+ıı` a
+}
+ˆˆ 
+catch
+ˆˆ 
+(
+ˆˆ $
+CommunicationException
+ˆˆ +$
+communicationException
+ˆˆ, B
+)
+ˆˆB C
+{
+ˆˆD E
+logger
+˜˜ 
+.
+˜˜ 
+LogError
+˜˜ 
+(
+˜˜  $
+communicationException
+˜˜  6
+)
+˜˜6 7
+;
+˜˜7 8
+DialogManager
+¯¯ 
+.
+¯¯ #
+ShowErrorMessageAlert
+¯¯ 3
+(
+¯¯3 4
+
+Properties
+¯¯4 >
+.
+¯¯> ?
+	Resources
+¯¯? H
+.
+¯¯H I)
+dialogComunicationException
+¯¯I d
+)
+¯¯d e
+;
+¯¯e f
+}
+˘˘ 
+catch
+˘˘ 
+(
+˘˘ 
+	Exception
+˘˘ 
+	exception
+˘˘ (
+)
+˘˘( )
+{
+˘˘* +
+logger
+˙˙ 
+.
+˙˙ 
+LogError
+˙˙ 
+(
+˙˙  
+	exception
+˙˙  )
+)
+˙˙) *
+;
+˙˙* +
+DialogManager
+˚˚ 
+.
+˚˚ #
+ShowErrorMessageAlert
+˚˚ 3
+(
+˚˚3 4
+string
+˚˚4 :
+.
+˚˚: ;
+Format
+˚˚; A
+(
+˚˚A B
+
+Properties
+˚˚B L
+.
+˚˚L M
+	Resources
+˚˚M V
+.
+˚˚V W#
+dialogUnexpectedError
+˚˚W l
+,
+˚˚l m
+	exception
+˚˚n w
+.
+˚˚w x
+Message
+˚˚x 
+)˚˚ Ä
+)˚˚Ä Å
+;˚˚Å Ç
+}
+¸¸ 
+ExitUseSinglenton
+˝˝ 
+(
+˝˝ 
+)
+˝˝ 
+;
+˝˝  
+}
+˛˛ 	
 private
-ää 
+ÄÄ 
 void
-ää 
-GoToMenuView
-ää !
+ÄÄ 
+ExitUseSinglenton
+ÄÄ &
 (
-ää! "
+ÄÄ& '
 )
-ää" #
+ÄÄ' (
 {
-ää$ %
-MenuView
-ãã 
-menuView
-ãã 
-=
-ãã 
-new
-ãã  #
-MenuView
-ãã$ ,
+ÄÄ) *"
+UserProfileSingleton
+ÅÅ  
+.
+ÅÅ  !
+ResetMatchCode
+ÅÅ! /
 (
-ãã, -
+ÅÅ/ 0
 )
-ãã- .
+ÅÅ0 1
 ;
-ãã. /
+ÅÅ1 2
 if
-åå 
+ÇÇ 
 (
-åå 
+ÇÇ "
+UserProfileSingleton
+ÇÇ $
+.
+ÇÇ$ %
+	IdProfile
+ÇÇ% .
+<
+ÇÇ/ 0
+$num
+ÇÇ1 7
+)
+ÇÇ7 8
+{
+ÇÇ9 :
+GoToMenuView
+ÉÉ 
+(
+ÉÉ 
+)
+ÉÉ 
+;
+ÉÉ 
+}
+ÑÑ 
+else
+ÑÑ 
+{
+ÑÑ 
+GoToLoginView
+ÖÖ 
+(
+ÖÖ 
+)
+ÖÖ 
+;
+ÖÖ  
+}
+ÜÜ 
+}
+áá 	
+private
+ââ 
+void
+ââ 
+GoToMenuView
+ââ !
+(
+ââ! "
+)
+ââ" #
+{
+ââ$ %
+MenuView
+ää 
+menuView
+ää 
+=
+ää 
+new
+ää  #
+MenuView
+ää$ ,
+(
+ää, -
+)
+ää- .
+;
+ää. /
+if
+ãã 
+(
+ãã 
+this
+ãã 
+.
+ãã 
+NavigationService
+ãã &
+!=
+ãã' )
+null
+ãã* .
+)
+ãã. /
+{
+ãã0 1
 this
 åå 
 .
 åå 
 NavigationService
-åå &
-!=
-åå' )
-null
-åå* .
-)
-åå. /
-{
-åå0 1
-this
-çç 
+åå &
 .
-çç 
-NavigationService
-çç &
-.
-çç& '
+åå& '
 Navigate
-çç' /
+åå' /
 (
-çç/ 0
+åå/ 0
 menuView
-çç0 8
+åå0 8
 )
-çç8 9
+åå8 9
 ;
-çç9 :
+åå9 :
 }
-éé 
+çç 
 else
-éé 
+çç 
 {
-éé 
+çç 
 DialogManager
-èè 
+éé 
 .
-èè #
+éé #
 ShowErrorMessageAlert
-èè 3
+éé 3
 (
-èè3 4
+éé3 4
 
 Properties
-èè4 >
+éé4 >
 .
-èè> ?
+éé> ?
 	Resources
-èè? H
+éé? H
 .
-èèH I#
+ééH I#
 dialogNavigationError
-èèI ^
+ééI ^
 )
-èè^ _
+éé^ _
 ;
-èè_ `
+éé_ `
 }
-êê 
+èè 
 }
-ëë 	
+êê 	
 private
-ìì 
+íí 
 void
-ìì 
+íí 
 GoToLoginView
-ìì "
+íí "
 (
-ìì" #
+íí" #
 )
-ìì# $
+íí# $
 {
-ìì% &
+íí% &
 	LoginView
-îî 
+ìì 
 	loginView
-îî 
+ìì 
 =
-îî  !
+ìì  !
 new
-îî" %
+ìì" %
 	LoginView
-îî& /
+ìì& /
 (
-îî/ 0
+ìì/ 0
 )
-îî0 1
+ìì0 1
 ;
-îî1 2
+ìì1 2
 if
-ïï 
+îî 
 (
-ïï 
+îî 
+this
+îî 
+.
+îî 
+NavigationService
+îî &
+!=
+îî' )
+null
+îî* .
+)
+îî. /
+{
+îî0 1
 this
 ïï 
 .
 ïï 
 NavigationService
-ïï &
-!=
-ïï' )
-null
-ïï* .
-)
-ïï. /
-{
-ïï0 1
-this
-ññ 
+ïï &
 .
-ññ 
-NavigationService
-ññ &
-.
-ññ& '
+ïï& '
 Navigate
-ññ' /
+ïï' /
 (
-ññ/ 0
+ïï/ 0
 	loginView
-ññ0 9
+ïï0 9
 )
-ññ9 :
+ïï9 :
 ;
-ññ: ;
+ïï: ;
 }
-óó 
+ññ 
 else
-óó 
+ññ 
 {
-óó 
+ññ 
 DialogManager
-òò 
+óó 
 .
-òò #
+óó #
 ShowErrorMessageAlert
-òò 3
+óó 3
 (
-òò3 4
+óó3 4
 
 Properties
-òò4 >
+óó4 >
 .
-òò> ?
+óó> ?
 	Resources
-òò? H
+óó? H
 .
-òòH I#
+óóH I#
 dialogNavigationError
-òòI ^
+óóI ^
 )
-òò^ _
+óó^ _
 ;
-òò_ `
+óó_ `
 }
-ôô 
+òò 
 }
-öö 	
-}
-õõ 
-}úú ¶V
-4C:\TripasDeGatoCliente\Views\CreateLobbyView.xaml.cs
-	namespace 	
-TripasDeGatoCliente
- 
-. 
-Views #
-{$ %
-public 
-
-partial 
-class 
-CreateLobbyView (
-:) *
-Page+ /
-{0 1
-private 
-LobbyBrowserClient "
-lobbyBrowser# /
-;/ 0
-public 
-CreateLobbyView 
-( 
-)  
-{! "
-InitializeComponent 
-(  
-)  !
-;! " 
-InitializeFormValues  
-(  !
-)! "
-;" #
-lobbyBrowser   
-=   
-new   
-LobbyBrowserClient   1
-(  1 2
-)  2 3
-;  3 4
-}!! 	
-private## 
-void##  
-InitializeFormValues## )
-(##) *
-)##* +
-{##, -
-cboxNode%% 
-.%% 
-ItemsSource%%  
-=%%! "
-new%%# &
-List%%' +
-<%%+ ,
-int%%, /
->%%/ 0
-{%%1 2
-$num%%3 4
-,%%4 5
-$num%%6 8
-,%%8 9
-$num%%: <
-,%%< =
-$num%%> @
-,%%@ A
-$num%%B D
-,%%D E
-$num%%F H
-,%%H I
-$num%%J L
-}%%M N
-;%%N O
-cboxNode&& 
-.&& 
-SelectedIndex&& "
-=&&# $
-$num&&% &
-;&&& '
-cboxMap(( 
-.(( 
-ItemsSource(( 
-=((  !
-new((" %
-List((& *
-<((* +
-String((+ 1
->((1 2
-{((3 4
-
-Properties)) 
-.)) 
-	Resources)) $
-.))$ %
-mapOptionCat))% 1
-,))1 2
-
-Properties** 
-.** 
-	Resources** $
-.**$ %
-mapOptionDog**% 1
-,**1 2
-
-Properties++ 
-.++ 
-	Resources++ $
-.++$ %
-mapOptionBear++% 2
-},, 
-;,, 
-cboxMap.. 
-... 
-SelectedIndex.. !
-=.." #
-$num..$ %
-;..% &
-cboxTime00 
-.00 
-ItemsSource00  
-=00! "
-new00# &
-List00' +
-<00+ ,
-string00, 2
->002 3
-{004 5
-$str006 @
-,00@ A
-$str00B L
-,00L M
-$str00N Y
-}00Z [
-;00[ \
-cboxTime11 
-.11 
-SelectedIndex11 "
-=11# $
-$num11% &
-;11& '
-}22 	
-private44 
-async44 
-void44  
-BtnCreateLobby_Click44 /
-(44/ 0
-object440 6
-sender447 =
-,44= >
-RoutedEventArgs44? N
-e44O P
-)44P Q
-{44R S
-LoggerManager55 
-logger55  
-=55! "
-new55# &
-LoggerManager55' 4
-(554 5
-this555 9
-.559 :
-GetType55: A
-(55A B
-)55B C
-)55C D
-;55D E
-if88 
-(88 
-string88 
-.88 
-IsNullOrWhiteSpace88 )
-(88) *
-txtNameLobby88* 6
-.886 7
-Text887 ;
-)88; <
-)88< =
-{88> ?
-DialogManager99 
-.99 #
-ShowWarningMessageAlert99 5
-(995 6
-
-Properties996 @
-.99@ A
-	Resources99A J
-.99J K$
-dialogEnterGameNameError99K c
-)99c d
-;99d e
-return:: 
-;:: 
-};; 
-if== 
-(== 
-cboxNode== 
-.== 
-SelectedItem== %
-====& (
-null==) -
-||==. 0
-cboxTime==1 9
-.==9 :
-SelectedItem==: F
-====G I
-null==J N
-||==O Q
-cboxMap==R Y
-.==Y Z
-SelectedItem==Z f
-====g i
-null==j n
-)==n o
-{==p q
-DialogManager>> 
-.>> #
-ShowWarningMessageAlert>> 5
-(>>5 6
-
-Properties>>6 @
-.>>@ A
-	Resources>>A J
-.>>J K)
-dialogSelectNodesMapTimeError>>K h
-)>>h i
-;>>i j
-return?? 
-;?? 
-}@@ 
-stringBB 
-gameNameBB 
-=BB 
-txtNameLobbyBB *
-.BB* +
-TextBB+ /
-.BB/ 0
-TrimBB0 4
-(BB4 5
-)BB5 6
-;BB6 7
-intCC 
-	nodeCountCC 
-=CC 
-(CC 
-intCC  
-)CC  !
-cboxNodeCC! )
-.CC) *
-SelectedItemCC* 6
-;CC6 7
-TimeSpanDD 
-durationDD 
-=DD 
-TimeSpanDD  (
-.DD( )
-ZeroDD) -
-;DD- .
-switchFF 
-(FF 
-cboxTimeFF 
-.FF 
-SelectedItemFF )
-.FF) *
-ToStringFF* 2
-(FF2 3
-)FF3 4
-)FF4 5
-{FF6 7
-caseGG 
-$strGG 
-:GG  
-durationHH 
-=HH 
-TimeSpanHH '
-.HH' (
-FromMinutesHH( 3
-(HH3 4
-$numHH4 5
-)HH5 6
-;HH6 7
-breakII 
-;II 
-caseJJ 
-$strJJ 
-:JJ  
-durationKK 
-=KK 
-TimeSpanKK '
-.KK' (
-FromMinutesKK( 3
-(KK3 4
-$numKK4 5
-)KK5 6
-;KK6 7
-breakLL 
-;LL 
-caseMM 
-$strMM  
-:MM  !
-durationNN 
-=NN 
-TimeSpanNN '
-.NN' (
-FromMinutesNN( 3
-(NN3 4
-$numNN4 6
-)NN6 7
-;NN7 8
-breakOO 
-;OO 
-defaultPP 
-:PP 
-DialogManagerQQ !
-.QQ! "#
-ShowWarningMessageAlertQQ" 9
-(QQ9 :
-
-PropertiesQQ: D
-.QQD E
-	ResourcesQQE N
-.QQN O%
-dialogInvalidTimeSelectedQQO h
-)QQh i
-;QQi j
-returnRR 
-;RR 
-}SS 
-tryUU 
-{UU 
-varVV 
-ownerVV 
-=VV 
-newVV 
-ProfileVV  '
-{VV( )
-	IdProfileWW 
-=WW  
-UserProfileSingletonWW  4
-.WW4 5
-	IdProfileWW5 >
-,WW> ?
-UsernameXX 
-=XX  
-UserProfileSingletonXX 3
-.XX3 4
-UserNameXX4 <
-}YY 
-;YY 
-string\\ 
-	lobbyCode\\  
-=\\! "
-await\\# (
-lobbyBrowser\\) 5
-.\\5 6
-CreateLobbyAsync\\6 F
-(\\F G
-gameName\\G O
-,\\O P
-	nodeCount\\Q Z
-,\\Z [
-owner\\\ a
-,\\a b
-duration\\c k
-)\\k l
-;\\l m
-if^^ 
-(^^ 
-!^^ 
-string^^ 
-.^^ 
-IsNullOrEmpty^^ )
-(^^) *
-	lobbyCode^^* 3
-)^^3 4
-)^^4 5
-{^^6 7
-GoToLobbyView`` !
-(``! "
-	lobbyCode``" +
-)``+ ,
-;``, -
-}aa 
-elseaa 
-{aa 
-DialogManagerbb !
-.bb! "#
-ShowWarningMessageAlertbb" 9
-(bb9 :
-
-Propertiesbb: D
-.bbD E
-	ResourcesbbE N
-.bbN O$
-dialogLobbyCreationErrorbbO g
-)bbg h
-;bbh i
-}cc 
-}dd 
-catchdd 
-(dd %
-EndpointNotFoundExceptiondd .%
-endpointNotFoundExceptiondd/ H
-)ddH I
-{ddJ K
-loggeree 
-.ee 
-LogErroree 
-(ee  %
-endpointNotFoundExceptionee  9
-)ee9 :
-;ee: ;
-DialogManagerff 
-.ff !
-ShowErrorMessageAlertff 3
-(ff3 4
-
-Propertiesff4 >
-.ff> ?
-	Resourcesff? H
-.ffH I#
-dialogEndPointExceptionffI `
-)ff` a
-;ffa b
-}gg 
-catchgg 
-(gg 
-TimeoutExceptiongg %
-timeoutExceptiongg& 6
-)gg6 7
-{gg8 9
-loggerhh 
-.hh 
-LogErrorhh 
-(hh  
-timeoutExceptionhh  0
-)hh0 1
-;hh1 2
-DialogManagerii 
-.ii !
-ShowErrorMessageAlertii 3
-(ii3 4
-
-Propertiesii4 >
-.ii> ?
-	Resourcesii? H
-.iiH I"
-dialogTimeOutExceptioniiI _
-)ii_ `
-;ii` a
-}jj 
-catchjj 
-(jj "
-CommunicationExceptionjj +"
-communicationExceptionjj, B
-)jjB C
-{jjD E
-loggerkk 
-.kk 
-LogErrorkk 
-(kk  "
-communicationExceptionkk  6
-)kk6 7
-;kk7 8
-DialogManagerll 
-.ll !
-ShowErrorMessageAlertll 3
-(ll3 4
-
-Propertiesll4 >
-.ll> ?
-	Resourcesll? H
-.llH I'
-dialogComunicationExceptionllI d
-)lld e
-;lle f
-}mm 
-}nn 	
-privateoo 
-voidoo 
-BtnBack_Clickoo "
-(oo" #
-objectoo# )
-senderoo* 0
-,oo0 1
-	EventArgsoo2 ;
-eoo< =
-)oo= >
-{oo? @
-GoToMenuViewpp 
-(pp 
-)pp 
-;pp 
-}qq 	
-privatess 
-voidss 
-GoToLobbyViewss "
-(ss" #
-stringss# )
-	lobbyCodess* 3
-)ss3 4
-{ss5 6
-	LobbyViewtt 
-	lobbyViewtt 
-=tt  !
-newtt" %
-	LobbyViewtt& /
-(tt/ 0
-	lobbyCodett0 9
-)tt9 :
-;tt: ;
-ifuu 
-(uu 
-thisuu 
-.uu 
-NavigationServiceuu &
-!=uu' )
-nulluu* .
-)uu. /
-{uu0 1
-thisvv 
-.vv 
-NavigationServicevv &
-.vv& '
-Navigatevv' /
-(vv/ 0
-	lobbyViewvv0 9
-)vv9 :
-;vv: ;
-}ww 
-elseww 
-{ww 
-DialogManagerxx 
-.xx !
-ShowErrorMessageAlertxx 3
-(xx3 4
-
-Propertiesxx4 >
-.xx> ?
-	Resourcesxx? H
-.xxH I!
-dialogNavigationErrorxxI ^
-)xx^ _
-;xx_ `
-}yy 
-}zz 	
-private{{ 
-void{{ 
-GoToMenuView{{ !
-({{! "
-){{" #
-{{{$ %
-MenuView|| 
-menuView|| 
-=|| 
-new||  #
-MenuView||$ ,
-(||, -
-)||- .
-;||. /
-if}} 
-(}} 
-this}} 
-.}} 
-NavigationService}} &
-!=}}' )
-null}}* .
-)}}. /
-{}}0 1
-this~~ 
-.~~ 
-NavigationService~~ &
-.~~& '
-Navigate~~' /
-(~~/ 0
-menuView~~0 8
-)~~8 9
-;~~9 :
-} 
-else 
-{ 
-DialogManager
-ÄÄ 
-.
-ÄÄ #
-ShowErrorMessageAlert
-ÄÄ 3
+ôô 	
+public
+õõ 
+void
+õõ 
+NotifyYouLost
+õõ !
 (
-ÄÄ3 4
+õõ! "
+)
+õõ" #
+{
+õõ$ %!
+DisableGameControls
+úú 
+(
+úú  
+)
+úú  !
+;
+úú! "
+Application
+ùù 
+.
+ùù 
+Current
+ùù 
+.
+ùù  
+
+Dispatcher
+ùù  *
+.
+ùù* +
+Invoke
+ùù+ 1
+(
+ùù1 2
+(
+ùù2 3
+)
+ùù3 4
+=>
+ùù5 7
+{
+ùù8 9
+lbMatchStatus
+ûû 
+.
+ûû 
+Content
+ûû %
+=
+ûû& '
 
 Properties
-ÄÄ4 >
+ûû( 2
 .
-ÄÄ> ?
+ûû2 3
 	Resources
-ÄÄ? H
+ûû3 <
 .
-ÄÄH I#
-dialogNavigationError
-ÄÄI ^
-)
-ÄÄ^ _
+ûû< ="
+lbMatchStatusYouLost
+ûû= Q
 ;
-ÄÄ_ `
+ûûQ R
+lbMatchStatus
+üü 
+.
+üü 
+
+Foreground
+üü (
+=
+üü) *
+Brushes
+üü+ 2
+.
+üü2 3
+Red
+üü3 6
+;
+üü6 7
+drawingCanvas
+†† 
+.
+†† 
+	IsEnabled
+†† '
+=
+††( )
+false
+††* /
+;
+††/ 0
+_timer
+°° 
+?
+°° 
+.
+°° 
+Stop
+°° 
+(
+°° 
+)
+°° 
+;
+°° 
 }
-ÅÅ 
+¢¢ 
+)
+¢¢ 
+;
+¢¢ 
 }
-ÇÇ 	
+££ 	
+public
+•• 
+void
+•• 
+NotifyYouWon
+••  
+(
+••  !
+)
+••! "
+{
+••# $!
+DisableGameControls
+¶¶ 
+(
+¶¶  
+)
+¶¶  !
+;
+¶¶! "
+Application
+ßß 
+.
+ßß 
+Current
+ßß 
+.
+ßß  
+
+Dispatcher
+ßß  *
+.
+ßß* +
+Invoke
+ßß+ 1
+(
+ßß1 2
+(
+ßß2 3
+)
+ßß3 4
+=>
+ßß5 7
+{
+ßß8 9
+lbMatchStatus
+®® 
+.
+®® 
+Content
+®® %
+=
+®®& '
+
+Properties
+®®( 2
+.
+®®2 3
+	Resources
+®®3 <
+.
+®®< =!
+lbMatchStatusYouWon
+®®= P
+;
+®®P Q
+lbMatchStatus
+©© 
+.
+©© 
+
+Foreground
+©© (
+=
+©©) *
+Brushes
+©©+ 2
+.
+©©2 3
+Green
+©©3 8
+;
+©©8 9
+drawingCanvas
+™™ 
+.
+™™ 
+	IsEnabled
+™™ '
+=
+™™( )
+false
+™™* /
+;
+™™/ 0
+_timer
+´´ 
+?
+´´ 
+.
+´´ 
+Stop
+´´ 
+(
+´´ 
+)
+´´ 
+;
+´´ 
 }
-ÑÑ 
-}ÖÖ ü>
+¨¨ 
+)
+¨¨ 
+;
+¨¨ 
+}
+≠≠ 	
+public
+ØØ 
+void
+ØØ 
+
+NotifyDraw
+ØØ 
+(
+ØØ 
+)
+ØØ  
+{
+ØØ! "!
+DisableGameControls
+∞∞ 
+(
+∞∞  
+)
+∞∞  !
+;
+∞∞! "
+Application
+±± 
+.
+±± 
+Current
+±± 
+.
+±±  
+
+Dispatcher
+±±  *
+.
+±±* +
+Invoke
+±±+ 1
+(
+±±1 2
+(
+±±2 3
+)
+±±3 4
+=>
+±±5 7
+{
+±±8 9
+lbMatchStatus
+≤≤ 
+.
+≤≤ 
+Content
+≤≤ %
+=
+≤≤& '
+
+Properties
+≤≤( 2
+.
+≤≤2 3
+	Resources
+≤≤3 <
+.
+≤≤< =
+lbMatchStatusDraw
+≤≤= N
+;
+≤≤N O
+lbMatchStatus
+≥≥ 
+.
+≥≥ 
+
+Foreground
+≥≥ (
+=
+≥≥) *
+Brushes
+≥≥+ 2
+.
+≥≥2 3
+Orange
+≥≥3 9
+;
+≥≥9 :
+drawingCanvas
+¥¥ 
+.
+¥¥ 
+	IsEnabled
+¥¥ '
+=
+¥¥( )
+false
+¥¥* /
+;
+¥¥/ 0
+_timer
+µµ 
+?
+µµ 
+.
+µµ 
+Stop
+µµ 
+(
+µµ 
+)
+µµ 
+;
+µµ 
+}
+∂∂ 
+)
+∂∂ 
+;
+∂∂ 
+}
+∑∑ 	
+public
+ππ 
+void
+ππ !
+DisableGameControls
+ππ '
+(
+ππ' (
+)
+ππ( )
+{
+ππ* +
+Application
+∫∫ 
+.
+∫∫ 
+Current
+∫∫ 
+.
+∫∫  
+
+Dispatcher
+∫∫  *
+.
+∫∫* +
+Invoke
+∫∫+ 1
+(
+∫∫1 2
+(
+∫∫2 3
+)
+∫∫3 4
+=>
+∫∫5 7
+{
+∫∫8 9
+drawingCanvas
+ªª 
+.
+ªª 
+	IsEnabled
+ªª '
+=
+ªª( )
+false
+ªª* /
+;
+ªª/ 0
+_timer
+ºº 
+?
+ºº 
+.
+ºº 
+Stop
+ºº 
+(
+ºº 
+)
+ºº 
+;
+ºº 
+}
+ΩΩ 
+)
+ΩΩ 
+;
+ΩΩ 
+}
+ææ 	
+public
+¿¿ 
+void
+¿¿ 
+NotifyPlayerLeft
+¿¿ $
+(
+¿¿$ %
+)
+¿¿% &
+{
+¿¿' (!
+DisableGameControls
+¡¡ 
+(
+¡¡  
+)
+¡¡  !
+;
+¡¡! "
+
+Dispatcher
+¬¬ 
+.
+¬¬ 
+Invoke
+¬¬ 
+(
+¬¬ 
+async
+¬¬ #
+(
+¬¬$ %
+)
+¬¬% &
+=>
+¬¬' )
+{
+¬¬* +
+await
+√√ 
+Task
+√√ 
+.
+√√ 
+Run
+√√ 
+(
+√√ 
+(
+√√  
+)
+√√  !
+=>
+√√" $
+DialogManager
+ƒƒ 
+.
+ƒƒ %
+ShowWarningMessageAlert
+ƒƒ 5
+(
+ƒƒ5 6
+
+Properties
+ƒƒ6 @
+.
+ƒƒ@ A
+	Resources
+ƒƒA J
+.
+ƒƒJ K%
+dialogPlayerLeftWarning
+ƒƒK b
+)
+ƒƒb c
+)
+≈≈ 
+;
+≈≈ 
+ExitUseSinglenton
+∆∆ !
+(
+∆∆! "
+)
+∆∆" #
+;
+∆∆# $
+}
+«« 
+)
+«« 
+;
+«« 
+}
+»» 	
+}
+…… 
+}   ≤H
 6C:\TripasDeGatoCliente\Views\CodeGameMatchView.xaml.cs
 	namespace
 
@@ -20211,9 +25682,9 @@ Properties
 Page) -
 {. /
 private 
-LobbyBrowserClient "
-lobbyBrowser# /
-;/ 0
+LobbyBrowserClient "
+_lobbyBrowser# 0
+;0 1
 public 
 CodeGameMatch 
 ( 
@@ -20222,14 +25693,14 @@ Properties
 InitializeComponent 
 (  
 )  !
-;! "
-lobbyBrowser 
-= 
-new 
-LobbyBrowserClient 1
-(1 2
-)2 3
-;3 4
+;! "
+_lobbyBrowser 
+= 
+new 
+LobbyBrowserClient  2
+(2 3
+)3 4
+;4 5
 } 	
 public 
 void  
@@ -20250,407 +25721,533 @@ Properties
 )B C
 )C D
 ;D E
-try 
-{ 
-string 
-	codeMatch  
-=! "
-txtCodeLobby# /
-./ 0
-Text0 4
-;4 5 
-UserProfileSingleton $
-.$ %
-Instance% -
-.- .
-CreateGuestInstance. A
-(A B
-)B C
-;C D
-} 
-catch 
-( %
-EndpointNotFoundException .
-endpointException/ @
-)@ A
-{B C
-logger 
-. 
-LogError 
-(  
-endpointException  1
-)1 2
-;2 3
-DialogManager 
-. !
-ShowErrorMessageAlert 3
-(3 4
+try 
+{ 
+string 
+	codeMatch  
+=! "
+txtCodeLobby# /
+./ 0
+Text0 4
+;4 5 
+UserProfileSingleton $
+.$ %
+Instance% -
+.- .
+CreateGuestInstance. A
+(A B
+)B C
+;C D
+} 
+catch 
+( %
+EndpointNotFoundException .
+endpointException/ @
+)@ A
+{B C
+logger 
+. 
+LogError 
+(  
+endpointException  1
+)1 2
+;2 3
+DialogManager 
+. !
+ShowErrorMessageAlert 3
+(3 4
 
-Properties4 >
-.> ?
-	Resources? H
-.H I#
-dialogEndPointExceptionI `
-)` a
-;a b
-} 
-catch 
-( 
-TimeoutException %
-timeoutException& 6
+Properties4 >
+.> ?
+	Resources? H
+.H I#
+dialogEndPointExceptionI `
+)` a
+;a b
+} 
+catch 
+( 
+TimeoutException %
+timeoutException& 6
+)6 7
+{8 9
+logger 
+. 
+LogError 
+(  
+timeoutException  0
+)0 1
+;1 2
+DialogManager 
+. !
+ShowErrorMessageAlert 3
+(3 4
+
+Properties4 >
+.> ?
+	Resources? H
+.H I"
+dialogTimeOutExceptionI _
+)_ `
+;` a
+} 
+catch 
+( "
+CommunicationException +"
+communicationException, B
+)B C
+{D E
+logger 
+. 
+LogError 
+(  "
+communicationException  6
 )6 7
-{8 9
-logger   
-.   
-LogError   
-(    
-timeoutException    0
-)  0 1
-;  1 2
-DialogManager!! 
-.!! !
-ShowErrorMessageAlert!! 3
-(!!3 4
+;7 8
+DialogManager   
+.   !
+ShowErrorMessageAlert   3
+(  3 4
 
-Properties!!4 >
-.!!> ?
-	Resources!!? H
-.!!H I"
-dialogTimeOutException!!I _
-)!!_ `
-;!!` a
-}"" 
-catch"" 
-("" "
-CommunicationException"" +"
-communicationException"", B
-)""B C
-{""D E
-logger## 
-.## 
-LogError## 
-(##  "
-communicationException##  6
-)##6 7
-;##7 8
-DialogManager$$ 
-.$$ !
-ShowErrorMessageAlert$$ 3
-($$3 4
+Properties  4 >
+.  > ?
+	Resources  ? H
+.  H I'
+dialogComunicationException  I d
+)  d e
+;  e f
+}!! 
+catch!! 
+(!! 
+	Exception!! 
+	exception!! (
+)!!( )
+{!!* +
+logger"" 
+."" 
+LogError"" 
+(""  
+	exception""  )
+)"") *
+;""* +
+DialogManager## 
+.## !
+ShowErrorMessageAlert## 3
+(##3 4
+string##4 :
+.##: ;
+Format##; A
+(##A B
 
-Properties$$4 >
-.$$> ?
-	Resources$$? H
-.$$H I'
-dialogComunicationException$$I d
-)$$d e
-;$$e f
-}%% 
-}&& 	
-private(( 
-void(( 
-BtnBack_Click(( "
-(((" #
-object((# )
-sender((* 0
-,((0 1
-RoutedEventArgs((2 A
-e((B C
-)((C D
-{((E F
-	LoginView)) 
-	loginView)) 
-=))  !
-new))" %
-	LoginView))& /
-())/ 0
-)))0 1
-;))1 2
-this** 
-.** 
-NavigationService** "
-.**" #
-Navigate**# +
-(**+ ,
-	loginView**, 5
-)**5 6
-;**6 7
-}++ 	
-public-- 
-async-- 
-void-- 
-BtnLogin_Click-- (
-(--( )
-object--) /
-sender--0 6
-,--6 7
-RoutedEventArgs--8 G
-e--H I
-)--I J
-{--K L
-LoggerManager.. 
-logger..  
-=..! "
-new..# &
-LoggerManager..' 4
-(..4 5
-this..5 9
-...9 :
-GetType..: A
-(..A B
-)..B C
-)..C D
-;..D E 
-GenerateGuestProfile//  
-(//  !
-)//! "
-;//" #
-try11 
-{11 
-if22 
-(22 
-!22 
-string22 
-.22 
-IsNullOrEmpty22 )
-(22) *
-txtCodeLobby22* 6
-.226 7
-Text227 ;
-)22; <
-)22< =
-{22> ?
-string33 
-	lobbyCode33 $
-=33% &
-txtCodeLobby33' 3
-.333 4
-Text334 8
-;338 9
-var44 
-guestProfile44 $
-=44% &
-new44' *
-Profile44+ 2
-{443 4
-	IdProfile55 !
-=55" # 
-UserProfileSingleton55$ 8
-.558 9
-	IdProfile559 B
-,55B C
-Username66  
-=66! " 
-UserProfileSingleton66# 7
-.667 8
-UserName668 @
-,66@ A
-PicturePath77 #
-=77$ % 
-UserProfileSingleton77& :
-.77: ;
-PicPath77; B
-,77B C
-Score88 
-=88  
-UserProfileSingleton88  4
-.884 5
-Score885 :
-}99 
-;99 
-bool;; 
-joined;; 
-=;;  !
-await;;" '
-lobbyBrowser;;( 4
-.;;4 5
-JoinLobbyAsync;;5 C
-(;;C D
-	lobbyCode;;D M
-,;;M N
-guestProfile;;O [
-);;[ \
-;;;\ ]
-if<< 
-(<< 
-joined<< 
-)<< 
-{<<  !
-	LobbyView== !
-	lobbyView==" +
-===, -
-new==. 1
-	LobbyView==2 ;
-(==; <
-	lobbyCode==< E
-)==E F
-;==F G
-this>> 
-.>> 
-NavigationService>> .
-.>>. /
-Navigate>>/ 7
-(>>7 8
-	lobbyView>>8 A
-)>>A B
-;>>B C
-}?? 
-else?? 
-{?? 
-DialogManagerAA %
-.AA% &#
-ShowWarningMessageAlertAA& =
-(AA= >
+Properties##B L
+.##L M
+	Resources##M V
+.##V W!
+dialogUnexpectedError##W l
+,##l m
+	exception##n w
+.##w x
+Message##x 
+)	## Ä
+)
+##Ä Å
+;
+##Å Ç
+}$$ 
+}%% 	
+private'' 
+void'' 
+BtnBack_Click'' "
+(''" #
+object''# )
+sender''* 0
+,''0 1
+RoutedEventArgs''2 A
+e''B C
+)''C D
+{''E F
+	LoginView(( 
+	loginView(( 
+=((  !
+new((" %
+	LoginView((& /
+(((/ 0
+)((0 1
+;((1 2
+this)) 
+.)) 
+NavigationService)) "
+.))" #
+Navigate))# +
+())+ ,
+	loginView)), 5
+)))5 6
+;))6 7
+}** 	
+public,, 
+async,, 
+void,, 
+BtnLogin_Click,, (
+(,,( )
+object,,) /
+sender,,0 6
+,,,6 7
+RoutedEventArgs,,8 G
+e,,H I
+),,I J
+{,,K L
+LoggerManager-- 
+logger--  
+=--! "
+new--# &
+LoggerManager--' 4
+(--4 5
+this--5 9
+.--9 :
+GetType--: A
+(--A B
+)--B C
+)--C D
+;--D E 
+GenerateGuestProfile..  
+(..  !
+)..! "
+;.." #
+try// 
+{// 
+if00 
+(00 
+!00 
+string00 
+.00 
+IsNullOrEmpty00 )
+(00) *
+txtCodeLobby00* 6
+.006 7
+Text007 ;
+)00; <
+)00< =
+{00> ?
+string11 
+	lobbyCode11 $
+=11% &
+txtCodeLobby11' 3
+.113 4
+Text114 8
+;118 9
+var22 
+guestProfile22 $
+=22% &
+new22' *
+Profile22+ 2
+{223 4
+	IdProfile33 !
+=33" # 
+UserProfileSingleton33$ 8
+.338 9
+	IdProfile339 B
+,33B C
+Username44  
+=44! " 
+UserProfileSingleton44# 7
+.447 8
+UserName448 @
+,44@ A
+PicturePath55 #
+=55$ % 
+UserProfileSingleton55& :
+.55: ;
+PicPath55; B
+,55B C
+Score66 
+=66  
+UserProfileSingleton66  4
+.664 5
+Score665 :
+}77 
+;77 
+bool88 
+joined88 
+=88  !
+await88" '
+_lobbyBrowser88( 5
+.885 6
+JoinLobbyAsync886 D
+(88D E
+	lobbyCode88E N
+,88N O
+guestProfile88P \
+)88\ ]
+;88] ^
+if99 
+(99 
+joined99 
+)99 
+{99  !
+	LobbyView:: !
+	lobbyView::" +
+=::, -
+new::. 1
+	LobbyView::2 ;
+(::; <
+	lobbyCode::< E
+)::E F
+;::F G
+this;; 
+.;; 
+NavigationService;; .
+.;;. /
+Navigate;;/ 7
+(;;7 8
+	lobbyView;;8 A
+);;A B
+;;;B C
+}<< 
+else<< 
+{<< 
+DialogManager== %
+.==% &#
+ShowWarningMessageAlert==& =
+(=== >
 
-PropertiesAA> H
-.AAH I
-	ResourcesAAI R
-.AAR S 
-dialogLobbyJoinErrorAAS g
-)AAg h
-;AAh i
-}BB 
-}CC 
-elseCC 
-{CC 
-DialogManagerDD !
-.DD! "!
-ShowErrorMessageAlertDD" 7
-(DD7 8
+Properties==> H
+.==H I
+	Resources==I R
+.==R S 
+dialogLobbyJoinError==S g
+)==g h
+;==h i
+}>> 
+}?? 
+else?? 
+{?? 
+DialogManager@@ !
+.@@! "!
+ShowErrorMessageAlert@@" 7
+(@@7 8
 
-PropertiesDD8 B
-.DDB C
-	ResourcesDDC L
-.DDL M0
-$dialogInvalidGuestProfileOrLobbyCodeDDM q
-)DDq r
-;DDr s
-}EE 
-}FF 
-catchFF 
-(FF %
-EndpointNotFoundExceptionFF .%
-endpointNotFoundExceptionFF/ H
-)FFH I
-{FFJ K
-loggerGG 
-.GG 
-LogErrorGG 
-(GG  %
-endpointNotFoundExceptionGG  9
-)GG9 :
-;GG: ;
-DialogManagerHH 
-.HH !
-ShowErrorMessageAlertHH 3
-(HH3 4
+Properties@@8 B
+.@@B C
+	Resources@@C L
+.@@L M0
+$dialogInvalidGuestProfileOrLobbyCode@@M q
+)@@q r
+;@@r s
+}AA 
+}BB 
+catchBB 
+(BB %
+EndpointNotFoundExceptionBB .%
+endpointNotFoundExceptionBB/ H
+)BBH I
+{BBJ K
+loggerCC 
+.CC 
+LogErrorCC 
+(CC  %
+endpointNotFoundExceptionCC  9
+)CC9 :
+;CC: ;
+DialogManagerDD 
+.DD !
+ShowErrorMessageAlertDD 3
+(DD3 4
 
-PropertiesHH4 >
-.HH> ?
-	ResourcesHH? H
-.HHH I#
-dialogEndPointExceptionHHI `
-)HH` a
-;HHa b
-}II 
-catchII 
-(II 
-TimeoutExceptionII %
-timeoutExceptionII& 6
+PropertiesDD4 >
+.DD> ?
+	ResourcesDD? H
+.DDH I#
+dialogEndPointExceptionDDI `
+)DD` a
+;DDa b
+}EE 
+catchEE 
+(EE 
+TimeoutExceptionEE %
+timeoutExceptionEE& 6
+)EE6 7
+{EE8 9
+loggerFF 
+.FF 
+LogErrorFF 
+(FF  
+timeoutExceptionFF  0
+)FF0 1
+;FF1 2
+DialogManagerGG 
+.GG !
+ShowErrorMessageAlertGG 3
+(GG3 4
+
+PropertiesGG4 >
+.GG> ?
+	ResourcesGG? H
+.GGH I"
+dialogTimeOutExceptionGGI _
+)GG_ `
+;GG` a
+}HH 
+catchHH 
+(HH "
+CommunicationExceptionHH +"
+communicationExceptionHH, B
+)HHB C
+{HHD E
+loggerII 
+.II 
+LogErrorII 
+(II  "
+communicationExceptionII  6
 )II6 7
-{II8 9
-loggerJJ 
-.JJ 
-LogErrorJJ 
-(JJ  
-timeoutExceptionJJ  0
-)JJ0 1
-;JJ1 2
-DialogManagerKK 
-.KK !
-ShowErrorMessageAlertKK 3
-(KK3 4
+;II7 8
+DialogManagerJJ 
+.JJ !
+ShowErrorMessageAlertJJ 3
+(JJ3 4
 
-PropertiesKK4 >
-.KK> ?
-	ResourcesKK? H
-.KKH I"
-dialogTimeOutExceptionKKI _
-)KK_ `
-;KK` a
-}LL 
-catchLL 
-(LL "
-CommunicationExceptionLL +"
-communicationExceptionLL, B
-)LLB C
-{LLD E
-loggerMM 
-.MM 
-LogErrorMM 
-(MM  "
-communicationExceptionMM  6
-)MM6 7
-;MM7 8
-DialogManagerNN 
-.NN !
-ShowErrorMessageAlertNN 3
-(NN3 4
+PropertiesJJ4 >
+.JJ> ?
+	ResourcesJJ? H
+.JJH I'
+dialogComunicationExceptionJJI d
+)JJd e
+;JJe f
+}KK 
+catchKK 
+(KK 
+	ExceptionKK 
+	exceptionKK (
+)KK( )
+{KK* +
+loggerLL 
+.LL 
+LogErrorLL 
+(LL  
+	exceptionLL  )
+)LL) *
+;LL* +
+DialogManagerMM 
+.MM !
+ShowErrorMessageAlertMM 3
+(MM3 4
+stringMM4 :
+.MM: ;
+FormatMM; A
+(MMA B
 
-PropertiesNN4 >
-.NN> ?
-	ResourcesNN? H
-.NNH I'
-dialogComunicationExceptionNNI d
-)NNd e
-;NNe f
-}OO 
-}PP 	
-}QQ 
-}RR øJ
+PropertiesMMB L
+.MML M
+	ResourcesMMM V
+.MMV W!
+dialogUnexpectedErrorMMW l
+,MMl m
+	exceptionMMn w
+.MMw x
+MessageMMx 
+)	MM Ä
+)
+MMÄ Å
+;
+MMÅ Ç
+}NN 
+}OO 	
+}PP 
+}QQ ïS
 )C:\TripasDeGatoCliente\Logic\Validador.cs
 	namespace 	
 TripasDeGatoCliente
  
 . 
-Logic #
-{ 
-public 
+Logic #
+{$ %
+public 
 
-static 
-class 
-	Validador !
-{ 
+static 
+class 
+	Validador !
+{" #
+private 
+static 
+Regex 
+passwordRegex *
+=+ ,
+new- 0
+Regex1 6
+(6 7
+$str7 k
+,k l
+RegexOptionsm y
+.y z
+Nonez ~
+,~ 
+TimeSpan
+Ä à
+.
+à â
+FromMilliseconds
+â ô
+(
+ô ö
+$num
+ö û
+)
+û ü
+)
+ü †
+;
+† °
+private 
+static 
+Regex 
+usernameRegex *
+=+ ,
+new- 0
+Regex1 6
+(6 7
+$str7 M
+,M N
+RegexOptionsO [
+.[ \
+None\ `
+,` a
+TimeSpanb j
+.j k
+FromMillisecondsk {
+({ |
+$num	| Ä
+)
+Ä Å
+)
+Å Ç
+;
+Ç É
 private		 
 static		 
-Regex		 
-passwordRegex		 *
-=		+ ,
-new		- 0
-Regex		1 6
-(		6 7
-$str		7 k
-,		k l
-RegexOptions		m y
-.		y z
-None		z ~
-,		~ 
-TimeSpan
-		Ä à
-.
-		à â
-FromMilliseconds
-		â ô
-(
-		ô ö
+Regex		 
+
+emailRegex		 '
+=		( )
+new		* -
+Regex		. 3
+(		3 4
+$str		4 Q
+,		Q R
+RegexOptions		S _
+.		_ `
+None		` d
+,		d e
+TimeSpan		f n
+.		n o
+FromMilliseconds		o 
+(			 Ä
 $num
-		ö û
+		Ä Ñ
 )
-		û ü
+		Ñ Ö
 )
-		ü †
+		Ö Ü
 ;
-		† °
+		Ü á
 private
 
  
@@ -20659,542 +26256,551 @@ PropertiesNN4 >
  
 Regex
 
- 
-usernameRegex
+ 
+codeLobbyMatchRegex
 
- *
+ 0
 =
 
-+ ,
+1 2
 new
 
-- 0
+3 6
 Regex
 
-1 6
+7 <
 (
 
-6 7
+< =
 $str
 
-7 M
+= P
 ,
 
-M N
+P Q
 RegexOptions
 
-O [
+R ^
 .
 
-[ \
+^ _
 None
 
-\ `
+_ c
 ,
 
-` a
+c d
 TimeSpan
 
-b j
+e m
 .
 
-j k
+m n
 FromMilliseconds
 
-k {
+n ~
 (
 
-{ |
+~ 
 $num	
 
-| Ä
+ É
 )
 
 
-Ä Å
+É Ñ
 )
 
 
-Å Ç
+Ñ Ö
 ;
 
 
-Ç É
+Ö Ü
 private 
 static 
 Regex 
 
-emailRegex '
+stateRegex '
 =( )
 new* -
 Regex. 3
 (3 4
-$str4 Q
-,Q R
-RegexOptionsS _
-._ `
-None` d
-,d e
-TimeSpanf n
-.n o
-FromMillisecondso 
-(	 Ä
-$num
-Ä Ñ
+$str4 L
+,L M
+RegexOptionsN Z
+.Z [
+None[ _
+,_ `
+TimeSpana i
+.i j
+FromMillisecondsj z
+(z {
+$num{ 
+)	 Ä
 )
-Ñ Ö
-)
-Ö Ü
+Ä Å
 ;
-Ü á
+Å Ç
 private 
 static 
-Regex 
-codeLobbyMatchRegex 0
-=1 2
-new3 6
-Regex7 <
-(< =
-$str= P
-,P Q
-RegexOptionsR ^
-.^ _
-None_ c
-,c d
-TimeSpane m
-.m n
-FromMillisecondsn ~
-(~ 
-$num	 É
+Regex 
+gameNameRegex *
+=+ ,
+new- 0
+Regex1 6
+(6 7
+$str7 N
+,N O
+RegexOptionsP \
+.\ ]
+None] a
+,a b
+TimeSpanc k
+.k l
+FromMillisecondsl |
+(| }
+$num	} Å
 )
-É Ñ
+Å Ç
 )
-Ñ Ö
+Ç É
 ;
-Ö Ü
-private 
-static 
-Regex 
-
-stateRegex '
-=( )
-new* -
-Regex. 3
-(3 4
-$str4 L
-,L M
-RegexOptionsN Z
-.Z [
-None[ _
-,_ `
-TimeSpana i
-.i j
-FromMillisecondsj z
-(z {
-$num{ 
-)	 Ä
-)
-Ä Å
-;
-Å Ç
-public 
-static 
-bool  
-validateRegexPattern /
-(/ 0
-string0 6
-data7 ;
-,; <
-Regex= B
-regexC H
-)H I
-{ 	
-bool 
-isValid 
-= 
-false  
-;  !
-try 
-{ 
-isValid 
-= 
-regex 
-.  
-IsMatch  '
-(' (
-data( ,
-), -
-;- .
-} 
-catch 
-( &
-RegexMatchTimeoutException -
-)- .
-{ 
-isValid 
-= 
-false 
-;  
-} 
-return 
-isValid 
-; 
+É Ñ
+public 
+static 
+bool  
+ValidateRegexPattern /
+(/ 0
+string0 6
+data7 ;
+,; <
+Regex= B
+regexC H
+)H I
+{J K
+bool 
+isValid 
+= 
+false  
+;  !
+try 
+{ 
+isValid 
+= 
+regex 
+.  
+IsMatch  '
+(' (
+data( ,
+), -
+;- .
+} 
+catch 
+( &
+RegexMatchTimeoutException /
+)/ 0
+{1 2
+isValid 
+= 
+false 
+;  
+} 
+return 
+isValid 
+; 
+} 	
+public 
+static 
+bool 
+ValidatePassword +
+(+ ,
+string, 2
+password3 ;
+); <
+{= >
+string 
+cleanedPassword "
+=# $
+Regex% *
+.* +
+Replace+ 2
+(2 3
+password3 ;
+.; <
+Trim< @
+(@ A
+)A B
+,B C
+$strD J
+,J K
+$strL N
+)N O
+;O P
+return 
+! 
+string 
+. 
+IsNullOrWhiteSpace -
+(- .
+cleanedPassword. =
+)= >
+&&? A 
+ValidateRegexPatternB V
+(V W
+cleanedPasswordW f
+,f g
+passwordRegexh u
+)u v
+;v w
 } 	
 public 
 static 
 bool 
-ValidatePassword +
+ValidateUsername +
 (+ ,
 string, 2
-password3 ;
+username3 ;
 ); <
-{ 	
-string 
-cleanedPassword "
-=# $
-Regex% *
-.* +
-Replace+ 2
-(2 3
-password3 ;
-.; <
-Trim< @
-(@ A
-)A B
-,B C
-$strD J
-,J K
-$strL N
-)N O
-;O P
-return   
-!   
-string   
-.   
-IsNullOrWhiteSpace   -
-(  - .
-cleanedPassword  . =
-)  = >
-&&  ? A 
-validateRegexPattern  B V
-(  V W
-cleanedPassword  W f
-,  f g
-passwordRegex  h u
-)  u v
-;  v w
-}!! 	
-public## 
-static## 
-bool## 
-ValidateUsername## +
-(##+ ,
-string##, 2
-username##3 ;
-)##; <
-{$$ 	
-string%% 
-cleanedUsername%% "
-=%%# $
-Regex%%% *
-.%%* +
-Replace%%+ 2
-(%%2 3
-username%%3 ;
-.%%; <
-Trim%%< @
-(%%@ A
-)%%A B
-,%%B C
-$str%%D J
-,%%J K
-$str%%L N
-)%%N O
-;%%O P
-return&& 
-!&& 
-string&& 
-.&& 
-IsNullOrWhiteSpace&& -
-(&&- .
-cleanedUsername&&. =
-)&&= >
-&&&&? A 
-validateRegexPattern&&B V
-(&&V W
-cleanedUsername&&W f
-,&&f g
-usernameRegex&&h u
-)&&u v
-;&&v w
-}'' 	
-public)) 
-static)) 
-bool)) 
-ValidateEmail)) (
-())( )
-string))) /
-email))0 5
-)))5 6
-{))7 8
-string** 
-cleanedEmail** 
-=**  !
-email**" '
-?**' (
-.**( )
-Trim**) -
-(**- .
-)**. /
-;**/ 0
-if,, 
-(,, 
-!,, 
-string,, 
-.,, 
-IsNullOrWhiteSpace,, *
-(,,* +
-cleanedEmail,,+ 7
-),,7 8
-&&,,9 ;
-cleanedEmail,,< H
-.,,H I
-Length,,I O
-<=,,P R
-$num,,S V
-),,V W
-{,,X Y
-if-- 
-(-- 
+{= >
+string 
+cleanedUsername "
+=# $
+Regex% *
+.* +
+Replace+ 2
+(2 3
+username3 ;
+.; <
+Trim< @
+(@ A
+)A B
+,B C
+$strD J
+,J K
+$strL N
+)N O
+;O P
+return 
+! 
+string 
+. 
+IsNullOrWhiteSpace -
+(- .
+cleanedUsername. =
+)= >
+&&? A 
+ValidateRegexPatternB V
+(V W
+cleanedUsernameW f
+,f g
+usernameRegexh u
+)u v
+;v w
+}   	
+public"" 
+static"" 
+bool"" 
+ValidateEmail"" (
+(""( )
+string"") /
+email""0 5
+)""5 6
+{""7 8
+string## 
+cleanedEmail## 
+=##  !
+email##" '
+?##' (
+.##( )
+Trim##) -
+(##- .
+)##. /
+;##/ 0
+if$$ 
+($$ 
+!$$ 
+string$$ 
+.$$ 
+IsNullOrWhiteSpace$$ *
+($$* +
+cleanedEmail$$+ 7
+)$$7 8
+&&$$9 ;
+cleanedEmail$$< H
+.$$H I
+Length$$I O
+<=$$P R
+$num$$S V
+)$$V W
+{$$X Y
+if%% 
+(%% 
 
-emailRegex-- 
-.-- 
-IsMatch-- &
-(--& '
-cleanedEmail--' 3
-)--3 4
-)--4 5
-{--6 7
-try.. 
-{.. 
-var// 
-mailAddress// '
-=//( )
-new//* -
-MailAddress//. 9
-(//9 :
-cleanedEmail//: F
-)//F G
-;//G H
-return00 
-true00 #
-;00# $
-}11 
-catch11 
-(11 
-FormatException11 ,
-)11, -
-{11. /
-return22 
-false22 $
-;22$ %
-}33 
-}44 
-}55 
-return66 
-false66 
-;66 
-}77 	
-public:: 
-static:: 
-bool:: 
-validateCode:: '
-(::' (
-string::( .
-	codeLobby::/ 8
-)::8 9
-{;; 	
-string<< 
-codeCleaned<< 
-=<<  
-Regex<<! &
-.<<& '
-Replace<<' .
-(<<. /
-	codeLobby<</ 8
-.<<8 9
-Trim<<9 =
-(<<= >
-)<<> ?
-,<<? @
-$str<<A G
-,<<G H
-$str<<I K
-)<<K L
-;<<L M
+emailRegex%% 
+.%% 
+IsMatch%% &
+(%%& '
+cleanedEmail%%' 3
+)%%3 4
+)%%4 5
+{%%6 7
+try&& 
+{&& 
+var'' 
+mailAddress'' '
+=''( )
+new''* -
+MailAddress''. 9
+(''9 :
+cleanedEmail'': F
+)''F G
+;''G H
+return(( 
+true(( #
+;((# $
+})) 
+catch)) 
+()) 
+FormatException)) ,
+))), -
+{)). /
+return** 
+false** $
+;**$ %
+}++ 
+},, 
+}-- 
+return.. 
+false.. 
+;.. 
+}// 	
+public11 
+static11 
+bool11 
+ValidateGameName11 +
+(11+ ,
+string11, 2
+gameName113 ;
+)11; <
+{11= >
+string22 
+cleanedGameName22 "
+=22# $
+gameName22% -
+?22- .
+.22. /
+Trim22/ 3
+(223 4
+)224 5
+;225 6
+return33 
+!33 
+string33 
+.33 
+IsNullOrWhiteSpace33 -
+(33- .
+cleanedGameName33. =
+)33= >
+&&33? A 
+ValidateRegexPattern33B V
+(33V W
+cleanedGameName33W f
+,33f g
+gameNameRegex33h u
+)33u v
+;33v w
+}44 	
+public66 
+static66 
+bool66 
+ValidateCode66 '
+(66' (
+string66( .
+	codeLobby66/ 8
+)668 9
+{66: ;
+string77 
+codeCleaned77 
+=77  
+Regex77! &
+.77& '
+Replace77' .
+(77. /
+	codeLobby77/ 8
+.778 9
+Trim779 =
+(77= >
+)77> ?
+,77? @
+$str77A G
+,77G H
+$str77I K
+)77K L
+;77L M
+return88 
+!88 
+string88 
+.88 
+IsNullOrWhiteSpace88 -
+(88- .
+codeCleaned88. 9
+)889 :
+&&88; = 
+ValidateRegexPattern88> R
+(88R S
+codeCleaned88S ^
+,88^ _
+codeLobbyMatchRegex88` s
+)88s t
+;88t u
+}99 	
+public;; 
+static;; 
+bool;; 
+ValidateState;; (
+(;;( )
+string;;) /
+state;;0 5
+);;5 6
+{;;7 8
+string<< 
+stateCleaned<< 
+=<<  !
+Regex<<" '
+.<<' (
+Replace<<( /
+(<</ 0
+state<<0 5
+.<<5 6
+Trim<<6 :
+(<<: ;
+)<<; <
+,<<< =
+$str<<> D
+,<<D E
+$str<<F H
+)<<H I
+;<<I J
 return== 
 !== 
 string== 
 .== 
 IsNullOrWhiteSpace== -
-(==- .
-codeCleaned==. 9
-)==9 :
-&&==; = 
-validateRegexPattern==> R
-(==R S
-codeCleaned==S ^
-,==^ _
-codeLobbyMatchRegex==` s
-)==s t
-;==t u
+(==- .
+stateCleaned==. :
+)==: ;
+&&==< > 
+ValidateRegexPattern==? S
+(==S T
+stateCleaned==T `
+,==` a
+
+stateRegex==b l
+)==l m
+;==m n
 }>> 	
 public@@ 
 static@@ 
-bool@@ 
-validateState@@ (
-(@@( )
-string@@) /
-state@@0 5
-)@@5 6
-{AA 	
-stringBB 
-stateCleanedBB 
-=BB  !
-RegexBB" '
-.BB' (
-ReplaceBB( /
-(BB/ 0
-stateBB0 5
-.BB5 6
-TrimBB6 :
-(BB: ;
-)BB; <
-,BB< =
-$strBB> D
-,BBD E
-$strBBF H
-)BBH I
-;BBI J
-returnCC 
-!CC 
-stringCC 
-.CC 
-IsNullOrWhiteSpaceCC -
-(CC- .
-stateCleanedCC. :
-)CC: ;
-&&CC< > 
-validateRegexPatternCC? S
-(CCS T
-stateCleanedCCT `
-,CC` a
+void@@ 
+RegexPattern@@ '
+(@@' (
+string@@( .
+input@@/ 4
+)@@4 5
+{@@6 7
+boolAA 
+isEmailValidAA 
+=AA  
+ValidateRegexPatternAA  4
+(AA4 5
+inputAA5 :
+,AA: ;
 
-stateRegexCCb l
-)CCl m
-;CCm n
-}DD 	
-publicFF 
-staticFF 
-voidFF 
-RegexPatternFF '
-(FF' (
-stringFF( .
-inputFF/ 4
-)FF4 5
-{GG 	
-boolHH 
-isEmailValidHH 
-=HH  
-validateRegexPatternHH  4
-(HH4 5
-inputHH5 :
-,HH: ;
-
-emailRegexHH< F
-)HHF G
-;HHG H
-boolII 
-isNumberII 
-=II  
-validateRegexPatternII 0
-(II0 1
-inputII1 6
-,II6 7
-newII8 ;
-RegexII< A
-(IIA B
-$strIIB J
-,IIJ K
-RegexOptionsIIL X
-.IIX Y
-NoneIIY ]
-,II] ^
-TimeSpanII_ g
-.IIg h
-FromMillisecondsIIh x
-(IIx y
-$numIIy |
-)II| }
-)II} ~
-)II~ 
-;	II Ä
-varJJ 
-	isLetterAJJ 
-=JJ 
-RegexJJ !
-.JJ! "
-IsMatchJJ" )
-(JJ) *
-inputJJ* /
-,JJ/ 0
-$strJJ1 8
-,JJ8 9
-RegexOptionsJJ: F
-.JJF G
-NoneJJG K
-)JJK L
-;JJL M
-	AppDomainKK 
-.KK 
-CurrentDomainKK #
-.KK# $
-SetDataKK$ +
-(KK+ ,
-$strKK, I
-,KKI J
-TimeSpanKKK S
-.KKS T
-FromMillisecondsKKT d
-(KKd e
-$numKKe h
-)KKh i
-)KKi j
-;KKj k
-ConsoleLL 
-.LL 
-	WriteLineLL 
-(LL 
-$"LL  
-$strLL  .
-{LL. /
-isEmailValidLL/ ;
-}LL; <
-$strLL< O
-{LLO P
-isNumberLLP X
-}LLX Y
-$strLLY o
-{LLo p
-	isLetterALLp y
-}LLy z
-"LLz {
-)LL{ |
-;LL| }
-}MM 	
-}NN 
-}OO ı"
-4C:\TripasDeGatoCliente\Logic\UserProfileSnglenton.cs
+emailRegexAA< F
+)AAF G
+;AAG H
+boolBB 
+isNumberBB 
+=BB  
+ValidateRegexPatternBB 0
+(BB0 1
+inputBB1 6
+,BB6 7
+newBB8 ;
+RegexBB< A
+(BBA B
+$strBBB J
+,BBJ K
+RegexOptionsBBL X
+.BBX Y
+NoneBBY ]
+,BB] ^
+TimeSpanBB_ g
+.BBg h
+FromMillisecondsBBh x
+(BBx y
+$numBBy |
+)BB| }
+)BB} ~
+)BB~ 
+;	BB Ä
+varCC 
+	isLetterACC 
+=CC 
+RegexCC !
+.CC! "
+IsMatchCC" )
+(CC) *
+inputCC* /
+,CC/ 0
+$strCC1 8
+,CC8 9
+RegexOptionsCC: F
+.CCF G
+NoneCCG K
+)CCK L
+;CCL M
+	AppDomainDD 
+.DD 
+CurrentDomainDD #
+.DD# $
+SetDataDD$ +
+(DD+ ,
+$strDD, I
+,DDI J
+TimeSpanDDK S
+.DDS T
+FromMillisecondsDDT d
+(DDd e
+$numDDe h
+)DDh i
+)DDi j
+;DDj k
+ConsoleEE 
+.EE 
+	WriteLineEE 
+(EE 
+$"EE  
+$strEE  .
+{EE. /
+isEmailValidEE/ ;
+}EE; <
+$strEE< O
+{EEO P
+isNumberEEP X
+}EEX Y
+$strEEY o
+{EEo p
+	isLetterAEEp y
+}EEy z
+"EEz {
+)EE{ |
+;EE| }
+}FF 	
+}GG 
+}HH Ó3
+4C:\TripasDeGatoCliente\Logic\UserProfileSingleton.cs
 	namespace 	
 TripasDeGatoCliente
  
@@ -21209,14 +26815,14 @@ emailRegexHH< F
 private 
 static 
 readonly  
-UserProfileSingleton  4
-singlentonInstance5 G
-=H I
-newJ M 
-UserProfileSingletonN b
-(b c
-)c d
-;d e
+UserProfileSingleton  4
+singletonInstance5 F
+=G H
+newI L 
+UserProfileSingletonM a
+(a b
+)b c
+;c d
 public 
 static 
 int 
@@ -21228,236 +26834,334 @@ emailRegexHH< F
 set3 6
 ;6 7
 }8 9
-public 
-static 
-string 
-UserName %
-{& '
-get( +
-;+ ,
-private- 4
-set5 8
-;8 9
-}: ;
 public		 
-static		 
-int		 
-Score		 
-{		  !
-get		" %
-;		% &
-private		' .
-set		/ 2
-;		2 3
-}		4 5
-public
-
- 
-static
-
- 
-string
-
- 
-PicPath
-
- $
-{
-
-% &
-get
-
-' *
-;
-
-* +
-private
-
-, 3
-set
-
-4 7
-;
-
-7 8
-}
-
-9 :
+static		 
+string		 
+UserName		 %
+{		& '
+get		( +
+;		+ ,
+private		- 4
+set		5 8
+;		8 9
+}		: ;
 public 
 static 
-int 
-IdUser  
-{! "
-get# &
-;& '
-private( /
-set0 3
-;3 4
-}5 6
-public 
-static 
-string 
-Password %
-{& '
-get( +
-;+ ,
-private- 4
-set5 8
-;8 9
-}: ;
+int 
+Score 
+{  !
+get" %
+;% &
+private' .
+set/ 2
+;2 3
+}4 5
 public 
 static 
-string 
-Mail !
-{" #
-get$ '
-;' (
-private) 0
-set1 4
-;4 5
-}6 7
+string 
+PicPath $
+{% &
+get' *
+;* +
+private, 3
+set4 7
+;7 8
+}9 :
 public 
-static  
-UserProfileSingleton *
-Instance+ 3
-=>4 6
-singlentonInstance7 I
-;I J
-public 
-void 
-CreateInstance "
-(" #
-Profile# *
-profile+ 2
-)2 3
-{4 5
-	IdProfile 
-= 
-profile 
-.  
-	IdProfile  )
-;) *
-UserName 
-= 
-profile 
-. 
-Username '
-;' (
-Score 
-= 
-profile 
-. 
-Score !
-;! "
-PicPath 
-= 
-profile 
-. 
-PicturePath )
-;) *
-} 	
-public 
-void 
-CreateGuestInstance '
-(' (
-)( )
-{* +
-GuestProfile 
-guestProfile %
-=& '
-new( +
-GuestProfile, 8
-(8 9
-)9 :
-;: ;
-	IdProfile 
-= 
-guestProfile $
-.$ %
-GuestId% ,
-;, -
-UserName 
-= 
-guestProfile #
-.# $
-Username$ ,
-;, -
-Score 
-= 
-$num 
-; 
-PicPath 
-= 
-guestProfile "
-." #
-Avatar# )
-;) *
-} 	
-public   
-void   
-ResetInstance   !
-(  ! "
-)  " #
-{  $ %
-	IdProfile!! 
-=!! 
-$num!! 
-;!! 
-UserName"" 
-="" 
-null"" 
-;"" 
-Score## 
-=## 
-$num## 
-;## 
-PicPath$$ 
-=$$ 
-null$$ 
-;$$ 
-IdUser%% 
-=%% 
-$num%% 
-;%% 
-Password&& 
-=&& 
-null&& 
-;&& 
-Mail'' 
-='' 
-null'' 
-;'' 
-}(( 	
-public** 
-static** 
-void** 
-UpdateFotoRuta** )
-(**) *
-string*** 0
-	nuevaRuta**1 :
-)**: ;
-{**< =
-PicPath++ 
-=++ 
-	nuevaRuta++ 
-;++  
-},, 	
-public.. 
-static.. 
-void.. 
-UpdateNombre.. '
-(..' (
-string..( .
-nuevoNombre../ :
-)..: ;
-{..< =
-UserName// 
-=// 
-nuevoNombre// "
-;//" #
-}00 	
-}11 
-}22 Õ
+static 
+int 
+IdUser  
+{! "
+get# &
+;& '
+private( /
+set0 3
+;3 4
+}5 6
+public 
+static 
+string 
+Password %
+{& '
+get( +
+;+ ,
+private- 4
+set5 8
+;8 9
+}: ;
+public 
+static 
+string 
+Mail !
+{" #
+get$ '
+;' (
+private) 0
+set1 4
+;4 5
+}6 7
+public 
+static 
+string 
+	LobbyCode &
+{' (
+get) ,
+;, -
+private. 5
+set6 9
+;9 :
+}; <
+== >
+$str? G
+;G H
+public 
+static 
+string 
+ChatCode %
+{& '
+get( +
+;+ ,
+private- 4
+set5 8
+;8 9
+}: ;
+=< =
+$str> F
+;F G
+public 
+static 
+string 
+	MatchCode &
+{' (
+get) ,
+;, -
+private. 5
+set6 9
+;9 :
+}; <
+== >
+$str? G
+;G H
+public 
+static  
+UserProfileSingleton *
+Instance+ 3
+=>4 6
+singletonInstance7 H
+;H I
+public 
+void 
+CreateInstance "
+(" #
+Profile# *
+profile+ 2
+)2 3
+{4 5
+	IdProfile 
+= 
+profile 
+.  
+	IdProfile  )
+;) *
+UserName 
+= 
+profile 
+. 
+Username '
+;' (
+Score   
+=   
+profile   
+.   
+Score   !
+;  ! "
+PicPath!! 
+=!! 
+profile!! 
+.!! 
+PicturePath!! )
+;!!) *
+}"" 	
+public$$ 
+void$$ 
+CreateGuestInstance$$ '
+($$' (
+)$$( )
+{$$* +
+GuestProfile%% 
+guestProfile%% %
+=%%& '
+new%%( +
+GuestProfile%%, 8
+(%%8 9
+)%%9 :
+;%%: ;
+	IdProfile&& 
+=&& 
+guestProfile&& $
+.&&$ %
+GuestId&&% ,
+;&&, -
+UserName'' 
+='' 
+guestProfile'' #
+.''# $
+Username''$ ,
+;'', -
+Score(( 
+=(( 
+$num(( 
+;(( 
+PicPath)) 
+=)) 
+guestProfile)) "
+.))" #
+Avatar))# )
+;))) *
+}** 	
+public,, 
+void,, 
+ResetInstance,, !
+(,,! "
+),," #
+{,,$ %
+	IdProfile-- 
+=-- 
+$num-- 
+;-- 
+UserName.. 
+=.. 
+null.. 
+;.. 
+Score// 
+=// 
+$num// 
+;// 
+PicPath00 
+=00 
+null00 
+;00 
+IdUser11 
+=11 
+$num11 
+;11 
+Password22 
+=22 
+null22 
+;22 
+Mail33 
+=33 
+null33 
+;33 
+}44 	
+public66 
+static66 
+void66 
+ResetLobbyCode66 )
+(66) *
+)66* +
+{66, -
+	LobbyCode77 
+=77 
+$str77  
+;77  !
+}88 	
+public:: 
+static:: 
+void:: 
+ResetChatCode:: (
+(::( )
+)::) *
+{::+ ,
+	LobbyCode;; 
+=;; 
+$str;;  
+;;;  !
+}<< 	
+public>> 
+static>> 
+void>> 
+ResetMatchCode>> )
+(>>) *
+)>>* +
+{>>, -
+	LobbyCode?? 
+=?? 
+$str??  
+;??  !
+}@@ 	
+publicBB 
+staticBB 
+voidBB 
+UpdateFotoRutaBB )
+(BB) *
+stringBB* 0
+	nuevaRutaBB1 :
+)BB: ;
+{BB< =
+PicPathCC 
+=CC 
+	nuevaRutaCC 
+;CC  
+}DD 	
+publicFF 
+staticFF 
+voidFF 
+UpdateNombreFF '
+(FF' (
+stringFF( .
+nuevoNombreFF/ :
+)FF: ;
+{FF< =
+UserNameGG 
+=GG 
+nuevoNombreGG "
+;GG" #
+}HH 	
+publicJJ 
+staticJJ 
+voidJJ 
+UpdateLobbyCodeJJ *
+(JJ* +
+stringJJ+ 1
+newCodeJJ2 9
+)JJ9 :
+{JJ; <
+	LobbyCodeKK 
+=KK 
+newCodeKK 
+;KK  
+}LL 	
+publicNN 
+staticNN 
+voidNN 
+UpdateChatCodeNN )
+(NN) *
+stringNN* 0
+newCodeNN1 8
+)NN8 9
+{NN: ;
+ChatCodeOO 
+=OO 
+newCodeOO 
+;OO 
+}PP 	
+publicRR 
+staticRR 
+voidRR 
+UpdateMatchCodeRR *
+(RR* +
+stringRR+ 1
+newCodeRR2 9
+)RR9 :
+{RR; <
+	MatchCodeSS 
+=SS 
+newCodeSS 
+;SS  
+}TT 	
+}VV 
+}WW œ
 -C:\TripasDeGatoCliente\Logic\LoggerManager.cs
 [ 
 assembly 	
@@ -21478,182 +27182,327 @@ emailRegexHH< F
 TripasDeGatoCliente
  
 . 
-Logic #
-{ 
-public 
+Logic #
+{$ %
+public 
 
-class 
-LoggerManager 
-{		 
-public
-
- 
-ILog
-
- 
+class 
+LoggerManager 
+{  
+public 
+ILog 
+Logger 
+{ 
+get  
+;  !
+private" )
+set* -
+;- .
+}/ 0
+public		 
+LoggerManager		 
+(		 
+Type		 !
+type		" &
+)		& '
+{		( )
 Logger
 
- 
-{
+ 
+=
 
- 
-get
+ 
+
+LogManager
 
-  
+ 
+.
+
+  
+	GetLogger
+
+  )
+(
+
+) *
+type
+
+* .
+)
+
+. /
 ;
 
-  !
-private
-
-" )
-set
-
-* -
-;
-
-- .
-}
-
-/ 0
-public 
-LoggerManager 
-( 
-Type !
-type" &
-)& '
-{ 	
-Logger 
-= 
+/ 0
+} 	
+public 
+ILog 
+	GetLogger 
+( 
+Type "
+type# '
+)' (
+{) *
+return 
 
-LogManager 
-.  
-	GetLogger  )
-() *
-type* .
-). /
-;/ 0
-} 	
-public 
-ILog 
-	GetLogger 
-( 
-Type "
-type# '
-)' (
-{ 	
-return 
-
-LogManager 
-. 
-	GetLogger '
-(' (
-type( ,
-), -
-;- .
+LogManager 
+. 
+	GetLogger '
+(' (
+type( ,
+), -
+;- .
+} 	
+public 
+void 
+LogInfo 
+( 
+string "
+message# *
+)* +
+{, -
+Logger 
+. 
+Info 
+( 
+message 
+)  
+;  !
 } 	
 public 
-void 
-LogInfo 
-( 
-string "
-message# *
-)* +
-{ 	
-Logger 
-. 
-Info 
-( 
-message 
-)  
-;  !
-} 	
-public 
-void 
-LogError 
-( 
-string #
-message$ +
-,+ ,
-	Exception- 6
-ex7 9
-)9 :
-{ 	
-Logger 
-. 
-Error 
-( 
-message  
-,  !
-ex" $
-)$ %
-;% &
-} 	
-public 
-void 
-LogError 
-( 
-	Exception &
-ex' )
-)) *
-{   	
-Logger!! 
-.!! 
-Error!! 
-(!! 
-ex!! 
-)!! 
-;!! 
-}"" 	
-public$$ 
-void$$ 
-LogFatal$$ 
-($$ 
-	Exception$$ &
-ex$$' )
-)$$) *
-{%% 	
+void 
+LogError 
+( 
+string #
+message$ +
+,+ ,
+	Exception- 6
+ex7 9
+)9 :
+{; <
+Logger 
+. 
+Error 
+( 
+message  
+,  !
+ex" $
+)$ %
+;% &
+} 	
+public 
+void 
+LogError 
+( 
+	Exception &
+ex' )
+)) *
+{+ ,
+Logger 
+. 
+Error 
+( 
+ex 
+) 
+; 
+} 	
+public 
+void 
+LogFatal 
+( 
+	Exception &
+ex' )
+)) *
+{+ ,
+Logger 
+. 
+Fatal 
+( 
+ex 
+) 
+; 
+} 	
+public!! 
+void!! 
+LogWarn!! 
+(!! 
+	Exception!! %
+ex!!& (
+)!!( )
+{!!* +
+Logger"" 
+."" 
+Warn"" 
+("" 
+ex"" 
+)"" 
+;"" 
+}## 	
+public%% 
+void%% 
+LogDebug%% 
+(%% 
+	Exception%% &
+ex%%' )
+)%%) *
+{%%+ ,
 Logger&& 
 .&& 
-Fatal&& 
+Debug&& 
 (&& 
 ex&& 
 )&& 
 ;&& 
-}'' 	
-public)) 
-void)) 
-LogWarn)) 
-()) 
-	Exception)) %
-ex))& (
-)))( )
-{** 	
-Logger++ 
-.++ 
-Warn++ 
-(++ 
-ex++ 
-)++ 
-;++ 
-},, 	
-public.. 
-void.. 
-LogDebug.. 
-(.. 
-	Exception.. &
-ex..' )
-)..) *
-{// 	
-Logger00 
-.00 
-Debug00 
-(00 
-ex00 
-)00 
-;00 
-}11 	
-}22 
-}33 Œ
+}'' 	
+}(( 
+})) ≈
+&C:\TripasDeGatoCliente\Logic\Hasher.cs
+	namespace 	
+TripasDeGatoCliente
+ 
+. 
+Logic #
+{$ %
+internal 
+class 
+Hasher 
+{ 
+public 
+static 
+string 
+HashToSHA256 )
+() *
+string* 0
+
+textToHash1 ;
+); <
+{= >
+StringBuilder 
+stringHashBuilder +
+=, -
+new. 1
+StringBuilder2 ?
+(? @
+)@ A
+;A B
+byte		 
+[		 
+]		 
+
+inputBytes		 
+=		 
+Encoding		  (
+.		( )
+UTF8		) -
+.		- .
+GetBytes		. 6
+(		6 7
+
+textToHash		7 A
+)		A B
+;		B C
+using
+
+ 
+(
+
+ 
+SHA256
+
+ 
+sha256
+
+  
+=
+
+! "
+SHA256
+
+# )
+.
+
+) *
+Create
+
+* 0
+(
+
+0 1
+)
+
+1 2
+)
+
+2 3
+{
+
+4 5
+byte 
+[ 
+] 
+	hashBytes  
+=! "
+sha256# )
+.) *
+ComputeHash* 5
+(5 6
+
+inputBytes6 @
+)@ A
+;A B
+string 
+hexaDecimalFormat (
+=) *
+$str+ /
+;/ 0
+for 
+( 
+int 
+
+indexBytes #
+=$ %
+$num& '
+;' (
+
+indexBytes) 3
+<4 5
+	hashBytes6 ?
+.? @
+Length@ F
+;F G
+
+indexBytesH R
+++R T
+)T U
+{V W
+stringHashBuilder %
+.% &
+Append& ,
+(, -
+	hashBytes- 6
+[6 7
+
+indexBytes7 A
+]A B
+.B C
+ToStringC K
+(K L
+hexaDecimalFormatL ]
+)] ^
+)^ _
+;_ `
+} 
+} 
+return 
+stringHashBuilder $
+.$ %
+ToString% -
+(- .
+). /
+;/ 0
+} 	
+} 
+} Œ
 6C:\TripasDeGatoCliente\Logic\GuestProfileSinglenton.cs
 	namespace 	
 TripasDeGatoCliente
@@ -21687,77 +27536,63 @@ LogManager 
 setA D
 ;D E
 }F G
-public 
-static 
-string 
-	CodeMatch &
-{' (
-get) ,
-;, -
-private. 5
-set6 9
-;9 :
-}; <
-public
-
- 
-static
-
- !
-GuestProfileSingleton
-
- +
-Instance
-
-, 4
-=>
-
-5 7
-SingletonInstance
-
-8 I
-;
-
-I J
-public 
-void 
-CreateInstance "
-(" #
-string# )
-code* .
-). /
-{0 1
-PerfilInvitado 
-=  
-new! $
-GuestProfile% 1
-(1 2
-)2 3
-;3 4
-PerfilInvitado 
-. 
-Username '
-=( )
-GuestProfile* 6
-.6 7!
-RandomChooserUsername7 L
-(L M
-)M N
-;N O
-PerfilInvitado 
-. 
-Avatar %
-=& '
-GuestProfile( 4
-.4 5#
-RandomChooserAvatarIcon5 L
-(L M
-)M N
-;N O
-	CodeMatch 
-= 
-code  
-;  !
+public		 
+static		 
+string		 
+	CodeMatch		 &
+{		' (
+get		) ,
+;		, -
+private		. 5
+set		6 9
+;		9 :
+}		; <
+public 
+static !
+GuestProfileSingleton +
+Instance, 4
+=>5 7
+SingletonInstance8 I
+;I J
+public 
+void 
+CreateInstance "
+(" #
+string# )
+code* .
+). /
+{0 1
+PerfilInvitado 
+= 
+new  
+GuestProfile! -
+(- .
+). /
+;/ 0
+PerfilInvitado 
+. 
+Username #
+=$ %
+GuestProfile& 2
+.2 3!
+RandomChooserUsername3 H
+(H I
+)I J
+;J K
+PerfilInvitado 
+. 
+Avatar !
+=" #
+GuestProfile$ 0
+.0 1#
+RandomChooserAvatarIcon1 H
+(H I
+)I J
+;J K
+	CodeMatch 
+= 
+code 
+; 
 } 	
 public 
 void 
@@ -21807,528 +27642,682 @@ LogManager 
 set& )
 ;) *
 }+ ,
-public 
-string 
-Avatar 
-{ 
-get "
-;" #
-set$ '
-;' (
-}) *
-public		 
-int		 
-GuestId		 
-{		 
-get		  
-;		  !
-private		" )
-set		* -
-;		- .
-}		/ 0
-public 
-GuestProfile 
-( 
-) 
-{ 
-this 
-. 
-Username 
-= !
-RandomChooserUsername 1
-(1 2
-)2 3
-;3 4
-this 
-. 
-Avatar 
-= #
-RandomChooserAvatarIcon 1
-(1 2
-)2 3
-;3 4
+public		 
+string		 
+Avatar		 
+{		 
+get		 "
+;		" #
+set		$ '
+;		' (
+}		) *
+public 
+int 
+GuestId 
+{ 
+get  
+;  !
+private" )
+set* -
+;- .
+}/ 0
+public 
+GuestProfile 
+( 
+) 
+{ 
 this 
-. 
-GuestId 
-= 
-GenerateRandomId +
-(+ ,
-), -
-;- .
-} 	
-public 
-static 
-int 
-GenerateRandomId *
-(* +
-)+ ,
-{- .
-return 
-random 
-. 
-Next 
-( 
-$num %
-,% &
-$num' -
-)- .
-;. /
-} 	
-public 
-static 
-string #
-RandomChooserAvatarIcon 4
-(4 5
-)5 6
-{7 8
-string 
-[ 
-] 
-defaultAvatars #
-=$ %
-{& '
-$str 4
-,4 5
-$str6 Z
-,Z [
-$str	\ Ä
-,
-Ä Å
-$str 4
-,4 5
-$str6 Z
-,Z [
-$str	\ Ä
-,
-Ä Å
+. 
+Username 
+= !
+RandomChooserUsername 1
+(1 2
+)2 3
+;3 4
+this 
+. 
+Avatar 
+= #
+RandomChooserAvatarIcon 1
+(1 2
+)2 3
+;3 4
+this 
+. 
+GuestId 
+= 
+GenerateRandomId +
+(+ ,
+), -
+;- .
+} 	
+public 
+static 
+int 
+GenerateRandomId *
+(* +
+)+ ,
+{- .
+return 
+random 
+. 
+Next 
+( 
+$num %
+,% &
+$num' -
+)- .
+;. /
+} 	
+public 
+static 
+string #
+RandomChooserAvatarIcon 4
+(4 5
+)5 6
+{7 8
+string 
+[ 
+] 
+defaultAvatars #
+=$ %
+{& '
 $str 4
 ,4 5
 $str6 Z
 ,Z [
-$str	\ Ä
-} 
-; 
-int 
-randomIndex 
-= 
-random $
-.$ %
-Next% )
-() *
-defaultAvatars* 8
-.8 9
-Length9 ?
-)? @
-;@ A
-return 
-defaultAvatars !
-[! "
-randomIndex" -
-]- .
-;. /
-} 	
-public 
-static 
-string !
-RandomChooserUsername 2
-(2 3
-)3 4
-{5 6
-int   
-randomIndexNumber   !
-=  " #
-random  $ *
-.  * +
-Next  + /
-(  / 0
-$num  0 1
-,  1 2
-$num  3 :
-)  : ;
-;  ; <
-return!! 
-$str!! 
-+!! 
-randomIndexNumber!! .
-;!!. /
-}"" 	
-}## 
-}$$ √
-&C:\TripasDeGatoCliente\Logic\Hasher.cs
-	namespace 	
-TripasDeGatoCliente
- 
-. 
-Logic #
-{ 
-internal 
-class 
-Hasher 
-{ 
-public		 
-static		 
-string		 
-HashToSHA256		 )
-(		) *
-string		* 0
-
-textToHash		1 ;
-)		; <
-{
+$str	\ Ä
+,
+Ä Å
+$str 4
+,4 5
+$str6 Z
+,Z [
+$str	\ Ä
+,
+Ä Å
+$str 4
+,4 5
+$str6 Z
+,Z [
+$str	\ Ä
+} 
+; 
+int 
+randomIndex 
+= 
+random $
+.$ %
+Next% )
+() *
+defaultAvatars* 8
+.8 9
+Length9 ?
+)? @
+;@ A
+return 
+defaultAvatars !
+[! "
+randomIndex" -
+]- .
+;. /
+} 	
+public!! 
+static!! 
+string!! !
+RandomChooserUsername!! 2
+(!!2 3
+)!!3 4
+{!!5 6
+int"" 
+randomIndexNumber"" !
+=""" #
+random""$ *
+.""* +
+Next""+ /
+(""/ 0
+$num""0 1
+,""1 2
+$num""3 :
+)"": ;
+;""; <
+return## 
+$str## 
++## 
+randomIndexNumber## .
+;##. /
+}$$ 	
+}%% 
+}&& õ
+-C:\TripasDeGatoCliente\Logic\DialogManager.cs
+public
 
- 	
-StringBuilder 
-stringHashBuilder +
-=, -
-new. 1
-StringBuilder2 ?
-(? @
-)@ A
-;A B
-byte 
-[ 
-] 
-
-inputBytes 
-= 
-Encoding  (
-.( )
-UTF8) -
-.- .
-GetBytes. 6
-(6 7
-
-textToHash7 A
-)A B
-;B C
-using 
-( 
-SHA256 
-sha256  
-=! "
-SHA256# )
-.) *
-Create* 0
-(0 1
-)1 2
-)2 3
-{ 
-byte 
-[ 
-] 
-	hashBytes  
-=! "
-sha256# )
-.) *
-ComputeHash* 5
-(5 6
-
-inputBytes6 @
-)@ A
-;A B
-string 
-hexaDecimalFormat (
-=) *
-$str+ /
-;/ 0
-for 
-( 
-int 
-
-indexBytes #
-=$ %
-$num& '
-;' (
-
-indexBytes) 3
-<4 5
-	hashBytes6 ?
-.? @
-Length@ F
-;F G
-
-indexBytesH R
-++R T
-)T U
-{ 
-stringHashBuilder %
-.% &
-Append& ,
-(, -
-	hashBytes- 6
-[6 7
-
-indexBytes7 A
-]A B
-.B C
-ToStringC K
-(K L
-hexaDecimalFormatL ]
-)] ^
-)^ _
-;_ `
-} 
-} 
-return 
-stringHashBuilder $
-.$ %
-ToString% -
-(- .
-). /
-;/ 0
-} 	
-} 
-} £
--C:\TripasDeGatoCliente\Logic\DialogManager.cs
-public
-
- 
-
+ 
 static
 
- 
+ 
 class
 
- 
+ 
 DialogManager
 
- %
-{ 
-public 
-static 
-void !
-ShowErrorMessageAlert 0
-(0 1
-string1 7
-errorMessage8 D
-)D E
-{ 	
+ !
+{
+
+" #
+public 
+
+static 
+void !
+ShowErrorMessageAlert ,
+(, -
+string- 3
+errorMessage4 @
+)@ A
+{B C
 
-MessageBox 
-. 
-Show 
-( 
-errorMessage (
-,( )
-TripasDeGatoCliente* =
-.= >
+MessageBox 
+. 
+Show 
+( 
+errorMessage $
+,$ %
+TripasDeGatoCliente& 9
+.9 :
 
-Properties> H
-.H I
-	ResourcesI R
-.R S
-dialogTitleErrorS c
-,c d
-MessageBoxButtone u
-.u v
-OKv x
-,x y
-MessageBoxImage	z â
+Properties: D
+.D E
+	ResourcesE N
+.N O
+dialogTitleErrorO _
+,_ `
+MessageBoxButtona q
+.q r
+OKr t
+,t u
+MessageBoxImage	v Ö
 .
-â ä
+Ö Ü
 Error
-ä è
+Ü ã
 )
-è ê
+ã å
 ;
-ê ë
-} 	
-public 
-static 
-void #
-ShowWarningMessageAlert 2
-(2 3
-string3 9
-warningMessage: H
-)H I
-{ 	
+å ç
+} 
+public 
+
+static 
+void #
+ShowWarningMessageAlert .
+(. /
+string/ 5
+warningMessage6 D
+)D E
+{F G
 
-MessageBox 
-. 
-Show 
-( 
-warningMessage *
-,* +
-TripasDeGatoCliente, ?
-.? @
+MessageBox 
+. 
+Show 
+( 
+warningMessage &
+,& '
+TripasDeGatoCliente( ;
+.; <
 
-Properties@ J
-.J K
-	ResourcesK T
-.T U
-dialogTitleWarningU g
-,g h
-MessageBoxButtoni y
-.y z
-OKz |
-,| }
-MessageBoxImage	~ ç
+Properties< F
+.F G
+	ResourcesG P
+.P Q
+dialogTitleWarningQ c
+,c d
+MessageBoxButtone u
+.u v
+OKv x
+,x y
+MessageBoxImage	z â
 .
-ç é
+â ä
 Warning
-é ï
+ä ë
 )
-ï ñ
+ë í
 ;
-ñ ó
-} 	
-public 
-static 
-void #
-ShowSuccessMessageAlert 2
-(2 3
-string3 9
-successMessage: H
-)H I
-{ 	
+í ì
+} 
+public 
+
+static 
+void #
+ShowSuccessMessageAlert .
+(. /
+string/ 5
+successMessage6 D
+)D E
+{F G
 
-MessageBox 
-. 
-Show 
-( 
-successMessage *
-,* +
-TripasDeGatoCliente, ?
-.? @
+MessageBox 
+. 
+Show 
+( 
+successMessage &
+,& '
+TripasDeGatoCliente( ;
+.; <
 
-Properties@ J
-.J K
-	ResourcesK T
-.T U
-dialogTitleSuccesU f
-,f g
-MessageBoxButtonh x
-.x y
-OKy {
-,{ |
-MessageBoxImage	} å
+Properties< F
+.F G
+	ResourcesG P
+.P Q
+dialogTitleSuccesQ b
+,b c
+MessageBoxButtond t
+.t u
+OKu w
+,w x
+MessageBoxImage	y à
 .
-å ç
+à â
 Information
-ç ò
+â î
 )
-ò ô
+î ï
 ;
-ô ö
-} 	
-public 
-static 
-void (
-ShowConfirmationMessageAlert 7
-(7 8
-string8 >
-confirmMessage? M
-)M N
-{ 	
+ï ñ
+} 
+public 
+
+static 
+void (
+ShowConfirmationMessageAlert 3
+(3 4
+string4 :
+confirmMessage; I
+)I J
+{K L
 
-MessageBox 
-. 
-Show 
-( 
-confirmMessage *
-,* +
-TripasDeGatoCliente, ?
-.? @
+MessageBox 
+. 
+Show 
+( 
+confirmMessage &
+,& '
+TripasDeGatoCliente( ;
+.; <
 
-Properties@ J
-.J K
-	ResourcesK T
-.T U#
-dialogTitleConfirmationU l
-,l m
-MessageBoxButtonn ~
-.~ 
-OK	 Å
-,
-Å Ç
-MessageBoxImage
-É í
+Properties< F
+.F G
+	ResourcesG P
+.P Q#
+dialogTitleConfirmationQ h
+,h i
+MessageBoxButtonj z
+.z {
+OK{ }
+,} ~
+MessageBoxImage	 é
 .
-í ì
+é è
 Question
-ì õ
+è ó
 )
-õ ú
+ó ò
 ;
-ú ù
-} 	
-}  
+ò ô
+} 
+} Ã
 0C:\TripasDeGatoCliente\Logic\ConstantsManager.cs
 	namespace 	
 TripasDeGatoCliente
  
 . 
-Logic #
-{ 
-internal		 
-class		 
-ConstantsManager		 #
-{
+Logic #
+{$ %
+internal 
+class 
+ConstantsManager #
+{$ %
+public		 
+static		 
+class		 
+	Constants		 %
+{		& '
+public
 
- 
-public 
-static 
-class 
-	Constants %
-{ 	
-public 
-const 
-int 
-ERROR_OPERATION ,
-=- .
--/ 0
-$num0 1
-;1 2
-public 
-const 
-int 
-SUCCES_OPERATION -
-=. /
-$num0 1
-;1 2
-public 
-const 
-int 
-NO_DATA_MATCHES ,
-=- .
--/ 0
-$num0 1
-;1 2
-public 
-const 
-int 
-DATA_MATCHES )
-=* +
-$num, -
-;- .
-public 
-const 
-int 
-INITIAL_SCORE *
-=+ ,
-$num- .
-;. /
-public 
-const 
-string  
-DEFAULT_IMAGE_PLAYER  4
-=5 6
-$str7 :
-;: ;
-public 
-const 
-string 
-DEFAULT_IMAGE_GUEST  3
-=4 5
-$str6 9
-;9 :
-public 
-const 
-int 
-HOW_MANY_SCORES ,
-=- .
-$num/ 1
-;1 2
-} 	
-} 
-}   
+ 
+const
+
+ 
+int
+
+ 
+ERROR_OPERATION
+
+ ,
+=
+
+- .
+-
+
+/ 0
+$num
+
+0 1
+;
+
+1 2
+public 
+const 
+int 
+SUCCES_OPERATION -
+=. /
+$num0 1
+;1 2
+public 
+const 
+int 
+NO_DATA_MATCHES ,
+=- .
+-/ 0
+$num0 1
+;1 2
+public 
+const 
+int 
+DATA_MATCHES )
+=* +
+$num, -
+;- .
+public 
+const 
+int 
+INITIAL_SCORE *
+=+ ,
+$num- .
+;. /
+public 
+const 
+string  
+DEFAULT_IMAGE_PLAYER  4
+=5 6
+$str7 :
+;: ;
+public 
+const 
+string 
+DEFAULT_IMAGE_GUEST  3
+=4 5
+$str6 9
+;9 :
+public 
+const 
+int 
+HOW_MANY_SCORES ,
+=- .
+$num/ 1
+;1 2
+} 	
+} 
+} û(
+1C:\TripasDeGatoCliente\Logic\ConnectionManager.cs
+	namespace 	
+TripasDeGatoCliente
+ 
+. 
+Logic #
+{$ %
+public 
+
+class 
+ConnectionManager "
+{# $
+private 
+static 
+readonly 
+ConnectionManager  1%
+connectionManagerInstance2 K
+=L M
+newN Q
+ConnectionManagerR c
+(c d
+)d e
+;e f
+public		 
+static		 
+ConnectionManager		 '
+Instance		( 0
+=>		1 3%
+connectionManagerInstance		4 M
+;		M N
+public 
+LobbyManagerClient !
+LobbyManager" .
+{/ 0
+get1 4
+;4 5
+private6 =
+set> A
+;A B
+}C D
+public 
+ChatManagerClient  
+ChatManager! ,
+{- .
+get/ 2
+;2 3
+private4 ;
+set< ?
+;? @
+}A B
+public 
+MatchManagerClient !
+MatchManager" .
+{/ 0
+get1 4
+;4 5
+private6 =
+set> A
+;A B
+}C D
+private 
+ConnectionManager !
+(! "
+)" #
+{$ %
+}& '
+public 
+void "
+InitializeLobbyManager *
+(* +
+InstanceContext+ :
+context; B
+)B C
+{D E
+LobbyManager 
+= 
+new 
+LobbyManagerClient 1
+(1 2
+context2 9
+)9 :
+;: ;
+} 	
+public 
+void !
+InitializeChatManager )
+() *
+InstanceContext* 9
+context: A
+)A B
+{C D
+ChatManager 
+= 
+new 
+ChatManagerClient /
+(/ 0
+context0 7
+)7 8
+;8 9
+} 	
+public 
+void "
+InitializeMatchManager *
+(* +
+InstanceContext+ :
+context; B
+)B C
+{D E
+MatchManager 
+= 
+new 
+MatchManagerClient 1
+(1 2
+context2 9
+)9 :
+;: ;
+} 	
+public   
+async   
+Task   
+DisconnectAllAsync   ,
+(  , -
+)  - .
+{  / 0
+if!! 
+(!! 
+LobbyManager!! 
+!=!! 
+null!!  $
+&&!!% ' 
+UserProfileSingleton!!( <
+.!!< =
+	LobbyCode!!= F
+!=!!G I
+$str!!J R
+)!!R S
+{!!T U
+await"" 
+LobbyManager"" "
+.""" #
+LeaveLobbyAsync""# 2
+(""2 3 
+UserProfileSingleton""3 G
+.""G H
+	LobbyCode""H Q
+,""Q R 
+UserProfileSingleton""S g
+.""g h
+	IdProfile""h q
+)""q r
+;""r s 
+UserProfileSingleton## $
+.##$ %
+ResetLobbyCode##% 3
+(##3 4
+)##4 5
+;##5 6
+}$$ 
+if&& 
+(&& 
+ChatManager&& 
+!=&& 
+null&& #
+&&&&$ & 
+UserProfileSingleton&&' ;
+.&&; <
+ChatCode&&< D
+!=&&E G
+$str&&H P
+)&&P Q
+{&&R S
+await'' 
+ChatManager'' !
+.''! "
+LeaveChatAsync''" 0
+(''0 1 
+UserProfileSingleton''1 E
+.''E F
+UserName''F N
+,''N O 
+UserProfileSingleton''P d
+.''d e
+ChatCode''e m
+)''m n
+;''n o 
+UserProfileSingleton(( $
+.(($ %
+ResetChatCode((% 2
+(((2 3
+)((3 4
+;((4 5
+})) 
+if++ 
+(++ 
+MatchManager++ 
+!=++ 
+null++  $
+&&++% ' 
+UserProfileSingleton++( <
+.++< =
+	MatchCode++= F
+!=++G I
+$str++J R
+)++R S
+{++T U
+await,, 
+MatchManager,, "
+.,," #
+LeaveMatchAsync,,# 2
+(,,2 3 
+UserProfileSingleton,,3 G
+.,,G H
+	MatchCode,,H Q
+,,,Q R 
+UserProfileSingleton,,S g
+.,,g h
+UserName,,h p
+),,p q
+;,,q r 
+UserProfileSingleton-- $
+.--$ %
+ResetMatchCode--% 3
+(--3 4
+)--4 5
+;--5 6
+}.. 
+}// 	
+public22 
+void22 
+ReleaseLobbyManager22 '
+(22' (
+)22( )
+{22* +
+LobbyManager33 
+=33 
+null33 
+;33  
+}44 	
+public66 
+void66 
+ReleaseChatManager66 &
+(66& '
+)66' (
+{66) *
+ChatManager77 
+=77 
+null77 
+;77 
+}88 	
+public:: 
+void:: 
+ReleaseMatchManager:: '
+(::' (
+)::( )
+{::* +
+MatchManager;; 
+=;; 
+null;; 
+;;;  
+}<< 	
+}== 
+}>> 

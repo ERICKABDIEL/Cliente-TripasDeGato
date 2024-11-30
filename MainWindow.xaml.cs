@@ -5,6 +5,7 @@ using System.ServiceModel;
 using TripasDeGatoCliente.Logic;
 using System.ServiceModel.Channels;
 using TripasDeGatoCliente.TripasDeGatoServicio;
+using log4net.Repository.Hierarchy;
 
 namespace TripasDeGatoCliente {
     /// <summary>
@@ -26,15 +27,24 @@ namespace TripasDeGatoCliente {
         }
 
         private async void MainWindowClosing(object sender, System.ComponentModel.CancelEventArgs e) {
+            LoggerManager logger = new LoggerManager(this.GetType());
             try {
                 await ConnectionManager.Instance.DisconnectAllAsync();
-            } catch (Exception ex) {
-                LoggerManager logger = new LoggerManager(this.GetType());
-                logger.LogError(ex);
-                DialogManager.ShowErrorMessageAlert("Error cerrando conexiones: " + ex.Message);
+                SignOut();
+            } catch (EndpointNotFoundException endpointNotFoundException) {
+                logger.LogError(endpointNotFoundException);
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogEndPointException);
+            } catch (TimeoutException timeoutException) {
+                logger.LogError(timeoutException);
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogTimeOutException);
+            } catch (CommunicationException communicationException) {
+                logger.LogError(communicationException);
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
+            } catch (Exception exception) {
+                logger.LogError(exception);
+                DialogManager.ShowErrorMessageAlert(string.Format(Properties.Resources.dialogUnexpectedError, exception.Message));
             }
         }
-
 
         private void SignOut() {
             int playerId = UserProfileSingleton.IdProfile;
