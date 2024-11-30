@@ -1,30 +1,29 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using TripasDeGatoCliente.TripasDeGatoServicio;
-using TripasDeGatoCliente.Logic;
-using log4net.Repository.Hierarchy;
 using System.ServiceModel;
+using System.Threading.Tasks;
+using System.Windows.Controls;
+using TripasDeGatoCliente.Logic;
+using System.Collections.Generic;
+using log4net.Repository.Hierarchy;
+using TripasDeGatoCliente.TripasDeGatoServicio;
 
 namespace TripasDeGatoCliente.Views {
     public partial class Laderboard : Page {
-        private LeaderboardManagerClient leaderboardManagerClient;
+        private LeaderboardManagerClient _leaderboardManagerClient;
 
         public Laderboard() {
             InitializeComponent();
-            leaderboardManagerClient = new LeaderboardManagerClient();
+            _leaderboardManagerClient = new LeaderboardManagerClient();
             LoadLeaderboardDataAsync();
         }
 
         private async Task LoadLeaderboardDataAsync() {
             LoggerManager logger = new LoggerManager(this.GetType());
             try {
-                List<Profile> highestScores = (await leaderboardManagerClient.GetHighestScoresAsync()).ToList();
-
-                LeaderboardListView.ItemsSource = highestScores;
+                List<Profile> highestScores = (await _leaderboardManagerClient.GetHighestScoresAsync()).ToList();
+                lstViewLeaderboard.ItemsSource = highestScores;
             } catch (EndpointNotFoundException endpointNotFoundException) {
                 logger.LogError(endpointNotFoundException);
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogEndPointException);
@@ -34,6 +33,9 @@ namespace TripasDeGatoCliente.Views {
             } catch (CommunicationException communicationException) {
                 logger.LogError(communicationException);
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
+            } catch (Exception exception) {
+                logger.LogError(exception);
+                DialogManager.ShowErrorMessageAlert(string.Format(Properties.Resources.dialogUnexpectedError, exception.Message));
             }
         }
 

@@ -2,10 +2,8 @@
 using System.Net.Mail;
 using System.Text.RegularExpressions;
 
-namespace TripasDeGatoCliente.Logic
-{
-    public static class Validador
-    {
+namespace TripasDeGatoCliente.Logic {
+    public static class Validador {
         private static Regex passwordRegex = new Regex("^(?=.*[A-Za-zñÑ])(?=.*\\d)[A-Za-zñÑ\\d\\W]{10,50}$", RegexOptions.None, TimeSpan.FromMilliseconds(1000));
         private static Regex usernameRegex = new Regex("^[A-Za-z0-9_]{5,50}$", RegexOptions.None, TimeSpan.FromMilliseconds(1000));
         private static Regex emailRegex = new Regex(@"^[^@\s]+@[^@\s]+\.[^@\s]+$", RegexOptions.None, TimeSpan.FromMilliseconds(1000));
@@ -13,36 +11,28 @@ namespace TripasDeGatoCliente.Logic
         private static Regex stateRegex = new Regex(@"^[A-Z][a-zA-Z]{4,15}$", RegexOptions.None, TimeSpan.FromMilliseconds(1000));
         private static Regex gameNameRegex = new Regex(@"^[A-Za-z0-9 ]{1,20}$", RegexOptions.None, TimeSpan.FromMilliseconds(1000));
 
-
-        public static bool ValidateRegexPattern(string data, Regex regex)
-        {
+        public static bool ValidateRegexPattern(string data, Regex regex) {
             bool isValid = false;
-            try
-            {
+            try {
                 isValid = regex.IsMatch(data);
-            }
-            catch (RegexMatchTimeoutException)
-            {
+            } catch (RegexMatchTimeoutException) {
                 isValid = false;
             }
             return isValid;
         }
 
-        public static bool ValidatePassword(string password)
-        {
+        public static bool ValidatePassword(string password) {
             string cleanedPassword = Regex.Replace(password.Trim(), @"\s+", "");
             return !string.IsNullOrWhiteSpace(cleanedPassword) && ValidateRegexPattern(cleanedPassword, passwordRegex);
         }
 
-        public static bool ValidateUsername(string username)
-        {
+        public static bool ValidateUsername(string username) {
             string cleanedUsername = Regex.Replace(username.Trim(), @"\s+", "");
             return !string.IsNullOrWhiteSpace(cleanedUsername) && ValidateRegexPattern(cleanedUsername, usernameRegex);
         }
 
         public static bool ValidateEmail(string email) {
             string cleanedEmail = email?.Trim();
-
             if (!string.IsNullOrWhiteSpace(cleanedEmail) && cleanedEmail.Length <= 254) {
                 if (emailRegex.IsMatch(cleanedEmail)) {
                     try {
@@ -61,20 +51,17 @@ namespace TripasDeGatoCliente.Logic
             return !string.IsNullOrWhiteSpace(cleanedGameName) && ValidateRegexPattern(cleanedGameName, gameNameRegex);
         }
 
-        public static bool ValidateCode(string codeLobby)
-        {
+        public static bool ValidateCode(string codeLobby) {
             string codeCleaned = Regex.Replace(codeLobby.Trim(), @"\s+", "");
             return !string.IsNullOrWhiteSpace(codeCleaned) && ValidateRegexPattern(codeCleaned, codeLobbyMatchRegex);
         }
 
-        public static bool ValidateState(string state)
-        {
+        public static bool ValidateState(string state) {
             string stateCleaned = Regex.Replace(state.Trim(), @"\s+", "");
             return !string.IsNullOrWhiteSpace(stateCleaned) && ValidateRegexPattern(stateCleaned, stateRegex);
         }
 
-        public static void RegexPattern(string input)
-        {
+        public static void RegexPattern(string input) {
             bool isEmailValid = ValidateRegexPattern(input, emailRegex);
             bool isNumber = ValidateRegexPattern(input, new Regex("[0-9]+", RegexOptions.None, TimeSpan.FromMilliseconds(100)));
             var isLetterA = Regex.IsMatch(input, "(a+)+", RegexOptions.None);

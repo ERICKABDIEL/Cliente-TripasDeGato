@@ -222,11 +222,17 @@
   <data name="dialogComunicationException" xml:space="preserve">
     <value>Failed to establish a connection with the server. Please check your internet connection and try it again.</value>
   </data>
+  <data name="dialogConfirmKickPlayer" xml:space="preserve">
+    <value>Are you sure you want to kick the player from the lobby?</value>
+  </data>
   <data name="dialogConnectionError" xml:space="preserve">
     <value>Could not connect to the lobby.</value>
   </data>
   <data name="dialogConnectionErrorWithServer" xml:space="preserve">
     <value>Connection error with the server</value>
+  </data>
+  <data name="dialogConnectionFailed" xml:space="preserve">
+    <value>Failed to connect to the match.</value>
   </data>
   <data name="dialogEmailInUse" xml:space="preserve">
     <value>This email is already registered. Please use a different email</value>
@@ -291,6 +297,12 @@
   <data name="dialogHostLeftLobby" xml:space="preserve">
     <value>The host left the lobby.</value>
   </data>
+  <data name="dialogInfractionCollision" xml:space="preserve">
+    <value>It seems you hit something, you lost!</value>
+  </data>
+  <data name="dialogInfractionInvalidNode" xml:space="preserve">
+    <value>You hit a node that doesn't belong to you!</value>
+  </data>
   <data name="dialogInvalidEmail" xml:space="preserve">
     <value>Invalid Email</value>
   </data>
@@ -309,6 +321,9 @@
   <data name="dialogInvalidRecoveryCode" xml:space="preserve">
     <value>Invalid recovery code. Please try again</value>
   </data>
+  <data name="dialogInvalidStartNode" xml:space="preserve">
+    <value>You must start the stroke from a valid node.</value>
+  </data>
   <data name="dialogInvalidTimeSelected" xml:space="preserve">
     <value>Invalid time selected.</value>
   </data>
@@ -317,6 +332,9 @@
   </data>
   <data name="dialogInvitationSent" xml:space="preserve">
     <value>The invitation has been successfully sent to {0}.</value>
+  </data>
+  <data name="dialogKickedFromLobby" xml:space="preserve">
+    <value>You have been kicked from the Lobby</value>
   </data>
   <data name="dialogLobbyCreationError" xml:space="preserve">
     <value>Could not create the lobby. Please try again.</value>
@@ -339,6 +357,9 @@
   <data name="dialogNavigationError" xml:space="preserve">
     <value>Navigation error. Please try again later</value>
   </data>
+  <data name="dialogNodesNotFound" xml:space="preserve">
+    <value>No nodes were found for this match.</value>
+  </data>
   <data name="dialogNotRetrievedProfile" xml:space="preserve">
     <value>The user profile could not be retrieved</value>
   </data>
@@ -350,6 +371,9 @@
   </data>
   <data name="dialogPlayerAlreadyOnline" xml:space="preserve">
     <value>The player is already online. It is not possible to log in again.</value>
+  </data>
+  <data name="dialogPlayerLeftWarning" xml:space="preserve">
+    <value>A player left</value>
   </data>
   <data name="dialogProfileNotFound" xml:space="preserve">
     <value>No profile matching that name was found</value>
@@ -372,8 +396,11 @@
   <data name="dialogSelectLobbyToJoin" xml:space="preserve">
     <value>Please select a lobby to join.</value>
   </data>
-  <data name="dialogSelectNodesMapTimeError" xml:space="preserve">
-    <value>Please select the nodes, map, and time for the game.</value>
+  <data name="dialogSelectNodesError" xml:space="preserve">
+    <value>Please select the nodes for the game.</value>
+  </data>
+  <data name="dialogTaskCanceledException" xml:space="preserve">
+    <value>There was a problem loading the friends list. Please try again later.</value>
   </data>
   <data name="dialogTimeOutException" xml:space="preserve">
     <value>Try again waiting time has expired. Please check your connection to the server.</value>
@@ -389,6 +416,9 @@
   </data>
   <data name="dialogTitleWarning" xml:space="preserve">
     <value>Warning</value>
+  </data>
+  <data name="dialogTraceMustConnectNodes" xml:space="preserve">
+    <value>The trace must connect two corresponding nodes.</value>
   </data>
   <data name="dialogUnexpectedError" xml:space="preserve">
     <value>An error occurred: {0}</value>
@@ -492,6 +522,21 @@
   <data name="lbMap" xml:space="preserve">
     <value>Map:</value>
   </data>
+  <data name="lbMatchStatusDraw" xml:space="preserve">
+    <value>Draw!</value>
+  </data>
+  <data name="lbMatchStatusNotYourTurn" xml:space="preserve">
+    <value>It's not your turn yet</value>
+  </data>
+  <data name="lbMatchStatusYouLost" xml:space="preserve">
+    <value>You lost!</value>
+  </data>
+  <data name="lbMatchStatusYourTurn" xml:space="preserve">
+    <value>It's your turn!</value>
+  </data>
+  <data name="lbMatchStatusYouWon" xml:space="preserve">
+    <value>You won!</value>
+  </data>
   <data name="lbMessage" xml:space="preserve">
     <value>Message</value>
   </data>
@@ -516,6 +561,9 @@
   <data name="lbScore" xml:space="preserve">
     <value>Score: {0}</value>
   </data>
+  <data name="lbTurn" xml:space="preserve">
+    <value>Turn</value>
+  </data>
   <data name="lbUnknownUser" xml:space="preserve">
     <value>Unknown user</value>
   </data>
@@ -528,6 +576,9 @@
   <data name="lbVerifyPassword" xml:space="preserve">
     <value>Verify your password</value>
   </data>
+  <data name="lbWaitingForPlayer" xml:space="preserve">
+    <value>Waiting for player...</value>
+  </data>
   <data name="mapOptionBear" xml:space="preserve">
     <value>Bear</value>
   </data>
@@ -539,6 +590,9 @@
   </data>
   <data name="titleActionFailed" xml:space="preserve">
     <value>Action failed</value>
+  </data>
+  <data name="titleConfirmKick" xml:space="preserve">
+    <value>Confirm Kick</value>
   </data>
   <data name="titleDeleteFriend" xml:space="preserve">
     <value>Delete friend</value>

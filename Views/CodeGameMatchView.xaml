@@ -62,6 +62,7 @@
                         </Style>
                     </Button.Style>
                 </Button>
+
                 <Button x:Name="btnLogin" 
                         Content="{x:Static p:Resources.btnLogin}"
                         FontSize="16" 
@@ -108,7 +109,8 @@
                         </Style>
                     </Button.Style>
                 </Button>
-                <Label x:Name="lblCodeMatch" 
+
+                <Label x:Name="lbCodeMatch" 
                        Content="{x:Static p:Resources.globalLbEnterCodeLobby}" 
                        FontSize="22" 
                        Foreground="Black" 
@@ -116,6 +118,7 @@
                        FontFamily="Cooper Black"
                        HorizontalContentAlignment="Center" 
                        VerticalContentAlignment="Center"/>
+
                 <TextBox x:Name="txtCodeLobby" 
                          FontSize="20" 
                          Background="{x:Null}"
@@ -127,6 +130,6 @@
                          HorizontalContentAlignment="Center"
                          MaxLength="6"/>
             </Grid>
-            </Grid>
+        </Grid>
     </DockPanel>
 </Page>

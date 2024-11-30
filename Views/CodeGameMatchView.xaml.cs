@@ -1,27 +1,25 @@
-﻿using log4net.Repository.Hierarchy;
-using System;
+﻿using System;
+using System.Windows;
 using System.ServiceModel;
 using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Controls;
 using TripasDeGatoCliente.Logic;
+using log4net.Repository.Hierarchy;
 using TripasDeGatoCliente.TripasDeGatoServicio;
 
 namespace TripasDeGatoCliente.Views {
     public partial class CodeGameMatch : Page {
-        private LobbyBrowserClient lobbyBrowser;
+        private LobbyBrowserClient _lobbyBrowser;
 
         public CodeGameMatch() {
             InitializeComponent();
-            lobbyBrowser = new LobbyBrowserClient();
+            _lobbyBrowser = new LobbyBrowserClient();
         }
 
         public void GenerateGuestProfile() {
             LoggerManager logger = new LoggerManager(this.GetType());
-
             try {
                 string codeMatch = txtCodeLobby.Text;
-
                 UserProfileSingleton.Instance.CreateGuestInstance();
             } catch (EndpointNotFoundException endpointException) {
                 logger.LogError(endpointException);
@@ -32,6 +30,9 @@ namespace TripasDeGatoCliente.Views {
             } catch (CommunicationException communicationException) {
                 logger.LogError(communicationException);
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
+            } catch (Exception exception) {
+                logger.LogError(exception);
+                DialogManager.ShowErrorMessageAlert(string.Format(Properties.Resources.dialogUnexpectedError, exception.Message));
             }
         }
 
@@ -43,7 +44,6 @@ namespace TripasDeGatoCliente.Views {
         public async void BtnLogin_Click(object sender, RoutedEventArgs e) {
             LoggerManager logger = new LoggerManager(this.GetType());
             GenerateGuestProfile();
-
             try {
                 if (!string.IsNullOrEmpty(txtCodeLobby.Text)) {
                     string lobbyCode = txtCodeLobby.Text;
@@ -53,13 +53,11 @@ namespace TripasDeGatoCliente.Views {
                         PicturePath = UserProfileSingleton.PicPath,
                         Score = UserProfileSingleton.Score
                     };
-
-                    bool joined = await lobbyBrowser.JoinLobbyAsync(lobbyCode, guestProfile);
+                    bool joined = await _lobbyBrowser.JoinLobbyAsync(lobbyCode, guestProfile);
                     if (joined) {
                         LobbyView lobbyView = new LobbyView(lobbyCode);
                         this.NavigationService.Navigate(lobbyView);
                     } else {
-
                         DialogManager.ShowWarningMessageAlert(Properties.Resources.dialogLobbyJoinError);
                     }
                 } else {
@@ -74,6 +72,9 @@ namespace TripasDeGatoCliente.Views {
             } catch (CommunicationException communicationException) {
                 logger.LogError(communicationException);
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
+            } catch (Exception exception) {
+                logger.LogError(exception);
+                DialogManager.ShowErrorMessageAlert(string.Format(Properties.Resources.dialogUnexpectedError, exception.Message));
             }
         }
     }

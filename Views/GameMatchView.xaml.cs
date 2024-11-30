@@ -1,57 +1,54 @@
-
-using log4net.Repository.Hierarchy;
-
 using System;
-using System.Collections.Generic;
 using System.Linq;
+using System.Windows;
 using System.Net.Mail;
 using System.ServiceModel;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Windows.Threading;
 using System.Xml.Serialization;
 using TripasDeGatoCliente.Logic;
+using System.Collections.Generic;
+using System.Windows.Media.Imaging;
+using log4net.Repository.Hierarchy;
 using TripasDeGatoCliente.TripasDeGatoServicio;
 
 namespace TripasDeGatoCliente.Views {
     public partial class GameMatch : Page, IMatchManagerCallback {
-        private List<Polyline> allTraces;
-        private DispatcherTimer timer;
-        private int totalTime = 15;
-        private double remainingTime;
-        private string matchCode;
-        private bool isConnected;
-        private MatchManagerClient matchManagerClient;
-        private bool isDrawing = false;
-        private List<TripasDeGatoServicio.TracePoint> currentTracePoints = new List<TripasDeGatoServicio.TracePoint>();
-        private Polyline currentLine;
+        private List<Polyline> _allTraces;
+        private DispatcherTimer _timer;
+        private int _totalTime = 15;
+        private double _remainingTime;
+        private string _matchCode;
+        private bool _isConnected;
+        private MatchManagerClient _matchManagerClient;
+        private bool _isDrawing = false;
+        private List<TripasDeGatoServicio.TracePoint> _currentTracePoints = new List<TripasDeGatoServicio.TracePoint>();
+        private Polyline _currentLine;
         private List<Node> nodes;
-        private Dictionary<string, string> nodePairs;
-        private Node startNode;
-        private bool isPlayerTurn = false;
-
+        private Dictionary<string, string> _nodePairs;
+        private Node _startNode;
+        private bool _isPlayerTurn = false;
 
         public GameMatch(string gameCode) {
             InitializeComponent();
-            this.matchCode = gameCode;
-            matchManagerClient = new MatchManagerClient(new InstanceContext(this));
+            this._matchCode = gameCode;
+            _matchManagerClient = new MatchManagerClient(new InstanceContext(this));
             InitializeMatch();
-            allTraces = new List<Polyline>();
+            _allTraces = new List<Polyline>();
             drawingCanvas.MouseDown += Canvas_MouseDown;
             drawingCanvas.MouseMove += Canvas_MouseMove;
             drawingCanvas.MouseUp += Canvas_MouseUp;
             StartTimer();
         }
+
         private async Task CheckCurrentTurn() {
             LoggerManager logger = new LoggerManager(this.GetType());
             try {
-                string currentTurn = await Task.Run(() => matchManagerClient.GetCurrentTurn(matchCode));
-
+                string currentTurn = await Task.Run(() => _matchManagerClient.GetCurrentTurn(_matchCode));
                 if (currentTurn == UserProfileSingleton.UserName) {
                     NotifyYourTurn();
                 } else {
@@ -66,25 +63,28 @@ namespace TripasDeGatoCliente.Views {
             } catch (CommunicationException communicationException) {
                 logger.LogError(communicationException);
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
+            } catch (Exception exception) {
+                logger.LogError(exception);
+                DialogManager.ShowErrorMessageAlert(string.Format(Properties.Resources.dialogUnexpectedError, exception.Message));
             }
         }
 
         private async void InitializeMatch() {
             LoggerManager logger = new LoggerManager(this.GetType());
             try {
-                bool connected = matchManagerClient.RegisterPlayerCallback(matchCode, UserProfileSingleton.UserName);
+                bool connected = _matchManagerClient.RegisterPlayerCallback(_matchCode, UserProfileSingleton.UserName);
                 if (!connected) {
-                    DialogManager.ShowErrorMessageAlert("No se pudo conectar a la partida.");
+                    DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogConnectionFailed);
                 } else {
-                    isConnected = true;
-                    UserProfileSingleton.UpdateMatchCode(matchCode);
-                    nodes = await Task.Run(() => matchManagerClient.GetNodes(matchCode));
-                    nodePairs = await Task.Run(() => matchManagerClient.GetNodePairs(matchCode));
+                    _isConnected = true;
+                    UserProfileSingleton.UpdateMatchCode(_matchCode);
+                    nodes = await Task.Run(() => _matchManagerClient.GetNodes(_matchCode));
+                    _nodePairs = await Task.Run(() => _matchManagerClient.GetNodePairs(_matchCode));
                     if (nodes != null && nodes.Count > 0) {
                         DrawNodes();
                         await CheckCurrentTurn();
                     } else {
-                        DialogManager.ShowErrorMessageAlert("No se encontraron nodos para esta partida.");
+                        DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogNodesNotFound);
                     }
                 }
             } catch (EndpointNotFoundException endpointNotFoundException) {
@@ -96,101 +96,97 @@ namespace TripasDeGatoCliente.Views {
             } catch (CommunicationException communicationException) {
                 logger.LogError(communicationException);
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
+            } catch (Exception exception) {
+                logger.LogError(exception);
+                DialogManager.ShowErrorMessageAlert(string.Format(Properties.Resources.dialogUnexpectedError, exception.Message));
             }
         }
 
         private void StartTimer() {
-            remainingTime = totalTime;
-            timeProgressBar.Value = 100;
-            timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromMilliseconds(100);
-            timer.Tick += Timer_Tick;
-            if (isPlayerTurn) {
-                timer.Start();
+            _remainingTime = _totalTime;
+            progressBarTimer.Value = 100;
+            _timer = new DispatcherTimer();
+            _timer.Interval = TimeSpan.FromMilliseconds(100);
+            _timer.Tick += Timer_Tick;
+            if (_isPlayerTurn) {
+                _timer.Start();
             }
         }
 
         private void Timer_Tick(object sender, EventArgs e) {
-            if (remainingTime > 0) {
-                remainingTime -= 0.1;
-                timeProgressBar.Value = (remainingTime / totalTime) * 100;
-                if (remainingTime > totalTime * 0.5) {
-                    timeProgressBar.Foreground = Brushes.Green;
-                } else if (remainingTime > totalTime * 0.2) {
-                    timeProgressBar.Foreground = Brushes.Orange;
+            if (_remainingTime > 0) {
+                _remainingTime -= 0.1;
+                progressBarTimer.Value = (_remainingTime / _totalTime) * 100;
+                if (_remainingTime > _totalTime * 0.5) {
+                    progressBarTimer.Foreground = Brushes.Green;
+                } else if (_remainingTime > _totalTime * 0.2) {
+                    progressBarTimer.Foreground = Brushes.Orange;
                 } else {
-                    timeProgressBar.Foreground = Brushes.Red;
+                    progressBarTimer.Foreground = Brushes.Red;
                 }
             } else {
-                timer.Stop();
-                drawingCanvas.Children.Remove(currentLine);
-                matchManagerClient.EndTurnAsync(matchCode, UserProfileSingleton.UserName);
-                timeProgressBar.Foreground = Brushes.Gray;
+                _timer.Stop();
+                drawingCanvas.Children.Remove(_currentLine);
+                _matchManagerClient.EndTurnAsync(_matchCode, UserProfileSingleton.UserName);
+                progressBarTimer.Foreground = Brushes.Gray;
             }
         }
 
         private void Canvas_MouseDown(object sender, MouseButtonEventArgs e) {
             Point mousePosition = e.GetPosition(drawingCanvas);
-            startNode = FindNodeNearPoint(mousePosition);
-            if (startNode == null) {
-                DialogManager.ShowErrorMessageAlert("Debes iniciar el trazo desde un nodo válido.");
+            _startNode = FindNodeNearPoint(mousePosition);
+            if (_startNode == null) {
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogInvalidStartNode);
                 return;
             }
-            isDrawing = true;
-            currentTracePoints.Clear();
-            currentTracePoints.Add(new TripasDeGatoServicio.TracePoint { X = mousePosition.X, Y = mousePosition.Y });
-            currentLine = new Polyline {
+            _isDrawing = true;
+            _currentTracePoints.Clear();
+            _currentTracePoints.Add(new TripasDeGatoServicio.TracePoint { X = mousePosition.X, Y = mousePosition.Y });
+            _currentLine = new Polyline {
                 Stroke = Brushes.Blue,
                 StrokeThickness = 2
             };
-            drawingCanvas.Children.Add(currentLine);
-            currentLine.Points.Add(mousePosition);
+            drawingCanvas.Children.Add(_currentLine);
+            _currentLine.Points.Add(mousePosition);
         }
 
         public void NotifyYourTurn() {
-            if (timer != null) {
-                timer.Stop();
-                timer.Tick -= Timer_Tick;
+            if (_timer != null) {
+                _timer.Stop();
+                _timer.Tick -= Timer_Tick;
             }
-
-            remainingTime = totalTime;
-            timeProgressBar.Value = 100;
-            timeProgressBar.Foreground = Brushes.Green;
-
+            _remainingTime = _totalTime;
+            progressBarTimer.Value = 100;
+            progressBarTimer.Foreground = Brushes.Green;
             drawingCanvas.IsEnabled = true;
-            isPlayerTurn = true;
-            labelMatchStatus.Content = "¡Es tu turno!";
-            labelMatchStatus.Foreground = Brushes.Green;
-
+            _isPlayerTurn = true;
+            lbMatchStatus.Content = Properties.Resources.lbMatchStatusYourTurn;
+            lbMatchStatus.Foreground = Brushes.Green;
             StartTimer();
         }
 
         public void NotifyNotYourTurn() {
             Application.Current.Dispatcher.Invoke(() => {
-                if (timer != null) {
-                    timer.Stop();
-                    timer.Tick -= Timer_Tick;
+                if (_timer != null) {
+                    _timer.Stop();
+                    _timer.Tick -= Timer_Tick;
                 }
-
                 drawingCanvas.IsEnabled = false;
-                isPlayerTurn = false;
-                labelMatchStatus.Content = "Aún no es tu turno";
-                labelMatchStatus.Foreground = Brushes.Red;
+                _isPlayerTurn = false;
+                lbMatchStatus.Content = Properties.Resources.lbMatchStatusNotYourTurn;
+                lbMatchStatus.Foreground = Brushes.Red;
             });
         }
 
         private void Canvas_MouseMove(object sender, MouseEventArgs e) {
             LoggerManager logger = new LoggerManager(this.GetType());
-
-            if (!isDrawing) return;
-
+            if (!_isDrawing) return;
             Point mousePosition = e.GetPosition(drawingCanvas);
             var newPoint = new TripasDeGatoServicio.TracePoint { X = mousePosition.X, Y = mousePosition.Y };
-
             if (IsCollisionDetected(newPoint)) {
-                HandleInfraction("Parece que chocaste con algo, ¡perdiste!");
+                HandleInfraction(Properties.Resources.dialogInfractionCollision);
                 try {
-                    matchManagerClient.EndMatchAsync(matchCode);
+                    _matchManagerClient.EndMatchAsync(_matchCode);
                 } catch (EndpointNotFoundException endpointNotFoundException) {
                     logger.LogError(endpointNotFoundException);
                     DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogEndPointException);
@@ -200,20 +196,21 @@ namespace TripasDeGatoCliente.Views {
                 } catch (CommunicationException communicationException) {
                     logger.LogError(communicationException);
                     DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
+                } catch (Exception exception) {
+                    logger.LogError(exception);
+                    DialogManager.ShowErrorMessageAlert(string.Format(Properties.Resources.dialogUnexpectedError, exception.Message));
                 }
                 return;
             }
-
             Node currentNode = FindNodeNearPoint(mousePosition);
-            if (currentNode != null && currentNode != startNode) {
-                if (!IsPair(startNode, currentNode)) {
-                    HandleInfraction("Chocaste un nodo que no te pertenece!");
+            if (currentNode != null && currentNode != _startNode) {
+                if (!IsPair(_startNode, currentNode)) {
+                    HandleInfraction(Properties.Resources.dialogInfractionInvalidNode);
                     return;
                 }
             }
-
-            currentTracePoints.Add(newPoint);
-            currentLine.Points.Add(mousePosition);
+            _currentTracePoints.Add(newPoint);
+            _currentLine.Points.Add(mousePosition);
         }
 
         private bool IsPointNearSegment(TripasDeGatoServicio.TracePoint point, Point start, Point end) {
@@ -222,7 +219,7 @@ namespace TripasDeGatoCliente.Views {
         }
 
         private bool IsCollisionDetected(TripasDeGatoServicio.TracePoint newPoint) {
-            foreach (var polyline in allTraces) {
+            foreach (var polyline in _allTraces) {
                 for (int i = 1; i < polyline.Points.Count; i++) {
                     Point start = polyline.Points[i - 1];
                     Point end = polyline.Points[i];
@@ -253,33 +250,30 @@ namespace TripasDeGatoCliente.Views {
         }
 
         private void Canvas_MouseUp(object sender, MouseButtonEventArgs e) {
-            if (!isDrawing) return;
-            isDrawing = false;
+            if (!_isDrawing) return;
+            _isDrawing = false;
             Point mousePosition = e.GetPosition(drawingCanvas);
             Node endNode = FindNodeNearPoint(mousePosition);
-
-            if (endNode == null || !IsPair(startNode, endNode)) {
-                drawingCanvas.Children.Remove(currentLine);
-                DialogManager.ShowErrorMessageAlert("El trazo debe conectar dos nodos correspondientes.");
+            if (endNode == null || !IsPair(_startNode, endNode)) {
+                drawingCanvas.Children.Remove(_currentLine);
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogTraceMustConnectNodes);
                 return;
             }
-
-            if (currentTracePoints.Count > 1) {
-                allTraces.Add(currentLine);
-                SendTrace(currentTracePoints);
-                Task.Run(() => matchManagerClient.EndTurnAsync(matchCode, UserProfileSingleton.UserName));
-
+            if (_currentTracePoints.Count > 1) {
+                _allTraces.Add(_currentLine);
+                SendTrace(_currentTracePoints);
+                Task.Run(() => _matchManagerClient.EndTurnAsync(_matchCode, UserProfileSingleton.UserName));
                 if (AreAllNodesConnected()) {
-                    matchManagerClient.EndMatchAsync(matchCode);
+                    _matchManagerClient.EndMatchAsync(_matchCode);
                 }
             } else {
-                drawingCanvas.Children.Remove(currentLine);
+                drawingCanvas.Children.Remove(_currentLine);
             }
         }
 
         private bool AreAllNodesConnected() {
-            foreach (var pair in nodePairs) {
-                bool isConnected = allTraces.Any(trace =>
+            foreach (var pair in _nodePairs) {
+                bool isConnected = _allTraces.Any(trace =>
                     trace.Points.Any(point => FindNodeNearPoint(point) is Node start && start.Id == pair.Key) &&
                     trace.Points.Any(point => FindNodeNearPoint(point) is Node end && end.Id == pair.Value)
                 );
@@ -291,7 +285,7 @@ namespace TripasDeGatoCliente.Views {
         }
 
         private bool IsPair(Node start, Node end) {
-            return nodePairs.ContainsKey(start.Id) && nodePairs[start.Id] == end.Id;
+            return _nodePairs.ContainsKey(start.Id) && _nodePairs[start.Id] == end.Id;
         }
 
         private Node FindNodeNearPoint(Point point) {
@@ -302,7 +296,7 @@ namespace TripasDeGatoCliente.Views {
 
         private void SendTrace(List<TracePoint> points) {
             LoggerManager logger = new LoggerManager(this.GetType());
-            if (!isConnected) return;
+            if (!_isConnected) return;
             var trace = new TripasDeGatoServicio.Trace {
                 Player = UserProfileSingleton.UserName,
                 TracePoints = points,
@@ -310,7 +304,7 @@ namespace TripasDeGatoCliente.Views {
                 Color = "Blue"
             };
             try {
-                matchManagerClient.RegisterTrace(matchCode, trace);
+                _matchManagerClient.RegisterTrace(_matchCode, trace);
             } catch (EndpointNotFoundException endpointNotFoundException) {
                 logger.LogError(endpointNotFoundException);
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogEndPointException);
@@ -320,12 +314,15 @@ namespace TripasDeGatoCliente.Views {
             } catch (CommunicationException communicationException) {
                 logger.LogError(communicationException);
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
+            } catch (Exception exception) {
+                logger.LogError(exception);
+                DialogManager.ShowErrorMessageAlert(string.Format(Properties.Resources.dialogUnexpectedError, exception.Message));
             }
         }
 
         private void HandleInfraction(string message) {
-            isDrawing = false;
-            drawingCanvas.Children.Remove(currentLine);
+            _isDrawing = false;
+            drawingCanvas.Children.Remove(_currentLine);
             DialogManager.ShowErrorMessageAlert(message);
         }
 
@@ -340,7 +337,7 @@ namespace TripasDeGatoCliente.Views {
             Application.Current.Dispatcher.Invoke(() => {
                 drawingCanvas.Children.Add(receivedLine);
             });
-            allTraces.Add(receivedLine);
+            _allTraces.Add(receivedLine);
         }
 
         private void DrawNodes() {
@@ -364,8 +361,8 @@ namespace TripasDeGatoCliente.Views {
         private async void BtnBack_Click(object sender, RoutedEventArgs e) {
             LoggerManager logger = new LoggerManager(this.GetType());
             try {
-                if (isConnected) {
-                    await matchManagerClient.LeaveMatchAsync(matchCode, UserProfileSingleton.UserName);
+                if (_isConnected) {
+                    await _matchManagerClient.LeaveMatchAsync(_matchCode, UserProfileSingleton.UserName);
                     ExitUseSinglenton();
                 }
             } catch (EndpointNotFoundException endpointNotFoundException) {
@@ -377,6 +374,9 @@ namespace TripasDeGatoCliente.Views {
             } catch (CommunicationException communicationException) {
                 logger.LogError(communicationException);
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
+            } catch (Exception exception) {
+                logger.LogError(exception);
+                DialogManager.ShowErrorMessageAlert(string.Format(Properties.Resources.dialogUnexpectedError, exception.Message));
             }
             ExitUseSinglenton();
         }
@@ -411,37 +411,37 @@ namespace TripasDeGatoCliente.Views {
         public void NotifyYouLost() {
             DisableGameControls();
             Application.Current.Dispatcher.Invoke(() => {
-                labelMatchStatus.Content = "You lost!";
-                labelMatchStatus.Foreground = Brushes.Red;
+                lbMatchStatus.Content = Properties.Resources.lbMatchStatusYouLost;
+                lbMatchStatus.Foreground = Brushes.Red;
                 drawingCanvas.IsEnabled = false;
-                timer?.Stop();
+                _timer?.Stop();
             });
         }
 
         public void NotifyYouWon() {
             DisableGameControls();
             Application.Current.Dispatcher.Invoke(() => {
-                labelMatchStatus.Content = "You won!";
-                labelMatchStatus.Foreground = Brushes.Green;
+                lbMatchStatus.Content = Properties.Resources.lbMatchStatusYouWon;
+                lbMatchStatus.Foreground = Brushes.Green;
                 drawingCanvas.IsEnabled = false;
-                timer?.Stop();
+                _timer?.Stop();
             });
         }
 
         public void NotifyDraw() {
             DisableGameControls();
             Application.Current.Dispatcher.Invoke(() => {
-                labelMatchStatus.Content = "Draw!";
-                labelMatchStatus.Foreground = Brushes.Orange;
+                lbMatchStatus.Content = Properties.Resources.lbMatchStatusDraw;
+                lbMatchStatus.Foreground = Brushes.Orange;
                 drawingCanvas.IsEnabled = false;
-                timer?.Stop();
+                _timer?.Stop();
             });
         }
 
         public void DisableGameControls() {
             Application.Current.Dispatcher.Invoke(() => {
                 drawingCanvas.IsEnabled = false;
-                timer?.Stop();
+                _timer?.Stop();
             });
         }
 
@@ -449,7 +449,7 @@ namespace TripasDeGatoCliente.Views {
             DisableGameControls();
             Dispatcher.Invoke(async () => {
                 await Task.Run(() =>
-            DialogManager.ShowWarningMessageAlert("Un jugador abandonó")
+                DialogManager.ShowWarningMessageAlert(Properties.Resources.dialogPlayerLeftWarning)
                 );
                 ExitUseSinglenton();
             });

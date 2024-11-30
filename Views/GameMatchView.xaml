@@ -6,6 +6,7 @@
       xmlns:local="clr-namespace:TripasDeGatoCliente.Views"
       xmlns:Properties="clr-namespace:TripasDeGatoCliente.Properties" x:Class="TripasDeGatoCliente.Views.GameMatch"
       mc:Ignorable="d" 
+      xmlns:p="clr-namespace:TripasDeGatoCliente.Properties"
       Width="1280" Height="720">
 
     <Grid>
@@ -21,7 +22,7 @@
                 </Canvas.Clip>
             </Canvas>
         </Grid>
-        <ProgressBar x:Name="timeProgressBar" 
+        <ProgressBar x:Name="progressBarTimer" 
                      Height="20" 
                      Width="640" 
                      Maximum="100" 
@@ -30,8 +31,9 @@
                      HorizontalAlignment="Center"
                      VerticalAlignment="Top"
                      Margin="0,580,0,0"/>
-        <Label x:Name="labelMatchStatus"
-               Content="Turn" 
+
+        <Label x:Name="lbMatchStatus"
+               Content="{x:Static p:Resources.lbTurn}" 
                HorizontalAlignment="Center"
                Margin="0,604,0,0" 
                VerticalAlignment="Top" 
@@ -41,6 +43,7 @@
                Height="82" 
                Background="#FFEFE8CE"
                FontFamily="Cooper Black"/>
+
         <Button x:Name="btnBack" 
                 Content="{x:Static Properties:Resources.globalBtnBack}" 
                 HorizontalAlignment="Left" 

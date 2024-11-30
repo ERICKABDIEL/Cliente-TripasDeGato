@@ -30,12 +30,11 @@
                VerticalAlignment="Center" 
                Width="1280"/>
 
-        <ListView x:Name="LeaderboardListView" 
+        <ListView x:Name="lstViewLeaderboard" 
                   Margin="432,328,486,112" 
                   Background="{x:Null}"
                   BorderThickness="0" 
                   ItemContainerStyle="{StaticResource LeaderboardItemStyle}">
-
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">

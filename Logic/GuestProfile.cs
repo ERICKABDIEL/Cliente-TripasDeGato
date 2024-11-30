@@ -5,7 +5,9 @@ namespace TripasDeGatoCliente.Logic {
         private static readonly Random random = new Random();
 
         public string Username { get; set; }
+
         public string Avatar { get; set; }
+
         public int GuestId { get; private set; }
 
         public GuestProfile() {
