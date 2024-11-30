@@ -91,6 +91,7 @@ namespace TripasDeGatoCliente.Views {
 
                 if (!connected) {
                     DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogConnectionError);
+                    ExitUseSinglenton();
                 } else {
                     isConnected = true;
                 }
@@ -137,7 +138,7 @@ namespace TripasDeGatoCliente.Views {
                 lbPlayer1.Content = lobby.Players.ContainsKey("PlayerOne") ? lobby.Players["PlayerOne"].Username : "Esperando jugador...";
                 lbPlayer2.Content = lobby.Players.ContainsKey("PlayerTwo") ? lobby.Players["PlayerTwo"].Username : "Esperando jugador...";
                 imgProfile1.Source = new BitmapImage(new Uri(UserProfileSingleton.PicPath, UriKind.RelativeOrAbsolute));
-
+                imgProfile2.Source = null;
 
 
             } else {
@@ -247,14 +248,20 @@ namespace TripasDeGatoCliente.Views {
             Dispatcher.Invoke(() => {
                 string waitingMessage = Properties.Resources.dialogWaitingForPlayer;
                 lbPlayer2.Content = waitingMessage;
+                imgProfile2.Source = null;
             });
         }
 
-        public void GuestJoinedCallback(string guestName, string picturePath) {
+        public void GuestJoinedCallback(string guestName, string picturePath, int idProfile) {
             Dispatcher.Invoke(() => {
                 lbPlayer2.Content = guestName;
-                string ruta = picturePath;
-                imgProfile2.Source = new BitmapImage(new Uri(ruta, UriKind.RelativeOrAbsolute));
+                if(idProfile < 100000) {
+                    string ruta = userManager.GetPicPath(guestName);
+                    imgProfile2.Source = new BitmapImage(new Uri(ruta, UriKind.RelativeOrAbsolute));
+                } else {
+                    string ruta = picturePath;
+                    imgProfile2.Source = new BitmapImage(new Uri(ruta, UriKind.RelativeOrAbsolute));
+                }
             });
         }
 

@@ -1350,7 +1350,7 @@ namespace TripasDeGatoCliente.TripasDeGatoServicio {
         void GuestLeftCallback();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILobbyManager/GuestJoinedCallback", ReplyAction="http://tempuri.org/ILobbyManager/GuestJoinedCallbackResponse")]
-        void GuestJoinedCallback(string guestName, string picturePath);
+        void GuestJoinedCallback(string guestName, string picturePath, int idProfile);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILobbyManager/GameStarted", ReplyAction="http://tempuri.org/ILobbyManager/GameStartedResponse")]
         void GameStarted();
