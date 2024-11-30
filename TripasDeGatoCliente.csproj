@@ -70,6 +70,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Logic\ConnectionManager.cs" />
     <Compile Include="Logic\ConstantsManager.cs" />
     <Compile Include="Logic\DialogManager.cs" />
     <Compile Include="Logic\GuestProfile.cs" />

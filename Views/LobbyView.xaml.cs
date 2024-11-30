@@ -35,8 +35,11 @@ namespace TripasDeGatoCliente.Views {
             lbCode.Content = lobbyCode;
             lobbyBrowser = new LobbyBrowserClient();
             InitializeLobby();
-            lobbyManager = new LobbyManagerClient(new InstanceContext(this));
-            chatManager = new ChatManagerClient(new InstanceContext(this));
+            InstanceContext context = new InstanceContext(this);
+            lobbyManager = new LobbyManagerClient(context);
+            chatManager = new ChatManagerClient(context);
+            ConnectionManager.Instance.InitializeLobbyManager(context);
+            ConnectionManager.Instance.InitializeChatManager(context);
             userManager = new UserManagerClient();
             friendsManager = new FriendsManagerClient();
             statusManager = new StatusManagerClient();
@@ -55,15 +58,19 @@ namespace TripasDeGatoCliente.Views {
             } catch (EndpointNotFoundException endpointNotFoundException) {
                 logger.LogError(endpointNotFoundException);
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogEndPointException);
-                GoToMenuView();
+                ExitUseSinglenton();
             } catch (TimeoutException timeoutException) {
                 logger.LogError(timeoutException);
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogTimeOutException);
-                GoToMenuView();
+                ExitUseSinglenton();
             } catch (CommunicationException communicationException) {
                 logger.LogError(communicationException);
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
-                GoToMenuView();
+                ExitUseSinglenton();
+            } catch (Exception exception) {
+                logger.LogError(exception);
+                DialogManager.ShowErrorMessageAlert(string.Format(Properties.Resources.dialogUnexpectedError, exception.Message));
+                ExitUseSinglenton();
             }
         }
 
@@ -80,6 +87,9 @@ namespace TripasDeGatoCliente.Views {
             } catch (CommunicationException communicationException) {
                 logger.LogError(communicationException);
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
+            } catch (Exception exception) {
+                logger.LogError(exception);
+                DialogManager.ShowErrorMessageAlert(string.Format(Properties.Resources.dialogUnexpectedError, exception.Message));
             }
         }
 
@@ -102,6 +112,9 @@ namespace TripasDeGatoCliente.Views {
             } catch (CommunicationException communicationException) {
                 logger.LogError(communicationException);
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
+            } catch (Exception exception) {
+                logger.LogError(exception);
+                DialogManager.ShowErrorMessageAlert(string.Format(Properties.Resources.dialogUnexpectedError, exception.Message));
             }
         }
 
@@ -113,7 +126,6 @@ namespace TripasDeGatoCliente.Views {
                     userName = UserProfileSingleton.UserName,
                     chatMessage = messageText
                 };
-
                 try {
                     await chatManager.SendMessageAsync(UserProfileSingleton.UserName, message, lobbyCode);
                     txtMessageInput.Clear();
@@ -126,30 +138,46 @@ namespace TripasDeGatoCliente.Views {
                 } catch (CommunicationException communicationException) {
                     logger.LogError(communicationException);
                     DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
+                } catch (Exception exception) {
+                    logger.LogError(exception);
+                    DialogManager.ShowErrorMessageAlert(string.Format(Properties.Resources.dialogUnexpectedError, exception.Message));
                 }
             }
         }
 
         public async void InitializeLobby() {
-            Lobby lobby = await lobbyBrowser.GetLobbyByCodeAsync(lobbyCode);
-            UserProfileSingleton.UpdateLobbyCode(lobbyCode);
-            UserProfileSingleton.UpdateChatCode(lobbyCode);
-            if (IsUserHost(lobby)) {
-                lbPlayer1.Content = lobby.Players.ContainsKey("PlayerOne") ? lobby.Players["PlayerOne"].Username : "Esperando jugador...";
-                lbPlayer2.Content = lobby.Players.ContainsKey("PlayerTwo") ? lobby.Players["PlayerTwo"].Username : "Esperando jugador...";
-                imgProfile1.Source = new BitmapImage(new Uri(UserProfileSingleton.PicPath, UriKind.RelativeOrAbsolute));
-                imgProfile2.Source = null;
-
-
-            } else {
-                lbPlayer1.Content = lobby.Players.ContainsKey("PlayerTwo") ? lobby.Players["PlayerTwo"].Username : "Esperando jugador...";
-                lbPlayer2.Content = lobby.Players.ContainsKey("PlayerOne") ? lobby.Players["PlayerOne"].Username : "Esperando jugador...";
-                imgProfile1.Source = new BitmapImage(new Uri(UserProfileSingleton.PicPath, UriKind.RelativeOrAbsolute));
-                string ruta = userManager.GetPicPath(lobby.Players["PlayerOne"].Username);
-                imgProfile2.Source = new BitmapImage(new Uri(ruta, UriKind.RelativeOrAbsolute));
-                btnKickPlayer.Visibility = Visibility.Collapsed;
-                btnInvitedFriend.Visibility = Visibility.Collapsed;
-                btnStartGame.Visibility = Visibility.Collapsed;
+            LoggerManager logger = new LoggerManager(this.GetType());
+            try {
+                Lobby lobby = await lobbyBrowser.GetLobbyByCodeAsync(lobbyCode);
+                UserProfileSingleton.UpdateLobbyCode(lobbyCode);
+                UserProfileSingleton.UpdateChatCode(lobbyCode);
+                if (IsUserHost(lobby)) {
+                    lbPlayer1.Content = lobby.Players.ContainsKey("PlayerOne") ? lobby.Players["PlayerOne"].Username : Properties.Resources.lbWaitingForPlayer;
+                    lbPlayer2.Content = lobby.Players.ContainsKey("PlayerTwo") ? lobby.Players["PlayerTwo"].Username : Properties.Resources.lbWaitingForPlayer;
+                    imgProfile1.Source = new BitmapImage(new Uri(UserProfileSingleton.PicPath, UriKind.RelativeOrAbsolute));
+                    imgProfile2.Source = null;
+                } else {
+                    lbPlayer1.Content = lobby.Players.ContainsKey("PlayerTwo") ? lobby.Players["PlayerTwo"].Username : Properties.Resources.lbWaitingForPlayer;
+                    lbPlayer2.Content = lobby.Players.ContainsKey("PlayerOne") ? lobby.Players["PlayerOne"].Username : Properties.Resources.lbWaitingForPlayer;
+                    imgProfile1.Source = new BitmapImage(new Uri(UserProfileSingleton.PicPath, UriKind.RelativeOrAbsolute));
+                    string ruta = userManager.GetPicPath(lobby.Players["PlayerOne"].Username);
+                    imgProfile2.Source = new BitmapImage(new Uri(ruta, UriKind.RelativeOrAbsolute));
+                    btnKickPlayer.Visibility = Visibility.Collapsed;
+                    btnInvitedFriend.Visibility = Visibility.Collapsed;
+                    btnStartGame.Visibility = Visibility.Collapsed;
+                }
+            } catch (EndpointNotFoundException endpointNotFoundException) {
+                logger.LogError(endpointNotFoundException);
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogEndPointException);
+            } catch (TimeoutException timeoutException) {
+                logger.LogError(timeoutException);
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogTimeOutException);
+            } catch (CommunicationException communicationException) {
+                logger.LogError(communicationException);
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
+            } catch (Exception exception) {
+                logger.LogError(exception);
+                DialogManager.ShowErrorMessageAlert(string.Format(Properties.Resources.dialogUnexpectedError, exception.Message));
             }
         }
 
@@ -258,7 +286,7 @@ namespace TripasDeGatoCliente.Views {
         public void GuestJoinedCallback(string guestName, string picturePath, int idProfile) {
             Dispatcher.Invoke(() => {
                 lbPlayer2.Content = guestName;
-                if(idProfile < 100000) {
+                if (idProfile < 100000) {
                     string ruta = userManager.GetPicPath(guestName);
                     imgProfile2.Source = new BitmapImage(new Uri(ruta, UriKind.RelativeOrAbsolute));
                 } else {
@@ -281,7 +309,6 @@ namespace TripasDeGatoCliente.Views {
                     Margin = new Thickness(20, 5, 20, 5),
                     HorizontalAlignment = message.userName == UserProfileSingleton.UserName ? HorizontalAlignment.Right : HorizontalAlignment.Left
                 };
-
                 TextBlock messageBlock = new TextBlock {
                     Text = $"{message.chatMessage} {DateTime.Now:HH:mm}",
                     Foreground = new SolidColorBrush(Colors.Black),
@@ -290,7 +317,6 @@ namespace TripasDeGatoCliente.Views {
                     TextWrapping = TextWrapping.Wrap,
                     MaxWidth = 250
                 };
-
                 messageContainer.Child = messageBlock;
                 ChatMessagesPanel.Children.Add(messageContainer);
                 ScrollToBottom();
@@ -313,9 +339,7 @@ namespace TripasDeGatoCliente.Views {
             try {
                 int userProfileId = UserProfileSingleton.IdProfile;
                 var friendsList = await friendsManager.GetFriendsAsync(userProfileId);
-
                 var friendsWithStatus = new List<string>();
-
                 foreach (var friend in friendsList) {
                     var status = await statusManager.GetPlayerStatusAsync(friend.IdProfile);
                     friendsWithStatus.Add($"{friend.Username} - {status}");
@@ -354,7 +378,6 @@ namespace TripasDeGatoCliente.Views {
             if (lstFriends.SelectedItem != null) {
                 string selectedFriendName = lstFriends.SelectedItem.ToString();
                 string friendName = selectedFriendName.Split('-')[0].Trim();
-
                 try {
                     int result = await emailInvitationManager.SendInvitationAsync(friendName, lobbyCode);
 
@@ -382,12 +405,11 @@ namespace TripasDeGatoCliente.Views {
         private async void BtnKickPlayer_Click(object sender, RoutedEventArgs e) {
             LoggerManager logger = new LoggerManager(this.GetType());
             MessageBoxResult result = MessageBox.Show(
-                "¿Estás seguro de que deseas expulsar al jugador del lobby?",
-                "Confirmar expulsión",
+                Properties.Resources.dialogConfirmKickPlayer,
+                Properties.Resources.titleConfirmKick,
                 MessageBoxButton.YesNo,
                 MessageBoxImage.Question
             );
-
             if (result == MessageBoxResult.Yes) {
                 try {
                     await Task.Run(() => lobbyManager.KickPlayer(lobbyCode));
@@ -406,11 +428,9 @@ namespace TripasDeGatoCliente.Views {
 
         public void KickedFromLobby() {
             Dispatcher.Invoke(() => {
-                DialogManager.ShowWarningMessageAlert("Has sido expulsado del Lobby");
+                DialogManager.ShowWarningMessageAlert(Properties.Resources.dialogKickedFromLobby);
                 ExitUseSinglenton();
             });
         }
-
-
     }
 }

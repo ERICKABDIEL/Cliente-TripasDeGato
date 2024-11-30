@@ -222,6 +222,9 @@
   <data name="dialogComunicationException" xml:space="preserve">
     <value>Se ha producido un fallo para establecer la conexión al servidor. Cheque su conexión a internet e inténtelo de nuevo</value>
   </data>
+  <data name="dialogConfirmKickPlayer" xml:space="preserve">
+    <value>¿Estás seguro de que deseas expulsar al jugador del lobby?</value>
+  </data>
   <data name="dialogConnectionError" xml:space="preserve">
     <value>No se pudo conectar al lobby.</value>
   </data>
@@ -317,6 +320,9 @@
   </data>
   <data name="dialogInvitationSent" xml:space="preserve">
     <value>La invitación ha sido enviada exitosamente a {0}.</value>
+  </data>
+  <data name="dialogKickedFromLobby" xml:space="preserve">
+    <value>Has sido expulsado del Lobby</value>
   </data>
   <data name="dialogLobbyCreationError" xml:space="preserve">
     <value>No se pudo crear el lobby. Inténtelo nuevamente.</value>
@@ -528,6 +534,9 @@
   <data name="lbVerifyPassword" xml:space="preserve">
     <value>Verifique su contraseña</value>
   </data>
+  <data name="lbWaitingForPlayer" xml:space="preserve">
+    <value>Esperando jugador...</value>
+  </data>
   <data name="mapOptionBear" xml:space="preserve">
     <value>Oso</value>
   </data>
@@ -539,6 +548,9 @@
   </data>
   <data name="titleActionFailed" xml:space="preserve">
     <value>Acción fallida</value>
+  </data>
+  <data name="titleConfirmKick" xml:space="preserve">
+    <value>Confirmar expulsión</value>
   </data>
   <data name="titleDeleteFriend" xml:space="preserve">
     <value>Eliminar amigo</value>

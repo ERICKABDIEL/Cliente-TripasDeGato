@@ -27,35 +27,14 @@ namespace TripasDeGatoCliente {
         }
 
         private async void MainWindowClosing(object sender, System.ComponentModel.CancelEventArgs e) {
-            LoggerManager logger = new LoggerManager(this.GetType());
             try {
-                if (UserProfileSingleton.Instance != null && UserProfileSingleton.IdProfile != 0) {
-                    SignOut();
-                    if (UserProfileSingleton.LobbyCode != "000000") {
-                        await lobbyManager.LeaveLobbyAsync(UserProfileSingleton.LobbyCode, UserProfileSingleton.IdProfile);
-                        UserProfileSingleton.ResetLobbyCode();
-                        if (UserProfileSingleton.ChatCode != "000000") {
-                            await chatManager.LeaveChatAsync(UserProfileSingleton.UserName, UserProfileSingleton.ChatCode);
-                            UserProfileSingleton.ResetChatCode();
-                            if (UserProfileSingleton.MatchCode != "000000") {
-                            await matchManager.LeaveMatchAsync(UserProfileSingleton.MatchCode, UserProfileSingleton.UserName);
-                                UserProfileSingleton.ResetMatchCode();
-                            }
-                        }
-                    
-                    }
-                } else {
-                    OnClosing();
-                }
-            } catch (EndpointNotFoundException endpointNotFoundException) {
-                logger.LogError(endpointNotFoundException);
-                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogEndPointException);
-            } catch (TimeoutException timeoutException) {
-                logger.LogError(timeoutException);
-                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogTimeOutException);
-            } catch (CommunicationException communicationException) {
-                logger.LogError(communicationException);
-                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
+                // Llamar a la lógica centralizada para cerrar todas las conexiones
+                await ConnectionManager.Instance.DisconnectAllAsync();
+            } catch (Exception ex) {
+                // Manejo de errores genéricos
+                LoggerManager logger = new LoggerManager(this.GetType());
+                logger.LogError(ex);
+                DialogManager.ShowErrorMessageAlert("Error cerrando conexiones: " + ex.Message);
             }
         }
 
@@ -83,6 +62,7 @@ namespace TripasDeGatoCliente {
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
             }
         }
+
 
         private void OnClosing() {
         }

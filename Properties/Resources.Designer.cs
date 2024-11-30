@@ -376,6 +376,15 @@ namespace TripasDeGatoCliente.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Are you sure you want to kick the player from the lobby?.
+        /// </summary>
+        public static string dialogConfirmKickPlayer {
+            get {
+                return ResourceManager.GetString("dialogConfirmKickPlayer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Could not connect to the lobby..
         /// </summary>
         public static string dialogConnectionError {
@@ -660,6 +669,15 @@ namespace TripasDeGatoCliente.Properties {
         public static string dialogInvitationSent {
             get {
                 return ResourceManager.GetString("dialogInvitationSent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a You have been kicked from the Lobby.
+        /// </summary>
+        public static string dialogKickedFromLobby {
+            get {
+                return ResourceManager.GetString("dialogKickedFromLobby", resourceCulture);
             }
         }
         
@@ -1294,6 +1312,15 @@ namespace TripasDeGatoCliente.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Waiting for player....
+        /// </summary>
+        public static string lbWaitingForPlayer {
+            get {
+                return ResourceManager.GetString("lbWaitingForPlayer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Bear.
         /// </summary>
         public static string mapOptionBear {
@@ -1326,6 +1353,15 @@ namespace TripasDeGatoCliente.Properties {
         public static string titleActionFailed {
             get {
                 return ResourceManager.GetString("titleActionFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Confirm Kick.
+        /// </summary>
+        public static string titleConfirmKick {
+            get {
+                return ResourceManager.GetString("titleConfirmKick", resourceCulture);
             }
         }
         
