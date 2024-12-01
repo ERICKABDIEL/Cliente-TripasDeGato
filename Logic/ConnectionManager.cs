@@ -26,19 +26,19 @@ namespace TripasDeGatoCliente.Logic {
             MatchManager = new MatchManagerClient(context);
         }
 
-        public async Task DisconnectAllAsync() {
+        public void DisconnectAll() {
             if (LobbyManager != null && UserProfileSingleton.LobbyCode != "000000") {
-                await LobbyManager.LeaveLobbyAsync(UserProfileSingleton.LobbyCode, UserProfileSingleton.IdProfile);
+                LobbyManager.LeaveLobbyAsync(UserProfileSingleton.LobbyCode, UserProfileSingleton.IdProfile);
                 UserProfileSingleton.ResetLobbyCode();
             }
 
             if (ChatManager != null && UserProfileSingleton.ChatCode != "000000") {
-                await ChatManager.LeaveChatAsync(UserProfileSingleton.UserName, UserProfileSingleton.ChatCode);
+                ChatManager.LeaveChatAsync(UserProfileSingleton.UserName, UserProfileSingleton.ChatCode);
                 UserProfileSingleton.ResetChatCode();
             }
 
             if (MatchManager != null && UserProfileSingleton.MatchCode != "000000") {
-                await MatchManager.LeaveMatchAsync(UserProfileSingleton.MatchCode, UserProfileSingleton.UserName);
+                MatchManager.LeaveMatch(UserProfileSingleton.MatchCode, UserProfileSingleton.UserName);
                 UserProfileSingleton.ResetMatchCode();
             }
         }
