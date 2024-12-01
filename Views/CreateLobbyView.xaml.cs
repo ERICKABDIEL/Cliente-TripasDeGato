@@ -59,13 +59,12 @@ namespace TripasDeGatoCliente.Views {
                 return;
             }
             int nodeCount = (int)cboxNode.SelectedItem;
-            TimeSpan duration = TimeSpan.FromMinutes(5);
             try {
                 var owner = new Profile {
                     IdProfile = UserProfileSingleton.IdProfile,
                     Username = UserProfileSingleton.UserName
                 };
-                string lobbyCode = await _lobbyBrowser.CreateLobbyAsync(gameName, nodeCount, owner, duration);
+                string lobbyCode = await _lobbyBrowser.CreateLobbyAsync(gameName, nodeCount, owner);
                 if (!string.IsNullOrEmpty(lobbyCode)) {
                     GoToLobbyView(lobbyCode);
                 } else {
