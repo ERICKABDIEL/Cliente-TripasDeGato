@@ -36,7 +36,9 @@ namespace TripasDeGatoCliente.Views {
         public GameMatch(string gameCode) {
             InitializeComponent();
             this._matchCode = gameCode;
-            _matchManagerClient = new MatchManagerClient(new InstanceContext(this));
+            InstanceContext context = new InstanceContext(this);
+            _matchManagerClient = new MatchManagerClient(context);
+            ConnectionManager.Instance.InitializeMatchManager(context);
             InitializeMatch();
             _allTraces = new List<Polyline>();
             drawingCanvas.MouseDown += Canvas_MouseDown;
@@ -420,6 +422,8 @@ namespace TripasDeGatoCliente.Views {
                 lbMatchStatus.Foreground = Brushes.Red;
                 drawingCanvas.IsEnabled = false;
                 _timer?.Stop();
+                DialogManager.ShowSuccessMessageAlert(Properties.Resources.lbMatchStatusYouLost);
+                ExitUseSinglenton();
             });
         }
 
@@ -430,8 +434,11 @@ namespace TripasDeGatoCliente.Views {
                 lbMatchStatus.Foreground = Brushes.Green;
                 drawingCanvas.IsEnabled = false;
                 _timer?.Stop();
+                DialogManager.ShowSuccessMessageAlert(Properties.Resources.lbMatchStatusYouWon);
+                ExitUseSinglenton();
             });
         }
+
 
         public void NotifyDraw() {
             DisableGameControls();
@@ -440,6 +447,8 @@ namespace TripasDeGatoCliente.Views {
                 lbMatchStatus.Foreground = Brushes.Orange;
                 drawingCanvas.IsEnabled = false;
                 _timer?.Stop();
+                DialogManager.ShowSuccessMessageAlert(Properties.Resources.lbMatchStatusDraw);
+                ExitUseSinglenton();
             });
         }
 
