@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace TripasDeGatoCliente.Logic {
-    internal class ConstantsManager {
+    internal static class ConstantsManager {
         public static class Constants {
             public const int ERROR_OPERATION = -1;
 

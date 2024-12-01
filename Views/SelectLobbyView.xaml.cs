@@ -12,13 +12,17 @@ using TripasDeGatoCliente.TripasDeGatoServicio;
 namespace TripasDeGatoCliente.Views {
     public partial class SelectLobbyView : Page {
         private LobbyBrowserClient _lobbyBrowser;
-        private LobbyManagerClient _lobbyManager;
 
         public SelectLobbyView() {
             InitializeComponent();
             _lobbyBrowser = new LobbyBrowserClient();
-            LoadLobbiesAsync();
+            LoadLobbiesData();
         }
+
+        private async Task LoadLobbiesData() { 
+           await LoadLobbiesAsync();
+        }
+
         private void HandleException(Exception exception, string methodName) {
             LoggerManager logger = new LoggerManager(this.GetType());
             if (exception is EndpointNotFoundException) {

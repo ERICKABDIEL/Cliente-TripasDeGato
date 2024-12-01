@@ -16,8 +16,14 @@ namespace TripasDeGatoCliente.Views {
         public Laderboard() {
             InitializeComponent();
             _leaderboardManagerClient = new LeaderboardManagerClient();
-            LoadLeaderboardDataAsync();
+            LoadLeaderboardData();
         }
+
+        private async Task LoadLeaderboardData() {
+            await LoadLeaderboardDataAsync();
+
+        }
+
         private void HandleException(Exception exception, string methodName) {
             LoggerManager logger = new LoggerManager(this.GetType());
             if (exception is EndpointNotFoundException) {

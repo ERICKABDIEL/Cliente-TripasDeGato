@@ -17,7 +17,6 @@ namespace TripasDeGatoCliente.Views {
         private UserManagerClient _userManager;
         private FriendsManagerClient _friendsManager;
         private StatusManagerClient _statusManager;
-        private LobbyBrowserClient _lobbyBrowser;
         private bool _elementsVisible = false;
 
         public MenuView() {
@@ -25,8 +24,7 @@ namespace TripasDeGatoCliente.Views {
             _userManager = new UserManagerClient();
             _friendsManager = new FriendsManagerClient();
             _statusManager = new StatusManagerClient();
-            _lobbyBrowser = new LobbyBrowserClient();
-            LoadUserProfileAsync();
+            LoadUserProfile();
         }
 
         private void HandleException(Exception exception, string methodName) {
@@ -47,7 +45,7 @@ namespace TripasDeGatoCliente.Views {
             }
         }
 
-        private async void LoadUserProfileAsync() {
+        private void LoadUserProfile() {
             if (!string.IsNullOrEmpty(UserProfileSingleton.UserName)) {
                 lbUserName.Content = UserProfileSingleton.UserName;
             } else {
@@ -63,7 +61,7 @@ namespace TripasDeGatoCliente.Views {
         private void SignOut() {
             int playerId = UserProfileSingleton.IdProfile;
             SetPlayerOfflineStatus(playerId);
-            UserProfileSingleton.Instance.ResetInstance();
+            UserProfileSingleton.ResetInstance();
         }
 
         private void SetPlayerOfflineStatus(int playerId) {
@@ -142,7 +140,7 @@ namespace TripasDeGatoCliente.Views {
             }
         }
 
-        private bool ValidateFriendName(string friendName) {
+        private static bool ValidateFriendName(string friendName) {
             if (string.IsNullOrEmpty(friendName)) {
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogInvalidName);
                 return false;
@@ -221,7 +219,7 @@ namespace TripasDeGatoCliente.Views {
             }
         }
 
-        private async void BtnStartGame_Click(object sender, RoutedEventArgs e) {
+        private void BtnStartGame_Click(object sender, RoutedEventArgs e) {
             GoToCreateLobbyView();
         }
 

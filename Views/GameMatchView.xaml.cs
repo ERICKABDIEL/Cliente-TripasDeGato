@@ -80,7 +80,7 @@ namespace TripasDeGatoCliente.Views {
 
         private async void InitializeMatch() {
             try {
-                bool connected = _matchManagerClient.RegisterPlayerCallback(_matchCode, UserProfileSingleton.UserName);
+                bool connected = await _matchManagerClient.RegisterPlayerCallbackAsync(_matchCode, UserProfileSingleton.UserName);
                 if (!connected) {
                     DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogConnectionFailed);
                 } else {
@@ -195,35 +195,26 @@ namespace TripasDeGatoCliente.Views {
                 return;
             }
             Node currentNode = FindNodeNearPoint(mousePosition);
-            if (currentNode != null && currentNode != _startNode) {
-                if (!IsPair(_startNode, currentNode)) {
-                    HandleInfraction(Properties.Resources.dialogInfractionInvalidNode);
-                    return;
-                }
+            if (currentNode != null && currentNode != _startNode && !IsPair(_startNode, currentNode)) {
+                HandleInfraction(Properties.Resources.dialogInfractionInvalidNode);
+                return;
             }
             _currentTracePoints.Add(newPoint);
             _currentLine.Points.Add(mousePosition);
         }
 
-        private bool IsPointNearSegment(TripasDeGatoServicio.TracePoint point, Point start, Point end) {
+        private static bool IsPointNearSegment(TripasDeGatoServicio.TracePoint point, Point start, Point end) {
             double distance = DistanceFromPointToSegment(point, start, end);
             return distance < 5;
         }
 
         private bool IsCollisionDetected(TripasDeGatoServicio.TracePoint newPoint) {
-            foreach (var polyline in _allTraces) {
-                for (int i = 1; i < polyline.Points.Count; i++) {
-                    Point start = polyline.Points[i - 1];
-                    Point end = polyline.Points[i];
-                    if (IsPointNearSegment(newPoint, start, end)) {
-                        return true;
-                    }
-                }
-            }
-            return false;
+            return _allTraces
+                .SelectMany(polyline => polyline.Points.Zip(polyline.Points.Skip(1), (start, end) => new { start, end }))
+                .Any(pair => IsPointNearSegment(newPoint, pair.start, pair.end));
         }
 
-        private double DistanceFromPointToSegment(TripasDeGatoServicio.TracePoint point, Point start, Point end) {
+        private static double DistanceFromPointToSegment(TripasDeGatoServicio.TracePoint point, Point start, Point end) {
             double px = point.X;
             double py = point.Y;
             double sx = start.X;
@@ -233,13 +224,17 @@ namespace TripasDeGatoCliente.Views {
             double dx = ex - sx;
             double dy = ey - sy;
             double lengthSquared = dx * dx + dy * dy;
-            if (lengthSquared == 0) return Math.Sqrt((px - sx) * (px - sx) + (py - sy) * (py - sy));
+            double tolerance = 1e-6;
+            if (Math.Abs(lengthSquared) < tolerance) {
+                return Math.Sqrt((px - sx) * (px - sx) + (py - sy) * (py - sy));
+            }
             double t = ((px - sx) * dx + (py - sy) * dy) / lengthSquared;
             t = Math.Max(0, Math.Min(1, t));
             double projX = sx + t * dx;
             double projY = sy + t * dy;
             return Math.Sqrt((px - projX) * (px - projX) + (py - projY) * (py - projY));
         }
+
 
         private void Canvas_MouseUp(object sender, MouseButtonEventArgs e) {
             if (!_isDrawing) return;
@@ -282,7 +277,7 @@ namespace TripasDeGatoCliente.Views {
 
         private Node FindNodeNearPoint(Point point) {
             const double detectionRadius = 10;
-            return nodes.FirstOrDefault(node =>
+            return nodes.Find(node =>
                 Math.Sqrt(Math.Pow(node.X - point.X, 2) + Math.Pow(node.Y - point.Y, 2)) <= detectionRadius);
         }
 

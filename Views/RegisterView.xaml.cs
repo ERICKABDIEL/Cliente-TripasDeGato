@@ -176,7 +176,7 @@ namespace TripasDeGatoCliente.Views {
             return isValid;
         }
 
-        private void HighlightField(Control control) {
+        private static void HighlightField(Control control) {
             control.BorderBrush = Brushes.Red;
         }
 
@@ -214,15 +214,7 @@ namespace TripasDeGatoCliente.Views {
             txtPassword.Visibility = Visibility.Visible;
         }
 
-        private void UpdatePasswordVisibilityIcon() {
-            if (!string.IsNullOrEmpty(txtPassword.Password) || !string.IsNullOrEmpty(txtPasswordVisible.Text)) {
-                btnTogglePassword.Visibility = Visibility.Visible;
-            } else {
-                btnTogglePassword.Visibility = Visibility.Collapsed;
-            }
-        }
-
-        private void ResetField(Control control) {
+        private static void ResetField(Control control) {
             control.BorderBrush = Brushes.White;
         }
 

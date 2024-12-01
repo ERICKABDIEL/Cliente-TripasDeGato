@@ -26,14 +26,14 @@ namespace TripasDeGatoCliente.Logic {
 
         public static UserProfileSingleton Instance => singletonInstance;
 
-        public void CreateInstance(Profile profile) {
+        public static void CreateInstance(Profile profile) {
             IdProfile = profile.IdProfile;
             UserName = profile.Username;
             Score = profile.Score;
             PicPath = profile.PicturePath;
         }
 
-        public void CreateGuestInstance() {
+        public static void CreateGuestInstance() {
             GuestProfile guestProfile = new GuestProfile();
             IdProfile = guestProfile.GuestId;
             UserName = guestProfile.Username;
@@ -41,7 +41,7 @@ namespace TripasDeGatoCliente.Logic {
             PicPath = guestProfile.Avatar;
         }
 
-        public void ResetInstance() {
+        public static void ResetInstance() {
             IdProfile = 0;
             UserName = null;
             Score = 0;

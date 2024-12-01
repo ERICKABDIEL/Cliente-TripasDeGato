@@ -50,7 +50,6 @@ namespace TripasDeGatoCliente.Views {
         }
 
         private async void BtnCreateLobby_Click(object sender, RoutedEventArgs e) {
-            LoggerManager logger = new LoggerManager(this.GetType());
             string gameName = txtNameLobby.Text.Trim();
             if (!ValidationGameName(gameName)) {
                 return;

@@ -6,11 +6,12 @@ using log4net;
 namespace TripasDeGatoCliente.Logic {
     public class LoggerManager {
         public ILog Logger { get; private set; }
+
         public LoggerManager(Type type) {
             Logger = LogManager.GetLogger(type);
         }
 
-        public ILog GetLogger(Type type) {
+        public static ILog GetLogger(Type type) {
             return LogManager.GetLogger(type);
         }
 

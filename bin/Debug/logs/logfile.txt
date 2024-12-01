@@ -867,3 +867,24 @@ Exception rethrown at [0]:
    en TripasDeGatoCliente.TripasDeGatoServicio.IUserManager.VerifyLogin(String email, String password)
    en TripasDeGatoCliente.TripasDeGatoServicio.UserManagerClient.VerifyLogin(String email, String password) en C:\TripasDeGatoCliente\Connected Services\TripasDeGatoServicio\Reference.cs:línea 851
    en TripasDeGatoCliente.Views.LoginView.AuthenticateUser(String email, String hashedPassword) en C:\TripasDeGatoCliente\Views\LoginView.xaml.cs:línea 49
+2024-11-30 22:36:37,674 [1] ERROR TripasDeGatoCliente.Views.GameMatch - BtnBack_Click
+System.InvalidOperationException: Esta operación produciría un interbloqueo porque no se puede recibir la respuesta hasta que el mensaje actual complete el procesamiento. Si desea permitir el procesamiento de mensajes fuera de secuencia, especifique Reentrant o Multiple para ConcurrencyMode en CallbackBehaviorAttribute.
+
+Server stack trace: 
+   en System.ServiceModel.Channels.ServiceChannel.PrepareCall(ProxyOperationRuntime operation, Boolean oneway, ProxyRpc& rpc)
+   en System.ServiceModel.Channels.ServiceChannel.SendAsyncResult.Begin()
+   en System.ServiceModel.Channels.ServiceChannel.BeginCall(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, TimeSpan timeout, AsyncCallback callback, Object asyncState)
+   en System.ServiceModel.Channels.ServiceChannel.BeginCall(ServiceChannel channel, ProxyOperationRuntime operation, Object[] ins, AsyncCallback callback, Object asyncState)
+   en System.Threading.Tasks.TaskFactory`1.FromAsyncImpl[TArg1,TArg2,TArg3](Func`6 beginMethod, Func`2 endFunction, Action`1 endAction, TArg1 arg1, TArg2 arg2, TArg3 arg3, Object state, TaskCreationOptions creationOptions)
+   en System.ServiceModel.Channels.ServiceChannelProxy.TaskCreator.CreateGenericTask[T](ServiceChannel channel, ProxyOperationRuntime operation, Object[] inputParameters)
+   en System.ServiceModel.Channels.ServiceChannelProxy.TaskCreator.CreateGenericTask(ServiceChannel channel, ProxyOperationRuntime operation, Object[] inputParameters)
+   en System.ServiceModel.Channels.ServiceChannelProxy.TaskCreator.CreateTask(ServiceChannel channel, IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   en System.ServiceModel.Channels.ServiceChannelProxy.InvokeTaskService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   en System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   en System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   en System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   en TripasDeGatoCliente.TripasDeGatoServicio.IMatchManager.LeaveMatchAsync(String matchCode, String username)
+   en TripasDeGatoCliente.TripasDeGatoServicio.MatchManagerClient.LeaveMatchAsync(String matchCode, String username) en C:\TripasDeGatoCliente\Connected Services\TripasDeGatoServicio\Reference.cs:línea 1682
+   en TripasDeGatoCliente.Views.GameMatch.<BtnBack_Click>d__35.MoveNext() en C:\TripasDeGatoCliente\Views\GameMatchView.xaml.cs:línea 345
