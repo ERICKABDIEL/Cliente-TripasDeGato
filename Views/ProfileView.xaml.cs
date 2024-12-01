@@ -9,6 +9,7 @@ using System.Windows.Media.Imaging;
 using TripasDeGatoCliente.TripasDeGatoServicio;
 
 namespace TripasDeGatoCliente.Views {
+
     public partial class ProfileView : Page {
         private bool _isEditing = false;
         private string _selectedProfile = UserProfileSingleton.PicPath;

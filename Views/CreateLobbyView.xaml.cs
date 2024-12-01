@@ -19,7 +19,9 @@ using TripasDeGatoCliente.TripasDeGatoServicio;
 
 namespace TripasDeGatoCliente.Views {
     public partial class CreateLobbyView : Page {
+
         private LobbyBrowserClient _lobbyBrowser;
+        
         public CreateLobbyView() {
             InitializeComponent();
             InitializeFormValues();
@@ -59,12 +61,13 @@ namespace TripasDeGatoCliente.Views {
                 return;
             }
             int nodeCount = (int)cboxNode.SelectedItem;
+            TimeSpan duration = TimeSpan.FromMinutes(5);
             try {
                 var owner = new Profile {
                     IdProfile = UserProfileSingleton.IdProfile,
                     Username = UserProfileSingleton.UserName
                 };
-                string lobbyCode = await _lobbyBrowser.CreateLobbyAsync(gameName, nodeCount, owner);
+                string lobbyCode = await _lobbyBrowser.CreateLobbyAsync(gameName, nodeCount, owner, duration);
                 if (!string.IsNullOrEmpty(lobbyCode)) {
                     GoToLobbyView(lobbyCode);
                 } else {

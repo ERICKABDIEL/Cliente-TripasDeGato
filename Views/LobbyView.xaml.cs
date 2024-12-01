@@ -17,6 +17,7 @@ using TripasDeGatoCliente.TripasDeGatoServicio;
 using static TripasDeGatoCliente.Logic.ConstantsManager;
 
 namespace TripasDeGatoCliente.Views {
+
     public partial class LobbyView : Page, IChatManagerCallback, ILobbyManagerCallback {
         private ChatManagerClient _chatManager;
         private LobbyManagerClient _lobbyManager;

@@ -2,6 +2,7 @@
 
 namespace TripasDeGatoCliente.Logic {
     internal class GuestProfileSingleton {
+
         private static readonly GuestProfileSingleton SingletonInstance = new GuestProfileSingleton();
 
         public static GuestProfile PerfilInvitado { get; private set; }

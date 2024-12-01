@@ -9,7 +9,9 @@ using TripasDeGatoCliente.TripasDeGatoServicio;
 using static TripasDeGatoCliente.Logic.ConstantsManager;
 
 namespace TripasDeGatoCliente.Views {
+
     public partial class RegisterView : Page {
+
         public RegisterView() {
             InitializeComponent();
         }

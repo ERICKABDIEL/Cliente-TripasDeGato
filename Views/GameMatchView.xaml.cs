@@ -17,7 +17,9 @@ using log4net.Repository.Hierarchy;
 using TripasDeGatoCliente.TripasDeGatoServicio;
 
 namespace TripasDeGatoCliente.Views {
+
     public partial class GameMatch : Page, IMatchManagerCallback {
+    
         private List<Polyline> _allTraces;
         private DispatcherTimer _timer;
         private int _totalTime = 15;

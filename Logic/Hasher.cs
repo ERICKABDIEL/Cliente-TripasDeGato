@@ -3,7 +3,9 @@ using System.Security.Cryptography;
 using System.Text;
 
 namespace TripasDeGatoCliente.Logic {
+
     internal static class Hasher {
+    
         public static string HashToSHA256(string textToHash) {
             StringBuilder stringHashBuilder = new StringBuilder();
             byte[] inputBytes = Encoding.UTF8.GetBytes(textToHash);

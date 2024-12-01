@@ -10,6 +10,7 @@ using log4net.Repository.Hierarchy;
 using TripasDeGatoCliente.TripasDeGatoServicio;
 
 namespace TripasDeGatoCliente.Views {
+
     public partial class SelectLobbyView : Page {
         private LobbyBrowserClient _lobbyBrowser;
 
