@@ -26,6 +26,24 @@ namespace TripasDeGatoCliente.Views {
             _lobbyBrowser = new LobbyBrowserClient();
         }
 
+        private void HandleException(Exception exception, string methodName) {
+            LoggerManager logger = new LoggerManager(this.GetType());
+            if (exception is EndpointNotFoundException) {
+                logger.LogError(methodName, exception);
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogEndPointException);
+            } else if (exception is TimeoutException) {
+                logger.LogError(methodName, exception);
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogTimeOutException);
+            } else if (exception is CommunicationException) {
+                logger.LogError(methodName, exception);
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
+            } else {
+                logger.LogError(methodName, exception);
+                DialogManager.ShowErrorMessageAlert(string.Format(Properties.Resources.dialogUnexpectedError, exception.Message));
+
+            }
+        }
+
         private void InitializeFormValues() {
             cboxNode.ItemsSource = new List<int> { 8, 10, 12, 14, 16, 18, 20 };
             cboxNode.SelectedIndex = 0;
@@ -42,7 +60,7 @@ namespace TripasDeGatoCliente.Views {
                 return;
             }
             int nodeCount = (int)cboxNode.SelectedItem;
-            TimeSpan duration = TimeSpan.FromMinutes(5); ;
+            TimeSpan duration = TimeSpan.FromMinutes(5);
             try {
                 var owner = new Profile {
                     IdProfile = UserProfileSingleton.IdProfile,
@@ -54,18 +72,8 @@ namespace TripasDeGatoCliente.Views {
                 } else {
                     DialogManager.ShowWarningMessageAlert(Properties.Resources.dialogLobbyCreationError);
                 }
-            } catch (EndpointNotFoundException endpointNotFoundException) {
-                logger.LogError(endpointNotFoundException);
-                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogEndPointException);
-            } catch (TimeoutException timeoutException) {
-                logger.LogError(timeoutException);
-                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogTimeOutException);
-            } catch (CommunicationException communicationException) {
-                logger.LogError(communicationException);
-                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
             } catch (Exception exception) {
-                logger.LogError(exception);
-                DialogManager.ShowErrorMessageAlert(string.Format(Properties.Resources.dialogUnexpectedError, exception.Message));
+                HandleException(exception, nameof(BtnCreateLobby_Click));
             }
         }
 

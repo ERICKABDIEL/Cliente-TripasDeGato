@@ -19,30 +19,34 @@ namespace TripasDeGatoCliente.Views {
             _lobbyBrowser = new LobbyBrowserClient();
             LoadLobbiesAsync();
         }
-
-        private Task LoadLobbiesAsync() {
+        private void HandleException(Exception exception, string methodName) {
             LoggerManager logger = new LoggerManager(this.GetType());
-            try {
-                var lobbies = _lobbyBrowser.GetAvailableLobbies();
-                gridLobbyData.ItemsSource = lobbies;
-            } catch (EndpointNotFoundException endpointNotFoundException) {
-                logger.LogError(endpointNotFoundException);
+            if (exception is EndpointNotFoundException) {
+                logger.LogError(methodName, exception);
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogEndPointException);
-            } catch (TimeoutException timeoutException) {
-                logger.LogError(timeoutException);
+            } else if (exception is TimeoutException) {
+                logger.LogError(methodName, exception);
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogTimeOutException);
-            } catch (CommunicationException communicationException) {
-                logger.LogError(communicationException);
+            } else if (exception is CommunicationException) {
+                logger.LogError(methodName, exception);
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
-            } catch (Exception exception) {
-                logger.LogError(exception);
+            } else {
+                logger.LogError(methodName, exception);
                 DialogManager.ShowErrorMessageAlert(string.Format(Properties.Resources.dialogUnexpectedError, exception.Message));
+
             }
-            return Task.CompletedTask;
+        }
+
+        private async Task LoadLobbiesAsync() {
+            try {
+                var lobbies = await _lobbyBrowser.GetAvailableLobbiesAsync();
+                gridLobbyData.ItemsSource = lobbies;
+            } catch (Exception exception) {
+                HandleException(exception, nameof(LoadLobbiesAsync));
+            }
         }
 
         private async void BtnJoinGame_Click(object sender, RoutedEventArgs e) {
-            LoggerManager logger = new LoggerManager(this.GetType());
             if (gridLobbyData.SelectedItem is Lobby selectedLobby) {
                 string lobbyCode = selectedLobby.Code;
                 Profile guest = new Profile {
@@ -57,15 +61,8 @@ namespace TripasDeGatoCliente.Views {
                     } else {
                         DialogManager.ShowWarningMessageAlert(Properties.Resources.dialogLobbyJoinError);
                     }
-                } catch (EndpointNotFoundException endpointNotFoundException) {
-                    logger.LogError(endpointNotFoundException);
-                    DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogEndPointException);
-                } catch (TimeoutException timeoutException) {
-                    logger.LogError(timeoutException);
-                    DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogTimeOutException);
-                } catch (CommunicationException communicationException) {
-                    logger.LogError(communicationException);
-                    DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
+                } catch (Exception exception) {
+                    HandleException(exception, nameof(BtnJoinGame_Click));
                 }
             } else {
                 DialogManager.ShowWarningMessageAlert(Properties.Resources.dialogSelectLobbyToJoin);
@@ -82,7 +79,6 @@ namespace TripasDeGatoCliente.Views {
         }
 
         private async void BtnSearch_Click(object sender, RoutedEventArgs e) {
-            LoggerManager logger = new LoggerManager(this.GetType());
             string searchCode = txtCodeLobby.Text.Trim();
             try {
                 var lobbies = await _lobbyBrowser.GetAvailableLobbiesAsync();
@@ -91,18 +87,8 @@ namespace TripasDeGatoCliente.Views {
                     DialogManager.ShowWarningMessageAlert(Properties.Resources.dialogLobbyNotFound);
                 }
                 gridLobbyData.ItemsSource = filteredLobbies;
-            } catch (EndpointNotFoundException endpointNotFoundException) {
-                logger.LogError(endpointNotFoundException);
-                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogEndPointException);
-            } catch (TimeoutException timeoutException) {
-                logger.LogError(timeoutException);
-                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogTimeOutException);
-            } catch (CommunicationException communicationException) {
-                logger.LogError(communicationException);
-                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
             } catch (Exception exception) {
-                logger.LogError(exception);
-                DialogManager.ShowErrorMessageAlert(string.Format(Properties.Resources.dialogUnexpectedError, exception.Message));
+                HandleException(exception, nameof(BtnSearch_Click));
             }
         }
     }
