@@ -262,16 +262,17 @@ namespace TripasDeGatoCliente.Views {
         private void TxtValidationCode_TextChanged(object sender, TextChangedEventArgs e) {
             TextBox currentTextBox = sender as TextBox;
             if (currentTextBox.Text.Length == 1) {
-                if (currentTextBox == txtValidationCode1)
+                if (currentTextBox == txtValidationCode1) {
                     txtValidationCode2.Focus();
-                else if (currentTextBox == txtValidationCode2)
+                } else if (currentTextBox == txtValidationCode2) {
                     txtValidationCode3.Focus();
-                else if (currentTextBox == txtValidationCode3)
+                } else if (currentTextBox == txtValidationCode3) {
                     txtValidationCode4.Focus();
-                else if (currentTextBox == txtValidationCode4)
+                } else if (currentTextBox == txtValidationCode4) {
                     txtValidationCode5.Focus();
-                else if (currentTextBox == txtValidationCode5)
+                } else if (currentTextBox == txtValidationCode5) {
                     txtValidationCode6.Focus();
+                }
             }
         }
 
