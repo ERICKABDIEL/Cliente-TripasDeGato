@@ -430,12 +430,9 @@ namespace TripasDeGatoCliente.Views {
 
         private async void BtnKickPlayer_Click(object sender, RoutedEventArgs e) {
             LoggerManager logger = new LoggerManager(this.GetType());
-            MessageBoxResult result = MessageBox.Show(
-                Properties.Resources.dialogConfirmKickPlayer,
-                Properties.Resources.titleConfirmKick,
-                MessageBoxButton.YesNo,
-                MessageBoxImage.Question
-            );
+
+            MessageBoxResult result = ShowConfirmKickPlayerDialog();
+
             if (result == MessageBoxResult.Yes) {
                 try {
                     await Task.Run(() => _lobbyManager.KickPlayer(_lobbyCode));
@@ -453,6 +450,15 @@ namespace TripasDeGatoCliente.Views {
                     DialogManager.ShowErrorMessageAlert(string.Format(Properties.Resources.dialogUnexpectedError, exception.Message));
                 }
             }
+        }
+
+        private MessageBoxResult ShowConfirmKickPlayerDialog() {
+            return MessageBox.Show(
+                Properties.Resources.dialogConfirmKickPlayer,
+                Properties.Resources.titleConfirmKick,
+                MessageBoxButton.YesNo,
+                MessageBoxImage.Question
+            );
         }
 
         public void KickedFromLobby() {
