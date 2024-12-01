@@ -40,8 +40,8 @@ namespace TripasDeGatoCliente {
 
         private async void MainWindowClosing(object sender, System.ComponentModel.CancelEventArgs e) {
             try {
-                await ConnectionManager.Instance.DisconnectAllAsync();
                 SignOut();
+                await ConnectionManager.Instance.DisconnectAllAsync();
             } catch (Exception exception) {
                 HandleException(exception, nameof(MainWindowClosing));
             }
