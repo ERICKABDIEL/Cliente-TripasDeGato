@@ -28,6 +28,8 @@ namespace TripasDeGatoCliente.Views {
         private StatusManagerClient _statusManager;
         private EmailInvitationManagerClient _emailInvitationManager;
         private bool _elementsVisible = false;
+        private const string PLAYER_ONE = "PlayerOne";
+        private const string PLAYER_TWO = "PlayerTwo";
 
         public LobbyView(string lobbyCode) {
             InitializeComponent();
@@ -122,15 +124,15 @@ namespace TripasDeGatoCliente.Views {
                 UserProfileSingleton.UpdateLobbyCode(_lobbyCode);
                 UserProfileSingleton.UpdateChatCode(_lobbyCode);
                 if (IsUserHost(lobby)) {
-                    lbPlayer1.Content = lobby.Players.ContainsKey("PlayerOne") ? lobby.Players["PlayerOne"].Username : Properties.Resources.lbWaitingForPlayer;
-                    lbPlayer2.Content = lobby.Players.ContainsKey("PlayerTwo") ? lobby.Players["PlayerTwo"].Username : Properties.Resources.lbWaitingForPlayer;
+                    lbPlayer1.Content = lobby.Players.ContainsKey(PLAYER_ONE) ? lobby.Players[PLAYER_ONE].Username : Properties.Resources.lbWaitingForPlayer;
+                    lbPlayer2.Content = lobby.Players.ContainsKey(PLAYER_TWO) ? lobby.Players[PLAYER_TWO].Username : Properties.Resources.lbWaitingForPlayer;
                     imageProfile1.Source = new BitmapImage(new Uri(UserProfileSingleton.PicPath, UriKind.RelativeOrAbsolute));
                     imageProfile2.Source = null;
                 } else {
-                    lbPlayer1.Content = lobby.Players.ContainsKey("PlayerTwo") ? lobby.Players["PlayerTwo"].Username : Properties.Resources.lbWaitingForPlayer;
-                    lbPlayer2.Content = lobby.Players.ContainsKey("PlayerOne") ? lobby.Players["PlayerOne"].Username : Properties.Resources.lbWaitingForPlayer;
+                    lbPlayer1.Content = lobby.Players.ContainsKey(PLAYER_TWO) ? lobby.Players[PLAYER_TWO].Username : Properties.Resources.lbWaitingForPlayer;
+                    lbPlayer2.Content = lobby.Players.ContainsKey(PLAYER_ONE) ? lobby.Players[PLAYER_ONE].Username : Properties.Resources.lbWaitingForPlayer;
                     imageProfile1.Source = new BitmapImage(new Uri(UserProfileSingleton.PicPath, UriKind.RelativeOrAbsolute));
-                    string ruta = _userManager.GetPicPath(lobby.Players["PlayerOne"].Username);
+                    string ruta = await _userManager.GetPicPathAsync(lobby.Players[PLAYER_ONE].Username);
                     imageProfile2.Source = new BitmapImage(new Uri(ruta, UriKind.RelativeOrAbsolute));
                     btnKickPlayer.Visibility = Visibility.Collapsed;
                     btnInvitedFriend.Visibility = Visibility.Collapsed;
@@ -141,8 +143,8 @@ namespace TripasDeGatoCliente.Views {
             }
         }
 
-        private bool IsUserHost(Lobby lobby) {
-            return lobby.Players.TryGetValue("PlayerOne", out var host) && host.Username == UserProfileSingleton.UserName;
+        private static bool IsUserHost(Lobby lobby) {
+            return lobby.Players.TryGetValue(PLAYER_ONE, out var host) && host.Username == UserProfileSingleton.UserName;
         }
 
         private async void BtnBack_Click(object sender, RoutedEventArgs e) {
@@ -340,7 +342,7 @@ namespace TripasDeGatoCliente.Views {
             }
         }
 
-        private MessageBoxResult ShowConfirmKickPlayerDialog() {
+        private static MessageBoxResult ShowConfirmKickPlayerDialog() {
             return MessageBox.Show(
                 Properties.Resources.dialogConfirmKickPlayer,
                 Properties.Resources.titleConfirmKick,

@@ -35,8 +35,7 @@ namespace TripasDeGatoCliente.Views {
 
         public void GenerateGuestProfile() {
             try {
-                string codeMatch = txtCodeLobby.Text;
-                UserProfileSingleton.Instance.CreateGuestInstance();
+                UserProfileSingleton.CreateGuestInstance();
             } catch (Exception exception) {
                 HandleException(exception, nameof(GenerateGuestProfile));
             }
@@ -48,7 +47,6 @@ namespace TripasDeGatoCliente.Views {
         }
 
         public async void BtnLogin_Click(object sender, RoutedEventArgs e) {
-            LoggerManager logger = new LoggerManager(this.GetType());
             GenerateGuestProfile();
             try {
                 if (!string.IsNullOrEmpty(txtCodeLobby.Text)) {

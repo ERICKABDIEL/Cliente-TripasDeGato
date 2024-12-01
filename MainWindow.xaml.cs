@@ -12,18 +12,12 @@ namespace TripasDeGatoCliente {
     /// Lógica de interacción para MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window {
-        private LobbyManagerClient _lobbyManager;
-        private ChatManagerClient _chatManager;
-        private MatchManagerClient _matchManager;
 
         public MainWindow() {
             InitializeComponent();
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             NavigationFrame.Navigate(new Views.LoginView());
             this.Closing += MainWindowClosing;
-            _lobbyManager = new LobbyManagerClient(new InstanceContext(this));
-            _chatManager = new ChatManagerClient(new InstanceContext(this));
-            _matchManager = new MatchManagerClient(new InstanceContext(this));
         }
 
         private void HandleException(Exception exception, string methodName) {
@@ -56,7 +50,7 @@ namespace TripasDeGatoCliente {
         private void SignOut() {
             int playerId = UserProfileSingleton.IdProfile;
             SetPlayerOfflineStatus(playerId);
-            UserProfileSingleton.Instance.ResetInstance();
+            UserProfileSingleton.ResetInstance();
         }
 
         private void SetPlayerOfflineStatus(int playerId) {
@@ -66,9 +60,6 @@ namespace TripasDeGatoCliente {
             } catch (Exception exception) {
                 HandleException(exception, nameof(SetPlayerOfflineStatus));
             }
-        }
-
-        private void OnClosing() {
         }
     }
 }

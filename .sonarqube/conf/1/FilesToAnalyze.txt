@@ -2,6 +2,7 @@
 C:\TripasDeGatoCliente\Logic\ConnectionManager.cs
 C:\TripasDeGatoCliente\Logic\ConstantsManager.cs
 C:\TripasDeGatoCliente\Logic\DialogManager.cs
+C:\TripasDeGatoCliente\Logic\DrawingValidation.cs
 C:\TripasDeGatoCliente\Logic\GuestProfile.cs
 C:\TripasDeGatoCliente\Logic\GuestProfileSinglenton.cs
 C:\TripasDeGatoCliente\Logic\Hasher.cs

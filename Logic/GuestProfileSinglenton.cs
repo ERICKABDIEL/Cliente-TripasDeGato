@@ -10,14 +10,14 @@ namespace TripasDeGatoCliente.Logic {
 
         public static GuestProfileSingleton Instance => SingletonInstance;
 
-        public void CreateInstance(string code) {
+        public static void CreateInstance(string code) {
             PerfilInvitado = new GuestProfile();
             PerfilInvitado.Username = GuestProfile.RandomChooserUsername();
             PerfilInvitado.Avatar = GuestProfile.RandomChooserAvatarIcon();
             CodeMatch = code;
         }
 
-        public void ResetSingleton() {
+        public static void ResetSingleton() {
             CodeMatch = null;
             PerfilInvitado = null;
         }

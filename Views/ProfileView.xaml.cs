@@ -79,7 +79,7 @@ namespace TripasDeGatoCliente.Views {
                     string userName = txtUserName.Text;
                     string selectedLanguage = cboxLanguage.SelectedItem?.ToString();
                     if (string.IsNullOrEmpty(selectedLanguage)) {
-                        SaveProfile(userName, selectedLanguage, _selectedProfile);
+                        SaveProfile(userName, _selectedProfile);
                     } else {
                         MessageBoxResult result = MessageBox.Show(
                             Properties.Resources.dialogMessageLanguagechange,
@@ -92,7 +92,7 @@ namespace TripasDeGatoCliente.Views {
                             System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
                             Application.Current.Shutdown();
                         } else {
-                            SaveProfile(userName, selectedLanguage, _selectedProfile);
+                            SaveProfile(userName, _selectedProfile);
                         }
                     }
                 } else {
@@ -101,7 +101,7 @@ namespace TripasDeGatoCliente.Views {
             }
         }
 
-        private async void SaveProfile(string userName, string selectedLanguage, string selectedProfile) {
+        private async void SaveProfile(string userName, string selectedProfile) {
             try {
                 var service = new TripasDeGatoServicio.UserManagerClient();
                 int idProfile = UserProfileSingleton.IdProfile;

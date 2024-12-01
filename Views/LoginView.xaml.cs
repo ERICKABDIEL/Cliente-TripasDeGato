@@ -99,8 +99,8 @@ namespace TripasDeGatoCliente.Views {
             return false;
         }
 
-        private void ObtainSingletonData(Profile profile) {
-            UserProfileSingleton.Instance.CreateInstance(profile);
+        private static void ObtainSingletonData(Profile profile) {
+            UserProfileSingleton.CreateInstance(profile);
         }
 
         private void SetPlayerOnlineStatus(int playerId) {
@@ -122,7 +122,7 @@ namespace TripasDeGatoCliente.Views {
             this.NavigationService.Navigate(menuView);
         }
 
-        private void HighlightField(Control control, bool isValid) {
+        private static void HighlightField(Control control, bool isValid) {
             control.BorderBrush = isValid ? Brushes.White : Brushes.Red;
         }
 
@@ -141,7 +141,7 @@ namespace TripasDeGatoCliente.Views {
             UpdatePasswordVisibilityIcon();
         }
 
-        private void ResetField(Control control) {
+        private static void ResetField(Control control) {
             control.BorderBrush = Brushes.White;
         }
 
@@ -229,7 +229,6 @@ namespace TripasDeGatoCliente.Views {
         private void BtnSavePassword_Click(object sender, RoutedEventArgs e) {
             string newPassword = txtNewPassword.Password.Trim();
             string confirmPassword = txtNewPasswordConfirm.Password.Trim();
-            string email = txtEmail.Text.Trim();
             if (newPassword != confirmPassword) {
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogMissmatchesCredentials);
                 return;
@@ -254,7 +253,6 @@ namespace TripasDeGatoCliente.Views {
             }
         }
 
-
         private void TxtValidationCode_TextChanged(object sender, TextChangedEventArgs e) {
             TextBox currentTextBox = sender as TextBox;
             if (currentTextBox.Text.Length == 1) {
@@ -271,7 +269,7 @@ namespace TripasDeGatoCliente.Views {
             }
         }
 
-        private bool IsValidPassword(string password) {
+        private static bool IsValidPassword(string password) {
             bool isValid = true;
             if (!Validador.ValidatePassword(password)) {
                 isValid = false;

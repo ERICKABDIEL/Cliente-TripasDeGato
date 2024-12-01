@@ -33,14 +33,11 @@ namespace TripasDeGatoCliente.Logic {
 
         public static bool ValidateEmail(string email) {
             string cleanedEmail = email?.Trim();
-            if (!string.IsNullOrWhiteSpace(cleanedEmail) && cleanedEmail.Length <= 254) {
-                if (emailRegex.IsMatch(cleanedEmail)) {
-                    try {
-                        var mailAddress = new MailAddress(cleanedEmail);
-                        return true;
-                    } catch (FormatException) {
-                        return false;
-                    }
+            if (!string.IsNullOrWhiteSpace(cleanedEmail) && cleanedEmail.Length <= 254 && emailRegex.IsMatch(cleanedEmail)) {
+                try {
+                    return true;
+                } catch (FormatException) {
+                    return false;
                 }
             }
             return false;
