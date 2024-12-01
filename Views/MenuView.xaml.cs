@@ -29,6 +29,24 @@ namespace TripasDeGatoCliente.Views {
             LoadUserProfileAsync();
         }
 
+        private void HandleException(Exception exception, string methodName) {
+            LoggerManager logger = new LoggerManager(this.GetType());
+            if (exception is EndpointNotFoundException) {
+                logger.LogError(methodName, exception);
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogEndPointException);
+            } else if (exception is TimeoutException) {
+                logger.LogError(methodName, exception);
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogTimeOutException);
+            } else if (exception is CommunicationException) {
+                logger.LogError(methodName, exception);
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
+            } else {
+                logger.LogError(methodName, exception);
+                DialogManager.ShowErrorMessageAlert(string.Format(Properties.Resources.dialogUnexpectedError, exception.Message));
+
+            }
+        }
+
         private async void LoadUserProfileAsync() {
             if (!string.IsNullOrEmpty(UserProfileSingleton.UserName)) {
                 lbUserName.Content = UserProfileSingleton.UserName;
@@ -49,22 +67,11 @@ namespace TripasDeGatoCliente.Views {
         }
 
         private void SetPlayerOfflineStatus(int playerId) {
-            LoggerManager logger = new LoggerManager(this.GetType());
             try {
                 IStatusManager statusManager = new StatusManagerClient();
                 statusManager.SetPlayerStatus(playerId, GameEnumsPlayerStatus.Offline);
-            } catch (EndpointNotFoundException endpointNotFoundException) {
-                logger.LogError(endpointNotFoundException);
-                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogEndPointException);
-            } catch (TimeoutException timeoutException) {
-                logger.LogError(timeoutException);
-                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogTimeOutException);
-            } catch (CommunicationException communicationException) {
-                logger.LogError(communicationException);
-                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
             } catch (Exception exception) {
-                logger.LogError(exception);
-                DialogManager.ShowErrorMessageAlert(string.Format(Properties.Resources.dialogUnexpectedError, exception.Message));
+                HandleException(exception, nameof(SetPlayerOfflineStatus));
             }
         }
 
@@ -74,7 +81,6 @@ namespace TripasDeGatoCliente.Views {
         }
 
         private async void BtnFriends_Click(object sender, RoutedEventArgs e) {
-            LoggerManager logger = new LoggerManager(this.GetType());
             try {
                 _elementsVisible = !_elementsVisible;
                 if (_elementsVisible) {
@@ -100,21 +106,8 @@ namespace TripasDeGatoCliente.Views {
                     btnFriends.Background = new SolidColorBrush(Color.FromArgb(51, 216, 195, 165));
                     btnAddFriend.Background = new SolidColorBrush(Color.FromArgb(255, 67, 43, 30));
                 }
-            } catch (TaskCanceledException taskCanceledException) {
-                logger.LogError(taskCanceledException);
-                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogTaskCanceledException);
-            } catch (EndpointNotFoundException endpointNotFoundException) {
-                logger.LogError(endpointNotFoundException);
-                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogEndPointException);
-            } catch (TimeoutException timeoutException) {
-                logger.LogError(timeoutException);
-                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogTimeOutException);
-            } catch (CommunicationException communicationException) {
-                logger.LogError(communicationException);
-                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
             } catch (Exception exception) {
-                logger.LogError(exception);
-                DialogManager.ShowErrorMessageAlert(string.Format(Properties.Resources.dialogUnexpectedError, exception.Message));
+                HandleException(exception, nameof(BtnFriends_Click));
             }
         }
 
@@ -137,24 +130,13 @@ namespace TripasDeGatoCliente.Views {
         }
 
         private async void BtnAdd_Click(object sender, RoutedEventArgs e) {
-            LoggerManager logger = new LoggerManager(this.GetType());
             string friendName = txtFriendName.Text.Trim();
             try {
                 if (ValidateFriendName(friendName)) {
                     await AddFriend(friendName);
                 }
-            } catch (EndpointNotFoundException endpointNotFoundException) {
-                logger.LogError(endpointNotFoundException);
-                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogEndPointException);
-            } catch (TimeoutException timeoutException) {
-                logger.LogError(timeoutException);
-                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogTimeOutException);
-            } catch (CommunicationException communicationException) {
-                logger.LogError(communicationException);
-                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
             } catch (Exception exception) {
-                logger.LogError(exception);
-                DialogManager.ShowErrorMessageAlert(string.Format(Properties.Resources.dialogUnexpectedError, exception.Message));
+                HandleException(exception, nameof(BtnAdd_Click));
             } finally {
                 txtFriendName.Clear();
             }
@@ -169,7 +151,6 @@ namespace TripasDeGatoCliente.Views {
         }
 
         private async Task AddFriend(string friendName) {
-            LoggerManager logger = new LoggerManager(this.GetType());
             try {
                 int friendProfileId = await _userManager.GetProfileIdAsync(friendName);
                 if (friendProfileId == UserProfileSingleton.IdProfile) {
@@ -179,23 +160,12 @@ namespace TripasDeGatoCliente.Views {
                 } else {
                     DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogProfileNotFound);
                 }
-            } catch (EndpointNotFoundException endpointNotFoundException) {
-                logger.LogError(endpointNotFoundException);
-                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogEndPointException);
-            } catch (TimeoutException timeoutException) {
-                logger.LogError(timeoutException);
-                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogTimeOutException);
-            } catch (CommunicationException communicationException) {
-                logger.LogError(communicationException);
-                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
             } catch (Exception exception) {
-                logger.LogError(exception);
-                DialogManager.ShowErrorMessageAlert(string.Format(Properties.Resources.dialogUnexpectedError, exception.Message));
+                HandleException(exception, nameof(AddFriend));
             }
         }
 
         private async Task ExecuteFriendAddition(int friendProfileId, string friendName) {
-            LoggerManager logger = new LoggerManager(this.GetType());
             try {
                 int userProfileId = UserProfileSingleton.IdProfile;
                 int result = await _friendsManager.AddFriendAsync(userProfileId, friendProfileId);
@@ -205,23 +175,12 @@ namespace TripasDeGatoCliente.Views {
                 } else {
                     DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogErrorAddingFriend);
                 }
-            } catch (EndpointNotFoundException endpointNotFoundException) {
-                logger.LogError(endpointNotFoundException);
-                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogEndPointException);
-            } catch (TimeoutException timeoutException) {
-                logger.LogError(timeoutException);
-                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogTimeOutException);
-            } catch (CommunicationException communicationException) {
-                logger.LogError(communicationException);
-                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
             } catch (Exception exception) {
-                logger.LogError(exception);
-                DialogManager.ShowErrorMessageAlert(string.Format(Properties.Resources.dialogUnexpectedError, exception.Message));
+                HandleException(exception, nameof(ExecuteFriendAddition));
             }
         }
 
         private async Task LoadFriendsListAsync() {
-            LoggerManager logger = new LoggerManager(this.GetType());
             try {
                 int userProfileId = UserProfileSingleton.IdProfile;
                 var friendsList = await _friendsManager.GetFriendsAsync(userProfileId);
@@ -231,23 +190,12 @@ namespace TripasDeGatoCliente.Views {
                     friendsWithStatus.Add($"{friend.Username} - {status}");
                 }
                 lstFriends.ItemsSource = friendsWithStatus;
-            } catch (EndpointNotFoundException endpointNotFoundException) {
-                logger.LogError(endpointNotFoundException);
-                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogEndPointException);
-            } catch (TimeoutException timeoutException) {
-                logger.LogError(timeoutException);
-                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogTimeOutException);
-            } catch (CommunicationException communicationException) {
-                logger.LogError(communicationException);
-                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
             } catch (Exception exception) {
-                logger.LogError(exception);
-                DialogManager.ShowErrorMessageAlert(string.Format(Properties.Resources.dialogUnexpectedError, exception.Message));
+                HandleException(exception, nameof(LoadFriendsListAsync));
             }
         }
 
         private async void BtnRemoveFriend_Click(object sender, RoutedEventArgs e) {
-            LoggerManager logger = new LoggerManager(this.GetType());
             if (lstFriends.SelectedItem != null) {
                 string selectedFriendName = lstFriends.SelectedItem.ToString();
                 string friendName = selectedFriendName.Split('-')[0].Trim();
@@ -265,18 +213,8 @@ namespace TripasDeGatoCliente.Views {
                     } else {
                         DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogNotRetrievedProfile);
                     }
-                } catch (EndpointNotFoundException endpointNotFoundException) {
-                    logger.LogError(endpointNotFoundException);
-                    DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogEndPointException);
-                } catch (TimeoutException timeoutException) {
-                    logger.LogError(timeoutException);
-                    DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogTimeOutException);
-                } catch (CommunicationException communicationException) {
-                    logger.LogError(communicationException);
-                    DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
                 } catch (Exception exception) {
-                    logger.LogError(exception);
-                    DialogManager.ShowErrorMessageAlert(string.Format(Properties.Resources.dialogUnexpectedError, exception.Message));
+                    HandleException(exception, nameof(BtnRemoveFriend_Click));
                 }
             } else {
                 DialogManager.ShowWarningMessageAlert(Properties.Resources.dialogSelectFriendToDelete);

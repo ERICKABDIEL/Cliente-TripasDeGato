@@ -36,7 +36,9 @@ namespace TripasDeGatoCliente.Views {
         public GameMatch(string gameCode) {
             InitializeComponent();
             this._matchCode = gameCode;
-            _matchManagerClient = new MatchManagerClient(new InstanceContext(this));
+            InstanceContext context = new InstanceContext(this);
+            _matchManagerClient = new MatchManagerClient(context);
+            ConnectionManager.Instance.InitializeMatchManager(context);
             InitializeMatch();
             _allTraces = new List<Polyline>();
             drawingCanvas.MouseDown += Canvas_MouseDown;
@@ -45,8 +47,25 @@ namespace TripasDeGatoCliente.Views {
             StartTimer();
         }
 
-        private async Task CheckCurrentTurn() {
+        private void HandleException(Exception exception, string methodName) {
             LoggerManager logger = new LoggerManager(this.GetType());
+            if (exception is EndpointNotFoundException) {
+                logger.LogError(methodName, exception);
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogEndPointException);
+            } else if (exception is TimeoutException) {
+                logger.LogError(methodName, exception);
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogTimeOutException);
+            } else if (exception is CommunicationException) {
+                logger.LogError(methodName, exception);
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
+            } else {
+                logger.LogError(methodName, exception);
+                DialogManager.ShowErrorMessageAlert(string.Format(Properties.Resources.dialogUnexpectedError, exception.Message));
+
+            }
+        }
+
+        private async Task CheckCurrentTurn() {
             try {
                 string currentTurn = await Task.Run(() => _matchManagerClient.GetCurrentTurn(_matchCode));
                 if (currentTurn == UserProfileSingleton.UserName) {
@@ -54,23 +73,12 @@ namespace TripasDeGatoCliente.Views {
                 } else {
                     NotifyNotYourTurn();
                 }
-            } catch (EndpointNotFoundException endpointNotFoundException) {
-                logger.LogError(endpointNotFoundException);
-                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogEndPointException);
-            } catch (TimeoutException timeoutException) {
-                logger.LogError(timeoutException);
-                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogTimeOutException);
-            } catch (CommunicationException communicationException) {
-                logger.LogError(communicationException);
-                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
             } catch (Exception exception) {
-                logger.LogError(exception);
-                DialogManager.ShowErrorMessageAlert(string.Format(Properties.Resources.dialogUnexpectedError, exception.Message));
+                HandleException(exception, nameof(CheckCurrentTurn));
             }
         }
 
         private async void InitializeMatch() {
-            LoggerManager logger = new LoggerManager(this.GetType());
             try {
                 bool connected = _matchManagerClient.RegisterPlayerCallback(_matchCode, UserProfileSingleton.UserName);
                 if (!connected) {
@@ -87,18 +95,8 @@ namespace TripasDeGatoCliente.Views {
                         DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogNodesNotFound);
                     }
                 }
-            } catch (EndpointNotFoundException endpointNotFoundException) {
-                logger.LogError(endpointNotFoundException);
-                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogEndPointException);
-            } catch (TimeoutException timeoutException) {
-                logger.LogError(timeoutException);
-                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogTimeOutException);
-            } catch (CommunicationException communicationException) {
-                logger.LogError(communicationException);
-                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
             } catch (Exception exception) {
-                logger.LogError(exception);
-                DialogManager.ShowErrorMessageAlert(string.Format(Properties.Resources.dialogUnexpectedError, exception.Message));
+                HandleException(exception, nameof(InitializeMatch));
             }
         }
 
@@ -179,7 +177,6 @@ namespace TripasDeGatoCliente.Views {
         }
 
         private void Canvas_MouseMove(object sender, MouseEventArgs e) {
-            LoggerManager logger = new LoggerManager(this.GetType());
             if (!_isDrawing) return;
             Point mousePosition = e.GetPosition(drawingCanvas);
             var newPoint = new TripasDeGatoServicio.TracePoint { X = mousePosition.X, Y = mousePosition.Y };
@@ -192,18 +189,8 @@ namespace TripasDeGatoCliente.Views {
                 HandleInfraction(Properties.Resources.dialogInfractionCollision);
                 try {
                     _matchManagerClient.EndMatchAsync(_matchCode);
-                } catch (EndpointNotFoundException endpointNotFoundException) {
-                    logger.LogError(endpointNotFoundException);
-                    DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogEndPointException);
-                } catch (TimeoutException timeoutException) {
-                    logger.LogError(timeoutException);
-                    DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogTimeOutException);
-                } catch (CommunicationException communicationException) {
-                    logger.LogError(communicationException);
-                    DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
                 } catch (Exception exception) {
-                    logger.LogError(exception);
-                    DialogManager.ShowErrorMessageAlert(string.Format(Properties.Resources.dialogUnexpectedError, exception.Message));
+                    HandleException(exception, nameof(Canvas_MouseMove));
                 }
                 return;
             }
@@ -300,7 +287,6 @@ namespace TripasDeGatoCliente.Views {
         }
 
         private void SendTrace(List<TracePoint> points) {
-            LoggerManager logger = new LoggerManager(this.GetType());
             if (!_isConnected) return;
             var trace = new TripasDeGatoServicio.Trace {
                 Player = UserProfileSingleton.UserName,
@@ -308,20 +294,11 @@ namespace TripasDeGatoCliente.Views {
                 Timestamp = DateTime.Now,
                 Color = "Blue"
             };
+
             try {
                 _matchManagerClient.RegisterTrace(_matchCode, trace);
-            } catch (EndpointNotFoundException endpointNotFoundException) {
-                logger.LogError(endpointNotFoundException);
-                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogEndPointException);
-            } catch (TimeoutException timeoutException) {
-                logger.LogError(timeoutException);
-                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogTimeOutException);
-            } catch (CommunicationException communicationException) {
-                logger.LogError(communicationException);
-                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
             } catch (Exception exception) {
-                logger.LogError(exception);
-                DialogManager.ShowErrorMessageAlert(string.Format(Properties.Resources.dialogUnexpectedError, exception.Message));
+                HandleException(exception, nameof(SendTrace));
             }
         }
 
@@ -362,26 +339,14 @@ namespace TripasDeGatoCliente.Views {
             }
         }
 
-
         private async void BtnBack_Click(object sender, RoutedEventArgs e) {
-            LoggerManager logger = new LoggerManager(this.GetType());
             try {
                 if (_isConnected) {
                     await _matchManagerClient.LeaveMatchAsync(_matchCode, UserProfileSingleton.UserName);
                     ExitUseSinglenton();
                 }
-            } catch (EndpointNotFoundException endpointNotFoundException) {
-                logger.LogError(endpointNotFoundException);
-                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogEndPointException);
-            } catch (TimeoutException timeoutException) {
-                logger.LogError(timeoutException);
-                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogTimeOutException);
-            } catch (CommunicationException communicationException) {
-                logger.LogError(communicationException);
-                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
             } catch (Exception exception) {
-                logger.LogError(exception);
-                DialogManager.ShowErrorMessageAlert(string.Format(Properties.Resources.dialogUnexpectedError, exception.Message));
+                HandleException(exception, nameof(BtnBack_Click));
             }
             ExitUseSinglenton();
         }
@@ -420,6 +385,8 @@ namespace TripasDeGatoCliente.Views {
                 lbMatchStatus.Foreground = Brushes.Red;
                 drawingCanvas.IsEnabled = false;
                 _timer?.Stop();
+                DialogManager.ShowSuccessMessageAlert(Properties.Resources.lbMatchStatusYouLost);
+                ExitUseSinglenton();
             });
         }
 
@@ -430,6 +397,8 @@ namespace TripasDeGatoCliente.Views {
                 lbMatchStatus.Foreground = Brushes.Green;
                 drawingCanvas.IsEnabled = false;
                 _timer?.Stop();
+                DialogManager.ShowSuccessMessageAlert(Properties.Resources.lbMatchStatusYouWon);
+                ExitUseSinglenton();
             });
         }
 
@@ -440,6 +409,8 @@ namespace TripasDeGatoCliente.Views {
                 lbMatchStatus.Foreground = Brushes.Orange;
                 drawingCanvas.IsEnabled = false;
                 _timer?.Stop();
+                DialogManager.ShowSuccessMessageAlert(Properties.Resources.lbMatchStatusDraw);
+                ExitUseSinglenton();
             });
         }
 

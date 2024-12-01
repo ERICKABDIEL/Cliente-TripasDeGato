@@ -18,17 +18,15 @@ namespace TripasDeGatoCliente
 
         protected override void OnStartup(StartupEventArgs e) {
             base.OnStartup(e);
-
             string savedLanguage = TripasDeGatoCliente.Properties.Settings.Default.Language;
-
             if (string.IsNullOrEmpty(savedLanguage)) {
                 savedLanguage = CultureInfo.CurrentCulture.Name.StartsWith("es") ? "es-MX" : "en-US";
                 TripasDeGatoCliente.Properties.Settings.Default.Language = savedLanguage;
                 TripasDeGatoCliente.Properties.Settings.Default.Save();
             }
-
             ChangeLanguage(savedLanguage);
         }
+
         public static void ChangeLanguage(string cultureCode) {
             CultureInfo culture = new CultureInfo(cultureCode);
             Thread.CurrentThread.CurrentCulture = culture;
@@ -37,12 +35,5 @@ namespace TripasDeGatoCliente
             TripasDeGatoCliente.Properties.Settings.Default.Language = cultureCode;
             TripasDeGatoCliente.Properties.Settings.Default.Save();
         }
-
-
-
-
-
-
-
     }
 }
