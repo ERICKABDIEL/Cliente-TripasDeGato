@@ -4,7 +4,9 @@ using log4net;
 [assembly: log4net.Config.XmlConfigurator(Watch = true)]
 
 namespace TripasDeGatoCliente.Logic {
+
     public class LoggerManager {
+
         public ILog Logger { get; private set; }
 
         public LoggerManager(Type type) {

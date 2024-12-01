@@ -2,6 +2,7 @@
 
 namespace TripasDeGatoCliente.Logic {
     internal class GuestProfile {
+
         private static readonly Random random = new Random();
 
         public string Username { get; set; }

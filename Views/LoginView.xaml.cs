@@ -8,13 +8,19 @@ using TripasDeGatoCliente.TripasDeGatoServicio;
 using static TripasDeGatoCliente.Logic.ConstantsManager;
 
 namespace TripasDeGatoCliente.Views {
+
     public partial class LoginView : Page {
+
         private string _userEmail;
+        
         public LoginView() {
             InitializeComponent();
             UpdatePasswordVisibilityIcon();
             txtEmail.TextChanged += TxtEmail_TextChanged;
             txtPassword.PasswordChanged += TxtPassword_PasswordChanged;
+            UserProfileSingleton.ResetLobbyCode();
+            UserProfileSingleton.ResetChatCode();
+            UserProfileSingleton.ResetMatchCode();
         }
 
         private void BtnLogin_Click(object sender, RoutedEventArgs e) {

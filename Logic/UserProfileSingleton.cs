@@ -2,6 +2,7 @@
 
 namespace TripasDeGatoCliente.Logic {
     public class UserProfileSingleton {
+
         private static readonly UserProfileSingleton singletonInstance = new UserProfileSingleton();
 
         public static int IdProfile { get; private set; }

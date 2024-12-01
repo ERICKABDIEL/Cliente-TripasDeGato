@@ -13,6 +13,7 @@ using TripasDeGatoCliente.TripasDeGatoServicio;
 using static TripasDeGatoCliente.Logic.ConstantsManager;
 
 namespace TripasDeGatoCliente.Views {
+
     public partial class MenuView : Page {
         private UserManagerClient _userManager;
         private FriendsManagerClient _friendsManager;
@@ -48,6 +49,9 @@ namespace TripasDeGatoCliente.Views {
         private void LoadUserProfile() {
             if (!string.IsNullOrEmpty(UserProfileSingleton.UserName)) {
                 lbUserName.Content = UserProfileSingleton.UserName;
+                UserProfileSingleton.ResetChatCode();
+                UserProfileSingleton.ResetLobbyCode();
+                UserProfileSingleton.ResetMatchCode();
             } else {
                 lbUserName.Content = Properties.Resources.lbUnknownUser;
             }

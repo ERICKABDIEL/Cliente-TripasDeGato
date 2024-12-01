@@ -7,7 +7,9 @@ using System.Collections.Generic;
 using TripasDeGatoCliente.Properties;
 
 namespace TripasDeGatoCliente.Logic {
+
     public static class DialogManager {
+    
         public static void ShowErrorMessageAlert(string errorMessage) {
             MessageBox.Show(errorMessage, TripasDeGatoCliente.Properties.Resources.dialogTitleError, MessageBoxButton.OK, MessageBoxImage.Error);
         }

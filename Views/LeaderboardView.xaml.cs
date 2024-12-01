@@ -10,7 +10,9 @@ using log4net.Repository.Hierarchy;
 using TripasDeGatoCliente.TripasDeGatoServicio;
 
 namespace TripasDeGatoCliente.Views {
+
     public partial class Laderboard : Page {
+    
         private LeaderboardManagerClient _leaderboardManagerClient;
 
         public Laderboard() {

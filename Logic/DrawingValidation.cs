@@ -6,6 +6,7 @@ using System.Collections.Generic;
 
 namespace TripasDeGatoCliente.Logic { 
     public class DrawingValidation {
+
         private readonly List<Point> permittedArea;
 
         public DrawingValidation() {

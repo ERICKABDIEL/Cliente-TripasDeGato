@@ -9,7 +9,9 @@ using TripasDeGatoCliente.TripasDeGatoServicio;
 
 namespace TripasDeGatoCliente.Views {
     public partial class CodeGameMatch : Page {
+
         private LobbyBrowserClient _lobbyBrowser;
+
         public CodeGameMatch() {
             InitializeComponent();
             _lobbyBrowser = new LobbyBrowserClient();
