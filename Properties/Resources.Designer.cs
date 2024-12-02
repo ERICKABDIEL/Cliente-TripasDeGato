@@ -601,6 +601,15 @@ namespace TripasDeGatoCliente.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a The specified friendship does not exist.
+        /// </summary>
+        public static string dialogFriendshipNotFoundWarning {
+            get {
+                return ResourceManager.GetString("dialogFriendshipNotFoundWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a The host left the lobby..
         /// </summary>
         public static string dialogHostLeftLobby {

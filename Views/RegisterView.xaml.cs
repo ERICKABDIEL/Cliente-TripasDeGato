@@ -134,8 +134,6 @@ namespace TripasDeGatoCliente.Views {
                     };
                     var newProfile = new TripasDeGatoServicio.Profile {
                         Username = txtName.Text,
-                        Score = Constants.INITIAL_SCORE,
-                        PicturePath = "/Images/Profiles/ImageProfile1.png"
                     };
                     int accountResult = userProxy.CreateAccount(newUser, newProfile);
                     if (accountResult == Constants.SUCCES_OPERATION) {

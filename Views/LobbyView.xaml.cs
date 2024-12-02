@@ -85,7 +85,7 @@ namespace TripasDeGatoCliente.Views {
             try {
                 await _chatManager.ConnectToChatAsync(UserProfileSingleton.UserName, _lobbyCode);
             } catch (Exception exception) {
-                HandleException(exception, nameof(InitializeChatAsync)); 
+                HandleException(exception, nameof(InitializeChatAsync));
             }
         }
 
@@ -107,8 +107,8 @@ namespace TripasDeGatoCliente.Views {
             string messageText = txtMessageInput.Text.Trim();
             if (!string.IsNullOrEmpty(messageText)) {
                 var message = new Message {
-                    userName = UserProfileSingleton.UserName,
-                    chatMessage = messageText
+                    Username = UserProfileSingleton.UserName,
+                    ChatMessage = messageText
                 };
                 try {
                     await _chatManager.SendMessageAsync(UserProfileSingleton.UserName, message, _lobbyCode);
@@ -241,8 +241,13 @@ namespace TripasDeGatoCliente.Views {
         }
 
         private void BtnStartGame_Click(object sender, RoutedEventArgs e) {
-            _lobbyManager.StartMatch(_lobbyCode);
+            try {
+                _lobbyManager.StartMatch(_lobbyCode);
+            } catch (Exception exception) {
+                HandleException(exception, nameof(BtnStartGame_Click));
+            }
         }
+
 
         public void BroadcastMessage(Message message) {
             Application.Current.Dispatcher.Invoke(() => {
@@ -251,10 +256,10 @@ namespace TripasDeGatoCliente.Views {
                     BorderThickness = new Thickness(1),
                     Padding = new Thickness(10),
                     Margin = new Thickness(20, 5, 20, 5),
-                    HorizontalAlignment = message.userName == UserProfileSingleton.UserName ? HorizontalAlignment.Right : HorizontalAlignment.Left
+                    HorizontalAlignment = message.Username == UserProfileSingleton.UserName ? HorizontalAlignment.Right : HorizontalAlignment.Left
                 };
                 TextBlock messageBlock = new TextBlock {
-                    Text = $"{message.chatMessage} {DateTime.Now:HH:mm}",
+                    Text = $"{message.ChatMessage} {DateTime.Now:HH:mm}",
                     Foreground = new SolidColorBrush(Colors.Black),
                     FontSize = 12,
                     FontWeight = FontWeights.Bold,
