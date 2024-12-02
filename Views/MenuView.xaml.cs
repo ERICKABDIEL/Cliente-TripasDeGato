@@ -205,6 +205,8 @@ namespace TripasDeGatoCliente.Views {
                         if (result == Constants.SUCCES_OPERATION) {
                             DialogManager.ShowSuccessMessageAlert(string.Format(Properties.Resources.dialogFriendshipDeleted, friendName));
                             await LoadFriendsListAsync();
+                        } else if(result == Constants.NO_DATA_MATCHES) {
+                            DialogManager.ShowWarningMessageAlert("No existe la amistad indicada");
                         } else {
                             DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogErrorDeletingFriendship);
                         }

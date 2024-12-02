@@ -14,7 +14,6 @@ namespace TripasDeGatoCliente.Views {
             InitializeComponent();
             _lobbyBrowser = new LobbyBrowserClient();
         }
-
         private void HandleException(Exception exception, string methodName) {
             LoggerManager logger = new LoggerManager(this.GetType());
             if (exception is EndpointNotFoundException) {
