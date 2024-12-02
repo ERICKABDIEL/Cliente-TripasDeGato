@@ -297,6 +297,9 @@
   <data name="dialogFriendshipDeleted" xml:space="preserve">
     <value>Friendship with '{0}' deleted successfully</value>
   </data>
+  <data name="dialogFriendshipNotFoundWarning" xml:space="preserve">
+    <value>The specified friendship does not exist</value>
+  </data>
   <data name="dialogHostLeftLobby" xml:space="preserve">
     <value>The host left the lobby.</value>
   </data>

@@ -560,14 +560,8 @@
   <wsdl:message name="IMatchManager_EndMatch_InputMessage">
     <wsdl:part name="parameters" element="tns:EndMatch" />
   </wsdl:message>
-  <wsdl:message name="IMatchManager_EndMatch_OutputMessage">
-    <wsdl:part name="parameters" element="tns:EndMatchResponse" />
-  </wsdl:message>
   <wsdl:message name="IMatchManager_LeaveMatch_InputMessage">
     <wsdl:part name="parameters" element="tns:LeaveMatch" />
-  </wsdl:message>
-  <wsdl:message name="IMatchManager_LeaveMatch_OutputMessage">
-    <wsdl:part name="parameters" element="tns:LeaveMatchResponse" />
   </wsdl:message>
   <wsdl:message name="IMatchManager_TraceReceived_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:TraceReceived" />
@@ -779,11 +773,9 @@
     </wsdl:operation>
     <wsdl:operation name="EndMatch">
       <wsdl:input wsaw:Action="http://tempuri.org/IMatchManager/EndMatch" message="tns:IMatchManager_EndMatch_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IMatchManager/EndMatchResponse" message="tns:IMatchManager_EndMatch_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="LeaveMatch">
       <wsdl:input wsaw:Action="http://tempuri.org/IMatchManager/LeaveMatch" message="tns:IMatchManager_LeaveMatch_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IMatchManager/LeaveMatchResponse" message="tns:IMatchManager_LeaveMatch_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="TraceReceived">
       <wsdl:output wsaw:Action="http://tempuri.org/IMatchManager/TraceReceived" message="tns:IMatchManager_TraceReceived_OutputCallbackMessage" />
@@ -1214,18 +1206,12 @@
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="LeaveMatch">
       <soap12:operation soapAction="http://tempuri.org/IMatchManager/LeaveMatch" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="TraceReceived">
       <soap12:operation soapAction="http://tempuri.org/IMatchManager/TraceReceived" style="document" />

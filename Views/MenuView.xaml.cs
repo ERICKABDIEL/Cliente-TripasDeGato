@@ -113,7 +113,6 @@ namespace TripasDeGatoCliente.Views {
             }
         }
 
-
         private void BtnAddFriend_Click(object sender, RoutedEventArgs e) {
             _elementsVisible = !_elementsVisible;
             if (_elementsVisible) {
@@ -209,6 +208,8 @@ namespace TripasDeGatoCliente.Views {
                         if (result == Constants.SUCCES_OPERATION) {
                             DialogManager.ShowSuccessMessageAlert(string.Format(Properties.Resources.dialogFriendshipDeleted, friendName));
                             await LoadFriendsListAsync();
+                        } else if (result == Constants.NO_DATA_MATCHES) {
+                            DialogManager.ShowWarningMessageAlert(Properties.Resources.dialogFriendshipNotFoundWarning);
                         } else {
                             DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogErrorDeletingFriendship);
                         }

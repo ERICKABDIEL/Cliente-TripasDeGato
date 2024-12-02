@@ -208,9 +208,6 @@ namespace TripasDeGatoCliente.TripasDeGatoServicio {
         
         [System.Runtime.Serialization.EnumMemberAttribute()]
         Online = 1,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        InGame = 2,
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -260,7 +257,7 @@ namespace TripasDeGatoCliente.TripasDeGatoServicio {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Message", Namespace="http://schemas.datacontract.org/2004/07/TripasService.Contracts")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Message", Namespace="http://schemas.datacontract.org/2004/07/TripasService.Logic")]
     [System.SerializableAttribute()]
     public partial class Message : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -268,13 +265,13 @@ namespace TripasDeGatoCliente.TripasDeGatoServicio {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string chatMessageField;
+        private string ChatMessageField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime timeStampField;
+        private System.DateTime TimeStampField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string userNameField;
+        private string UsernameField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -287,40 +284,40 @@ namespace TripasDeGatoCliente.TripasDeGatoServicio {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string chatMessage {
+        public string ChatMessage {
             get {
-                return this.chatMessageField;
+                return this.ChatMessageField;
             }
             set {
-                if ((object.ReferenceEquals(this.chatMessageField, value) != true)) {
-                    this.chatMessageField = value;
-                    this.RaisePropertyChanged("chatMessage");
+                if ((object.ReferenceEquals(this.ChatMessageField, value) != true)) {
+                    this.ChatMessageField = value;
+                    this.RaisePropertyChanged("ChatMessage");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime timeStamp {
+        public System.DateTime TimeStamp {
             get {
-                return this.timeStampField;
+                return this.TimeStampField;
             }
             set {
-                if ((this.timeStampField.Equals(value) != true)) {
-                    this.timeStampField = value;
-                    this.RaisePropertyChanged("timeStamp");
+                if ((this.TimeStampField.Equals(value) != true)) {
+                    this.TimeStampField = value;
+                    this.RaisePropertyChanged("TimeStamp");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string userName {
+        public string Username {
             get {
-                return this.userNameField;
+                return this.UsernameField;
             }
             set {
-                if ((object.ReferenceEquals(this.userNameField, value) != true)) {
-                    this.userNameField = value;
-                    this.RaisePropertyChanged("userName");
+                if ((object.ReferenceEquals(this.UsernameField, value) != true)) {
+                    this.UsernameField = value;
+                    this.RaisePropertyChanged("Username");
                 }
             }
         }
@@ -346,9 +343,6 @@ namespace TripasDeGatoCliente.TripasDeGatoServicio {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string CodeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.TimeSpan DurationField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string GameNameField;
@@ -378,19 +372,6 @@ namespace TripasDeGatoCliente.TripasDeGatoServicio {
                 if ((object.ReferenceEquals(this.CodeField, value) != true)) {
                     this.CodeField = value;
                     this.RaisePropertyChanged("Code");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.TimeSpan Duration {
-            get {
-                return this.DurationField;
-            }
-            set {
-                if ((this.DurationField.Equals(value) != true)) {
-                    this.DurationField = value;
-                    this.RaisePropertyChanged("Duration");
                 }
             }
         }
@@ -976,22 +957,22 @@ namespace TripasDeGatoCliente.TripasDeGatoServicio {
     public interface IChatManager {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatManager/SendMessage")]
-        void SendMessage(string userName, TripasDeGatoCliente.TripasDeGatoServicio.Message message, string lobbyCode);
+        void SendMessage(string username, TripasDeGatoCliente.TripasDeGatoServicio.Message message, string lobbyCode);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatManager/SendMessage")]
-        System.Threading.Tasks.Task SendMessageAsync(string userName, TripasDeGatoCliente.TripasDeGatoServicio.Message message, string lobbyCode);
+        System.Threading.Tasks.Task SendMessageAsync(string username, TripasDeGatoCliente.TripasDeGatoServicio.Message message, string lobbyCode);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatManager/ConnectToChat")]
-        void ConnectToChat(string userName, string lobbyCode);
+        void ConnectToChat(string username, string lobbyCode);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatManager/ConnectToChat")]
-        System.Threading.Tasks.Task ConnectToChatAsync(string userName, string lobbyCode);
+        System.Threading.Tasks.Task ConnectToChatAsync(string username, string lobbyCode);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatManager/LeaveChat")]
-        void LeaveChat(string userName, string lobbyCode);
+        void LeaveChat(string username, string lobbyCode);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatManager/LeaveChat")]
-        System.Threading.Tasks.Task LeaveChatAsync(string userName, string lobbyCode);
+        System.Threading.Tasks.Task LeaveChatAsync(string username, string lobbyCode);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1029,28 +1010,28 @@ namespace TripasDeGatoCliente.TripasDeGatoServicio {
                 base(callbackInstance, binding, remoteAddress) {
         }
         
-        public void SendMessage(string userName, TripasDeGatoCliente.TripasDeGatoServicio.Message message, string lobbyCode) {
-            base.Channel.SendMessage(userName, message, lobbyCode);
+        public void SendMessage(string username, TripasDeGatoCliente.TripasDeGatoServicio.Message message, string lobbyCode) {
+            base.Channel.SendMessage(username, message, lobbyCode);
         }
         
-        public System.Threading.Tasks.Task SendMessageAsync(string userName, TripasDeGatoCliente.TripasDeGatoServicio.Message message, string lobbyCode) {
-            return base.Channel.SendMessageAsync(userName, message, lobbyCode);
+        public System.Threading.Tasks.Task SendMessageAsync(string username, TripasDeGatoCliente.TripasDeGatoServicio.Message message, string lobbyCode) {
+            return base.Channel.SendMessageAsync(username, message, lobbyCode);
         }
         
-        public void ConnectToChat(string userName, string lobbyCode) {
-            base.Channel.ConnectToChat(userName, lobbyCode);
+        public void ConnectToChat(string username, string lobbyCode) {
+            base.Channel.ConnectToChat(username, lobbyCode);
         }
         
-        public System.Threading.Tasks.Task ConnectToChatAsync(string userName, string lobbyCode) {
-            return base.Channel.ConnectToChatAsync(userName, lobbyCode);
+        public System.Threading.Tasks.Task ConnectToChatAsync(string username, string lobbyCode) {
+            return base.Channel.ConnectToChatAsync(username, lobbyCode);
         }
         
-        public void LeaveChat(string userName, string lobbyCode) {
-            base.Channel.LeaveChat(userName, lobbyCode);
+        public void LeaveChat(string username, string lobbyCode) {
+            base.Channel.LeaveChat(username, lobbyCode);
         }
         
-        public System.Threading.Tasks.Task LeaveChatAsync(string userName, string lobbyCode) {
-            return base.Channel.LeaveChatAsync(userName, lobbyCode);
+        public System.Threading.Tasks.Task LeaveChatAsync(string username, string lobbyCode) {
+            return base.Channel.LeaveChatAsync(username, lobbyCode);
         }
     }
     
@@ -1142,10 +1123,10 @@ namespace TripasDeGatoCliente.TripasDeGatoServicio {
         System.Threading.Tasks.Task<int> SendVerificationCodeRegisterAsync(string email);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEmailVerificationManager/VerifyCode", ReplyAction="http://tempuri.org/IEmailVerificationManager/VerifyCodeResponse")]
-        bool VerifyCode(string email, string code);
+        bool VerifyCode(string email, string verificationCode);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEmailVerificationManager/VerifyCode", ReplyAction="http://tempuri.org/IEmailVerificationManager/VerifyCodeResponse")]
-        System.Threading.Tasks.Task<bool> VerifyCodeAsync(string email, string code);
+        System.Threading.Tasks.Task<bool> VerifyCodeAsync(string email, string verificationCode);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1183,12 +1164,12 @@ namespace TripasDeGatoCliente.TripasDeGatoServicio {
             return base.Channel.SendVerificationCodeRegisterAsync(email);
         }
         
-        public bool VerifyCode(string email, string code) {
-            return base.Channel.VerifyCode(email, code);
+        public bool VerifyCode(string email, string verificationCode) {
+            return base.Channel.VerifyCode(email, verificationCode);
         }
         
-        public System.Threading.Tasks.Task<bool> VerifyCodeAsync(string email, string code) {
-            return base.Channel.VerifyCodeAsync(email, code);
+        public System.Threading.Tasks.Task<bool> VerifyCodeAsync(string email, string verificationCode) {
+            return base.Channel.VerifyCodeAsync(email, verificationCode);
         }
     }
     
@@ -1440,10 +1421,10 @@ namespace TripasDeGatoCliente.TripasDeGatoServicio {
         System.Threading.Tasks.Task<bool> JoinLobbyAsync(string code, TripasDeGatoCliente.TripasDeGatoServicio.Profile guest);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILobbyBrowser/CreateLobby", ReplyAction="http://tempuri.org/ILobbyBrowser/CreateLobbyResponse")]
-        string CreateLobby(string gameName, int nodeCount, TripasDeGatoCliente.TripasDeGatoServicio.Profile owner, System.TimeSpan duration);
+        string CreateLobby(string gameName, int nodeCount, TripasDeGatoCliente.TripasDeGatoServicio.Profile host);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILobbyBrowser/CreateLobby", ReplyAction="http://tempuri.org/ILobbyBrowser/CreateLobbyResponse")]
-        System.Threading.Tasks.Task<string> CreateLobbyAsync(string gameName, int nodeCount, TripasDeGatoCliente.TripasDeGatoServicio.Profile owner, System.TimeSpan duration);
+        System.Threading.Tasks.Task<string> CreateLobbyAsync(string gameName, int nodeCount, TripasDeGatoCliente.TripasDeGatoServicio.Profile host);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILobbyBrowser/GetLobbyByCode", ReplyAction="http://tempuri.org/ILobbyBrowser/GetLobbyByCodeResponse")]
         TripasDeGatoCliente.TripasDeGatoServicio.Lobby GetLobbyByCode(string code);
@@ -1495,12 +1476,12 @@ namespace TripasDeGatoCliente.TripasDeGatoServicio {
             return base.Channel.JoinLobbyAsync(code, guest);
         }
         
-        public string CreateLobby(string gameName, int nodeCount, TripasDeGatoCliente.TripasDeGatoServicio.Profile owner, System.TimeSpan duration) {
-            return base.Channel.CreateLobby(gameName, nodeCount, owner, duration);
+        public string CreateLobby(string gameName, int nodeCount, TripasDeGatoCliente.TripasDeGatoServicio.Profile host) {
+            return base.Channel.CreateLobby(gameName, nodeCount, host);
         }
         
-        public System.Threading.Tasks.Task<string> CreateLobbyAsync(string gameName, int nodeCount, TripasDeGatoCliente.TripasDeGatoServicio.Profile owner, System.TimeSpan duration) {
-            return base.Channel.CreateLobbyAsync(gameName, nodeCount, owner, duration);
+        public System.Threading.Tasks.Task<string> CreateLobbyAsync(string gameName, int nodeCount, TripasDeGatoCliente.TripasDeGatoServicio.Profile host) {
+            return base.Channel.CreateLobbyAsync(gameName, nodeCount, host);
         }
         
         public TripasDeGatoCliente.TripasDeGatoServicio.Lobby GetLobbyByCode(string code) {
@@ -1552,17 +1533,17 @@ namespace TripasDeGatoCliente.TripasDeGatoServicio {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMatchManager/GetCurrentTurn", ReplyAction="http://tempuri.org/IMatchManager/GetCurrentTurnResponse")]
         System.Threading.Tasks.Task<string> GetCurrentTurnAsync(string matchCode);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMatchManager/EndMatch", ReplyAction="http://tempuri.org/IMatchManager/EndMatchResponse")]
-        bool EndMatch(string matchCode);
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IMatchManager/EndMatch")]
+        void EndMatch(string matchCode);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMatchManager/EndMatch", ReplyAction="http://tempuri.org/IMatchManager/EndMatchResponse")]
-        System.Threading.Tasks.Task<bool> EndMatchAsync(string matchCode);
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IMatchManager/EndMatch")]
+        System.Threading.Tasks.Task EndMatchAsync(string matchCode);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMatchManager/LeaveMatch", ReplyAction="http://tempuri.org/IMatchManager/LeaveMatchResponse")]
-        bool LeaveMatch(string matchCode, string username);
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IMatchManager/LeaveMatch")]
+        void LeaveMatch(string matchCode, string username);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMatchManager/LeaveMatch", ReplyAction="http://tempuri.org/IMatchManager/LeaveMatchResponse")]
-        System.Threading.Tasks.Task<bool> LeaveMatchAsync(string matchCode, string username);
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IMatchManager/LeaveMatch")]
+        System.Threading.Tasks.Task LeaveMatchAsync(string matchCode, string username);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1666,19 +1647,19 @@ namespace TripasDeGatoCliente.TripasDeGatoServicio {
             return base.Channel.GetCurrentTurnAsync(matchCode);
         }
         
-        public bool EndMatch(string matchCode) {
-            return base.Channel.EndMatch(matchCode);
+        public void EndMatch(string matchCode) {
+            base.Channel.EndMatch(matchCode);
         }
         
-        public System.Threading.Tasks.Task<bool> EndMatchAsync(string matchCode) {
+        public System.Threading.Tasks.Task EndMatchAsync(string matchCode) {
             return base.Channel.EndMatchAsync(matchCode);
         }
         
-        public bool LeaveMatch(string matchCode, string username) {
-            return base.Channel.LeaveMatch(matchCode, username);
+        public void LeaveMatch(string matchCode, string username) {
+            base.Channel.LeaveMatch(matchCode, username);
         }
         
-        public System.Threading.Tasks.Task<bool> LeaveMatchAsync(string matchCode, string username) {
+        public System.Threading.Tasks.Task LeaveMatchAsync(string matchCode, string username) {
             return base.Channel.LeaveMatchAsync(matchCode, username);
         }
     }
