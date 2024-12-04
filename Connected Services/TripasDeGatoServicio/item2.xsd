@@ -14,12 +14,4 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ProfileNotFoundFault" nillable="true" type="tns:ProfileNotFoundFault" />
-  <xs:complexType name="Message">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="chatMessage" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="timeStamp" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="Message" nillable="true" type="tns:Message" />
 </xs:schema>

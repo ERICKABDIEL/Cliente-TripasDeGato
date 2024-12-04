@@ -1,73 +1,65 @@
 ﻿using System;
-using System.ServiceModel;
-using System.Windows;
 using log4net;
+using System.Windows;
+using System.ServiceModel;
 using TripasDeGatoCliente.Logic;
+using System.ServiceModel.Channels;
 using TripasDeGatoCliente.TripasDeGatoServicio;
+using log4net.Repository.Hierarchy;
 
 namespace TripasDeGatoCliente {
     /// <summary>
     /// Lógica de interacción para MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window {
-        private LobbyManagerClient lobbyManager;
-        private ChatManagerClient chatManager;
 
         public MainWindow() {
             InitializeComponent();
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             NavigationFrame.Navigate(new Views.LoginView());
             this.Closing += MainWindowClosing;
-
-            lobbyManager = new LobbyManagerClient(new InstanceContext(this));
-            chatManager = new ChatManagerClient(new InstanceContext(this));
         }
 
-        private async void MainWindowClosing(object sender, System.ComponentModel.CancelEventArgs e) {
+        private void HandleException(Exception exception, string methodName) {
             LoggerManager logger = new LoggerManager(this.GetType());
-            try {
-                if (UserProfileSingleton.Instance != null && UserProfileSingleton.IdProfile != 0) {
-                    SignOut();
-                } else {
-                    OnClosing();
-                }
-            } catch (EndpointNotFoundException endpointNotFoundException) {
-                logger.LogError(endpointNotFoundException);
+            if (exception is EndpointNotFoundException) {
+                logger.LogError(methodName, exception);
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogEndPointException);
-            } catch (TimeoutException timeoutException) {
-                logger.LogError(timeoutException);
+            } else if (exception is TimeoutException) {
+                logger.LogError(methodName, exception);
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogTimeOutException);
-            } catch (CommunicationException communicationException) {
-                logger.LogError(communicationException);
+            } else if (exception is CommunicationException) {
+                logger.LogError(methodName, exception);
                 DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
+            } else {
+                logger.LogError(methodName, exception);
+                DialogManager.ShowErrorMessageAlert(string.Format(Properties.Resources.dialogUnexpectedError, exception.Message));
+
+            }
+        }
+
+        private void MainWindowClosing(object sender, System.ComponentModel.CancelEventArgs e) {
+            try {
+                ConnectionManager.Instance.DisconnectAll();
+                SignOut();
+            } catch (Exception exception) {
+                HandleException(exception, nameof(MainWindowClosing));
             }
         }
 
         private void SignOut() {
             int playerId = UserProfileSingleton.IdProfile;
             SetPlayerOfflineStatus(playerId);
-            UserProfileSingleton.Instance.ResetInstance();
+            UserProfileSingleton.ResetInstance();
         }
 
         private void SetPlayerOfflineStatus(int playerId) {
-            LoggerManager logger = new LoggerManager(this.GetType());
-
             try {
                 IStatusManager statusManager = new StatusManagerClient();
                 statusManager.SetPlayerStatus(playerId, GameEnumsPlayerStatus.Offline);
-            } catch (EndpointNotFoundException endpointNotFoundException) {
-                logger.LogError(endpointNotFoundException);
-                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogEndPointException);
-            } catch (TimeoutException timeoutException) {
-                logger.LogError(timeoutException);
-                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogTimeOutException);
-            } catch (CommunicationException communicationException) {
-                logger.LogError(communicationException);
-                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
+            } catch (Exception exception) {
+                HandleException(exception, nameof(SetPlayerOfflineStatus));
             }
-        }
-
-        private void OnClosing() {
         }
     }
 }

@@ -15,9 +15,9 @@
                 <Border.Background>
                     <ImageBrush ImageSource="/Images/BackgroundLogin.png" Stretch="UniformToFill"/>
                 </Border.Background>
-
             </Border>
-            <Label x:Name="lblEmail" 
+            
+            <Label x:Name="lbEmail" 
                    Content="{x:Static p:Resources.lbEmail}" 
                    Grid.Row="0" 
                    FontSize="18" 
@@ -29,7 +29,8 @@
                    Width="332" 
                    HorizontalContentAlignment="Center" 
                    VerticalContentAlignment="Center"/>
-            <Label x:Name="lblName" 
+
+            <Label x:Name="lbName" 
                    Content="{x:Static p:Resources.globalLbUser}" 
                    FontSize="18" 
                    Foreground="Black" 
@@ -40,7 +41,8 @@
                    FontFamily="Cooper Black" 
                    Width="332" 
                    VerticalAlignment="Top"/>
-            <Label x:Name="lblPassword" 
+            
+            <Label x:Name="lbPassword" 
                    Content="{x:Static p:Resources.lbPasswordSignIn}" 
                    FontSize="18" 
                    Margin="0,412,0,274" 
@@ -49,6 +51,7 @@
                    HorizontalContentAlignment="Center" 
                    FontFamily="Cooper Black" 
                    Width="332"/>
+            
             <TextBox x:Name="txtEmail" 
                      FontSize="16" 
                      Background="{x:Null}" 
@@ -61,6 +64,7 @@
                      Height="28" 
                      FontFamily="Cooper Black" 
                      MaxLength="35" />
+            
             <TextBox x:Name="txtName" 
                      FontSize="16" 
                      Background="{x:Null}" 
@@ -72,6 +76,7 @@
                      HorizontalContentAlignment="Center" 
                      VerticalContentAlignment="Center" 
                      MaxLength="25"/>
+            
             <StackPanel Grid.Row="5" Orientation="Vertical" Margin="0,0,0,10">
                 <Grid Grid.Row="3" Margin="0,0,0,10">
                     <PasswordBox x:Name="txtPassword"
@@ -87,6 +92,7 @@
                                  HorizontalContentAlignment="Center" 
                                  VerticalContentAlignment="Center" 
                                  MaxLength="35"/>
+                    
                     <TextBox x:Name="txtPasswordVisible" 
                              FontSize="16" 
                              Background="{x:Null}" 
@@ -102,6 +108,7 @@
                              VerticalContentAlignment="Center" 
                              Visibility="Collapsed" 
                              MaxLength="35"/>
+                    
                     <ToggleButton x:Name="btnTogglePassword" 
                                   Content="👁" 
                                   Width="28" 
@@ -113,6 +120,7 @@
                                   Margin="0,0,475,-441"/>
                 </Grid>
             </StackPanel>
+            
             <Button x:Name="btnBack" 
                     Content="{x:Static p:Resources.globalBtnBack}" 
                     HorizontalAlignment="Left" 
@@ -161,6 +169,7 @@
                     </Style>
                 </Button.Style>
             </Button>
+            
             <StackPanel Grid.Row="6" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             <Button x:Name="btnSignIn" 
                     Content="{x:Static p:Resources.btnSignIn}" 
@@ -207,6 +216,7 @@
                     </Style>
                 </Button.Style>
             </Button>
+            
             <Label x:Name="lbInvalidEmail" 
                    Content="{x:Static p:Resources.lbEmailValid}" 
                    HorizontalAlignment="Left" 
@@ -214,6 +224,7 @@
                    Foreground="#FFED3838" 
                    Margin="532,341,0,0" 
                    Visibility="Collapsed"/>
+            
             <Label x:Name="lbInvalidUser" 
                    Content="{x:Static p:Resources.lbUserNameValid}" 
                    HorizontalAlignment="Center" 
@@ -222,6 +233,7 @@
                    Foreground="#FFED3838" 
                    Width="244" 
                    Visibility="Collapsed"/>
+            
             <Label x:Name="lbInvalidPassword" 
                    Content="{x:Static p:Resources.lbPasswordValid}" 
                    HorizontalAlignment="Center" 
@@ -229,6 +241,7 @@
                    VerticalAlignment="Top" 
                    Foreground="#FFED3838" 
                    Visibility="Collapsed"/>
+            
             <Grid x:Name="verificationGrid" Width="558" Height="302" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="364,256,0,0" Visibility="Collapsed">
                 <Grid.Background>
                     <ImageBrush ImageSource="/Images/BackgroundValidation.png"/>
@@ -250,6 +263,7 @@
                            Grid.RowSpan="2"
                            HorizontalContentAlignment="Center" 
                            VerticalContentAlignment="Center"/>
+                
                 <Button x:Name="btnValidate"
                         Content="{x:Static p:Resources.btnValidate}" 
                             HorizontalAlignment="Left"
@@ -292,6 +306,7 @@
                         </Style>
                     </Button.Style>
                 </Button>
+                
                 <Button x:Name="btnResendCode" 
                         Content="{x:Static p:Resources.btnResendCode}" 
                             HorizontalAlignment="Center"
@@ -335,6 +350,7 @@
                         </Style>
                     </Button.Style>
                 </Button>
+                
                 <Button x:Name="btnBackToRegister" 
                         Content="{x:Static p:Resources.globalBtnBack}" 
                            HorizontalAlignment="Left" 
@@ -378,6 +394,7 @@
                         </Style>
                     </Button.Style>
                 </Button>
+                
                 <StackPanel Orientation="Horizontal" Grid.Row="2" HorizontalAlignment="Center" Margin="0,31,0,-75" Width="360">
                     <TextBox x:Name="txtValidationCode1" 
                                  TextChanged="TxtValidationCode_TextChanged"
@@ -386,7 +403,7 @@
                                  MaxLength="1" 
                                  FontSize="24" 
                                  TextAlignment="Center" 
-                                 Foreground="White" 
+                                 Foreground="Black" 
                                  BorderBrush="#FF020202">
                         <TextBox.Background>
                             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -402,7 +419,7 @@
                                  MaxLength="1" 
                                  FontSize="24" 
                                  TextAlignment="Center" 
-                                 Foreground="White"
+                                 Foreground="Black"
                                  BorderBrush="#FF020202">
                         <TextBox.Background>
                             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -418,7 +435,7 @@
                                  MaxLength="1" 
                                  FontSize="24" 
                                  TextAlignment="Center" 
-                                 Foreground="White" 
+                                 Foreground="Black" 
                                  BorderBrush="#FF020202">
                         <TextBox.Background>
                             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -434,7 +451,7 @@
                                  MaxLength="1" 
                                  FontSize="24"
                                  TextAlignment="Center" 
-                                 Foreground="White" 
+                                 Foreground="Black" 
                                  BorderBrush="#FF020202">
                         <TextBox.Background>
                             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -450,7 +467,7 @@
                                  MaxLength="1" 
                                  FontSize="24" 
                                  TextAlignment="Center" 
-                                 Foreground="White" 
+                                 Foreground="Black" 
                                  BorderBrush="#FF020202">
                         <TextBox.Background>
                             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -466,7 +483,7 @@
                                  MaxLength="1"
                                  FontSize="24" 
                                  TextAlignment="Center" 
-                                 Foreground="White"
+                                 Foreground="Black"
                                  BorderBrush="#FF020202">
                         <TextBox.Background>
                             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">

@@ -4,12 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TripasDeGatoCliente.Logic
-{
-    internal class ConstantsManager
-    {
-        public static class Constants
-        {
+namespace TripasDeGatoCliente.Logic {
+
+    internal static class ConstantsManager {
+    
+        public static class Constants {
             public const int ERROR_OPERATION = -1;
 
             public const int SUCCES_OPERATION = 1;
@@ -24,9 +23,7 @@ namespace TripasDeGatoCliente.Logic
 
             public const string DEFAULT_IMAGE_GUEST = " ";
 
-            public const int HOW_MANY_SCORES = 10;      // Cantidad de puntajes a mostrar
-
-
+            public const int HOW_MANY_SCORES = 10;
         }
     }
 }

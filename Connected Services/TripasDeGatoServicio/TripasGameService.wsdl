@@ -479,35 +479,23 @@
   <wsdl:message name="ILobbyManager_StartMatch_InputMessage">
     <wsdl:part name="parameters" element="tns:StartMatch" />
   </wsdl:message>
-  <wsdl:message name="ILobbyManager_RemoveFromLobby_OutputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:RemoveFromLobby" />
+  <wsdl:message name="ILobbyManager_KickPlayer_InputMessage">
+    <wsdl:part name="parameters" element="tns:KickPlayer" />
   </wsdl:message>
-  <wsdl:message name="ILobbyManager_RemoveFromLobby_InputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:RemoveFromLobbyResponse" />
+  <wsdl:message name="ILobbyManager_KickedFromLobby_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:KickedFromLobby" />
   </wsdl:message>
   <wsdl:message name="ILobbyManager_HostLeftCallback_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:HostLeftCallback" />
   </wsdl:message>
-  <wsdl:message name="ILobbyManager_HostLeftCallback_InputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:HostLeftCallbackResponse" />
-  </wsdl:message>
   <wsdl:message name="ILobbyManager_GuestLeftCallback_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:GuestLeftCallback" />
-  </wsdl:message>
-  <wsdl:message name="ILobbyManager_GuestLeftCallback_InputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:GuestLeftCallbackResponse" />
   </wsdl:message>
   <wsdl:message name="ILobbyManager_GuestJoinedCallback_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:GuestJoinedCallback" />
   </wsdl:message>
-  <wsdl:message name="ILobbyManager_GuestJoinedCallback_InputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:GuestJoinedCallbackResponse" />
-  </wsdl:message>
   <wsdl:message name="ILobbyManager_GameStarted_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:GameStarted" />
-  </wsdl:message>
-  <wsdl:message name="ILobbyManager_GameStarted_InputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:GameStartedResponse" />
   </wsdl:message>
   <wsdl:message name="ILobbyBrowser_GetAvailableLobbies_InputMessage">
     <wsdl:part name="parameters" element="tns:GetAvailableLobbies" />
@@ -572,8 +560,8 @@
   <wsdl:message name="IMatchManager_EndMatch_InputMessage">
     <wsdl:part name="parameters" element="tns:EndMatch" />
   </wsdl:message>
-  <wsdl:message name="IMatchManager_EndMatch_OutputMessage">
-    <wsdl:part name="parameters" element="tns:EndMatchResponse" />
+  <wsdl:message name="IMatchManager_LeaveMatch_InputMessage">
+    <wsdl:part name="parameters" element="tns:LeaveMatch" />
   </wsdl:message>
   <wsdl:message name="IMatchManager_TraceReceived_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:TraceReceived" />
@@ -592,6 +580,9 @@
   </wsdl:message>
   <wsdl:message name="IMatchManager_NotifyDraw_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:NotifyDraw" />
+  </wsdl:message>
+  <wsdl:message name="IMatchManager_NotifyPlayerLeft_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:NotifyPlayerLeft" />
   </wsdl:message>
   <wsdl:message name="IEmailInvitationManager_SendInvitation_InputMessage">
     <wsdl:part name="parameters" element="tns:SendInvitation" />
@@ -718,25 +709,23 @@
     <wsdl:operation name="StartMatch">
       <wsdl:input wsaw:Action="http://tempuri.org/ILobbyManager/StartMatch" message="tns:ILobbyManager_StartMatch_InputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="RemoveFromLobby">
-      <wsdl:output wsaw:Action="http://tempuri.org/ILobbyManager/RemoveFromLobby" message="tns:ILobbyManager_RemoveFromLobby_OutputCallbackMessage" />
-      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyManager/RemoveFromLobbyResponse" message="tns:ILobbyManager_RemoveFromLobby_InputCallbackMessage" />
+    <wsdl:operation name="KickPlayer">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyManager/KickPlayer" message="tns:ILobbyManager_KickPlayer_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="KickedFromLobby">
+      <wsdl:output wsaw:Action="http://tempuri.org/ILobbyManager/KickedFromLobby" message="tns:ILobbyManager_KickedFromLobby_OutputCallbackMessage" />
     </wsdl:operation>
     <wsdl:operation name="HostLeftCallback">
       <wsdl:output wsaw:Action="http://tempuri.org/ILobbyManager/HostLeftCallback" message="tns:ILobbyManager_HostLeftCallback_OutputCallbackMessage" />
-      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyManager/HostLeftCallbackResponse" message="tns:ILobbyManager_HostLeftCallback_InputCallbackMessage" />
     </wsdl:operation>
     <wsdl:operation name="GuestLeftCallback">
       <wsdl:output wsaw:Action="http://tempuri.org/ILobbyManager/GuestLeftCallback" message="tns:ILobbyManager_GuestLeftCallback_OutputCallbackMessage" />
-      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyManager/GuestLeftCallbackResponse" message="tns:ILobbyManager_GuestLeftCallback_InputCallbackMessage" />
     </wsdl:operation>
     <wsdl:operation name="GuestJoinedCallback">
       <wsdl:output wsaw:Action="http://tempuri.org/ILobbyManager/GuestJoinedCallback" message="tns:ILobbyManager_GuestJoinedCallback_OutputCallbackMessage" />
-      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyManager/GuestJoinedCallbackResponse" message="tns:ILobbyManager_GuestJoinedCallback_InputCallbackMessage" />
     </wsdl:operation>
     <wsdl:operation name="GameStarted">
       <wsdl:output wsaw:Action="http://tempuri.org/ILobbyManager/GameStarted" message="tns:ILobbyManager_GameStarted_OutputCallbackMessage" />
-      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyManager/GameStartedResponse" message="tns:ILobbyManager_GameStarted_InputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="ILobbyBrowser">
@@ -784,7 +773,9 @@
     </wsdl:operation>
     <wsdl:operation name="EndMatch">
       <wsdl:input wsaw:Action="http://tempuri.org/IMatchManager/EndMatch" message="tns:IMatchManager_EndMatch_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IMatchManager/EndMatchResponse" message="tns:IMatchManager_EndMatch_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="LeaveMatch">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMatchManager/LeaveMatch" message="tns:IMatchManager_LeaveMatch_InputMessage" />
     </wsdl:operation>
     <wsdl:operation name="TraceReceived">
       <wsdl:output wsaw:Action="http://tempuri.org/IMatchManager/TraceReceived" message="tns:IMatchManager_TraceReceived_OutputCallbackMessage" />
@@ -803,6 +794,9 @@
     </wsdl:operation>
     <wsdl:operation name="NotifyDraw">
       <wsdl:output wsaw:Action="http://tempuri.org/IMatchManager/NotifyDraw" message="tns:IMatchManager_NotifyDraw_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="NotifyPlayerLeft">
+      <wsdl:output wsaw:Action="http://tempuri.org/IMatchManager/NotifyPlayerLeft" message="tns:IMatchManager_NotifyPlayerLeft_OutputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IEmailInvitationManager">
@@ -1073,47 +1067,38 @@
         <soap12:body use="literal" />
       </wsdl:input>
     </wsdl:operation>
-    <wsdl:operation name="RemoveFromLobby">
-      <soap12:operation soapAction="http://tempuri.org/ILobbyManager/RemoveFromLobby" style="document" />
+    <wsdl:operation name="KickPlayer">
+      <soap12:operation soapAction="http://tempuri.org/ILobbyManager/KickPlayer" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="KickedFromLobby">
+      <soap12:operation soapAction="http://tempuri.org/ILobbyManager/KickedFromLobby" style="document" />
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="HostLeftCallback">
       <soap12:operation soapAction="http://tempuri.org/ILobbyManager/HostLeftCallback" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="GuestLeftCallback">
       <soap12:operation soapAction="http://tempuri.org/ILobbyManager/GuestLeftCallback" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="GuestJoinedCallback">
       <soap12:operation soapAction="http://tempuri.org/ILobbyManager/GuestJoinedCallback" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="GameStarted">
       <soap12:operation soapAction="http://tempuri.org/ILobbyManager/GameStarted" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>
@@ -1221,9 +1206,12 @@
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
-      <wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LeaveMatch">
+      <soap12:operation soapAction="http://tempuri.org/IMatchManager/LeaveMatch" style="document" />
+      <wsdl:input>
         <soap12:body use="literal" />
-      </wsdl:output>
+      </wsdl:input>
     </wsdl:operation>
     <wsdl:operation name="TraceReceived">
       <soap12:operation soapAction="http://tempuri.org/IMatchManager/TraceReceived" style="document" />
@@ -1257,6 +1245,12 @@
     </wsdl:operation>
     <wsdl:operation name="NotifyDraw">
       <soap12:operation soapAction="http://tempuri.org/IMatchManager/NotifyDraw" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NotifyPlayerLeft">
+      <soap12:operation soapAction="http://tempuri.org/IMatchManager/NotifyPlayerLeft" style="document" />
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>

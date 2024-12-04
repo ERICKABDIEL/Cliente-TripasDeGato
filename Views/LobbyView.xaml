@@ -46,7 +46,6 @@
     </Page.Resources>
 
     <Grid>
-
         <Image x:Name="imageLogo" 
                Source="/Images/BackgroundLobby.png" 
                HorizontalAlignment="Left" 
@@ -88,6 +87,7 @@
                 HorizontalAlignment="Left" 
                 Margin="71,615,0,0" 
                 VerticalAlignment="Top" 
+                Click="BtnKickPlayer_Click"
                 Height="40"
                 Width="138"/>
 
@@ -195,10 +195,12 @@
                Width="441" 
                HorizontalContentAlignment="Center"
                FontFamily="Rockwell Extra Bold"/>
-        <Image x:Name="imgProfile1" 
+
+        <Image x:Name="imageProfile1" 
                Source="/Images/Profiles/ImageProfile1.png" 
                RenderTransformOrigin="0.5,0.5" 
                Margin="999,320,91,190"/>
+
         <Label x:Name="lbPlayer1" 
                Content="{x:Static p:Resources.globalLbPlayer1}" 
                Foreground="Black" 
@@ -209,6 +211,7 @@
                HorizontalContentAlignment="Center"
                Width="144"
                VerticalContentAlignment="Center" />
+
         <Label x:Name="lbPlayer2" 
                Content="{x:Static p:Resources.globalLbPlayer2}"
                Foreground="Black"
@@ -220,10 +223,12 @@
                Width="137" 
                VerticalAlignment="Center" 
                VerticalContentAlignment="Center" />
-        <Image x:Name="imgProfile2"
+
+        <Image x:Name="imageProfile2"
                Source="/Images/Profiles/ImageProfile1.png" 
                Margin="38,320,1052,190" />
-        <Grid x:Name="invitedFriendGrid" Visibility="Collapsed">
+
+        <Grid x:Name="gridInvitedFriend" Visibility="Collapsed">
             <ListBox x:Name="lstFriends" 
                  Width="200" 
                  Height="278" 

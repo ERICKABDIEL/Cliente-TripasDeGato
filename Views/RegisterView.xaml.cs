@@ -1,138 +1,141 @@
-﻿using log4net;
-using System;
-using System.ServiceModel;
+﻿using System;
+using log4net;
 using System.Windows;
-using System.Windows.Controls;
+using System.ServiceModel;
 using System.Windows.Media;
+using System.Windows.Controls;
 using TripasDeGatoCliente.Logic;
 using TripasDeGatoCliente.TripasDeGatoServicio;
 using static TripasDeGatoCliente.Logic.ConstantsManager;
 
 namespace TripasDeGatoCliente.Views {
+
     public partial class RegisterView : Page {
+
         public RegisterView() {
             InitializeComponent();
         }
 
-        private void BtnSignIn_Click(object sender, RoutedEventArgs e) {
+        private void HandleException(Exception exception, string methodName) {
             LoggerManager logger = new LoggerManager(this.GetType());
+            if (exception is EndpointNotFoundException) {
+                logger.LogError(methodName, exception);
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogEndPointException);
+            } else if (exception is TimeoutException) {
+                logger.LogError(methodName, exception);
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogTimeOutException);
+            } else if (exception is CommunicationException) {
+                logger.LogError(methodName, exception);
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
+            } else {
+                logger.LogError(methodName, exception);
+                DialogManager.ShowErrorMessageAlert(string.Format(Properties.Resources.dialogUnexpectedError, exception.Message));
+
+            }
+        }
+
+        private void BtnSignIn_Click(object sender, RoutedEventArgs e) {
             string email = txtEmail.Text;
             string username = txtName.Text;
             string password = txtPassword.Password;
-
             if (!ValidateFields(email, username, password)) return;
-
             try {
-                if (!VerifyEmailAvailability(email)) return;
-                if (!VerifyUsernameAvailability(username)) return;
-
+                if (!VerifyEmailAvailability(email)) {
+                    return;
+                }
+                if (!VerifyUsernameAvailability(username)) {
+                    return;
+                }
                 SendVerificationCode(email);
-            } catch (EndpointNotFoundException endpointNotFoundException) {
-                logger.LogError(endpointNotFoundException);
-                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogEndPointException);
-            } catch (TimeoutException timeoutException) {
-                logger.LogError(timeoutException);
-                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogTimeOutException);
-            } catch (CommunicationException communicationException) {
-                logger.LogError(communicationException);
-                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
+            } catch (Exception exception) {
+                HandleException(exception, nameof(BtnSignIn_Click));
             }
         }
+
         private bool VerifyEmailAvailability(string email) {
+            bool isEmailAvailable = true;
             var userProxy = new TripasDeGatoServicio.UserManagerClient();
-            int emailCheckResult = userProxy.IsEmailRegistered(email);
-
-            if (emailCheckResult == Constants.DATA_MATCHES) {
-                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogEmailInUse);
-                HighlightField(txtEmail);
-                return false;
+            try {
+                int emailCheckResult = userProxy.IsEmailRegistered(email);
+                if (emailCheckResult == Constants.DATA_MATCHES) {
+                    DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogEmailInUse);
+                    HighlightField(txtEmail);
+                    isEmailAvailable = false;
+                } else if (emailCheckResult == Constants.ERROR_OPERATION) {
+                    DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogErrorCheckingEmail);
+                    isEmailAvailable = false;
+                }
+            } catch (Exception exception) {
+                HandleException(exception, nameof(VerifyEmailAvailability));
+                isEmailAvailable = false;
             }
-
-            if (emailCheckResult == Constants.ERROR_OPERATION) {
-                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogErrorCheckingEmail);
-                return false;
-            }
-
-            return true;
+            return isEmailAvailable;
         }
 
         private bool VerifyUsernameAvailability(string username) {
+            bool isUsernameAvailable = true;
             var userProxy = new TripasDeGatoServicio.UserManagerClient();
-            int usernameCheckResult = userProxy.IsNameRegistered(username);
-
-            if (usernameCheckResult == Constants.DATA_MATCHES) {
-                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogUserNameInUse);
-                HighlightField(txtName);
-                return false;
+            try {
+                int usernameCheckResult = userProxy.IsNameRegistered(username);
+                if (usernameCheckResult == Constants.DATA_MATCHES) {
+                    DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogUserNameInUse);
+                    HighlightField(txtName);
+                    isUsernameAvailable = false;
+                } else if (usernameCheckResult == Constants.ERROR_OPERATION) {
+                    DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogErrorCheckingUserName);
+                    isUsernameAvailable = false;
+                }
+            } catch (Exception exception) {
+                HandleException(exception, nameof(VerifyUsernameAvailability));
+                isUsernameAvailable = false;
             }
-
-            if (usernameCheckResult == Constants.ERROR_OPERATION) {
-                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogErrorCheckingUserName);
-                return false;
-            }
-
-            return true;
+            return isUsernameAvailable;
         }
 
         private void SendVerificationCode(string email) {
-            var emailVerificationProxy = new TripasDeGatoServicio.EmailVerificationManagerClient();
-            int result = emailVerificationProxy.SendVerificationCodeRegister(email);
-
-            if (result == Constants.SUCCES_OPERATION) {
-                verificationGrid.Visibility = Visibility.Visible;
-                DialogManager.ShowSuccessMessageAlert(Properties.Resources.dialogVerificationCodeSent);
-            } else {
-                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogErrorSendingVerificationCode);
+            try {
+                var emailVerificationProxy = new TripasDeGatoServicio.EmailVerificationManagerClient();
+                int result = emailVerificationProxy.SendVerificationCodeRegister(email);
+                if (result == Constants.SUCCES_OPERATION) {
+                    verificationGrid.Visibility = Visibility.Visible;
+                    DialogManager.ShowSuccessMessageAlert(Properties.Resources.dialogVerificationCodeSent);
+                } else {
+                    DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogErrorSendingVerificationCode);
+                }
+            } catch (Exception exception) {
+                HandleException(exception, nameof(SendVerificationCode));
             }
         }
 
         private void BtnResendCode_Click(object sender, RoutedEventArgs e) {
-            LoggerManager logger = new LoggerManager(this.GetType());
             try {
                 var emailVerificationProxy = new TripasDeGatoServicio.EmailVerificationManagerClient();
                 int result = emailVerificationProxy.SendVerificationCodeRegister(txtEmail.Text);
-
                 if (result == Constants.SUCCES_OPERATION) {
                     DialogManager.ShowSuccessMessageAlert(Properties.Resources.dialogVerificationCodeResentSuccessfully);
                 } else {
                     DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogErrorResendingVerificationCode);
                 }
-            } catch (EndpointNotFoundException endpointNotFoundException) {
-                logger.LogError(endpointNotFoundException);
-                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogEndPointException);
-            } catch (TimeoutException timeoutException) {
-                logger.LogError(timeoutException);
-                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogTimeOutException);
-            } catch (CommunicationException communicationException) {
-                logger.LogError(communicationException);
-                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
+            } catch (Exception exception) {
+                HandleException(exception, nameof(BtnResendCode_Click));
             }
         }
 
         private void BtnValidate_Click(object sender, RoutedEventArgs e) {
-            LoggerManager logger = new LoggerManager(this.GetType());
-            string enteredCode = $"{txtValidationCode1.Text}{txtValidationCode2.Text}{txtValidationCode3.Text}{txtValidationCode4.Text}{txtValidationCode5.Text}{txtValidationCode6.Text}";
-
             try {
+                string enteredCode = $"{txtValidationCode1.Text}{txtValidationCode2.Text}{txtValidationCode3.Text}{txtValidationCode4.Text}{txtValidationCode5.Text}{txtValidationCode6.Text}";
                 var emailVerificationProxy = new TripasDeGatoServicio.EmailVerificationManagerClient();
                 bool isCodeValid = emailVerificationProxy.VerifyCode(txtEmail.Text, enteredCode);
-
                 if (isCodeValid) {
                     var userProxy = new TripasDeGatoServicio.UserManagerClient();
-
                     var newUser = new TripasDeGatoServicio.LoginUser {
-                        mail = txtEmail.Text,
-                        password = Hasher.HashToSHA256(txtPassword.Password)
+                        Mail = txtEmail.Text,
+                        Password = Hasher.HashToSHA256(txtPassword.Password)
                     };
-
                     var newProfile = new TripasDeGatoServicio.Profile {
                         Username = txtName.Text,
-                        Score = Constants.INITIAL_SCORE,
-                        PicturePath = "/Images/Profiles/ImageProfile1.png"
                     };
-
                     int accountResult = userProxy.CreateAccount(newUser, newProfile);
-
                     if (accountResult == Constants.SUCCES_OPERATION) {
                         DialogManager.ShowSuccessMessageAlert(Properties.Resources.dialogAccountCreatedSuccesfully);
                         verificationGrid.Visibility = Visibility.Collapsed;
@@ -143,21 +146,13 @@ namespace TripasDeGatoCliente.Views {
                 } else {
                     DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogInvalidVerificationCode);
                 }
-            } catch (EndpointNotFoundException endpointNotFoundException) {
-                logger.LogError(endpointNotFoundException);
-                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogEndPointException);
-            } catch (TimeoutException timeoutException) {
-                logger.LogError(timeoutException);
-                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogTimeOutException);
-            } catch (CommunicationException communicationException) {
-                logger.LogError(communicationException);
-                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
+            } catch (Exception exception) {
+                HandleException(exception, nameof(BtnValidate_Click));
             }
         }
 
         private bool ValidateFields(string email, string username, string password) {
             bool isValid = true;
-
             if (!Validador.ValidateEmail(email)) {
                 HighlightField(txtEmail);
                 lbInvalidEmail.Visibility = Visibility.Visible;
@@ -166,7 +161,6 @@ namespace TripasDeGatoCliente.Views {
                 ResetField(txtEmail);
                 lbInvalidEmail.Visibility = Visibility.Collapsed;
             }
-
             if (!Validador.ValidateUsername(username)) {
                 HighlightField(txtName);
                 lbInvalidUser.Visibility = Visibility.Visible;
@@ -175,7 +169,6 @@ namespace TripasDeGatoCliente.Views {
                 ResetField(txtName);
                 lbInvalidUser.Visibility = Visibility.Collapsed;
             }
-
             if (!Validador.ValidatePassword(password)) {
                 HighlightField(txtPassword);
                 lbInvalidPassword.Visibility = Visibility.Visible;
@@ -184,11 +177,10 @@ namespace TripasDeGatoCliente.Views {
                 ResetField(txtPassword);
                 lbInvalidPassword.Visibility = Visibility.Collapsed;
             }
-
             return isValid;
         }
 
-        private void HighlightField(Control control) {
+        private static void HighlightField(Control control) {
             control.BorderBrush = Brushes.Red;
         }
 
@@ -226,16 +218,7 @@ namespace TripasDeGatoCliente.Views {
             txtPassword.Visibility = Visibility.Visible;
         }
 
-        private void UpdatePasswordVisibilityIcon() {
-            if (!string.IsNullOrEmpty(txtPassword.Password) || !string.IsNullOrEmpty(txtPasswordVisible.Text)) {
-                btnTogglePassword.Visibility = Visibility.Visible;
-            } else {
-                btnTogglePassword.Visibility = Visibility.Collapsed;
-            }
-        }
-
-
-        private void ResetField(Control control) {
+        private static void ResetField(Control control) {
             control.BorderBrush = Brushes.White;
         }
 
@@ -282,16 +265,17 @@ namespace TripasDeGatoCliente.Views {
         private void TxtValidationCode_TextChanged(object sender, TextChangedEventArgs e) {
             TextBox currentTextBox = sender as TextBox;
             if (currentTextBox.Text.Length == 1) {
-                if (currentTextBox == txtValidationCode1)
+                if (currentTextBox == txtValidationCode1) {
                     txtValidationCode2.Focus();
-                else if (currentTextBox == txtValidationCode2)
+                } else if (currentTextBox == txtValidationCode2) {
                     txtValidationCode3.Focus();
-                else if (currentTextBox == txtValidationCode3)
+                } else if (currentTextBox == txtValidationCode3) {
                     txtValidationCode4.Focus();
-                else if (currentTextBox == txtValidationCode4)
+                } else if (currentTextBox == txtValidationCode4) {
                     txtValidationCode5.Focus();
-                else if (currentTextBox == txtValidationCode5)
+                } else if (currentTextBox == txtValidationCode5) {
                     txtValidationCode6.Focus();
+                }
             }
         }
 

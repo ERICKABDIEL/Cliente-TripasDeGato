@@ -222,11 +222,17 @@
   <data name="dialogComunicationException" xml:space="preserve">
     <value>Se ha producido un fallo para establecer la conexión al servidor. Cheque su conexión a internet e inténtelo de nuevo</value>
   </data>
+  <data name="dialogConfirmKickPlayer" xml:space="preserve">
+    <value>¿Estás seguro de que deseas expulsar al jugador del lobby?</value>
+  </data>
   <data name="dialogConnectionError" xml:space="preserve">
     <value>No se pudo conectar al lobby.</value>
   </data>
   <data name="dialogConnectionErrorWithServer" xml:space="preserve">
     <value>Error de conexión con el servidor</value>
+  </data>
+  <data name="dialogConnectionFailed" xml:space="preserve">
+    <value>No se pudo conectar a la partida.</value>
   </data>
   <data name="dialogEmailInUse" xml:space="preserve">
     <value>Este correo ya ha sido registrado. Por favor use un correo distinto</value>
@@ -285,11 +291,23 @@
   <data name="dialogErrorUpdatingPlayerStatus" xml:space="preserve">
     <value>Error al actualizar el estado del jugador</value>
   </data>
+  <data name="dialogForbiddenAreaWarning" xml:space="preserve">
+    <value>¡Has tocado una zona prohibida! Tu trazo será anulado.</value>
+  </data>
   <data name="dialogFriendshipDeleted" xml:space="preserve">
     <value>Amistad con '{0}' eliminada correctamente</value>
   </data>
+  <data name="dialogFriendshipNotFoundWarning" xml:space="preserve">
+    <value>No existe la amistad indicada</value>
+  </data>
   <data name="dialogHostLeftLobby" xml:space="preserve">
     <value>El anfitrión abandonó el lobby.</value>
+  </data>
+  <data name="dialogInfractionCollision" xml:space="preserve">
+    <value>Parece que chocaste con algo, ¡perdiste!</value>
+  </data>
+  <data name="dialogInfractionInvalidNode" xml:space="preserve">
+    <value>Chocaste un nodo que no te pertenece!</value>
   </data>
   <data name="dialogInvalidEmail" xml:space="preserve">
     <value>Correo inválido</value>
@@ -309,6 +327,9 @@
   <data name="dialogInvalidRecoveryCode" xml:space="preserve">
     <value>Código de recuperación inválido. Por favor, inténtelo de nuevo</value>
   </data>
+  <data name="dialogInvalidStartNode" xml:space="preserve">
+    <value>Debes iniciar el trazo desde un nodo válido.</value>
+  </data>
   <data name="dialogInvalidTimeSelected" xml:space="preserve">
     <value>Tiempo seleccionado no válido.</value>
   </data>
@@ -317,6 +338,9 @@
   </data>
   <data name="dialogInvitationSent" xml:space="preserve">
     <value>La invitación ha sido enviada exitosamente a {0}.</value>
+  </data>
+  <data name="dialogKickedFromLobby" xml:space="preserve">
+    <value>Has sido expulsado del Lobby</value>
   </data>
   <data name="dialogLobbyCreationError" xml:space="preserve">
     <value>No se pudo crear el lobby. Inténtelo nuevamente.</value>
@@ -330,11 +354,17 @@
   <data name="dialogLobbyNotFound" xml:space="preserve">
     <value>No se encontraron lobbies con ese código.</value>
   </data>
+  <data name="dialogMessageLanguagechange" xml:space="preserve">
+    <value>¿Desea cambiar el idioma? Esto reiniciará el juego.</value>
+  </data>
   <data name="dialogMissmatchesCredentials" xml:space="preserve">
     <value>Las credenciales no coinciden</value>
   </data>
   <data name="dialogNavigationError" xml:space="preserve">
     <value>Error de navegación. Por favor, intente más tarde</value>
+  </data>
+  <data name="dialogNodesNotFound" xml:space="preserve">
+    <value>No se encontraron nodos para esta partida.</value>
   </data>
   <data name="dialogNotRetrievedProfile" xml:space="preserve">
     <value>No se pudo obtener el perfil del usuario</value>
@@ -347,6 +377,9 @@
   </data>
   <data name="dialogPlayerAlreadyOnline" xml:space="preserve">
     <value>El jugador ya está en línea. No es posible iniciar sesión nuevamente.</value>
+  </data>
+  <data name="dialogPlayerLeftWarning" xml:space="preserve">
+    <value>Un jugador abandonó</value>
   </data>
   <data name="dialogProfileNotFound" xml:space="preserve">
     <value>No se encontró un perfil que coincida con ese nombre</value>
@@ -369,8 +402,11 @@
   <data name="dialogSelectLobbyToJoin" xml:space="preserve">
     <value>Por favor, selecciona un lobby para unirte.</value>
   </data>
-  <data name="dialogSelectNodesMapTimeError" xml:space="preserve">
-    <value>Por favor, seleccione los nodos, el mapa y el tiempo para la partida.</value>
+  <data name="dialogSelectNodesError" xml:space="preserve">
+    <value>Por favor, seleccione los nodos para la partida.</value>
+  </data>
+  <data name="dialogTaskCanceledException" xml:space="preserve">
+    <value>Hubo un problema al cargar la lista de amigos. Por favor, inténtalo de nuevo.</value>
   </data>
   <data name="dialogTimeOutException" xml:space="preserve">
     <value>El tiempo de espera ha caducado, inténtelo de nuevo. Por favor cheque su conexión a internet.</value>
@@ -386,6 +422,9 @@
   </data>
   <data name="dialogTitleSucces" xml:space="preserve">
     <value>Éxito</value>
+  </data>
+  <data name="dialogTraceMustConnectNodes" xml:space="preserve">
+    <value>El trazo debe conectar dos nodos correspondientes.</value>
   </data>
   <data name="dialogUnexpectedError" xml:space="preserve">
     <value>Ocurrio un error: {0}</value>
@@ -483,8 +522,26 @@
   <data name="lbLanguage" xml:space="preserve">
     <value>Lenguaje</value>
   </data>
+  <data name="lbLanguageChange" xml:space="preserve">
+    <value>Cambio de idioma</value>
+  </data>
   <data name="lbMap" xml:space="preserve">
     <value>Mapa:</value>
+  </data>
+  <data name="lbMatchStatusDraw" xml:space="preserve">
+    <value>¡Empate!</value>
+  </data>
+  <data name="lbMatchStatusNotYourTurn" xml:space="preserve">
+    <value>Aún no es tu turno</value>
+  </data>
+  <data name="lbMatchStatusYouLost" xml:space="preserve">
+    <value>¡Perdiste!</value>
+  </data>
+  <data name="lbMatchStatusYourTurn" xml:space="preserve">
+    <value>¡Es tu turno!</value>
+  </data>
+  <data name="lbMatchStatusYouWon" xml:space="preserve">
+    <value>¡Ganaste!</value>
   </data>
   <data name="lbMessage" xml:space="preserve">
     <value>Mensaje</value>
@@ -510,6 +567,9 @@
   <data name="lbScore" xml:space="preserve">
     <value>Puntaje: {0}</value>
   </data>
+  <data name="lbTurn" xml:space="preserve">
+    <value>Turno</value>
+  </data>
   <data name="lbUnknownUser" xml:space="preserve">
     <value>Usuario desconocido</value>
   </data>
@@ -522,6 +582,9 @@
   <data name="lbVerifyPassword" xml:space="preserve">
     <value>Verifique su contraseña</value>
   </data>
+  <data name="lbWaitingForPlayer" xml:space="preserve">
+    <value>Esperando jugador...</value>
+  </data>
   <data name="mapOptionBear" xml:space="preserve">
     <value>Oso</value>
   </data>
@@ -533,6 +596,9 @@
   </data>
   <data name="titleActionFailed" xml:space="preserve">
     <value>Acción fallida</value>
+  </data>
+  <data name="titleConfirmKick" xml:space="preserve">
+    <value>Confirmar expulsión</value>
   </data>
   <data name="titleDeleteFriend" xml:space="preserve">
     <value>Eliminar amigo</value>

@@ -1,17 +1,17 @@
+C:\TripasDeGatoCliente\UnitTestProject1\bin\Debug\xunit.abstractions.dll
 C:\TripasDeGatoCliente\UnitTestProject1\bin\Debug\es\Microsoft.TestPlatform.AdapterUtilities.resources.dll
+C:\TripasDeGatoCliente\UnitTestProject1\bin\Debug\es\Microsoft.TestPlatform.CoreUtilities.resources.dll
 C:\TripasDeGatoCliente\UnitTestProject1\bin\Debug\es\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.resources.dll
 C:\TripasDeGatoCliente\UnitTestProject1\bin\Debug\es\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.resources.dll
+C:\TripasDeGatoCliente\UnitTestProject1\bin\Debug\es\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
 C:\TripasDeGatoCliente\UnitTestProject1\bin\Debug\es\Microsoft.VisualStudio.TestPlatform.TestFramework.resources.dll
 C:\TripasDeGatoCliente\UnitTestProject1\bin\Debug\xunit.runner.visualstudio.testadapter.dll
-C:\TripasDeGatoCliente\UnitTestProject1\bin\Debug\xunit.abstractions.dll
 C:\TripasDeGatoCliente\UnitTestProject1\bin\Debug\xunit.runner.reporters.net452.dll
 C:\TripasDeGatoCliente\UnitTestProject1\bin\Debug\xunit.runner.utility.net452.dll
 C:\TripasDeGatoCliente\UnitTestProject1\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
 C:\TripasDeGatoCliente\UnitTestProject1\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
 C:\TripasDeGatoCliente\UnitTestProject1\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
 C:\TripasDeGatoCliente\UnitTestProject1\bin\Debug\Microsoft.TestPlatform.AdapterUtilities.dll
-C:\TripasDeGatoCliente\UnitTestProject1\bin\Debug\es\Microsoft.TestPlatform.CoreUtilities.resources.dll
-C:\TripasDeGatoCliente\UnitTestProject1\bin\Debug\es\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
 C:\TripasDeGatoCliente\UnitTestProject1\bin\Debug\Videos\ViewWait.mp4
 C:\TripasDeGatoCliente\UnitTestProject1\bin\Debug\UnitTestProject1.dll
 C:\TripasDeGatoCliente\UnitTestProject1\bin\Debug\UnitTestProject1.pdb
@@ -27,6 +27,7 @@ C:\TripasDeGatoCliente\UnitTestProject1\bin\Debug\xunit.assert.dll
 C:\TripasDeGatoCliente\UnitTestProject1\bin\Debug\xunit.core.dll
 C:\TripasDeGatoCliente\UnitTestProject1\bin\Debug\xunit.execution.desktop.dll
 C:\TripasDeGatoCliente\UnitTestProject1\bin\Debug\log4net.dll
+C:\TripasDeGatoCliente\UnitTestProject1\bin\Debug\TripasDeGatoCliente.pdb
 C:\TripasDeGatoCliente\UnitTestProject1\bin\Debug\TripasDeGatoCliente.exe.config
 C:\TripasDeGatoCliente\UnitTestProject1\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
 C:\TripasDeGatoCliente\UnitTestProject1\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
@@ -37,6 +38,7 @@ C:\TripasDeGatoCliente\UnitTestProject1\bin\Debug\xunit.core.xml
 C:\TripasDeGatoCliente\UnitTestProject1\bin\Debug\xunit.execution.desktop.xml
 C:\TripasDeGatoCliente\UnitTestProject1\bin\Debug\log4net.pdb
 C:\TripasDeGatoCliente\UnitTestProject1\bin\Debug\log4net.xml
+C:\TripasDeGatoCliente\UnitTestProject1\bin\Debug\en-US\TripasDeGatoCliente.resources.dll
 C:\TripasDeGatoCliente\UnitTestProject1\bin\Debug\es-MX\TripasDeGatoCliente.resources.dll
 C:\TripasDeGatoCliente\UnitTestProject1\bin\Debug\cs\Microsoft.TestPlatform.CoreUtilities.resources.dll
 C:\TripasDeGatoCliente\UnitTestProject1\bin\Debug\de\Microsoft.TestPlatform.CoreUtilities.resources.dll
@@ -67,5 +69,3 @@ C:\TripasDeGatoCliente\UnitTestProject1\obj\Debug\UnitTestProject.csproj.CoreCom
 C:\TripasDeGatoCliente\UnitTestProject1\obj\Debug\UnitTest.294DD5B1.Up2Date
 C:\TripasDeGatoCliente\UnitTestProject1\obj\Debug\UnitTestProject1.dll
 C:\TripasDeGatoCliente\UnitTestProject1\obj\Debug\UnitTestProject1.pdb
-C:\TripasDeGatoCliente\UnitTestProject1\bin\Debug\TripasDeGatoCliente.pdb
-C:\TripasDeGatoCliente\UnitTestProject1\bin\Debug\en-US\TripasDeGatoCliente.resources.dll

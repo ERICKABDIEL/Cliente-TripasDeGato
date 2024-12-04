@@ -376,6 +376,15 @@ namespace TripasDeGatoCliente.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Are you sure you want to kick the player from the lobby?.
+        /// </summary>
+        public static string dialogConfirmKickPlayer {
+            get {
+                return ResourceManager.GetString("dialogConfirmKickPlayer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Could not connect to the lobby..
         /// </summary>
         public static string dialogConnectionError {
@@ -390,6 +399,15 @@ namespace TripasDeGatoCliente.Properties {
         public static string dialogConnectionErrorWithServer {
             get {
                 return ResourceManager.GetString("dialogConnectionErrorWithServer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Failed to connect to the match..
+        /// </summary>
+        public static string dialogConnectionFailed {
+            get {
+                return ResourceManager.GetString("dialogConnectionFailed", resourceCulture);
             }
         }
         
@@ -565,6 +583,15 @@ namespace TripasDeGatoCliente.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a You touched a forbidden area! Your stroke will be invalidated..
+        /// </summary>
+        public static string dialogForbiddenAreaWarning {
+            get {
+                return ResourceManager.GetString("dialogForbiddenAreaWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Friendship with &apos;{0}&apos; deleted successfully.
         /// </summary>
         public static string dialogFriendshipDeleted {
@@ -574,11 +601,38 @@ namespace TripasDeGatoCliente.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a The specified friendship does not exist.
+        /// </summary>
+        public static string dialogFriendshipNotFoundWarning {
+            get {
+                return ResourceManager.GetString("dialogFriendshipNotFoundWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a The host left the lobby..
         /// </summary>
         public static string dialogHostLeftLobby {
             get {
                 return ResourceManager.GetString("dialogHostLeftLobby", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a It seems you hit something, you lost!.
+        /// </summary>
+        public static string dialogInfractionCollision {
+            get {
+                return ResourceManager.GetString("dialogInfractionCollision", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a You hit a node that doesn&apos;t belong to you!.
+        /// </summary>
+        public static string dialogInfractionInvalidNode {
+            get {
+                return ResourceManager.GetString("dialogInfractionInvalidNode", resourceCulture);
             }
         }
         
@@ -637,6 +691,15 @@ namespace TripasDeGatoCliente.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a You must start the stroke from a valid node..
+        /// </summary>
+        public static string dialogInvalidStartNode {
+            get {
+                return ResourceManager.GetString("dialogInvalidStartNode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Invalid time selected..
         /// </summary>
         public static string dialogInvalidTimeSelected {
@@ -660,6 +723,15 @@ namespace TripasDeGatoCliente.Properties {
         public static string dialogInvitationSent {
             get {
                 return ResourceManager.GetString("dialogInvitationSent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a You have been kicked from the Lobby.
+        /// </summary>
+        public static string dialogKickedFromLobby {
+            get {
+                return ResourceManager.GetString("dialogKickedFromLobby", resourceCulture);
             }
         }
         
@@ -700,6 +772,15 @@ namespace TripasDeGatoCliente.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Do you want to change the language? This will restart the game..
+        /// </summary>
+        public static string dialogMessageLanguagechange {
+            get {
+                return ResourceManager.GetString("dialogMessageLanguagechange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Credentials do not match.
         /// </summary>
         public static string dialogMissmatchesCredentials {
@@ -714,6 +795,15 @@ namespace TripasDeGatoCliente.Properties {
         public static string dialogNavigationError {
             get {
                 return ResourceManager.GetString("dialogNavigationError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a No nodes were found for this match..
+        /// </summary>
+        public static string dialogNodesNotFound {
+            get {
+                return ResourceManager.GetString("dialogNodesNotFound", resourceCulture);
             }
         }
         
@@ -750,6 +840,15 @@ namespace TripasDeGatoCliente.Properties {
         public static string dialogPlayerAlreadyOnline {
             get {
                 return ResourceManager.GetString("dialogPlayerAlreadyOnline", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a A player left.
+        /// </summary>
+        public static string dialogPlayerLeftWarning {
+            get {
+                return ResourceManager.GetString("dialogPlayerLeftWarning", resourceCulture);
             }
         }
         
@@ -817,11 +916,20 @@ namespace TripasDeGatoCliente.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Please select the nodes, map, and time for the game..
+        ///   Busca una cadena traducida similar a Please select the nodes for the game..
         /// </summary>
-        public static string dialogSelectNodesMapTimeError {
+        public static string dialogSelectNodesError {
             get {
-                return ResourceManager.GetString("dialogSelectNodesMapTimeError", resourceCulture);
+                return ResourceManager.GetString("dialogSelectNodesError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a There was a problem loading the friends list. Please try again later..
+        /// </summary>
+        public static string dialogTaskCanceledException {
+            get {
+                return ResourceManager.GetString("dialogTaskCanceledException", resourceCulture);
             }
         }
         
@@ -867,6 +975,15 @@ namespace TripasDeGatoCliente.Properties {
         public static string dialogTitleWarning {
             get {
                 return ResourceManager.GetString("dialogTitleWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a The trace must connect two corresponding nodes..
+        /// </summary>
+        public static string dialogTraceMustConnectNodes {
+            get {
+                return ResourceManager.GetString("dialogTraceMustConnectNodes", resourceCulture);
             }
         }
         
@@ -1159,11 +1276,65 @@ namespace TripasDeGatoCliente.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Language Change.
+        /// </summary>
+        public static string lbLanguageChange {
+            get {
+                return ResourceManager.GetString("lbLanguageChange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Map:.
         /// </summary>
         public static string lbMap {
             get {
                 return ResourceManager.GetString("lbMap", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Draw!.
+        /// </summary>
+        public static string lbMatchStatusDraw {
+            get {
+                return ResourceManager.GetString("lbMatchStatusDraw", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a It&apos;s not your turn yet.
+        /// </summary>
+        public static string lbMatchStatusNotYourTurn {
+            get {
+                return ResourceManager.GetString("lbMatchStatusNotYourTurn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a You lost!.
+        /// </summary>
+        public static string lbMatchStatusYouLost {
+            get {
+                return ResourceManager.GetString("lbMatchStatusYouLost", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a It&apos;s your turn!.
+        /// </summary>
+        public static string lbMatchStatusYourTurn {
+            get {
+                return ResourceManager.GetString("lbMatchStatusYourTurn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a You won!.
+        /// </summary>
+        public static string lbMatchStatusYouWon {
+            get {
+                return ResourceManager.GetString("lbMatchStatusYouWon", resourceCulture);
             }
         }
         
@@ -1240,6 +1411,15 @@ namespace TripasDeGatoCliente.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Turn.
+        /// </summary>
+        public static string lbTurn {
+            get {
+                return ResourceManager.GetString("lbTurn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Unknown user.
         /// </summary>
         public static string lbUnknownUser {
@@ -1276,6 +1456,15 @@ namespace TripasDeGatoCliente.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Waiting for player....
+        /// </summary>
+        public static string lbWaitingForPlayer {
+            get {
+                return ResourceManager.GetString("lbWaitingForPlayer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Bear.
         /// </summary>
         public static string mapOptionBear {
@@ -1308,6 +1497,15 @@ namespace TripasDeGatoCliente.Properties {
         public static string titleActionFailed {
             get {
                 return ResourceManager.GetString("titleActionFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Confirm Kick.
+        /// </summary>
+        public static string titleConfirmKick {
+            get {
+                return ResourceManager.GetString("titleConfirmKick", resourceCulture);
             }
         }
         

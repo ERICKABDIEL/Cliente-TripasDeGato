@@ -68,7 +68,7 @@
                Stretch="Fill" 
                Grid.RowSpan="2"/>
 
-        <DataGrid x:Name="LobbyDataGrid"
+        <DataGrid x:Name="gridLobbyData"
                   AutoGenerateColumns="False"
                   Margin="60,10,542,160" 
                   Grid.Row="1"
