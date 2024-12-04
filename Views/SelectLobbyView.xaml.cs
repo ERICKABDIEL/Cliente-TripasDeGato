@@ -44,7 +44,7 @@ namespace TripasDeGatoCliente.Views {
 
         private async Task LoadLobbiesAsync() {
             try {
-                var lobbies = await _lobbyBrowser.GetAvailableLobbiesAsync();
+                List <Lobby> lobbies = await _lobbyBrowser.GetAvailableLobbiesAsync();
                 gridLobbyData.ItemsSource = lobbies;
             } catch (Exception exception) {
                 HandleException(exception, nameof(LoadLobbiesAsync));
@@ -86,8 +86,8 @@ namespace TripasDeGatoCliente.Views {
         private async void BtnSearch_Click(object sender, RoutedEventArgs e) {
             string searchCode = txtCodeLobby.Text.Trim();
             try {
-                var lobbies = await _lobbyBrowser.GetAvailableLobbiesAsync();
-                var filteredLobbies = lobbies.Where(lobby => lobby.Code.Contains(searchCode)).ToList();
+                List<Lobby> lobbies = await _lobbyBrowser.GetAvailableLobbiesAsync();
+                List<Lobby> filteredLobbies = lobbies.Where(lobby => lobby.Code.Contains(searchCode)).ToList();
                 if (filteredLobbies.Count == 0) {
                     DialogManager.ShowWarningMessageAlert(Properties.Resources.dialogLobbyNotFound);
                 }

@@ -181,7 +181,7 @@ namespace TripasDeGatoCliente.Views {
         private void Canvas_MouseMove(object sender, MouseEventArgs e) {
             if (!_isDrawing) return;
             Point mousePosition = e.GetPosition(drawingCanvas);
-            var newPoint = new TripasDeGatoServicio.TracePoint { X = mousePosition.X, Y = mousePosition.Y };
+            TracePoint newPoint = new TripasDeGatoServicio.TracePoint { X = mousePosition.X, Y = mousePosition.Y };
             DrawingValidation drawingValidation = new DrawingValidation();
             if (drawingValidation.IsPointInForbiddenArea(mousePosition)) {
                 HandleInfraction(Properties.Resources.dialogForbiddenAreaWarning);
@@ -285,7 +285,7 @@ namespace TripasDeGatoCliente.Views {
 
         private void SendTrace(List<TracePoint> points) {
             if (!_isConnected) return;
-            var trace = new TripasDeGatoServicio.Trace {
+            Trace trace = new TripasDeGatoServicio.Trace {
                 Player = UserProfileSingleton.UserName,
                 TracePoints = points,
                 Timestamp = DateTime.Now,
@@ -306,11 +306,11 @@ namespace TripasDeGatoCliente.Views {
         }
 
         public void TraceReceived(Trace trace) {
-            var receivedLine = new Polyline {
+            Polyline receivedLine = new Polyline {
                 Stroke = Brushes.Red,
                 StrokeThickness = 2
             };
-            foreach (var point in trace.TracePoints) {
+            foreach (TracePoint point in trace.TracePoints) {
                 receivedLine.Points.Add(new Point(point.X, point.Y));
             }
             Application.Current.Dispatcher.Invoke(() => {
@@ -322,8 +322,8 @@ namespace TripasDeGatoCliente.Views {
         private void DrawNodes() {
             if (nodes == null) return;
             Application.Current.Dispatcher.Invoke(() => drawingCanvas.Children.Clear());
-            foreach (var node in nodes) {
-                var ellipse = new Ellipse {
+            foreach (Node node in nodes) {
+                Ellipse ellipse = new Ellipse {
                     Width = 10,
                     Height = 10,
                     Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString(node.Color)),

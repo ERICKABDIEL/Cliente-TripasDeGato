@@ -94,7 +94,7 @@ namespace TripasDeGatoCliente.Views {
         private bool IsPlayerOnline(int idProfile) {
             try {
                 IStatusManager statusManager = new StatusManagerClient();
-                var playerStatus = statusManager.GetPlayerStatus(idProfile);
+                GameEnumsPlayerStatus playerStatus = statusManager.GetPlayerStatus(idProfile);
                 if (playerStatus == GameEnumsPlayerStatus.Online) {
                     DialogManager.ShowWarningMessageAlert(Properties.Resources.dialogPlayerAlreadyOnline);
                     return true;
@@ -213,7 +213,7 @@ namespace TripasDeGatoCliente.Views {
                 return;
             }
             try {
-                var emailVerificationProxy = new TripasDeGatoServicio.PasswordRecoveryManagerClient();
+                PasswordRecoveryManagerClient emailVerificationProxy = new TripasDeGatoServicio.PasswordRecoveryManagerClient();
                 int result = emailVerificationProxy.SendRecoveryCode(_userEmail);
                 if (result == Constants.SUCCES_OPERATION) {
                     DialogManager.ShowSuccessMessageAlert(Properties.Resources.dialogRecoveryCodeResent);

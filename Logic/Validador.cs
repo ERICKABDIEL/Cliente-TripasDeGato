@@ -62,7 +62,7 @@ namespace TripasDeGatoCliente.Logic {
         public static void RegexPattern(string input) {
             bool isEmailValid = ValidateRegexPattern(input, emailRegex);
             bool isNumber = ValidateRegexPattern(input, new Regex("[0-9]+", RegexOptions.None, TimeSpan.FromMilliseconds(100)));
-            var isLetterA = Regex.IsMatch(input, "(a+)+", RegexOptions.None);
+            bool isLetterA = Regex.IsMatch(input, "(a+)+", RegexOptions.None);
             AppDomain.CurrentDomain.SetData("REGEX_DEFAULT_MATCH_TIMEOUT", TimeSpan.FromMilliseconds(100));
             Console.WriteLine($"Email válido: {isEmailValid}, Contiene número: {isNumber}, Contiene letra 'a': {isLetterA}");
         }

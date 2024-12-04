@@ -53,7 +53,7 @@ namespace TripasDeGatoCliente.Views {
             try {
                 if (!string.IsNullOrEmpty(txtCodeLobby.Text)) {
                     string lobbyCode = txtCodeLobby.Text;
-                    var guestProfile = new Profile {
+                    Profile guestProfile = new Profile {
                         IdProfile = UserProfileSingleton.IdProfile,
                         Username = UserProfileSingleton.UserName,
                         PicturePath = UserProfileSingleton.PicPath,

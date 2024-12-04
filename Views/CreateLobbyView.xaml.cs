@@ -63,7 +63,7 @@ namespace TripasDeGatoCliente.Views {
             }
             int nodeCount = (int)cboxNode.SelectedItem;
             try {
-                var owner = new Profile {
+                Profile owner = new Profile {
                     IdProfile = UserProfileSingleton.IdProfile,
                     Username = UserProfileSingleton.UserName
                 };

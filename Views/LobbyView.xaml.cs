@@ -67,8 +67,8 @@ namespace TripasDeGatoCliente.Views {
             } else {
                 logger.LogError(methodName, exception);
                 DialogManager.ShowErrorMessageAlert(string.Format(Properties.Resources.dialogUnexpectedError, exception.Message));
-
             }
+            ExitUseSinglenton();
         }
 
         private async void InitializeConnectionsAsync() {
@@ -77,7 +77,6 @@ namespace TripasDeGatoCliente.Views {
                 await ConnectToLobbyAsync();
             } catch (Exception exception) {
                 HandleException(exception, nameof(InitializeConnectionsAsync));
-                ExitUseSinglenton();
             }
         }
 
@@ -106,7 +105,7 @@ namespace TripasDeGatoCliente.Views {
         private async void BtnSendMessage_Click(object sender, RoutedEventArgs e) {
             string messageText = txtMessageInput.Text.Trim();
             if (!string.IsNullOrEmpty(messageText)) {
-                var message = new Message {
+                Message message = new Message {
                     Username = UserProfileSingleton.UserName,
                     ChatMessage = messageText
                 };
@@ -145,7 +144,7 @@ namespace TripasDeGatoCliente.Views {
         }
 
         private static bool IsUserHost(Lobby lobby) {
-            return lobby.Players.TryGetValue(PLAYER_ONE, out var host) && host.Username == UserProfileSingleton.UserName;
+            return lobby.Players.TryGetValue(PLAYER_ONE, out Profile host) && host.Username == UserProfileSingleton.UserName;
         }
 
         private async void BtnBack_Click(object sender, RoutedEventArgs e) {
@@ -155,7 +154,6 @@ namespace TripasDeGatoCliente.Views {
                 ExitUseSinglenton();
             } catch (Exception exception) {
                 HandleException(exception, nameof(BtnBack_Click));
-                ExitUseSinglenton();
             }
         }
 
@@ -181,7 +179,7 @@ namespace TripasDeGatoCliente.Views {
         }
 
         private void ScrollToBottom() {
-            var scrollViewer = VisualTreeHelper.GetParent(ChatMessagesPanel) as ScrollViewer;
+            ScrollViewer scrollViewer = VisualTreeHelper.GetParent(ChatMessagesPanel) as ScrollViewer;
             scrollViewer?.ScrollToEnd();
         }
 
@@ -278,7 +276,7 @@ namespace TripasDeGatoCliente.Views {
 
         private void GoToGameMatch() {
             Application.Current.Dispatcher.Invoke(() => {
-                var gameMatch = new GameMatch(_lobbyCode);
+                GameMatch gameMatch = new GameMatch(_lobbyCode);
                 NavigationService?.Navigate(gameMatch);
             });
         }
@@ -286,10 +284,10 @@ namespace TripasDeGatoCliente.Views {
         private async Task LoadFriendsListAsync() {
             try {
                 int userProfileId = UserProfileSingleton.IdProfile;
-                var friendsList = await _friendsManager.GetFriendsAsync(userProfileId);
-                var friendsWithStatus = new List<string>();
-                foreach (var friend in friendsList) {
-                    var status = await _statusManager.GetPlayerStatusAsync(friend.IdProfile);
+                List <Profile> friendsList = await _friendsManager.GetFriendsAsync(userProfileId);
+                List <string> friendsWithStatus = new List<string>();
+                foreach (Profile friend in friendsList) {
+                    GameEnumsPlayerStatus status = await _statusManager.GetPlayerStatusAsync(friend.IdProfile);
                     friendsWithStatus.Add($"{friend.Username} - {status}");
                 }
                 lstFriends.ItemsSource = friendsWithStatus;

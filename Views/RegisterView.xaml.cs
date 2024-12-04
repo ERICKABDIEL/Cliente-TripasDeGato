@@ -54,7 +54,7 @@ namespace TripasDeGatoCliente.Views {
 
         private bool VerifyEmailAvailability(string email) {
             bool isEmailAvailable = true;
-            var userProxy = new TripasDeGatoServicio.UserManagerClient();
+            UserManagerClient userProxy = new TripasDeGatoServicio.UserManagerClient();
             try {
                 int emailCheckResult = userProxy.IsEmailRegistered(email);
                 if (emailCheckResult == Constants.DATA_MATCHES) {
@@ -74,7 +74,7 @@ namespace TripasDeGatoCliente.Views {
 
         private bool VerifyUsernameAvailability(string username) {
             bool isUsernameAvailable = true;
-            var userProxy = new TripasDeGatoServicio.UserManagerClient();
+            UserManagerClient userProxy = new TripasDeGatoServicio.UserManagerClient();
             try {
                 int usernameCheckResult = userProxy.IsNameRegistered(username);
                 if (usernameCheckResult == Constants.DATA_MATCHES) {
@@ -94,7 +94,7 @@ namespace TripasDeGatoCliente.Views {
 
         private void SendVerificationCode(string email) {
             try {
-                var emailVerificationProxy = new TripasDeGatoServicio.EmailVerificationManagerClient();
+                EmailVerificationManagerClient emailVerificationProxy = new TripasDeGatoServicio.EmailVerificationManagerClient();
                 int result = emailVerificationProxy.SendVerificationCodeRegister(email);
                 if (result == Constants.SUCCES_OPERATION) {
                     verificationGrid.Visibility = Visibility.Visible;
@@ -109,7 +109,7 @@ namespace TripasDeGatoCliente.Views {
 
         private void BtnResendCode_Click(object sender, RoutedEventArgs e) {
             try {
-                var emailVerificationProxy = new TripasDeGatoServicio.EmailVerificationManagerClient();
+                EmailVerificationManagerClient emailVerificationProxy = new TripasDeGatoServicio.EmailVerificationManagerClient();
                 int result = emailVerificationProxy.SendVerificationCodeRegister(txtEmail.Text);
                 if (result == Constants.SUCCES_OPERATION) {
                     DialogManager.ShowSuccessMessageAlert(Properties.Resources.dialogVerificationCodeResentSuccessfully);
@@ -124,15 +124,15 @@ namespace TripasDeGatoCliente.Views {
         private void BtnValidate_Click(object sender, RoutedEventArgs e) {
             try {
                 string enteredCode = $"{txtValidationCode1.Text}{txtValidationCode2.Text}{txtValidationCode3.Text}{txtValidationCode4.Text}{txtValidationCode5.Text}{txtValidationCode6.Text}";
-                var emailVerificationProxy = new TripasDeGatoServicio.EmailVerificationManagerClient();
+                EmailVerificationManagerClient emailVerificationProxy = new TripasDeGatoServicio.EmailVerificationManagerClient();
                 bool isCodeValid = emailVerificationProxy.VerifyCode(txtEmail.Text, enteredCode);
                 if (isCodeValid) {
-                    var userProxy = new TripasDeGatoServicio.UserManagerClient();
-                    var newUser = new TripasDeGatoServicio.LoginUser {
-                        mail = txtEmail.Text,
-                        password = Hasher.HashToSHA256(txtPassword.Password)
+                    UserManagerClient userProxy = new TripasDeGatoServicio.UserManagerClient();
+                    LoginUser newUser = new TripasDeGatoServicio.LoginUser {
+                        Mail = txtEmail.Text,
+                        Password = Hasher.HashToSHA256(txtPassword.Password)
                     };
-                    var newProfile = new TripasDeGatoServicio.Profile {
+                    Profile newProfile = new TripasDeGatoServicio.Profile {
                         Username = txtName.Text,
                     };
                     int accountResult = userProxy.CreateAccount(newUser, newProfile);

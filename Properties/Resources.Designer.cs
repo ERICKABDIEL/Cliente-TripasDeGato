@@ -322,6 +322,15 @@ namespace TripasDeGatoCliente.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a You are already friends with this user {0}.
+        /// </summary>
+        public static string dialogAlreadyFriends {
+            get {
+                return ResourceManager.GetString("dialogAlreadyFriends", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a You cannot add yourself as a friend.
         /// </summary>
         public static string dialogCannotAddSelfAsFriend {

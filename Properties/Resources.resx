@@ -204,6 +204,9 @@
   <data name="dialogAddFriendSuccessfully" xml:space="preserve">
     <value>Friend '{0}' added successfully</value>
   </data>
+  <data name="dialogAlreadyFriends" xml:space="preserve">
+    <value>You are already friends with this user {0}</value>
+  </data>
   <data name="dialogCannotAddSelfAsFriend" xml:space="preserve">
     <value>You cannot add yourself as a friend</value>
   </data>

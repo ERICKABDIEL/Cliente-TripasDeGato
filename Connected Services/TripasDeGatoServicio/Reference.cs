@@ -15,7 +15,7 @@ namespace TripasDeGatoCliente.TripasDeGatoServicio {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="LoginUser", Namespace="http://schemas.datacontract.org/2004/07/TripasService.Contracts")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="LoginUser", Namespace="http://schemas.datacontract.org/2004/07/TripasService.Logic")]
     [System.SerializableAttribute()]
     public partial class LoginUser : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -23,13 +23,13 @@ namespace TripasDeGatoCliente.TripasDeGatoServicio {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int idLoginUserField;
+        private int IdLoginUserField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string mailField;
+        private string MailField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string passwordField;
+        private string PasswordField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -42,40 +42,40 @@ namespace TripasDeGatoCliente.TripasDeGatoServicio {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int idLoginUser {
+        public int IdLoginUser {
             get {
-                return this.idLoginUserField;
+                return this.IdLoginUserField;
             }
             set {
-                if ((this.idLoginUserField.Equals(value) != true)) {
-                    this.idLoginUserField = value;
-                    this.RaisePropertyChanged("idLoginUser");
+                if ((this.IdLoginUserField.Equals(value) != true)) {
+                    this.IdLoginUserField = value;
+                    this.RaisePropertyChanged("IdLoginUser");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string mail {
+        public string Mail {
             get {
-                return this.mailField;
+                return this.MailField;
             }
             set {
-                if ((object.ReferenceEquals(this.mailField, value) != true)) {
-                    this.mailField = value;
-                    this.RaisePropertyChanged("mail");
+                if ((object.ReferenceEquals(this.MailField, value) != true)) {
+                    this.MailField = value;
+                    this.RaisePropertyChanged("Mail");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string password {
+        public string Password {
             get {
-                return this.passwordField;
+                return this.PasswordField;
             }
             set {
-                if ((object.ReferenceEquals(this.passwordField, value) != true)) {
-                    this.passwordField = value;
-                    this.RaisePropertyChanged("password");
+                if ((object.ReferenceEquals(this.PasswordField, value) != true)) {
+                    this.PasswordField = value;
+                    this.RaisePropertyChanged("Password");
                 }
             }
         }
@@ -268,9 +268,6 @@ namespace TripasDeGatoCliente.TripasDeGatoServicio {
         private string ChatMessageField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime TimeStampField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string UsernameField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
@@ -292,19 +289,6 @@ namespace TripasDeGatoCliente.TripasDeGatoServicio {
                 if ((object.ReferenceEquals(this.ChatMessageField, value) != true)) {
                     this.ChatMessageField = value;
                     this.RaisePropertyChanged("ChatMessage");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime TimeStamp {
-            get {
-                return this.TimeStampField;
-            }
-            set {
-                if ((this.TimeStampField.Equals(value) != true)) {
-                    this.TimeStampField = value;
-                    this.RaisePropertyChanged("TimeStamp");
                 }
             }
         }
@@ -736,16 +720,16 @@ namespace TripasDeGatoCliente.TripasDeGatoServicio {
     public interface IUserManager {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/CreateAccount", ReplyAction="http://tempuri.org/IUserManager/CreateAccountResponse")]
-        int CreateAccount(TripasDeGatoCliente.TripasDeGatoServicio.LoginUser user, TripasDeGatoCliente.TripasDeGatoServicio.Profile profile);
+        int CreateAccount(TripasDeGatoCliente.TripasDeGatoServicio.LoginUser newUser, TripasDeGatoCliente.TripasDeGatoServicio.Profile newProfile);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/CreateAccount", ReplyAction="http://tempuri.org/IUserManager/CreateAccountResponse")]
-        System.Threading.Tasks.Task<int> CreateAccountAsync(TripasDeGatoCliente.TripasDeGatoServicio.LoginUser user, TripasDeGatoCliente.TripasDeGatoServicio.Profile profile);
+        System.Threading.Tasks.Task<int> CreateAccountAsync(TripasDeGatoCliente.TripasDeGatoServicio.LoginUser newUser, TripasDeGatoCliente.TripasDeGatoServicio.Profile newProfile);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/UpdateProfile", ReplyAction="http://tempuri.org/IUserManager/UpdateProfileResponse")]
-        int UpdateProfile(int idProfile, string newUsername, string newPic);
+        int UpdateProfile(int idProfile, string newUsername, string newPicPath);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/UpdateProfile", ReplyAction="http://tempuri.org/IUserManager/UpdateProfileResponse")]
-        System.Threading.Tasks.Task<int> UpdateProfileAsync(int idProfile, string newUsername, string newPic);
+        System.Threading.Tasks.Task<int> UpdateProfileAsync(int idProfile, string newUsername, string newPicPath);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/VerifyLogin", ReplyAction="http://tempuri.org/IUserManager/VerifyLoginResponse")]
         int VerifyLogin(string email, string password);
@@ -812,20 +796,20 @@ namespace TripasDeGatoCliente.TripasDeGatoServicio {
                 base(binding, remoteAddress) {
         }
         
-        public int CreateAccount(TripasDeGatoCliente.TripasDeGatoServicio.LoginUser user, TripasDeGatoCliente.TripasDeGatoServicio.Profile profile) {
-            return base.Channel.CreateAccount(user, profile);
+        public int CreateAccount(TripasDeGatoCliente.TripasDeGatoServicio.LoginUser newUser, TripasDeGatoCliente.TripasDeGatoServicio.Profile newProfile) {
+            return base.Channel.CreateAccount(newUser, newProfile);
         }
         
-        public System.Threading.Tasks.Task<int> CreateAccountAsync(TripasDeGatoCliente.TripasDeGatoServicio.LoginUser user, TripasDeGatoCliente.TripasDeGatoServicio.Profile profile) {
-            return base.Channel.CreateAccountAsync(user, profile);
+        public System.Threading.Tasks.Task<int> CreateAccountAsync(TripasDeGatoCliente.TripasDeGatoServicio.LoginUser newUser, TripasDeGatoCliente.TripasDeGatoServicio.Profile newProfile) {
+            return base.Channel.CreateAccountAsync(newUser, newProfile);
         }
         
-        public int UpdateProfile(int idProfile, string newUsername, string newPic) {
-            return base.Channel.UpdateProfile(idProfile, newUsername, newPic);
+        public int UpdateProfile(int idProfile, string newUsername, string newPicPath) {
+            return base.Channel.UpdateProfile(idProfile, newUsername, newPicPath);
         }
         
-        public System.Threading.Tasks.Task<int> UpdateProfileAsync(int idProfile, string newUsername, string newPic) {
-            return base.Channel.UpdateProfileAsync(idProfile, newUsername, newPic);
+        public System.Threading.Tasks.Task<int> UpdateProfileAsync(int idProfile, string newUsername, string newPicPath) {
+            return base.Channel.UpdateProfileAsync(idProfile, newUsername, newPicPath);
         }
         
         public int VerifyLogin(string email, string password) {
@@ -898,6 +882,12 @@ namespace TripasDeGatoCliente.TripasDeGatoServicio {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFriendsManager/GetFriends", ReplyAction="http://tempuri.org/IFriendsManager/GetFriendsResponse")]
         System.Threading.Tasks.Task<System.Collections.Generic.List<TripasDeGatoCliente.TripasDeGatoServicio.Profile>> GetFriendsAsync(int idProfile);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFriendsManager/IsFriendAlreadyAdded", ReplyAction="http://tempuri.org/IFriendsManager/IsFriendAlreadyAddedResponse")]
+        int IsFriendAlreadyAdded(int idProfile1, int idProfile2);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFriendsManager/IsFriendAlreadyAdded", ReplyAction="http://tempuri.org/IFriendsManager/IsFriendAlreadyAddedResponse")]
+        System.Threading.Tasks.Task<int> IsFriendAlreadyAddedAsync(int idProfile1, int idProfile2);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -949,6 +939,14 @@ namespace TripasDeGatoCliente.TripasDeGatoServicio {
         
         public System.Threading.Tasks.Task<System.Collections.Generic.List<TripasDeGatoCliente.TripasDeGatoServicio.Profile>> GetFriendsAsync(int idProfile) {
             return base.Channel.GetFriendsAsync(idProfile);
+        }
+        
+        public int IsFriendAlreadyAdded(int idProfile1, int idProfile2) {
+            return base.Channel.IsFriendAlreadyAdded(idProfile1, idProfile2);
+        }
+        
+        public System.Threading.Tasks.Task<int> IsFriendAlreadyAddedAsync(int idProfile1, int idProfile2) {
+            return base.Channel.IsFriendAlreadyAddedAsync(idProfile1, idProfile2);
         }
     }
     

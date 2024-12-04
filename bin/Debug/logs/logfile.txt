@@ -1114,3 +1114,68 @@ Exception rethrown at [0]:
    en TripasDeGatoCliente.TripasDeGatoServicio.IUserManager.VerifyLogin(String email, String password)
    en TripasDeGatoCliente.TripasDeGatoServicio.UserManagerClient.VerifyLogin(String email, String password) en C:\TripasDeGatoCliente\Connected Services\TripasDeGatoServicio\Reference.cs:línea 832
    en TripasDeGatoCliente.Views.LoginView.AuthenticateUser(String email, String hashedPassword) en C:\TripasDeGatoCliente\Views\LoginView.xaml.cs:línea 66
+2024-12-04 14:28:50,948 [1] ERROR TripasDeGatoCliente.Views.LobbyView - ConnectToLobbyAsync
+System.TimeoutException: La operación de solicitud enviada a net.tcp://localhost:8081/LobbyManager no recibió una respuesta en el tiempo de espera configurado (00:01:00). El tiempo asignado a esta operación puede haber sido una parte de un tiempo de espera mayor. La razón puede ser que el servicio sigue procesando la operación o que no pudo enviar un mensaje de respuesta. Considere la posibilidad de aumentar el tiempo de espera de la operación (convirtiendo el canal/proxy en IContextChannel y estableciendo la propiedad OperationTimeout) y asegúrese de que el servicio pueda conectarse al cliente.
+
+Server stack trace: 
+   en System.ServiceModel.Dispatcher.DuplexChannelBinder.SyncDuplexRequest.WaitForReply(TimeSpan timeout)
+   en System.ServiceModel.Dispatcher.DuplexChannelBinder.Request(Message message, TimeSpan timeout)
+   en System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   en System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   en System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   en System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   en System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   en TripasDeGatoCliente.TripasDeGatoServicio.ILobbyManager.ConnectPlayerToLobby(String code, Int32 playerId)
+   en TripasDeGatoCliente.TripasDeGatoServicio.LobbyManagerClient.ConnectPlayerToLobby(String code, Int32 playerId) en C:\TripasDeGatoCliente\Connected Services\TripasDeGatoServicio\Reference.cs:línea 1367
+   en TripasDeGatoCliente.Views.LobbyView.<ConnectToLobbyAsync>b__16_0() en C:\TripasDeGatoCliente\Views\LobbyView.xaml.cs:línea 94
+   en System.Threading.Tasks.Task`1.InnerInvoke()
+   en System.Threading.Tasks.Task.Execute()
+--- Fin del seguimiento de la pila de la ubicación anterior donde se produjo la excepción ---
+   en System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   en System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   en System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   en TripasDeGatoCliente.Views.LobbyView.<ConnectToLobbyAsync>d__16.MoveNext() en C:\TripasDeGatoCliente\Views\LobbyView.xaml.cs:línea 94
+2024-12-04 14:33:52,374 [1] ERROR TripasDeGatoCliente.Views.LobbyView - BtnSendMessage_Click
+System.ServiceModel.CommunicationObjectFaultedException: El objeto de comunicación, System.ServiceModel.Channels.ClientFramingDuplexSessionChannel, no se puede usar para la comunicación porque se encuentra en el estado Faulted.
+
+Server stack trace: 
+   en System.ServiceModel.Channels.CommunicationObject.ThrowIfDisposedOrNotOpen()
+   en System.ServiceModel.Channels.OutputChannel.BeginSend(Message message, TimeSpan timeout, AsyncCallback callback, Object state)
+   en System.ServiceModel.Dispatcher.DuplexChannelBinder.BeginSend(Message message, TimeSpan timeout, AsyncCallback callback, Object state)
+   en System.ServiceModel.Channels.ServiceChannel.SendAsyncResult.StartSend(Boolean completedSynchronously)
+   en System.ServiceModel.Channels.ServiceChannel.SendAsyncResult.FinishEnsureOpen(IAsyncResult result, Boolean completedSynchronously)
+   en System.ServiceModel.Channels.ServiceChannel.SendAsyncResult.StartEnsureOpen(Boolean completedSynchronously)
+   en System.ServiceModel.Channels.ServiceChannel.SendAsyncResult.FinishEnsureInteractiveInit(IAsyncResult result, Boolean completedSynchronously)
+   en System.ServiceModel.Channels.ServiceChannel.SendAsyncResult.StartEnsureInteractiveInit()
+   en System.ServiceModel.Channels.ServiceChannel.SendAsyncResult.Begin()
+   en System.ServiceModel.Channels.ServiceChannel.BeginCall(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, TimeSpan timeout, AsyncCallback callback, Object asyncState)
+   en System.ServiceModel.Channels.ServiceChannel.BeginCall(ServiceChannel channel, ProxyOperationRuntime operation, Object[] ins, AsyncCallback callback, Object asyncState)
+   en System.Threading.Tasks.TaskFactory`1.FromAsyncImpl[TArg1,TArg2,TArg3](Func`6 beginMethod, Func`2 endFunction, Action`1 endAction, TArg1 arg1, TArg2 arg2, TArg3 arg3, Object state, TaskCreationOptions creationOptions)
+   en System.ServiceModel.Channels.ServiceChannelProxy.TaskCreator.CreateTask(ServiceChannel channel, ProxyOperationRuntime operation, Object[] inputParameters)
+   en System.ServiceModel.Channels.ServiceChannelProxy.TaskCreator.CreateTask(ServiceChannel channel, IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   en System.ServiceModel.Channels.ServiceChannelProxy.InvokeTaskService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   en System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   en System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   en System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   en TripasDeGatoCliente.TripasDeGatoServicio.IChatManager.SendMessageAsync(String username, Message message, String lobbyCode)
+   en TripasDeGatoCliente.TripasDeGatoServicio.ChatManagerClient.SendMessageAsync(String username, Message message, String lobbyCode) en C:\TripasDeGatoCliente\Connected Services\TripasDeGatoServicio\Reference.cs:línea 1002
+   en TripasDeGatoCliente.Views.LobbyView.<BtnSendMessage_Click>d__17.MoveNext() en C:\TripasDeGatoCliente\Views\LobbyView.xaml.cs:línea 114
+2024-12-04 14:42:28,818 [1] ERROR TripasDeGatoCliente.Views.LobbyView - BtnStartGame_Click
+System.ServiceModel.CommunicationObjectFaultedException: El objeto de comunicación, System.ServiceModel.Channels.ServiceChannel, no se puede usar para la comunicación porque se encuentra en el estado Faulted.
+
+Server stack trace: 
+   en System.ServiceModel.Channels.CommunicationObject.ThrowIfDisposedOrNotOpen()
+   en System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   en System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   en System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   en System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   en System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   en TripasDeGatoCliente.TripasDeGatoServicio.ILobbyManager.StartMatch(String code)
+   en TripasDeGatoCliente.TripasDeGatoServicio.LobbyManagerClient.StartMatch(String code) en C:\TripasDeGatoCliente\Connected Services\TripasDeGatoServicio\Reference.cs:línea 1375
+   en TripasDeGatoCliente.Views.LobbyView.BtnStartGame_Click(Object sender, RoutedEventArgs e) en C:\TripasDeGatoCliente\Views\LobbyView.xaml.cs:línea 243

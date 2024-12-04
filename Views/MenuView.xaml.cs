@@ -157,7 +157,12 @@ namespace TripasDeGatoCliente.Views {
                 if (friendProfileId == UserProfileSingleton.IdProfile) {
                     DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogCannotAddSelfAsFriend);
                 } else if (friendProfileId > 0) {
-                    await ExecuteFriendAddition(friendProfileId, friendName);
+                    int result = _friendsManager.IsFriendAlreadyAdded(UserProfileSingleton.IdProfile, friendProfileId);
+                    if (result == Constants.SUCCES_OPERATION) {
+                        DialogManager.ShowErrorMessageAlert(string.Format(Properties.Resources.dialogAlreadyFriends, friendName));
+                    } else {
+                        await ExecuteFriendAddition(friendProfileId, friendName);
+                    }
                 } else {
                     DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogProfileNotFound);
                 }
@@ -184,10 +189,10 @@ namespace TripasDeGatoCliente.Views {
         private async Task LoadFriendsListAsync() {
             try {
                 int userProfileId = UserProfileSingleton.IdProfile;
-                var friendsList = await _friendsManager.GetFriendsAsync(userProfileId);
-                var friendsWithStatus = new List<string>();
-                foreach (var friend in friendsList) {
-                    var status = await _statusManager.GetPlayerStatusAsync(friend.IdProfile);
+                List <Profile> friendsList = await _friendsManager.GetFriendsAsync(userProfileId);
+                List <string> friendsWithStatus = new List<string>();
+                foreach (Profile friend in friendsList) {
+                    GameEnumsPlayerStatus status = await _statusManager.GetPlayerStatusAsync(friend.IdProfile);
                     friendsWithStatus.Add($"{friend.Username} - {status}");
                 }
                 lstFriends.ItemsSource = friendsWithStatus;
