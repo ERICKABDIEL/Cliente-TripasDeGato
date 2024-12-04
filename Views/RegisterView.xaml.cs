@@ -129,8 +129,8 @@ namespace TripasDeGatoCliente.Views {
                 if (isCodeValid) {
                     var userProxy = new TripasDeGatoServicio.UserManagerClient();
                     var newUser = new TripasDeGatoServicio.LoginUser {
-                        mail = txtEmail.Text,
-                        password = Hasher.HashToSHA256(txtPassword.Password)
+                        Mail = txtEmail.Text,
+                        Password = Hasher.HashToSHA256(txtPassword.Password)
                     };
                     var newProfile = new TripasDeGatoServicio.Profile {
                         Username = txtName.Text,
