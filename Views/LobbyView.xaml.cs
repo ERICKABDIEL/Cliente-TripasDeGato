@@ -1,18 +1,14 @@
 ﻿using System;
-using System.Timers;
 using System.Windows;
 using System.ServiceModel;
 using System.Windows.Media;
 using System.ComponentModel;
-using System.Reflection.Emit;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Threading;
 using TripasDeGatoCliente.Logic;
 using System.Collections.Generic;
-using log4net.Repository.Hierarchy;
 using System.Windows.Media.Imaging;
-using System.Diagnostics.Eventing.Reader;
 using TripasDeGatoCliente.TripasDeGatoServicio;
 using static TripasDeGatoCliente.Logic.ConstantsManager;
 
@@ -149,7 +145,7 @@ namespace TripasDeGatoCliente.Views {
 
         private async void BtnBack_Click(object sender, RoutedEventArgs e) {
             try {
-                await _lobbyManager.LeaveLobbyAsync(_lobbyCode, UserProfileSingleton.IdProfile);
+                await _lobbyManager.LeaveLobbyAsync(_lobbyCode, UserProfileSingleton.UserName);
                 await _chatManager.LeaveChatAsync(UserProfileSingleton.UserName, _lobbyCode);
                 ExitUseSinglenton();
             } catch (Exception exception) {
@@ -171,7 +167,7 @@ namespace TripasDeGatoCliente.Views {
             if (_isConnected) {
                 try {
                     await Task.Run(() =>
-                    _lobbyManager.LeaveLobby(_lobbyCode, UserProfileSingleton.IdProfile));
+                    _lobbyManager.LeaveLobby(_lobbyCode, UserProfileSingleton.UserName));
                 } catch (Exception exception) {
                     HandleException(exception, nameof(OnClosing));
                 }

@@ -24,6 +24,8 @@ namespace TripasDeGatoCliente.Logic {
             public const string DEFAULT_IMAGE_GUEST = " ";
 
             public const int HOW_MANY_SCORES = 10;
+
+            public const string FAILED_OPERATION_STRING = "Operation failed";
         }
     }
 }

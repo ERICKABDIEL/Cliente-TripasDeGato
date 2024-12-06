@@ -1298,10 +1298,10 @@ namespace TripasDeGatoCliente.TripasDeGatoServicio {
     public interface ILobbyManager {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyManager/LeaveLobby")]
-        void LeaveLobby(string code, int playerId);
+        void LeaveLobby(string code, string username);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyManager/LeaveLobby")]
-        System.Threading.Tasks.Task LeaveLobbyAsync(string code, int playerId);
+        System.Threading.Tasks.Task LeaveLobbyAsync(string code, string username);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILobbyManager/ConnectPlayerToLobby", ReplyAction="http://tempuri.org/ILobbyManager/ConnectPlayerToLobbyResponse")]
         bool ConnectPlayerToLobby(string code, int playerId);
@@ -1369,12 +1369,12 @@ namespace TripasDeGatoCliente.TripasDeGatoServicio {
                 base(callbackInstance, binding, remoteAddress) {
         }
         
-        public void LeaveLobby(string code, int playerId) {
-            base.Channel.LeaveLobby(code, playerId);
+        public void LeaveLobby(string code, string username) {
+            base.Channel.LeaveLobby(code, username);
         }
         
-        public System.Threading.Tasks.Task LeaveLobbyAsync(string code, int playerId) {
-            return base.Channel.LeaveLobbyAsync(code, playerId);
+        public System.Threading.Tasks.Task LeaveLobbyAsync(string code, string username) {
+            return base.Channel.LeaveLobbyAsync(code, username);
         }
         
         public bool ConnectPlayerToLobby(string code, int playerId) {

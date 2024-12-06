@@ -1,5 +1,4 @@
 ﻿using System.ServiceModel;
-using System.Threading.Tasks;
 using TripasDeGatoCliente.TripasDeGatoServicio;
 
 namespace TripasDeGatoCliente.Logic {
@@ -33,7 +32,7 @@ namespace TripasDeGatoCliente.Logic {
 
         public void DisconnectAll() {
             if (LobbyManager != null && UserProfileSingleton.LobbyCode != "000000") {
-                LobbyManager.LeaveLobby(UserProfileSingleton.LobbyCode, UserProfileSingleton.IdProfile);
+                LobbyManager.LeaveLobby(UserProfileSingleton.LobbyCode, UserProfileSingleton.UserName);
                 UserProfileSingleton.ResetLobbyCode();
             }
 

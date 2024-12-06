@@ -41,9 +41,9 @@
               "resultFile": {
                 "uri": "file:///C:/TripasDeGatoCliente/Views/LeaderboardView.xaml.cs",
                 "region": {
-                  "startLine": 19,
+                  "startLine": 20,
                   "startColumn": 13,
-                  "endLine": 19,
+                  "endLine": 20,
                   "endColumn": 34
                 }
               }
@@ -62,9 +62,9 @@
               "resultFile": {
                 "uri": "file:///C:/TripasDeGatoCliente/Logic/GuestProfile.cs",
                 "region": {
-                  "startLine": 5,
+                  "startLine": 6,
                   "startColumn": 49,
-                  "endLine": 5,
+                  "endLine": 6,
                   "endColumn": 61
                 }
               }
@@ -83,9 +83,9 @@
               "resultFile": {
                 "uri": "file:///C:/TripasDeGatoCliente/Logic/UserProfileSingleton.cs",
                 "region": {
-                  "startLine": 21,
+                  "startLine": 22,
                   "startColumn": 64,
-                  "endLine": 21,
+                  "endLine": 22,
                   "endColumn": 72
                 }
               }
@@ -96,9 +96,9 @@
               "physicalLocation": {
                 "uri": "file:///C:/TripasDeGatoCliente/Logic/UserProfileSingleton.cs",
                 "region": {
-                  "startLine": 23,
+                  "startLine": 24,
                   "startColumn": 63,
-                  "endLine": 23,
+                  "endLine": 24,
                   "endColumn": 71
                 }
               }
@@ -107,9 +107,9 @@
               "physicalLocation": {
                 "uri": "file:///C:/TripasDeGatoCliente/Logic/UserProfileSingleton.cs",
                 "region": {
-                  "startLine": 25,
+                  "startLine": 26,
                   "startColumn": 64,
-                  "endLine": 25,
+                  "endLine": 26,
                   "endColumn": 72
                 }
               }
@@ -118,9 +118,9 @@
               "physicalLocation": {
                 "uri": "file:///C:/TripasDeGatoCliente/Logic/UserProfileSingleton.cs",
                 "region": {
-                  "startLine": 55,
+                  "startLine": 56,
                   "startColumn": 25,
-                  "endLine": 55,
+                  "endLine": 56,
                   "endColumn": 33
                 }
               }
@@ -129,9 +129,9 @@
               "physicalLocation": {
                 "uri": "file:///C:/TripasDeGatoCliente/Logic/UserProfileSingleton.cs",
                 "region": {
-                  "startLine": 59,
+                  "startLine": 60,
                   "startColumn": 25,
-                  "endLine": 59,
+                  "endLine": 60,
                   "endColumn": 33
                 }
               }
@@ -140,9 +140,9 @@
               "physicalLocation": {
                 "uri": "file:///C:/TripasDeGatoCliente/Logic/UserProfileSingleton.cs",
                 "region": {
-                  "startLine": 63,
+                  "startLine": 64,
                   "startColumn": 25,
-                  "endLine": 63,
+                  "endLine": 64,
                   "endColumn": 33
                 }
               }
@@ -160,59 +160,101 @@
           }
         },
         {
-          "ruleId": "S6444",
+          "ruleId": "S6966",
           "level": "warning",
-          "message": "Pass a timeout to limit the execution time.",
+          "message": "Await IsFriendAlreadyAddedAsync instead.",
           "locations": [
             {
               "resultFile": {
-                "uri": "file:///C:/TripasDeGatoCliente/Logic/Validador.cs",
+                "uri": "file:///C:/TripasDeGatoCliente/Views/MenuView.xaml.cs",
                 "region": {
-                  "startLine": 25,
-                  "startColumn": 38,
-                  "endLine": 25,
-                  "endColumn": 80
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S6444",
-          "level": "warning",
-          "message": "Pass a timeout to limit the execution time.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/TripasDeGatoCliente/Logic/Validador.cs",
-                "region": {
-                  "startLine": 30,
-                  "startColumn": 38,
-                  "endLine": 30,
-                  "endColumn": 80
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S6444",
-          "level": "warning",
-          "message": "Pass a timeout to limit the execution time.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/TripasDeGatoCliente/Logic/Validador.cs",
-                "region": {
-                  "startLine": 52,
+                  "startLine": 160,
                   "startColumn": 34,
-                  "endLine": 52,
+                  "endLine": 160,
+                  "endColumn": 119
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S6605",
+          "level": "warning",
+          "message": "Collection-specific \"Exists\" method should be used instead of the \"Any\" extension.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/TripasDeGatoCliente/Views/GameMatchView.xaml.cs",
+                "region": {
+                  "startLine": 261,
+                  "startColumn": 47,
+                  "endLine": 261,
+                  "endColumn": 50
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S6444",
+          "level": "warning",
+          "message": "Pass a timeout to limit the execution time.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/TripasDeGatoCliente/Logic/Validador.cs",
+                "region": {
+                  "startLine": 26,
+                  "startColumn": 38,
+                  "endLine": 26,
+                  "endColumn": 80
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S6444",
+          "level": "warning",
+          "message": "Pass a timeout to limit the execution time.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/TripasDeGatoCliente/Logic/Validador.cs",
+                "region": {
+                  "startLine": 31,
+                  "startColumn": 38,
+                  "endLine": 31,
+                  "endColumn": 80
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S6444",
+          "level": "warning",
+          "message": "Pass a timeout to limit the execution time.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/TripasDeGatoCliente/Logic/Validador.cs",
+                "region": {
+                  "startLine": 53,
+                  "startColumn": 34,
+                  "endLine": 53,
                   "endColumn": 77
                 }
               }
@@ -231,9 +273,9 @@
               "resultFile": {
                 "uri": "file:///C:/TripasDeGatoCliente/Logic/Validador.cs",
                 "region": {
-                  "startLine": 57,
+                  "startLine": 58,
                   "startColumn": 35,
-                  "endLine": 57,
+                  "endLine": 58,
                   "endColumn": 74
                 }
               }
@@ -252,31 +294,10 @@
               "resultFile": {
                 "uri": "file:///C:/TripasDeGatoCliente/Logic/Validador.cs",
                 "region": {
-                  "startLine": 64,
-                  "startColumn": 29,
-                  "endLine": 64,
-                  "endColumn": 77
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S6605",
-          "level": "warning",
-          "message": "Collection-specific \"Exists\" method should be used instead of the \"Any\" extension.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/TripasDeGatoCliente/Views/GameMatchView.xaml.cs",
-                "region": {
-                  "startLine": 263,
-                  "startColumn": 47,
-                  "endLine": 263,
-                  "endColumn": 50
+                  "startLine": 65,
+                  "startColumn": 30,
+                  "endLine": 65,
+                  "endColumn": 78
                 }
               }
             }
@@ -358,6 +379,23 @@
           "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-6605",
           "properties": {
             "category": "Minor Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "TestSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S6966": {
+          "id": "S6966",
+          "shortDescription": "Awaitable method should be used",
+          "fullDescription": "In an async method, any blocking operations should be avoided.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-6966",
+          "properties": {
+            "category": "Major Code Smell",
             "isEnabledByDefault": true,
             "tags": [
               "C#",

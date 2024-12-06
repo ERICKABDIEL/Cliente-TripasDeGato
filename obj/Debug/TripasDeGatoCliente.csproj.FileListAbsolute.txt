@@ -48,10 +48,8 @@ C:\TripasDeGatoCliente\bin\Debug\TripasDeGatoCliente.pdb
 C:\TripasDeGatoCliente\bin\Debug\es-MX\TripasDeGatoCliente.resources.dll
 C:\TripasDeGatoCliente\bin\Debug\en-US\TripasDeGatoCliente.resources.dll
 C:\TripasDeGatoCliente\bin\Debug\log4net.dll
-C:\TripasDeGatoCliente\bin\Debug\Newtonsoft.Json.dll
 C:\TripasDeGatoCliente\bin\Debug\log4net.pdb
 C:\TripasDeGatoCliente\bin\Debug\log4net.xml
-C:\TripasDeGatoCliente\bin\Debug\Newtonsoft.Json.xml
 C:\TripasDeGatoCliente\obj\Debug\TripasDeGatoCliente.csproj.AssemblyReference.cache
 C:\TripasDeGatoCliente\obj\Debug\MainWindow.g.cs
 C:\TripasDeGatoCliente\obj\Debug\Views\CodeGameMatchView.g.cs
