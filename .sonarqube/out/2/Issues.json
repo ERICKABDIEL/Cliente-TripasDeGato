@@ -11,7 +11,31 @@
         "language": "es-MX"
       },
       "results": [
-      ]
+        {
+          "ruleId": "CS8034",
+          "level": "warning",
+          "message": "No se puede cargar el ensamblado del analizador C:\\TripasDeGatoCliente\\packages\\xunit.analyzers.1.16.0\\analyzers\\dotnet\\cs\\xunit.analyzers.dll: Unable to load xunit.analyzers",
+          "properties": {
+            "warningLevel": 1
+          }
+        }
+      ],
+      "rules": {
+        "CS8034": {
+          "id": "CS8034",
+          "shortDescription": "No es posible cargar el ensamblaje del analizador",
+          "defaultLevel": "warning",
+          "helpUri": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn&k=k(CS8034)",
+          "properties": {
+            "category": "Compiler",
+            "isEnabledByDefault": true,
+            "tags": [
+              "Compiler",
+              "Telemetry"
+            ]
+          }
+        }
+      }
     }
   ]
 }

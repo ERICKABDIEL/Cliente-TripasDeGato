@@ -21,24 +21,24 @@ namespace TripasDeGatoCliente.Logic {
             Logger.Info(message);
         }
 
-        public void LogError(string message, Exception ex) {
-            Logger.Error(message, ex);
+        public void LogError(string message, Exception exception) {
+            Logger.Error(message, exception);
         }
 
-        public void LogError(Exception ex) {
-            Logger.Error(ex);
+        public void LogError(Exception exception) {
+            Logger.Error(exception);
         }
 
-        public void LogFatal(Exception ex) {
-            Logger.Fatal(ex);
+        public void LogFatal(Exception exception) {
+            Logger.Fatal(exception);
         }
 
-        public void LogWarn(Exception ex) {
-            Logger.Warn(ex);
+        public void LogWarn(Exception exception) {
+            Logger.Warn(exception);
         }
 
-        public void LogDebug(Exception ex) {
-            Logger.Debug(ex);
+        public void LogDebug(Exception exception) {
+            Logger.Debug(exception);
         }
     }
 }

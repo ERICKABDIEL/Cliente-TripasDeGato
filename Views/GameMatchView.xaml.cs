@@ -1,7 +1,6 @@
 using System;
 using System.Linq;
 using System.Windows;
-using System.Net.Mail;
 using System.ServiceModel;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -9,11 +8,8 @@ using System.Windows.Shapes;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Threading;
-using System.Xml.Serialization;
 using TripasDeGatoCliente.Logic;
 using System.Collections.Generic;
-using System.Windows.Media.Imaging;
-using log4net.Repository.Hierarchy;
 using TripasDeGatoCliente.TripasDeGatoServicio;
 
 namespace TripasDeGatoCliente.Views {

@@ -1,20 +1,9 @@
 ﻿using System;
-using System.Linq;
-using System.Text;
 using System.Windows;
 using System.ServiceModel;
-using System.Windows.Data;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Shapes;
-using System.Threading.Tasks;
 using System.Windows.Controls;
-using System.Windows.Documents;
-using System.Windows.Navigation;
 using TripasDeGatoCliente.Logic;
 using System.Collections.Generic;
-using System.Windows.Media.Imaging;
-using log4net.Repository.Hierarchy;
 using TripasDeGatoCliente.TripasDeGatoServicio;
 
 namespace TripasDeGatoCliente.Views {
@@ -22,7 +11,7 @@ namespace TripasDeGatoCliente.Views {
     public partial class CreateLobbyView : Page {
 
         private LobbyBrowserClient _lobbyBrowser;
-        
+
         public CreateLobbyView() {
             InitializeComponent();
             InitializeFormValues();
@@ -68,7 +57,7 @@ namespace TripasDeGatoCliente.Views {
                     Username = UserProfileSingleton.UserName
                 };
                 string lobbyCode = await _lobbyBrowser.CreateLobbyAsync(gameName, nodeCount, owner);
-                if (!string.IsNullOrEmpty(lobbyCode)) {
+                if (lobbyCode != ConstantsManager.Constants.FAILED_OPERATION_STRING) {
                     GoToLobbyView(lobbyCode);
                 } else {
                     DialogManager.ShowWarningMessageAlert(Properties.Resources.dialogLobbyCreationError);
