@@ -312,6 +312,9 @@
   <data name="dialogInfractionInvalidNode" xml:space="preserve">
     <value>Chocaste un nodo que no te pertenece!</value>
   </data>
+  <data name="dialogInsufficientPlayers" xml:space="preserve">
+    <value>No hay suficientes jugadores.</value>
+  </data>
   <data name="dialogInvalidEmail" xml:space="preserve">
     <value>Correo inválido</value>
   </data>

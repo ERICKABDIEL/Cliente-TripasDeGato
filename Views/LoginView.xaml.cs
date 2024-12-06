@@ -12,7 +12,7 @@ namespace TripasDeGatoCliente.Views {
     public partial class LoginView : Page {
 
         private string _userEmail;
-        
+
         public LoginView() {
             InitializeComponent();
             UpdatePasswordVisibilityIcon();
@@ -71,7 +71,6 @@ namespace TripasDeGatoCliente.Views {
             }
             return isAuthenticated;
         }
-
 
         private void HandleException(Exception exception, string methodName) {
             LoggerManager logger = new LoggerManager(this.GetType());

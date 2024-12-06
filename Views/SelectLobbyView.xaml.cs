@@ -11,6 +11,7 @@ using TripasDeGatoCliente.TripasDeGatoServicio;
 namespace TripasDeGatoCliente.Views {
 
     public partial class SelectLobbyView : Page {
+
         private LobbyBrowserClient _lobbyBrowser;
 
         public SelectLobbyView() {

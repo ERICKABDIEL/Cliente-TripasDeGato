@@ -646,6 +646,15 @@ namespace TripasDeGatoCliente.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Not enough players..
+        /// </summary>
+        public static string dialogInsufficientPlayers {
+            get {
+                return ResourceManager.GetString("dialogInsufficientPlayers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Invalid Email.
         /// </summary>
         public static string dialogInvalidEmail {

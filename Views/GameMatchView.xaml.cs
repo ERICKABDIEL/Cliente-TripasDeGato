@@ -15,7 +15,7 @@ using TripasDeGatoCliente.TripasDeGatoServicio;
 namespace TripasDeGatoCliente.Views {
 
     public partial class GameMatch : Page, IMatchManagerCallback {
-    
+
         private List<Polyline> _allTraces;
         private DispatcherTimer _timer;
         private int _totalTime = 15;
@@ -233,7 +233,6 @@ namespace TripasDeGatoCliente.Views {
             return Math.Sqrt((px - projX) * (px - projX) + (py - projY) * (py - projY));
         }
 
-
         private void Canvas_MouseUp(object sender, MouseButtonEventArgs e) {
             if (!_isDrawing) return;
             _isDrawing = false;
@@ -284,10 +283,8 @@ namespace TripasDeGatoCliente.Views {
             Trace trace = new TripasDeGatoServicio.Trace {
                 Player = UserProfileSingleton.UserName,
                 TracePoints = points,
-                Timestamp = DateTime.Now,
                 Color = "Blue"
             };
-
             try {
                 _matchManagerClient.RegisterTrace(_matchCode, trace);
             } catch (Exception exception) {

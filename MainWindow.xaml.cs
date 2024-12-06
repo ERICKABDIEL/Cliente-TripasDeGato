@@ -1,16 +1,11 @@
 ﻿using System;
-using log4net;
 using System.Windows;
 using System.ServiceModel;
 using TripasDeGatoCliente.Logic;
-using System.ServiceModel.Channels;
 using TripasDeGatoCliente.TripasDeGatoServicio;
-using log4net.Repository.Hierarchy;
 
 namespace TripasDeGatoCliente {
-    /// <summary>
-    /// Lógica de interacción para MainWindow.xaml
-    /// </summary>
+  
     public partial class MainWindow : Window {
 
         public MainWindow() {

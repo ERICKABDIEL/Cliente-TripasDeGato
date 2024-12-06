@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Windows;
 using System.ServiceModel;
-using System.Threading.Tasks;
 using System.Windows.Controls;
 using TripasDeGatoCliente.Logic;
-using log4net.Repository.Hierarchy;
 using TripasDeGatoCliente.TripasDeGatoServicio;
 
 namespace TripasDeGatoCliente.Views {

@@ -90,9 +90,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TripasDeGatoCliente.csproj">
+    <ProjectReference Include="..\TripasClient.csproj">
       <Project>{614fae94-10a3-4b88-927c-17395a2cb479}</Project>
-      <Name>TripasDeGatoCliente</Name>
+      <Name>TripasClient</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

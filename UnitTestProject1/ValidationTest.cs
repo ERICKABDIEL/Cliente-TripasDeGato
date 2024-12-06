@@ -4,7 +4,6 @@ using Xunit;
 namespace UnitTestProject {
     public class ValidadorTests {
 
-        // 1. Pruebas para ValidateEmail
         [Fact]
         public void ValidateEmailValidEmailReturnsTrue() {
             string email = "abdiel321atzin@gmail.com";
@@ -18,6 +17,7 @@ namespace UnitTestProject {
             bool validationResult = Validador.ValidateEmail(email);
             Assert.False(validationResult);
         }
+
         [Fact]
         public void ValidateEmailWithoutAtSignReturnsFalse() {
             string email = "abdiel321atzin.com";
@@ -46,7 +46,6 @@ namespace UnitTestProject {
             Assert.False(validationResult);
         }
 
-        // 2. Pruebas para ValidatePassword
         [Fact]
         public void ValidatePasswordStrongPasswordReturnsTrue() {
             string password = "Secure123!";
@@ -68,7 +67,6 @@ namespace UnitTestProject {
             Assert.True(validationResult);
         }
 
-        // 3. Pruebas para ValidateUsername
         [Fact]
         public void ValidateUsernameValidUsernameReturnsTrue() {
             string username = "User_123";
@@ -90,7 +88,6 @@ namespace UnitTestProject {
             Assert.False(validationResult);
         }
 
-        // 4. Pruebas para ValidateCode
         [Fact]
         public void ValidateCodeValidCodeReturnsTrue() {
             string code = "ABC123";

@@ -1,5 +1,4 @@
 ﻿using System;
-using log4net;
 using System.Windows;
 using System.ServiceModel;
 using System.Windows.Media;
@@ -278,6 +277,5 @@ namespace TripasDeGatoCliente.Views {
                 }
             }
         }
-
     }
 }

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using System.Windows;
 using System.ServiceModel;
 using System.Windows.Media;
@@ -7,14 +6,13 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 using TripasDeGatoCliente.Logic;
 using System.Collections.Generic;
-using log4net.Repository.Hierarchy;
-using System.Runtime.CompilerServices;
 using TripasDeGatoCliente.TripasDeGatoServicio;
 using static TripasDeGatoCliente.Logic.ConstantsManager;
 
 namespace TripasDeGatoCliente.Views {
 
     public partial class MenuView : Page {
+
         private UserManagerClient _userManager;
         private FriendsManagerClient _friendsManager;
         private StatusManagerClient _statusManager;
@@ -189,8 +187,8 @@ namespace TripasDeGatoCliente.Views {
         private async Task LoadFriendsListAsync() {
             try {
                 int userProfileId = UserProfileSingleton.IdProfile;
-                List <Profile> friendsList = await _friendsManager.GetFriendsAsync(userProfileId);
-                List <string> friendsWithStatus = new List<string>();
+                List<Profile> friendsList = await _friendsManager.GetFriendsAsync(userProfileId);
+                List<string> friendsWithStatus = new List<string>();
                 foreach (Profile friend in friendsList) {
                     GameEnumsPlayerStatus status = await _statusManager.GetPlayerStatusAsync(friend.IdProfile);
                     friendsWithStatus.Add($"{friend.Username} - {status}");

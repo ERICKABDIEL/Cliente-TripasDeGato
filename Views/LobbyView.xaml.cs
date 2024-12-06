@@ -15,6 +15,7 @@ using static TripasDeGatoCliente.Logic.ConstantsManager;
 namespace TripasDeGatoCliente.Views {
 
     public partial class LobbyView : Page, IChatManagerCallback, ILobbyManagerCallback {
+
         private ChatManagerClient _chatManager;
         private LobbyManagerClient _lobbyManager;
         private LobbyBrowserClient _lobbyBrowser;
@@ -236,11 +237,16 @@ namespace TripasDeGatoCliente.Views {
 
         private void BtnStartGame_Click(object sender, RoutedEventArgs e) {
             try {
-                _lobbyManager.StartMatch(_lobbyCode);
+                if (lbPlayer2.Content == Properties.Resources.lbWaitingForPlayer) {
+                    DialogManager.ShowWarningMessageAlert(Properties.Resources.dialogInsufficientPlayers);
+                } else {
+                    _lobbyManager.StartMatch(_lobbyCode);
+                }
             } catch (Exception exception) {
                 HandleException(exception, nameof(BtnStartGame_Click));
             }
         }
+
 
 
         public void BroadcastMessage(Message message) {
@@ -280,8 +286,8 @@ namespace TripasDeGatoCliente.Views {
         private async Task LoadFriendsListAsync() {
             try {
                 int userProfileId = UserProfileSingleton.IdProfile;
-                List <Profile> friendsList = await _friendsManager.GetFriendsAsync(userProfileId);
-                List <string> friendsWithStatus = new List<string>();
+                List<Profile> friendsList = await _friendsManager.GetFriendsAsync(userProfileId);
+                List<string> friendsWithStatus = new List<string>();
                 foreach (Profile friend in friendsList) {
                     GameEnumsPlayerStatus status = await _statusManager.GetPlayerStatusAsync(friend.IdProfile);
                     friendsWithStatus.Add($"{friend.Username} - {status}");

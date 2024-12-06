@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Windows;
-using System.IO.Packaging;
 using System.ServiceModel;
 using System.Windows.Controls;
 using TripasDeGatoCliente.Logic;
@@ -11,6 +10,7 @@ using TripasDeGatoCliente.TripasDeGatoServicio;
 namespace TripasDeGatoCliente.Views {
 
     public partial class ProfileView : Page {
+
         private bool _isEditing = false;
         private string _selectedProfile = UserProfileSingleton.PicPath;
 
